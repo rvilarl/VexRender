@@ -1,0 +1,25 @@
+{
+  "name": "vexrender",
+  "version": "1.0.0",
+  "author": "Aaron Newman aarondnewman@gmail.com",
+  "description": "Render music using the Vexflow engraving library, to compare different library version",
+  "main": "index.js",
+  "scripts": {
+    "test": "generate"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AaronDavidNewman/VexRender.git"
+  },
+  "keywords": [
+    "music",
+    "engraving",
+    "vexflow",
+    "test"
+  ],
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/AaronDavidNewman/VexRender/issues"
+  },
+  "homepage": "https://github.com/AaronDavidNewman/VexRender#readme"
+}
