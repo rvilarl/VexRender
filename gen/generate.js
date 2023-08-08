@@ -13,11 +13,17 @@ async function main() {
   for (let dirname of libs) {
     versions.push(dirname);
   }
-  vexFiles.forEach(async (vexFile) => {
-    versions.forEach(async (version) => {
+  const ixLinks = [];
+  ixLinks.push('<!DOCTYPE HTML>');
+  ixLinks.push(`<html lang="en" xmlns="http://www.w3.org/1999/xhtml">`);
+  ixLinks.push(`<body><ul>`);
+  for (var i = 0; i < vexFiles.length; ++i) {
+    const vexFile = vexFiles[i];
+    for (var j = 0; j < versions.length; ++j) {
+      const version = versions[j];
       const strs = [];
       const htmlFile = `${vexFile}${version}.html`;
-      console.log(`generating ${htmlFile} with ${vexFile} and library ${version}`);
+      ixLinks.push(`<li><a href="./html/${htmlFile}">${vexFile} using VexFlow library ${version}</a></li>`);
       strs.push('<!DOCTYPE HTML>');
       strs.push(`<html lang="en" xmlns="http://www.w3.org/1999/xhtml">`);
       strs.push(`<head>`);
@@ -33,13 +39,17 @@ async function main() {
       strs.push(`</script>`);
       strs.push(`</head>`);
       strs.push(`<body>`);
+      strs.push('<div class="links"><a href="../index.html">Back to index</a></div>');
       strs.push(`<div id="smoo">`);
       strs.push(`</div>`);
       strs.push(`</body>`);
       strs.push(`</html>`);
       const htmlString = strs.join(`\n`);
       await fs.writeFile(`./html/${htmlFile}`,htmlString);
-    });
-  });
+    }
+  }
+  ixLinks.push(`</ul></body></html>`);
+  const indexString = ixLinks.join('\n');
+  await fs.writeFile(`./index.html`,indexString);
 }
 main();
