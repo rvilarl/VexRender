@@ -1,5 +1,5 @@
 /*!
- * VexFlow 5.0.0-alpha.0   2023-08-08T03:46:37.781Z   c0ffd6fbcf9a24d9f8042dce92f94b0a87db2cd2
+ * VexFlow 5.0.0-alpha.0   2023-08-11T02:13:43.625Z   1456668f53bc3a88b69299803b87439d030be342
  * Copyright (c) 2023-present VexFlow contributors (see https://github.com/vexflow/vexflow/blob/main/AUTHORS.md).
  *
  */
@@ -30,8 +30,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   VERSION: () => (/* binding */ VERSION)
 /* harmony export */ });
 const VERSION = '5.0.0-alpha.0';
-const ID = 'c0ffd6fbcf9a24d9f8042dce92f94b0a87db2cd2';
-const DATE = '2023-08-08T03:46:37.781Z';
+const ID = '1456668f53bc3a88b69299803b87439d030be342';
+const DATE = '2023-08-11T02:13:43.625Z';
 
 
 /***/ }),
@@ -3095,24 +3095,26 @@ class ChordSymbol extends _modifier__WEBPACK_IMPORTED_MODULE_2__.Modifier {
                 symbol.setTextLine(state.textLine + 1);
                 state.textLine += lineSpaces + 1;
             }
-            if ((0,_typeguard__WEBPACK_IMPORTED_MODULE_4__.isStemmableNote)(note)) {
-                const glyphWidth = note.getGlyphWidth();
-                if (symbol.getHorizontal() === ChordSymbolHorizontalJustify.LEFT) {
-                    maxLeftGlyphWidth = Math.max(glyphWidth, maxLeftGlyphWidth);
-                    leftWidth = Math.max(leftWidth, width) + ChordSymbol.minPadding;
+            if (symbol.getReportWidth()) {
+                if ((0,_typeguard__WEBPACK_IMPORTED_MODULE_4__.isStemmableNote)(note)) {
+                    const glyphWidth = note.getGlyphWidth();
+                    if (symbol.getHorizontal() === ChordSymbolHorizontalJustify.LEFT) {
+                        maxLeftGlyphWidth = Math.max(glyphWidth, maxLeftGlyphWidth);
+                        leftWidth = Math.max(leftWidth, width) + ChordSymbol.minPadding;
+                    }
+                    else if (symbol.getHorizontal() === ChordSymbolHorizontalJustify.RIGHT) {
+                        maxRightGlyphWidth = Math.max(glyphWidth, maxRightGlyphWidth);
+                        rightWidth = Math.max(rightWidth, width);
+                    }
+                    else {
+                        leftWidth = Math.max(leftWidth, width / 2) + ChordSymbol.minPadding;
+                        rightWidth = Math.max(rightWidth, width / 2);
+                        maxLeftGlyphWidth = Math.max(glyphWidth / 2, maxLeftGlyphWidth);
+                        maxRightGlyphWidth = Math.max(glyphWidth / 2, maxRightGlyphWidth);
+                    }
                 }
-                else if (symbol.getHorizontal() === ChordSymbolHorizontalJustify.RIGHT) {
-                    maxRightGlyphWidth = Math.max(glyphWidth, maxRightGlyphWidth);
-                    rightWidth = Math.max(rightWidth, width);
-                }
-                else {
-                    leftWidth = Math.max(leftWidth, width / 2) + ChordSymbol.minPadding;
-                    rightWidth = Math.max(rightWidth, width / 2);
-                    maxLeftGlyphWidth = Math.max(glyphWidth / 2, maxLeftGlyphWidth);
-                    maxRightGlyphWidth = Math.max(glyphWidth / 2, maxRightGlyphWidth);
-                }
+                symbol.width = width;
             }
-            symbol.width = width;
             width = 0; // reset symbol width
         }
         const rightOverlap = Math.min(Math.max(rightWidth - maxRightGlyphWidth, 0), Math.max(rightWidth - state.rightShift, 0));
@@ -3126,6 +3128,7 @@ class ChordSymbol extends _modifier__WEBPACK_IMPORTED_MODULE_2__.Modifier {
         this.symbolBlocks = [];
         this.horizontal = ChordSymbolHorizontalJustify.LEFT;
         this.vertical = ChordSymbolVerticalJustify.TOP;
+        this.reportWidth = true;
     }
     /**
      * The offset is specified in `em`. Scale this value by the font size in pixels.
@@ -3135,6 +3138,13 @@ class ChordSymbol extends _modifier__WEBPACK_IMPORTED_MODULE_2__.Modifier {
     }
     get subscriptOffset() {
         return ChordSymbol.subscriptOffset * _font__WEBPACK_IMPORTED_MODULE_1__.Font.convertSizeToPixelValue(this.textFont.size);
+    }
+    setReportWidth(value) {
+        this.reportWidth = value;
+        return this;
+    }
+    getReportWidth() {
+        return this.reportWidth;
     }
     /**
      * ChordSymbol allows multiple blocks so we can mix glyphs and font text.
@@ -5800,6 +5810,9 @@ class Flow {
                 break;
             case 'Petaluma':
                 _tables__WEBPACK_IMPORTED_MODULE_63__.CommonMetrics.fontFamily = 'Petaluma,Bravura,Petaluma Script';
+                break;
+            case 'MuseJazz':
+                _tables__WEBPACK_IMPORTED_MODULE_63__.CommonMetrics.fontFamily = 'MuseJazz,Bravura,Academico';
                 break;
             default:
                 _tables__WEBPACK_IMPORTED_MODULE_63__.CommonMetrics.fontFamily = fontNames.join(',');
@@ -12731,11 +12744,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _load_custom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./load_custom */ "./src/fonts/load_custom.ts");
 /* harmony import */ var _load_gonville__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./load_gonville */ "./src/fonts/load_gonville.ts");
 /* harmony import */ var _load_leland__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./load_leland */ "./src/fonts/load_leland.ts");
-/* harmony import */ var _load_petaluma__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./load_petaluma */ "./src/fonts/load_petaluma.ts");
+/* harmony import */ var _load_musejazz__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./load_musejazz */ "./src/fonts/load_musejazz.ts");
+/* harmony import */ var _load_petaluma__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./load_petaluma */ "./src/fonts/load_petaluma.ts");
 // Copyright (c) 2023-present VexFlow contributors: https://github.com/vexflow/vexflow/graphs/contributors
 // MIT License
 //
 // vexflow.js statically bundles & preloads all of our music engraving fonts.
+
 
 
 
@@ -12747,9 +12762,10 @@ __webpack_require__.r(__webpack_exports__);
 function loadAllMusicFonts() {
     (0,_load_bravura__WEBPACK_IMPORTED_MODULE_0__.loadBravura)();
     (0,_load_gonville__WEBPACK_IMPORTED_MODULE_2__.loadGonville)();
-    (0,_load_petaluma__WEBPACK_IMPORTED_MODULE_4__.loadPetaluma)();
+    (0,_load_petaluma__WEBPACK_IMPORTED_MODULE_5__.loadPetaluma)();
     (0,_load_custom__WEBPACK_IMPORTED_MODULE_1__.loadCustom)();
     (0,_load_leland__WEBPACK_IMPORTED_MODULE_3__.loadLeland)();
+    (0,_load_musejazz__WEBPACK_IMPORTED_MODULE_4__.loadMuseJazz)();
     // ADD_MUSIC_FONT
     // loadXXX();
 }
@@ -12860,6 +12876,39 @@ __webpack_require__.r(__webpack_exports__);
 
 function loadLeland() {
     _font__WEBPACK_IMPORTED_MODULE_0__.Font.load('Leland', _leland_glyphs__WEBPACK_IMPORTED_MODULE_2__.LelandFont, _common_metrics__WEBPACK_IMPORTED_MODULE_1__.CommonMetrics);
+}
+
+
+/***/ }),
+
+/***/ "./src/fonts/load_musejazz.ts":
+/*!************************************!*\
+  !*** ./src/fonts/load_musejazz.ts ***!
+  \************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   loadMuseJazz: () => (/* binding */ loadMuseJazz)
+/* harmony export */ });
+/* harmony import */ var _font__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../font */ "./src/font.ts");
+/* harmony import */ var _bravura_glyphs__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./bravura_glyphs */ "./src/fonts/bravura_glyphs.ts");
+/* harmony import */ var _common_metrics__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./common_metrics */ "./src/fonts/common_metrics.ts");
+// Copyright (c) 2023-present VexFlow contributors: https://github.com/vexflow/vexflow/graphs/contributors
+// MIT License
+// If you are adding a new music engraving font, search for instances of ADD_MUSIC_FONT throughout the code base.
+// To compile your new font into vexflow.js, take a look at src/fonts/load_all.ts
+// You can export a font module which can be dynamically loaded by vexflow-core.js (see: Gruntfile.js).
+// ADD_MUSIC_FONT
+// To add a new music engraving font XXX, make a copy of this file and name it load_xxx.ts.
+// Then you will need to generate xxx_glyphs.ts and xxx_metrics.ts.
+// xxx_glyphs.ts is created by tools/fonts/fontgen_smufl.js
+// xxx_metrics.ts is created by hand. You could copy bravura_metrics.ts and modify/remove/add entries where necessary.
+
+
+
+function loadMuseJazz() {
+    _font__WEBPACK_IMPORTED_MODULE_0__.Font.load('MuseJazz', _bravura_glyphs__WEBPACK_IMPORTED_MODULE_1__.BravuraFont, _common_metrics__WEBPACK_IMPORTED_MODULE_2__.CommonMetrics);
 }
 
 
@@ -20616,6 +20665,9 @@ class Glyph extends _element__WEBPACK_IMPORTED_MODULE_2__.Element {
         (0,_util__WEBPACK_IMPORTED_MODULE_5__.defined)(fontStack, 'BadFontStack', 'Font stack is misconfigured');
         let glyph;
         let font;
+        // HACK to see porting progress
+        if (fontStack[0].getName() == 'MuseJazz')
+            code = 'timeSigMinus';
         for (let i = 0; i < fontStack.length; i++) {
             font = fontStack[i];
             glyph = font.getGlyphs()[code];
@@ -31286,8 +31338,10 @@ const articulations = {
 const ornaments = {
     mordent: { code: 'ornamentShortTrill' },
     mordentInverted: { code: 'ornamentMordent' },
+    mordent_inverted: { code: 'ornamentMordent' },
     turn: { code: 'ornamentTurn' },
     turnInverted: { code: 'ornamentTurnSlash' },
+    turn_inverted: { code: 'ornamentTurnSlash' },
     tr: { code: 'ornamentTrill' },
     upprall: { code: 'ornamentPrecompSlideTrillDAnglebert' },
     downprall: { code: 'ornamentPrecompDoubleCadenceUpperPrefix' },

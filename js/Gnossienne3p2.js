@@ -1450,40 +1450,51 @@ smo33734v0.draw(context, stavesmo33734);
 smo33734v1.draw(context, stavesmo33734);
 const leftsmo33748stavesmo333031 = new VF.StaveConnector(stavesmo33303, stavesmo33734).setType(3);
 leftsmo33748stavesmo333031.setContext(context).draw();
-const smo35247 = new VF.StaveTie({ first_note: smo33140, last_note: smo33141, first_indices: [0], last_indices: [0]});
-smo35247.setContext(context).draw();
-const smo35248 = new VF.StaveTie({ first_note: smo33143, last_note: smo33145, first_indices: [0], last_indices: [0]});
-smo35248.setContext(context).draw();
-const smo35249 = new VF.StaveTie({ first_note: smo33147, last_note: smo33149, first_indices: [0], last_indices: [0]});
-smo35249.setContext(context).draw();
-const smo35250 = new VF.StaveTie({ first_note: smo33176, last_note: smo33177, first_indices: [0], last_indices: [0]});
-smo35250.setContext(context).draw();
-const smo35251 = new VF.StaveTie({ first_note: smo33179, last_note: smo33181, first_indices: [0], last_indices: [0]});
-smo35251.setContext(context).draw();
-const smo35252 = new VF.StaveTie({ first_note: smo33208, last_note: smo33209, first_indices: [0], last_indices: [0]});
-smo35252.setContext(context).draw();
-const smo35253 = new VF.StaveTie({ first_note: smo33218, last_note: smo33219, first_indices: [0], last_indices: [0]});
-smo35253.setContext(context).draw();
-const smo35254 = new VF.StaveTie({ first_note: smo33228, last_note: smo33229, first_indices: [0], last_indices: [0]});
-smo35254.setContext(context).draw();
-const smo35255 = new VF.StaveTie({ first_note: smo33261, last_note: smo33262, first_indices: [0], last_indices: [0]});
-smo35255.setContext(context).draw();
-const smo35256 = new VF.StaveTie({ first_note: smo33271, last_note: smo33272, first_indices: [0], last_indices: [0]});
-smo35256.setContext(context).draw();
-const smo35257 = new VF.StaveTie({ first_note: smo33277, last_note: smo33278, first_indices: [0], last_indices: [0]});
-smo35257.setContext(context).draw();
-const smo35258 = new VF.Curve(smo33167, smo33177, JSON.parse('{"thickness":2,"x_shift":0,"y_shift":10,"cps":[{"x":0,"y":45},{"x":0,"y":15}],"invert":false,"position":1,"position_end":1}'));
-smo35258.setContext(context).draw();
-const smo35259 = new VF.Curve(smo33183, null, JSON.parse('{"thickness":2,"x_shift":-5,"y_shift":10,"cps":[{"x":0,"y":10},{"x":0,"y":10}],"invert":false,"position":1,"position_end":1}'));
-smo35259.setContext(context).draw();
-const smo35260 = new VF.Curve(null, smo33209, JSON.parse('{"thickness":2,"x_shift":-5,"y_shift":10,"cps":[{"x":0,"y":10},{"x":0,"y":10}],"invert":false,"position":1,"position_end":1}'));
-smo35260.setContext(context).draw();
-const smo35261 = new VF.Curve(smo33213, smo33219, JSON.parse('{"thickness":2,"x_shift":0,"y_shift":20,"cps":[{"x":0,"y":15},{"x":0,"y":15}],"invert":true,"position":2,"position_end":2}'));
-smo35261.setContext(context).draw();
-const smo35262 = new VF.Curve(smo33221, smo33229, JSON.parse('{"thickness":2,"x_shift":0,"y_shift":13,"cps":[{"x":0,"y":30},{"x":0,"y":30}],"invert":true,"position":2,"position_end":2}'));
-smo35262.setContext(context).draw();
-const smo35263 = new VF.Curve(smo33131, smo33141, JSON.parse('{"thickness":2,"x_shift":0,"y_shift":20,"cps":[{"x":0,"y":15},{"x":0,"y":15}],"invert":false,"position":2,"position_end":1}'));
-smo35263.setContext(context).draw();
-const smo35264 = new VF.Curve(smo33091, smo33114, JSON.parse('{"thickness":2,"x_shift":0,"y_shift":20,"cps":[{"x":0,"y":15},{"x":0,"y":15}],"invert":true,"position":2,"position_end":2}'));
-smo35264.setContext(context).draw();
+const smo35291 = new VF.StaveTie({ first_note: smo33140, last_note: smo33141, 
+          firstNote: smo33140, lastNote: smo33141, first_indices: [0], last_indices: [0]});
+smo35291.setContext(context).draw();
+const smo35292 = new VF.StaveTie({ first_note: smo33143, last_note: smo33145, 
+          firstNote: smo33143, lastNote: smo33145, first_indices: [0], last_indices: [0]});
+smo35292.setContext(context).draw();
+const smo35293 = new VF.StaveTie({ first_note: smo33147, last_note: smo33149, 
+          firstNote: smo33147, lastNote: smo33149, first_indices: [0], last_indices: [0]});
+smo35293.setContext(context).draw();
+const smo35294 = new VF.StaveTie({ first_note: smo33176, last_note: smo33177, 
+          firstNote: smo33176, lastNote: smo33177, first_indices: [0], last_indices: [0]});
+smo35294.setContext(context).draw();
+const smo35295 = new VF.StaveTie({ first_note: smo33179, last_note: smo33181, 
+          firstNote: smo33179, lastNote: smo33181, first_indices: [0], last_indices: [0]});
+smo35295.setContext(context).draw();
+const smo35296 = new VF.StaveTie({ first_note: smo33208, last_note: smo33209, 
+          firstNote: smo33208, lastNote: smo33209, first_indices: [0], last_indices: [0]});
+smo35296.setContext(context).draw();
+const smo35297 = new VF.StaveTie({ first_note: smo33218, last_note: smo33219, 
+          firstNote: smo33218, lastNote: smo33219, first_indices: [0], last_indices: [0]});
+smo35297.setContext(context).draw();
+const smo35298 = new VF.StaveTie({ first_note: smo33228, last_note: smo33229, 
+          firstNote: smo33228, lastNote: smo33229, first_indices: [0], last_indices: [0]});
+smo35298.setContext(context).draw();
+const smo35299 = new VF.StaveTie({ first_note: smo33261, last_note: smo33262, 
+          firstNote: smo33261, lastNote: smo33262, first_indices: [0], last_indices: [0]});
+smo35299.setContext(context).draw();
+const smo35300 = new VF.StaveTie({ first_note: smo33271, last_note: smo33272, 
+          firstNote: smo33271, lastNote: smo33272, first_indices: [0], last_indices: [0]});
+smo35300.setContext(context).draw();
+const smo35301 = new VF.StaveTie({ first_note: smo33277, last_note: smo33278, 
+          firstNote: smo33277, lastNote: smo33278, first_indices: [0], last_indices: [0]});
+smo35301.setContext(context).draw();
+const smo35302 = new VF.Curve(smo33167, smo33177, JSON.parse('{"thickness":2,"x_shift":0,"y_shift":10,"cps":[{"x":0,"y":45},{"x":0,"y":15}],"invert":false,"position":1,"position_end":1}'));
+smo35302.setContext(context).draw();
+const smo35303 = new VF.Curve(smo33183, null, JSON.parse('{"thickness":2,"x_shift":-5,"y_shift":10,"cps":[{"x":0,"y":10},{"x":0,"y":10}],"invert":false,"position":1,"position_end":1}'));
+smo35303.setContext(context).draw();
+const smo35304 = new VF.Curve(null, smo33209, JSON.parse('{"thickness":2,"x_shift":-5,"y_shift":10,"cps":[{"x":0,"y":10},{"x":0,"y":10}],"invert":false,"position":1,"position_end":1}'));
+smo35304.setContext(context).draw();
+const smo35305 = new VF.Curve(smo33213, smo33219, JSON.parse('{"thickness":2,"x_shift":0,"y_shift":20,"cps":[{"x":0,"y":15},{"x":0,"y":15}],"invert":true,"position":2,"position_end":2}'));
+smo35305.setContext(context).draw();
+const smo35306 = new VF.Curve(smo33221, smo33229, JSON.parse('{"thickness":2,"x_shift":0,"y_shift":13,"cps":[{"x":0,"y":30},{"x":0,"y":30}],"invert":true,"position":2,"position_end":2}'));
+smo35306.setContext(context).draw();
+const smo35307 = new VF.Curve(smo33131, smo33141, JSON.parse('{"thickness":2,"x_shift":0,"y_shift":20,"cps":[{"x":0,"y":15},{"x":0,"y":15}],"invert":false,"position":2,"position_end":1}'));
+smo35307.setContext(context).draw();
+const smo35308 = new VF.Curve(smo33091, smo33114, JSON.parse('{"thickness":2,"x_shift":0,"y_shift":20,"cps":[{"x":0,"y":15},{"x":0,"y":15}],"invert":true,"position":2,"position_end":2}'));
+smo35308.setContext(context).draw();
 }

@@ -1819,9 +1819,11 @@ stavesmo36077.draw();
 smo36077v0.draw(context, stavesmo36077);
 smo37387.setContext(context);
 smo37387.draw();
-const smo37519 = new VF.StaveTie({ first_note: smo35701, last_note: smo35720, first_indices: [0,1], last_indices: [0,1]});
+const smo37519 = new VF.StaveTie({ first_note: smo35701, last_note: smo35720, 
+          firstNote: smo35701, lastNote: smo35720, first_indices: [0,1], last_indices: [0,1]});
 smo37519.setContext(context).draw();
-const smo37520 = new VF.StaveTie({ first_note: smo36041, last_note: smo36058, first_indices: [0,1], last_indices: [0,1]});
+const smo37520 = new VF.StaveTie({ first_note: smo36041, last_note: smo36058, 
+          firstNote: smo36041, lastNote: smo36058, first_indices: [0,1], last_indices: [0,1]});
 smo37520.setContext(context).draw();
 // 
 // Align lyrics on different measures, once they are rendered.
