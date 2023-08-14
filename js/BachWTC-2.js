@@ -1,4 +1,4 @@
-// @@  p 3/5  by 
+// @@ Well-Tempered Clavier p 3/5  by Bach
 function main() {
 // create the div and svg element for the music
 const div = document.getElementById('smoo');
