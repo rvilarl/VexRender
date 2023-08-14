@@ -1,0 +1,59 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html" charset="utf-8">
+<title>Render BachWTC-2 using Vexflow release 421</title>
+<link href="../css/media.css" rel="stylesheet">
+<script type="text/javascript" src="../vexlibs/421/vexflow-debug.js"></script>
+<script type="text/javascript" src="../js/BachWTC-2.js"></script>
+  <script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.slim.js"></script>
+<script type="text/javascript">
+document.addEventListener("DOMContentLoaded", function (event) {
+  $('.changeLibraryButton').off('click').on('click', () => {$('.changeLibrary').toggleClass('hide');});
+  $('.changeScoreButton').off('click').on('click', () => {$('.changeScore').toggleClass('hide');});
+let timestamp = new Date().valueOf();
+  main();
+const delta = (new Date().valueOf()) - timestamp;
+$('#renderTime').text(delta.toString());
+});
+</script>
+</head>
+<body>
+<div class="renderMenu">
+<div class="renderMenu1 links"><div><a href="../index.html">Back to index</a></div>
+<div class="renderTime">Render time: <span id="renderTime"></span></div></div>
+<div class="renderMenu2"><div><span class="libMenu">Current Library:</span><span class="libText"> 421 </span></div>
+<div><button class="changeLibraryButton"><span> Change </span><ul class="changeLibrary hide">
+<li><a href="BachWTC-2403.html"> 403 </a> </li>
+<li><a href="BachWTC-2410.html"> 410 </a> </li>
+<li><a href="BachWTC-2422.html"> 422 </a> </li>
+<li><a href="BachWTC-2vexv5.html"> vexv5 </a> </li>
+<li><a href="BachWTC-2vex_smoosic.html"> vex_smoosic </a> </li>
+</ul></button></div></div>
+<div class="renderMenu3"><div><span class="scoreMenu">Current Score: </span><span> p 3/5  by </span></div>
+<div><button class="changeScoreButton"><span> Change </span><ul class="changeScore hide">
+<li><a href="BachInv1-1421.html"> Invention No. 1 p 2/2  by JS Bach </a> </li>
+<li><a href="BachWTC-0421.html">  p 1/5  by  </a> </li>
+<li><a href="BachWTC-1421.html">  p 2/5  by  </a> </li>
+<li><a href="Bilongo-7421.html"> Bilongo (Mandinga) p 8/16  by Rodriguez/Palmieri/Newman </a> </li>
+<li><a href="GFWMessiah-I-2-0421.html"> Comfort Ye, My People p 1/3 (Comfort Ye, my people (tenor)) by Handel </a> </li>
+<li><a href="GFWMessiah-I-2-1421.html"> Comfort Ye, My People p 2/3 (Comfort Ye, my people (tenor)) by Handel </a> </li>
+<li><a href="Gnossienne3-0421.html"> Gnossienne No 3 p 1/1  by Erik Satie </a> </li>
+<li><a href="Gnossienne3-1421.html"> Gnossienne No 3 p 2/1  by Erik Satie </a> </li>
+<li><a href="Joplin-0421.html"> The Entertainer p 1/2  by Scott Joplin </a> </li>
+<li><a href="Joplin-1421.html"> The Entertainer p 2/2  by Scott Joplin </a> </li>
+<li><a href="Joplin-2421.html"> The Entertainer p 3/2  by Scott Joplin </a> </li>
+<li><a href="Plena-2421.html"> Plena para tres ninos p 3/13  by Newman </a> </li>
+<li><a href="Postillion Lied-0421.html"> Postillionlied p 1/2  by Franz Grothe </a> </li>
+<li><a href="Postillion Lied-1421.html"> Postillionlied p 2/2  by Franz Grothe </a> </li>
+<li><a href="Postillion Lied-2421.html"> Postillionlied p 3/2  by Franz Grothe </a> </li>
+<li><a href="PreciousLord-0421.html"> Precious Lord p 1/0  by Thomas Dorsey </a> </li>
+<li><a href="Solovey-0421.html"> Solovey p 1/1 ((Op. 1)) by Folks </a> </li>
+<li><a href="Solovey-1421.html"> Solovey p 2/1 ((Op. 1)) by Folks </a> </li>
+<li><a href="Yama-1421.html"> Yama p 2/1 ((as played by Lee Morgan)) by Lee Morgan </a> </li>
+</ul></button></div></div>
+</div>
+<div id="smoo">
+</div>
+</body>
+</html>
