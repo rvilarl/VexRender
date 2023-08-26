@@ -1,5 +1,5 @@
 /*!
- * VexFlow 5.0.0-alpha.0   2023-08-11T02:13:43.625Z   1456668f53bc3a88b69299803b87439d030be342
+ * VexFlow 5.0.1   2023-08-22T02:25:43.212Z   a9703cf9f68b3e76ee60d09a8474830f8dee7090
  * Copyright (c) 2023-present VexFlow contributors (see https://github.com/vexflow/vexflow/blob/main/AUTHORS.md).
  *
  */
@@ -29,9 +29,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   ID: () => (/* binding */ ID),
 /* harmony export */   VERSION: () => (/* binding */ VERSION)
 /* harmony export */ });
-const VERSION = '5.0.0-alpha.0';
-const ID = '1456668f53bc3a88b69299803b87439d030be342';
-const DATE = '2023-08-11T02:13:43.625Z';
+const VERSION = '5.0.1';
+const ID = 'a9703cf9f68b3e76ee60d09a8474830f8dee7090';
+const DATE = '2023-08-22T02:25:43.212Z';
 
 
 /***/ }),
@@ -3318,6 +3318,32 @@ ChordSymbol.VerticalJustifyString = {
     bottom: ChordSymbolVerticalJustify.BOTTOM,
 };
 // Glyph data
+ChordSymbol.glyphCodes = {
+    csymDiminished: '\ue870' /*csymDiminished*/,
+    dim: '\ue870' /*csymDiminished*/,
+    halfDiminished: '\ue871' /*csymHalfDiminished*/,
+    csymHalfDiminished: '\ue871' /*csymHalfDiminished*/,
+    '+': '\ue872' /*csymAugmented*/,
+    csymAugmented: '\ue872' /*csymAugmented*/,
+    csymMajorSeventh: '\ue873' /*csymMajorSeventh*/,
+    csymMinor: '\ue874' /*csymMinor*/,
+    '-': '\ue874' /*csymMinor*/,
+    '(': '\u0028' /*csymParensLeftTall*/,
+    csymLeftParen: '\u0028' /*csymParensLeftTall*/,
+    ')': '\u0029' /*csymParensRightTall*/,
+    csymRightParen: '\u0029' /*csymParensRightTall*/,
+    csymLeftBracket: '\ue877' /*csymBracketLeftTall*/,
+    csymRightBracket: '\ue878' /*csymBracketRightTall*/,
+    csymLeftParenTall: '\u0028' /*csymParensLeftVeryTall*/,
+    csymRightParenTall: '\u0029' /*csymParensRightVeryTall*/,
+    '/': '\ue87c' /*csymDiagonalArrangementSlash*/,
+    csymDiagonalArrangementSlash: '\ue87c' /*csymDiagonalArrangementSlash*/,
+    '#': '\ued62' /*csymAccidentalSharp*/,
+    accidentalSharp: '\ued62' /*csymAccidentalSharp*/,
+    accidentalFlat: '\ued60' /*csymAccidentalFlat*/,
+    b: '\ued60' /*csymAccidentalFlat*/,
+};
+// Glyph data
 ChordSymbol.glyphs = {
     diminished: '\ue870' /*csymDiminished*/,
     dim: '\ue870' /*csymDiminished*/,
@@ -3338,6 +3364,8 @@ ChordSymbol.glyphs = {
     '/': '\ue87c' /*csymDiagonalArrangementSlash*/,
     over: '\ue87c' /*csymDiagonalArrangementSlash*/,
     '#': '\ued62' /*csymAccidentalSharp*/,
+    accidentalSharp: '\ued62' /*csymAccidentalSharp*/,
+    accidentalFlat: '\ued60' /*csymAccidentalFlat*/,
     b: '\ued60' /*csymAccidentalFlat*/,
 };
 ChordSymbol.symbolModifiers = SymbolModifiers;
@@ -3355,27 +3383,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   Clef: () => (/* binding */ Clef)
 /* harmony export */ });
-/* harmony import */ var _glyph__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./glyph */ "./src/glyph.ts");
-/* harmony import */ var _stavemodifier__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./stavemodifier */ "./src/stavemodifier.ts");
-/* harmony import */ var _tables__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./tables */ "./src/tables.ts");
-/* harmony import */ var _typeguard__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./typeguard */ "./src/typeguard.ts");
-/* harmony import */ var _util__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./util */ "./src/util.ts");
+/* harmony import */ var _stavemodifier__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./stavemodifier */ "./src/stavemodifier.ts");
+/* harmony import */ var _tables__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./tables */ "./src/tables.ts");
+/* harmony import */ var _typeguard__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./typeguard */ "./src/typeguard.ts");
+/* harmony import */ var _util__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./util */ "./src/util.ts");
 // Copyright (c) 2023-present VexFlow contributors: https://github.com/vexflow/vexflow/graphs/contributors
 // MIT License
 // Co-author: Benjamin W. Bohl
-var __classPrivateFieldGet = (undefined && undefined.__classPrivateFieldGet) || function (receiver, state, kind, f) {
-    if (kind === "a" && !f) throw new TypeError("Private accessor was defined without a getter");
-    if (typeof state === "function" ? receiver !== state || !f : !state.has(receiver)) throw new TypeError("Cannot read private member from an object whose class did not declare it");
-    return kind === "m" ? f : kind === "a" ? f.call(receiver) : f ? f.value : state.get(receiver);
-};
-var __classPrivateFieldSet = (undefined && undefined.__classPrivateFieldSet) || function (receiver, state, value, kind, f) {
-    if (kind === "m") throw new TypeError("Private method is not writable");
-    if (kind === "a" && !f) throw new TypeError("Private accessor was defined without a setter");
-    if (typeof state === "function" ? receiver !== state || !f : !state.has(receiver)) throw new TypeError("Cannot write private member to an object whose class did not declare it");
-    return (kind === "a" ? f.call(receiver, value) : f ? f.value = value : state.set(receiver, value)), value;
-};
-var _Clef_glyphCategory;
-
 
 
 
@@ -3383,16 +3397,16 @@ var _Clef_glyphCategory;
 // eslint-disable-next-line
 function L(...args) {
     if (Clef.DEBUG)
-        (0,_util__WEBPACK_IMPORTED_MODULE_4__.log)('Vex.Flow.Clef', args);
+        (0,_util__WEBPACK_IMPORTED_MODULE_3__.log)('Vex.Flow.Clef', args);
 }
 /**
  * Clef implements various types of clefs that can be rendered on a stave.
  *
  * See `tests/clef_tests.ts` for usage examples.
  */
-class Clef extends _stavemodifier__WEBPACK_IMPORTED_MODULE_1__.StaveModifier {
+class Clef extends _stavemodifier__WEBPACK_IMPORTED_MODULE_0__.StaveModifier {
     static get CATEGORY() {
-        return _typeguard__WEBPACK_IMPORTED_MODULE_3__.Category.Clef;
+        return _typeguard__WEBPACK_IMPORTED_MODULE_2__.Category.Clef;
     }
     /**
      * Every clef name is associated with a glyph code from the font file
@@ -3401,59 +3415,53 @@ class Clef extends _stavemodifier__WEBPACK_IMPORTED_MODULE_1__.StaveModifier {
     static get types() {
         return {
             treble: {
-                code: 'gClef',
+                code: '\uE050' /*gClef*/,
                 line: 3,
             },
             bass: {
-                code: 'fClef',
+                code: '\uE062' /*fClef*/,
                 line: 1,
             },
             alto: {
-                code: 'cClef',
+                code: '\uE05C' /*cClef*/,
                 line: 2,
             },
             tenor: {
-                code: 'cClef',
+                code: '\uE05C' /*cClef*/,
                 line: 1,
             },
             percussion: {
-                code: 'unpitchedPercussionClef1',
+                code: '\uE069' /*unpitchedPercussionClef1*/,
                 line: 2,
             },
             soprano: {
-                code: 'cClef',
+                code: '\uE05C' /*cClef*/,
                 line: 4,
             },
             'mezzo-soprano': {
-                code: 'cClef',
+                code: '\uE05C' /*cClef*/,
                 line: 3,
             },
             'baritone-c': {
-                code: 'cClef',
+                code: '\uE05C' /*cClef*/,
                 line: 0,
             },
             'baritone-f': {
-                code: 'fClef',
+                code: '\uE062' /*fClef*/,
                 line: 2,
             },
             subbass: {
-                code: 'fClef',
+                code: '\uE062' /*fClef*/,
                 line: 0,
             },
             french: {
-                code: 'gClef',
+                code: '\uE050' /*gClef*/,
                 line: 4,
             },
             tab: {
-                code: '6stringTabClef',
+                code: '\uE06D' /*6stringTabClef*/,
                 line: 2.5,
             },
-        };
-    }
-    static get annotationSmufl() {
-        return {
-            '8va': 'timeSig8',
-            '8vb': 'timeSig8',
         };
     }
     /** Create a new clef. */
@@ -3463,49 +3471,42 @@ class Clef extends _stavemodifier__WEBPACK_IMPORTED_MODULE_1__.StaveModifier {
          * The attribute `clef` must be a key from
          * `Clef.types`
          */
-        this.clef = Clef.types['treble'];
-        _Clef_glyphCategory.set(this, void 0);
-        this.setPosition(_stavemodifier__WEBPACK_IMPORTED_MODULE_1__.StaveModifierPosition.BEGIN);
+        this.code = Clef.types['treble'].code;
+        this.line = Clef.types['treble'].line;
+        this.size = 'default';
+        this.type = 'treble';
+        this.setPosition(_stavemodifier__WEBPACK_IMPORTED_MODULE_0__.StaveModifierPosition.BEGIN);
         this.setType(type, size, annotation);
-        this.setWidth(_glyph__WEBPACK_IMPORTED_MODULE_0__.Glyph.getWidth(this.clef.code, Clef.getPoint(this.size), __classPrivateFieldGet(this, _Clef_glyphCategory, "f")));
         L('Creating clef:', type);
     }
     /** Set clef type, size and annotation. */
     setType(type, size = 'default', annotation) {
         this.type = type;
-        this.clef = Clef.types[type];
-        this.size = size;
-        // clefDefault or clefSmall
-        __classPrivateFieldSet(this, _Clef_glyphCategory, 'clef' + (0,_util__WEBPACK_IMPORTED_MODULE_4__.upperFirst)(size), "f");
-        const musicFont = _tables__WEBPACK_IMPORTED_MODULE_2__.Tables.currentMusicFont();
+        this.code = Clef.types[type].code;
+        this.line = Clef.types[type].line;
+        this.size = size !== null && size !== void 0 ? size : 'default';
         // If an annotation, such as 8va, is specified, add it to the Clef object.
-        if (annotation !== undefined) {
-            const code = Clef.annotationSmufl[annotation];
-            const point = (Clef.getPoint(this.size) / 5) * 3;
-            const prefix = __classPrivateFieldGet(this, _Clef_glyphCategory, "f") + `.annotations.${annotation}.${this.type}.`;
-            const line = musicFont.lookupMetric(prefix + 'line');
-            const xShift = musicFont.lookupMetric(prefix + 'shiftX');
-            this.annotation = { code, point, line, xShift };
-            this.attachment = new _glyph__WEBPACK_IMPORTED_MODULE_0__.Glyph(this.annotation.code, this.annotation.point);
-            this.attachment.metrics.xMax = 0;
-            this.attachment.setXShift(this.annotation.xShift);
+        if (annotation == '8va') {
+            if (this.code == '\uE050' /*gClef*/)
+                this.code = '\uE053' /*gClef8va*/;
+            if (this.code == '\uE062' /*fClef*/)
+                this.code = '\uE065' /*fClef8va*/;
         }
-        else {
-            this.annotation = undefined;
+        if (annotation == '8vb') {
+            if (this.code == '\uE050' /*gClef*/)
+                this.code = '\uE052' /*gClef8vb*/;
+            if (this.code == '\uE062' /*fClef*/)
+                this.code = '\uE064' /*fClef8vb*/;
         }
+        this.text = this.code;
+        this.textFont.size = Math.floor(Clef.getPoint(this.size));
+        this.measureText();
         return this;
-    }
-    /** Get clef width. */
-    getWidth() {
-        if (this.type === 'tab') {
-            (0,_util__WEBPACK_IMPORTED_MODULE_4__.defined)(this.stave, 'ClefError', "Can't get width without stave.");
-        }
-        return this.width;
     }
     /** Get point for clefs. */
     static getPoint(size) {
         // for sizes other than 'default', clef is 2/3 of the default value
-        return size == 'default' ? _tables__WEBPACK_IMPORTED_MODULE_2__.Tables.NOTATION_FONT_SCALE : (_tables__WEBPACK_IMPORTED_MODULE_2__.Tables.NOTATION_FONT_SCALE / 3) * 2;
+        return size == 'default' ? _tables__WEBPACK_IMPORTED_MODULE_1__.Tables.lookupMetric('fontSize') : (_tables__WEBPACK_IMPORTED_MODULE_1__.Tables.lookupMetric('fontSize') / 3) * 2;
     }
     /** Set associated stave. */
     setStave(stave) {
@@ -3519,20 +3520,11 @@ class Clef extends _stavemodifier__WEBPACK_IMPORTED_MODULE_1__.StaveModifier {
         this.setRendered();
         this.applyStyle(ctx);
         ctx.openGroup('clef', this.getAttribute('id'));
-        const x = this.x;
-        const y = stave.getYForLine(this.clef.line);
-        _glyph__WEBPACK_IMPORTED_MODULE_0__.Glyph.renderGlyph(ctx, x, y, Clef.getPoint(this.size), this.clef.code, { category: __classPrivateFieldGet(this, _Clef_glyphCategory, "f") });
-        if (this.annotation !== undefined && this.attachment !== undefined) {
-            this.placeGlyphOnLine(this.attachment, stave, this.annotation.line);
-            this.attachment.setStave(stave);
-            this.attachment.setContext(ctx);
-            this.attachment.renderToStave(this.x);
-        }
+        this.renderText(ctx, this.x, stave.getYForLine(this.line));
         ctx.closeGroup();
         this.restoreStyle(ctx);
     }
 }
-_Clef_glyphCategory = new WeakMap();
 /** To enable logging for this class, set `Vex.Flow.Clef.DEBUG` to `true`. */
 Clef.DEBUG = false;
 
@@ -3550,51 +3542,28 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   ClefNote: () => (/* binding */ ClefNote)
 /* harmony export */ });
 /* harmony import */ var _clef__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./clef */ "./src/clef.ts");
-/* harmony import */ var _glyph__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./glyph */ "./src/glyph.ts");
-/* harmony import */ var _note__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./note */ "./src/note.ts");
-/* harmony import */ var _typeguard__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./typeguard */ "./src/typeguard.ts");
-/* harmony import */ var _util__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./util */ "./src/util.ts");
+/* harmony import */ var _note__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./note */ "./src/note.ts");
+/* harmony import */ var _typeguard__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./typeguard */ "./src/typeguard.ts");
 // Copyright (c) 2023-present VexFlow contributors: https://github.com/vexflow/vexflow/graphs/contributors
 // @author: Taehoon Moon 2014
 // MIT License
-var __classPrivateFieldSet = (undefined && undefined.__classPrivateFieldSet) || function (receiver, state, value, kind, f) {
-    if (kind === "m") throw new TypeError("Private method is not writable");
-    if (kind === "a" && !f) throw new TypeError("Private accessor was defined without a setter");
-    if (typeof state === "function" ? receiver !== state || !f : !state.has(receiver)) throw new TypeError("Cannot write private member to an object whose class did not declare it");
-    return (kind === "a" ? f.call(receiver, value) : f ? f.value = value : state.set(receiver, value)), value;
-};
-var __classPrivateFieldGet = (undefined && undefined.__classPrivateFieldGet) || function (receiver, state, kind, f) {
-    if (kind === "a" && !f) throw new TypeError("Private accessor was defined without a getter");
-    if (typeof state === "function" ? receiver !== state || !f : !state.has(receiver)) throw new TypeError("Cannot read private member from an object whose class did not declare it");
-    return kind === "m" ? f : kind === "a" ? f.call(receiver) : f ? f.value : state.get(receiver);
-};
-var _ClefNote_glyphCategory;
-
-
 
 
 
 /** ClefNote implements clef annotations in measures. */
-class ClefNote extends _note__WEBPACK_IMPORTED_MODULE_2__.Note {
+class ClefNote extends _note__WEBPACK_IMPORTED_MODULE_1__.Note {
     static get CATEGORY() {
-        return _typeguard__WEBPACK_IMPORTED_MODULE_3__.Category.ClefNote;
+        return _typeguard__WEBPACK_IMPORTED_MODULE_2__.Category.ClefNote;
     }
     constructor(type, size = 'default', annotation) {
         super({ duration: 'b' });
-        _ClefNote_glyphCategory.set(this, void 0);
         this.setType(type, size, annotation);
         this.ignoreTicks = true;
     }
     /** Set clef type, size and annotation. */
-    setType(type, size = 'default', annotation) {
-        this.type = type;
-        this.size = size;
-        const clef = new _clef__WEBPACK_IMPORTED_MODULE_0__.Clef(type, size, annotation);
-        this.clef = clef.clef;
-        this.annotation = clef.annotation;
-        const category = 'clefNote' + (0,_util__WEBPACK_IMPORTED_MODULE_4__.upperFirst)(this.size);
-        __classPrivateFieldSet(this, _ClefNote_glyphCategory, category, "f");
-        this.setWidth(_glyph__WEBPACK_IMPORTED_MODULE_1__.Glyph.getWidth(this.clef.code, _clef__WEBPACK_IMPORTED_MODULE_0__.Clef.getPoint(this.size), category));
+    setType(type, size, annotation) {
+        this.clef = new _clef__WEBPACK_IMPORTED_MODULE_0__.Clef(type, size, annotation);
+        this.setWidth(this.clef.getWidth());
         return this;
     }
     /** Get associated clef. */
@@ -3610,22 +3579,9 @@ class ClefNote extends _note__WEBPACK_IMPORTED_MODULE_2__.Note {
         const stave = this.checkStave();
         const ctx = this.checkContext();
         this.setRendered();
-        const absoluteX = this.getAbsoluteX();
-        const x = absoluteX;
-        const y = stave.getYForLine(this.clef.line);
-        _glyph__WEBPACK_IMPORTED_MODULE_1__.Glyph.renderGlyph(ctx, x, y, _clef__WEBPACK_IMPORTED_MODULE_0__.Clef.getPoint(this.size), this.clef.code, { category: __classPrivateFieldGet(this, _ClefNote_glyphCategory, "f") });
-        // If the Vex.Flow.Clef has an annotation, such as 8va, draw it.
-        if (this.annotation !== undefined) {
-            const attachment = new _glyph__WEBPACK_IMPORTED_MODULE_1__.Glyph(this.annotation.code, this.annotation.point);
-            attachment.setContext(ctx);
-            attachment.setStave(stave);
-            attachment.setYShift(stave.getYForLine(this.annotation.line) - stave.getYForGlyphs());
-            attachment.setXShift(this.annotation.xShift);
-            attachment.renderToStave(absoluteX);
-        }
+        this.clef.renderText(ctx, this.getAbsoluteX(), stave.getYForLine(this.clef.line));
     }
 }
-_ClefNote_glyphCategory = new WeakMap();
 
 
 /***/ }),
@@ -10030,48 +9986,6 @@ const CommonMetrics = {
         leftPadding: 2,
         accidentalSpacing: 3,
     },
-    clefDefault: {
-        width: 26,
-        annotations: {
-            '8va': {
-                treble: {
-                    line: -2,
-                    shiftX: 12,
-                },
-            },
-            '8vb': {
-                treble: {
-                    line: 6.5,
-                    shiftX: 10,
-                },
-                bass: {
-                    line: 4,
-                    shiftX: 1,
-                },
-            },
-        },
-    },
-    clefSmall: {
-        width: 20,
-        annotations: {
-            '8va': {
-                treble: {
-                    line: -0.2,
-                    shiftX: 8,
-                },
-            },
-            '8vb': {
-                treble: {
-                    line: 5.3,
-                    shiftX: 6,
-                },
-                bass: {
-                    line: 3.1,
-                    shiftX: 0.5,
-                },
-            },
-        },
-    },
     ornament: {
         brassScoop: {
             xOffset: -12,
@@ -10274,14 +10188,6 @@ const CommonMetrics = {
                 shiftX: -1,
             },
         },
-        clefDefault: {},
-        clefSmall: {
-            gClef: {
-                shiftY: 1.5,
-            },
-        },
-        clefNoteDefault: {},
-        clefNoteSmall: {},
         strokeStraight: {
             arrowheadBlackDown: {
                 shiftX: -4.5,
@@ -20272,9 +20178,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _modifier__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./modifier */ "./src/modifier.ts");
 /* harmony import */ var _tables__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./tables */ "./src/tables.ts");
-/* harmony import */ var _textformatter__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./textformatter */ "./src/textformatter.ts");
-/* harmony import */ var _typeguard__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./typeguard */ "./src/typeguard.ts");
-/* harmony import */ var _util__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./util */ "./src/util.ts");
+/* harmony import */ var _typeguard__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./typeguard */ "./src/typeguard.ts");
+/* harmony import */ var _util__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./util */ "./src/util.ts");
 // Copyright (c) 2023-present VexFlow contributors: https://github.com/vexflow/vexflow/graphs/contributors
 // @author Larry Kuhns 2013
 // Class to draws string numbers into the notation.
@@ -20282,10 +20187,9 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-
 class FretHandFinger extends _modifier__WEBPACK_IMPORTED_MODULE_0__.Modifier {
     static get CATEGORY() {
-        return _typeguard__WEBPACK_IMPORTED_MODULE_3__.Category.FretHandFinger;
+        return _typeguard__WEBPACK_IMPORTED_MODULE_2__.Category.FretHandFinger;
     }
     // Arrange fingerings inside a ModifierContext.
     static format(nums, state) {
@@ -20303,8 +20207,7 @@ class FretHandFinger extends _modifier__WEBPACK_IMPORTED_MODULE_0__.Modifier {
             const pos = num.getPosition();
             const index = num.checkIndex();
             const props = note.getKeyProps()[index];
-            const textFormatter = _textformatter__WEBPACK_IMPORTED_MODULE_2__.TextFormatter.create(num.textFont);
-            const textHeight = textFormatter.maxHeight;
+            const textHeight = _tables__WEBPACK_IMPORTED_MODULE_1__.Tables.lookupMetric('FretHandFinger.fontSize');
             if (num.position === _modifier__WEBPACK_IMPORTED_MODULE_0__.ModifierPosition.ABOVE) {
                 state.topTextLine += textHeight / _tables__WEBPACK_IMPORTED_MODULE_1__.Tables.STAVE_LINE_DISTANCE + 0.5;
             }
@@ -20376,18 +20279,18 @@ class FretHandFinger extends _modifier__WEBPACK_IMPORTED_MODULE_0__.Modifier {
     }
     constructor(finger) {
         super();
-        this.finger = finger;
-        this.width = 7;
+        this.setFretHandFinger(finger);
         this.position = _modifier__WEBPACK_IMPORTED_MODULE_0__.Modifier.Position.LEFT; // Default position above stem or note head
         this.xOffset = 0; // Horizontal offset from default
         this.yOffset = 0; // Vertical offset from default
     }
     setFretHandFinger(finger) {
-        this.finger = finger;
+        this.text = finger;
+        this.measureText();
         return this;
     }
     getFretHandFinger() {
-        return this.finger;
+        return this.text;
     }
     setOffsetX(x) {
         this.xOffset = x;
@@ -20402,8 +20305,8 @@ class FretHandFinger extends _modifier__WEBPACK_IMPORTED_MODULE_0__.Modifier {
         const note = this.checkAttachedNote();
         this.setRendered();
         const start = note.getModifierStartXY(this.position, this.index);
-        let dotX = start.x + this.xShift + this.xOffset;
-        let dotY = start.y + this.yShift + this.yOffset + 5;
+        let dotX = start.x + this.xOffset;
+        let dotY = start.y + this.yOffset + 5;
         switch (this.position) {
             case _modifier__WEBPACK_IMPORTED_MODULE_0__.Modifier.Position.ABOVE:
                 dotX -= 4;
@@ -20420,12 +20323,9 @@ class FretHandFinger extends _modifier__WEBPACK_IMPORTED_MODULE_0__.Modifier {
                 dotX += 1;
                 break;
             default:
-                throw new _util__WEBPACK_IMPORTED_MODULE_4__.RuntimeError('InvalidPosition', `The position ${this.position} does not exist`);
+                throw new _util__WEBPACK_IMPORTED_MODULE_3__.RuntimeError('InvalidPosition', `The position ${this.position} does not exist`);
         }
-        ctx.save();
-        ctx.setFont(this.textFont);
-        ctx.fillText('' + this.finger, dotX, dotY);
-        ctx.restore();
+        this.renderText(ctx, dotX, dotY);
     }
 }
 
@@ -30757,7 +30657,6 @@ const CommonMetrics = {
         superSubRatio: 0.6,
     },
     FretHandFinger: {
-        fontFamily: 'Arial, sans-serif',
         fontSize: 9,
         fontWeight: 'bold',
     },
@@ -31340,8 +31239,8 @@ const ornaments = {
     mordentInverted: { code: 'ornamentMordent' },
     mordent_inverted: { code: 'ornamentMordent' },
     turn: { code: 'ornamentTurn' },
-    turnInverted: { code: 'ornamentTurnSlash' },
     turn_inverted: { code: 'ornamentTurnSlash' },
+    turnInverted: { code: 'ornamentTurnSlash' },
     tr: { code: 'ornamentTrill' },
     upprall: { code: 'ornamentPrecompSlideTrillDAnglebert' },
     downprall: { code: 'ornamentPrecompDoubleCadenceUpperPrefix' },
