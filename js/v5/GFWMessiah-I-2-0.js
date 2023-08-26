@@ -1846,17 +1846,16 @@ const smo88970 = new VF.Curve(smo79872, smo79874, JSON.parse('{"thickness":2,"x_
 smo88970.setContext(context).draw();
 // 
 // Align lyrics on different measures, once they are rendered.
-context.svg.getElementById('vf-smo79780').setAttributeNS('', 'transform', 'translate(0 6)');
-context.svg.getElementById('vf-smo79784').setAttributeNS('', 'transform', 'translate(0 5)');
-context.svg.getElementById('vf-smo79804').setAttributeNS('', 'transform', 'translate(0 19)');
-context.svg.getElementById('vf-smo79822').setAttributeNS('', 'transform', 'translate(0 19)');
-context.svg.getElementById('vf-smo79824').setAttributeNS('', 'transform', 'translate(0 17)');
-context.svg.getElementById('vf-smo79829').setAttributeNS('', 'transform', 'translate(0 9)');
+context.svg.getElementById('vf-smo79780').setAttributeNS('', 'transform', 'translate(0 5)');
+context.svg.getElementById('vf-smo79784').setAttributeNS('', 'transform', 'translate(0 10)');
+context.svg.getElementById('vf-smo79804').setAttributeNS('', 'transform', 'translate(0 15)');
+context.svg.getElementById('vf-smo79822').setAttributeNS('', 'transform', 'translate(0 15)');
+context.svg.getElementById('vf-smo79824').setAttributeNS('', 'transform', 'translate(0 15)');
+context.svg.getElementById('vf-smo79829').setAttributeNS('', 'transform', 'translate(0 5)');
 context.svg.getElementById('vf-smo79831').setAttributeNS('', 'transform', 'translate(0 5)');
 context.svg.getElementById('vf-smo79849').setAttributeNS('', 'transform', 'translate(0 5)');
-context.svg.getElementById('vf-smo79851').setAttributeNS('', 'transform', 'translate(0 9)');
-context.svg.getElementById('vf-smo79854').setAttributeNS('', 'transform', 'translate(0 4)');
-context.svg.getElementById('vf-smo79873').setAttributeNS('', 'transform', 'translate(0 19)');
-context.svg.getElementById('vf-smo79875').setAttributeNS('', 'transform', 'translate(0 19)');
-context.svg.getElementById('vf-smo79877').setAttributeNS('', 'transform', 'translate(0 2)');
+context.svg.getElementById('vf-smo79851').setAttributeNS('', 'transform', 'translate(0 5)');
+context.svg.getElementById('vf-smo79854').setAttributeNS('', 'transform', 'translate(0 5)');
+context.svg.getElementById('vf-smo79873').setAttributeNS('', 'transform', 'translate(0 15)');
+context.svg.getElementById('vf-smo79875').setAttributeNS('', 'transform', 'translate(0 15)');
 }

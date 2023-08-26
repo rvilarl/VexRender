@@ -1,5 +1,5 @@
 /*!
- * VexFlow 5.0.1   2023-08-22T02:25:43.212Z   a9703cf9f68b3e76ee60d09a8474830f8dee7090
+ * VexFlow 5.0.1   2023-08-26T16:00:10.613Z   214206538e3a3f07177d74a06ae790cad2051a9d
  * Copyright (c) 2023-present VexFlow contributors (see https://github.com/vexflow/vexflow/blob/main/AUTHORS.md).
  *
  */
@@ -30,8 +30,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   VERSION: () => (/* binding */ VERSION)
 /* harmony export */ });
 const VERSION = '5.0.1';
-const ID = 'a9703cf9f68b3e76ee60d09a8474830f8dee7090';
-const DATE = '2023-08-22T02:25:43.212Z';
+const ID = '214206538e3a3f07177d74a06ae790cad2051a9d';
+const DATE = '2023-08-26T16:00:10.613Z';
 
 
 /***/ }),
@@ -452,7 +452,7 @@ class Accidental extends _modifier__WEBPACK_IMPORTED_MODULE_2__.Modifier {
             parenLeftPadding: 2,
             parenRightPadding: 2,
         };
-        this.accidental = _tables__WEBPACK_IMPORTED_MODULE_4__.Tables.accidentalCodes(this.type);
+        this.accidental = _tables__WEBPACK_IMPORTED_MODULE_4__.Tables.accidentalCodesOld(this.type);
         (0,_util__WEBPACK_IMPORTED_MODULE_6__.defined)(this.accidental, 'ArgumentError', `Unknown accidental type: ${type}`);
         // Cautionary accidentals have parentheses around them
         this.cautionary = false;
@@ -463,8 +463,8 @@ class Accidental extends _modifier__WEBPACK_IMPORTED_MODULE_2__.Modifier {
         this.glyph = new _glyph__WEBPACK_IMPORTED_MODULE_1__.Glyph(this.accidental.code, fontScale);
         this.glyph.setOriginX(1.0);
         if (this.cautionary) {
-            this.parenLeft = new _glyph__WEBPACK_IMPORTED_MODULE_1__.Glyph(_tables__WEBPACK_IMPORTED_MODULE_4__.Tables.accidentalCodes('{').code, fontScale);
-            this.parenRight = new _glyph__WEBPACK_IMPORTED_MODULE_1__.Glyph(_tables__WEBPACK_IMPORTED_MODULE_4__.Tables.accidentalCodes('}').code, fontScale);
+            this.parenLeft = new _glyph__WEBPACK_IMPORTED_MODULE_1__.Glyph(_tables__WEBPACK_IMPORTED_MODULE_4__.Tables.accidentalCodesOld('{').code, fontScale);
+            this.parenRight = new _glyph__WEBPACK_IMPORTED_MODULE_1__.Glyph(_tables__WEBPACK_IMPORTED_MODULE_4__.Tables.accidentalCodesOld('}').code, fontScale);
             this.parenLeft.setOriginX(1.0);
             this.parenRight.setOriginX(1.0);
         }
@@ -569,10 +569,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   AnnotationHorizontalJustify: () => (/* binding */ AnnotationHorizontalJustify),
 /* harmony export */   AnnotationVerticalJustify: () => (/* binding */ AnnotationVerticalJustify)
 /* harmony export */ });
-/* harmony import */ var _modifier__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./modifier */ "./src/modifier.ts");
-/* harmony import */ var _stem__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./stem */ "./src/stem.ts");
-/* harmony import */ var _tables__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./tables */ "./src/tables.ts");
-/* harmony import */ var _textformatter__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./textformatter */ "./src/textformatter.ts");
+/* harmony import */ var _font__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./font */ "./src/font.ts");
+/* harmony import */ var _modifier__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./modifier */ "./src/modifier.ts");
+/* harmony import */ var _stem__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./stem */ "./src/stem.ts");
+/* harmony import */ var _tables__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./tables */ "./src/tables.ts");
 /* harmony import */ var _typeguard__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./typeguard */ "./src/typeguard.ts");
 /* harmony import */ var _util__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./util */ "./src/util.ts");
 // Copyright (c) 2023-present VexFlow contributors: https://github.com/vexflow/vexflow/graphs/contributors
@@ -608,7 +608,7 @@ var AnnotationVerticalJustify;
  *
  * See `tests/annotation_tests.ts` for usage examples.
  */
-class Annotation extends _modifier__WEBPACK_IMPORTED_MODULE_0__.Modifier {
+class Annotation extends _modifier__WEBPACK_IMPORTED_MODULE_1__.Modifier {
     /** Annotations category string. */
     static get CATEGORY() {
         return _typeguard__WEBPACK_IMPORTED_MODULE_4__.Category.Annotation;
@@ -616,8 +616,7 @@ class Annotation extends _modifier__WEBPACK_IMPORTED_MODULE_0__.Modifier {
     // Use the same padding for annotations as note head so the
     // words don't run into each other.
     static get minAnnotationPadding() {
-        const musicFont = _tables__WEBPACK_IMPORTED_MODULE_2__.Tables.currentMusicFont();
-        return musicFont.lookupMetric('noteHead.minPadding');
+        return _tables__WEBPACK_IMPORTED_MODULE_3__.Tables.lookupMetric('NoteHead.minPadding');
     }
     /** Arrange annotations within a `ModifierContext` */
     static format(annotations, state) {
@@ -629,14 +628,13 @@ class Annotation extends _modifier__WEBPACK_IMPORTED_MODULE_0__.Modifier {
         let maxRightGlyphWidth = 0;
         for (let i = 0; i < annotations.length; ++i) {
             const annotation = annotations[i];
-            const textFormatter = _textformatter__WEBPACK_IMPORTED_MODULE_3__.TextFormatter.create(annotation.textFont);
             // Text height is expressed in fractional stave spaces.
-            const textLines = (2 + textFormatter.getYForStringInPx(annotation.text).height) / _tables__WEBPACK_IMPORTED_MODULE_2__.Tables.STAVE_LINE_DISTANCE;
+            const textLines = (2 + _font__WEBPACK_IMPORTED_MODULE_0__.Font.convertSizeToPixelValue(annotation.textFont.size)) / _tables__WEBPACK_IMPORTED_MODULE_3__.Tables.STAVE_LINE_DISTANCE;
             let verticalSpaceNeeded = textLines;
             const note = annotation.checkAttachedNote();
-            const glyphWidth = note.getGlyphProps().getWidth();
+            const glyphWidth = note.getGlyphWidth();
             // Get the text width from the font metrics.
-            const textWidth = textFormatter.getWidthForTextInPx(annotation.text);
+            const textWidth = annotation.getWidth();
             if (annotation.horizontalJustification === AnnotationHorizontalJustify.LEFT) {
                 maxLeftGlyphWidth = Math.max(glyphWidth, maxLeftGlyphWidth);
                 leftWidth = Math.max(leftWidth, textWidth) + Annotation.minAnnotationPadding;
@@ -652,14 +650,14 @@ class Annotation extends _modifier__WEBPACK_IMPORTED_MODULE_0__.Modifier {
                 maxRightGlyphWidth = Math.max(glyphWidth / 2, maxRightGlyphWidth);
             }
             const stave = note.getStave();
-            const stemDirection = note.hasStem() ? note.getStemDirection() : _stem__WEBPACK_IMPORTED_MODULE_1__.Stem.UP;
+            const stemDirection = note.hasStem() ? note.getStemDirection() : _stem__WEBPACK_IMPORTED_MODULE_2__.Stem.UP;
             let stemHeight = 0;
             let lines = 5;
             if ((0,_typeguard__WEBPACK_IMPORTED_MODULE_4__.isTabNote)(note)) {
                 if (note.renderOptions.drawStem) {
                     const stem = note.getStem();
                     if (stem) {
-                        stemHeight = Math.abs(stem.getHeight()) / _tables__WEBPACK_IMPORTED_MODULE_2__.Tables.STAVE_LINE_DISTANCE;
+                        stemHeight = Math.abs(stem.getHeight()) / _tables__WEBPACK_IMPORTED_MODULE_3__.Tables.STAVE_LINE_DISTANCE;
                     }
                 }
                 else {
@@ -669,7 +667,7 @@ class Annotation extends _modifier__WEBPACK_IMPORTED_MODULE_0__.Modifier {
             else if ((0,_typeguard__WEBPACK_IMPORTED_MODULE_4__.isStemmableNote)(note)) {
                 const stem = note.getStem();
                 if (stem && note.getNoteType() === 'n') {
-                    stemHeight = Math.abs(stem.getHeight()) / _tables__WEBPACK_IMPORTED_MODULE_2__.Tables.STAVE_LINE_DISTANCE;
+                    stemHeight = Math.abs(stem.getHeight()) / _tables__WEBPACK_IMPORTED_MODULE_3__.Tables.STAVE_LINE_DISTANCE;
                 }
             }
             if (stave) {
@@ -680,7 +678,7 @@ class Annotation extends _modifier__WEBPACK_IMPORTED_MODULE_0__.Modifier {
                 if ((0,_typeguard__WEBPACK_IMPORTED_MODULE_4__.isTabNote)(note)) {
                     noteLine = lines - (note.leastString() - 0.5);
                 }
-                if (stemDirection === _stem__WEBPACK_IMPORTED_MODULE_1__.Stem.UP) {
+                if (stemDirection === _stem__WEBPACK_IMPORTED_MODULE_2__.Stem.UP) {
                     noteLine += stemHeight;
                 }
                 const curTop = noteLine + state.topTextLine + 0.5;
@@ -699,7 +697,7 @@ class Annotation extends _modifier__WEBPACK_IMPORTED_MODULE_0__.Modifier {
                 if ((0,_typeguard__WEBPACK_IMPORTED_MODULE_4__.isTabNote)(note)) {
                     noteLine = note.greatestString() - 1;
                 }
-                if (stemDirection === _stem__WEBPACK_IMPORTED_MODULE_1__.Stem.DOWN) {
+                if (stemDirection === _stem__WEBPACK_IMPORTED_MODULE_2__.Stem.DOWN) {
                     noteLine += stemHeight;
                 }
                 const curBottom = noteLine + state.textLine + 1;
@@ -735,8 +733,7 @@ class Annotation extends _modifier__WEBPACK_IMPORTED_MODULE_0__.Modifier {
         // warning: the default in the constructor is TOP, but in the factory the default is BOTTOM.
         // this is to support legacy application that may expect this.
         this.verticalJustification = AnnotationVerticalJustify.TOP;
-        // The default width is calculated from the text.
-        this.setWidth(_tables__WEBPACK_IMPORTED_MODULE_2__.Tables.textWidth(text));
+        this.measureText();
     }
     /**
      * Set vertical position of text (above or below stave).
@@ -764,20 +761,16 @@ class Annotation extends _modifier__WEBPACK_IMPORTED_MODULE_0__.Modifier {
     draw() {
         const ctx = this.checkContext();
         const note = this.checkAttachedNote();
-        const stemDirection = note.hasStem() ? note.getStemDirection() : _stem__WEBPACK_IMPORTED_MODULE_1__.Stem.UP;
-        const textFormatter = _textformatter__WEBPACK_IMPORTED_MODULE_3__.TextFormatter.create(this.textFont);
-        const start = note.getModifierStartXY(_modifier__WEBPACK_IMPORTED_MODULE_0__.ModifierPosition.ABOVE, this.index);
+        const stemDirection = note.hasStem() ? note.getStemDirection() : _stem__WEBPACK_IMPORTED_MODULE_2__.Stem.UP;
+        const start = note.getModifierStartXY(_modifier__WEBPACK_IMPORTED_MODULE_1__.ModifierPosition.ABOVE, this.index);
         this.setRendered();
-        // We're changing context parameters. Save current state.
-        ctx.save();
         // Apply style might not save context, if this.style is undefined, so we
         // still need to save context state just before this, since we will be
         // changing ctx parameters below.
         this.applyStyle();
         ctx.openGroup('annotation', this.getAttribute('id'));
-        ctx.setFont(this.textFont);
-        const textWidth = textFormatter.getWidthForTextInPx(this.text);
-        const textHeight = textFormatter.getYForStringInPx(this.text).height;
+        const textWidth = this.getWidth();
+        const textHeight = _font__WEBPACK_IMPORTED_MODULE_0__.Font.convertSizeToPixelValue(this.textFont.size);
         let x;
         let y;
         if (this.horizontalJustification === AnnotationHorizontalJustify.LEFT) {
@@ -806,8 +799,8 @@ class Annotation extends _modifier__WEBPACK_IMPORTED_MODULE_0__.Modifier {
             // Use the largest (lowest) Y value
             const ys = note.getYs();
             y = ys.reduce((a, b) => (a > b ? a : b));
-            y += (this.textLine + 1) * _tables__WEBPACK_IMPORTED_MODULE_2__.Tables.STAVE_LINE_DISTANCE + textHeight;
-            if (hasStem && stemDirection === _stem__WEBPACK_IMPORTED_MODULE_1__.Stem.DOWN) {
+            y += (this.textLine + 1) * _tables__WEBPACK_IMPORTED_MODULE_3__.Tables.STAVE_LINE_DISTANCE + textHeight;
+            if (hasStem && stemDirection === _stem__WEBPACK_IMPORTED_MODULE_2__.Stem.DOWN) {
                 y = Math.max(y, stemExt.topY + textHeight + spacing * this.textLine);
             }
         }
@@ -818,11 +811,11 @@ class Annotation extends _modifier__WEBPACK_IMPORTED_MODULE_0__.Modifier {
         }
         else if (this.verticalJustification === AnnotationVerticalJustify.TOP) {
             const topY = Math.min(...note.getYs());
-            y = topY - (this.textLine + 1) * _tables__WEBPACK_IMPORTED_MODULE_2__.Tables.STAVE_LINE_DISTANCE;
-            if (hasStem && stemDirection === _stem__WEBPACK_IMPORTED_MODULE_1__.Stem.UP) {
+            y = topY - (this.textLine + 1) * _tables__WEBPACK_IMPORTED_MODULE_3__.Tables.STAVE_LINE_DISTANCE;
+            if (hasStem && stemDirection === _stem__WEBPACK_IMPORTED_MODULE_2__.Stem.UP) {
                 // If the stem is above the stave already, go with default line width vs. actual
                 // since the lines between don't really matter.
-                spacing = stemExt.topY < stave.getTopLineTopY() ? _tables__WEBPACK_IMPORTED_MODULE_2__.Tables.STAVE_LINE_DISTANCE : spacing;
+                spacing = stemExt.topY < stave.getTopLineTopY() ? _tables__WEBPACK_IMPORTED_MODULE_3__.Tables.STAVE_LINE_DISTANCE : spacing;
                 y = Math.min(y, stemExt.topY - spacing * (this.textLine + 1));
             }
         } /* CENTER_STEM */
@@ -831,10 +824,9 @@ class Annotation extends _modifier__WEBPACK_IMPORTED_MODULE_0__.Modifier {
             y = extents.topY + (extents.baseY - extents.topY) / 2 + textHeight / 2;
         }
         L('Rendering annotation: ', this.text, x, y);
-        ctx.fillText(this.text, x, y);
+        this.renderText(ctx, x, y);
         ctx.closeGroup();
         this.restoreStyle();
-        ctx.restore();
     }
 }
 /** To enable logging for this class. Set `Vex.Flow.Annotation.DEBUG` to `true`. */
@@ -2198,8 +2190,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   Bend: () => (/* binding */ Bend)
 /* harmony export */ });
-/* harmony import */ var _modifier__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./modifier */ "./src/modifier.ts");
-/* harmony import */ var _textformatter__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./textformatter */ "./src/textformatter.ts");
+/* harmony import */ var _element__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./element */ "./src/element.ts");
+/* harmony import */ var _modifier__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./modifier */ "./src/modifier.ts");
 /* harmony import */ var _typeguard__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./typeguard */ "./src/typeguard.ts");
 /* harmony import */ var _util__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./util */ "./src/util.ts");
 // Copyright (c) 2023-present VexFlow contributors: https://github.com/vexflow/vexflow/graphs/contributors
@@ -2209,7 +2201,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 /** Bend implements tablature bends. */
-class Bend extends _modifier__WEBPACK_IMPORTED_MODULE_0__.Modifier {
+class Bend extends _modifier__WEBPACK_IMPORTED_MODULE_1__.Modifier {
     static get CATEGORY() {
         return _typeguard__WEBPACK_IMPORTED_MODULE_2__.Category.Bend;
     }
@@ -2271,14 +2263,10 @@ class Bend extends _modifier__WEBPACK_IMPORTED_MODULE_0__.Modifier {
      *     width: 8;
      *   }]
      * ```
-     * @param text text for bend ("Full", "Half", etc.) (DEPRECATED)
-     * @param release if true, render a release. (DEPRECATED)
-     * @param phrase if set, ignore "text" and "release", and use the more sophisticated phrase specified
      */
-    constructor(text, release = false, phrase) {
+    constructor(phrase) {
         super();
-        this.text = text;
-        this.release = release;
+        this.xShift = 0;
         this.tap = '';
         this.renderOptions = {
             lineWidth: 1.5,
@@ -2286,15 +2274,7 @@ class Bend extends _modifier__WEBPACK_IMPORTED_MODULE_0__.Modifier {
             bendWidth: 8,
             releaseWidth: 8,
         };
-        if (phrase) {
-            this.phrase = phrase;
-        }
-        else {
-            // Backward compatibility
-            this.phrase = [{ type: Bend.UP, text: this.text }];
-            if (this.release)
-                this.phrase.push({ type: Bend.DOWN, text: '' });
-        }
+        this.phrase = phrase;
         this.updateWidth();
     }
     /** Set horizontal shift in pixels. */
@@ -2307,19 +2287,19 @@ class Bend extends _modifier__WEBPACK_IMPORTED_MODULE_0__.Modifier {
         this.tap = value;
         return this;
     }
-    /** Get text provided in the constructor. */
-    getText() {
-        return this.text;
-    }
     getTextHeight() {
-        const textFormatter = _textformatter__WEBPACK_IMPORTED_MODULE_1__.TextFormatter.create(this.textFont);
-        return textFormatter.maxHeight;
+        const element = new _element__WEBPACK_IMPORTED_MODULE_0__.Element(_typeguard__WEBPACK_IMPORTED_MODULE_2__.Category.Bend);
+        element.setText(this.phrase[0].text);
+        element.measureText();
+        return element.getHeight();
     }
     /** Recalculate width. */
     updateWidth() {
-        const textFormatter = _textformatter__WEBPACK_IMPORTED_MODULE_1__.TextFormatter.create(this.textFont);
         const measureText = (text) => {
-            return textFormatter.getWidthForTextInPx(text);
+            const element = new _element__WEBPACK_IMPORTED_MODULE_0__.Element(_typeguard__WEBPACK_IMPORTED_MODULE_2__.Category.Bend);
+            element.setText(text);
+            element.measureText();
+            return element.getWidth();
         };
         let totalWidth = 0;
         for (let i = 0; i < this.phrase.length; ++i) {
@@ -2343,7 +2323,7 @@ class Bend extends _modifier__WEBPACK_IMPORTED_MODULE_0__.Modifier {
         const ctx = this.checkContext();
         const note = this.checkAttachedNote();
         this.setRendered();
-        const start = note.getModifierStartXY(_modifier__WEBPACK_IMPORTED_MODULE_0__.Modifier.Position.RIGHT, this.index);
+        const start = note.getModifierStartXY(_modifier__WEBPACK_IMPORTED_MODULE_1__.Modifier.Position.RIGHT, this.index);
         start.x += 3;
         start.y += 0.5;
         const xShift = this.xShift;
@@ -2398,7 +2378,7 @@ class Bend extends _modifier__WEBPACK_IMPORTED_MODULE_0__.Modifier {
         let lastBendDrawWidth = 0;
         let lastDrawnWidth = 0;
         if ((_a = this.tap) === null || _a === void 0 ? void 0 : _a.length) {
-            const tapStart = note.getModifierStartXY(_modifier__WEBPACK_IMPORTED_MODULE_0__.Modifier.Position.CENTER, this.index);
+            const tapStart = note.getModifierStartXY(_modifier__WEBPACK_IMPORTED_MODULE_1__.Modifier.Position.CENTER, this.index);
             renderText(tapStart.x, this.tap);
         }
         for (let i = 0; i < this.phrase.length; ++i) {
@@ -3318,32 +3298,6 @@ ChordSymbol.VerticalJustifyString = {
     bottom: ChordSymbolVerticalJustify.BOTTOM,
 };
 // Glyph data
-ChordSymbol.glyphCodes = {
-    csymDiminished: '\ue870' /*csymDiminished*/,
-    dim: '\ue870' /*csymDiminished*/,
-    halfDiminished: '\ue871' /*csymHalfDiminished*/,
-    csymHalfDiminished: '\ue871' /*csymHalfDiminished*/,
-    '+': '\ue872' /*csymAugmented*/,
-    csymAugmented: '\ue872' /*csymAugmented*/,
-    csymMajorSeventh: '\ue873' /*csymMajorSeventh*/,
-    csymMinor: '\ue874' /*csymMinor*/,
-    '-': '\ue874' /*csymMinor*/,
-    '(': '\u0028' /*csymParensLeftTall*/,
-    csymLeftParen: '\u0028' /*csymParensLeftTall*/,
-    ')': '\u0029' /*csymParensRightTall*/,
-    csymRightParen: '\u0029' /*csymParensRightTall*/,
-    csymLeftBracket: '\ue877' /*csymBracketLeftTall*/,
-    csymRightBracket: '\ue878' /*csymBracketRightTall*/,
-    csymLeftParenTall: '\u0028' /*csymParensLeftVeryTall*/,
-    csymRightParenTall: '\u0029' /*csymParensRightVeryTall*/,
-    '/': '\ue87c' /*csymDiagonalArrangementSlash*/,
-    csymDiagonalArrangementSlash: '\ue87c' /*csymDiagonalArrangementSlash*/,
-    '#': '\ued62' /*csymAccidentalSharp*/,
-    accidentalSharp: '\ued62' /*csymAccidentalSharp*/,
-    accidentalFlat: '\ued60' /*csymAccidentalFlat*/,
-    b: '\ued60' /*csymAccidentalFlat*/,
-};
-// Glyph data
 ChordSymbol.glyphs = {
     diminished: '\ue870' /*csymDiminished*/,
     dim: '\ue870' /*csymDiminished*/,
@@ -3364,8 +3318,6 @@ ChordSymbol.glyphs = {
     '/': '\ue87c' /*csymDiagonalArrangementSlash*/,
     over: '\ue87c' /*csymDiagonalArrangementSlash*/,
     '#': '\ued62' /*csymAccidentalSharp*/,
-    accidentalSharp: '\ued62' /*csymAccidentalSharp*/,
-    accidentalFlat: '\ued60' /*csymAccidentalFlat*/,
     b: '\ued60' /*csymAccidentalFlat*/,
 };
 ChordSymbol.symbolModifiers = SymbolModifiers;
@@ -3520,7 +3472,7 @@ class Clef extends _stavemodifier__WEBPACK_IMPORTED_MODULE_0__.StaveModifier {
         this.setRendered();
         this.applyStyle(ctx);
         ctx.openGroup('clef', this.getAttribute('id'));
-        this.renderText(ctx, this.x, stave.getYForLine(this.line));
+        this.renderText(ctx, 0, stave.getYForLine(this.line));
         ctx.closeGroup();
         this.restoreStyle(ctx);
     }
@@ -3579,7 +3531,7 @@ class ClefNote extends _note__WEBPACK_IMPORTED_MODULE_1__.Note {
         const stave = this.checkStave();
         const ctx = this.checkContext();
         this.setRendered();
-        this.clef.renderText(ctx, this.getAbsoluteX(), stave.getYForLine(this.clef.line));
+        this.clef.renderText(ctx, this.getAbsoluteX() - this.x, stave.getYForLine(this.clef.line));
     }
 }
 
@@ -4526,8 +4478,8 @@ class Element {
     }
     constructor(category) {
         var _b;
-        // all Element objects keep a list of children that they are responsible and which
-        // inherit the style of their parents.
+        // Element objects keep a list of children that they are responsible for.
+        // Children inherit the style from their parents (see: setGroupStyle(s)).
         this.children = [];
         _Element_context.set(this, void 0);
         _Element_attrs.set(this, void 0);
@@ -4545,6 +4497,8 @@ class Element {
         this.width = 0;
         this.xShift = 0;
         this.yShift = 0;
+        this.x = 0;
+        this.y = 0;
         __classPrivateFieldSet(this, _Element_attrs, {
             id: Element.newID(),
             type: category !== null && category !== void 0 ? category : this.constructor.CATEGORY,
@@ -4882,6 +4836,24 @@ class Element {
         this.width = width;
         return this;
     }
+    /** Set the X coordinate. */
+    setX(x) {
+        this.x = x;
+        return this;
+    }
+    /** Get the X coordinate. */
+    getX() {
+        return this.x;
+    }
+    /** Get the Y coordinate. */
+    getY() {
+        return this.y;
+    }
+    /** Set the Y coordinate. */
+    setY(y) {
+        this.y = y;
+        return this;
+    }
     /** Shift element down `yShift` pixels. Negative values shift up. */
     setYShift(yShift) {
         this.yShift = yShift;
@@ -4913,7 +4885,11 @@ class Element {
     renderText(ctx, xPos, yPos) {
         ctx.save();
         ctx.setFont(this.textFont);
-        ctx.fillText(this.text, xPos + this.xShift, yPos + this.yShift);
+        ctx.fillText(this.text, xPos + this.x + this.xShift, yPos + this.y + this.yShift);
+        this.children.forEach((child) => {
+            ctx.setFont(child.textFont);
+            ctx.fillText(child.text, xPos + child.x + child.xShift, yPos + child.y + child.yShift);
+        });
         ctx.restore();
     }
     /** Measure the text using the textFont. */
@@ -6244,23 +6220,29 @@ class Font {
         });
     }
     /**
-     * Load the web fonts that are used by ChordSymbol. For example, `flow.html` calls:
+     * Load the web fonts that are used by your app.
+     * If fontNames is undefined, all fonts in Font.WEB_FONT_FILES will be loaded.
+     *
+     * For example, `flow.html` calls:
      *   `await Vex.Flow.Font.loadWebFonts();`
      * Alternatively, you may load web fonts with a stylesheet link (e.g., from Google Fonts),
      * and a @font-face { font-family: ... } rule in your CSS.
-     * If you do not load either of these fonts, ChordSymbol will fall back to Times or Arial,
-     * depending on the current music engraving font.
      *
      * You can customize `Font.WEB_FONT_HOST` and `Font.WEB_FONT_FILES` to load different fonts
      * for your app.
      */
-    static loadWebFonts() {
+    static loadWebFonts(fontNames) {
         return __awaiter(this, void 0, void 0, function* () {
+            const allFiles = Font.WEB_FONT_FILES;
+            if (!fontNames) {
+                fontNames = Object.keys(allFiles);
+            }
             const host = Font.WEB_FONT_HOST;
-            const files = Font.WEB_FONT_FILES;
-            for (const fontName in files) {
-                const fontPath = files[fontName];
-                Font.loadWebFont(fontName, host + fontPath);
+            for (const fontName of fontNames) {
+                const fontPath = allFiles[fontName];
+                if (fontPath) {
+                    Font.loadWebFont(fontName, host + fontPath);
+                }
             }
         });
     }
@@ -10062,7 +10044,6 @@ const CommonMetrics = {
             width: 3,
         },
     },
-    pedalMarking: {},
     // These are for numeric digits, such as in time signatures
     digits: {
         // used by TimeSignature objects
@@ -10076,22 +10057,6 @@ const CommonMetrics = {
         },
         articStaccatissimoBelow: {
             padding: 2,
-        },
-    },
-    tremolo: {
-        default: {
-            spacing: 7,
-            offsetYStemUp: -8,
-            offsetYStemDown: 8,
-            offsetXStemUp: 11,
-            offsetXStemDown: 1,
-        },
-        grace: {
-            spacing: (7 * 3) / 5,
-            offsetYStemUp: -(8 * 3) / 5,
-            offsetYStemDown: (8 * 3) / 5,
-            offsetXStemUp: 7,
-            offsetXStemDown: 1,
         },
     },
     staveRepetition: {
@@ -19182,7 +19147,7 @@ class Formatter {
     }
     /** Helper function to plot formatter debug info. */
     static plotDebugging(ctx, formatter, xPos, y1, y2, options) {
-        options = Object.assign({ stavePadding: _tables__WEBPACK_IMPORTED_MODULE_6__.Tables.currentMusicFont().lookupMetric('stave.padding') }, options);
+        options = Object.assign({ stavePadding: _tables__WEBPACK_IMPORTED_MODULE_6__.Tables.lookupMetric('Stave.padding') }, options);
         const x = xPos + options.stavePadding;
         const contextGaps = formatter.contextGaps;
         function stroke(x1, x2, color) {
@@ -19298,8 +19263,8 @@ class Formatter {
                     return;
                 }
                 // If activated rests not on default can be rendered as specified.
-                const position = currTickable.getGlyphProps().position.toUpperCase();
-                if (position !== 'R/4' && position !== 'B/4') {
+                const line = currTickable.getLineForRest();
+                if (line !== 3) {
                     return;
                 }
                 if (alignAllNotes || currTickable.getBeam()) {
@@ -19387,7 +19352,7 @@ class Formatter {
      * @returns the estimated width in pixels
      */
     preCalculateMinTotalWidth(voices) {
-        const unalignedPadding = _tables__WEBPACK_IMPORTED_MODULE_6__.Tables.currentMusicFont().lookupMetric('stave.unalignedNotePadding');
+        const unalignedPadding = _tables__WEBPACK_IMPORTED_MODULE_6__.Tables.lookupMetric('Stave.unalignedNotePadding');
         // Calculate additional padding based on 3 methods:
         // 1) unaligned beats in voices, 2) variance of width, 3) variance of durations
         let unalignedCtxCount = 0;
@@ -19679,10 +19644,9 @@ class Formatter {
             lastContext.getMetrics().notePx -
             lastContext.getMetrics().totalRightPx -
             firstContext.getMetrics().totalLeftPx;
-        const musicFont = _tables__WEBPACK_IMPORTED_MODULE_6__.Tables.currentMusicFont();
-        const configMinPadding = musicFont.lookupMetric('stave.endPaddingMin');
-        const configMaxPadding = musicFont.lookupMetric('stave.endPaddingMax');
-        const leftPadding = musicFont.lookupMetric('stave.padding');
+        const configMinPadding = _tables__WEBPACK_IMPORTED_MODULE_6__.Tables.lookupMetric('Stave.endPaddingMin');
+        const configMaxPadding = _tables__WEBPACK_IMPORTED_MODULE_6__.Tables.lookupMetric('Stave.endPaddingMax');
+        const leftPadding = _tables__WEBPACK_IMPORTED_MODULE_6__.Tables.lookupMetric('Stave.padding');
         let targetWidth = adjustedJustifyWidth;
         const distances = calculateIdealDistances(targetWidth);
         let actualWidth = shiftToIdealDistances(distances);
@@ -20876,12 +20840,9 @@ class GlyphNote extends _note__WEBPACK_IMPORTED_MODULE_0__.Note {
         this.setGlyph(glyph);
     }
     setGlyph(glyph) {
-        this.glyph = glyph;
-        this.setWidth(this.glyph.getMetrics().width);
+        this.text = glyph;
+        this.measureText();
         return this;
-    }
-    getBoundingBox() {
-        return this.glyph.getBoundingBox();
     }
     preFormat() {
         if (!this.preFormatted && this.modifierContext) {
@@ -20898,25 +20859,14 @@ class GlyphNote extends _note__WEBPACK_IMPORTED_MODULE_0__.Note {
             modifier.drawWithStyle();
         }
     }
-    /** Get the glyph width. */
-    getGlyphWidth() {
-        return this.glyph.getMetrics().width;
-    }
     draw() {
         const stave = this.checkStave();
         const ctx = stave.checkContext();
         this.setRendered();
         this.applyStyle(ctx);
         ctx.openGroup('glyphNote', this.getAttribute('id'));
-        // Context is set when setStave is called on Note
-        const glyph = this.glyph;
-        if (!glyph.getContext()) {
-            glyph.setContext(ctx);
-        }
-        glyph.setStave(stave);
-        glyph.setYShift(stave.getYForLine(this.options.line) - stave.getYForGlyphs());
         const x = this.isCenterAligned() ? this.getAbsoluteX() - this.getWidth() / 2 : this.getAbsoluteX();
-        glyph.renderToStave(x);
+        this.renderText(ctx, x, stave.getYForLine(this.options.line));
         this.drawModifiers();
         ctx.closeGroup();
         this.restoreStyle(ctx);
@@ -21321,7 +21271,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   BoundingBoxComputation: () => (/* reexport safe */ _boundingboxcomputation__WEBPACK_IMPORTED_MODULE_7__.BoundingBoxComputation),
 /* harmony export */   Builder: () => (/* reexport safe */ _easyscore__WEBPACK_IMPORTED_MODULE_15__.Builder),
 /* harmony export */   CanvasContext: () => (/* reexport safe */ _canvascontext__WEBPACK_IMPORTED_MODULE_8__.CanvasContext),
-/* harmony export */   Category: () => (/* reexport safe */ _typeguard__WEBPACK_IMPORTED_MODULE_82__.Category),
+/* harmony export */   Category: () => (/* reexport safe */ _typeguard__WEBPACK_IMPORTED_MODULE_81__.Category),
 /* harmony export */   ChordSymbol: () => (/* reexport safe */ _chordsymbol__WEBPACK_IMPORTED_MODULE_9__.ChordSymbol),
 /* harmony export */   ChordSymbolBlock: () => (/* reexport safe */ _chordsymbol__WEBPACK_IMPORTED_MODULE_9__.ChordSymbolBlock),
 /* harmony export */   ChordSymbolHorizontalJustify: () => (/* reexport safe */ _chordsymbol__WEBPACK_IMPORTED_MODULE_9__.ChordSymbolHorizontalJustify),
@@ -21373,7 +21323,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   RendererLineEndType: () => (/* reexport safe */ _renderer__WEBPACK_IMPORTED_MODULE_45__.RendererLineEndType),
 /* harmony export */   RepeatNote: () => (/* reexport safe */ _repeatnote__WEBPACK_IMPORTED_MODULE_46__.RepeatNote),
 /* harmony export */   Repetition: () => (/* reexport safe */ _staverepetition__WEBPACK_IMPORTED_MODULE_54__.Repetition),
-/* harmony export */   RuntimeError: () => (/* reexport safe */ _util__WEBPACK_IMPORTED_MODULE_83__.RuntimeError),
+/* harmony export */   RuntimeError: () => (/* reexport safe */ _util__WEBPACK_IMPORTED_MODULE_82__.RuntimeError),
 /* harmony export */   SVGContext: () => (/* reexport safe */ _svgcontext__WEBPACK_IMPORTED_MODULE_64__.SVGContext),
 /* harmony export */   Stave: () => (/* reexport safe */ _stave__WEBPACK_IMPORTED_MODULE_47__.Stave),
 /* harmony export */   StaveConnector: () => (/* reexport safe */ _staveconnector__WEBPACK_IMPORTED_MODULE_49__.StaveConnector),
@@ -21404,44 +21354,43 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   TextNote: () => (/* reexport safe */ _textnote__WEBPACK_IMPORTED_MODULE_73__.TextNote),
 /* harmony export */   TickContext: () => (/* reexport safe */ _tickcontext__WEBPACK_IMPORTED_MODULE_75__.TickContext),
 /* harmony export */   Tickable: () => (/* reexport safe */ _tickable__WEBPACK_IMPORTED_MODULE_74__.Tickable),
-/* harmony export */   TimeSigNote: () => (/* reexport safe */ _timesignote__WEBPACK_IMPORTED_MODULE_78__.TimeSigNote),
-/* harmony export */   TimeSignature: () => (/* reexport safe */ _timesignature__WEBPACK_IMPORTED_MODULE_77__.TimeSignature),
-/* harmony export */   TimeSignatureGlyph: () => (/* reexport safe */ _timesigglyph__WEBPACK_IMPORTED_MODULE_76__.TimeSignatureGlyph),
-/* harmony export */   Tremolo: () => (/* reexport safe */ _tremolo__WEBPACK_IMPORTED_MODULE_79__.Tremolo),
-/* harmony export */   Tuning: () => (/* reexport safe */ _tuning__WEBPACK_IMPORTED_MODULE_80__.Tuning),
-/* harmony export */   Tuplet: () => (/* reexport safe */ _tuplet__WEBPACK_IMPORTED_MODULE_81__.Tuplet),
-/* harmony export */   TupletLocation: () => (/* reexport safe */ _tuplet__WEBPACK_IMPORTED_MODULE_81__.TupletLocation),
-/* harmony export */   Vex: () => (/* reexport safe */ _vex__WEBPACK_IMPORTED_MODULE_84__.Vex),
-/* harmony export */   Vibrato: () => (/* reexport safe */ _vibrato__WEBPACK_IMPORTED_MODULE_85__.Vibrato),
-/* harmony export */   VibratoBracket: () => (/* reexport safe */ _vibratobracket__WEBPACK_IMPORTED_MODULE_86__.VibratoBracket),
-/* harmony export */   Voice: () => (/* reexport safe */ _voice__WEBPACK_IMPORTED_MODULE_87__.Voice),
-/* harmony export */   VoiceMode: () => (/* reexport safe */ _voice__WEBPACK_IMPORTED_MODULE_87__.VoiceMode),
+/* harmony export */   TimeSigNote: () => (/* reexport safe */ _timesignote__WEBPACK_IMPORTED_MODULE_77__.TimeSigNote),
+/* harmony export */   TimeSignature: () => (/* reexport safe */ _timesignature__WEBPACK_IMPORTED_MODULE_76__.TimeSignature),
+/* harmony export */   Tremolo: () => (/* reexport safe */ _tremolo__WEBPACK_IMPORTED_MODULE_78__.Tremolo),
+/* harmony export */   Tuning: () => (/* reexport safe */ _tuning__WEBPACK_IMPORTED_MODULE_79__.Tuning),
+/* harmony export */   Tuplet: () => (/* reexport safe */ _tuplet__WEBPACK_IMPORTED_MODULE_80__.Tuplet),
+/* harmony export */   TupletLocation: () => (/* reexport safe */ _tuplet__WEBPACK_IMPORTED_MODULE_80__.TupletLocation),
+/* harmony export */   Vex: () => (/* reexport safe */ _vex__WEBPACK_IMPORTED_MODULE_83__.Vex),
+/* harmony export */   Vibrato: () => (/* reexport safe */ _vibrato__WEBPACK_IMPORTED_MODULE_84__.Vibrato),
+/* harmony export */   VibratoBracket: () => (/* reexport safe */ _vibratobracket__WEBPACK_IMPORTED_MODULE_85__.VibratoBracket),
+/* harmony export */   Voice: () => (/* reexport safe */ _voice__WEBPACK_IMPORTED_MODULE_86__.Voice),
+/* harmony export */   VoiceMode: () => (/* reexport safe */ _voice__WEBPACK_IMPORTED_MODULE_86__.VoiceMode),
 /* harmony export */   Volta: () => (/* reexport safe */ _stavevolta__WEBPACK_IMPORTED_MODULE_59__.Volta),
 /* harmony export */   VoltaType: () => (/* reexport safe */ _stavevolta__WEBPACK_IMPORTED_MODULE_59__.VoltaType),
-/* harmony export */   defined: () => (/* reexport safe */ _util__WEBPACK_IMPORTED_MODULE_83__.defined),
+/* harmony export */   defined: () => (/* reexport safe */ _util__WEBPACK_IMPORTED_MODULE_82__.defined),
 /* harmony export */   drawDot: () => (/* reexport safe */ _rendercontext__WEBPACK_IMPORTED_MODULE_44__.drawDot),
-/* harmony export */   globalObject: () => (/* reexport safe */ _util__WEBPACK_IMPORTED_MODULE_83__.globalObject),
-/* harmony export */   isAccidental: () => (/* reexport safe */ _typeguard__WEBPACK_IMPORTED_MODULE_82__.isAccidental),
-/* harmony export */   isAnnotation: () => (/* reexport safe */ _typeguard__WEBPACK_IMPORTED_MODULE_82__.isAnnotation),
-/* harmony export */   isBarline: () => (/* reexport safe */ _typeguard__WEBPACK_IMPORTED_MODULE_82__.isBarline),
-/* harmony export */   isCategory: () => (/* reexport safe */ _typeguard__WEBPACK_IMPORTED_MODULE_82__.isCategory),
-/* harmony export */   isDot: () => (/* reexport safe */ _typeguard__WEBPACK_IMPORTED_MODULE_82__.isDot),
-/* harmony export */   isGraceNote: () => (/* reexport safe */ _typeguard__WEBPACK_IMPORTED_MODULE_82__.isGraceNote),
-/* harmony export */   isGraceNoteGroup: () => (/* reexport safe */ _typeguard__WEBPACK_IMPORTED_MODULE_82__.isGraceNoteGroup),
-/* harmony export */   isHTMLCanvas: () => (/* reexport safe */ _web__WEBPACK_IMPORTED_MODULE_88__.isHTMLCanvas),
-/* harmony export */   isHTMLDiv: () => (/* reexport safe */ _web__WEBPACK_IMPORTED_MODULE_88__.isHTMLDiv),
-/* harmony export */   isNote: () => (/* reexport safe */ _typeguard__WEBPACK_IMPORTED_MODULE_82__.isNote),
-/* harmony export */   isRenderContext: () => (/* reexport safe */ _typeguard__WEBPACK_IMPORTED_MODULE_82__.isRenderContext),
-/* harmony export */   isStaveNote: () => (/* reexport safe */ _typeguard__WEBPACK_IMPORTED_MODULE_82__.isStaveNote),
-/* harmony export */   isStemmableNote: () => (/* reexport safe */ _typeguard__WEBPACK_IMPORTED_MODULE_82__.isStemmableNote),
-/* harmony export */   isTabNote: () => (/* reexport safe */ _typeguard__WEBPACK_IMPORTED_MODULE_82__.isTabNote),
-/* harmony export */   log: () => (/* reexport safe */ _util__WEBPACK_IMPORTED_MODULE_83__.log),
-/* harmony export */   midLine: () => (/* reexport safe */ _util__WEBPACK_IMPORTED_MODULE_83__.midLine),
-/* harmony export */   normalizeAngle: () => (/* reexport safe */ _util__WEBPACK_IMPORTED_MODULE_83__.normalizeAngle),
-/* harmony export */   prefix: () => (/* reexport safe */ _util__WEBPACK_IMPORTED_MODULE_83__.prefix),
-/* harmony export */   sumArray: () => (/* reexport safe */ _util__WEBPACK_IMPORTED_MODULE_83__.sumArray),
-/* harmony export */   upperFirst: () => (/* reexport safe */ _util__WEBPACK_IMPORTED_MODULE_83__.upperFirst),
-/* harmony export */   warn: () => (/* reexport safe */ _util__WEBPACK_IMPORTED_MODULE_83__.warn)
+/* harmony export */   globalObject: () => (/* reexport safe */ _util__WEBPACK_IMPORTED_MODULE_82__.globalObject),
+/* harmony export */   isAccidental: () => (/* reexport safe */ _typeguard__WEBPACK_IMPORTED_MODULE_81__.isAccidental),
+/* harmony export */   isAnnotation: () => (/* reexport safe */ _typeguard__WEBPACK_IMPORTED_MODULE_81__.isAnnotation),
+/* harmony export */   isBarline: () => (/* reexport safe */ _typeguard__WEBPACK_IMPORTED_MODULE_81__.isBarline),
+/* harmony export */   isCategory: () => (/* reexport safe */ _typeguard__WEBPACK_IMPORTED_MODULE_81__.isCategory),
+/* harmony export */   isDot: () => (/* reexport safe */ _typeguard__WEBPACK_IMPORTED_MODULE_81__.isDot),
+/* harmony export */   isGraceNote: () => (/* reexport safe */ _typeguard__WEBPACK_IMPORTED_MODULE_81__.isGraceNote),
+/* harmony export */   isGraceNoteGroup: () => (/* reexport safe */ _typeguard__WEBPACK_IMPORTED_MODULE_81__.isGraceNoteGroup),
+/* harmony export */   isHTMLCanvas: () => (/* reexport safe */ _web__WEBPACK_IMPORTED_MODULE_87__.isHTMLCanvas),
+/* harmony export */   isHTMLDiv: () => (/* reexport safe */ _web__WEBPACK_IMPORTED_MODULE_87__.isHTMLDiv),
+/* harmony export */   isNote: () => (/* reexport safe */ _typeguard__WEBPACK_IMPORTED_MODULE_81__.isNote),
+/* harmony export */   isRenderContext: () => (/* reexport safe */ _typeguard__WEBPACK_IMPORTED_MODULE_81__.isRenderContext),
+/* harmony export */   isStaveNote: () => (/* reexport safe */ _typeguard__WEBPACK_IMPORTED_MODULE_81__.isStaveNote),
+/* harmony export */   isStemmableNote: () => (/* reexport safe */ _typeguard__WEBPACK_IMPORTED_MODULE_81__.isStemmableNote),
+/* harmony export */   isTabNote: () => (/* reexport safe */ _typeguard__WEBPACK_IMPORTED_MODULE_81__.isTabNote),
+/* harmony export */   log: () => (/* reexport safe */ _util__WEBPACK_IMPORTED_MODULE_82__.log),
+/* harmony export */   midLine: () => (/* reexport safe */ _util__WEBPACK_IMPORTED_MODULE_82__.midLine),
+/* harmony export */   normalizeAngle: () => (/* reexport safe */ _util__WEBPACK_IMPORTED_MODULE_82__.normalizeAngle),
+/* harmony export */   prefix: () => (/* reexport safe */ _util__WEBPACK_IMPORTED_MODULE_82__.prefix),
+/* harmony export */   sumArray: () => (/* reexport safe */ _util__WEBPACK_IMPORTED_MODULE_82__.sumArray),
+/* harmony export */   upperFirst: () => (/* reexport safe */ _util__WEBPACK_IMPORTED_MODULE_82__.upperFirst),
+/* harmony export */   warn: () => (/* reexport safe */ _util__WEBPACK_IMPORTED_MODULE_82__.warn)
 /* harmony export */ });
 /* harmony import */ var _accidental__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./accidental */ "./src/accidental.ts");
 /* harmony import */ var _annotation__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./annotation */ "./src/annotation.ts");
@@ -21519,19 +21468,18 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _textnote__WEBPACK_IMPORTED_MODULE_73__ = __webpack_require__(/*! ./textnote */ "./src/textnote.ts");
 /* harmony import */ var _tickable__WEBPACK_IMPORTED_MODULE_74__ = __webpack_require__(/*! ./tickable */ "./src/tickable.ts");
 /* harmony import */ var _tickcontext__WEBPACK_IMPORTED_MODULE_75__ = __webpack_require__(/*! ./tickcontext */ "./src/tickcontext.ts");
-/* harmony import */ var _timesigglyph__WEBPACK_IMPORTED_MODULE_76__ = __webpack_require__(/*! ./timesigglyph */ "./src/timesigglyph.ts");
-/* harmony import */ var _timesignature__WEBPACK_IMPORTED_MODULE_77__ = __webpack_require__(/*! ./timesignature */ "./src/timesignature.ts");
-/* harmony import */ var _timesignote__WEBPACK_IMPORTED_MODULE_78__ = __webpack_require__(/*! ./timesignote */ "./src/timesignote.ts");
-/* harmony import */ var _tremolo__WEBPACK_IMPORTED_MODULE_79__ = __webpack_require__(/*! ./tremolo */ "./src/tremolo.ts");
-/* harmony import */ var _tuning__WEBPACK_IMPORTED_MODULE_80__ = __webpack_require__(/*! ./tuning */ "./src/tuning.ts");
-/* harmony import */ var _tuplet__WEBPACK_IMPORTED_MODULE_81__ = __webpack_require__(/*! ./tuplet */ "./src/tuplet.ts");
-/* harmony import */ var _typeguard__WEBPACK_IMPORTED_MODULE_82__ = __webpack_require__(/*! ./typeguard */ "./src/typeguard.ts");
-/* harmony import */ var _util__WEBPACK_IMPORTED_MODULE_83__ = __webpack_require__(/*! ./util */ "./src/util.ts");
-/* harmony import */ var _vex__WEBPACK_IMPORTED_MODULE_84__ = __webpack_require__(/*! ./vex */ "./src/vex.ts");
-/* harmony import */ var _vibrato__WEBPACK_IMPORTED_MODULE_85__ = __webpack_require__(/*! ./vibrato */ "./src/vibrato.ts");
-/* harmony import */ var _vibratobracket__WEBPACK_IMPORTED_MODULE_86__ = __webpack_require__(/*! ./vibratobracket */ "./src/vibratobracket.ts");
-/* harmony import */ var _voice__WEBPACK_IMPORTED_MODULE_87__ = __webpack_require__(/*! ./voice */ "./src/voice.ts");
-/* harmony import */ var _web__WEBPACK_IMPORTED_MODULE_88__ = __webpack_require__(/*! ./web */ "./src/web.ts");
+/* harmony import */ var _timesignature__WEBPACK_IMPORTED_MODULE_76__ = __webpack_require__(/*! ./timesignature */ "./src/timesignature.ts");
+/* harmony import */ var _timesignote__WEBPACK_IMPORTED_MODULE_77__ = __webpack_require__(/*! ./timesignote */ "./src/timesignote.ts");
+/* harmony import */ var _tremolo__WEBPACK_IMPORTED_MODULE_78__ = __webpack_require__(/*! ./tremolo */ "./src/tremolo.ts");
+/* harmony import */ var _tuning__WEBPACK_IMPORTED_MODULE_79__ = __webpack_require__(/*! ./tuning */ "./src/tuning.ts");
+/* harmony import */ var _tuplet__WEBPACK_IMPORTED_MODULE_80__ = __webpack_require__(/*! ./tuplet */ "./src/tuplet.ts");
+/* harmony import */ var _typeguard__WEBPACK_IMPORTED_MODULE_81__ = __webpack_require__(/*! ./typeguard */ "./src/typeguard.ts");
+/* harmony import */ var _util__WEBPACK_IMPORTED_MODULE_82__ = __webpack_require__(/*! ./util */ "./src/util.ts");
+/* harmony import */ var _vex__WEBPACK_IMPORTED_MODULE_83__ = __webpack_require__(/*! ./vex */ "./src/vex.ts");
+/* harmony import */ var _vibrato__WEBPACK_IMPORTED_MODULE_84__ = __webpack_require__(/*! ./vibrato */ "./src/vibrato.ts");
+/* harmony import */ var _vibratobracket__WEBPACK_IMPORTED_MODULE_85__ = __webpack_require__(/*! ./vibratobracket */ "./src/vibratobracket.ts");
+/* harmony import */ var _voice__WEBPACK_IMPORTED_MODULE_86__ = __webpack_require__(/*! ./voice */ "./src/voice.ts");
+/* harmony import */ var _web__WEBPACK_IMPORTED_MODULE_87__ = __webpack_require__(/*! ./web */ "./src/web.ts");
 // Copyright (c) 2023-present VexFlow contributors: https://github.com/vexflow/vexflow/graphs/contributors
 // MIT License
 
@@ -21602,7 +21550,6 @@ __webpack_require__.r(__webpack_exports__);
 
 
 // Do not export './tables' because it is internal. Its public API is accessible via Vex.Flow.*.
-
 
 
 
@@ -21765,7 +21712,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   KeySignature: () => (/* binding */ KeySignature)
 /* harmony export */ });
-/* harmony import */ var _glyph__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./glyph */ "./src/glyph.ts");
+/* harmony import */ var _element__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./element */ "./src/element.ts");
 /* harmony import */ var _stavemodifier__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./stavemodifier */ "./src/stavemodifier.ts");
 /* harmony import */ var _tables__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./tables */ "./src/tables.ts");
 /* harmony import */ var _typeguard__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./typeguard */ "./src/typeguard.ts");
@@ -21792,35 +21739,29 @@ class KeySignature extends _stavemodifier__WEBPACK_IMPORTED_MODULE_1__.StaveModi
         this.accList = [];
         this.setKeySig(keySpec, cancelKeySpec, alterKeySpec);
         this.setPosition(_stavemodifier__WEBPACK_IMPORTED_MODULE_1__.StaveModifierPosition.BEGIN);
-        this.glyphFontScale = _tables__WEBPACK_IMPORTED_MODULE_2__.Tables.NOTATION_FONT_SCALE;
+        this.glyphFontScale = _tables__WEBPACK_IMPORTED_MODULE_2__.Tables.lookupMetric('fontSize');
         this.glyphs = [];
-        this.xPositions = []; // relative to this.x
         this.paddingForced = false;
     }
     // Add an accidental glyph to the `KeySignature` instance which represents
     // the provided `acc`. If `nextAcc` is also provided, the appropriate
     // spacing will be included in the glyph's position
-    convertToGlyph(acc, nextAcc) {
-        const accGlyphData = _tables__WEBPACK_IMPORTED_MODULE_2__.Tables.accidentalCodes(acc.type);
-        const glyph = new _glyph__WEBPACK_IMPORTED_MODULE_0__.Glyph(accGlyphData.code, this.glyphFontScale);
+    convertToGlyph(acc, nextAcc, stave) {
+        const code = _tables__WEBPACK_IMPORTED_MODULE_2__.Tables.accidentalCodes(acc.type);
+        const glyph = new _element__WEBPACK_IMPORTED_MODULE_0__.Element(_typeguard__WEBPACK_IMPORTED_MODULE_3__.Category.KeySignature);
+        glyph.setText(code);
+        glyph.measureText();
         // Determine spacing between current accidental and the next accidental
-        let extraWidth = 1;
-        if (acc.type === 'n' && nextAcc) {
-            const spacing = KeySignature.accidentalSpacing[nextAcc.type];
-            if (spacing) {
-                const isAbove = nextAcc.line >= acc.line;
-                extraWidth = isAbove ? spacing.above : spacing.below;
-            }
-        }
+        const extraWidth = 1;
         // Place the glyph on the stave
-        this.placeGlyphOnLine(glyph, this.checkStave(), acc.line);
+        glyph.setYShift(stave.getYForLine(acc.line));
+        if (this.glyphs.length > 0) {
+            const prevGlyph = this.glyphs[this.glyphs.length - 1];
+            glyph.setXShift(prevGlyph.getXShift() + prevGlyph.getWidth() + extraWidth);
+        }
         this.glyphs.push(glyph);
-        const xPosition = this.xPositions[this.xPositions.length - 1];
-        const glyphWidth = glyph.getMetrics().width + extraWidth;
-        // Store the next accidental's x position
-        this.xPositions.push(xPosition + glyphWidth);
         // Expand size of key signature
-        this.width += glyphWidth;
+        this.width += glyph.getWidth() + extraWidth;
     }
     // Cancel out a key signature provided in the `spec` parameter. This will
     // place appropriate natural accidentals before the key signature.
@@ -21856,7 +21797,6 @@ class KeySignature extends _stavemodifier__WEBPACK_IMPORTED_MODULE_1__.StaveModi
             type: cancelAccList[0].type,
         };
     }
-    // Deprecated
     addToStave(stave) {
         this.paddingForced = true;
         stave.addModifier(this);
@@ -21954,7 +21894,6 @@ class KeySignature extends _stavemodifier__WEBPACK_IMPORTED_MODULE_1__.StaveModi
         const stave = this.checkStave();
         this.width = 0;
         this.glyphs = [];
-        this.xPositions = [0]; // initialize with initial x position
         this.accList = _tables__WEBPACK_IMPORTED_MODULE_2__.Tables.keySignature((0,_util__WEBPACK_IMPORTED_MODULE_4__.defined)(this.keySpec));
         const accList = this.accList;
         const firstAccidentalType = accList.length > 0 ? accList[0].type : undefined;
@@ -21972,18 +21911,10 @@ class KeySignature extends _stavemodifier__WEBPACK_IMPORTED_MODULE_1__.StaveModi
             }
             this.convertAccLines(clef, firstAccidentalType, accList);
             for (let i = 0; i < this.accList.length; ++i) {
-                this.convertToGlyph(this.accList[i], this.accList[i + 1]);
+                this.convertToGlyph(this.accList[i], this.accList[i + 1], stave);
             }
         }
         this.formatted = true;
-    }
-    /**
-     * Return the Glyph objects making up this KeySignature.
-     */
-    getGlyphs() {
-        if (!this.formatted)
-            this.format();
-        return this.glyphs;
     }
     draw() {
         const stave = this.checkStave();
@@ -21995,75 +21926,12 @@ class KeySignature extends _stavemodifier__WEBPACK_IMPORTED_MODULE_1__.StaveModi
         ctx.openGroup('keysignature', this.getAttribute('id'));
         for (let i = 0; i < this.glyphs.length; i++) {
             const glyph = this.glyphs[i];
-            const x = this.x + this.xPositions[i];
-            glyph.setStave(stave);
-            glyph.setContext(ctx);
-            glyph.renderToStave(x);
+            glyph.renderText(ctx, this.x, 0);
         }
         ctx.closeGroup();
         this.restoreStyle(ctx);
     }
 }
-// Space between natural and following accidental depending
-// on vertical position
-KeySignature.accidentalSpacing = {
-    '#': {
-        above: 6,
-        below: 4,
-    },
-    b: {
-        above: 4,
-        below: 7,
-    },
-    n: {
-        above: 4,
-        below: 1,
-    },
-    '##': {
-        above: 6,
-        below: 4,
-    },
-    bb: {
-        above: 4,
-        below: 7,
-    },
-    db: {
-        above: 4,
-        below: 7,
-    },
-    d: {
-        above: 4,
-        below: 7,
-    },
-    bbs: {
-        above: 4,
-        below: 7,
-    },
-    '++': {
-        above: 6,
-        below: 4,
-    },
-    '+': {
-        above: 6,
-        below: 4,
-    },
-    '+-': {
-        above: 6,
-        below: 4,
-    },
-    '++-': {
-        above: 6,
-        below: 4,
-    },
-    bs: {
-        above: 4,
-        below: 10,
-    },
-    bss: {
-        above: 4,
-        below: 10,
-    },
-};
 
 
 /***/ }),
@@ -22513,13 +22381,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   MultiMeasureRest: () => (/* binding */ MultiMeasureRest)
 /* harmony export */ });
 /* harmony import */ var _element__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./element */ "./src/element.ts");
-/* harmony import */ var _glyph__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./glyph */ "./src/glyph.ts");
-/* harmony import */ var _notehead__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./notehead */ "./src/notehead.ts");
-/* harmony import */ var _stavemodifier__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./stavemodifier */ "./src/stavemodifier.ts");
-/* harmony import */ var _tables__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./tables */ "./src/tables.ts");
-/* harmony import */ var _timesignature__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./timesignature */ "./src/timesignature.ts");
-/* harmony import */ var _typeguard__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./typeguard */ "./src/typeguard.ts");
-/* harmony import */ var _util__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./util */ "./src/util.ts");
+/* harmony import */ var _stavemodifier__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./stavemodifier */ "./src/stavemodifier.ts");
+/* harmony import */ var _tables__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./tables */ "./src/tables.ts");
+/* harmony import */ var _typeguard__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./typeguard */ "./src/typeguard.ts");
+/* harmony import */ var _util__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./util */ "./src/util.ts");
 // Copyright (c) 2023-present VexFlow contributors: https://github.com/vexflow/vexflow/graphs/contributors
 //
 // This class implements multiple measure rests.
@@ -22540,24 +22405,9 @@ var _MultiMeasureRest_hasPaddingLeft, _MultiMeasureRest_hasPaddingRight, _MultiM
 
 
 
-
-
-
-let semibreveRest;
-function getSemibreveRest() {
-    if (!semibreveRest) {
-        const noteHead = new _notehead__WEBPACK_IMPORTED_MODULE_2__.NoteHead({ duration: 'w', noteType: 'r' });
-        semibreveRest = {
-            glyphFontScale: noteHead.renderOptions.glyphFontScale,
-            glyphCode: noteHead.glyphCode,
-            width: noteHead.getWidth(),
-        };
-    }
-    return semibreveRest;
-}
 class MultiMeasureRest extends _element__WEBPACK_IMPORTED_MODULE_0__.Element {
     static get CATEGORY() {
-        return _typeguard__WEBPACK_IMPORTED_MODULE_6__.Category.MultiMeasureRest;
+        return _typeguard__WEBPACK_IMPORTED_MODULE_3__.Category.MultiMeasureRest;
     }
     /**
      *
@@ -22572,16 +22422,22 @@ class MultiMeasureRest extends _element__WEBPACK_IMPORTED_MODULE_0__.Element {
         _MultiMeasureRest_hasPaddingRight.set(this, false);
         _MultiMeasureRest_hasLineThickness.set(this, false);
         _MultiMeasureRest_hasSymbolSpacing.set(this, false);
+        const fontSize = (_a = options.numberGlyphPoint) !== null && _a !== void 0 ? _a : _tables__WEBPACK_IMPORTED_MODULE_2__.Tables.lookupMetric('MultiMeasureRest.fontSize'); // same as TimeSignature.
+        this.textFont.size = fontSize;
         this.numberOfMeasures = numberOfMeasures;
+        this.text = '';
+        const t = `${this.numberOfMeasures}`;
+        for (const digit of t) {
+            // 0xe080 is timeSig0. We calculate the code point for timeSigN to assemble the digits via SMuFL glyphs.
+            this.text += String.fromCodePoint(0xe080 + Number(digit));
+        }
+        this.measureText();
         // Keep track of whether these four options were provided.
         __classPrivateFieldSet(this, _MultiMeasureRest_hasPaddingLeft, typeof options.paddingLeft === 'number', "f");
         __classPrivateFieldSet(this, _MultiMeasureRest_hasPaddingRight, typeof options.paddingRight === 'number', "f");
         __classPrivateFieldSet(this, _MultiMeasureRest_hasLineThickness, typeof options.lineThickness === 'number', "f");
         __classPrivateFieldSet(this, _MultiMeasureRest_hasSymbolSpacing, typeof options.symbolSpacing === 'number', "f");
-        const musicFont = _tables__WEBPACK_IMPORTED_MODULE_4__.Tables.currentMusicFont();
-        this.renderOptions = Object.assign({ useSymbols: false, showNumber: true, numberLine: -0.5, numberGlyphPoint: (_a = musicFont.lookupMetric('digits.point')) !== null && _a !== void 0 ? _a : _tables__WEBPACK_IMPORTED_MODULE_4__.Tables.NOTATION_FONT_SCALE, line: 2, spacingBetweenLinesPx: _tables__WEBPACK_IMPORTED_MODULE_4__.Tables.STAVE_LINE_DISTANCE, serifThickness: 2, semibreveRestGlyphScale: _tables__WEBPACK_IMPORTED_MODULE_4__.Tables.NOTATION_FONT_SCALE, paddingLeft: 0, paddingRight: 0, lineThickness: 5, symbolSpacing: 0 }, options);
-        const fontLineShift = musicFont.lookupMetric('digits.shiftLine', 0);
-        this.renderOptions.numberLine += fontLineShift;
+        this.renderOptions = Object.assign({ useSymbols: false, showNumber: true, numberLine: -0.5, numberGlyphPoint: fontSize, line: 2, spacingBetweenLinesPx: _tables__WEBPACK_IMPORTED_MODULE_2__.Tables.STAVE_LINE_DISTANCE, serifThickness: 2, semibreveRestGlyphScale: _tables__WEBPACK_IMPORTED_MODULE_2__.Tables.lookupMetric('fontSize'), paddingLeft: 0, paddingRight: 0, lineThickness: 5, symbolSpacing: 0 }, options);
     }
     getXs() {
         return this.xs;
@@ -22594,7 +22450,7 @@ class MultiMeasureRest extends _element__WEBPACK_IMPORTED_MODULE_0__.Element {
         return this.stave;
     }
     checkStave() {
-        return (0,_util__WEBPACK_IMPORTED_MODULE_7__.defined)(this.stave, 'NoStave', 'No stave attached to instance.');
+        return (0,_util__WEBPACK_IMPORTED_MODULE_4__.defined)(this.stave, 'NoStave', 'No stave attached to instance.');
     }
     drawLine(stave, ctx, left, right, spacingBetweenLines) {
         const options = this.renderOptions;
@@ -22602,36 +22458,18 @@ class MultiMeasureRest extends _element__WEBPACK_IMPORTED_MODULE_0__.Element {
         const padding = (right - left) * 0.1;
         left += padding;
         right -= padding;
-        let lineThicknessHalf;
-        if (__classPrivateFieldGet(this, _MultiMeasureRest_hasLineThickness, "f")) {
-            lineThicknessHalf = options.lineThickness * 0.5;
+        let txt = '\ue4ef'; /*restHBarLeft*/
+        const el = new _element__WEBPACK_IMPORTED_MODULE_0__.Element();
+        el.setText(txt);
+        el.measureText();
+        // Add middle bars until the right padding is reached
+        for (let i = 1; (i + 2) * el.getWidth() + left <= right; i++) {
+            txt += '\ue4f0'; /*restHBarMiddle*/
         }
-        else {
-            lineThicknessHalf = spacingBetweenLines * 0.25;
-        }
-        const serifThickness = options.serifThickness;
-        const top = y - spacingBetweenLines;
-        const bot = y + spacingBetweenLines;
-        const leftIndented = left + serifThickness;
-        const rightIndented = right - serifThickness;
-        const lineTop = y - lineThicknessHalf;
-        const lineBottom = y + lineThicknessHalf;
-        ctx.save();
-        ctx.beginPath();
-        ctx.moveTo(left, top);
-        ctx.lineTo(leftIndented, top);
-        ctx.lineTo(leftIndented, lineTop);
-        ctx.lineTo(rightIndented, lineTop);
-        ctx.lineTo(rightIndented, top);
-        ctx.lineTo(right, top);
-        ctx.lineTo(right, bot);
-        ctx.lineTo(rightIndented, bot);
-        ctx.lineTo(rightIndented, lineBottom);
-        ctx.lineTo(leftIndented, lineBottom);
-        ctx.lineTo(leftIndented, bot);
-        ctx.lineTo(left, bot);
-        ctx.closePath();
-        ctx.fill();
+        txt += '\ue4f1'; /*restHBarRight*/
+        el.setText(txt);
+        el.measureText();
+        el.renderText(ctx, left + (right - left) * 0.5 - el.getWidth() * 0.5, y);
     }
     drawSymbols(stave, ctx, left, right, spacingBetweenLines) {
         const n4 = Math.floor(this.numberOfMeasures / 4);
@@ -22639,46 +22477,32 @@ class MultiMeasureRest extends _element__WEBPACK_IMPORTED_MODULE_0__.Element {
         const n2 = Math.floor(n / 2);
         const n1 = n % 2;
         const options = this.renderOptions;
-        // FIXME: TODO: invalidate semibreveRest at the appropriate time
-        // (e.g., if the system font settings are changed).
-        semibreveRest = undefined;
-        const rest = getSemibreveRest();
-        const restScale = options.semibreveRestGlyphScale;
-        const restWidth = rest.width * (restScale / rest.glyphFontScale);
-        const glyphs = {
-            2: {
-                width: restWidth * 0.5,
-                height: spacingBetweenLines,
-            },
-            1: {
-                width: restWidth,
-            },
-        };
-        /* 10: normal spacingBetweenLines */
-        const spacing = __classPrivateFieldGet(this, _MultiMeasureRest_hasSymbolSpacing, "f") ? options.symbolSpacing : 10;
-        const width = n4 * glyphs[2].width + n2 * glyphs[2].width + n1 * glyphs[1].width + (n4 + n2 + n1 - 1) * spacing;
+        const elMiddle = new _element__WEBPACK_IMPORTED_MODULE_0__.Element();
+        let txt = '';
+        for (let i = 0; i < n4; ++i) {
+            txt += '\ue4e1' /*restLonga*/ + ' ';
+        }
+        for (let i = 0; i < n2; ++i) {
+            txt += '\ue4e2' /*restDoubleWhole*/ + ' ';
+        }
+        elMiddle.setText(txt);
+        elMiddle.measureText();
+        const elTop = new _element__WEBPACK_IMPORTED_MODULE_0__.Element();
+        txt = '';
+        for (let i = 0; i < n1; ++i) {
+            txt += '\ue4e3' /*restWhole*/ + ' ';
+        }
+        elTop.setText(txt);
+        elTop.measureText();
+        const width = elMiddle.getWidth() + elTop.getWidth();
         let x = left + (right - left) * 0.5 - width * 0.5;
         const line = options.line;
         const yTop = stave.getYForLine(line - 1);
         const yMiddle = stave.getYForLine(line);
-        const yBottom = stave.getYForLine(line + 1);
-        ctx.save();
-        ctx.setStrokeStyle('none');
-        ctx.setLineWidth(0);
-        for (let i = 0; i < n4; ++i) {
-            ctx.fillRect(x, yMiddle - glyphs[2].height, glyphs[2].width, glyphs[2].height);
-            ctx.fillRect(x, yBottom - glyphs[2].height, glyphs[2].width, glyphs[2].height);
-            x += glyphs[2].width + spacing;
-        }
-        for (let i = 0; i < n2; ++i) {
-            ctx.fillRect(x, yMiddle - glyphs[2].height, glyphs[2].width, glyphs[2].height);
-            x += glyphs[2].width + spacing;
-        }
-        for (let i = 0; i < n1; ++i) {
-            _glyph__WEBPACK_IMPORTED_MODULE_1__.Glyph.renderGlyph(ctx, x, yTop, restScale, rest.glyphCode);
-            x += glyphs[1].width + spacing;
-        }
-        ctx.restore();
+        elMiddle.renderText(ctx, x, yMiddle);
+        x += elMiddle.getWidth();
+        elTop.renderText(ctx, x, yTop);
+        x += elTop.getWidth();
     }
     draw() {
         const ctx = this.checkContext();
@@ -22690,8 +22514,8 @@ class MultiMeasureRest extends _element__WEBPACK_IMPORTED_MODULE_0__.Element {
         //        getNoteEndX() returns x + width(no barline width)
         // See Stave constructor. How do we fix this?
         // Here, we subtract the barline width.
-        const begModifiers = stave.getModifiers(_stavemodifier__WEBPACK_IMPORTED_MODULE_3__.StaveModifierPosition.BEGIN);
-        if (begModifiers.length === 1 && (0,_typeguard__WEBPACK_IMPORTED_MODULE_6__.isBarline)(begModifiers[0])) {
+        const begModifiers = stave.getModifiers(_stavemodifier__WEBPACK_IMPORTED_MODULE_1__.StaveModifierPosition.BEGIN);
+        if (begModifiers.length === 1 && (0,_typeguard__WEBPACK_IMPORTED_MODULE_3__.isBarline)(begModifiers[0])) {
             left -= begModifiers[0].getWidth();
         }
         const options = this.renderOptions;
@@ -22711,14 +22535,7 @@ class MultiMeasureRest extends _element__WEBPACK_IMPORTED_MODULE_0__.Element {
             this.drawLine(stave, ctx, left, right, spacingBetweenLines);
         }
         if (options.showNumber) {
-            const timeSpec = '/' + this.numberOfMeasures;
-            const timeSig = new _timesignature__WEBPACK_IMPORTED_MODULE_5__.TimeSignature(timeSpec, 0, false);
-            timeSig.point = options.numberGlyphPoint;
-            timeSig.setTimeSig(timeSpec);
-            timeSig.setStave(stave);
-            timeSig.setX(left + (right - left) * 0.5 - timeSig.getInfo().glyph.getMetrics().width * 0.5);
-            timeSig.bottomLine = options.numberLine;
-            timeSig.setContext(ctx).draw();
+            this.renderText(ctx, left + (right - left) * 0.5 - this.width * 0.5, stave.getYForLine(options.numberLine) - this.height * 0.5);
         }
     }
 }
@@ -23758,20 +23575,6 @@ class NoteHead extends _note__WEBPACK_IMPORTED_MODULE_2__.Note {
     isDisplaced() {
         return this.displaced === true;
     }
-    /** Set the X coordinate. */
-    setX(x) {
-        this.x = x;
-        return this;
-    }
-    /** Get the Y coordinate. */
-    getY() {
-        return this.y;
-    }
-    /** Set the Y coordinate. */
-    setY(y) {
-        this.y = y;
-        return this;
-    }
     /** Get the stave line the notehead is placed on. */
     getLine() {
         return this.line;
@@ -23992,8 +23795,7 @@ class Ornament extends _modifier__WEBPACK_IMPORTED_MODULE_1__.Modifier {
         return _typeguard__WEBPACK_IMPORTED_MODULE_5__.Category.Ornament;
     }
     static get minPadding() {
-        const musicFont = _tables__WEBPACK_IMPORTED_MODULE_3__.Tables.currentMusicFont();
-        return musicFont.lookupMetric('noteHead.minPadding');
+        return _tables__WEBPACK_IMPORTED_MODULE_3__.Tables.lookupMetric('NoteHead.minPadding');
     }
     /** Arrange ornaments inside `ModifierContext` */
     static format(ornaments, state) {
@@ -24147,14 +23949,14 @@ class Ornament extends _modifier__WEBPACK_IMPORTED_MODULE_1__.Modifier {
     /** Set the upper accidental for the ornament. */
     setUpperAccidental(accid) {
         const scale = this.renderOptions.fontScale / 1.3;
-        this.accidentalUpper = new _glyph__WEBPACK_IMPORTED_MODULE_0__.Glyph(_tables__WEBPACK_IMPORTED_MODULE_3__.Tables.accidentalCodes(accid).code, scale);
+        this.accidentalUpper = new _glyph__WEBPACK_IMPORTED_MODULE_0__.Glyph(_tables__WEBPACK_IMPORTED_MODULE_3__.Tables.accidentalCodesOld(accid).code, scale);
         this.accidentalUpper.setOrigin(0.5, 1.0);
         return this;
     }
     /** Set the lower accidental for the ornament. */
     setLowerAccidental(accid) {
         const scale = this.renderOptions.fontScale / 1.3;
-        this.accidentalLower = new _glyph__WEBPACK_IMPORTED_MODULE_0__.Glyph(_tables__WEBPACK_IMPORTED_MODULE_3__.Tables.accidentalCodes(accid).code, scale);
+        this.accidentalLower = new _glyph__WEBPACK_IMPORTED_MODULE_0__.Glyph(_tables__WEBPACK_IMPORTED_MODULE_3__.Tables.accidentalCodesOld(accid).code, scale);
         this.accidentalLower.setOrigin(0.5, 1.0);
         return this;
     }
@@ -24596,13 +24398,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   PedalMarking: () => (/* binding */ PedalMarking)
 /* harmony export */ });
 /* harmony import */ var _element__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./element */ "./src/element.ts");
-/* harmony import */ var _glyph__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./glyph */ "./src/glyph.ts");
-/* harmony import */ var _tables__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./tables */ "./src/tables.ts");
-/* harmony import */ var _typeguard__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./typeguard */ "./src/typeguard.ts");
-/* harmony import */ var _util__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./util */ "./src/util.ts");
+/* harmony import */ var _tables__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./tables */ "./src/tables.ts");
+/* harmony import */ var _typeguard__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./typeguard */ "./src/typeguard.ts");
+/* harmony import */ var _util__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./util */ "./src/util.ts");
 // Copyright (c) 2023-present VexFlow contributors: https://github.com/vexflow/vexflow/graphs/contributors
 // MIT License
-
 
 
 
@@ -24610,18 +24410,19 @@ __webpack_require__.r(__webpack_exports__);
 // eslint-disable-next-line
 function L(...args) {
     if (PedalMarking.DEBUG)
-        (0,_util__WEBPACK_IMPORTED_MODULE_4__.log)('Vex.Flow.PedalMarking', args);
+        (0,_util__WEBPACK_IMPORTED_MODULE_3__.log)('Vex.Flow.PedalMarking', args);
 }
 /**
  * Draws a pedal glyph with the provided `name` on a rendering `context`
  * at the coordinates `x` and `y. Takes into account the glyph data
  * coordinate shifts.
  */
-function drawPedalGlyph(name, context, x, y, point) {
-    const glyphData = PedalMarking.GLYPHS[name];
-    const glyph = new _glyph__WEBPACK_IMPORTED_MODULE_1__.Glyph(glyphData.code, point, { category: 'pedalMarking' });
-    // Center the middle of the glyph with the middle of the note head (Tables.STAVE_LINE_DISTANCE / 2)
-    glyph.render(context, x - (glyph.getMetrics().width - _tables__WEBPACK_IMPORTED_MODULE_2__.Tables.STAVE_LINE_DISTANCE) / 2, y);
+function drawPedalGlyph(name, ctx, x, y) {
+    var _a;
+    const glyph = new _element__WEBPACK_IMPORTED_MODULE_0__.Element(PedalMarking.CATEGORY);
+    glyph.setText((_a = PedalMarking.GLYPHS[name]) !== null && _a !== void 0 ? _a : name);
+    glyph.measureText();
+    glyph.renderText(ctx, x - (glyph.getWidth() - _tables__WEBPACK_IMPORTED_MODULE_1__.Tables.STAVE_LINE_DISTANCE) / 2, y);
 }
 /**
  * PedalMarking implements different types of pedal markings. These notation
@@ -24632,7 +24433,7 @@ function drawPedalGlyph(name, context, x, y, point) {
  */
 class PedalMarking extends _element__WEBPACK_IMPORTED_MODULE_0__.Element {
     static get CATEGORY() {
-        return _typeguard__WEBPACK_IMPORTED_MODULE_3__.Category.PedalMarking;
+        return _typeguard__WEBPACK_IMPORTED_MODULE_2__.Category.PedalMarking;
     }
     /**
      * Create a sustain pedal marking. Returns the defaults PedalMarking.
@@ -24701,7 +24502,6 @@ class PedalMarking extends _element__WEBPACK_IMPORTED_MODULE_0__.Element {
         let prevY;
         // Iterate through each note
         this.notes.forEach((note, index, notes) => {
-            var _a;
             // Each note triggers the opposite pedal action
             isPedalDepressed = !isPedalDepressed;
             // Get the initial coordinates for the note
@@ -24709,7 +24509,7 @@ class PedalMarking extends _element__WEBPACK_IMPORTED_MODULE_0__.Element {
             const y = note.checkStave().getYForBottomText(this.line + 3);
             // Throw if current note is positioned before the previous note
             if (x < prevX) {
-                throw new _util__WEBPACK_IMPORTED_MODULE_4__.RuntimeError('InvalidConfiguration', 'The notes provided must be in order of ascending x positions');
+                throw new _util__WEBPACK_IMPORTED_MODULE_3__.RuntimeError('InvalidConfiguration', 'The notes provided must be in order of ascending x positions');
             }
             // Determine if the previous or next note are the same
             // as the current note. We need to keep track of this for
@@ -24717,7 +24517,6 @@ class PedalMarking extends _element__WEBPACK_IMPORTED_MODULE_0__.Element {
             const nextNoteIsSame = notes[index + 1] === note;
             const prevNoteIsSame = notes[index - 1] === note;
             let xShift = 0;
-            const point = (_a = _tables__WEBPACK_IMPORTED_MODULE_2__.Tables.currentMusicFont().lookupMetric(`pedalMarking.${isPedalDepressed ? 'down' : 'up'}.point`)) !== null && _a !== void 0 ? _a : _tables__WEBPACK_IMPORTED_MODULE_2__.Tables.NOTATION_FONT_SCALE;
             if (isPedalDepressed) {
                 // Adjustment for release+depress
                 xShift = prevNoteIsSame ? 5 : 0;
@@ -24731,7 +24530,7 @@ class PedalMarking extends _element__WEBPACK_IMPORTED_MODULE_0__.Element {
                     }
                     else {
                         // Render the Ped glyph in position
-                        drawPedalGlyph('pedalDepress', ctx, x, y, point);
+                        drawPedalGlyph('pedalDepress', ctx, x, y);
                         xShift = 20 + this.renderOptions.textMarginRight;
                     }
                 }
@@ -24769,12 +24568,10 @@ class PedalMarking extends _element__WEBPACK_IMPORTED_MODULE_0__.Element {
         let isPedalDepressed = false;
         // Iterate through each note, placing glyphs or custom text accordingly
         this.notes.forEach((note) => {
-            var _a;
             isPedalDepressed = !isPedalDepressed;
             const stave = note.checkStave();
             const x = note.getAbsoluteX();
             const y = stave.getYForBottomText(this.line + 3);
-            const point = (_a = _tables__WEBPACK_IMPORTED_MODULE_2__.Tables.currentMusicFont().lookupMetric(`pedalMarking.${isPedalDepressed ? 'down' : 'up'}.point`)) !== null && _a !== void 0 ? _a : _tables__WEBPACK_IMPORTED_MODULE_2__.Tables.NOTATION_FONT_SCALE;
             let textWidth = 0;
             if (isPedalDepressed) {
                 if (this.customDepressText) {
@@ -24782,7 +24579,7 @@ class PedalMarking extends _element__WEBPACK_IMPORTED_MODULE_0__.Element {
                     ctx.fillText(this.customDepressText, x - textWidth / 2, y);
                 }
                 else {
-                    drawPedalGlyph('pedalDepress', ctx, x, y, point);
+                    drawPedalGlyph('pedalDepress', ctx, x, y);
                 }
             }
             else {
@@ -24791,7 +24588,7 @@ class PedalMarking extends _element__WEBPACK_IMPORTED_MODULE_0__.Element {
                     ctx.fillText(this.customReleaseText, x - textWidth / 2, y);
                 }
                 else {
-                    drawPedalGlyph('pedalRelease', ctx, x, y, point);
+                    drawPedalGlyph('pedalRelease', ctx, x, y);
                 }
             }
         });
@@ -24803,7 +24600,7 @@ class PedalMarking extends _element__WEBPACK_IMPORTED_MODULE_0__.Element {
         ctx.save();
         ctx.setStrokeStyle(this.renderOptions.color);
         ctx.setFillStyle(this.renderOptions.color);
-        ctx.setFont(this.textFont);
+        ctx.setFont(_tables__WEBPACK_IMPORTED_MODULE_1__.Tables.lookupMetricFontInfo('PedalMarking.text'));
         L('Rendering Pedal Marking');
         if (this.type === PedalMarking.type.BRACKET || this.type === PedalMarking.type.MIXED) {
             ctx.setLineWidth(this.renderOptions.bracketLineWidth);
@@ -24819,12 +24616,8 @@ class PedalMarking extends _element__WEBPACK_IMPORTED_MODULE_0__.Element {
 PedalMarking.DEBUG = false;
 /** Glyph data */
 PedalMarking.GLYPHS = {
-    pedalDepress: {
-        code: 'keyboardPedalPed',
-    },
-    pedalRelease: {
-        code: 'keyboardPedalUp',
-    },
+    pedalDepress: '\uE650' /*keyboardPedalPed*/,
+    pedalRelease: '\uE655' /*keyboardPedalUp*/,
 };
 /** Pedal type as number. */
 PedalMarking.type = {
@@ -25201,32 +24994,25 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   RepeatNote: () => (/* binding */ RepeatNote)
 /* harmony export */ });
-/* harmony import */ var _glyph__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./glyph */ "./src/glyph.ts");
-/* harmony import */ var _glyphnote__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./glyphnote */ "./src/glyphnote.ts");
-/* harmony import */ var _tables__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./tables */ "./src/tables.ts");
-/* harmony import */ var _typeguard__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./typeguard */ "./src/typeguard.ts");
+/* harmony import */ var _glyphnote__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./glyphnote */ "./src/glyphnote.ts");
+/* harmony import */ var _typeguard__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./typeguard */ "./src/typeguard.ts");
 // Copyright (c) 2023-present VexFlow contributors: https://github.com/vexflow/vexflow/graphs/contributors
-
-
 
 
 // Map `type` to SMuFL glyph code.
 const CODES = {
-    '1': 'repeat1Bar',
-    '2': 'repeat2Bars',
-    '4': 'repeat4Bars',
-    slash: 'repeatBarSlash',
+    '1': '\uE500' /*repeat1Bar*/,
+    '2': '\uE501' /*repeat2Bars*/,
+    '4': '\uE502' /*repeat4Bars*/,
+    slash: '\uE504' /*repeatBarSlash*/,
 };
-class RepeatNote extends _glyphnote__WEBPACK_IMPORTED_MODULE_1__.GlyphNote {
+class RepeatNote extends _glyphnote__WEBPACK_IMPORTED_MODULE_0__.GlyphNote {
     static get CATEGORY() {
-        return _typeguard__WEBPACK_IMPORTED_MODULE_3__.Category.RepeatNote;
+        return _typeguard__WEBPACK_IMPORTED_MODULE_1__.Category.RepeatNote;
     }
     constructor(type, noteStruct, options) {
-        const glyphCode = CODES[type] || 'repeat1Bar';
-        const glyph = new _glyph__WEBPACK_IMPORTED_MODULE_0__.Glyph(glyphCode, _tables__WEBPACK_IMPORTED_MODULE_2__.Tables.currentMusicFont().lookupMetric('repeatNote.point', 40), {
-            category: 'repeatNote',
-        });
-        super(glyph, Object.assign({ duration: 'q', alignCenter: type !== 'slash' }, noteStruct), options);
+        const glyphCode = CODES[type] || '\uE500'; /*repeat1Bar*/
+        super(glyphCode, Object.assign({ duration: 'q', alignCenter: type !== 'slash' }, noteStruct), options);
     }
 }
 
@@ -25297,18 +25083,14 @@ class Stave extends _element__WEBPACK_IMPORTED_MODULE_2__.Element {
     // This is the sum of the padding that normally goes on left + right of a stave during
     // drawing. Used to size staves correctly with content width.
     static get defaultPadding() {
-        const musicFont = _tables__WEBPACK_IMPORTED_MODULE_11__.Tables.currentMusicFont();
-        return musicFont.lookupMetric('stave.padding') + musicFont.lookupMetric('stave.endPaddingMax');
+        return _tables__WEBPACK_IMPORTED_MODULE_11__.Tables.lookupMetric('Stave.padding') + _tables__WEBPACK_IMPORTED_MODULE_11__.Tables.lookupMetric('Stave.endPaddingMax');
     }
     // Right padding, used by system if startX is already determined.
     static get rightPadding() {
-        const musicFont = _tables__WEBPACK_IMPORTED_MODULE_11__.Tables.currentMusicFont();
-        return musicFont.lookupMetric('stave.endPaddingMax');
+        return _tables__WEBPACK_IMPORTED_MODULE_11__.Tables.lookupMetric('Stave.endPaddingMax');
     }
     constructor(x, y, width, options) {
         super();
-        // Initialized by the constructor via this.resetLines().
-        this.height = 0;
         this.x = x;
         this.y = y;
         this.width = width;
@@ -25369,9 +25151,6 @@ class Stave extends _element__WEBPACK_IMPORTED_MODULE_2__.Element {
     getTieEndX() {
         return this.endX;
     }
-    getX() {
-        return this.x;
-    }
     getNumLines() {
         return this.options.numLines;
     }
@@ -25379,13 +25158,6 @@ class Stave extends _element__WEBPACK_IMPORTED_MODULE_2__.Element {
         this.options.numLines = n;
         this.resetLines();
         return this;
-    }
-    setY(y) {
-        this.y = y;
-        return this;
-    }
-    getY() {
-        return this.y;
     }
     getTopLineTopY() {
         return this.getYForLine(0) - _tables__WEBPACK_IMPORTED_MODULE_11__.Tables.STAVE_LINE_THICKNESS / 2;
@@ -25412,9 +25184,6 @@ class Stave extends _element__WEBPACK_IMPORTED_MODULE_2__.Element {
         // reset the x position of the end barline (TODO(0xfe): This makes no sense)
         // this.modifiers[1].setX(this.endX);
         return this;
-    }
-    getWidth() {
-        return this.width;
     }
     getStyle() {
         return Object.assign({ fillStyle: this.options.fillStyle, strokeStyle: this.options.fillStyle, lineWidth: _tables__WEBPACK_IMPORTED_MODULE_11__.Tables.STAVE_LINE_THICKNESS }, super.getStyle());
@@ -26867,7 +26636,7 @@ class StaveLine extends _element__WEBPACK_IMPORTED_MODULE_0__.Element {
             startPosition.x += firstNote.getMetrics().modRightPx + renderOptions.paddingLeft;
             endPosition.x -= lastNote.getMetrics().modLeftPx + renderOptions.paddingRight;
             // Adjust first `x` coordinates for displacements
-            const noteheadWidth = firstNote.getGlyphProps().getWidth();
+            const noteheadWidth = firstNote.getGlyphWidth();
             const firstDisplaced = firstNote.getKeyProps()[firstIndex].displaced;
             if (firstDisplaced && firstNote.getStemDirection() === 1) {
                 startPosition.x += noteheadWidth + renderOptions.paddingLeft;
@@ -26965,8 +26734,6 @@ class StaveModifier extends _element__WEBPACK_IMPORTED_MODULE_0__.Element {
     }
     constructor() {
         super();
-        this.width = 0;
-        this.x = 0;
         this.padding = 10;
         this.position = StaveModifierPosition.ABOVE;
     }
@@ -26986,32 +26753,6 @@ class StaveModifier extends _element__WEBPACK_IMPORTED_MODULE_0__.Element {
     setStave(stave) {
         this.stave = stave;
         return this;
-    }
-    getWidth() {
-        return this.width;
-    }
-    setWidth(width) {
-        this.width = width;
-        return this;
-    }
-    getX() {
-        return this.x;
-    }
-    setX(x) {
-        this.x = x;
-        return this;
-    }
-    /**
-     * Runs setYShift() for the Glyph object so that it matches the position of line for
-     * the Stave provided.  A `customShift` can also be given (measured in the same units
-     * as `setYShift` not in lines) and this will be added after all other positions are
-     * calculated from the Stave.
-     *
-     * Note that this routine only sets the yShift; it does not actually "place" (meaning
-     * draw) the Glyph on the Stave.  Call .draw() afterwards to do that.
-     */
-    placeGlyphOnLine(glyph, stave, line, customShift = 0) {
-        glyph.setYShift(stave.getYForLine(line !== null && line !== void 0 ? line : 0) - stave.getYForGlyphs() + customShift);
     }
     getPadding(index) {
         return index !== undefined && index < 2 ? 0 : this.padding;
@@ -28322,62 +28063,46 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   StaveSection: () => (/* binding */ StaveSection)
 /* harmony export */ });
 /* harmony import */ var _stavemodifier__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./stavemodifier */ "./src/stavemodifier.ts");
-/* harmony import */ var _textformatter__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./textformatter */ "./src/textformatter.ts");
-/* harmony import */ var _typeguard__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./typeguard */ "./src/typeguard.ts");
+/* harmony import */ var _typeguard__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./typeguard */ "./src/typeguard.ts");
 // Copyright (c) 2023-present VexFlow contributors: https://github.com/vexflow/vexflow/graphs/contributors
 // @author: Larry Kuhns 2011
 
 
-
 class StaveSection extends _stavemodifier__WEBPACK_IMPORTED_MODULE_0__.StaveModifier {
     static get CATEGORY() {
-        return _typeguard__WEBPACK_IMPORTED_MODULE_2__.Category.StaveSection;
+        return _typeguard__WEBPACK_IMPORTED_MODULE_1__.Category.StaveSection;
     }
-    constructor(section, x, shiftY, drawRect = true) {
+    constructor(section, x, yShift, drawRect = true) {
         super();
-        this.setWidth(16);
-        this.section = section;
+        this.setStaveSection(section);
         this.x = x;
-        this.shiftX = 0;
-        this.shiftY = shiftY;
+        this.yShift = yShift;
         this.drawRect = drawRect;
     }
     setStaveSection(section) {
-        this.section = section;
+        this.text = section;
+        this.measureText();
         return this;
     }
-    setShiftX(x) {
-        this.shiftX = x;
-        return this;
-    }
-    setShiftY(y) {
-        this.shiftY = y;
-        return this;
-    }
-    draw(stave, shiftX) {
+    draw(stave, xShift) {
         const borderWidth = 2;
         const padding = 2;
         const ctx = stave.checkContext();
         this.setRendered();
         ctx.save();
         ctx.setLineWidth(borderWidth);
-        ctx.setFont(this.textFont);
-        const textFormatter = _textformatter__WEBPACK_IMPORTED_MODULE_1__.TextFormatter.create(this.textFont);
-        const textWidth = textFormatter.getWidthForTextInPx(this.section);
-        const textY = textFormatter.getYForStringInPx(this.section);
-        const textHeight = textY.height;
-        const headroom = -1 * textY.yMin;
-        const width = textWidth + 2 * padding; // add left & right padding
-        const height = textHeight + 2 * padding; // add top & bottom padding
+        const headroom = -1 * this.textMetrics.actualBoundingBoxDescent;
+        const width = this.width + 2 * padding; // add left & right padding
+        const height = this.height + 2 * padding; // add top & bottom padding
         //  Seems to be a good default y
-        const y = stave.getYForTopText(1.5) + this.shiftY;
-        const x = this.x + shiftX;
+        const y = stave.getYForTopText(1.5) + this.yShift;
+        const x = this.x + xShift;
         if (this.drawRect) {
             ctx.beginPath();
             ctx.rect(x, y - height + headroom, width, height);
             ctx.stroke();
         }
-        ctx.fillText(this.section, x + padding, y - padding);
+        this.renderText(ctx, xShift + padding, y - padding);
         ctx.restore();
         return this;
     }
@@ -28456,7 +28181,7 @@ class StaveTempo extends _stavemodifier__WEBPACK_IMPORTED_MODULE_1__.StaveModifi
             this.text = name;
             this.textFont = _tables__WEBPACK_IMPORTED_MODULE_2__.Tables.lookupMetricFontInfo('StaveTempo.name');
             this.measureText();
-            this.renderText(ctx, x, y);
+            this.renderText(ctx, shiftX, y);
             x += this.getWidth();
         }
         if (duration && bpm) {
@@ -30449,6 +30174,7 @@ class System extends _element__WEBPACK_IMPORTED_MODULE_1__.Element {
         this.partStaves.forEach((s) => {
             s.setX(x);
         });
+        return this;
     }
     /** Get origin y. */
     getY() {
@@ -30460,6 +30186,7 @@ class System extends _element__WEBPACK_IMPORTED_MODULE_1__.Element {
         this.partStaves.forEach((s) => {
             s.setY(y);
         });
+        return this;
     }
     /** Get associated staves. */
     getStaves() {
@@ -30642,11 +30369,9 @@ const CommonMetrics = {
         },
     },
     Annotation: {
-        fontFamily: 'Arial, sans-serif',
         fontSize: 10,
     },
     Bend: {
-        fontFamily: 'Arial, sans-serif',
         fontSize: 10,
     },
     ChordSymbol: {
@@ -30664,10 +30389,10 @@ const CommonMetrics = {
         minPadding: 2,
     },
     PedalMarking: {
-        fontFamily: 'Times New Roman, serif',
-        fontSize: 12,
-        fontWeight: 'bold',
-        fontStyle: 'italic',
+        text: {
+            fontSize: 12,
+            fontStyle: 'italic',
+        },
     },
     Repetition: {
         fontFamily: 'Times New Roman, serif',
@@ -30677,6 +30402,10 @@ const CommonMetrics = {
     Stave: {
         fontFamily: 'Arial, sans-serif',
         fontSize: 8,
+        padding: 12,
+        endPaddingMax: 10,
+        endPaddingMin: 5,
+        unalignedNotePadding: 10,
     },
     StaveConnector: {
         fontFamily: 'Times New Roman, serif',
@@ -30742,6 +30471,9 @@ const CommonMetrics = {
     TextNote: {
         fontFamily: 'Arial, sans-serif',
         fontSize: 12,
+    },
+    Tremolo: {
+        spacing: 7,
     },
     Volta: {
         fontFamily: 'Arial, sans-serif',
@@ -30888,7 +30620,10 @@ const validNoteTypes = {
     tu: { name: 'triangle up' },
     td: { name: 'triangle down' },
 };
-const accidentals = {
+// #FIXME: HACK to facilitate the VexFlow 5 migration.
+// HACK-BEGIN
+// .... will be deleted once all the classes use  accidentalCodes...
+const accidentalsOld = {
     '#': { code: 'accidentalSharp', parenRightPaddingAdjustment: -1 },
     '##': { code: 'accidentalDoubleSharp', parenRightPaddingAdjustment: -1 },
     b: { code: 'accidentalFlat', parenRightPaddingAdjustment: -2 },
@@ -31153,6 +30888,29 @@ const accidentals = {
     accidentalWilsonPlus: { code: 'accidentalWilsonPlus', parenRightPaddingAdjustment: -1 },
     accidentalWilsonMinus: { code: 'accidentalWilsonMinus', parenRightPaddingAdjustment: -1 },
 };
+// HACK-END
+const accidentals = {
+    '#': '\ue262' /*accidentalSharp*/,
+    '##': '\ue263' /*accidentalDoubleSharp*/,
+    b: '\ue260' /*accidentalFlat*/,
+    bb: '\ue264' /*accidentalDoubleFlat*/,
+    n: '\ue261' /*accidentalNatural*/,
+    '{': '\ue26a' /*accidentalParensLeft*/,
+    '}': '\ue26b' /*accidentalParensRight*/,
+    db: '\ue281' /*accidentalThreeQuarterTonesFlatZimmermann*/,
+    d: '\ue280' /*accidentalQuarterToneFlatStein*/,
+    '++': '\ue283' /*accidentalThreeQuarterTonesSharpStein*/,
+    '+': '\ue282' /*accidentalQuarterToneSharpStein*/,
+    '+-': '\ue446' /*accidentalKucukMucennebSharp*/,
+    bs: '\ue442' /*accidentalBakiyeFlat*/,
+    bss: '\ue440' /*accidentalBuyukMucennebFlat*/,
+    o: '\ue461' /*accidentalSori*/,
+    k: '\ue460' /*accidentalKoron*/,
+    bbs: '\ue447' /*accidentalBuyukMucennebSharp*/,
+    '++-': '\ue447' /*accidentalBuyukMucennebSharp*/,
+    ashs: '\ue447' /*accidentalBuyukMucennebSharp*/,
+    afhf: '\ue447' /*accidentalBuyukMucennebSharp*/,
+};
 // Helps determine the layout of accidentals.
 const accidentalColumns = {
     1: {
@@ -31239,8 +30997,8 @@ const ornaments = {
     mordentInverted: { code: 'ornamentMordent' },
     mordent_inverted: { code: 'ornamentMordent' },
     turn: { code: 'ornamentTurn' },
-    turn_inverted: { code: 'ornamentTurnSlash' },
     turnInverted: { code: 'ornamentTurnSlash' },
+    turn_inverted: { code: 'ornamentTurnSlash' },
     tr: { code: 'ornamentTrill' },
     upprall: { code: 'ornamentPrecompSlideTrillDAnglebert' },
     downprall: { code: 'ornamentPrecompDoubleCadenceUpperPrefix' },
@@ -31426,8 +31184,12 @@ class Tables {
     static articulationCodes(artic) {
         return articulations[artic];
     }
+    static accidentalCodesOld(acc) {
+        return accidentalsOld[acc];
+    }
     static accidentalCodes(acc) {
-        return accidentals[acc];
+        var _a;
+        return (_a = accidentals[acc]) !== null && _a !== void 0 ? _a : acc;
     }
     static ornamentCodes(acc) {
         return ornaments[acc];
@@ -31781,7 +31543,7 @@ Tables.STAVE_LINE_DISTANCE = 10;
 // This will be deprecated in the future. This is a temporary solution until
 // we have more robust text metrics.
 Tables.TEXT_HEIGHT_OFFSET_HACK = 1;
-Tables.accidentalMap = accidentals;
+Tables.accidentalMap = accidentalsOld;
 Tables.accidentalColumnsTable = accidentalColumns;
 Tables.unicode = {
     // ♯ accidental sharp
@@ -32883,7 +32645,7 @@ class TextBracket extends _element__WEBPACK_IMPORTED_MODULE_0__.Element {
         // Setup initial coordinates for the bracket line
         let startX = start.x;
         let lineY = superY;
-        const endX = stop.x + this.stop.getGlyphProps().getWidth();
+        const endX = stop.x + this.stop.getGlyphWidth();
         // Adjust x and y coordinates based on position
         if (this.position === TextBracketPosition.TOP) {
             startX += mainWidth + superWidth + 5;
@@ -34130,118 +33892,6 @@ class TickContext {
 
 /***/ }),
 
-/***/ "./src/timesigglyph.ts":
-/*!*****************************!*\
-  !*** ./src/timesigglyph.ts ***!
-  \*****************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   TimeSignatureGlyph: () => (/* binding */ TimeSignatureGlyph)
-/* harmony export */ });
-/* harmony import */ var _glyph__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./glyph */ "./src/glyph.ts");
-/* harmony import */ var _util__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./util */ "./src/util.ts");
-// Copyright (c) 2023-present VexFlow contributors: https://github.com/vexflow/vexflow/graphs/contributors
-//
-// ## Description
-// Renders time signatures glyphs for staffs
-// This class is used by TimeSignature to render the associated glyphs
-
-
-class TimeSignatureGlyph extends _glyph__WEBPACK_IMPORTED_MODULE_0__.Glyph {
-    constructor(timeSignature, topDigits, botDigits, code, point, options) {
-        var _a;
-        super(code, point, options);
-        this.timeSignature = timeSignature;
-        this.topGlyphs = [];
-        this.botGlyphs = [];
-        let topWidth = 0;
-        let height = 0;
-        for (let i = 0; i < topDigits.length; ++i) {
-            let timeSigType = topDigits[i];
-            switch (topDigits[i]) {
-                case '-':
-                    timeSigType = 'Minus';
-                    break;
-                case '+':
-                    timeSigType = botDigits.length > 0 ? 'PlusSmall' : 'Plus';
-                    break;
-                case '(':
-                    timeSigType = botDigits.length > 0 ? 'ParensLeftSmall' : 'ParensLeft';
-                    break;
-                case ')':
-                    timeSigType = botDigits.length > 0 ? 'ParensRightSmall' : 'ParensRight';
-                    break;
-            }
-            const topGlyph = new _glyph__WEBPACK_IMPORTED_MODULE_0__.Glyph('timeSig' + timeSigType, this.timeSignature.point);
-            this.topGlyphs.push(topGlyph);
-            topWidth += (_a = topGlyph.getMetrics().width) !== null && _a !== void 0 ? _a : 0;
-            height = Math.max(height, topGlyph.getMetrics().height);
-        }
-        let botWidth = 0;
-        for (let i = 0; i < botDigits.length; ++i) {
-            let timeSigType = botDigits[i];
-            switch (botDigits[i]) {
-                case '+':
-                    timeSigType = 'PlusSmall';
-                    break;
-                case '(':
-                    timeSigType = 'ParensLeftSmall';
-                    break;
-                case ')':
-                    timeSigType = 'ParensRightSmall';
-                    break;
-            }
-            const botGlyph = new _glyph__WEBPACK_IMPORTED_MODULE_0__.Glyph('timeSig' + timeSigType, this.timeSignature.point);
-            this.botGlyphs.push(botGlyph);
-            botWidth += (0,_util__WEBPACK_IMPORTED_MODULE_1__.defined)(botGlyph.getMetrics().width);
-            height = Math.max(height, botGlyph.getMetrics().height);
-        }
-        // If the height of the digits is more than two staff spaces (20), shift to the next line
-        // in order to center the digits on lines 1 and 5 rather than 2 and 4.
-        this.lineShift = height > 22 ? 1 : 0;
-        this.width = Math.max(topWidth, botWidth);
-        this.xMin = this.getMetrics().xMin;
-        this.topStartX = (this.width - topWidth) / 2.0;
-        this.botStartX = (this.width - botWidth) / 2.0;
-        this.reset();
-    }
-    getMetrics() {
-        return {
-            xMin: this.xMin,
-            xMax: this.xMin + this.width,
-            width: this.width,
-        };
-    }
-    renderToStave(x) {
-        const stave = this.checkStave();
-        const ctx = this.checkContext();
-        let startX = x + this.topStartX;
-        let y = 0;
-        if (this.botGlyphs.length > 0)
-            y = stave.getYForLine(this.timeSignature.topLine - this.lineShift);
-        else
-            y = (stave.getYForLine(this.timeSignature.topLine) + stave.getYForLine(this.timeSignature.bottomLine)) / 2;
-        for (let i = 0; i < this.topGlyphs.length; ++i) {
-            const glyph = this.topGlyphs[i];
-            _glyph__WEBPACK_IMPORTED_MODULE_0__.Glyph.renderOutline(ctx, glyph.getMetrics().outline, this.scale, startX + this.xShift, y);
-            startX += (0,_util__WEBPACK_IMPORTED_MODULE_1__.defined)(glyph.getMetrics().width);
-        }
-        startX = x + this.botStartX;
-        y = stave.getYForLine(this.timeSignature.bottomLine + this.lineShift);
-        for (let i = 0; i < this.botGlyphs.length; ++i) {
-            const glyph = this.botGlyphs[i];
-            this.timeSignature.placeGlyphOnLine(glyph, stave, this.timeSignature.getLine());
-            _glyph__WEBPACK_IMPORTED_MODULE_0__.Glyph.renderOutline(ctx, glyph.getMetrics().outline, this.scale, startX + glyph.getMetrics().xShift, y);
-            startX += (0,_util__WEBPACK_IMPORTED_MODULE_1__.defined)(glyph.getMetrics().width);
-        }
-    }
-}
-
-
-/***/ }),
-
 /***/ "./src/timesignature.ts":
 /*!******************************!*\
   !*** ./src/timesignature.ts ***!
@@ -34252,12 +33902,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   TimeSignature: () => (/* binding */ TimeSignature)
 /* harmony export */ });
-/* harmony import */ var _glyph__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./glyph */ "./src/glyph.ts");
+/* harmony import */ var _element__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./element */ "./src/element.ts");
 /* harmony import */ var _stavemodifier__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./stavemodifier */ "./src/stavemodifier.ts");
-/* harmony import */ var _tables__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./tables */ "./src/tables.ts");
-/* harmony import */ var _timesigglyph__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./timesigglyph */ "./src/timesigglyph.ts");
-/* harmony import */ var _typeguard__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./typeguard */ "./src/typeguard.ts");
-/* harmony import */ var _util__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./util */ "./src/util.ts");
+/* harmony import */ var _typeguard__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./typeguard */ "./src/typeguard.ts");
+/* harmony import */ var _util__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./util */ "./src/util.ts");
 // Copyright (c) 2023-present VexFlow contributors: https://github.com/vexflow/vexflow/graphs/contributors
 //
 // ## Description
@@ -34268,17 +33916,15 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-
-
 const assertIsValidTimeSig = (timeSpec) => {
     const numbers = timeSpec.split('/');
     if (numbers.length !== 2 && numbers[0] !== '+' && numbers[0] !== '-') {
-        throw new _util__WEBPACK_IMPORTED_MODULE_5__.RuntimeError('BadTimeSignature', `Invalid time spec: ${timeSpec}. Must be in the form "<numerator>/<denominator>"`);
+        throw new _util__WEBPACK_IMPORTED_MODULE_3__.RuntimeError('BadTimeSignature', `Invalid time spec: ${timeSpec}. Must be in the form "<numerator>/<denominator>"`);
     }
     numbers.forEach((number) => {
         // Characters consisting in number 0..9, '+', '-', '(' or ')'
         if (/^[0-9+\-()]+$/.test(number) == false) {
-            throw new _util__WEBPACK_IMPORTED_MODULE_5__.RuntimeError('BadTimeSignature', `Invalid time spec: ${timeSpec}. Must contain valid signatures.`);
+            throw new _util__WEBPACK_IMPORTED_MODULE_3__.RuntimeError('BadTimeSignature', `Invalid time spec: ${timeSpec}. Must contain valid signatures.`);
         }
     });
 };
@@ -34289,61 +33935,52 @@ const assertIsValidTimeSig = (timeSpec) => {
  */
 class TimeSignature extends _stavemodifier__WEBPACK_IMPORTED_MODULE_1__.StaveModifier {
     static get CATEGORY() {
-        return _typeguard__WEBPACK_IMPORTED_MODULE_4__.Category.TimeSignature;
-    }
-    static get glyphs() {
-        return {
-            C: {
-                code: 'timeSigCommon',
-                line: 2,
-            },
-            'C|': {
-                code: 'timeSigCutCommon',
-                line: 2,
-            },
-        };
+        return _typeguard__WEBPACK_IMPORTED_MODULE_2__.Category.TimeSignature;
     }
     constructor(timeSpec = '4/4', customPadding = 15, validateArgs = true) {
         super();
         this.timeSpec = '4/4';
         this.line = 0;
         this.isNumeric = true;
+        this.topStartX = 0;
+        this.botStartX = 0;
+        this.lineShift = 0;
+        this.topText = new _element__WEBPACK_IMPORTED_MODULE_0__.Element();
+        this.botText = new _element__WEBPACK_IMPORTED_MODULE_0__.Element();
         this.validateArgs = validateArgs;
         const padding = customPadding;
-        // point must be defined before parsing spec.
-        const musicFont = _tables__WEBPACK_IMPORTED_MODULE_2__.Tables.currentMusicFont();
-        this.point = musicFont.lookupMetric('digits.point') || _tables__WEBPACK_IMPORTED_MODULE_2__.Tables.NOTATION_FONT_SCALE;
-        const fontLineShift = musicFont.lookupMetric('digits.shiftLine', 0);
-        this.topLine = 2 + fontLineShift;
-        this.bottomLine = 4 + fontLineShift;
+        this.topLine = 1;
+        this.bottomLine = 3;
         this.setPosition(_stavemodifier__WEBPACK_IMPORTED_MODULE_1__.StaveModifierPosition.BEGIN);
         this.setTimeSig(timeSpec);
         this.setPadding(padding);
     }
-    /**
-     * Return TimeSignatureInfo given a string, consisting of line (number),
-     * num (boolean: same as TimeSignature.getIsNumeric()), and glyph (a Glyph or
-     * TimeSignatureGlyph object).
-     */
-    parseTimeSpec(timeSpec) {
-        var _a, _b;
-        if (timeSpec === 'C' || timeSpec === 'C|') {
-            const { line, code } = TimeSignature.glyphs[timeSpec];
-            return {
-                line,
-                num: false,
-                glyph: new _glyph__WEBPACK_IMPORTED_MODULE_0__.Glyph(code, _tables__WEBPACK_IMPORTED_MODULE_2__.Tables.NOTATION_FONT_SCALE),
-            };
+    static getTimeSigCode(key, smallSig = false) {
+        let code = '\u00000';
+        switch (key) {
+            case 'C':
+                code = '\ue08a' /*timeSigCommon*/;
+                break;
+            case 'C|':
+                code = '\ue08b' /*timeSigCutCommon*/;
+                break;
+            case '+':
+                code = smallSig ? '\ue08d' /*timeSigPlusSmall*/ : '\ue08c' /*timeSigPlus*/;
+                break;
+            case '-':
+                code = '\ue090' /*timeSigMinus*/;
+                break;
+            case '(':
+                code = smallSig ? '\ue092' /*timeSigParensLeftSmall*/ : '\ue094' /*timeSigParensLeft*/;
+                break;
+            case ')':
+                code = smallSig ? '\ue093' /*timeSigParensRightSmall*/ : '\ue095' /*timeSigParensRight*/;
+                break;
+            default:
+                code = String.fromCodePoint(0xe080 + Number(key[0])) /*timeSigN*/;
+                break;
         }
-        if (this.validateArgs) {
-            assertIsValidTimeSig(timeSpec);
-        }
-        const parts = timeSpec.split('/');
-        return {
-            line: 0,
-            num: true,
-            glyph: this.makeTimeSignatureGlyph((_a = parts[0]) !== null && _a !== void 0 ? _a : '', (_b = parts[1]) !== null && _b !== void 0 ? _b : ''),
-        };
+        return code;
     }
     /**
      * Returns a new TimeSignatureGlyph (a Glyph subclass that knows how to draw both
@@ -34351,15 +33988,33 @@ class TimeSignature extends _stavemodifier__WEBPACK_IMPORTED_MODULE_1__.StaveMod
      */
     makeTimeSignatureGlyph(topDigits, botDigits) {
         // note that 'code' is ignored by TimeSignatureGlyph when rendering.
-        return new _timesigglyph__WEBPACK_IMPORTED_MODULE_3__.TimeSignatureGlyph(this, topDigits, botDigits, 'timeSig0', this.point);
-    }
-    /**
-     * Returns {line, num (=getIsNumeric), glyph} --
-     * but these can also be accessed directly w/ getters and setters.
-     */
-    getInfo() {
-        const { line, isNumeric, glyph } = this;
-        return { line, num: isNumeric, glyph };
+        let txt = '';
+        let topWidth = 0;
+        let height = 0;
+        for (let i = 0; i < topDigits.length; ++i) {
+            const code = TimeSignature.getTimeSigCode(topDigits[i], botDigits.length > 0);
+            txt += code;
+        }
+        this.topText.setText(txt);
+        this.topText.measureText();
+        topWidth = this.topText.getWidth();
+        height = this.topText.getHeight();
+        let botWidth = 0;
+        txt = '';
+        for (let i = 0; i < botDigits.length; ++i) {
+            const code = TimeSignature.getTimeSigCode(botDigits[i], true);
+            txt += code;
+        }
+        this.botText.setText(txt);
+        this.botText.measureText();
+        botWidth = this.botText.getWidth();
+        height = Math.max(height, this.botText.getHeight());
+        // If the height of the digits is more than two staff spaces (20), shift to the next line
+        // in order to center the digits on lines 1 and 5 rather than 2 and 4.
+        this.lineShift = height > 22 ? 1 : 0;
+        this.width = Math.max(topWidth, botWidth);
+        this.topStartX = (this.width - topWidth) / 2.0;
+        this.botStartX = (this.width - botWidth) / 2.0;
     }
     /**
      * Set a new time signature specification without changing customPadding, etc.
@@ -34367,11 +34022,24 @@ class TimeSignature extends _stavemodifier__WEBPACK_IMPORTED_MODULE_1__.StaveMod
      * The getter for this is `getTimeSpec` not `getTimeSig`.
      */
     setTimeSig(timeSpec) {
+        var _a, _b;
         this.timeSpec = timeSpec;
-        const info = this.parseTimeSpec(timeSpec);
-        this.setGlyph(info.glyph);
-        this.isNumeric = info.num;
-        this.line = info.line;
+        if (timeSpec === 'C' || timeSpec === 'C|') {
+            const code = TimeSignature.getTimeSigCode(timeSpec);
+            this.line = 2;
+            this.text = code;
+            this.measureText();
+            this.isNumeric = false;
+        }
+        else {
+            if (this.validateArgs) {
+                assertIsValidTimeSig(timeSpec);
+            }
+            const parts = timeSpec.split('/');
+            this.line = 0;
+            this.isNumeric = true;
+            this.makeTimeSignatureGlyph((_a = parts[0]) !== null && _a !== void 0 ? _a : '', (_b = parts[1]) !== null && _b !== void 0 ? _b : '');
+        }
         return this;
     }
     /**
@@ -34396,21 +34064,6 @@ class TimeSignature extends _stavemodifier__WEBPACK_IMPORTED_MODULE_1__.StaveMod
         this.line = line;
     }
     /**
-     * Get the Glyph object used to create the time signature.  Numeric time signatures
-     * such as 3/8 have a composite Glyph stored as a single Glyph object.
-     */
-    getGlyph() {
-        return this.glyph;
-    }
-    /**
-     * Set the Glyph object used to draw the time signature, and update the width of the
-     * TimeSignature to match.  The Glyph must define width in its metrics.
-     */
-    setGlyph(glyph) {
-        this.glyph = glyph;
-        this.setWidth((0,_util__WEBPACK_IMPORTED_MODULE_5__.defined)(this.glyph.getMetrics().width));
-    }
-    /**
      * Return a boolean on whether this TimeSignature is drawn with one or more numbers
      * (such as 4/4) or not (as in cut time).
      */
@@ -34431,12 +34084,27 @@ class TimeSignature extends _stavemodifier__WEBPACK_IMPORTED_MODULE_1__.StaveMod
         const stave = this.checkStave();
         const ctx = stave.checkContext();
         this.setRendered();
+        this.drawAt(ctx, stave, this.x);
+    }
+    drawAt(ctx, stave, x) {
+        this.setRendered();
         this.applyStyle(ctx);
         ctx.openGroup('timesignature', this.getAttribute('id'));
-        this.glyph.setStave(stave);
-        this.glyph.setContext(ctx);
-        this.placeGlyphOnLine(this.glyph, stave, this.line);
-        this.glyph.renderToStave(this.x);
+        if (this.isNumeric) {
+            let startX = x + this.topStartX;
+            let y = 0;
+            if (this.botText.getText().length > 0)
+                y = stave.getYForLine(this.topLine - this.lineShift);
+            else
+                y = (stave.getYForLine(this.topLine) + stave.getYForLine(this.bottomLine)) / 2;
+            this.topText.renderText(ctx, startX, y);
+            startX = x + this.botStartX;
+            y = stave.getYForLine(this.bottomLine + this.lineShift);
+            this.botText.renderText(ctx, startX, y);
+        }
+        else {
+            this.renderText(ctx, x - this.x, stave.getYForLine(this.line));
+        }
         ctx.closeGroup();
         this.restoreStyle(ctx);
     }
@@ -34470,7 +34138,7 @@ class TimeSigNote extends _note__WEBPACK_IMPORTED_MODULE_0__.Note {
     constructor(timeSpec, customPadding) {
         super({ duration: 'b' });
         this.timeSig = new _timesignature__WEBPACK_IMPORTED_MODULE_1__.TimeSignature(timeSpec, customPadding);
-        this.setWidth(this.timeSig.getGlyph().getMetrics().width);
+        this.setWidth(this.timeSig.getWidth());
         // Note properties
         this.ignoreTicks = true;
     }
@@ -34488,13 +34156,7 @@ class TimeSigNote extends _note__WEBPACK_IMPORTED_MODULE_0__.Note {
         const stave = this.checkStave();
         const ctx = this.checkContext();
         this.setRendered();
-        const tsGlyph = this.timeSig.getGlyph();
-        if (!tsGlyph.getContext()) {
-            tsGlyph.setContext(ctx);
-        }
-        tsGlyph.setStave(stave);
-        tsGlyph.setYShift(stave.getYForLine(2) - stave.getYForGlyphs());
-        tsGlyph.renderToStave(this.getAbsoluteX());
+        this.timeSig.drawAt(ctx, stave, this.getAbsoluteX());
     }
 }
 
@@ -34511,13 +34173,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   Tremolo: () => (/* binding */ Tremolo)
 /* harmony export */ });
-/* harmony import */ var _glyph__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./glyph */ "./src/glyph.ts");
-/* harmony import */ var _gracenote__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./gracenote */ "./src/gracenote.ts");
-/* harmony import */ var _modifier__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./modifier */ "./src/modifier.ts");
-/* harmony import */ var _note__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./note */ "./src/note.ts");
-/* harmony import */ var _stem__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./stem */ "./src/stem.ts");
-/* harmony import */ var _tables__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./tables */ "./src/tables.ts");
-/* harmony import */ var _typeguard__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./typeguard */ "./src/typeguard.ts");
+/* harmony import */ var _gracenote__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./gracenote */ "./src/gracenote.ts");
+/* harmony import */ var _modifier__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./modifier */ "./src/modifier.ts");
+/* harmony import */ var _stem__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./stem */ "./src/stem.ts");
+/* harmony import */ var _tables__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./tables */ "./src/tables.ts");
+/* harmony import */ var _typeguard__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./typeguard */ "./src/typeguard.ts");
 // Copyright (c) 2023-present VexFlow contributors: https://github.com/vexflow/vexflow/graphs/contributors
 // @author Mike Corrigan <corrigan@gmail.com>
 // MIT License
@@ -34526,12 +34186,10 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-
-
 /** Tremolo implements tremolo notation. */
-class Tremolo extends _modifier__WEBPACK_IMPORTED_MODULE_2__.Modifier {
+class Tremolo extends _modifier__WEBPACK_IMPORTED_MODULE_1__.Modifier {
     static get CATEGORY() {
-        return _typeguard__WEBPACK_IMPORTED_MODULE_6__.Category.Tremolo;
+        return _typeguard__WEBPACK_IMPORTED_MODULE_4__.Category.Tremolo;
     }
     /**
      * @param num number of bars
@@ -34539,40 +34197,23 @@ class Tremolo extends _modifier__WEBPACK_IMPORTED_MODULE_2__.Modifier {
     constructor(num) {
         super();
         this.num = num;
-        this.position = _modifier__WEBPACK_IMPORTED_MODULE_2__.Modifier.Position.CENTER;
-        this.code = 'tremolo1';
-        // big strokes scales initialised to 1 (no scale)
-        this.ySpacingScale = 1;
-        this.extraStrokeScale = 1;
+        this.position = _modifier__WEBPACK_IMPORTED_MODULE_1__.Modifier.Position.CENTER;
+        this.text = '\uE220' /*tremolo1*/;
+        this.measureText();
     }
     /** Draw the tremolo on the rendering context. */
     draw() {
-        var _a;
         const ctx = this.checkContext();
         const note = this.checkAttachedNote();
         this.setRendered();
         const stemDirection = note.getStemDirection();
-        const start = note.getModifierStartXY(this.position, this.index);
-        let x = start.x;
-        const gn = (0,_typeguard__WEBPACK_IMPORTED_MODULE_6__.isGraceNote)(note);
-        const scale = gn ? _gracenote__WEBPACK_IMPORTED_MODULE_1__.GraceNote.SCALE : 1;
-        const category = `tremolo.${gn ? 'grace' : 'default'}`;
-        const musicFont = _tables__WEBPACK_IMPORTED_MODULE_5__.Tables.currentMusicFont();
-        let ySpacing = musicFont.lookupMetric(`${category}.spacing`) * stemDirection;
-        // add ySpacingScale for big strokes (#1258)
-        ySpacing *= this.ySpacingScale;
-        const height = this.num * ySpacing;
-        let y = note.getStemExtents().baseY - height;
-        if (stemDirection < 0) {
-            y += musicFont.lookupMetric(`${category}.offsetYStemDown`) * scale;
-        }
-        else {
-            y += musicFont.lookupMetric(`${category}.offsetYStemUp`) * scale;
-        }
-        const fontScale = (_a = musicFont.lookupMetric(`${category}.point`)) !== null && _a !== void 0 ? _a : _note__WEBPACK_IMPORTED_MODULE_3__.Note.getPoint(gn ? 'grace' : 'default');
-        x += musicFont.lookupMetric(`${category}.offsetXStem${stemDirection === _stem__WEBPACK_IMPORTED_MODULE_4__.Stem.UP ? 'Up' : 'Down'}`);
+        const scale = (0,_typeguard__WEBPACK_IMPORTED_MODULE_4__.isGraceNote)(note) ? _gracenote__WEBPACK_IMPORTED_MODULE_0__.GraceNote.SCALE : 1;
+        const ySpacing = _tables__WEBPACK_IMPORTED_MODULE_3__.Tables.lookupMetric(`Tremolo.spacing`) * stemDirection * scale;
+        const x = note.getAbsoluteX() + (stemDirection === _stem__WEBPACK_IMPORTED_MODULE_2__.Stem.UP ? note.getGlyphWidth() - _stem__WEBPACK_IMPORTED_MODULE_2__.Stem.WIDTH / 2 : _stem__WEBPACK_IMPORTED_MODULE_2__.Stem.WIDTH / 2);
+        let y = note.getStemExtents().topY + (this.num <= 3 ? ySpacing : 0);
+        this.textFont.size = _tables__WEBPACK_IMPORTED_MODULE_3__.Tables.lookupMetric(`Tremolo.fontSize`) * scale;
         for (let i = 0; i < this.num; ++i) {
-            _glyph__WEBPACK_IMPORTED_MODULE_0__.Glyph.renderGlyph(ctx, x, y, fontScale, this.code, { category, scale: this.extraStrokeScale });
+            this.renderText(ctx, x, y);
             y += ySpacing;
         }
     }
@@ -34681,11 +34322,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _element__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./element */ "./src/element.ts");
 /* harmony import */ var _formatter__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./formatter */ "./src/formatter.ts");
-/* harmony import */ var _glyph__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./glyph */ "./src/glyph.ts");
-/* harmony import */ var _stem__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./stem */ "./src/stem.ts");
-/* harmony import */ var _tables__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./tables */ "./src/tables.ts");
-/* harmony import */ var _typeguard__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./typeguard */ "./src/typeguard.ts");
-/* harmony import */ var _util__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./util */ "./src/util.ts");
+/* harmony import */ var _stem__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./stem */ "./src/stem.ts");
+/* harmony import */ var _tables__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./tables */ "./src/tables.ts");
+/* harmony import */ var _typeguard__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./typeguard */ "./src/typeguard.ts");
+/* harmony import */ var _util__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./util */ "./src/util.ts");
 // Copyright (c) 2023-present VexFlow contributors: https://github.com/vexflow/vexflow/graphs/contributors
 /**
  * ## Description
@@ -34736,7 +34376,6 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-
 var TupletLocation;
 (function (TupletLocation) {
     TupletLocation[TupletLocation["BOTTOM"] = -1] = "BOTTOM";
@@ -34744,7 +34383,7 @@ var TupletLocation;
 })(TupletLocation || (TupletLocation = {}));
 class Tuplet extends _element__WEBPACK_IMPORTED_MODULE_0__.Element {
     static get CATEGORY() {
-        return _typeguard__WEBPACK_IMPORTED_MODULE_5__.Category.Tuplet;
+        return _typeguard__WEBPACK_IMPORTED_MODULE_4__.Category.Tuplet;
     }
     static get LOCATION_TOP() {
         return TupletLocation.TOP;
@@ -34755,27 +34394,15 @@ class Tuplet extends _element__WEBPACK_IMPORTED_MODULE_0__.Element {
     static get NESTING_OFFSET() {
         return 15;
     }
-    static get metrics() {
-        const tupletMetrics = _tables__WEBPACK_IMPORTED_MODULE_4__.Tables.currentMusicFont().getMetrics().tuplet;
-        if (!tupletMetrics)
-            throw new _util__WEBPACK_IMPORTED_MODULE_6__.RuntimeError('BadMetrics', `tuplet missing`);
-        return tupletMetrics;
-    }
     constructor(notes, options = {}) {
         super();
-        this.numeratorGlyphs = [];
-        this.denominatorGlyphs = [];
         if (!notes || !notes.length) {
-            throw new _util__WEBPACK_IMPORTED_MODULE_6__.RuntimeError('BadArguments', 'No notes provided for tuplet.');
+            throw new _util__WEBPACK_IMPORTED_MODULE_5__.RuntimeError('BadArguments', 'No notes provided for tuplet.');
         }
         this.options = options;
         this.notes = notes;
         this.numNotes = this.options.numNotes != undefined ? this.options.numNotes : notes.length;
-        // We accept beatsOccupied, but warn that it's deprecated: the preferred property name is now notesOccupied.
-        if (this.options.beatsOccupied) {
-            this.beatsOccupiedDeprecationWarning();
-        }
-        this.notesOccupied = this.options.notesOccupied || this.options.beatsOccupied || 2;
+        this.notesOccupied = this.options.notesOccupied || 2;
         if (this.options.bracketed != undefined) {
             this.bracketed = this.options.bracketed;
         }
@@ -34784,10 +34411,7 @@ class Tuplet extends _element__WEBPACK_IMPORTED_MODULE_0__.Element {
         }
         this.ratioed =
             this.options.ratioed != undefined ? this.options.ratioed : Math.abs(this.notesOccupied - this.numNotes) > 1;
-        this.point = (_tables__WEBPACK_IMPORTED_MODULE_4__.Tables.NOTATION_FONT_SCALE * 3) / 5;
-        this.yPos = 16;
-        this.xPos = 100;
-        this.width = 200;
+        this.textElement = new _element__WEBPACK_IMPORTED_MODULE_0__.Element('Tuplet');
         this.setTupletLocation(this.options.location || Tuplet.LOCATION_TOP);
         _formatter__WEBPACK_IMPORTED_MODULE_1__.Formatter.AlignRestsToNotes(notes, true, true);
         this.resolveGlyphs();
@@ -34837,18 +34461,6 @@ class Tuplet extends _element__WEBPACK_IMPORTED_MODULE_0__.Element {
     getNoteCount() {
         return this.numNotes;
     }
-    beatsOccupiedDeprecationWarning() {
-        // eslint-disable-next-line
-        console.warn('beatsOccupied has been deprecated as an option for tuplets. Please use notesOccupied instead.', 'Calls to getBeatsOccupied / setBeatsOccupied should now be routed to getNotesOccupied / setNotesOccupied.', 'The old methods will be removed in VexFlow 5.0.');
-    }
-    getBeatsOccupied() {
-        this.beatsOccupiedDeprecationWarning();
-        return this.getNotesOccupied();
-    }
-    setBeatsOccupied(beats) {
-        this.beatsOccupiedDeprecationWarning();
-        return this.setNotesOccupied(beats);
-    }
     getNotesOccupied() {
         return this.notesOccupied;
     }
@@ -34859,18 +34471,23 @@ class Tuplet extends _element__WEBPACK_IMPORTED_MODULE_0__.Element {
         this.attach();
     }
     resolveGlyphs() {
-        this.numeratorGlyphs = [];
+        let numerator = '';
+        let denominator = '';
         let n = this.numNotes;
         while (n >= 1) {
-            this.numeratorGlyphs.unshift(new _glyph__WEBPACK_IMPORTED_MODULE_2__.Glyph('timeSig' + (n % 10), this.point));
-            n = parseInt((n / 10).toString(), 10);
+            numerator = String.fromCharCode(0xe880 /* tuplet0 */ + (n % 10)) + numerator;
+            n = Math.floor(n / 10);
         }
-        this.denominatorGlyphs = [];
-        n = this.notesOccupied;
-        while (n >= 1) {
-            this.denominatorGlyphs.unshift(new _glyph__WEBPACK_IMPORTED_MODULE_2__.Glyph('timeSig' + (n % 10), this.point));
-            n = parseInt((n / 10).toString(), 10);
+        if (this.ratioed) {
+            n = this.notesOccupied;
+            while (n >= 1) {
+                denominator = String.fromCharCode(0xe880 /* tuplet0 */ + (n % 10)) + denominator;
+                n = Math.floor(n / 10);
+            }
+            denominator = '\uE88A' /* tupletColon */ + denominator;
         }
+        this.textElement.setText(numerator + denominator);
+        this.textElement.measureText();
     }
     // determine how many tuplets are nested within this tuplet
     // on the same side (above/below), to calculate a y
@@ -34904,7 +34521,7 @@ class Tuplet extends _element__WEBPACK_IMPORTED_MODULE_0__.Element {
         const firstNote = this.notes[0];
         let yPosition;
         if (this.location === Tuplet.LOCATION_TOP) {
-            yPosition = firstNote.checkStave().getYForLine(0) - Tuplet.metrics.topModifierOffset;
+            yPosition = firstNote.checkStave().getYForLine(0) - 1.5 * _tables__WEBPACK_IMPORTED_MODULE_3__.Tables.STAVE_LINE_DISTANCE;
             // check modifiers above note to see if they will collide with tuplet beam
             for (let i = 0; i < this.notes.length; ++i) {
                 const note = this.notes[i];
@@ -34913,11 +34530,11 @@ class Tuplet extends _element__WEBPACK_IMPORTED_MODULE_0__.Element {
                 if (mc) {
                     modLines = Math.max(modLines, mc.getState().topTextLine);
                 }
-                const modY = note.getYForTopText(modLines) - Tuplet.metrics.noteHeadOffset;
+                const modY = note.getYForTopText(modLines) - 2 * _tables__WEBPACK_IMPORTED_MODULE_3__.Tables.STAVE_LINE_DISTANCE;
                 if (note.hasStem() || note.isRest()) {
-                    const topY = note.getStemDirection() === _stem__WEBPACK_IMPORTED_MODULE_3__.Stem.UP
-                        ? note.getStemExtents().topY - Tuplet.metrics.stemOffset
-                        : note.getStemExtents().baseY - Tuplet.metrics.noteHeadOffset;
+                    const topY = note.getStemDirection() === _stem__WEBPACK_IMPORTED_MODULE_2__.Stem.UP
+                        ? note.getStemExtents().topY - _tables__WEBPACK_IMPORTED_MODULE_3__.Tables.STAVE_LINE_DISTANCE
+                        : note.getStemExtents().baseY - 2 * _tables__WEBPACK_IMPORTED_MODULE_3__.Tables.STAVE_LINE_DISTANCE;
                     yPosition = Math.min(topY, yPosition);
                     if (modLines > 0) {
                         yPosition = Math.min(modY, yPosition);
@@ -34926,7 +34543,7 @@ class Tuplet extends _element__WEBPACK_IMPORTED_MODULE_0__.Element {
             }
         }
         else {
-            let lineCheck = Tuplet.metrics.bottomLine; // tuplet default on line 4
+            let lineCheck = 4; // tuplet default on line 4
             // check modifiers below note to see if they will collide with tuplet beam
             this.notes.forEach((nn) => {
                 const mc = nn.getModifierContext();
@@ -34934,12 +34551,12 @@ class Tuplet extends _element__WEBPACK_IMPORTED_MODULE_0__.Element {
                     lineCheck = Math.max(lineCheck, mc.getState().textLine + 1);
                 }
             });
-            yPosition = firstNote.checkStave().getYForLine(lineCheck) + Tuplet.metrics.noteHeadOffset;
+            yPosition = firstNote.checkStave().getYForLine(lineCheck) + 2 * _tables__WEBPACK_IMPORTED_MODULE_3__.Tables.STAVE_LINE_DISTANCE;
             for (let i = 0; i < this.notes.length; ++i) {
                 if (this.notes[i].hasStem() || this.notes[i].isRest()) {
-                    const bottomY = this.notes[i].getStemDirection() === _stem__WEBPACK_IMPORTED_MODULE_3__.Stem.UP
-                        ? this.notes[i].getStemExtents().baseY + Tuplet.metrics.noteHeadOffset
-                        : this.notes[i].getStemExtents().topY + Tuplet.metrics.stemOffset;
+                    const bottomY = this.notes[i].getStemDirection() === _stem__WEBPACK_IMPORTED_MODULE_2__.Stem.UP
+                        ? this.notes[i].getStemExtents().baseY + 2 * _tables__WEBPACK_IMPORTED_MODULE_3__.Tables.STAVE_LINE_DISTANCE
+                        : this.notes[i].getStemExtents().topY + _tables__WEBPACK_IMPORTED_MODULE_3__.Tables.STAVE_LINE_DISTANCE;
                     if (bottomY > yPosition) {
                         yPosition = bottomY;
                     }
@@ -34950,65 +34567,37 @@ class Tuplet extends _element__WEBPACK_IMPORTED_MODULE_0__.Element {
     }
     draw() {
         const ctx = this.checkContext();
+        let xPos = 0;
+        let yPos = 0;
         this.setRendered();
         // determine x value of left bound of tuplet
         const firstNote = this.notes[0];
         const lastNote = this.notes[this.notes.length - 1];
         if (!this.bracketed) {
-            this.xPos = firstNote.getStemX();
-            this.width = lastNote.getStemX() - this.xPos;
+            xPos = firstNote.getStemX();
+            this.width = lastNote.getStemX() - xPos;
         }
         else {
-            this.xPos = firstNote.getTieLeftX() - 5;
-            this.width = lastNote.getTieRightX() - this.xPos + 5;
+            xPos = firstNote.getTieLeftX() - 5;
+            this.width = lastNote.getTieRightX() - xPos + 5;
         }
         // determine y value for tuplet
-        this.yPos = this.getYPosition();
-        const addGlyphWidth = (width, glyph) => width + (0,_util__WEBPACK_IMPORTED_MODULE_6__.defined)(glyph.getMetrics().width);
-        // calculate total width of tuplet notation
-        let width = this.numeratorGlyphs.reduce(addGlyphWidth, 0);
-        if (this.ratioed) {
-            width = this.denominatorGlyphs.reduce(addGlyphWidth, width);
-            width += this.point * 0.32;
-        }
-        const notationCenterX = this.xPos + this.width / 2;
-        const notationStartX = notationCenterX - width / 2;
+        yPos = this.getYPosition();
+        const notationCenterX = xPos + this.width / 2;
+        const notationStartX = notationCenterX - this.textElement.getWidth() / 2;
         // draw bracket if the tuplet is not beamed
         if (this.bracketed) {
-            const lineWidth = this.width / 2 - width / 2 - 5;
+            const lineWidth = this.width / 2 - this.textElement.getWidth() / 2 - 5;
             // only draw the bracket if it has positive length
             if (lineWidth > 0) {
-                ctx.fillRect(this.xPos, this.yPos, lineWidth, 1);
-                ctx.fillRect(this.xPos + this.width / 2 + width / 2 + 5, this.yPos, lineWidth, 1);
-                ctx.fillRect(this.xPos, this.yPos + (this.location === Tuplet.LOCATION_BOTTOM ? 1 : 0), 1, this.location * 10);
-                ctx.fillRect(this.xPos + this.width, this.yPos + (this.location === Tuplet.LOCATION_BOTTOM ? 1 : 0), 1, this.location * 10);
+                ctx.fillRect(xPos, yPos, lineWidth, 1);
+                ctx.fillRect(xPos + this.width / 2 + this.textElement.getWidth() / 2 + 5, yPos, lineWidth, 1);
+                ctx.fillRect(xPos, yPos + (this.location === Tuplet.LOCATION_BOTTOM ? 1 : 0), 1, this.location * 10);
+                ctx.fillRect(xPos + this.width, yPos + (this.location === Tuplet.LOCATION_BOTTOM ? 1 : 0), 1, this.location * 10);
             }
         }
-        // draw numerator glyphs
-        const shiftY = _tables__WEBPACK_IMPORTED_MODULE_4__.Tables.currentMusicFont().lookupMetric('digits.shiftY', 0);
-        let xOffset = 0;
-        this.numeratorGlyphs.forEach((glyph) => {
-            glyph.render(ctx, notationStartX + xOffset, this.yPos + this.point / 3 - 2 + shiftY);
-            xOffset += (0,_util__WEBPACK_IMPORTED_MODULE_6__.defined)(glyph.getMetrics().width);
-        });
-        // display colon and denominator if the ratio is to be shown
-        if (this.ratioed) {
-            const colonX = notationStartX + xOffset + this.point * 0.16;
-            const colonRadius = this.point * 0.06;
-            ctx.beginPath();
-            ctx.arc(colonX, this.yPos - this.point * 0.08, colonRadius, 0, Math.PI * 2, false);
-            ctx.closePath();
-            ctx.fill();
-            ctx.beginPath();
-            ctx.arc(colonX, this.yPos + this.point * 0.12, colonRadius, 0, Math.PI * 2, false);
-            ctx.closePath();
-            ctx.fill();
-            xOffset += this.point * 0.32;
-            this.denominatorGlyphs.forEach((glyph) => {
-                glyph.render(ctx, notationStartX + xOffset, this.yPos + this.point / 3 - 2 + shiftY);
-                xOffset += (0,_util__WEBPACK_IMPORTED_MODULE_6__.defined)(glyph.getMetrics().width);
-            });
-        }
+        // draw text
+        this.textElement.renderText(ctx, notationStartX, yPos + this.textElement.getHeight() / 2);
     }
 }
 
@@ -36037,7 +35626,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   Tickable: () => (/* reexport safe */ _src_index__WEBPACK_IMPORTED_MODULE_3__.Tickable),
 /* harmony export */   TimeSigNote: () => (/* reexport safe */ _src_index__WEBPACK_IMPORTED_MODULE_3__.TimeSigNote),
 /* harmony export */   TimeSignature: () => (/* reexport safe */ _src_index__WEBPACK_IMPORTED_MODULE_3__.TimeSignature),
-/* harmony export */   TimeSignatureGlyph: () => (/* reexport safe */ _src_index__WEBPACK_IMPORTED_MODULE_3__.TimeSignatureGlyph),
 /* harmony export */   Tremolo: () => (/* reexport safe */ _src_index__WEBPACK_IMPORTED_MODULE_3__.Tremolo),
 /* harmony export */   Tuning: () => (/* reexport safe */ _src_index__WEBPACK_IMPORTED_MODULE_3__.Tuning),
 /* harmony export */   Tuplet: () => (/* reexport safe */ _src_index__WEBPACK_IMPORTED_MODULE_3__.Tuplet),

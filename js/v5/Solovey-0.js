@@ -2956,7 +2956,7 @@ smo249573.setContext(context).draw();
 // Align lyrics on different measures, once they are rendered.
 context.svg.getElementById('vf-smo238439').setAttributeNS('', 'transform', 'translate(0 15)');
 context.svg.getElementById('vf-smo238441').setAttributeNS('', 'transform', 'translate(0 15)');
-context.svg.getElementById('vf-smo238459').setAttributeNS('', 'transform', 'translate(0 6)');
+context.svg.getElementById('vf-smo238459').setAttributeNS('', 'transform', 'translate(0 10)');
 context.svg.getElementById('vf-smo238461').setAttributeNS('', 'transform', 'translate(0 15)');
 context.svg.getElementById('vf-smo238463').setAttributeNS('', 'transform', 'translate(0 15)');
 context.svg.getElementById('vf-smo238481').setAttributeNS('', 'transform', 'translate(0 5)');
@@ -2975,12 +2975,12 @@ context.svg.getElementById('vf-smo238574').setAttributeNS('', 'transform', 'tran
 context.svg.getElementById('vf-smo238592').setAttributeNS('', 'transform', 'translate(0 5)');
 context.svg.getElementById('vf-smo238611').setAttributeNS('', 'transform', 'translate(0 5)');
 context.svg.getElementById('vf-smo238615').setAttributeNS('', 'transform', 'translate(0 5)');
-context.svg.getElementById('vf-smo238633').setAttributeNS('', 'transform', 'translate(0 6)');
+context.svg.getElementById('vf-smo238633').setAttributeNS('', 'transform', 'translate(0 10)');
 context.svg.getElementById('vf-smo238635').setAttributeNS('', 'transform', 'translate(0 15)');
 context.svg.getElementById('vf-smo238637').setAttributeNS('', 'transform', 'translate(0 15)');
 context.svg.getElementById('vf-smo238655').setAttributeNS('', 'transform', 'translate(0 5)');
 context.svg.getElementById('vf-smo238658').setAttributeNS('', 'transform', 'translate(0 15)');
-context.svg.getElementById('vf-smo238677').setAttributeNS('', 'transform', 'translate(0 6)');
+context.svg.getElementById('vf-smo238677').setAttributeNS('', 'transform', 'translate(0 10)');
 context.svg.getElementById('vf-smo238679').setAttributeNS('', 'transform', 'translate(0 5)');
 context.svg.getElementById('vf-smo238698').setAttributeNS('', 'transform', 'translate(0 10)');
 context.svg.getElementById('vf-smo238700').setAttributeNS('', 'transform', 'translate(0 15)');
