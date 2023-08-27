@@ -2784,7 +2784,7 @@ smo88157.draw();
 const rightsmo81406stavesmo777244 = new VF.StaveConnector(stavesmo77724, stavesmo81029).setType(0);
 rightsmo81406stavesmo777244.setContext(context).draw();
 // modifier from 0-13-0-4 to 0-13-0-5
-const smo89081 = new VF.Curve(smo77586, smo77587, JSON.parse('{"thickness":2,"x_shift":0,"y_shift":10,"cps":[{"x":0,"y":15},{"x":0,"y":15}],"invert":false,"position":1,"position_end":1}'));
+const smo89081 = new VF.Curve(smo77586, smo77587, JSON.parse('{"thickness":2,"xShift":0,"yShift":10,"cps":[{"x":0,"y":15},{"x":0,"y":15}],"invert":false,"position":1,"positionEnd":1}'));
 smo89081.setContext(context).draw();
 // 
 // Align lyrics on different measures, once they are rendered.

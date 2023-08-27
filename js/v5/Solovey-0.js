@@ -2943,7 +2943,7 @@ smo241771v0.draw(context, stavesmo241771);
 const rightsmo242235stavesmo2388423 = new VF.StaveConnector(stavesmo238842, stavesmo241771).setType(0);
 rightsmo242235stavesmo2388423.setContext(context).draw();
 // modifier from 0-18-0-0 to 0-18-0-1
-const smo249571 = new VF.Curve(smo238654, smo238656, JSON.parse('{"thickness":2,"x_shift":0,"y_shift":0,"cps":[{"x":0,"y":45},{"x":0,"y":45}],"invert":false,"position":2,"position_end":1}'));
+const smo249571 = new VF.Curve(smo238654, smo238656, JSON.parse('{"thickness":2,"xShift":0,"yShift":0,"cps":[{"x":0,"y":45},{"x":0,"y":45}],"invert":false,"position":2,"positionEnd":1}'));
 smo249571.setContext(context).draw();
 // modifier from 0-22-0-0 to 0-23-0-0
 const smo249572 = new VF.TextBracket({ start: smo238744, stop: smo238774, text: 'ritard', position: 1 });

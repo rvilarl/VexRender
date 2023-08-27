@@ -2315,7 +2315,7 @@ smo230331v1.draw(context, stavesmo230331);
 const rightsmo230697stavesmo2279352 = new VF.StaveConnector(stavesmo227935, stavesmo230331).setType(0);
 rightsmo230697stavesmo2279352.setContext(context).draw();
 // modifier from 0-26-0-0 to 0-27-0-0
-const smo237751 = new VF.Curve(smo227524, smo227543, JSON.parse('{"thickness":2,"x_shift":0,"y_shift":0,"cps":[{"x":0,"y":15},{"x":0,"y":15}],"invert":false,"position":1,"position_end":1}'));
+const smo237751 = new VF.Curve(smo227524, smo227543, JSON.parse('{"thickness":2,"xShift":0,"yShift":0,"cps":[{"x":0,"y":15},{"x":0,"y":15}],"invert":false,"position":1,"positionEnd":1}'));
 smo237751.setContext(context).draw();
 // modifier from 0-22-0-0 to 0-23-0-0
 const smo237752 = new VF.StaveTie({ first_note: smo227432, last_note: smo227451, 
@@ -2342,7 +2342,7 @@ const smo237757 = new VF.StaveTie({ first_note: smo227727, last_note: smo227746,
           firstNote: smo227727, lastNote: smo227746, first_indices: [0], last_indices: [0]});
 smo237757.setContext(context).draw();
 // modifier from 1-30-0-0 to 1-31-0-0
-const smo237758 = new VF.Curve(smo228882, smo228899, JSON.parse('{"thickness":2,"x_shift":0,"y_shift":0,"cps":[{"x":0,"y":15},{"x":0,"y":15}],"invert":false,"position":1,"position_end":1}'));
+const smo237758 = new VF.Curve(smo228882, smo228899, JSON.parse('{"thickness":2,"xShift":0,"yShift":0,"cps":[{"x":0,"y":15},{"x":0,"y":15}],"invert":false,"position":1,"positionEnd":1}'));
 smo237758.setContext(context).draw();
 // modifier from 1-40-0-0 to 1-41-0-0
 const smo237759 = new VF.StaveTie({ first_note: smo229060, last_note: smo229077, 
@@ -2353,7 +2353,7 @@ const smo237760 = new VF.StaveTie({ first_note: smo229024, last_note: smo229041,
           firstNote: smo229024, lastNote: smo229041, first_indices: [0,1], last_indices: [0,1]});
 smo237760.setContext(context).draw();
 // modifier from 2-30-0-0 to 2-31-0-0
-const smo237761 = new VF.Curve(smo230060, smo230081, JSON.parse('{"thickness":2,"x_shift":0,"y_shift":0,"cps":[{"x":0,"y":15},{"x":0,"y":15}],"invert":true,"position":2,"position_end":2}'));
+const smo237761 = new VF.Curve(smo230060, smo230081, JSON.parse('{"thickness":2,"xShift":0,"yShift":0,"cps":[{"x":0,"y":15},{"x":0,"y":15}],"invert":true,"position":2,"positionEnd":2}'));
 smo237761.setContext(context).draw();
 // modifier from 2-32-0-0 to 2-33-0-0
 const smo237762 = new VF.StaveTie({ first_note: smo230102, last_note: null, 

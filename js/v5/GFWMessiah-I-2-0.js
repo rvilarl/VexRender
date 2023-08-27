@@ -1824,25 +1824,25 @@ smo80779v0.draw(context, stavesmo80779);
 const rightsmo81406stavesmo774704 = new VF.StaveConnector(stavesmo77470, stavesmo80779).setType(0);
 rightsmo81406stavesmo774704.setContext(context).draw();
 // modifier from 0-0-0-0 to 0-0-0-3
-const smo88964 = new VF.Curve(smo77286, smo77293, JSON.parse('{"thickness":2,"x_shift":0,"y_shift":25,"cps":[{"x":0,"y":15},{"x":0,"y":15}],"invert":false,"position":1,"position_end":1}'));
+const smo88964 = new VF.Curve(smo77286, smo77293, JSON.parse('{"thickness":2,"xShift":0,"yShift":25,"cps":[{"x":0,"y":15},{"x":0,"y":15}],"invert":false,"position":1,"positionEnd":1}'));
 smo88964.setContext(context).draw();
 // modifier from 0-4-0-4 to 0-4-0-5
-const smo88965 = new VF.Curve(smo77388, smo77389, JSON.parse('{"thickness":2,"x_shift":0,"y_shift":10,"cps":[{"x":0,"y":15},{"x":0,"y":15}],"invert":false,"position":1,"position_end":1}'));
+const smo88965 = new VF.Curve(smo77388, smo77389, JSON.parse('{"thickness":2,"xShift":0,"yShift":10,"cps":[{"x":0,"y":15},{"x":0,"y":15}],"invert":false,"position":1,"positionEnd":1}'));
 smo88965.setContext(context).draw();
 // modifier from 0-0-0-4 to 0-0-0-5
-const smo88966 = new VF.Curve(smo77295, smo77296, JSON.parse('{"thickness":2,"x_shift":0,"y_shift":5,"cps":[{"x":0,"y":15},{"x":0,"y":15}],"invert":false,"position":1,"position_end":1}'));
+const smo88966 = new VF.Curve(smo77295, smo77296, JSON.parse('{"thickness":2,"xShift":0,"yShift":5,"cps":[{"x":0,"y":15},{"x":0,"y":15}],"invert":false,"position":1,"positionEnd":1}'));
 smo88966.setContext(context).draw();
 // modifier from 0-1-0-4 to 0-1-0-5
-const smo88967 = new VF.Curve(smo77319, smo77320, JSON.parse('{"thickness":2,"x_shift":0,"y_shift":10,"cps":[{"x":0,"y":15},{"x":0,"y":15}],"invert":false,"position":1,"position_end":1}'));
+const smo88967 = new VF.Curve(smo77319, smo77320, JSON.parse('{"thickness":2,"xShift":0,"yShift":10,"cps":[{"x":0,"y":15},{"x":0,"y":15}],"invert":false,"position":1,"positionEnd":1}'));
 smo88967.setContext(context).draw();
 // modifier from 1-0-0-0 to 1-0-0-3
-const smo88968 = new VF.Curve(smo78106, smo78112, JSON.parse('{"thickness":2,"x_shift":0,"y_shift":20,"cps":[{"x":0,"y":15},{"x":0,"y":15}],"invert":false,"position":1,"position_end":1}'));
+const smo88968 = new VF.Curve(smo78106, smo78112, JSON.parse('{"thickness":2,"xShift":0,"yShift":20,"cps":[{"x":0,"y":15},{"x":0,"y":15}],"invert":false,"position":1,"positionEnd":1}'));
 smo88968.setContext(context).draw();
 // modifier from 2-0-0-0 to 2-0-0-3
-const smo88969 = new VF.Curve(smo78917, smo78923, JSON.parse('{"thickness":2,"x_shift":0,"y_shift":20,"cps":[{"x":0,"y":15},{"x":0,"y":15}],"invert":false,"position":1,"position_end":1}'));
+const smo88969 = new VF.Curve(smo78917, smo78923, JSON.parse('{"thickness":2,"xShift":0,"yShift":20,"cps":[{"x":0,"y":15},{"x":0,"y":15}],"invert":false,"position":1,"positionEnd":1}'));
 smo88969.setContext(context).draw();
 // modifier from 3-7-0-0 to 3-7-0-1
-const smo88970 = new VF.Curve(smo79872, smo79874, JSON.parse('{"thickness":2,"x_shift":0,"y_shift":10,"cps":[{"x":0,"y":15},{"x":0,"y":15}],"invert":false,"position":1,"position_end":1}'));
+const smo88970 = new VF.Curve(smo79872, smo79874, JSON.parse('{"thickness":2,"xShift":0,"yShift":10,"cps":[{"x":0,"y":15},{"x":0,"y":15}],"invert":false,"position":1,"positionEnd":1}'));
 smo88970.setContext(context).draw();
 // 
 // Align lyrics on different measures, once they are rendered.

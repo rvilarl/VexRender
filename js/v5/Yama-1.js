@@ -1958,7 +1958,7 @@ stavesmo417398.setContext(context);
 stavesmo417398.draw();
 smo417398v0.draw(context, stavesmo417398);
 // modifier from 0-36-0-11 to 0-36-0-12
-const smo417960 = new VF.Curve(smo417180, smo417181, JSON.parse('{"thickness":2,"x_shift":0,"y_shift":0,"cps":[{"x":0,"y":15},{"x":0,"y":15}],"invert":false,"position":4,"position_end":2}'));
+const smo417960 = new VF.Curve(smo417180, smo417181, JSON.parse('{"thickness":2,"xShift":0,"yShift":0,"cps":[{"x":0,"y":15},{"x":0,"y":15}],"invert":false,"position":4,"positionEnd":2}'));
 smo417960.setContext(context).draw();
 // modifier from 0-36-0-9 to 0-36-0-10
 const smo417961 = new VF.StaveTie({ first_note: smo417178, last_note: smo417179, 

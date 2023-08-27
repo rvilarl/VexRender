@@ -2367,7 +2367,7 @@ const smo237623 = new VF.StaveTie({ first_note: smo228423, last_note: smo228440,
           firstNote: smo228423, lastNote: smo228440, first_indices: [0], last_indices: [0]});
 smo237623.setContext(context).draw();
 // modifier from 2-15-1-0 to 2-15-1-1
-const smo237624 = new VF.Curve(smo229776, smo229777, JSON.parse('{"thickness":2,"x_shift":0,"y_shift":0,"cps":[{"x":0,"y":15},{"x":0,"y":15}],"invert":false,"position":1,"position_end":1}'));
+const smo237624 = new VF.Curve(smo229776, smo229777, JSON.parse('{"thickness":2,"xShift":0,"yShift":0,"cps":[{"x":0,"y":15},{"x":0,"y":15}],"invert":false,"position":1,"positionEnd":1}'));
 smo237624.setContext(context).draw();
 // 
 // Align lyrics on different measures, once they are rendered.

@@ -4514,7 +4514,7 @@ const smo226535 = new VF.StaveHairpin({ first_note: smo111434, last_note: smo111
 smo226535.setRenderOptions({ height: 10, y_shift: -50, left_shift_px: -2,right_shift_px: 0 });
 smo226535.setContext(context).setPosition(4).draw();
 // modifier from 0-15-0-6 to 0-15-0-9
-const smo226536 = new VF.Curve(smo111392, smo111395, JSON.parse('{"thickness":2,"x_shift":0,"y_shift":10,"cps":[{"x":0,"y":15},{"x":0,"y":15}],"invert":false,"position":1,"position_end":1}'));
+const smo226536 = new VF.Curve(smo111392, smo111395, JSON.parse('{"thickness":2,"xShift":0,"yShift":10,"cps":[{"x":0,"y":15},{"x":0,"y":15}],"invert":false,"position":1,"positionEnd":1}'));
 smo226536.setContext(context).draw();
 // modifier from 0-17-0-0 to 0-18-0-0
 const smo226537 = new VF.StaveTie({ first_note: smo111434, last_note: smo111451, 
@@ -4530,7 +4530,7 @@ const smo226539 = new VF.StaveHairpin({ first_note: smo113861, last_note: smo113
 smo226539.setRenderOptions({ height: 10, y_shift: -50, left_shift_px: -2,right_shift_px: 0 });
 smo226539.setContext(context).setPosition(4).draw();
 // modifier from 1-15-0-6 to 1-15-0-9
-const smo226540 = new VF.Curve(smo113819, smo113822, JSON.parse('{"thickness":2,"x_shift":0,"y_shift":10,"cps":[{"x":0,"y":15},{"x":0,"y":15}],"invert":false,"position":1,"position_end":1}'));
+const smo226540 = new VF.Curve(smo113819, smo113822, JSON.parse('{"thickness":2,"xShift":0,"yShift":10,"cps":[{"x":0,"y":15},{"x":0,"y":15}],"invert":false,"position":1,"positionEnd":1}'));
 smo226540.setContext(context).draw();
 // modifier from 1-17-0-0 to 1-18-0-0
 const smo226541 = new VF.StaveTie({ first_note: smo113861, last_note: smo113878, 
