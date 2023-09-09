@@ -1,5 +1,5 @@
 /*!
- * VexFlow 5.0.1   2023-08-26T16:00:10.613Z   214206538e3a3f07177d74a06ae790cad2051a9d
+ * VexFlow 5.0.2   2023-09-01T20:11:51.188Z   88249f5934989fe037b64fb05add62844d1bba91
  * Copyright (c) 2023-present VexFlow contributors (see https://github.com/vexflow/vexflow/blob/main/AUTHORS.md).
  *
  */
@@ -29,9 +29,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   ID: () => (/* binding */ ID),
 /* harmony export */   VERSION: () => (/* binding */ VERSION)
 /* harmony export */ });
-const VERSION = '5.0.1';
-const ID = '214206538e3a3f07177d74a06ae790cad2051a9d';
-const DATE = '2023-08-26T16:00:10.613Z';
+const VERSION = '5.0.2';
+const ID = '88249f5934989fe037b64fb05add62844d1bba91';
+const DATE = '2023-09-01T20:11:51.188Z';
 
 
 /***/ }),
@@ -102,10 +102,10 @@ class Accidental extends _modifier__WEBPACK_IMPORTED_MODULE_2__.Modifier {
         let extraXSpaceNeededForLeftDisplacedNotehead = 0;
         // First determine the accidentals' Y positions from the note.keys
         for (let i = 0; i < accidentals.length; ++i) {
-            const acc = accidentals[i];
-            const note = acc.getNote();
+            const accidental = accidentals[i];
+            const note = accidental.getNote();
             const stave = note.getStave();
-            const index = acc.checkIndex();
+            const index = accidental.checkIndex();
             const props = note.getKeyProps()[index];
             if (note !== prevNote) {
                 // Iterate through all notes to get the displaced pixels
@@ -124,7 +124,7 @@ class Accidental extends _modifier__WEBPACK_IMPORTED_MODULE_2__.Modifier {
                     y,
                     line: accLine,
                     extraXSpaceNeeded: extraXSpaceNeededForLeftDisplacedNotehead,
-                    acc,
+                    accidental: accidental,
                     spacingBetweenStaveLines: lineSpace,
                 });
             }
@@ -132,7 +132,7 @@ class Accidental extends _modifier__WEBPACK_IMPORTED_MODULE_2__.Modifier {
                 accidentalLinePositionsAndSpaceNeeds.push({
                     line: props.line,
                     extraXSpaceNeeded: extraXSpaceNeededForLeftDisplacedNotehead,
-                    acc,
+                    accidental: accidental,
                 });
             }
         }
@@ -146,6 +146,7 @@ class Accidental extends _modifier__WEBPACK_IMPORTED_MODULE_2__.Modifier {
         // from accidentalLinePositionsAndSpaceNeeds
         for (let i = 0; i < accidentalLinePositionsAndSpaceNeeds.length; i++) {
             const accidentalLinePositionAndSpaceNeeds = accidentalLinePositionsAndSpaceNeeds[i];
+            const accidentalType = accidentalLinePositionAndSpaceNeeds.accidental.type;
             const priorLineMetric = staveLineAccidentalLayoutMetrics[staveLineAccidentalLayoutMetrics.length - 1];
             let currentLineMetric;
             // if this is the first line, or a new line, add a staveLineAccidentalLayoutMetric
@@ -165,12 +166,11 @@ class Accidental extends _modifier__WEBPACK_IMPORTED_MODULE_2__.Modifier {
             }
             // if this accidental is not a flat, the accidental needs 3.0 lines lower
             // clearance instead of 2.5 lines for b or bb.
-            if (accidentalLinePositionAndSpaceNeeds.acc.type !== 'b' &&
-                accidentalLinePositionAndSpaceNeeds.acc.type !== 'bb') {
+            if (accidentalType !== 'b' && accidentalType !== 'bb') {
                 currentLineMetric.flatLine = false;
             }
             // if this accidental is not a double sharp, the accidental needs 3.0 lines above
-            if (accidentalLinePositionAndSpaceNeeds.acc.type !== '##') {
+            if (accidentalType !== '##') {
                 currentLineMetric.dblSharpLine = false;
             }
             // Track how many accidentals are on this line:
@@ -178,7 +178,7 @@ class Accidental extends _modifier__WEBPACK_IMPORTED_MODULE_2__.Modifier {
             // Track the total xOffset needed for this line which will be needed
             // for formatting lines w/ multiple accidentals:
             // width = accidental width + universal spacing between accidentals
-            currentLineMetric.width += accidentalLinePositionAndSpaceNeeds.acc.getWidth() + accidentalSpacing;
+            currentLineMetric.width += accidentalLinePositionAndSpaceNeeds.accidental.getWidth() + accidentalSpacing;
             // if this extraXSpaceNeeded is the largest so far, use it as the starting point for
             // all accidental columns.
             maxExtraXSpaceNeeded = Math.max(accidentalLinePositionAndSpaceNeeds.extraXSpaceNeeded, maxExtraXSpaceNeeded);
@@ -337,10 +337,10 @@ class Accidental extends _modifier__WEBPACK_IMPORTED_MODULE_2__.Modifier {
             // handle all of the accidentals on a given line:
             for (accCount; accCount < lastAccOnLine; accCount++) {
                 const xShift = columnXOffsets[line.column - 1] + lineWidth + maxExtraXSpaceNeeded;
-                accidentalLinePositionsAndSpaceNeeds[accCount].acc.setXShift(xShift);
+                accidentalLinePositionsAndSpaceNeeds[accCount].accidental.setXShift(xShift);
                 // keep track of the width of accidentals we've added so far, so that when
                 // we loop, we add space for them.
-                lineWidth += accidentalLinePositionsAndSpaceNeeds[accCount].acc.getWidth() + accidentalSpacing;
+                lineWidth += accidentalLinePositionsAndSpaceNeeds[accCount].accidental.getWidth() + accidentalSpacing;
                 L('Line, accCount, shift: ', line.line, accCount, xShift);
             }
         });
@@ -3839,18 +3839,15 @@ class Dot extends _modifier__WEBPACK_IMPORTED_MODULE_0__.Modifier {
             if (options === null || options === void 0 ? void 0 : options.all) {
                 for (let i = 0; i < note.keys.length; i++) {
                     const dot = new Dot();
-                    dot.setDotShiftY(note.glyphProps.dotShiftY);
                     note.addModifier(dot, i);
                 }
             }
             else if ((options === null || options === void 0 ? void 0 : options.index) != undefined) {
                 const dot = new Dot();
-                dot.setDotShiftY(note.glyphProps.dotShiftY);
                 note.addModifier(dot, options === null || options === void 0 ? void 0 : options.index);
             }
             else {
                 const dot = new Dot();
-                dot.setDotShiftY(note.glyphProps.dotShiftY);
                 note.addModifier(dot, 0);
             }
         }
@@ -9957,12 +9954,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 const CommonMetrics = {
     smufl: true,
-    stave: {
-        padding: 12,
-        endPaddingMax: 10,
-        endPaddingMin: 5,
-        unalignedNotePadding: 10,
-    },
     accidental: {
         noteheadAccidentalPadding: 1,
         leftPadding: 2,
@@ -10072,52 +10063,6 @@ const CommonMetrics = {
             offsetY: 10,
         },
     },
-    noteHead: {
-        minPadding: 2,
-    },
-    stem: {
-        heightAdjustmentForFlag: -3,
-        // These are stem (Y) offsets to the note heads. To shift the
-        // noteheads (x-position) themselves, see glyphs.notehead.custom.
-        noteHead: {
-            noteheadTriangleUpHalf: {
-                offsetYBaseStemUp: 5,
-                offsetYBaseStemDown: 4,
-            },
-            noteheadTriangleUpBlack: {
-                offsetYBaseStemUp: 5,
-                offsetYBaseStemDown: 4,
-            },
-            noteheadTriangleUpWhole: {
-                offsetYBaseStemUp: 5,
-                offsetYBaseStemDown: 4,
-            },
-            noteheadXHalf: {
-                offsetYBaseStemUp: -4,
-                offsetYBaseStemDown: 4,
-            },
-            noteheadXBlack: {
-                offsetYBaseStemUp: -4,
-                offsetYBaseStemDown: 4,
-            },
-            noteheadXWhole: {
-                offsetYBaseStemUp: -4,
-                offsetYBaseStemDown: 4,
-            },
-            noteheadHalf: {
-                offsetYBaseStemUp: -2.55,
-                offsetYBaseStemDown: 2.65,
-            },
-            noteheadBlack: {
-                offsetYBaseStemUp: -2,
-                offsetYBaseStemDown: 2,
-            },
-            noteheadSquareWhite: {
-                offsetYBaseStemDown: -5,
-                offsetYBaseStemUp: 5,
-            },
-        },
-    },
     stringNumber: {
         verticalPadding: 8,
         stemPadding: 2,
@@ -10197,7 +10142,6 @@ const CommonMetrics = {
                 shiftX: -8,
             },
         },
-        noteHead: {},
         chordSymbol: {
             scale: 0.8,
         },
@@ -20908,7 +20852,7 @@ class GraceNote extends _stavenote__WEBPACK_IMPORTED_MODULE_0__.StaveNote {
         return 0.66;
     }
     constructor(noteStruct) {
-        super(Object.assign({ glyphFontScale: _tables__WEBPACK_IMPORTED_MODULE_2__.Tables.NOTATION_FONT_SCALE * GraceNote.SCALE, strokePx: GraceNote.LEDGER_LINE_OFFSET }, noteStruct));
+        super(Object.assign({ glyphFontScale: _tables__WEBPACK_IMPORTED_MODULE_2__.Tables.lookupMetric('fontSize') * GraceNote.SCALE, strokePx: GraceNote.LEDGER_LINE_OFFSET }, noteStruct));
         this.slash = noteStruct.slash || false;
         this.slur = true;
         this.buildNoteHeads();
@@ -20918,28 +20862,19 @@ class GraceNote extends _stavenote__WEBPACK_IMPORTED_MODULE_0__.StaveNote {
         if (this.stemExtensionOverride) {
             return this.stemExtensionOverride;
         }
-        const glyphProps = this.getGlyphProps();
-        if (glyphProps) {
-            let ret = super.getStemExtension();
-            if (glyphProps.stem) {
-                const staveNoteScale = this.getStaveNoteScale();
-                ret = (_stem__WEBPACK_IMPORTED_MODULE_1__.Stem.HEIGHT + ret) * staveNoteScale - _stem__WEBPACK_IMPORTED_MODULE_1__.Stem.HEIGHT;
-            }
-            return ret;
-        }
-        return 0;
+        let ret = super.getStemExtension();
+        ret = _stem__WEBPACK_IMPORTED_MODULE_1__.Stem.HEIGHT * this.getStaveNoteScale() - _stem__WEBPACK_IMPORTED_MODULE_1__.Stem.HEIGHT + ret;
+        return ret;
     }
     getStaveNoteScale() {
-        return this.renderOptions.glyphFontScale / _tables__WEBPACK_IMPORTED_MODULE_2__.Tables.NOTATION_FONT_SCALE;
+        return 2 / 3;
     }
     draw() {
         super.draw();
         this.setRendered();
         const stem = this.stem;
         if (this.slash && stem) {
-            const staveNoteScale = this.getStaveNoteScale();
-            // some magic numbers are based on the staveNoteScale 0.66.
-            const offsetScale = staveNoteScale / 0.66;
+            const scale = this.getStaveNoteScale();
             let slashBBox = undefined;
             const beam = this.beam;
             if (beam) {
@@ -20947,48 +20882,39 @@ class GraceNote extends _stavenote__WEBPACK_IMPORTED_MODULE_0__.StaveNote {
                 if (!beam.postFormatted) {
                     beam.postFormat();
                 }
-                slashBBox = this.calcBeamedNotesSlashBBox(8 * offsetScale, 8 * offsetScale, {
-                    stem: 6 * offsetScale,
-                    beam: 5 * offsetScale,
+                slashBBox = this.calcBeamedNotesSlashBBox(8 * scale, 8 * scale, {
+                    stem: 6 * scale,
+                    beam: 5 * scale,
                 });
             }
             else {
                 const stemDirection = this.getStemDirection();
                 const noteHeadBounds = this.getNoteHeadBounds();
-                const noteStemHeight = stem.getHeight();
-                let x = this.getAbsoluteX();
-                let y = stemDirection === _stem__WEBPACK_IMPORTED_MODULE_1__.Stem.DOWN ? noteHeadBounds.yTop - noteStemHeight : noteHeadBounds.yBottom - noteStemHeight;
-                const defaultStemExtention = stemDirection === _stem__WEBPACK_IMPORTED_MODULE_1__.Stem.DOWN ? this.glyphProps.stemDownExtension : this.glyphProps.stemUpExtension;
-                let defaultOffsetY = _tables__WEBPACK_IMPORTED_MODULE_2__.Tables.STEM_HEIGHT;
-                defaultOffsetY -= defaultOffsetY / 2.8;
-                defaultOffsetY += defaultStemExtention;
-                y += defaultOffsetY * staveNoteScale * stemDirection;
-                const offsets = stemDirection === _stem__WEBPACK_IMPORTED_MODULE_1__.Stem.UP
-                    ? {
-                        x1: 1,
-                        y1: 0,
-                        x2: 13,
-                        y2: -9,
-                    }
-                    : {
-                        x1: -4,
-                        y1: 1,
-                        x2: 13,
-                        y2: 9,
+                const noteHeadWidth = this.noteHeads[0].getWidth();
+                const x = stemDirection === _stem__WEBPACK_IMPORTED_MODULE_1__.Stem.DOWN ? this.getAbsoluteX() : this.getAbsoluteX() + noteHeadWidth;
+                const defaultOffsetY = (_tables__WEBPACK_IMPORTED_MODULE_2__.Tables.STEM_HEIGHT * scale) / 2;
+                const y = stemDirection === _stem__WEBPACK_IMPORTED_MODULE_1__.Stem.DOWN ? noteHeadBounds.yBottom + defaultOffsetY : noteHeadBounds.yTop - defaultOffsetY;
+                if (stemDirection === _stem__WEBPACK_IMPORTED_MODULE_1__.Stem.DOWN) {
+                    slashBBox = {
+                        x1: x - noteHeadWidth,
+                        y1: y - noteHeadWidth,
+                        x2: x + noteHeadWidth,
+                        y2: y + noteHeadWidth,
                     };
-                x += offsets.x1 * offsetScale;
-                y += offsets.y1 * offsetScale;
-                slashBBox = {
-                    x1: x,
-                    y1: y,
-                    x2: x + offsets.x2 * offsetScale,
-                    y2: y + offsets.y2 * offsetScale,
-                };
+                }
+                else {
+                    slashBBox = {
+                        x1: x - noteHeadWidth,
+                        y1: y + noteHeadWidth,
+                        x2: x + noteHeadWidth,
+                        y2: y - noteHeadWidth,
+                    };
+                }
             }
             // FIXME: avoid staff lines, ledger lines or others.
             const ctx = this.checkContext();
             ctx.save();
-            ctx.setLineWidth(1 * offsetScale); // FIXME: use more appropriate value.
+            ctx.setLineWidth(1 * scale); // FIXME: use more appropriate value.
             ctx.beginPath();
             ctx.moveTo(slashBBox.x1, slashBBox.y1);
             ctx.lineTo(slashBBox.x2, slashBBox.y2);
@@ -22940,15 +22866,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   Note: () => (/* binding */ Note)
 /* harmony export */ });
-/* harmony import */ var _font__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./font */ "./src/font.ts");
-/* harmony import */ var _rendercontext__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./rendercontext */ "./src/rendercontext.ts");
-/* harmony import */ var _tables__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./tables */ "./src/tables.ts");
-/* harmony import */ var _tickable__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./tickable */ "./src/tickable.ts");
-/* harmony import */ var _typeguard__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./typeguard */ "./src/typeguard.ts");
-/* harmony import */ var _util__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./util */ "./src/util.ts");
+/* harmony import */ var _rendercontext__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./rendercontext */ "./src/rendercontext.ts");
+/* harmony import */ var _tables__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./tables */ "./src/tables.ts");
+/* harmony import */ var _tickable__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./tickable */ "./src/tickable.ts");
+/* harmony import */ var _typeguard__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./typeguard */ "./src/typeguard.ts");
+/* harmony import */ var _util__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./util */ "./src/util.ts");
 // Copyright (c) 2023-present VexFlow contributors: https://github.com/vexflow/vexflow/graphs/contributors
 // MIT License
-
 
 
 
@@ -22963,11 +22887,28 @@ __webpack_require__.r(__webpack_exports__);
  * surround a note are called *modifiers*, and every note has an associated
  * array of them. All notes also have a rendering context and belong to a stave.
  */
-class Note extends _tickable__WEBPACK_IMPORTED_MODULE_3__.Tickable {
+class Note extends _tickable__WEBPACK_IMPORTED_MODULE_2__.Tickable {
     //////////////////////////////////////////////////////////////////////////////////////////////////
     // STATIC MEMBERS
     static get CATEGORY() {
-        return _typeguard__WEBPACK_IMPORTED_MODULE_4__.Category.Note;
+        return _typeguard__WEBPACK_IMPORTED_MODULE_3__.Category.Note;
+    }
+    // Return a glyph given duration and type. The type can be a custom glyph code from customNoteHeads.
+    // The default type is a regular note ('n').
+    static getGlyphProps(duration, type = 'n') {
+        duration = _tables__WEBPACK_IMPORTED_MODULE_1__.Tables.sanitizeDuration(duration);
+        // Lookup duration for default glyph head code
+        let code = _tables__WEBPACK_IMPORTED_MODULE_1__.Tables.durationCodes[duration];
+        if (code === undefined) {
+            code = _tables__WEBPACK_IMPORTED_MODULE_1__.Tables.durationCodes['4'];
+        }
+        // Try and get the note head
+        const codeNoteHead = _tables__WEBPACK_IMPORTED_MODULE_1__.Tables.codeNoteHead(type.toUpperCase(), duration);
+        // Merge duration props for 'duration' with the note head properties.
+        if (codeNoteHead !== '\u0000') {
+            code = Object.assign(Object.assign({}, code), { codeHead: codeNoteHead });
+        }
+        return code;
     }
     /** Debug helper. Displays various note metrics for the given note. */
     static plotMetrics(ctx, note, yPos) {
@@ -22981,7 +22922,7 @@ class Note extends _tickable__WEBPACK_IMPORTED_MODULE_3__.Tickable {
         const xFreedomRight = xEnd + (note.getFormatterMetrics().freedom.right || 0);
         const xWidth = xEnd - xStart;
         ctx.save();
-        ctx.setFont(_font__WEBPACK_IMPORTED_MODULE_0__.Font.SANS_SERIF, 8);
+        ctx.setFont(_tables__WEBPACK_IMPORTED_MODULE_1__.Tables.lookupMetric('fontFamily'), 8);
         ctx.fillText(Math.round(xWidth) + 'px', xStart + note.getXShift(), yPos);
         const y = yPos + 7;
         function stroke(x1, x2, color, yy = y) {
@@ -23000,7 +22941,7 @@ class Note extends _tickable__WEBPACK_IMPORTED_MODULE_3__.Tickable {
         stroke(xPost2, xEnd, 'red');
         stroke(xEnd, xFreedomRight, '#DD0');
         stroke(xStart - note.getXShift(), xStart, '#BBB'); // Shift
-        (0,_rendercontext__WEBPACK_IMPORTED_MODULE_1__.drawDot)(ctx, xAbs + note.getXShift(), y, 'blue');
+        (0,_rendercontext__WEBPACK_IMPORTED_MODULE_0__.drawDot)(ctx, xAbs + note.getXShift(), y, 'blue');
         const formatterMetrics = note.getFormatterMetrics();
         if (formatterMetrics.iterations > 0) {
             const spaceDeviation = formatterMetrics.space.deviation;
@@ -23032,7 +22973,7 @@ class Note extends _tickable__WEBPACK_IMPORTED_MODULE_3__.Tickable {
         }
         // If specified type is invalid, return undefined.
         let type = noteStruct.type;
-        if (type && !_tables__WEBPACK_IMPORTED_MODULE_2__.Tables.validTypes[type]) {
+        if (type && !_tables__WEBPACK_IMPORTED_MODULE_1__.Tables.validTypes[type]) {
             return undefined;
         }
         // If no type specified, check duration or custom types
@@ -23049,7 +22990,7 @@ class Note extends _tickable__WEBPACK_IMPORTED_MODULE_3__.Tickable {
             }
         }
         // Calculate the tick duration of the note
-        let ticks = _tables__WEBPACK_IMPORTED_MODULE_2__.Tables.durationToTicks(durationProps.duration);
+        let ticks = _tables__WEBPACK_IMPORTED_MODULE_1__.Tables.durationToTicks(durationProps.duration);
         if (!ticks) {
             return undefined;
         }
@@ -23083,12 +23024,12 @@ class Note extends _tickable__WEBPACK_IMPORTED_MODULE_3__.Tickable {
     constructor(noteStruct) {
         super();
         if (!noteStruct) {
-            throw new _util__WEBPACK_IMPORTED_MODULE_5__.RuntimeError('BadArguments', 'Note must have valid initialization data to identify duration and type.');
+            throw new _util__WEBPACK_IMPORTED_MODULE_4__.RuntimeError('BadArguments', 'Note must have valid initialization data to identify duration and type.');
         }
         /** Parses `noteStruct` and get note properties. */
         const parsedNoteStruct = Note.parseNoteStruct(noteStruct);
         if (!parsedNoteStruct) {
-            throw new _util__WEBPACK_IMPORTED_MODULE_5__.RuntimeError('BadArguments', `Invalid note initialization object: ${JSON.stringify(noteStruct)}`);
+            throw new _util__WEBPACK_IMPORTED_MODULE_4__.RuntimeError('BadArguments', `Invalid note initialization object: ${JSON.stringify(noteStruct)}`);
         }
         // Set note properties from parameters.
         this.keys = noteStruct.keys || [];
@@ -23107,8 +23048,8 @@ class Note extends _tickable__WEBPACK_IMPORTED_MODULE_3__.Tickable {
         }
         this.modifiers = [];
         // Get the glyph code for this note from the font.
-        this.glyphProps = _tables__WEBPACK_IMPORTED_MODULE_2__.Tables.getGlyphProps(this.duration, this.noteType);
-        this.customGlyphs = this.customTypes.map((t) => _tables__WEBPACK_IMPORTED_MODULE_2__.Tables.getGlyphProps(this.duration, t));
+        this.glyphProps = Note.getGlyphProps(this.duration, this.noteType);
+        this.customGlyphs = this.customTypes.map((t) => Note.getGlyphProps(this.duration, t));
         // Note to play for audio players.
         this.playNote = undefined;
         // Positioning contexts used by the Formatter.
@@ -23171,7 +23112,7 @@ class Note extends _tickable__WEBPACK_IMPORTED_MODULE_3__.Tickable {
     }
     /** Check and get the target stave. */
     checkStave() {
-        return (0,_util__WEBPACK_IMPORTED_MODULE_5__.defined)(this.stave, 'NoStave', 'No stave attached to instance.');
+        return (0,_util__WEBPACK_IMPORTED_MODULE_4__.defined)(this.stave, 'NoStave', 'No stave attached to instance.');
     }
     /** Set the target stave. */
     setStave(stave) {
@@ -23211,20 +23152,13 @@ class Note extends _tickable__WEBPACK_IMPORTED_MODULE_3__.Tickable {
     getLineForRest() {
         return 0;
     }
-    /**
-     * @deprecated Use `getGlyphProps()` instead.
-     */
-    // eslint-disable-next-line
-    getGlyph() {
-        return this.glyphProps;
-    }
     /** Get the glyph associated with this note. */
     getGlyphProps() {
         return this.glyphProps;
     }
     /** Get the glyph width. */
     getGlyphWidth() {
-        return this.glyphProps.getWidth(this.renderOptions.glyphFontScale);
+        return 0;
     }
     /**
      * Set Y positions for this note. Each Y value is associated with
@@ -23240,7 +23174,7 @@ class Note extends _tickable__WEBPACK_IMPORTED_MODULE_3__.Tickable {
      */
     getYs() {
         if (this.ys.length === 0) {
-            throw new _util__WEBPACK_IMPORTED_MODULE_5__.RuntimeError('NoYValues', 'No Y-values calculated for this note.');
+            throw new _util__WEBPACK_IMPORTED_MODULE_4__.RuntimeError('NoYValues', 'No Y-values calculated for this note.');
         }
         return this.ys;
     }
@@ -23254,7 +23188,7 @@ class Note extends _tickable__WEBPACK_IMPORTED_MODULE_3__.Tickable {
     /** Return the voice that this note belongs in. */
     getVoice() {
         if (!this.voice)
-            throw new _util__WEBPACK_IMPORTED_MODULE_5__.RuntimeError('NoVoice', 'Note has no voice.');
+            throw new _util__WEBPACK_IMPORTED_MODULE_4__.RuntimeError('NoVoice', 'Note has no voice.');
         return this.voice;
     }
     /** Attach this note to `voice`. */
@@ -23279,7 +23213,7 @@ class Note extends _tickable__WEBPACK_IMPORTED_MODULE_3__.Tickable {
     }
     /** Accessor to isDotted. */
     isDotted() {
-        return this.getModifiersByType(_typeguard__WEBPACK_IMPORTED_MODULE_4__.Category.Dot).length > 0;
+        return this.getModifiersByType(_typeguard__WEBPACK_IMPORTED_MODULE_3__.Category.Dot).length > 0;
     }
     /** Accessor to hasStem. */
     hasStem() {
@@ -23295,11 +23229,11 @@ class Note extends _tickable__WEBPACK_IMPORTED_MODULE_3__.Tickable {
     }
     /** Check and get the beam. */
     checkBeam() {
-        return (0,_util__WEBPACK_IMPORTED_MODULE_5__.defined)(this.beam, 'NoBeam', 'No beam attached to instance');
+        return (0,_util__WEBPACK_IMPORTED_MODULE_4__.defined)(this.beam, 'NoBeam', 'No beam attached to instance');
     }
     /** Check it has a beam. */
     hasBeam() {
-        return this.beam != undefined;
+        return this.beam !== undefined;
     }
     /** Set the beam. */
     setBeam(beam) {
@@ -23323,7 +23257,7 @@ class Note extends _tickable__WEBPACK_IMPORTED_MODULE_3__.Tickable {
         // Some versions of VexFlow had the two parameters reversed.
         // Check here and throw an error if the argument types are not correct.
         if (typeof modifier !== 'object' || typeof index !== 'number') {
-            throw new _util__WEBPACK_IMPORTED_MODULE_5__.RuntimeError('WrongParams', 'Incorrect call signature. Use ' + signature + ' instead.');
+            throw new _util__WEBPACK_IMPORTED_MODULE_4__.RuntimeError('WrongParams', 'Incorrect call signature. Use ' + signature + ' instead.');
         }
         modifier.setNote(this);
         modifier.setIndex(index);
@@ -23338,7 +23272,7 @@ class Note extends _tickable__WEBPACK_IMPORTED_MODULE_3__.Tickable {
     // eslint-disable-next-line
     getModifierStartXY(position, index, options) {
         if (!this.preFormatted) {
-            throw new _util__WEBPACK_IMPORTED_MODULE_5__.RuntimeError('UnformattedNote', "Can't call GetModifierStartXY on an unformatted note");
+            throw new _util__WEBPACK_IMPORTED_MODULE_4__.RuntimeError('UnformattedNote', "Can't call GetModifierStartXY on an unformatted note");
         }
         return {
             x: this.getAbsoluteX(),
@@ -23355,14 +23289,17 @@ class Note extends _tickable__WEBPACK_IMPORTED_MODULE_3__.Tickable {
     }
     getFirstDotPx() {
         let px = this.getRightDisplacedHeadPx();
-        if (this.checkModifierContext().getMembers('Parenthesis').length !== 0)
-            px += _tables__WEBPACK_IMPORTED_MODULE_2__.Tables.currentMusicFont().lookupMetric('parenthesis.default.width');
+        const parentheses = this.checkModifierContext().getMembers('Parenthesis');
+        // consider parentheses on noteheads, dots should be to the right of them
+        if (parentheses.length !== 0) {
+            px += parentheses[0].getWidth() + 1;
+        }
         return px;
     }
     /** Get the metrics for this note. */
     getMetrics() {
         if (!this.preFormatted) {
-            throw new _util__WEBPACK_IMPORTED_MODULE_5__.RuntimeError('UnformattedNote', "Can't call getMetrics on an unformatted note.");
+            throw new _util__WEBPACK_IMPORTED_MODULE_4__.RuntimeError('UnformattedNote', "Can't call getMetrics on an unformatted note.");
         }
         const modLeftPx = this.modifierContext ? this.modifierContext.getState().leftShift : 0;
         const modRightPx = this.modifierContext ? this.modifierContext.getState().rightShift : 0;
@@ -23397,7 +23334,7 @@ class Note extends _tickable__WEBPACK_IMPORTED_MODULE_3__.Tickable {
         // Position note to left edge of tick context.
         let x = tickContext.getX();
         if (this.stave) {
-            x += this.stave.getNoteStartX() + _tables__WEBPACK_IMPORTED_MODULE_2__.Tables.currentMusicFont().lookupMetric('stave.padding');
+            x += this.stave.getNoteStartX() + _tables__WEBPACK_IMPORTED_MODULE_1__.Tables.lookupMetric('Stave.padding', 0);
         }
         if (this.isCenterAligned()) {
             x += this.getCenterXShift();
@@ -23406,21 +23343,22 @@ class Note extends _tickable__WEBPACK_IMPORTED_MODULE_3__.Tickable {
     }
     /** Get point for notes. */
     static getPoint(size) {
+        const fontSize = _tables__WEBPACK_IMPORTED_MODULE_1__.Tables.lookupMetric('fontSize');
         // for sizes other than 'default', note is 2/3 of the default value
-        return size == 'default' ? _tables__WEBPACK_IMPORTED_MODULE_2__.Tables.NOTATION_FONT_SCALE : (_tables__WEBPACK_IMPORTED_MODULE_2__.Tables.NOTATION_FONT_SCALE / 5) * 3;
+        return size === 'default' ? fontSize : (fontSize * 3) / 5;
     }
     /** Get the direction of the stem. */
     getStemDirection() {
-        throw new _util__WEBPACK_IMPORTED_MODULE_5__.RuntimeError('NoStem', 'No stem attached to this note.');
+        throw new _util__WEBPACK_IMPORTED_MODULE_4__.RuntimeError('NoStem', 'No stem attached to this note.');
     }
     /** Get the top and bottom `y` values of the stem. */
     getStemExtents() {
-        throw new _util__WEBPACK_IMPORTED_MODULE_5__.RuntimeError('NoStem', 'No stem attached to this note.');
+        throw new _util__WEBPACK_IMPORTED_MODULE_4__.RuntimeError('NoStem', 'No stem attached to this note.');
     }
     /** Get the `x` coordinate to the right of the note. */
     getTieRightX() {
         let tieStartX = this.getAbsoluteX();
-        const noteGlyphWidth = this.glyphProps.getWidth();
+        const noteGlyphWidth = this.getGlyphWidth();
         tieStartX += noteGlyphWidth / 2;
         tieStartX += -this.width / 2 + this.width + 2;
         return tieStartX;
@@ -23428,7 +23366,7 @@ class Note extends _tickable__WEBPACK_IMPORTED_MODULE_3__.Tickable {
     /** Get the `x` coordinate to the left of the note. */
     getTieLeftX() {
         let tieEndX = this.getAbsoluteX();
-        const noteGlyphWidth = this.glyphProps.getWidth();
+        const noteGlyphWidth = this.getGlyphWidth();
         tieEndX += noteGlyphWidth / 2;
         tieEndX -= this.width / 2 + 2;
         return tieEndX;
@@ -23457,15 +23395,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   NoteHead: () => (/* binding */ NoteHead)
 /* harmony export */ });
 /* harmony import */ var _boundingbox__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./boundingbox */ "./src/boundingbox.ts");
-/* harmony import */ var _glyph__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./glyph */ "./src/glyph.ts");
-/* harmony import */ var _note__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./note */ "./src/note.ts");
-/* harmony import */ var _stem__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./stem */ "./src/stem.ts");
-/* harmony import */ var _tables__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./tables */ "./src/tables.ts");
-/* harmony import */ var _typeguard__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./typeguard */ "./src/typeguard.ts");
-/* harmony import */ var _util__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./util */ "./src/util.ts");
+/* harmony import */ var _note__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./note */ "./src/note.ts");
+/* harmony import */ var _stem__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./stem */ "./src/stem.ts");
+/* harmony import */ var _tables__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./tables */ "./src/tables.ts");
+/* harmony import */ var _typeguard__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./typeguard */ "./src/typeguard.ts");
+/* harmony import */ var _util__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./util */ "./src/util.ts");
 // Copyright (c) 2023-present VexFlow contributors: https://github.com/vexflow/vexflow/graphs/contributors
 // MIT License
-
 
 
 
@@ -23475,49 +23411,7 @@ __webpack_require__.r(__webpack_exports__);
 // eslint-disable-next-line
 function L(...args) {
     if (NoteHead.DEBUG)
-        (0,_util__WEBPACK_IMPORTED_MODULE_6__.log)('Vex.Flow.NoteHead', args);
-}
-/**
- * Draw slashnote head manually. No glyph exists for this.
- * @param ctx the Canvas context
- * @param duration the duration of the note. ex: "4"
- * @param x the x coordinate to draw at
- * @param y the y coordinate to draw at
- * @param stemDirection the direction of the stem
- */
-function drawSlashNoteHead(ctx, duration, x, y, stemDirection, staveSpace) {
-    const width = _tables__WEBPACK_IMPORTED_MODULE_4__.Tables.SLASH_NOTEHEAD_WIDTH;
-    ctx.save();
-    ctx.setLineWidth(_tables__WEBPACK_IMPORTED_MODULE_4__.Tables.STEM_WIDTH);
-    let fill = false;
-    if (_tables__WEBPACK_IMPORTED_MODULE_4__.Tables.durationToNumber(duration) > 2) {
-        fill = true;
-    }
-    if (!fill)
-        x -= (_tables__WEBPACK_IMPORTED_MODULE_4__.Tables.STEM_WIDTH / 2) * stemDirection;
-    ctx.beginPath();
-    ctx.moveTo(x, y + staveSpace);
-    ctx.lineTo(x, y + 1);
-    ctx.lineTo(x + width, y - staveSpace);
-    ctx.lineTo(x + width, y);
-    ctx.lineTo(x, y + staveSpace);
-    ctx.closePath();
-    if (fill) {
-        ctx.fill();
-    }
-    else {
-        ctx.stroke();
-    }
-    if (_tables__WEBPACK_IMPORTED_MODULE_4__.Tables.durationToFraction(duration).equals(0.5)) {
-        const breveLines = [-3, -1, width + 1, width + 3];
-        for (let i = 0; i < breveLines.length; i++) {
-            ctx.beginPath();
-            ctx.moveTo(x + breveLines[i], y - 10);
-            ctx.lineTo(x + breveLines[i], y + 11);
-            ctx.stroke();
-        }
-    }
-    ctx.restore();
+        (0,_util__WEBPACK_IMPORTED_MODULE_5__.log)('Vex.Flow.NoteHead', args);
 }
 /**
  * `NoteHeads` are typically not manipulated
@@ -23525,47 +23419,46 @@ function drawSlashNoteHead(ctx, duration, x, y, stemDirection, staveSpace) {
  *
  * See `tests/notehead_tests.ts` for usage examples.
  */
-class NoteHead extends _note__WEBPACK_IMPORTED_MODULE_2__.Note {
+class NoteHead extends _note__WEBPACK_IMPORTED_MODULE_1__.Note {
     static get CATEGORY() {
-        return _typeguard__WEBPACK_IMPORTED_MODULE_5__.Category.NoteHead;
+        return _typeguard__WEBPACK_IMPORTED_MODULE_4__.Category.NoteHead;
     }
     constructor(noteStruct) {
         super(noteStruct);
         this.customGlyph = false;
-        this.stemUpXOffset = 0;
-        this.stemDownXOffset = 0;
+        // map notehead SMuFL codes to the corresponding SMuFL code with ledger line
+        this.ledger = {
+            '\ue4e3' /*restWhole*/: '\ue4f4' /*restWholeLegerLine*/,
+            '\ue4e4' /*restHalf*/: '\ue4f5' /*restHalfLegerLine*/,
+        };
         this.index = noteStruct.index;
         this.x = noteStruct.x || 0;
         this.y = noteStruct.y || 0;
         if (noteStruct.noteType)
             this.noteType = noteStruct.noteType;
         this.displaced = noteStruct.displaced || false;
-        this.stemDirection = noteStruct.stemDirection || _stem__WEBPACK_IMPORTED_MODULE_3__.Stem.UP;
+        this.stemDirection = noteStruct.stemDirection || _stem__WEBPACK_IMPORTED_MODULE_2__.Stem.UP;
         this.line = noteStruct.line || 0;
         // Get glyph code based on duration and note type. This could be
         // regular notes, rests, or other custom codes.
-        this.glyphProps = _tables__WEBPACK_IMPORTED_MODULE_4__.Tables.getGlyphProps(this.duration, this.noteType);
-        (0,_util__WEBPACK_IMPORTED_MODULE_6__.defined)(this.glyphProps, 'BadArguments', `No glyph found for duration '${this.duration}' and type '${this.noteType}'`);
+        this.glyphProps = _note__WEBPACK_IMPORTED_MODULE_1__.Note.getGlyphProps(this.duration, this.noteType);
+        (0,_util__WEBPACK_IMPORTED_MODULE_5__.defined)(this.glyphProps, 'BadArguments', `No glyph found for duration '${this.duration}' and type '${this.noteType}'`);
         // Swap out the glyph with ledger lines
-        if ((this.line > 5 || this.line < 0) && this.glyphProps.ledgerCodeHead) {
-            this.glyphProps.codeHead = this.glyphProps.ledgerCodeHead;
+        if ((this.line > 5 || this.line < 0) && this.ledger[this.glyphProps.codeHead]) {
+            this.glyphProps.codeHead = this.ledger[this.glyphProps.codeHead];
         }
-        this.glyphCode = this.glyphProps.codeHead;
-        this.xShift = noteStruct.xShift || 0;
+        this.text = this.glyphProps.codeHead;
         if (noteStruct.customGlyphCode) {
             this.customGlyph = true;
-            this.glyphCode = noteStruct.customGlyphCode;
-            this.stemUpXOffset = noteStruct.stemUpXOffset || 0;
-            this.stemDownXOffset = noteStruct.stemDownXOffset || 0;
+            this.text = noteStruct.customGlyphCode;
         }
         this.setStyle(noteStruct.style);
         this.slashed = noteStruct.slashed || false;
         this.renderOptions = Object.assign(Object.assign({}, this.renderOptions), { 
             // font size for note heads
-            glyphFontScale: noteStruct.glyphFontScale || _tables__WEBPACK_IMPORTED_MODULE_4__.Tables.NOTATION_FONT_SCALE });
-        this.setWidth(this.customGlyph && !this.glyphCode.startsWith('noteheadSlashed') && !this.glyphCode.startsWith('noteheadCircled')
-            ? _glyph__WEBPACK_IMPORTED_MODULE_1__.Glyph.getWidth(this.glyphCode, this.renderOptions.glyphFontScale)
-            : this.glyphProps.getWidth(this.renderOptions.glyphFontScale));
+            glyphFontScale: noteStruct.glyphFontScale || _tables__WEBPACK_IMPORTED_MODULE_3__.Tables.lookupMetric('fontSize') });
+        this.textFont.size = this.renderOptions.glyphFontScale;
+        this.measureText();
     }
     /** Get the width of the notehead. */
     getWidth() {
@@ -23592,20 +23485,12 @@ class NoteHead extends _note__WEBPACK_IMPORTED_MODULE_2__.Note {
         const x = !this.preFormatted ? this.x : super.getAbsoluteX();
         // For a more natural displaced notehead, we adjust the displacement amount
         // by half the stem width in order to maintain a slight overlap with the stem
-        const displacementStemAdjustment = _stem__WEBPACK_IMPORTED_MODULE_3__.Stem.WIDTH / 2;
-        const musicFont = _tables__WEBPACK_IMPORTED_MODULE_4__.Tables.currentMusicFont();
-        const fontShift = musicFont.lookupMetric('notehead.shiftX', 0) * this.stemDirection;
-        const displacedFontShift = musicFont.lookupMetric('noteHead.displacedShiftX', 0) * this.stemDirection;
-        return (x +
-            fontShift +
-            (this.displaced ? (this.width - displacementStemAdjustment) * this.stemDirection + displacedFontShift : 0));
+        const displacementStemAdjustment = _stem__WEBPACK_IMPORTED_MODULE_2__.Stem.WIDTH / 2;
+        return x + (this.displaced ? (this.width - displacementStemAdjustment) * this.stemDirection : 0);
     }
     /** Get the `BoundingBox` for the `NoteHead`. */
     getBoundingBox() {
-        const spacing = this.checkStave().getSpacingBetweenLines();
-        const halfSpacing = spacing / 2;
-        const minY = this.y - halfSpacing;
-        return new _boundingbox__WEBPACK_IMPORTED_MODULE_0__.BoundingBox(this.getAbsoluteX(), minY, this.width, spacing);
+        return new _boundingbox__WEBPACK_IMPORTED_MODULE_0__.BoundingBox(this.getAbsoluteX() - this.textMetrics.actualBoundingBoxLeft, this.y - this.textMetrics.actualBoundingBoxAscent, this.width, this.height);
     }
     /** Set notehead to a provided `stave`. */
     setStave(stave) {
@@ -23621,8 +23506,7 @@ class NoteHead extends _note__WEBPACK_IMPORTED_MODULE_2__.Note {
     preFormat() {
         if (this.preFormatted)
             return this;
-        const width = this.getWidth() + this.leftDisplacedHeadPx + this.rightDisplacedHeadPx;
-        this.setWidth(width);
+        this.measureText();
         this.preFormatted = true;
         return this;
     }
@@ -23630,30 +23514,8 @@ class NoteHead extends _note__WEBPACK_IMPORTED_MODULE_2__.Note {
     draw() {
         const ctx = this.checkContext();
         this.setRendered();
-        let headX = this.getAbsoluteX();
-        if (this.customGlyph) {
-            // headX += this.xShift;
-            headX +=
-                this.stemDirection === _stem__WEBPACK_IMPORTED_MODULE_3__.Stem.UP
-                    ? this.stemUpXOffset +
-                        (this.glyphProps.stem ? this.glyphProps.getWidth(this.renderOptions.glyphFontScale) - this.width : 0)
-                    : this.stemDownXOffset;
-        }
-        const y = this.y;
-        L("Drawing note head '", this.noteType, this.duration, "' at", headX, y);
-        // Begin and end positions for head.
-        const stemDirection = this.stemDirection;
-        const glyphFontScale = this.renderOptions.glyphFontScale;
-        const categorySuffix = `${this.glyphCode}Stem${stemDirection === _stem__WEBPACK_IMPORTED_MODULE_3__.Stem.UP ? 'Up' : 'Down'}`;
-        if (this.noteType === 's') {
-            const staveSpace = this.checkStave().getSpacingBetweenLines();
-            drawSlashNoteHead(ctx, this.duration, headX, y, stemDirection, staveSpace);
-        }
-        else {
-            _glyph__WEBPACK_IMPORTED_MODULE_1__.Glyph.renderGlyph(ctx, headX, y, glyphFontScale, this.glyphCode, {
-                category: `noteHead.${categorySuffix}`,
-            });
-        }
+        L("Drawing note head '", this.noteType, this.duration, "' at", this.x, this.y);
+        this.renderText(ctx, this.getAbsoluteX() - this.x, 0);
     }
 }
 /** To enable logging for this class. Set `Vex.Flow.NoteHead.DEBUG` to `true`. */
@@ -26789,12 +26651,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _boundingbox__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./boundingbox */ "./src/boundingbox.ts");
 /* harmony import */ var _modifier__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./modifier */ "./src/modifier.ts");
-/* harmony import */ var _notehead__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./notehead */ "./src/notehead.ts");
-/* harmony import */ var _stem__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./stem */ "./src/stem.ts");
-/* harmony import */ var _stemmablenote__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./stemmablenote */ "./src/stemmablenote.ts");
-/* harmony import */ var _tables__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./tables */ "./src/tables.ts");
-/* harmony import */ var _typeguard__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./typeguard */ "./src/typeguard.ts");
-/* harmony import */ var _util__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./util */ "./src/util.ts");
+/* harmony import */ var _note__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./note */ "./src/note.ts");
+/* harmony import */ var _notehead__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./notehead */ "./src/notehead.ts");
+/* harmony import */ var _stem__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./stem */ "./src/stem.ts");
+/* harmony import */ var _stemmablenote__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./stemmablenote */ "./src/stemmablenote.ts");
+/* harmony import */ var _tables__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./tables */ "./src/tables.ts");
+/* harmony import */ var _typeguard__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./typeguard */ "./src/typeguard.ts");
+/* harmony import */ var _util__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./util */ "./src/util.ts");
 // Copyright (c) 2023-present VexFlow contributors: https://github.com/vexflow/vexflow/graphs/contributors
 //
 // This file implements notes for standard notation. This consists of one or
@@ -26824,13 +26687,14 @@ var _StaveNote_noteHeads, _StaveNote_sortedKeyProps;
 
 
 
+
 // To enable logging for this class. Set `Vex.Flow.StaveNote.DEBUG` to `true`.
 // eslint-disable-next-line
 function L(...args) {
     if (StaveNote.DEBUG)
-        (0,_util__WEBPACK_IMPORTED_MODULE_7__.log)('Vex.Flow.StaveNote', args);
+        (0,_util__WEBPACK_IMPORTED_MODULE_8__.log)('Vex.Flow.StaveNote', args);
 }
-const isInnerNoteIndex = (note, index) => index === (note.getStemDirection() === _stem__WEBPACK_IMPORTED_MODULE_3__.Stem.UP ? note.keyProps.length - 1 : 0);
+const isInnerNoteIndex = (note, index) => index === (note.getStemDirection() === _stem__WEBPACK_IMPORTED_MODULE_4__.Stem.UP ? note.keyProps.length - 1 : 0);
 // Helper methods for rest positioning in ModifierContext.
 function shiftRestVertical(rest, note, dir) {
     const delta = dir;
@@ -26841,38 +26705,24 @@ function shiftRestVertical(rest, note, dir) {
 }
 // Called from formatNotes :: center a rest between two notes
 function centerRest(rest, noteU, noteL) {
-    const delta = rest.line - (0,_util__WEBPACK_IMPORTED_MODULE_7__.midLine)(noteU.minLine, noteL.maxLine);
+    const delta = rest.line - (0,_util__WEBPACK_IMPORTED_MODULE_8__.midLine)(noteU.minLine, noteL.maxLine);
     rest.note.setKeyLine(0, rest.note.getKeyLine(0) - delta);
     rest.line -= delta;
     rest.maxLine -= delta;
     rest.minLine -= delta;
 }
-class StaveNote extends _stemmablenote__WEBPACK_IMPORTED_MODULE_4__.StemmableNote {
+class StaveNote extends _stemmablenote__WEBPACK_IMPORTED_MODULE_5__.StemmableNote {
     static get CATEGORY() {
-        return _typeguard__WEBPACK_IMPORTED_MODULE_6__.Category.StaveNote;
-    }
-    /**
-     * @deprecated Use Stem.UP.
-     */
-    static get STEM_UP() {
-        return _stem__WEBPACK_IMPORTED_MODULE_3__.Stem.UP;
-    }
-    /**
-     * @deprecated Use Stem.DOWN.
-     */
-    static get STEM_DOWN() {
-        return _stem__WEBPACK_IMPORTED_MODULE_3__.Stem.DOWN;
+        return _typeguard__WEBPACK_IMPORTED_MODULE_7__.Category.StaveNote;
     }
     static get LEDGER_LINE_OFFSET() {
         return 3;
     }
     static get minNoteheadPadding() {
-        const musicFont = _tables__WEBPACK_IMPORTED_MODULE_5__.Tables.currentMusicFont();
-        return musicFont.lookupMetric('noteHead.minPadding');
+        return _tables__WEBPACK_IMPORTED_MODULE_6__.Tables.lookupMetric('NoteHead.minPadding');
     }
     /** Format notes inside a ModifierContext. */
     static format(notes, state) {
-        var _a, _b;
         if (!notes || notes.length < 2)
             return false;
         const notesList = [];
@@ -26886,8 +26736,12 @@ class StaveNote extends _stemmablenote__WEBPACK_IMPORTED_MODULE_4__.StemmableNot
             const stemMin = notes[i].getStemMinimumLength() / 10;
             let maxL;
             if (notes[i].isRest()) {
-                maxL = line + notes[i].glyphProps.lineAbove;
-                minL = line - notes[i].glyphProps.lineBelow;
+                maxL =
+                    line +
+                        Math.ceil(__classPrivateFieldGet(notes[i], _StaveNote_noteHeads, "f")[0].getTextMetrics().actualBoundingBoxAscent / _tables__WEBPACK_IMPORTED_MODULE_6__.Tables.STAVE_LINE_DISTANCE);
+                minL =
+                    line -
+                        Math.ceil(__classPrivateFieldGet(notes[i], _StaveNote_noteHeads, "f")[0].getTextMetrics().actualBoundingBoxDescent / _tables__WEBPACK_IMPORTED_MODULE_6__.Tables.STAVE_LINE_DISTANCE);
             }
             else {
                 maxL =
@@ -26973,17 +26827,17 @@ class StaveNote extends _stemmablenote__WEBPACK_IMPORTED_MODULE_4__.StemmableNot
                     //If we are sharing a line and in the same voice, only then offset one note
                     const lineDiff = Math.abs(noteU.line - noteL.line);
                     if (noteU.note.hasStem() && noteL.note.hasStem()) {
-                        const noteUHead = _tables__WEBPACK_IMPORTED_MODULE_5__.Tables.codeNoteHead((_a = __classPrivateFieldGet(noteU.note, _StaveNote_sortedKeyProps, "f")[0].keyProps.code) !== null && _a !== void 0 ? _a : 'N', noteU.note.duration);
-                        const noteLHead = _tables__WEBPACK_IMPORTED_MODULE_5__.Tables.codeNoteHead((_b = __classPrivateFieldGet(noteL.note, _StaveNote_sortedKeyProps, "f")[__classPrivateFieldGet(noteL.note, _StaveNote_sortedKeyProps, "f").length - 1].keyProps.code) !== null && _b !== void 0 ? _b : 'N', noteL.note.duration);
+                        const noteUHead = __classPrivateFieldGet(noteU.note, _StaveNote_sortedKeyProps, "f")[0].keyProps.code;
+                        const noteLHead = __classPrivateFieldGet(noteL.note, _StaveNote_sortedKeyProps, "f")[__classPrivateFieldGet(noteL.note, _StaveNote_sortedKeyProps, "f").length - 1].keyProps.code;
                         if (
                         // If unison is not configured, shift
-                        !_tables__WEBPACK_IMPORTED_MODULE_5__.Tables.UNISON ||
+                        !_tables__WEBPACK_IMPORTED_MODULE_6__.Tables.UNISON ||
                             // If we have different noteheads, shift
                             noteUHead !== noteLHead ||
                             // If we have different dot values, shift
-                            noteU.note.getModifiers().filter((item) => item.getCategory() === _typeguard__WEBPACK_IMPORTED_MODULE_6__.Category.Dot && item.getIndex() === 0)
+                            noteU.note.getModifiers().filter((item) => item.getCategory() === _typeguard__WEBPACK_IMPORTED_MODULE_7__.Category.Dot && item.getIndex() === 0)
                                 .length !==
-                                noteL.note.getModifiers().filter((item) => item.getCategory() === _typeguard__WEBPACK_IMPORTED_MODULE_6__.Category.Dot && item.getIndex() === 0)
+                                noteL.note.getModifiers().filter((item) => item.getCategory() === _typeguard__WEBPACK_IMPORTED_MODULE_7__.Category.Dot && item.getIndex() === 0)
                                     .length ||
                             // If the notes are quite close but not on the same line, shift
                             (lineDiff < 1 && lineDiff > 0) ||
@@ -27042,7 +26896,7 @@ class StaveNote extends _stemmablenote__WEBPACK_IMPORTED_MODULE_4__.StemmableNot
             return true;
         }
         if (!noteM)
-            throw new _util__WEBPACK_IMPORTED_MODULE_7__.RuntimeError('InvalidState', 'noteM not defined.');
+            throw new _util__WEBPACK_IMPORTED_MODULE_8__.RuntimeError('InvalidState', 'noteM not defined.');
         // For three voices, test if rests can be repositioned
         //
         // Special case 1 :: middle voice rest between two notes
@@ -27136,8 +26990,8 @@ class StaveNote extends _stemmablenote__WEBPACK_IMPORTED_MODULE_4__.StemmableNot
         this.clef = (_a = noteStruct.clef) !== null && _a !== void 0 ? _a : 'treble';
         this.octaveShift = (_b = noteStruct.octaveShift) !== null && _b !== void 0 ? _b : 0;
         // Pull note rendering properties.
-        this.glyphProps = _tables__WEBPACK_IMPORTED_MODULE_5__.Tables.getGlyphProps(this.duration, this.noteType);
-        (0,_util__WEBPACK_IMPORTED_MODULE_7__.defined)(this.glyphProps, 'BadArguments', `No glyph found for duration '${this.duration}' and type '${this.noteType}'`);
+        this.glyphProps = _note__WEBPACK_IMPORTED_MODULE_2__.Note.getGlyphProps(this.duration, this.noteType);
+        (0,_util__WEBPACK_IMPORTED_MODULE_8__.defined)(this.glyphProps, 'BadArguments', `No glyph found for duration '${this.duration}' and type '${this.noteType}'`);
         // if true, displace note to right
         this.displaced = false;
         this.dotShiftY = 0;
@@ -27148,7 +27002,7 @@ class StaveNote extends _stemmablenote__WEBPACK_IMPORTED_MODULE_4__.StemmableNot
         this.modifiers = [];
         this.renderOptions = Object.assign(Object.assign({}, this.renderOptions), { 
             // font size for note heads and rests
-            glyphFontScale: noteStruct.glyphFontScale || _tables__WEBPACK_IMPORTED_MODULE_5__.Tables.NOTATION_FONT_SCALE, 
+            glyphFontScale: noteStruct.glyphFontScale || _tables__WEBPACK_IMPORTED_MODULE_6__.Tables.lookupMetric('fontSize'), 
             // number of stroke px to the left and right of head
             strokePx: noteStruct.strokePx || StaveNote.LEDGER_LINE_OFFSET });
         this.calculateKeyProps();
@@ -27158,7 +27012,7 @@ class StaveNote extends _stemmablenote__WEBPACK_IMPORTED_MODULE_4__.StemmableNot
             this.autoStem();
         }
         else {
-            this.setStemDirection((_c = noteStruct.stemDirection) !== null && _c !== void 0 ? _c : _stem__WEBPACK_IMPORTED_MODULE_3__.Stem.UP);
+            this.setStemDirection((_c = noteStruct.stemDirection) !== null && _c !== void 0 ? _c : _stem__WEBPACK_IMPORTED_MODULE_4__.Stem.UP);
         }
         this.reset();
         this.buildFlag();
@@ -27191,7 +27045,7 @@ class StaveNote extends _stemmablenote__WEBPACK_IMPORTED_MODULE_4__.StemmableNot
     }
     // Builds a `Stem` for the note
     buildStem() {
-        this.setStem(new _stem__WEBPACK_IMPORTED_MODULE_3__.Stem({ hide: !!this.isRest() }));
+        this.setStem(new _stem__WEBPACK_IMPORTED_MODULE_4__.Stem({ hide: !!this.isRest() }));
         return this;
     }
     // Builds a `NoteHead` for each key in the note
@@ -27207,7 +27061,7 @@ class StaveNote extends _stemmablenote__WEBPACK_IMPORTED_MODULE_4__.StemmableNot
         let start;
         let end;
         let step;
-        if (stemDirection === _stem__WEBPACK_IMPORTED_MODULE_3__.Stem.UP) {
+        if (stemDirection === _stem__WEBPACK_IMPORTED_MODULE_4__.Stem.UP) {
             start = 0;
             end = keys.length;
             step = 1;
@@ -27237,16 +27091,13 @@ class StaveNote extends _stemmablenote__WEBPACK_IMPORTED_MODULE_4__.StemmableNot
                 }
             }
             lastLine = line;
-            const notehead = new _notehead__WEBPACK_IMPORTED_MODULE_2__.NoteHead({
+            const notehead = new _notehead__WEBPACK_IMPORTED_MODULE_3__.NoteHead({
                 duration: this.duration,
                 noteType: this.noteType,
                 displaced,
                 stemDirection,
                 customGlyphCode: noteProps.code,
                 glyphFontScale: this.renderOptions.glyphFontScale,
-                xShift: noteProps.shiftRight,
-                stemUpXOffset: noteProps.stemUpXOffset,
-                stemDownXOffset: noteProps.stemDownXOffset,
                 line: noteProps.line,
             });
             this.addChildElement(notehead);
@@ -27264,7 +27115,7 @@ class StaveNote extends _stemmablenote__WEBPACK_IMPORTED_MODULE_4__.StemmableNot
         this.maxLine = __classPrivateFieldGet(this, _StaveNote_sortedKeyProps, "f")[this.keyProps.length - 1].keyProps.line;
         const MIDDLE_LINE = 3;
         const decider = (this.minLine + this.maxLine) / 2;
-        const stemDirection = decider < MIDDLE_LINE ? _stem__WEBPACK_IMPORTED_MODULE_3__.Stem.UP : _stem__WEBPACK_IMPORTED_MODULE_3__.Stem.DOWN;
+        const stemDirection = decider < MIDDLE_LINE ? _stem__WEBPACK_IMPORTED_MODULE_4__.Stem.UP : _stem__WEBPACK_IMPORTED_MODULE_4__.Stem.DOWN;
         return stemDirection;
     }
     // Calculates and stores the properties for each key in the note
@@ -27272,14 +27123,10 @@ class StaveNote extends _stemmablenote__WEBPACK_IMPORTED_MODULE_4__.StemmableNot
         let lastLine;
         for (let i = 0; i < this.keys.length; ++i) {
             const key = this.keys[i];
-            // All rests use the same position on the line.
-            // if (this.glyph.rest) key = this.glyph.position;
-            if (this.glyphProps.rest)
-                this.glyphProps.position = key;
             const options = { octaveShift: this.octaveShift || 0, duration: this.duration };
-            const props = _tables__WEBPACK_IMPORTED_MODULE_5__.Tables.keyProperties(key, this.clef, options);
+            const props = _tables__WEBPACK_IMPORTED_MODULE_6__.Tables.keyProperties(key, this.clef, this.noteType, options);
             if (!props) {
-                throw new _util__WEBPACK_IMPORTED_MODULE_7__.RuntimeError('BadArguments', `Invalid key for note properties: ${key}`);
+                throw new _util__WEBPACK_IMPORTED_MODULE_8__.RuntimeError('BadArguments', `Invalid key for note properties: ${key}`);
             }
             // Override line placement for default rests
             if (props.key === 'R') {
@@ -27319,57 +27166,32 @@ class StaveNote extends _stemmablenote__WEBPACK_IMPORTED_MODULE_4__.StemmableNot
     // Get the `BoundingBox` for the entire note
     getBoundingBox() {
         var _a, _b;
-        if (!this.preFormatted) {
-            throw new _util__WEBPACK_IMPORTED_MODULE_7__.RuntimeError('UnformattedNote', "Can't call getBoundingBox on an unformatted note.");
+        this.boundingBox = new _boundingbox__WEBPACK_IMPORTED_MODULE_0__.BoundingBox(this.getAbsoluteX(), this.ys[0], 0, 0);
+        __classPrivateFieldGet(this, _StaveNote_noteHeads, "f").forEach((notehead) => {
+            var _a;
+            (_a = this.boundingBox) === null || _a === void 0 ? void 0 : _a.mergeWith(notehead.getBoundingBox());
+        });
+        const { yTop, yBottom } = this.getNoteHeadBounds();
+        // eslint-disable-next-line
+        const noteStemHeight = this.stem.getHeight();
+        const flagX = this.getStemX() - _tables__WEBPACK_IMPORTED_MODULE_6__.Tables.STEM_WIDTH / 2;
+        const flagY = this.getStemDirection() === _stem__WEBPACK_IMPORTED_MODULE_4__.Stem.DOWN
+            ? yTop - noteStemHeight - this.flag.getTextMetrics().actualBoundingBoxDescent
+            : yBottom - noteStemHeight + this.flag.getTextMetrics().actualBoundingBoxAscent;
+        if (!this.isRest() && this.hasStem()) {
+            (_a = this.boundingBox) === null || _a === void 0 ? void 0 : _a.mergeWith(new _boundingbox__WEBPACK_IMPORTED_MODULE_0__.BoundingBox(this.getAbsoluteX(), flagY, 0, 0));
         }
-        const { width: w, modLeftPx, leftDisplacedHeadPx } = this.getMetrics();
-        const x = this.getAbsoluteX() - modLeftPx - leftDisplacedHeadPx;
-        let minY = 0;
-        let maxY = 0;
-        const halfLineSpacing = ((_b = (_a = this.getStave()) === null || _a === void 0 ? void 0 : _a.getSpacingBetweenLines()) !== null && _b !== void 0 ? _b : 0) / 2;
-        const lineSpacing = halfLineSpacing * 2;
-        if (this.isRest()) {
-            const y = this.ys[0];
-            const frac = _tables__WEBPACK_IMPORTED_MODULE_5__.Tables.durationToFraction(this.duration);
-            if (frac.equals(1) || frac.equals(2)) {
-                minY = y - halfLineSpacing;
-                maxY = y + halfLineSpacing;
-            }
-            else {
-                minY = y - this.glyphProps.lineAbove * lineSpacing;
-                maxY = y + this.glyphProps.lineBelow * lineSpacing;
-            }
+        const bbFlag = this.flag.getBoundingBox();
+        if (!this.isRest() && bbFlag) {
+            (_b = this.boundingBox) === null || _b === void 0 ? void 0 : _b.mergeWith(bbFlag.move(flagX, flagY));
         }
-        else if (this.glyphProps.stem) {
-            const ys = this.getStemExtents();
-            ys.baseY += halfLineSpacing * this.getStemDirection();
-            minY = Math.min(ys.topY, ys.baseY);
-            maxY = Math.max(ys.topY, ys.baseY);
-        }
-        else {
-            minY = 0;
-            maxY = 0;
-            for (let i = 0; i < this.ys.length; ++i) {
-                const yy = this.ys[i];
-                if (i === 0) {
-                    minY = yy;
-                    maxY = yy;
-                }
-                else {
-                    minY = Math.min(yy, minY);
-                    maxY = Math.max(yy, maxY);
-                }
-            }
-            minY -= halfLineSpacing;
-            maxY += halfLineSpacing;
-        }
-        return new _boundingbox__WEBPACK_IMPORTED_MODULE_0__.BoundingBox(x, minY, w, maxY - minY);
+        return this.boundingBox;
     }
     // Gets the line number of the bottom note in the chord.
     // If `isTopNote` is `true` then get the top note's line number instead
     getLineNumber(isTopNote) {
         if (!this.keyProps.length) {
-            throw new _util__WEBPACK_IMPORTED_MODULE_7__.RuntimeError('NoKeyProps', "Can't get bottom note line, because note is not initialized properly.");
+            throw new _util__WEBPACK_IMPORTED_MODULE_8__.RuntimeError('NoKeyProps', "Can't get bottom note line, because note is not initialized properly.");
         }
         let resultLine = this.keyProps[0].line;
         // No precondition assumed for sortedness of keyProps array
@@ -27390,7 +27212,8 @@ class StaveNote extends _stemmablenote__WEBPACK_IMPORTED_MODULE_4__.StemmableNot
      * @returns true if this note is a type of rest. Rests don't have pitches, but take up space in the score.
      */
     isRest() {
-        return this.glyphProps.rest;
+        const val = this.glyphProps.codeHead;
+        return val >= '\ue4e0' && val <= '\ue4ff';
     }
     // Determine if the current note is a chord
     isChord() {
@@ -27410,7 +27233,7 @@ class StaveNote extends _stemmablenote__WEBPACK_IMPORTED_MODULE_4__.StemmableNot
         else {
             // We adjust the origin of the stem because we want the stem left-aligned
             // with the notehead if stemmed-down, and right-aligned if stemmed-up
-            return super.getStemX() + (this.stemDirection ? _stem__WEBPACK_IMPORTED_MODULE_3__.Stem.WIDTH / (2 * -this.stemDirection) : 0);
+            return super.getStemX() + (this.stemDirection ? _stem__WEBPACK_IMPORTED_MODULE_4__.Stem.WIDTH / (2 * -this.stemDirection) : 0);
         }
     }
     // Get the `y` coordinate for text placed on the top/bottom of a
@@ -27468,19 +27291,18 @@ class StaveNote extends _stemmablenote__WEBPACK_IMPORTED_MODULE_4__.StemmableNot
             const lastLine = this.keyProps[this.keyProps.length - 1].line;
             const top = Math.max(restLine, lastLine);
             const bot = Math.min(restLine, lastLine);
-            restLine = (0,_util__WEBPACK_IMPORTED_MODULE_7__.midLine)(top, bot);
+            restLine = (0,_util__WEBPACK_IMPORTED_MODULE_8__.midLine)(top, bot);
         }
         return restLine;
     }
     // Get the default `x` and `y` coordinates for the provided `position`
     // and key `index`
     getModifierStartXY(position, index, options = {}) {
-        var _a, _b;
         if (!this.preFormatted) {
-            throw new _util__WEBPACK_IMPORTED_MODULE_7__.RuntimeError('UnformattedNote', "Can't call GetModifierStartXY on an unformatted note");
+            throw new _util__WEBPACK_IMPORTED_MODULE_8__.RuntimeError('UnformattedNote', "Can't call GetModifierStartXY on an unformatted note");
         }
         if (this.ys.length === 0) {
-            throw new _util__WEBPACK_IMPORTED_MODULE_7__.RuntimeError('NoYValues', 'No Y-Values calculated for this note.');
+            throw new _util__WEBPACK_IMPORTED_MODULE_8__.RuntimeError('NoYValues', 'No Y-Values calculated for this note.');
         }
         const { ABOVE, BELOW, LEFT, RIGHT } = _modifier__WEBPACK_IMPORTED_MODULE_1__.Modifier.Position;
         let x = 0;
@@ -27491,18 +27313,39 @@ class StaveNote extends _stemmablenote__WEBPACK_IMPORTED_MODULE_4__.StemmableNot
         else if (position === RIGHT) {
             // FIXME: Right modifier padding, move to font file
             x = this.getGlyphWidth() + this.xShift + 2;
-            if (this.stemDirection === _stem__WEBPACK_IMPORTED_MODULE_3__.Stem.UP &&
+            if (this.stemDirection === _stem__WEBPACK_IMPORTED_MODULE_4__.Stem.UP &&
                 this.hasFlag() &&
                 (options.forceFlagRight || isInnerNoteIndex(this, index))) {
-                x += (_b = (_a = this === null || this === void 0 ? void 0 : this.flag) === null || _a === void 0 ? void 0 : _a.getMetrics().width) !== null && _b !== void 0 ? _b : 0;
+                x += this.flag.getWidth();
             }
         }
         else if (position === BELOW || position === ABOVE) {
             x = this.getGlyphWidth() / 2;
         }
+        // addtional y shifts for rests
+        let restShift = 0;
+        switch (__classPrivateFieldGet(this, _StaveNote_noteHeads, "f")[index].getText()) {
+            case '\ue4e2' /*restDoubleWhole*/:
+            case '\ue4e3' /*restWhole*/:
+                restShift += 0.5;
+                break;
+            case '\ue4e4' /*restHalf*/:
+            case '\ue4e5' /*restQuarter*/:
+            case '\ue4e6' /*rest8th*/:
+            case '\ue4e7' /*rest16th*/:
+                restShift -= 0.5;
+                break;
+            case '\ue4e8' /*rest32nd*/:
+            case '\ue4e9' /*rest64th*/:
+                restShift -= 1.5;
+                break;
+            case '\ue4ea' /*rest128th*/:
+                restShift -= 2.5;
+                break;
+        }
         return {
             x: this.getAbsoluteX() + x,
-            y: this.ys[index],
+            y: this.ys[index] + restShift * this.checkStave().getSpacingBetweenLines(),
         };
     }
     // Sets the style of the complete StaveNote, including all keys
@@ -27527,12 +27370,14 @@ class StaveNote extends _stemmablenote__WEBPACK_IMPORTED_MODULE_4__.StemmableNot
         return this.ledgerLineStyle;
     }
     setFlagStyle(style) {
-        var _a;
-        (_a = this.flag) === null || _a === void 0 ? void 0 : _a.setStyle(style);
+        this.flagStyle = style;
     }
     getFlagStyle() {
-        var _a;
-        return (_a = this.flag) === null || _a === void 0 ? void 0 : _a.getStyle();
+        return this.flagStyle;
+    }
+    /** Get the glyph width. */
+    getGlyphWidth() {
+        return this.noteHeads[0].getWidth();
     }
     // Sets the notehead at `index` to the provided coloring `style`.
     //
@@ -27559,10 +27404,10 @@ class StaveNote extends _stemmablenote__WEBPACK_IMPORTED_MODULE_4__.StemmableNot
     // Calculates and sets the extra pixels to the left or right
     // if the note is displaced.
     calcNoteDisplacements() {
-        this.setLeftDisplacedHeadPx(this.displaced && this.stemDirection === _stem__WEBPACK_IMPORTED_MODULE_3__.Stem.DOWN ? this.getGlyphWidth() : 0);
+        this.setLeftDisplacedHeadPx(this.displaced && this.stemDirection === _stem__WEBPACK_IMPORTED_MODULE_4__.Stem.DOWN ? this.getGlyphWidth() : 0);
         // For upstems with flags, the extra space is unnecessary, since it's taken
         // up by the flag.
-        this.setRightDisplacedHeadPx(!this.hasFlag() && this.displaced && this.stemDirection === _stem__WEBPACK_IMPORTED_MODULE_3__.Stem.UP ? this.getGlyphWidth() : 0);
+        this.setRightDisplacedHeadPx(!this.hasFlag() && this.displaced && this.stemDirection === _stem__WEBPACK_IMPORTED_MODULE_4__.Stem.UP ? this.getGlyphWidth() : 0);
     }
     // Pre-render formatting
     preFormat() {
@@ -27579,7 +27424,7 @@ class StaveNote extends _stemmablenote__WEBPACK_IMPORTED_MODULE_4__.StemmableNot
         }
         let width = this.getGlyphWidth() + this.leftDisplacedHeadPx + this.rightDisplacedHeadPx + noteHeadPadding;
         // For upward flagged notes, the width of the flag needs to be added
-        if (this.shouldDrawFlag() && this.stemDirection === _stem__WEBPACK_IMPORTED_MODULE_3__.Stem.UP) {
+        if (this.shouldDrawFlag() && this.stemDirection === _stem__WEBPACK_IMPORTED_MODULE_4__.Stem.UP) {
             width += this.getGlyphWidth();
             // TODO: Add flag width as a separate metric
         }
@@ -27667,14 +27512,14 @@ class StaveNote extends _stemmablenote__WEBPACK_IMPORTED_MODULE_4__.StemmableNot
     // Draw the ledger lines between the stave and the highest/lowest keys
     drawLedgerLines() {
         const stave = this.checkStave();
-        const { glyphProps, renderOptions: { strokePx }, } = this;
+        const { renderOptions: { strokePx }, } = this;
         const ctx = this.checkContext();
-        const width = glyphProps.getWidth() + strokePx * 2;
-        const doubleWidth = 2 * (glyphProps.getWidth() + strokePx) - _stem__WEBPACK_IMPORTED_MODULE_3__.Stem.WIDTH / 2;
+        const width = this.getGlyphWidth() + strokePx * 2;
+        const doubleWidth = 2 * (this.getGlyphWidth() + strokePx) - _stem__WEBPACK_IMPORTED_MODULE_4__.Stem.WIDTH / 2;
         if (this.isRest())
             return;
         if (!ctx) {
-            throw new _util__WEBPACK_IMPORTED_MODULE_7__.RuntimeError('NoCanvasContext', "Can't draw without a canvas context.");
+            throw new _util__WEBPACK_IMPORTED_MODULE_8__.RuntimeError('NoCanvasContext', "Can't draw without a canvas context.");
         }
         const { highestLine, lowestLine, highestDisplacedLine, highestNonDisplacedLine, lowestDisplacedLine, lowestNonDisplacedLine, displacedX, nonDisplacedX, } = this.getNoteHeadBounds();
         // Early out if there are no ledger lines to draw.
@@ -27729,41 +27574,30 @@ class StaveNote extends _stemmablenote__WEBPACK_IMPORTED_MODULE_4__.StemmableNot
     }
     shouldDrawFlag() {
         const hasStem = this.stem !== undefined;
-        const hasFlag = this.glyphProps.flag == true;
+        const hasFlag = this.glyphProps.codeFlagUp !== undefined;
         const hasNoBeam = this.beam === undefined;
-        return hasStem && hasFlag && hasNoBeam;
+        return hasStem && hasFlag && hasNoBeam && !this.isRest();
     }
     // Draw the flag for the note
     drawFlag() {
-        var _a, _b, _c, _d, _e;
         const ctx = this.checkContext();
         if (!ctx) {
-            throw new _util__WEBPACK_IMPORTED_MODULE_7__.RuntimeError('NoCanvasContext', "Can't draw without a canvas context.");
+            throw new _util__WEBPACK_IMPORTED_MODULE_8__.RuntimeError('NoCanvasContext', "Can't draw without a canvas context.");
         }
         if (this.shouldDrawFlag()) {
             const { yTop, yBottom } = this.getNoteHeadBounds();
             // eslint-disable-next-line
             const noteStemHeight = this.stem.getHeight();
-            const flagX = this.getStemX();
-            // What's with the magic +/- 2
-            // ANSWER: a corner of the note stem pokes out beyond the tip of the flag.
-            // The extra +/- 2 pushes the flag glyph outward so it covers the stem entirely.
-            // Alternatively, we could shorten the stem.
-            const flagY = this.getStemDirection() === _stem__WEBPACK_IMPORTED_MODULE_3__.Stem.DOWN
+            const flagX = this.getStemX() - _tables__WEBPACK_IMPORTED_MODULE_6__.Tables.STEM_WIDTH / 2;
+            const flagY = this.getStemDirection() === _stem__WEBPACK_IMPORTED_MODULE_4__.Stem.DOWN
                 ? // Down stems are below the note head and have flags on the right.
-                    yTop -
-                        noteStemHeight +
-                        2 -
-                        (this.glyphProps ? this.glyphProps.stemDownExtension : 0) * this.getStaveNoteScale() -
-                        ((_b = (_a = this.flag) === null || _a === void 0 ? void 0 : _a.getMetrics().yShift) !== null && _b !== void 0 ? _b : 0) * (1 - this.getStaveNoteScale())
+                    yTop - noteStemHeight - this.flag.getTextMetrics().actualBoundingBoxDescent
                 : // Up stems are above the note head and have flags on the right.
-                    yBottom -
-                        noteStemHeight -
-                        2 +
-                        (this.glyphProps ? this.glyphProps.stemUpExtension : 0) * this.getStaveNoteScale() -
-                        ((_d = (_c = this.flag) === null || _c === void 0 ? void 0 : _c.getMetrics().yShift) !== null && _d !== void 0 ? _d : 0) * (1 - this.getStaveNoteScale());
+                    yBottom - noteStemHeight + this.flag.getTextMetrics().actualBoundingBoxAscent;
             // Draw the Flag
-            (_e = this.flag) === null || _e === void 0 ? void 0 : _e.render(ctx, flagX, flagY);
+            this.applyStyle(ctx, this.flagStyle);
+            this.flag.renderText(ctx, flagX, flagY);
+            this.restoreStyle(ctx, this.flagStyle);
         }
     }
     // Draw the NoteHeads
@@ -27784,7 +27618,7 @@ class StaveNote extends _stemmablenote__WEBPACK_IMPORTED_MODULE_4__.StemmableNot
         // is called at all. Perhaps these should be removed?
         const ctx = this.checkContext();
         if (stemOptions) {
-            this.setStem(new _stem__WEBPACK_IMPORTED_MODULE_3__.Stem(stemOptions));
+            this.setStem(new _stem__WEBPACK_IMPORTED_MODULE_4__.Stem(stemOptions));
         }
         // If we will render a flag, we shorten the stem so that the tip
         // does not poke through the flag.
@@ -27813,7 +27647,7 @@ class StaveNote extends _stemmablenote__WEBPACK_IMPORTED_MODULE_4__.StemmableNot
         }
         let midLineDistance;
         const MIDDLE_LINE = 3;
-        if (stemDirection === _stem__WEBPACK_IMPORTED_MODULE_3__.Stem.UP) {
+        if (stemDirection === _stem__WEBPACK_IMPORTED_MODULE_4__.Stem.UP) {
             // Note that the use of maxLine here instead of minLine might
             // seem counterintuitive, but in the case of (say) treble clef
             // chord(F2, E4) stem up, we do not want to extend the stem because
@@ -27833,7 +27667,7 @@ class StaveNote extends _stemmablenote__WEBPACK_IMPORTED_MODULE_4__.StemmableNot
         }
         const stave = this.getStave();
         let spacingBetweenLines = 10;
-        if (stave != undefined) {
+        if (stave !== undefined) {
             spacingBetweenLines = stave.getSpacingBetweenLines();
         }
         return superStemExtension + linesOverOctaveFromMidLine * spacingBetweenLines;
@@ -27843,7 +27677,7 @@ class StaveNote extends _stemmablenote__WEBPACK_IMPORTED_MODULE_4__.StemmableNot
         if (this.renderOptions.draw === false)
             return;
         if (this.ys.length === 0) {
-            throw new _util__WEBPACK_IMPORTED_MODULE_7__.RuntimeError('NoYValues', "Can't draw note without Y values.");
+            throw new _util__WEBPACK_IMPORTED_MODULE_8__.RuntimeError('NoYValues', "Can't draw note without Y values.");
         }
         const ctx = this.checkContext();
         const xBegin = this.getNoteHeadBeginX();
@@ -28783,7 +28617,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   StemmableNote: () => (/* binding */ StemmableNote)
 /* harmony export */ });
-/* harmony import */ var _glyph__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./glyph */ "./src/glyph.ts");
+/* harmony import */ var _element__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./element */ "./src/element.ts");
 /* harmony import */ var _note__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./note */ "./src/note.ts");
 /* harmony import */ var _stem__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./stem */ "./src/stem.ts");
 /* harmony import */ var _tables__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./tables */ "./src/tables.ts");
@@ -28806,6 +28640,8 @@ class StemmableNote extends _note__WEBPACK_IMPORTED_MODULE_1__.Note {
     }
     constructor(noteStruct) {
         super(noteStruct);
+        this.flag = new _element__WEBPACK_IMPORTED_MODULE_0__.Element();
+        this.flagStyle = {};
     }
     // Get and set the note's `Stem`
     getStem() {
@@ -28828,12 +28664,18 @@ class StemmableNote extends _note__WEBPACK_IMPORTED_MODULE_1__.Note {
         this.setStem(stem);
         return this;
     }
-    buildFlag(category = 'flag') {
+    buildFlag() {
+        var _a, _b, _c;
         const { glyphProps } = this;
         if (this.hasFlag()) {
-            const flagCode = this.getStemDirection() === _stem__WEBPACK_IMPORTED_MODULE_2__.Stem.DOWN ? glyphProps.codeFlagDownstem : glyphProps.codeFlagUpstem;
-            if (flagCode)
-                this.flag = new _glyph__WEBPACK_IMPORTED_MODULE_0__.Glyph(flagCode, this.renderOptions.glyphFontScale, { category });
+            const flagCode = 
+            // codeFlagDown = codeFlagUp + 1,, if not defined, code should be 0
+            this.getStemDirection() === _stem__WEBPACK_IMPORTED_MODULE_2__.Stem.DOWN
+                ? String.fromCodePoint(((_b = (_a = glyphProps.codeFlagUp) === null || _a === void 0 ? void 0 : _a.codePointAt(0)) !== null && _b !== void 0 ? _b : -1) + 1)
+                : (_c = glyphProps.codeFlagUp) !== null && _c !== void 0 ? _c : '\u0000';
+            this.flag.setText(flagCode);
+            this.flag.fontSize = this.renderOptions.glyphFontScale;
+            this.flag.measureText();
         }
     }
     // Get the custom glyph associated with the outer note head on the base of the stem.
@@ -28908,23 +28750,6 @@ class StemmableNote extends _note__WEBPACK_IMPORTED_MODULE_1__.Note {
         if (this.stem) {
             this.stem.setDirection(direction);
             this.stem.setExtension(this.getStemExtension());
-            // Lookup the base custom notehead (closest to the base of the stem) to extend or shorten
-            // the stem appropriately. If there's no custom note head, lookup the standard notehead.
-            const glyphProps = this.getBaseCustomNoteHeadGlyphProps() || this.getGlyphProps();
-            // Get the font-specific customizations for the note heads.
-            const offsets = _tables__WEBPACK_IMPORTED_MODULE_3__.Tables.currentMusicFont().lookupMetric(`stem.noteHead.${glyphProps.codeHead}`, {
-                offsetYBaseStemUp: 0,
-                offsetYTopStemUp: 0,
-                offsetYBaseStemDown: 0,
-                offsetYTopStemDown: 0,
-            });
-            // Configure the stem to use these offsets.
-            this.stem.setOptions({
-                stemUpYOffset: offsets.offsetYTopStemUp,
-                stemDownYOffset: offsets.offsetYTopStemDown,
-                stemUpYBaseOffset: offsets.offsetYBaseStemUp,
-                stemDownYBaseOffset: offsets.offsetYBaseStemDown, // glyph.stemDownYBaseOffset,
-            });
         }
         if (this.preFormatted) {
             this.preFormat();
@@ -28943,20 +28768,24 @@ class StemmableNote extends _note__WEBPACK_IMPORTED_MODULE_1__.Note {
     getCenterGlyphX() {
         return this.getAbsoluteX() + this.xShift + this.getGlyphWidth() / 2;
     }
+    /** Primarily used as the scaling factor for grace notes, GraceNote will return the required scale. */
+    getStaveNoteScale() {
+        return 1.0;
+    }
     // Get the stem extension for the current duration
     getStemExtension() {
         const glyphProps = this.getGlyphProps();
+        const flagHeight = this.flag.getHeight();
+        const scale = this.getStaveNoteScale();
         if (this.stemExtensionOverride != undefined) {
             return this.stemExtensionOverride;
         }
         // Use stemBeamExtension with beams
         if (this.beam) {
-            return glyphProps.stemBeamExtension;
+            return glyphProps.stemBeamExtension * scale;
         }
-        if (glyphProps) {
-            return this.getStemDirection() === _stem__WEBPACK_IMPORTED_MODULE_2__.Stem.UP ? glyphProps.stemUpExtension : glyphProps.stemDownExtension;
-        }
-        return 0;
+        // If the flag is longer than the stem, extend the stem by the difference.
+        return flagHeight > _stem__WEBPACK_IMPORTED_MODULE_2__.Stem.HEIGHT * scale ? flagHeight - _stem__WEBPACK_IMPORTED_MODULE_2__.Stem.HEIGHT * scale : 0;
     }
     // Set the stem length to a specific. Will override the default length.
     setStemLength(height) {
@@ -28996,7 +28825,7 @@ class StemmableNote extends _note__WEBPACK_IMPORTED_MODULE_1__.Note {
         }
     }
     hasFlag() {
-        return _tables__WEBPACK_IMPORTED_MODULE_3__.Tables.getGlyphProps(this.duration).flag == true && !this.beam;
+        return this.glyphProps.codeFlagUp != undefined && !this.beam && !this.isRest();
     }
     /** Post formats the note. */
     postFormat() {
@@ -30350,10 +30179,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   Tables: () => (/* binding */ Tables)
 /* harmony export */ });
 /* harmony import */ var _fraction__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./fraction */ "./src/fraction.ts");
-/* harmony import */ var _glyph__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./glyph */ "./src/glyph.ts");
-/* harmony import */ var _util__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./util */ "./src/util.ts");
+/* harmony import */ var _util__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./util */ "./src/util.ts");
 // Copyright (c) 2023-present VexFlow contributors: https://github.com/vexflow/vexflow/graphs/contributors
-
 
 
 const RESOLUTION = 16384;
@@ -30451,7 +30278,9 @@ const CommonMetrics = {
         },
     },
     TabNote: {
-        fontSize: 9,
+        text: {
+            fontSize: 9,
+        },
     },
     TabSlide: {
         fontFamily: 'Times New Roman, serif',
@@ -30469,8 +30298,9 @@ const CommonMetrics = {
         fontStyle: 'italic',
     },
     TextNote: {
-        fontFamily: 'Arial, sans-serif',
-        fontSize: 12,
+        text: {
+            fontSize: 12,
+        },
     },
     Tremolo: {
         spacing: 7,
@@ -30509,34 +30339,34 @@ const durationAliases = {
 const keySignatures = {
     C: { num: 0 },
     Am: { num: 0 },
-    F: { acc: 'b', num: 1 },
-    Dm: { acc: 'b', num: 1 },
-    Bb: { acc: 'b', num: 2 },
-    Gm: { acc: 'b', num: 2 },
-    Eb: { acc: 'b', num: 3 },
-    Cm: { acc: 'b', num: 3 },
-    Ab: { acc: 'b', num: 4 },
-    Fm: { acc: 'b', num: 4 },
-    Db: { acc: 'b', num: 5 },
-    Bbm: { acc: 'b', num: 5 },
-    Gb: { acc: 'b', num: 6 },
-    Ebm: { acc: 'b', num: 6 },
-    Cb: { acc: 'b', num: 7 },
-    Abm: { acc: 'b', num: 7 },
-    G: { acc: '#', num: 1 },
-    Em: { acc: '#', num: 1 },
-    D: { acc: '#', num: 2 },
-    Bm: { acc: '#', num: 2 },
-    A: { acc: '#', num: 3 },
-    'F#m': { acc: '#', num: 3 },
-    E: { acc: '#', num: 4 },
-    'C#m': { acc: '#', num: 4 },
-    B: { acc: '#', num: 5 },
-    'G#m': { acc: '#', num: 5 },
-    'F#': { acc: '#', num: 6 },
-    'D#m': { acc: '#', num: 6 },
-    'C#': { acc: '#', num: 7 },
-    'A#m': { acc: '#', num: 7 },
+    F: { accidental: 'b', num: 1 },
+    Dm: { accidental: 'b', num: 1 },
+    Bb: { accidental: 'b', num: 2 },
+    Gm: { accidental: 'b', num: 2 },
+    Eb: { accidental: 'b', num: 3 },
+    Cm: { accidental: 'b', num: 3 },
+    Ab: { accidental: 'b', num: 4 },
+    Fm: { accidental: 'b', num: 4 },
+    Db: { accidental: 'b', num: 5 },
+    Bbm: { accidental: 'b', num: 5 },
+    Gb: { accidental: 'b', num: 6 },
+    Ebm: { accidental: 'b', num: 6 },
+    Cb: { accidental: 'b', num: 7 },
+    Abm: { accidental: 'b', num: 7 },
+    G: { accidental: '#', num: 1 },
+    Em: { accidental: '#', num: 1 },
+    D: { accidental: '#', num: 2 },
+    Bm: { accidental: '#', num: 2 },
+    A: { accidental: '#', num: 3 },
+    'F#m': { accidental: '#', num: 3 },
+    E: { accidental: '#', num: 4 },
+    'C#m': { accidental: '#', num: 4 },
+    B: { accidental: '#', num: 5 },
+    'G#m': { accidental: '#', num: 5 },
+    'F#': { accidental: '#', num: 6 },
+    'D#m': { accidental: '#', num: 6 },
+    'C#': { accidental: '#', num: 7 },
+    'A#m': { accidental: '#', num: 7 },
 };
 const clefs = {
     treble: { lineShift: 0 },
@@ -30553,55 +30383,49 @@ const clefs = {
 };
 const notesInfo = {
     C: { index: 0, intVal: 0 },
-    CN: { index: 0, intVal: 0, accidental: 'n' },
-    'C#': { index: 0, intVal: 1, accidental: '#' },
-    'C##': { index: 0, intVal: 2, accidental: '##' },
-    CB: { index: 0, intVal: 11, accidental: 'b' },
-    CBB: { index: 0, intVal: 10, accidental: 'bb' },
+    CN: { index: 0, intVal: 0, accidental: 0xe261 /*accidentalNatural*/ },
+    'C#': { index: 0, intVal: 1, accidental: 0xe262 /*accidentalSharp*/ },
+    'C##': { index: 0, intVal: 2, accidental: 0xe263 /*accidentalDoubleSharp*/ },
+    CB: { index: 0, intVal: 11, accidental: 0xe260 /*accidentalFlat*/ },
+    CBB: { index: 0, intVal: 10, accidental: 0xe264 /*accidentalDoubleFlat*/ },
     D: { index: 1, intVal: 2 },
-    DN: { index: 1, intVal: 2, accidental: 'n' },
-    'D#': { index: 1, intVal: 3, accidental: '#' },
-    'D##': { index: 1, intVal: 4, accidental: '##' },
-    DB: { index: 1, intVal: 1, accidental: 'b' },
-    DBB: { index: 1, intVal: 0, accidental: 'bb' },
+    DN: { index: 1, intVal: 2, accidental: 0xe261 /*accidentalNatural*/ },
+    'D#': { index: 1, intVal: 3, accidental: 0xe262 /*accidentalSharp*/ },
+    'D##': { index: 1, intVal: 4, accidental: 0xe263 /*accidentalDoubleSharp*/ },
+    DB: { index: 1, intVal: 1, accidental: 0xe260 /*accidentalFlat*/ },
+    DBB: { index: 1, intVal: 0, accidental: 0xe264 /*accidentalDoubleFlat*/ },
     E: { index: 2, intVal: 4 },
-    EN: { index: 2, intVal: 4, accidental: 'n' },
-    'E#': { index: 2, intVal: 5, accidental: '#' },
-    'E##': { index: 2, intVal: 6, accidental: '##' },
-    EB: { index: 2, intVal: 3, accidental: 'b' },
-    EBB: { index: 2, intVal: 2, accidental: 'bb' },
+    EN: { index: 2, intVal: 4, accidental: 0xe261 /*accidentalNatural*/ },
+    'E#': { index: 2, intVal: 5, accidental: 0xe262 /*accidentalSharp*/ },
+    'E##': { index: 2, intVal: 6, accidental: 0xe263 /*accidentalDoubleSharp*/ },
+    EB: { index: 2, intVal: 3, accidental: 0xe260 /*accidentalFlat*/ },
+    EBB: { index: 2, intVal: 2, accidental: 0xe264 /*accidentalDoubleFlat*/ },
     F: { index: 3, intVal: 5 },
-    FN: { index: 3, intVal: 5, accidental: 'n' },
-    'F#': { index: 3, intVal: 6, accidental: '#' },
-    'F##': { index: 3, intVal: 7, accidental: '##' },
-    FB: { index: 3, intVal: 4, accidental: 'b' },
-    FBB: { index: 3, intVal: 3, accidental: 'bb' },
+    FN: { index: 3, intVal: 5, accidental: 0xe261 /*accidentalNatural*/ },
+    'F#': { index: 3, intVal: 6, accidental: 0xe262 /*accidentalSharp*/ },
+    'F##': { index: 3, intVal: 7, accidental: 0xe263 /*accidentalDoubleSharp*/ },
+    FB: { index: 3, intVal: 4, accidental: 0xe260 /*accidentalFlat*/ },
+    FBB: { index: 3, intVal: 3, accidental: 0xe264 /*accidentalDoubleFlat*/ },
     G: { index: 4, intVal: 7 },
-    GN: { index: 4, intVal: 7, accidental: 'n' },
-    'G#': { index: 4, intVal: 8, accidental: '#' },
-    'G##': { index: 4, intVal: 9, accidental: '##' },
-    GB: { index: 4, intVal: 6, accidental: 'b' },
-    GBB: { index: 4, intVal: 5, accidental: 'bb' },
+    GN: { index: 4, intVal: 7, accidental: 0xe261 /*accidentalNatural*/ },
+    'G#': { index: 4, intVal: 8, accidental: 0xe262 /*accidentalSharp*/ },
+    'G##': { index: 4, intVal: 9, accidental: 0xe263 /*accidentalDoubleSharp*/ },
+    GB: { index: 4, intVal: 6, accidental: 0xe260 /*accidentalFlat*/ },
+    GBB: { index: 4, intVal: 5, accidental: 0xe264 /*accidentalDoubleFlat*/ },
     A: { index: 5, intVal: 9 },
-    AN: { index: 5, intVal: 9, accidental: 'n' },
-    'A#': { index: 5, intVal: 10, accidental: '#' },
-    'A##': { index: 5, intVal: 11, accidental: '##' },
-    AB: { index: 5, intVal: 8, accidental: 'b' },
-    ABB: { index: 5, intVal: 7, accidental: 'bb' },
+    AN: { index: 5, intVal: 9, accidental: 0xe261 /*accidentalNatural*/ },
+    'A#': { index: 5, intVal: 10, accidental: 0xe262 /*accidentalSharp*/ },
+    'A##': { index: 5, intVal: 11, accidental: 0xe263 /*accidentalDoubleSharp*/ },
+    AB: { index: 5, intVal: 8, accidental: 0xe260 /*accidentalFlat*/ },
+    ABB: { index: 5, intVal: 7, accidental: 0xe264 /*accidentalDoubleFlat*/ },
     B: { index: 6, intVal: 11 },
-    BN: { index: 6, intVal: 11, accidental: 'n' },
-    'B#': { index: 6, intVal: 12, accidental: '#' },
-    'B##': { index: 6, intVal: 13, accidental: '##' },
-    BB: { index: 6, intVal: 10, accidental: 'b' },
-    BBB: { index: 6, intVal: 9, accidental: 'bb' },
-    R: { index: 6, rest: true },
-    X: {
-        index: 6,
-        accidental: '',
-        octave: 4,
-        code: 'noteheadXBlack',
-        shiftRight: 5.5,
-    },
+    BN: { index: 6, intVal: 11, accidental: 0xe261 /*accidentalNatural*/ },
+    'B#': { index: 6, intVal: 12, accidental: 0xe262 /*accidentalSharp*/ },
+    'B##': { index: 6, intVal: 13, accidental: 0xe263 /*accidentalDoubleSharp*/ },
+    BB: { index: 6, intVal: 10, accidental: 0xe260 /*accidentalFlat*/ },
+    BBB: { index: 6, intVal: 9, accidental: 0xe264 /*accidentalDoubleFlat*/ },
+    R: { index: 6 },
+    X: { index: 6 },
 };
 const validNoteTypes = {
     n: { name: 'note' },
@@ -31026,7 +30850,7 @@ class Tables {
      */
     static currentMusicFont() {
         if (Tables.MUSIC_FONT_STACK.length === 0) {
-            throw new _util__WEBPACK_IMPORTED_MODULE_2__.RuntimeError('NoFonts', 'The font stack is empty. See: await Flow.fetchMusicFont(...); Flow.setMusicFont(...).');
+            throw new _util__WEBPACK_IMPORTED_MODULE_1__.RuntimeError('NoFonts', 'The font stack is empty. See: await Flow.fetchMusicFont(...); Flow.setMusicFont(...).');
         }
         else {
             return Tables.MUSIC_FONT_STACK[0];
@@ -31034,7 +30858,7 @@ class Tables {
     }
     static clefProperties(clef) {
         if (!clef || !(clef in clefs))
-            throw new _util__WEBPACK_IMPORTED_MODULE_2__.RuntimeError('BadArgument', 'Invalid clef: ' + clef);
+            throw new _util__WEBPACK_IMPORTED_MODULE_1__.RuntimeError('BadArgument', 'Invalid clef: ' + clef);
         return clefs[clef];
     }
     /** Use the provided key to look up a FontInfo in CommonMetrics. **/
@@ -31086,7 +30910,7 @@ class Tables {
      * @param params a struct with one option, `octaveShift` for clef ottavation (0 = default; 1 = 8va; -1 = 8vb, etc.).
      * @returns properties for the specified note.
      */
-    static keyProperties(keyOctaveGlyph, clef = 'treble', params) {
+    static keyProperties(keyOctaveGlyph, clef = 'treble', type = 'N', params) {
         let options = { octaveShift: 0, duration: '4' };
         if (typeof params === 'object') {
             options = Object.assign(Object.assign({}, options), params);
@@ -31094,45 +30918,46 @@ class Tables {
         const duration = Tables.sanitizeDuration(options.duration);
         const pieces = keyOctaveGlyph.split('/');
         if (pieces.length < 2) {
-            throw new _util__WEBPACK_IMPORTED_MODULE_2__.RuntimeError('BadArguments', `First argument must be note/octave or note/octave/glyph-code: ${keyOctaveGlyph}`);
+            throw new _util__WEBPACK_IMPORTED_MODULE_1__.RuntimeError('BadArguments', `First argument must be note/octave or note/octave/glyph-code: ${keyOctaveGlyph}`);
         }
         const key = pieces[0].toUpperCase();
+        type = type.toUpperCase();
         const value = notesInfo[key];
         if (!value)
-            throw new _util__WEBPACK_IMPORTED_MODULE_2__.RuntimeError('BadArguments', 'Invalid key name: ' + key);
-        if (value.octave)
-            pieces[1] = value.octave.toString();
+            throw new _util__WEBPACK_IMPORTED_MODULE_1__.RuntimeError('BadArguments', 'Invalid key name: ' + key);
         let octave = parseInt(pieces[1], 10);
         // .octaveShift is the shift to compensate for clef 8va/8vb.
         octave += -1 * options.octaveShift;
         const baseIndex = octave * 7 - 4 * 7;
         let line = (baseIndex + value.index) / 2;
         line += Tables.clefProperties(clef).lineShift;
-        let stroke = 0;
-        if (line <= 0 && (line * 2) % 2 === 0)
-            stroke = 1; // stroke up
-        if (line >= 6 && (line * 2) % 2 === 0)
-            stroke = -1; // stroke down
         // Integer value for note arithmetic.
         const intValue = typeof value.intVal !== 'undefined' ? octave * 12 + value.intVal : undefined;
         // If the user specified a glyph, overwrite the glyph code.
-        const code = value.code;
-        const shiftRight = value.shiftRight;
-        let customNoteHeadProps = {};
+        let code = '';
+        let glyphName = 'N';
         if (pieces.length > 2 && pieces[2]) {
-            const glyphName = pieces[2].toUpperCase();
-            customNoteHeadProps = { code: this.codeNoteHead(glyphName, duration) } || {};
+            glyphName = pieces[2].toUpperCase();
         }
-        return Object.assign({ key,
+        else if (type != 'N') {
+            glyphName = type;
+        }
+        else
+            glyphName = key;
+        code = this.codeNoteHead(glyphName, duration);
+        return {
+            key,
             octave,
             line,
-            intValue, accidental: value.accidental, code,
-            stroke,
-            shiftRight, displaced: false }, customNoteHeadProps);
+            intValue,
+            accidental: value.accidental,
+            code,
+            displaced: false,
+        };
     }
     static integerToNote(integer) {
         if (typeof integer === 'undefined' || integer < 0 || integer > 11) {
-            throw new _util__WEBPACK_IMPORTED_MODULE_2__.RuntimeError('BadArguments', `integerToNote() requires an integer in the range [0, 11]: ${integer}`);
+            throw new _util__WEBPACK_IMPORTED_MODULE_1__.RuntimeError('BadArguments', `integerToNote() requires an integer in the range [0, 11]: ${integer}`);
         }
         const table = {
             0: 'C',
@@ -31150,31 +30975,9 @@ class Tables {
         };
         const noteValue = table[integer];
         if (!noteValue) {
-            throw new _util__WEBPACK_IMPORTED_MODULE_2__.RuntimeError('BadArguments', `Unknown note value for integer: ${integer}`);
+            throw new _util__WEBPACK_IMPORTED_MODULE_1__.RuntimeError('BadArguments', `Unknown note value for integer: ${integer}`);
         }
         return noteValue;
-    }
-    static tabToGlyphProps(fret, scale = 1.0) {
-        let glyph = undefined;
-        let width = 0;
-        let shiftY = 0;
-        if (fret.toUpperCase() === 'X') {
-            const glyphMetrics = new _glyph__WEBPACK_IMPORTED_MODULE_1__.Glyph('accidentalDoubleSharp', Tables.TABLATURE_FONT_SCALE).getMetrics();
-            glyph = 'accidentalDoubleSharp';
-            if (glyphMetrics.width == undefined || glyphMetrics.height == undefined)
-                throw new _util__WEBPACK_IMPORTED_MODULE_2__.RuntimeError('InvalidMetrics', 'Width and height required');
-            width = glyphMetrics.width;
-            shiftY = -glyphMetrics.height / 2;
-        }
-        else {
-            width = Tables.textWidth(fret);
-        }
-        return {
-            text: fret,
-            code: glyph,
-            getWidth: () => width * scale,
-            shiftY,
-        };
     }
     // Used by annotation.ts and bend.ts. Clearly this implementation only works for the default font size.
     // TODO: The actual width depends on the font family, size, weight, style.
@@ -31184,33 +30987,33 @@ class Tables {
     static articulationCodes(artic) {
         return articulations[artic];
     }
-    static accidentalCodesOld(acc) {
-        return accidentalsOld[acc];
+    static accidentalCodesOld(accidental) {
+        return accidentalsOld[accidental];
     }
-    static accidentalCodes(acc) {
+    static accidentalCodes(accidental) {
         var _a;
-        return (_a = accidentals[acc]) !== null && _a !== void 0 ? _a : acc;
+        return (_a = accidentals[accidental]) !== null && _a !== void 0 ? _a : accidental;
     }
-    static ornamentCodes(acc) {
-        return ornaments[acc];
+    static ornamentCodes(accidental) {
+        return ornaments[accidental];
     }
     static keySignature(spec) {
         const keySpec = keySignatures[spec];
         if (!keySpec) {
-            throw new _util__WEBPACK_IMPORTED_MODULE_2__.RuntimeError('BadKeySignature', `Bad key signature spec: '${spec}'`);
+            throw new _util__WEBPACK_IMPORTED_MODULE_1__.RuntimeError('BadKeySignature', `Bad key signature spec: '${spec}'`);
         }
-        if (!keySpec.acc) {
+        if (!keySpec.accidental) {
             return [];
         }
         const accidentalList = {
             b: [2, 0.5, 2.5, 1, 3, 1.5, 3.5],
             '#': [0, 1.5, -0.5, 1, 2.5, 0.5, 2],
         };
-        const notes = accidentalList[keySpec.acc];
+        const notes = accidentalList[keySpec.accidental];
         const accList = [];
         for (let i = 0; i < keySpec.num; ++i) {
             const line = notes[i];
-            accList.push({ type: keySpec.acc, line });
+            accList.push({ type: keySpec.accidental, line });
         }
         return accList;
     }
@@ -31232,7 +31035,7 @@ class Tables {
             duration = durationNumber;
         }
         if (durations[duration] === undefined) {
-            throw new _util__WEBPACK_IMPORTED_MODULE_2__.RuntimeError('BadArguments', `The provided duration is not valid: ${duration}`);
+            throw new _util__WEBPACK_IMPORTED_MODULE_1__.RuntimeError('BadArguments', `The provided duration is not valid: ${duration}`);
         }
         return duration;
     }
@@ -31249,275 +31052,212 @@ class Tables {
         duration = Tables.sanitizeDuration(duration);
         const ticks = durations[duration];
         if (ticks === undefined) {
-            throw new _util__WEBPACK_IMPORTED_MODULE_2__.RuntimeError('InvalidDuration');
+            throw new _util__WEBPACK_IMPORTED_MODULE_1__.RuntimeError('InvalidDuration');
         }
         return ticks;
     }
     static codeNoteHead(type, duration) {
-        let code = '';
         switch (type) {
             /* Diamond */
             case 'D0':
-                code = 'noteheadDiamondWhole';
-                break;
+                return '\ue0d8' /*noteheadDiamondWhole*/;
             case 'D1':
-                code = 'noteheadDiamondHalf';
-                break;
+                return '\ue0d9' /*noteheadDiamondHalf*/;
             case 'D2':
-                code = 'noteheadDiamondBlack';
-                break;
+                return '\ue0db' /*noteheadDiamondBlack*/;
             case 'D3':
-                code = 'noteheadDiamondBlack';
-                break;
+                return '\ue0db' /*noteheadDiamondBlack*/;
             /* Triangle */
             case 'T0':
-                code = 'noteheadTriangleUpWhole';
-                break;
+                return '\ue0bb' /*noteheadTriangleUpWhole*/;
             case 'T1':
-                code = 'noteheadTriangleUpHalf';
-                break;
+                return '\ue0bc' /*noteheadTriangleUpHalf*/;
             case 'T2':
-                code = 'noteheadTriangleUpBlack';
-                break;
+                return '\ue0be' /*noteheadTriangleUpBlack*/;
             case 'T3':
-                code = 'noteheadTriangleUpBlack';
-                break;
+                return '\ue0be' /*noteheadTriangleUpBlack*/;
             /* Cross */
             case 'X0':
-                code = 'noteheadXWhole';
-                break;
+                return '\ue0a7' /*noteheadXWhole*/;
             case 'X1':
-                code = 'noteheadXHalf';
-                break;
+                return '\ue0a8' /*noteheadXHalf*/;
             case 'X2':
-                code = 'noteheadXBlack';
-                break;
+                return '\ue0a9' /*noteheadXBlack*/;
             case 'X3':
-                code = 'noteheadCircleX';
-                break;
+                return '\ue0b3' /*noteheadCircleX*/;
             /* Square */
             case 'S1':
-                code = 'noteheadSquareWhite';
-                break;
+                return '\ue0b8' /*noteheadSquareWhite*/;
             case 'S2':
-                code = 'noteheadSquareBlack';
-                break;
+                return '\ue0b9' /*noteheadSquareBlack*/;
             /* Rectangle */
             case 'R1':
-                code = 'vexNoteHeadRectWhite'; // no smufl code
-                break;
+                return '\ue0b8' /*noteheadSquareWhite*/; // no smufl code
             case 'R2':
-                code = 'vexNoteHeadRectBlack'; // no smufl code
-                break;
+                return '\ue0b8' /*noteheadSquareWhite*/; // no smufl code
             case 'DO':
-                code = 'noteheadTriangleUpBlack';
-                break;
+                return '\ue0be' /*noteheadTriangleUpBlack*/;
             case 'RE':
-                code = 'noteheadMoonBlack';
-                break;
+                return '\ue0cb' /*noteheadMoonBlack*/;
             case 'MI':
-                code = 'noteheadDiamondBlack';
-                break;
+                return '\ue0db' /*noteheadDiamondBlack*/;
             case 'FA':
-                code = 'noteheadTriangleLeftBlack';
-                break;
+                return '\ue0c0' /*noteheadTriangleLeftBlack*/;
             case 'FAUP':
-                code = 'noteheadTriangleRightBlack';
-                break;
+                return '\ue0c2' /*noteheadTriangleRightBlack*/;
             case 'SO':
-                code = 'noteheadBlack';
-                break;
+                return '\ue0a4' /*noteheadBlack*/;
             case 'LA':
-                code = 'noteheadSquareBlack';
-                break;
+                return '\ue0b9' /*noteheadSquareBlack*/;
             case 'TI':
-                code = 'noteheadTriangleRoundDownBlack';
-                break;
-            case 'D':
-            case 'H': // left for backwards compatibility
+                return '\ue0cd' /*noteheadTriangleRoundDownBlack*/;
+            case 'DI': // Diamond
+            case 'H': // Harmonics
                 switch (duration) {
                     case '1/2':
-                        code = 'noteheadDiamondDoubleWhole';
-                        break;
+                        return '\ue0d7' /*noteheadDiamondDoubleWhole*/;
                     case '1':
-                        code = 'noteheadDiamondWhole';
-                        break;
+                        return '\ue0d8' /*noteheadDiamondWhole*/;
                     case '2':
-                        code = 'noteheadDiamondHalf';
-                        break;
+                        return '\ue0d9' /*noteheadDiamondHalf*/;
                     default:
-                        code = 'noteheadDiamondBlack';
-                        break;
+                        return '\ue0db' /*noteheadDiamondBlack*/;
                 }
-                break;
-            case 'N':
-            case 'G':
-                switch (duration) {
-                    case '1/2':
-                        code = 'noteheadDoubleWhole';
-                        break;
-                    case '1':
-                        code = 'noteheadWhole';
-                        break;
-                    case '2':
-                        code = 'noteheadHalf';
-                        break;
-                    default:
-                        code = 'noteheadBlack';
-                        break;
-                }
-                break;
-            case 'M': // left for backwards compatibility
             case 'X':
+            case 'M': // Muted
                 switch (duration) {
                     case '1/2':
-                        code = 'noteheadXDoubleWhole';
-                        break;
+                        return '\ue0a6' /*noteheadXDoubleWhole*/;
                     case '1':
-                        code = 'noteheadXWhole';
-                        break;
+                        return '\ue0a7' /*noteheadXWhole*/;
                     case '2':
-                        code = 'noteheadXHalf';
-                        break;
+                        return '\ue0a8' /*noteheadXHalf*/;
                     default:
-                        code = 'noteheadXBlack';
-                        break;
+                        return '\ue0a9' /*noteheadXBlack*/;
                 }
-                break;
             case 'CX':
                 switch (duration) {
                     case '1/2':
-                        code = 'noteheadCircleXDoubleWhole';
-                        break;
+                        return '\ue0b0' /*noteheadCircleXDoubleWhole*/;
                     case '1':
-                        code = 'noteheadCircleXWhole';
-                        break;
+                        return '\ue0b1' /*noteheadCircleXWhole*/;
                     case '2':
-                        code = 'noteheadCircleXHalf';
-                        break;
+                        return '\ue0b2' /*noteheadCircleXHalf*/;
                     default:
-                        code = 'noteheadCircleX';
-                        break;
+                        return '\ue0b3' /*noteheadCircleX*/;
                 }
-                break;
             case 'CI':
                 switch (duration) {
                     case '1/2':
-                        code = 'noteheadCircledDoubleWhole';
-                        break;
+                        return '\ue0e7' /*noteheadCircledDoubleWhole*/;
                     case '1':
-                        code = 'noteheadCircledWhole';
-                        break;
+                        return '\ue0e6' /*noteheadCircledWhole*/;
                     case '2':
-                        code = 'noteheadCircledHalf';
-                        break;
+                        return '\ue0e5' /*noteheadCircledHalf*/;
                     default:
-                        code = 'noteheadCircledBlack';
-                        break;
+                        return '\ue0e4' /*noteheadCircledBlack*/;
                 }
-                break;
             case 'SQ':
                 switch (duration) {
                     case '1/2':
-                        code = 'noteheadDoubleWholeSquare';
-                        break;
+                        return '\ue0a1' /*noteheadDoubleWholeSquare*/;
                     case '1':
-                        code = 'noteheadSquareWhite';
-                        break;
+                        return '\ue0b8' /*noteheadSquareWhite*/;
                     case '2':
-                        code = 'noteheadSquareWhite';
-                        break;
+                        return '\ue0b8' /*noteheadSquareWhite*/;
                     default:
-                        code = 'noteheadSquareBlack';
-                        break;
+                        return '\ue0b9' /*noteheadSquareBlack*/;
                 }
-                break;
             case 'TU':
                 switch (duration) {
                     case '1/2':
-                        code = 'noteheadTriangleUpDoubleWhole';
-                        break;
+                        return '\ue0ba' /*noteheadTriangleUpDoubleWhole*/;
                     case '1':
-                        code = 'noteheadTriangleUpWhole';
-                        break;
+                        return '\ue0bb' /*noteheadTriangleUpWhole*/;
                     case '2':
-                        code = 'noteheadTriangleUpHalf';
-                        break;
+                        return '\ue0bc' /*noteheadTriangleUpHalf*/;
                     default:
-                        code = 'noteheadTriangleUpBlack';
-                        break;
+                        return '\ue0be' /*noteheadTriangleUpBlack*/;
                 }
-                break;
             case 'TD':
                 switch (duration) {
                     case '1/2':
-                        code = 'noteheadTriangleDownDoubleWhole';
-                        break;
+                        return '\ue0c3' /*noteheadTriangleDownDoubleWhole*/;
                     case '1':
-                        code = 'noteheadTriangleDownWhole';
-                        break;
+                        return '\ue0c4' /*noteheadTriangleDownWhole*/;
                     case '2':
-                        code = 'noteheadTriangleDownHalf';
-                        break;
+                        return '\ue0c5' /*noteheadTriangleDownHalf*/;
                     default:
-                        code = 'noteheadTriangleDownBlack';
-                        break;
+                        return '\ue0c7' /*noteheadTriangleDownBlack*/;
                 }
-                break;
             case 'SF':
                 switch (duration) {
                     case '1/2':
-                        code = 'noteheadSlashedDoubleWhole1';
-                        break;
+                        return '\ue0d5' /*noteheadSlashedDoubleWhole1*/;
                     case '1':
-                        code = 'noteheadSlashedWhole1';
-                        break;
+                        return '\ue0d3' /*noteheadSlashedWhole1*/;
                     case '2':
-                        code = 'noteheadSlashedHalf1';
-                        break;
+                        return '\ue0d1' /*noteheadSlashedHalf1*/;
                     default:
-                        code = 'noteheadSlashedBlack1';
+                        return '\ue0cf' /*noteheadSlashedBlack1*/;
                 }
-                break;
             case 'SB':
                 switch (duration) {
                     case '1/2':
-                        code = 'noteheadSlashedDoubleWhole2';
-                        break;
+                        return '\ue0d6' /*noteheadSlashedDoubleWhole2*/;
                     case '1':
-                        code = 'noteheadSlashedWhole2';
-                        break;
+                        return '\ue0d4' /*noteheadSlashedWhole2*/;
                     case '2':
-                        code = 'noteheadSlashedHalf2';
-                        break;
+                        return '\ue0d2' /*noteheadSlashedHalf2*/;
                     default:
-                        code = 'noteheadSlashedBlack2';
+                        return '\ue0d0' /*noteheadSlashedBlack2*/;
+                }
+            case 'R':
+                switch (duration) {
+                    case '1/2':
+                        return '\ue4e2' /*restDoubleWhole*/;
+                    case '1':
+                        return '\ue4e3' /*restWhole*/;
+                    case '2':
+                        return '\ue4e4' /*restHalf*/;
+                    case '4':
+                        return '\ue4e5' /*restQuarter*/;
+                    case '8':
+                        return '\ue4e6' /*rest8th*/;
+                    case '16':
+                        return '\ue4e7' /*rest16th*/;
+                    case '32':
+                        return '\ue4e8' /*rest32nd*/;
+                    case '64':
+                        return '\ue4e9' /*rest64th*/;
+                    case '128':
+                        return '\ue4ea' /*rest128th*/;
                 }
                 break;
+            case 'S':
+                switch (duration) {
+                    case '1/2':
+                        return '\ue10a' /*noteheadSlashWhiteDoubleWhole*/;
+                    case '1':
+                        return '\ue102' /*noteheadSlashWhiteWhole*/;
+                    case '2':
+                        return '\ue103' /*noteheadSlashWhiteHalf*/;
+                    default:
+                        return '\ue100' /*noteheadSlashVerticalEnds*/;
+                }
+            default:
+                switch (duration) {
+                    case '1/2':
+                        return '\ue0a0' /*noteheadDoubleWhole*/;
+                    case '1':
+                        return '\ue0a2' /*noteheadWhole*/;
+                    case '2':
+                        return '\ue0a3' /*noteheadHalf*/;
+                    default:
+                        return '\ue0a4' /*noteheadBlack*/;
+                }
         }
-        return code;
-    }
-    // Return a glyph given duration and type. The type can be a custom glyph code from customNoteHeads.
-    // The default type is a regular note ('n').
-    static getGlyphProps(duration, type = 'n') {
-        duration = Tables.sanitizeDuration(duration);
-        // Lookup duration for default glyph head code
-        let code = durationCodes[duration];
-        if (code === undefined) {
-            code = durationCodes['4'];
-        }
-        // Get glyph properties for 'type' from duration string (note, rest, harmonic, muted, slash)
-        let glyphTypeProperties = code[type];
-        // Try and get it from the custom list of note heads
-        const codeNoteHead = Tables.codeNoteHead(type.toUpperCase(), duration);
-        if (codeNoteHead != '')
-            glyphTypeProperties = Object.assign(Object.assign({}, glyphTypeProperties), { codeHead: codeNoteHead, code: codeNoteHead });
-        const codeHead = glyphTypeProperties.codeHead;
-        // The default implementation of getWidth() calls Glyph.getWidth(codeHead, scale).
-        // This can be overridden by an individual glyph type (see slash noteheads below: Tables.SLASH_NOTEHEAD_WIDTH).
-        const getWidth = (scale = Tables.NOTATION_FONT_SCALE) => _glyph__WEBPACK_IMPORTED_MODULE_1__.Glyph.getWidth(codeHead, scale);
-        // Merge duration props for 'duration' with the note head properties.
-        return Object.assign(Object.assign(Object.assign({}, code.common), { getWidth: getWidth }), glyphTypeProperties);
+        return '\u0000';
     }
 }
 Tables.UNISON = true;
@@ -31527,6 +31267,54 @@ Tables.STEM_HEIGHT = 35;
 Tables.STAVE_LINE_THICKNESS = 1;
 Tables.RENDER_PRECISION_PLACES = 3;
 Tables.RESOLUTION = RESOLUTION;
+// 1/2, 1, 2, 4, 8, 16, 32, 64, 128
+// NOTE: There is no 256 here! However, there are other mentions of 256 in this file.
+// For example, in durations has a 256 key, and sanitizeDuration() can return 256.
+// The sanitizeDuration() bit may need to be removed by 0xfe.
+Tables.durationCodes = {
+    '1/2': {
+        stem: false,
+    },
+    1: {
+        stem: false,
+    },
+    2: {
+        stem: true,
+    },
+    4: {
+        stem: true,
+    },
+    8: {
+        stem: true,
+        beamCount: 1,
+        stemBeamExtension: 0,
+        codeFlagUp: '\ue240' /*flag8thUp*/,
+    },
+    16: {
+        beamCount: 2,
+        stemBeamExtension: 0,
+        stem: true,
+        codeFlagUp: '\ue242' /*flag16thUp*/,
+    },
+    32: {
+        beamCount: 3,
+        stemBeamExtension: 7.5,
+        stem: true,
+        codeFlagUp: '\ue244' /*flag32ndUp*/,
+    },
+    64: {
+        beamCount: 4,
+        stemBeamExtension: 15,
+        stem: true,
+        codeFlagUp: '\ue246' /*flag64thUp*/,
+    },
+    128: {
+        beamCount: 5,
+        stemBeamExtension: 22.5,
+        stem: true,
+        codeFlagUp: '\ue248' /*flag128thUp*/,
+    },
+};
 /**
  * Customize this by calling Flow.setMusicFont(...fontNames);
  */
@@ -31569,301 +31357,6 @@ Tables.TIME4_4 = {
     beatValue: 4,
     resolution: RESOLUTION,
 };
-// 1/2, 1, 2, 4, 8, 16, 32, 64, 128
-// NOTE: There is no 256 here! However, there are other mentions of 256 in this file.
-// For example, in durations has a 256 key, and sanitizeDuration() can return 256.
-// The sanitizeDuration() bit may need to be removed by 0xfe.
-const durationCodes = {
-    '1/2': {
-        common: {
-            codeHead: '',
-            stem: false,
-            flag: false,
-            stemUpExtension: -Tables.STEM_HEIGHT,
-            stemDownExtension: -Tables.STEM_HEIGHT,
-            tabnoteStemUpExtension: -Tables.STEM_HEIGHT,
-            tabnoteStemDownExtension: -Tables.STEM_HEIGHT,
-            dotShiftY: 0,
-            lineAbove: 0,
-            lineBelow: 0,
-        },
-        r: {
-            // Breve rest
-            codeHead: 'restDoubleWhole',
-            rest: true,
-            position: 'B/5',
-            dotShiftY: 0.5,
-        },
-        s: {
-            // Breve note slash -
-            // Drawn with canvas primitives
-            getWidth: () => Tables.SLASH_NOTEHEAD_WIDTH,
-            position: 'B/4',
-        },
-    },
-    1: {
-        common: {
-            codeHead: '',
-            stem: false,
-            flag: false,
-            stemUpExtension: -Tables.STEM_HEIGHT,
-            stemDownExtension: -Tables.STEM_HEIGHT,
-            tabnoteStemUpExtension: -Tables.STEM_HEIGHT,
-            tabnoteStemDownExtension: -Tables.STEM_HEIGHT,
-            dotShiftY: 0,
-            lineAbove: 0,
-            lineBelow: 0,
-        },
-        r: {
-            // Whole rest
-            codeHead: 'restWhole',
-            ledgerCodeHead: 'restWholeLegerLine',
-            rest: true,
-            position: 'D/5',
-            dotShiftY: 0.5,
-        },
-        s: {
-            // Whole note slash
-            // Drawn with canvas primitives
-            getWidth: () => Tables.SLASH_NOTEHEAD_WIDTH,
-            position: 'B/4',
-        },
-    },
-    2: {
-        common: {
-            codeHead: '',
-            stem: true,
-            flag: false,
-            stemUpExtension: 0,
-            stemDownExtension: 0,
-            tabnoteStemUpExtension: 0,
-            tabnoteStemDownExtension: 0,
-            dotShiftY: 0,
-            lineAbove: 0,
-            lineBelow: 0,
-        },
-        r: {
-            // Half rest
-            codeHead: 'restHalf',
-            ledgerCodeHead: 'restHalfLegerLine',
-            stem: false,
-            rest: true,
-            position: 'B/4',
-            dotShiftY: -0.5,
-        },
-        s: {
-            // Half note slash
-            // Drawn with canvas primitives
-            getWidth: () => Tables.SLASH_NOTEHEAD_WIDTH,
-            position: 'B/4',
-        },
-    },
-    4: {
-        common: {
-            codeHead: '',
-            stem: true,
-            flag: false,
-            stemUpExtension: 0,
-            stemDownExtension: 0,
-            tabnoteStemUpExtension: 0,
-            tabnoteStemDownExtension: 0,
-            dotShiftY: 0,
-            lineAbove: 0,
-            lineBelow: 0,
-        },
-        r: {
-            // Quarter rest
-            codeHead: 'restQuarter',
-            stem: false,
-            rest: true,
-            position: 'B/4',
-            dotShiftY: -0.5,
-            lineAbove: 1.5,
-            lineBelow: 1.5,
-        },
-        s: {
-            // Quarter slash
-            // Drawn with canvas primitives
-            getWidth: () => Tables.SLASH_NOTEHEAD_WIDTH,
-            position: 'B/4',
-        },
-    },
-    8: {
-        common: {
-            codeHead: '',
-            stem: true,
-            flag: true,
-            beamCount: 1,
-            stemBeamExtension: 0,
-            codeFlagUpstem: 'flag8thUp',
-            codeFlagDownstem: 'flag8thDown',
-            stemUpExtension: 0,
-            stemDownExtension: 0,
-            tabnoteStemUpExtension: 0,
-            tabnoteStemDownExtension: 0,
-            dotShiftY: 0,
-            lineAbove: 0,
-            lineBelow: 0,
-        },
-        r: {
-            // Eighth rest
-            codeHead: 'rest8th',
-            stem: false,
-            flag: false,
-            rest: true,
-            position: 'B/4',
-            dotShiftY: -0.5,
-            lineAbove: 1.0,
-            lineBelow: 1.0,
-        },
-        s: {
-            // Eighth slash
-            // Drawn with canvas primitives
-            getWidth: () => Tables.SLASH_NOTEHEAD_WIDTH,
-            position: 'B/4',
-        },
-    },
-    16: {
-        common: {
-            codeHead: '',
-            beamCount: 2,
-            stemBeamExtension: 0,
-            stem: true,
-            flag: true,
-            codeFlagUpstem: 'flag16thUp',
-            codeFlagDownstem: 'flag16thDown',
-            stemUpExtension: 0,
-            stemDownExtension: 0,
-            tabnoteStemUpExtension: 0,
-            tabnoteStemDownExtension: 0,
-            dotShiftY: 0,
-            lineAbove: 0,
-            lineBelow: 0,
-        },
-        r: {
-            // Sixteenth rest
-            codeHead: 'rest16th',
-            stem: false,
-            flag: false,
-            rest: true,
-            position: 'B/4',
-            dotShiftY: -0.5,
-            lineAbove: 1.0,
-            lineBelow: 2.0,
-        },
-        s: {
-            // Sixteenth slash
-            // Drawn with canvas primitives
-            getWidth: () => Tables.SLASH_NOTEHEAD_WIDTH,
-            position: 'B/4',
-        },
-    },
-    32: {
-        common: {
-            codeHead: '',
-            beamCount: 3,
-            stemBeamExtension: 7.5,
-            stem: true,
-            flag: true,
-            codeFlagUpstem: 'flag32ndUp',
-            codeFlagDownstem: 'flag32ndDown',
-            stemUpExtension: 9,
-            stemDownExtension: 9,
-            tabnoteStemUpExtension: 9,
-            tabnoteStemDownExtension: 9,
-            dotShiftY: 0,
-            lineAbove: 0,
-            lineBelow: 0,
-        },
-        r: {
-            // Thirty-second rest
-            codeHead: 'rest32nd',
-            stem: false,
-            flag: false,
-            rest: true,
-            position: 'B/4',
-            dotShiftY: -1.5,
-            lineAbove: 2.0,
-            lineBelow: 2.0,
-        },
-        s: {
-            // Thirty-second slash
-            // Drawn with canvas primitives
-            getWidth: () => Tables.SLASH_NOTEHEAD_WIDTH,
-            position: 'B/4',
-        },
-    },
-    64: {
-        common: {
-            codeHead: '',
-            beamCount: 4,
-            stemBeamExtension: 15,
-            stem: true,
-            flag: true,
-            codeFlagUpstem: 'flag64thUp',
-            codeFlagDownstem: 'flag64thDown',
-            stemUpExtension: 13,
-            stemDownExtension: 13,
-            tabnoteStemUpExtension: 13,
-            tabnoteStemDownExtension: 13,
-            dotShiftY: 0,
-            lineAbove: 0,
-            lineBelow: 0,
-        },
-        r: {
-            // Sixty-fourth rest
-            codeHead: 'rest64th',
-            stem: false,
-            flag: false,
-            rest: true,
-            position: 'B/4',
-            dotShiftY: -1.5,
-            lineAbove: 2.0,
-            lineBelow: 3.0,
-        },
-        s: {
-            // Sixty-fourth slash
-            // Drawn with canvas primitives
-            getWidth: () => Tables.SLASH_NOTEHEAD_WIDTH,
-            position: 'B/4',
-        },
-    },
-    128: {
-        common: {
-            codeHead: '',
-            beamCount: 5,
-            stemBeamExtension: 22.5,
-            stem: true,
-            flag: true,
-            codeFlagUpstem: 'flag128thUp',
-            codeFlagDownstem: 'flag128thDown',
-            stemUpExtension: 22,
-            stemDownExtension: 22,
-            tabnoteStemUpExtension: 22,
-            tabnoteStemDownExtension: 22,
-            dotShiftY: 0,
-            lineAbove: 0,
-            lineBelow: 0,
-        },
-        r: {
-            // Hundred-twenty-eight rest
-            codeHead: 'rest128th',
-            stem: false,
-            flag: false,
-            rest: true,
-            position: 'B/4',
-            dotShiftY: -2.5,
-            lineAbove: 3.0,
-            lineBelow: 3.0,
-        },
-        s: {
-            // Hundred-twenty-eight slash
-            // Drawn with canvas primitives
-            getWidth: () => Tables.SLASH_NOTEHEAD_WIDTH,
-            position: 'B/4',
-        },
-    },
-};
 
 
 /***/ }),
@@ -31878,9 +31371,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   TabNote: () => (/* binding */ TabNote)
 /* harmony export */ });
-/* harmony import */ var _font__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./font */ "./src/font.ts");
-/* harmony import */ var _glyph__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./glyph */ "./src/glyph.ts");
-/* harmony import */ var _modifier__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./modifier */ "./src/modifier.ts");
+/* harmony import */ var _element__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./element */ "./src/element.ts");
+/* harmony import */ var _modifier__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./modifier */ "./src/modifier.ts");
+/* harmony import */ var _note__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./note */ "./src/note.ts");
 /* harmony import */ var _stem__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./stem */ "./src/stem.ts");
 /* harmony import */ var _stemmablenote__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./stemmablenote */ "./src/stemmablenote.ts");
 /* harmony import */ var _tables__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./tables */ "./src/tables.ts");
@@ -31991,7 +31484,7 @@ class TabNote extends _stemmablenote__WEBPACK_IMPORTED_MODULE_4__.StemmableNote 
     // and whether to `drawStem` when rendering the note
     constructor(noteStruct, drawStem = false) {
         super(noteStruct);
-        this.glyphPropsArr = [];
+        this.fretElement = [];
         // Return the number of the greatest string, which is the string lowest on the display
         this.greatestString = () => {
             return this.positions.map((x) => x.str).reduce((a, b) => (a > b ? a : b));
@@ -32007,7 +31500,7 @@ class TabNote extends _stemmablenote__WEBPACK_IMPORTED_MODULE_4__.StemmableNote 
         // Render Options
         this.renderOptions = Object.assign(Object.assign({}, this.renderOptions), { 
             // font size for note heads and rests
-            glyphFontScale: _tables__WEBPACK_IMPORTED_MODULE_5__.Tables.TABLATURE_FONT_SCALE, 
+            glyphFontScale: _tables__WEBPACK_IMPORTED_MODULE_5__.Tables.lookupMetric('TabNote.fontSize'), 
             // Flag to draw a stem
             drawStem, 
             // Flag to draw dot modifiers
@@ -32019,8 +31512,8 @@ class TabNote extends _stemmablenote__WEBPACK_IMPORTED_MODULE_4__.StemmableNote 
             // normal glyph scale
             scale: 1.0, 
             // default tablature font
-            font: `${_font__WEBPACK_IMPORTED_MODULE_0__.Font.SIZE}pt ${_font__WEBPACK_IMPORTED_MODULE_0__.Font.SANS_SERIF}` });
-        this.glyphProps = _tables__WEBPACK_IMPORTED_MODULE_5__.Tables.getGlyphProps(this.duration, this.noteType);
+            font: _tables__WEBPACK_IMPORTED_MODULE_5__.Tables.lookupMetric('fontFamily') });
+        this.glyphProps = _note__WEBPACK_IMPORTED_MODULE_2__.Note.getGlyphProps(this.duration, this.noteType);
         (0,_util__WEBPACK_IMPORTED_MODULE_7__.defined)(this.glyphProps, 'BadArguments', `No glyph found for duration '${this.duration}' and type '${this.noteType}'`);
         this.buildStem();
         if (noteStruct.stemDirection) {
@@ -32054,58 +31547,44 @@ class TabNote extends _stemmablenote__WEBPACK_IMPORTED_MODULE_4__.StemmableNote 
     }
     // Get the default stem extension for the note
     getStemExtension() {
-        const glyphProps = this.getGlyphProps();
         if (this.stemExtensionOverride != null) {
             return this.stemExtensionOverride;
         }
-        if (glyphProps) {
-            return this.getStemDirection() === _stem__WEBPACK_IMPORTED_MODULE_3__.Stem.UP
-                ? glyphProps.tabnoteStemUpExtension
-                : glyphProps.tabnoteStemDownExtension;
+        return this.flag.getHeight() > _stem__WEBPACK_IMPORTED_MODULE_3__.Stem.HEIGHT ? this.flag.getHeight() - _stem__WEBPACK_IMPORTED_MODULE_3__.Stem.HEIGHT : 0;
+    }
+    static tabToElement(fret, scale = 1.0) {
+        let el;
+        if (fret.toUpperCase() === 'X') {
+            el = new _element__WEBPACK_IMPORTED_MODULE_0__.Element('TabNote');
+            el.setText('\ue263' /*accidentalDoubleSharp*/);
+            el.measureText();
         }
-        return 0;
+        else {
+            el = new _element__WEBPACK_IMPORTED_MODULE_0__.Element('TabNote.text');
+            el.setText(fret);
+            el.measureText();
+            el.setYShift(el.getHeight() / 2);
+        }
+        return el;
     }
     // Calculate and store the width of the note
     updateWidth() {
-        this.glyphPropsArr = [];
+        this.fretElement = [];
         this.width = 0;
         for (let i = 0; i < this.positions.length; ++i) {
             let fret = this.positions[i].fret;
             if (this.ghost)
                 fret = '(' + fret + ')';
-            const glyphProps = _tables__WEBPACK_IMPORTED_MODULE_5__.Tables.tabToGlyphProps(fret.toString(), this.renderOptions.scale);
-            this.glyphPropsArr.push(glyphProps);
-            this.width = Math.max(glyphProps.getWidth(), this.width);
+            const el = TabNote.tabToElement(fret.toString(), this.renderOptions.scale);
+            this.fretElement.push(el);
+            this.width = Math.max(el.getWidth(), this.width);
         }
-        // For some reason we associate a notehead glyph with a TabNote, and this
-        // glyph is used for certain width calculations. Of course, this is totally
-        // incorrect since a notehead is a poor approximation for the dimensions of
-        // a fret number which can have multiple digits. As a result, we must
-        // overwrite getWidth() to return the correct width
-        this.glyphProps.getWidth = () => this.width;
     }
     // Set the `stave` to the note
     setStave(stave) {
         super.setStave(stave);
         const ctx = stave.getContext();
         this.setContext(ctx);
-        // Calculate the fret number width based on font used
-        if (ctx) {
-            this.width = 0;
-            for (let i = 0; i < this.glyphPropsArr.length; ++i) {
-                const glyphProps = this.glyphPropsArr[i];
-                const text = '' + glyphProps.text;
-                if (text.toUpperCase() !== 'X') {
-                    ctx.save();
-                    ctx.setFont(this.renderOptions.font);
-                    glyphProps.width = ctx.measureText(text).width;
-                    ctx.restore();
-                    glyphProps.getWidth = () => glyphProps.width;
-                }
-                this.width = Math.max(glyphProps.getWidth(), this.width);
-            }
-            this.glyphProps.getWidth = () => this.width;
-        }
         // we subtract 1 from `line` because getYForLine expects a 0-based index,
         // while the position.str is a 1-based index
         const ys = this.positions.map(({ str: line }) => stave.getYForLine(Number(line) - 1));
@@ -32129,14 +31608,14 @@ class TabNote extends _stemmablenote__WEBPACK_IMPORTED_MODULE_4__.StemmableNote 
             throw new _util__WEBPACK_IMPORTED_MODULE_7__.RuntimeError('NoYValues', 'No Y-Values calculated for this note.');
         }
         let x = 0;
-        if (position === _modifier__WEBPACK_IMPORTED_MODULE_2__.Modifier.Position.LEFT) {
+        if (position === _modifier__WEBPACK_IMPORTED_MODULE_1__.Modifier.Position.LEFT) {
             x = -1 * 2; // FIXME: modifier padding, move to font file
         }
-        else if (position === _modifier__WEBPACK_IMPORTED_MODULE_2__.Modifier.Position.RIGHT) {
+        else if (position === _modifier__WEBPACK_IMPORTED_MODULE_1__.Modifier.Position.RIGHT) {
             x = this.width + 2; // FIXME: modifier padding, move to font file
         }
-        else if (position === _modifier__WEBPACK_IMPORTED_MODULE_2__.Modifier.Position.BELOW || position === _modifier__WEBPACK_IMPORTED_MODULE_2__.Modifier.Position.ABOVE) {
-            const noteGlyphWidth = this.glyphProps.getWidth();
+        else if (position === _modifier__WEBPACK_IMPORTED_MODULE_1__.Modifier.Position.BELOW || position === _modifier__WEBPACK_IMPORTED_MODULE_1__.Modifier.Position.ABOVE) {
+            const noteGlyphWidth = this.width;
             x = noteGlyphWidth / 2;
         }
         return {
@@ -32177,22 +31656,21 @@ class TabNote extends _stemmablenote__WEBPACK_IMPORTED_MODULE_4__.StemmableNote 
     }
     // Draw the fal onto the context
     drawFlag() {
-        var _a;
         const { beam, glyphProps, renderOptions: { drawStem }, } = this;
         const context = this.checkContext();
         const shouldDrawFlag = beam == undefined && drawStem;
         // Now it's the flag's turn.
-        if (glyphProps.flag && shouldDrawFlag) {
+        if (glyphProps.codeFlagUp && shouldDrawFlag) {
             const flagX = this.getStemX();
             const flagY = this.getStemDirection() === _stem__WEBPACK_IMPORTED_MODULE_3__.Stem.DOWN
                 ? // Down stems are below the note head and have flags on the right.
-                    this.getStemY() - this.checkStem().getHeight() - (this.glyphProps ? this.glyphProps.stemDownExtension : 0)
+                    this.getStemY() - this.checkStem().getHeight() - this.getStemExtension()
                 : // Up stems are above the note head and have flags on the right.
-                    this.getStemY() - this.checkStem().getHeight() + (this.glyphProps ? this.glyphProps.stemUpExtension : 0);
+                    this.getStemY() - this.checkStem().getHeight() + this.getStemExtension();
             // Draw the Flag
-            //this.flag?.setOptions({ category: 'flag.tabStem' });
-            (_a = this.flag) === null || _a === void 0 ? void 0 : _a.render(context, flagX, flagY);
-            //Glyph.renderGlyph(context, flagX, flagY, glyphFontScale, flagCode, { category: 'flag.tabStem' });
+            this.applyStyle(context, this.flagStyle);
+            this.flag.renderText(context, flagX, flagY);
+            this.restoreStyle(context, this.flagStyle);
         }
     }
     // Render the modifiers onto the context.
@@ -32234,28 +31712,17 @@ class TabNote extends _stemmablenote__WEBPACK_IMPORTED_MODULE_4__.StemmableNote 
     }
     // Render the fret positions onto the context
     drawPositions() {
-        var _a;
         const ctx = this.checkContext();
         const x = this.getAbsoluteX();
         const ys = this.ys;
         for (let i = 0; i < this.positions.length; ++i) {
             const y = ys[i] + this.renderOptions.yShift;
-            const glyphProps = this.glyphPropsArr[i];
-            // Center the fret text beneath the notation note head
-            const noteGlyphWidth = this.glyphProps.getWidth();
-            const tabX = x + noteGlyphWidth / 2 - glyphProps.getWidth() / 2;
+            const el = this.fretElement[i];
+            // Center the fret text beneath the stem
+            const tabX = x - el.getWidth() / 2;
             // FIXME: Magic numbers.
-            ctx.clearRect(tabX - 2, y - 3, glyphProps.getWidth() + 4, 6);
-            if (glyphProps.code) {
-                _glyph__WEBPACK_IMPORTED_MODULE_1__.Glyph.renderGlyph(ctx, tabX, y, this.renderOptions.glyphFontScale * this.renderOptions.scale, glyphProps.code);
-            }
-            else {
-                ctx.save();
-                ctx.setFont(this.renderOptions.font);
-                const text = (_a = glyphProps.text) !== null && _a !== void 0 ? _a : '';
-                ctx.fillText(text, tabX, y + 5 * this.renderOptions.scale);
-                ctx.restore();
-            }
+            ctx.clearRect(tabX - 2, y - 3, el.getWidth() + 4, 6);
+            el.renderText(ctx, tabX, y);
         }
     }
     // The main rendering function for the entire note.
@@ -32696,14 +32163,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   TextDynamics: () => (/* binding */ TextDynamics)
 /* harmony export */ });
-/* harmony import */ var _glyph__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./glyph */ "./src/glyph.ts");
-/* harmony import */ var _note__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./note */ "./src/note.ts");
-/* harmony import */ var _tables__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./tables */ "./src/tables.ts");
-/* harmony import */ var _typeguard__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./typeguard */ "./src/typeguard.ts");
-/* harmony import */ var _util__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./util */ "./src/util.ts");
+/* harmony import */ var _note__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./note */ "./src/note.ts");
+/* harmony import */ var _tables__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./tables */ "./src/tables.ts");
+/* harmony import */ var _typeguard__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./typeguard */ "./src/typeguard.ts");
+/* harmony import */ var _util__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./util */ "./src/util.ts");
 // Copyright (c) 2023-present VexFlow contributors: https://github.com/vexflow/vexflow/graphs/contributors
 // MIT License
-
 
 
 
@@ -32711,7 +32176,7 @@ __webpack_require__.r(__webpack_exports__);
 // eslint-disable-next-line
 function L(...args) {
     if (TextDynamics.DEBUG)
-        (0,_util__WEBPACK_IMPORTED_MODULE_4__.log)('Vex.Flow.TextDynamics', args);
+        (0,_util__WEBPACK_IMPORTED_MODULE_3__.log)('Vex.Flow.TextDynamics', args);
 }
 /**
  * `TextDynamics` renders traditional
@@ -32720,37 +32185,19 @@ function L(...args) {
  * You can render any dynamics string that contains a combination of
  * the following letters:  P, M, F, Z, R, S
  */
-class TextDynamics extends _note__WEBPACK_IMPORTED_MODULE_1__.Note {
+class TextDynamics extends _note__WEBPACK_IMPORTED_MODULE_0__.Note {
     static get CATEGORY() {
-        return _typeguard__WEBPACK_IMPORTED_MODULE_3__.Category.TextDynamics;
+        return _typeguard__WEBPACK_IMPORTED_MODULE_2__.Category.TextDynamics;
     }
     /** The glyph data for each dynamics letter. */
     static get GLYPHS() {
         return {
-            f: {
-                code: 'dynamicForte',
-                width: 12,
-            },
-            p: {
-                code: 'dynamicPiano',
-                width: 14,
-            },
-            m: {
-                code: 'dynamicMezzo',
-                width: 17,
-            },
-            s: {
-                code: 'dynamicSforzando',
-                width: 10,
-            },
-            z: {
-                code: 'dynamicZ',
-                width: 12,
-            },
-            r: {
-                code: 'dynamicRinforzando',
-                width: 12,
-            },
+            f: '\uE522' /*dynamicForte*/,
+            p: '\uE520' /*dynamicPiano*/,
+            m: '\uE521' /*dynamicMezzo*/,
+            s: '\uE524' /*dynamicSforzando*/,
+            z: '\uE525' /*dynamicZ*/,
+            r: '\uE523' /*dynamicRinforzando*/,
         };
     }
     /**
@@ -32766,8 +32213,9 @@ class TextDynamics extends _note__WEBPACK_IMPORTED_MODULE_1__.Note {
         super(noteStruct);
         this.sequence = (noteStruct.text || '').toLowerCase();
         this.line = noteStruct.line || 0;
-        this.glyphs = [];
-        this.renderOptions = Object.assign(Object.assign({}, this.renderOptions), { glyphFontSize: _tables__WEBPACK_IMPORTED_MODULE_2__.Tables.NOTATION_FONT_SCALE });
+        this.text = '';
+        this.renderOptions = Object.assign({ glyphFontSize: _tables__WEBPACK_IMPORTED_MODULE_1__.Tables.lookupMetric('fontSize') }, this.renderOptions);
+        this.textFont.size = (0,_util__WEBPACK_IMPORTED_MODULE_3__.defined)(this.renderOptions.glyphFontSize) * this.renderOptions.glyphFontScale;
         L('New Dynamics Text: ', this.sequence);
     }
     /** Set the Stave line on which the note should be placed. */
@@ -32777,25 +32225,21 @@ class TextDynamics extends _note__WEBPACK_IMPORTED_MODULE_1__.Note {
     }
     /** Preformat the dynamics text. */
     preFormat() {
-        let totalWidth = 0;
         // length of this.glyphs must be <=
         // length of this.sequence, so if we're formatted before
         // create new glyphs.
-        this.glyphs = [];
+        this.text = '';
         // Iterate through each letter
         this.sequence.split('').forEach((letter) => {
             // Get the glyph data for the letter
-            const glyphData = TextDynamics.GLYPHS[letter];
-            if (!glyphData)
-                throw new _util__WEBPACK_IMPORTED_MODULE_4__.RuntimeError('Invalid dynamics character: ' + letter);
-            const size = (0,_util__WEBPACK_IMPORTED_MODULE_4__.defined)(this.renderOptions.glyphFontSize);
-            const glyph = new _glyph__WEBPACK_IMPORTED_MODULE_0__.Glyph(glyphData.code, size, { category: 'textNote' });
+            const glyph = TextDynamics.GLYPHS[letter];
+            if (!glyph)
+                throw new _util__WEBPACK_IMPORTED_MODULE_3__.RuntimeError('Invalid dynamics character: ' + letter);
             // Add the glyph
-            this.glyphs.push(glyph);
-            totalWidth += glyphData.width;
+            this.text += glyph;
         });
         // Store the width of the text
-        this.setWidth(totalWidth);
+        this.measureText();
         this.preFormatted = true;
         return this;
     }
@@ -32805,12 +32249,7 @@ class TextDynamics extends _note__WEBPACK_IMPORTED_MODULE_1__.Note {
         const x = this.getAbsoluteX();
         const y = this.checkStave().getYForLine(this.line + -3);
         L('Rendering Dynamics: ', this.sequence);
-        let letterX = x;
-        this.glyphs.forEach((glyph, index) => {
-            const currentLetter = this.sequence[index];
-            glyph.render(this.checkContext(), letterX, y);
-            letterX += TextDynamics.GLYPHS[currentLetter].width;
-        });
+        this.renderText(this.checkContext(), x, y);
     }
 }
 /** To enable logging for this class. Set `Vex.Flow.TextDynamics.DEBUG` to `true`. */
@@ -33163,15 +32602,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   TextJustification: () => (/* binding */ TextJustification),
 /* harmony export */   TextNote: () => (/* binding */ TextNote)
 /* harmony export */ });
-/* harmony import */ var _font__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./font */ "./src/font.ts");
-/* harmony import */ var _glyph__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./glyph */ "./src/glyph.ts");
+/* harmony import */ var _element__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./element */ "./src/element.ts");
+/* harmony import */ var _font__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./font */ "./src/font.ts");
 /* harmony import */ var _note__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./note */ "./src/note.ts");
 /* harmony import */ var _tables__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./tables */ "./src/tables.ts");
 /* harmony import */ var _typeguard__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./typeguard */ "./src/typeguard.ts");
-/* harmony import */ var _util__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./util */ "./src/util.ts");
 // Copyright (c) 2023-present VexFlow contributors: https://github.com/vexflow/vexflow/graphs/contributors
 // MIT License
-
 
 
 
@@ -33196,88 +32633,58 @@ class TextNote extends _note__WEBPACK_IMPORTED_MODULE_2__.Note {
     /** Glyph data. */
     static get GLYPHS() {
         return {
-            segno: {
-                code: 'segno',
-            },
-            tr: {
-                code: 'ornamentTrill',
-            },
-            mordent: {
-                code: 'ornamentMordent',
-            },
-            mordentUpper: {
-                code: 'ornamentShortTrill',
-            },
-            mordentLower: {
-                code: 'ornamentMordent',
-            },
-            f: {
-                code: 'dynamicForte',
-            },
-            p: {
-                code: 'dynamicPiano',
-            },
-            m: {
-                code: 'dynamicMezzo',
-            },
-            s: {
-                code: 'dynamicSforzando',
-            },
-            z: {
-                code: 'dynamicZ',
-            },
-            coda: {
-                code: 'coda',
-            },
-            pedalOpen: {
-                code: 'keyboardPedalPed',
-            },
-            pedalClose: {
-                code: 'keyboardPedalUp',
-            },
-            caesuraStraight: {
-                code: 'caesura',
-            },
-            caesuraCurved: {
-                code: 'caesuraCurved',
-            },
-            breath: {
-                code: 'breathMarkComma',
-            },
-            tick: {
-                code: 'breathMarkTick',
-            },
-            turn: {
-                code: 'ornamentTurn',
-            },
-            turnInverted: {
-                code: 'ornamentTurnSlash',
-            },
+            segno: '\uE047' /*segno*/,
+            tr: '\uE566' /*ornamentTrill*/,
+            mordent: '\uE56D' /*ornamentMordent*/,
+            mordentUpper: '\uE56C' /*ornamentShortTrill*/,
+            mordentLower: '\uE56D' /*ornamentMordent*/,
+            f: '\uE522' /*dynamicForte*/,
+            p: '\uE520' /*dynamicPiano*/,
+            m: '\uE521' /*dynamicMezzo*/,
+            s: '\uE524' /*dynamicSforzando*/,
+            z: '\uE525' /*dynamicZ*/,
+            coda: '\uE048' /*coda*/,
+            pedalOpen: '\uE650' /*keyboardPedalPed*/,
+            pedalClose: '\uE655' /*keyboardPedalUp*/,
+            caesuraStraight: '\uE4D1' /*caesura*/,
+            caesuraCurved: '\uE4D4' /*caesuraCurved*/,
+            breath: '\uE4CE' /*breathMarkComma*/,
+            tick: '\uE4CF' /*breathMarkTick*/,
+            turn: '\uE567' /*ornamentTurn*/,
+            turnInverted: '\uE569' /*ornamentTurnSlash*/,
         };
     }
     constructor(noteStruct) {
         super(noteStruct);
         this.text = noteStruct.text || '';
-        this.superscript = noteStruct.superscript;
-        this.subscript = noteStruct.subscript;
-        this.setFont(noteStruct.font);
+        if (noteStruct.glyph) {
+            this.text += TextNote.GLYPHS[noteStruct.glyph] || noteStruct.glyph;
+        }
+        if (noteStruct.font) {
+            this.setFont(noteStruct.font);
+        }
+        else if (noteStruct.glyph === undefined) {
+            this.setFont(_tables__WEBPACK_IMPORTED_MODULE_3__.Tables.lookupMetricFontInfo('TextNote.text.fontSize'));
+        }
+        else {
+            this.measureText();
+        }
+        // Scale the font size by 1/1.3.
+        const smallerFontSize = _font__WEBPACK_IMPORTED_MODULE_1__.Font.convertSizeToPointValue(this.textFont.size) * 0.769231;
+        if (noteStruct.superscript) {
+            this.superscript = new _element__WEBPACK_IMPORTED_MODULE_0__.Element('TexNote.subSuper');
+            this.superscript.setText(noteStruct.superscript);
+            this.superscript.setFontSize(smallerFontSize);
+        }
+        if (noteStruct.subscript) {
+            this.subscript = new _element__WEBPACK_IMPORTED_MODULE_0__.Element('TexNote.subSuper');
+            this.subscript.setText(noteStruct.subscript);
+            this.subscript.setFontSize(smallerFontSize);
+        }
         this.line = noteStruct.line || 0;
         this.smooth = noteStruct.smooth || false;
         this.ignoreTicks = noteStruct.ignoreTicks || false;
         this.justification = TextJustification.LEFT;
-        // Determine and set initial note width. Note that the text width is
-        // an approximation and isn't very accurate. The only way to accurately
-        // measure the length of text is with `CanvasRenderingContext2D.measureText()`.
-        if (noteStruct.glyph) {
-            const struct = TextNote.GLYPHS[noteStruct.glyph];
-            if (!struct)
-                throw new _util__WEBPACK_IMPORTED_MODULE_5__.RuntimeError('Invalid glyph type: ' + noteStruct.glyph);
-            this.glyph = new _glyph__WEBPACK_IMPORTED_MODULE_1__.Glyph(struct.code, _tables__WEBPACK_IMPORTED_MODULE_3__.Tables.NOTATION_FONT_SCALE, { category: 'textNote' });
-            this.setWidth(this.glyph.getMetrics().width);
-        }
-        else {
-            this.glyph = undefined;
-        }
     }
     /** Set the horizontal justification of the TextNote. */
     setJustification(just) {
@@ -33293,28 +32700,11 @@ class TextNote extends _note__WEBPACK_IMPORTED_MODULE_2__.Note {
     getLine() {
         return this.line;
     }
-    /** Return the unformatted text of this TextNote. */
-    getText() {
-        return this.text;
-    }
     /** Pre-render formatting. */
     preFormat() {
         if (this.preFormatted)
             return;
         const tickContext = this.checkTickContext(`Can't preformat without a TickContext.`);
-        if (this.smooth) {
-            this.setWidth(0);
-        }
-        else {
-            if (this.glyph) {
-                // Width already set.
-            }
-            else {
-                const ctx = this.checkContext();
-                ctx.setFont(this.textFont);
-                this.setWidth(ctx.measureText(this.text).width);
-            }
-        }
         if (this.justification === TextJustification.CENTER) {
             this.leftDisplacedHeadPx = this.width / 2;
         }
@@ -33344,32 +32734,17 @@ class TextNote extends _note__WEBPACK_IMPORTED_MODULE_2__.Note {
         else if (this.justification === TextJustification.RIGHT) {
             x -= width;
         }
-        let y;
-        if (this.glyph) {
-            y = stave.getYForLine(this.line + -3);
-            this.glyph.render(ctx, x, y);
+        const y = stave.getYForLine(this.line + -3);
+        this.applyStyle(ctx);
+        this.renderText(ctx, x, y);
+        const height = this.getHeight();
+        if (this.superscript) {
+            this.superscript.renderText(ctx, x + this.width + 2, y - height / 2.2);
         }
-        else {
-            y = stave.getYForLine(this.line + -3);
-            this.applyStyle(ctx);
-            ctx.setFont(this.textFont);
-            ctx.fillText(this.text, x, y);
-            const height = ctx.measureText(this.text).height;
-            // We called this.setFont(...) in the constructor, so we know this.textFont is available.
-            // eslint-disable-next-line
-            const { family, size, weight, style } = this.textFont;
-            // Scale the font size by 1/1.3.
-            const smallerFontSize = _font__WEBPACK_IMPORTED_MODULE_0__.Font.scaleSize(size, 0.769231);
-            if (this.superscript) {
-                ctx.setFont(family, smallerFontSize, weight, style);
-                ctx.fillText(this.superscript, x + this.width + 2, y - height / 2.2);
-            }
-            if (this.subscript) {
-                ctx.setFont(family, smallerFontSize, weight, style);
-                ctx.fillText(this.subscript, x + this.width + 2, y + height / 2.2 - 1);
-            }
-            this.restoreStyle(ctx);
+        if (this.subscript) {
+            this.subscript.renderText(ctx, x + this.width + 2, y + height / 2.2 - 1);
         }
+        this.restoreStyle(ctx);
     }
 }
 TextNote.Justification = TextJustification;
@@ -35256,20 +34631,17 @@ class Voice extends _element__WEBPACK_IMPORTED_MODULE_0__.Element {
     }
     /** Get the bounding box for the voice. */
     getBoundingBox() {
-        if (!this.boundingBox) {
-            const stave = this.checkStave();
-            let boundingBox = undefined;
-            for (let i = 0; i < this.tickables.length; ++i) {
-                const tickable = this.tickables[i];
-                if (!tickable.getStave())
-                    tickable.setStave(stave);
-                const bb = tickable.getBoundingBox();
-                if (bb) {
-                    boundingBox = boundingBox ? boundingBox.mergeWith(bb) : bb;
-                }
+        let boundingBox = undefined;
+        for (let i = 0; i < this.tickables.length; ++i) {
+            const tickable = this.tickables[i];
+            if (!tickable.getStave() && this.stave)
+                tickable.setStave(this.stave);
+            const bb = tickable.getBoundingBox();
+            if (bb) {
+                boundingBox = boundingBox ? boundingBox.mergeWith(bb) : bb;
             }
-            this.boundingBox = boundingBox;
         }
+        this.boundingBox = boundingBox;
         return this.boundingBox;
     }
     /** Set the voice mode to strict or soft. */
