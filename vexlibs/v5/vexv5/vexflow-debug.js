@@ -1,5 +1,5 @@
 /*!
- * VexFlow 5.0.2   2023-09-01T20:11:51.188Z   88249f5934989fe037b64fb05add62844d1bba91
+ * VexFlow 5.0.4   2023-09-10T17:34:27.186Z   8044273449c7bef913f261a47f85cd8cbdc3b72e
  * Copyright (c) 2023-present VexFlow contributors (see https://github.com/vexflow/vexflow/blob/main/AUTHORS.md).
  *
  */
@@ -29,9 +29,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   ID: () => (/* binding */ ID),
 /* harmony export */   VERSION: () => (/* binding */ VERSION)
 /* harmony export */ });
-const VERSION = '5.0.2';
-const ID = '88249f5934989fe037b64fb05add62844d1bba91';
-const DATE = '2023-09-01T20:11:51.188Z';
+const VERSION = '5.0.4';
+const ID = '8044273449c7bef913f261a47f85cd8cbdc3b72e';
+const DATE = '2023-09-10T17:34:27.186Z';
 
 
 /***/ }),
@@ -47,12 +47,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   Accidental: () => (/* binding */ Accidental)
 /* harmony export */ });
 /* harmony import */ var _fraction__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./fraction */ "./src/fraction.ts");
-/* harmony import */ var _glyph__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./glyph */ "./src/glyph.ts");
-/* harmony import */ var _modifier__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./modifier */ "./src/modifier.ts");
-/* harmony import */ var _music__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./music */ "./src/music.ts");
-/* harmony import */ var _tables__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./tables */ "./src/tables.ts");
-/* harmony import */ var _typeguard__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./typeguard */ "./src/typeguard.ts");
-/* harmony import */ var _util__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./util */ "./src/util.ts");
+/* harmony import */ var _modifier__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./modifier */ "./src/modifier.ts");
+/* harmony import */ var _music__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./music */ "./src/music.ts");
+/* harmony import */ var _tables__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./tables */ "./src/tables.ts");
+/* harmony import */ var _typeguard__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./typeguard */ "./src/typeguard.ts");
+/* harmony import */ var _util__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./util */ "./src/util.ts");
 // Copyright (c) 2023-present VexFlow contributors: https://github.com/vexflow/vexflow/graphs/contributors
 // MIT License
 // @author Mohit Cheppudira
@@ -69,11 +68,10 @@ var _a, _Accidental_checkCollision;
 
 
 
-
 // eslint-disable-next-line
 function L(...args) {
     if (Accidental.DEBUG)
-        (0,_util__WEBPACK_IMPORTED_MODULE_6__.log)('Vex.Flow.Accidental', args);
+        (0,_util__WEBPACK_IMPORTED_MODULE_5__.log)('Vex.Flow.Accidental', args);
 }
 /**
  * An `Accidental` inherits from `Modifier`, and is formatted within a
@@ -82,21 +80,20 @@ function L(...args) {
  *
  * See `tests/accidental_tests.ts` for usage examples.
  */
-class Accidental extends _modifier__WEBPACK_IMPORTED_MODULE_2__.Modifier {
+class Accidental extends _modifier__WEBPACK_IMPORTED_MODULE_1__.Modifier {
     /** Accidentals category string. */
     static get CATEGORY() {
-        return _typeguard__WEBPACK_IMPORTED_MODULE_5__.Category.Accidental;
+        return _typeguard__WEBPACK_IMPORTED_MODULE_4__.Category.Accidental;
     }
     /** Arrange accidentals inside a ModifierContext. */
     static format(accidentals, state) {
         // If there are no accidentals, no need to format their positions.
         if (!accidentals || accidentals.length === 0)
             return;
-        const musicFont = _tables__WEBPACK_IMPORTED_MODULE_4__.Tables.currentMusicFont();
-        const noteheadAccidentalPadding = musicFont.lookupMetric('accidental.noteheadAccidentalPadding');
+        const noteheadAccidentalPadding = _tables__WEBPACK_IMPORTED_MODULE_3__.Tables.lookupMetric('Accidental.noteheadAccidentalPadding');
         const leftShift = state.leftShift + noteheadAccidentalPadding;
-        const accidentalSpacing = musicFont.lookupMetric('accidental.accidentalSpacing');
-        const additionalPadding = musicFont.lookupMetric('accidental.leftPadding'); // padding to the left of all accidentals
+        const accidentalSpacing = _tables__WEBPACK_IMPORTED_MODULE_3__.Tables.lookupMetric('Accidental.accidentalSpacing');
+        const additionalPadding = _tables__WEBPACK_IMPORTED_MODULE_3__.Tables.lookupMetric('Accidental.leftPadding'); // padding to the left of all accidentals
         const accidentalLinePositionsAndSpaceNeeds = [];
         let prevNote = undefined;
         let extraXSpaceNeededForLeftDisplacedNotehead = 0;
@@ -289,7 +286,7 @@ class Accidental extends _modifier__WEBPACK_IMPORTED_MODULE_2__.Modifier {
                 // If the group contains fewer than seven members, use the layouts from
                 // the Tables.accidentalColumnsTable (See: tables.ts).
                 for (groupMember = i; groupMember <= groupEnd; groupMember++) {
-                    column = _tables__WEBPACK_IMPORTED_MODULE_4__.Tables.accidentalColumnsTable[groupLength][endCase][groupMember - i];
+                    column = _tables__WEBPACK_IMPORTED_MODULE_3__.Tables.accidentalColumnsTable[groupLength][endCase][groupMember - i];
                     staveLineAccidentalLayoutMetrics[groupMember].column = column;
                     totalColumns = totalColumns > column ? totalColumns : column;
                 }
@@ -373,7 +370,7 @@ class Accidental extends _modifier__WEBPACK_IMPORTED_MODULE_2__.Modifier {
                 tickPosition.add(t.getTicks());
             });
         });
-        const music = new _music__WEBPACK_IMPORTED_MODULE_3__.Music();
+        const music = new _music__WEBPACK_IMPORTED_MODULE_2__.Music();
         // Default key signature is C major.
         if (!keySignature)
             keySignature = 'C';
@@ -387,7 +384,7 @@ class Accidental extends _modifier__WEBPACK_IMPORTED_MODULE_2__.Modifier {
             const modifiedPitches = [];
             const processNote = (t) => {
                 // Only StaveNote implements .addModifier(), which is used below.
-                if (!(0,_typeguard__WEBPACK_IMPORTED_MODULE_5__.isStaveNote)(t) || t.isRest() || t.shouldIgnoreTicks()) {
+                if (!(0,_typeguard__WEBPACK_IMPORTED_MODULE_4__.isStaveNote)(t) || t.isRest() || t.shouldIgnoreTicks()) {
                     return;
                 }
                 // Go through each key and determine if an accidental should be applied.
@@ -408,7 +405,7 @@ class Accidental extends _modifier__WEBPACK_IMPORTED_MODULE_2__.Modifier {
                     const previouslyModified = modifiedPitches.indexOf(keyString) > -1;
                     // Remove accidentals
                     staveNote.getModifiers().forEach((modifier, index) => {
-                        if ((0,_typeguard__WEBPACK_IMPORTED_MODULE_5__.isAccidental)(modifier) && modifier.type == accidentalString && modifier.getIndex() == keyIndex) {
+                        if ((0,_typeguard__WEBPACK_IMPORTED_MODULE_4__.isAccidental)(modifier) && modifier.type == accidentalString && modifier.getIndex() == keyIndex) {
                             staveNote.getModifiers().splice(index, 1);
                         }
                     });
@@ -427,7 +424,7 @@ class Accidental extends _modifier__WEBPACK_IMPORTED_MODULE_2__.Modifier {
                 });
                 // process grace notes
                 staveNote.getModifiers().forEach((modifier) => {
-                    if ((0,_typeguard__WEBPACK_IMPORTED_MODULE_5__.isGraceNoteGroup)(modifier)) {
+                    if ((0,_typeguard__WEBPACK_IMPORTED_MODULE_4__.isGraceNoteGroup)(modifier)) {
                         modifier.getGraceNotes().forEach(processNote);
                     }
                 });
@@ -444,91 +441,54 @@ class Accidental extends _modifier__WEBPACK_IMPORTED_MODULE_2__.Modifier {
         super();
         L('New accidental: ', type);
         this.type = type;
-        this.position = _modifier__WEBPACK_IMPORTED_MODULE_2__.Modifier.Position.LEFT;
-        this.renderOptions = {
-            // Font size for glyphs
-            fontScale: _tables__WEBPACK_IMPORTED_MODULE_4__.Tables.NOTATION_FONT_SCALE,
-            // Padding between accidental and parentheses on each side
-            parenLeftPadding: 2,
-            parenRightPadding: 2,
-        };
-        this.accidental = _tables__WEBPACK_IMPORTED_MODULE_4__.Tables.accidentalCodesOld(this.type);
-        (0,_util__WEBPACK_IMPORTED_MODULE_6__.defined)(this.accidental, 'ArgumentError', `Unknown accidental type: ${type}`);
+        this.position = _modifier__WEBPACK_IMPORTED_MODULE_1__.Modifier.Position.LEFT;
         // Cautionary accidentals have parentheses around them
         this.cautionary = false;
         this.reset();
     }
     reset() {
-        const fontScale = this.renderOptions.fontScale;
-        this.glyph = new _glyph__WEBPACK_IMPORTED_MODULE_1__.Glyph(this.accidental.code, fontScale);
-        this.glyph.setOriginX(1.0);
-        if (this.cautionary) {
-            this.parenLeft = new _glyph__WEBPACK_IMPORTED_MODULE_1__.Glyph(_tables__WEBPACK_IMPORTED_MODULE_4__.Tables.accidentalCodesOld('{').code, fontScale);
-            this.parenRight = new _glyph__WEBPACK_IMPORTED_MODULE_1__.Glyph(_tables__WEBPACK_IMPORTED_MODULE_4__.Tables.accidentalCodesOld('}').code, fontScale);
-            this.parenLeft.setOriginX(1.0);
-            this.parenRight.setOriginX(1.0);
-        }
-    }
-    /** Get width in pixels. */
-    getWidth() {
-        if (this.cautionary) {
-            const parenLeft = (0,_util__WEBPACK_IMPORTED_MODULE_6__.defined)(this.parenLeft);
-            const parenRight = (0,_util__WEBPACK_IMPORTED_MODULE_6__.defined)(this.parenRight);
-            const parenWidth = parenLeft.getMetrics().width +
-                parenRight.getMetrics().width +
-                this.renderOptions.parenLeftPadding +
-                this.renderOptions.parenRightPadding;
-            return this.glyph.getMetrics().width + parenWidth;
+        this.text = '';
+        if (!this.cautionary) {
+            this.text += _tables__WEBPACK_IMPORTED_MODULE_3__.Tables.accidentalCodes(this.type);
+            this.textFont.size = _tables__WEBPACK_IMPORTED_MODULE_3__.Tables.lookupMetric('Accidental.fontSize');
         }
         else {
-            return this.glyph.getMetrics().width;
+            this.text += _tables__WEBPACK_IMPORTED_MODULE_3__.Tables.accidentalCodes('{');
+            this.text += _tables__WEBPACK_IMPORTED_MODULE_3__.Tables.accidentalCodes(this.type);
+            this.text += _tables__WEBPACK_IMPORTED_MODULE_3__.Tables.accidentalCodes('}');
+            this.textFont.size = _tables__WEBPACK_IMPORTED_MODULE_3__.Tables.lookupMetric('Accidental.cautionary.fontSize');
         }
+        // Accidentals attached to grace notes are rendered smaller.
+        if ((0,_typeguard__WEBPACK_IMPORTED_MODULE_4__.isGraceNote)(this.note)) {
+            this.textFont.size = _tables__WEBPACK_IMPORTED_MODULE_3__.Tables.lookupMetric('Accidental.grace.fontSize');
+        }
+        this.measureText();
     }
     /** Attach this accidental to `note`, which must be a `StaveNote`. */
     setNote(note) {
-        (0,_util__WEBPACK_IMPORTED_MODULE_6__.defined)(note, 'ArgumentError', `Bad note value: ${note}`);
+        (0,_util__WEBPACK_IMPORTED_MODULE_5__.defined)(note, 'ArgumentError', `Bad note value: ${note}`);
         this.note = note;
-        // Accidentals attached to grace notes are rendered smaller.
-        if ((0,_typeguard__WEBPACK_IMPORTED_MODULE_5__.isGraceNote)(note)) {
-            this.renderOptions.fontScale = 25;
-            this.reset();
-        }
+        this.reset();
         return this;
     }
     /** If called, draws parenthesis around accidental. */
     setAsCautionary() {
         this.cautionary = true;
-        this.renderOptions.fontScale = 28;
         this.reset();
         return this;
     }
     /** Render accidental onto canvas. */
     draw() {
-        const { type, position, index, cautionary, xShift, yShift, glyph, renderOptions: { parenLeftPadding, parenRightPadding }, } = this;
+        const { type, position, index } = this;
         const ctx = this.checkContext();
         const note = this.checkAttachedNote();
         this.setRendered();
         // Figure out the start `x` and `y` coordinates for note and index.
         const start = note.getModifierStartXY(position, index);
-        let accX = start.x + xShift;
-        const accY = start.y + yShift;
+        const accX = start.x;
+        const accY = start.y;
         L('Rendering: ', type, accX, accY);
-        if (!cautionary) {
-            glyph.render(ctx, accX, accY);
-        }
-        else {
-            const parenLeft = (0,_util__WEBPACK_IMPORTED_MODULE_6__.defined)(this.parenLeft);
-            const parenRight = (0,_util__WEBPACK_IMPORTED_MODULE_6__.defined)(this.parenRight);
-            // Render the accidental in parentheses.
-            parenRight.render(ctx, accX, accY);
-            accX -= parenRight.getMetrics().width;
-            accX -= parenRightPadding;
-            accX -= this.accidental.parenRightPaddingAdjustment;
-            glyph.render(ctx, accX, accY);
-            accX -= glyph.getMetrics().width;
-            accX -= parenLeftPadding;
-            parenLeft.render(ctx, accX, accY);
-        }
+        this.renderText(ctx, accX - this.width, accY);
     }
 }
 _a = Accidental, _Accidental_checkCollision = function _Accidental_checkCollision(line1, line2) {
@@ -860,13 +820,17 @@ Annotation.VerticalJustifyString = {
 
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   Articulation: () => (/* binding */ Articulation)
+/* harmony export */   Articulation: () => (/* binding */ Articulation),
+/* harmony export */   getBottomY: () => (/* binding */ getBottomY),
+/* harmony export */   getInitialOffset: () => (/* binding */ getInitialOffset),
+/* harmony export */   getTopY: () => (/* binding */ getTopY)
 /* harmony export */ });
-/* harmony import */ var _modifier__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./modifier */ "./src/modifier.ts");
-/* harmony import */ var _stem__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./stem */ "./src/stem.ts");
-/* harmony import */ var _tables__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./tables */ "./src/tables.ts");
-/* harmony import */ var _typeguard__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./typeguard */ "./src/typeguard.ts");
-/* harmony import */ var _util__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./util */ "./src/util.ts");
+/* harmony import */ var _glyphs__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./glyphs */ "./src/glyphs.ts");
+/* harmony import */ var _modifier__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./modifier */ "./src/modifier.ts");
+/* harmony import */ var _stem__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./stem */ "./src/stem.ts");
+/* harmony import */ var _tables__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./tables */ "./src/tables.ts");
+/* harmony import */ var _typeguard__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./typeguard */ "./src/typeguard.ts");
+/* harmony import */ var _util__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./util */ "./src/util.ts");
 // Copyright (c) 2023-present VexFlow contributors: https://github.com/vexflow/vexflow/graphs/contributors
 // @author Larry Kuhns.
 // MIT License
@@ -875,12 +839,13 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+
 // eslint-disable-next-line
 function L(...args) {
     if (Articulation.DEBUG)
-        (0,_util__WEBPACK_IMPORTED_MODULE_4__.log)('Vex.Flow.Articulation', args);
+        (0,_util__WEBPACK_IMPORTED_MODULE_5__.log)('Vex.Flow.Articulation', args);
 }
-const { ABOVE, BELOW } = _modifier__WEBPACK_IMPORTED_MODULE_0__.Modifier.Position;
+const { ABOVE, BELOW } = _modifier__WEBPACK_IMPORTED_MODULE_1__.Modifier.Position;
 function roundToNearestHalf(mathFn, value) {
     return mathFn(value / 0.5) * 0.5;
 }
@@ -915,13 +880,13 @@ function snapLineToStaff(canSitBetweenLines, line, position, offsetDirection) {
     }
 }
 // Helper function for checking if a Note object is either a StaveNote or a GraceNote.
-const isStaveOrGraceNote = (note) => (0,_typeguard__WEBPACK_IMPORTED_MODULE_3__.isStaveNote)(note) || (0,_typeguard__WEBPACK_IMPORTED_MODULE_3__.isGraceNote)(note);
+const isStaveOrGraceNote = (note) => (0,_typeguard__WEBPACK_IMPORTED_MODULE_4__.isStaveNote)(note) || (0,_typeguard__WEBPACK_IMPORTED_MODULE_4__.isGraceNote)(note);
 function getTopY(note, textLine) {
     const stemDirection = note.getStemDirection();
     const { topY: stemTipY, baseY: stemBaseY } = note.getStemExtents();
     if (isStaveOrGraceNote(note)) {
         if (note.hasStem()) {
-            if (stemDirection === _stem__WEBPACK_IMPORTED_MODULE_1__.Stem.UP) {
+            if (stemDirection === _stem__WEBPACK_IMPORTED_MODULE_2__.Stem.UP) {
                 return stemTipY;
             }
             else {
@@ -932,9 +897,9 @@ function getTopY(note, textLine) {
             return Math.min(...note.getYs());
         }
     }
-    else if ((0,_typeguard__WEBPACK_IMPORTED_MODULE_3__.isTabNote)(note)) {
+    else if ((0,_typeguard__WEBPACK_IMPORTED_MODULE_4__.isTabNote)(note)) {
         if (note.hasStem()) {
-            if (stemDirection === _stem__WEBPACK_IMPORTED_MODULE_1__.Stem.UP) {
+            if (stemDirection === _stem__WEBPACK_IMPORTED_MODULE_2__.Stem.UP) {
                 return stemTipY;
             }
             else {
@@ -946,7 +911,7 @@ function getTopY(note, textLine) {
         }
     }
     else {
-        throw new _util__WEBPACK_IMPORTED_MODULE_4__.RuntimeError('UnknownCategory', 'Only can get the top and bottom ys of stavenotes and tabnotes');
+        throw new _util__WEBPACK_IMPORTED_MODULE_5__.RuntimeError('UnknownCategory', 'Only can get the top and bottom ys of stavenotes and tabnotes');
     }
 }
 function getBottomY(note, textLine) {
@@ -954,7 +919,7 @@ function getBottomY(note, textLine) {
     const { topY: stemTipY, baseY: stemBaseY } = note.getStemExtents();
     if (isStaveOrGraceNote(note)) {
         if (note.hasStem()) {
-            if (stemDirection === _stem__WEBPACK_IMPORTED_MODULE_1__.Stem.UP) {
+            if (stemDirection === _stem__WEBPACK_IMPORTED_MODULE_2__.Stem.UP) {
                 return stemBaseY;
             }
             else {
@@ -965,9 +930,9 @@ function getBottomY(note, textLine) {
             return Math.max(...note.getYs());
         }
     }
-    else if ((0,_typeguard__WEBPACK_IMPORTED_MODULE_3__.isTabNote)(note)) {
+    else if ((0,_typeguard__WEBPACK_IMPORTED_MODULE_4__.isTabNote)(note)) {
         if (note.hasStem()) {
-            if (stemDirection === _stem__WEBPACK_IMPORTED_MODULE_1__.Stem.UP) {
+            if (stemDirection === _stem__WEBPACK_IMPORTED_MODULE_2__.Stem.UP) {
                 return note.checkStave().getYForBottomText(textLine);
             }
             else {
@@ -979,7 +944,7 @@ function getBottomY(note, textLine) {
         }
     }
     else {
-        throw new _util__WEBPACK_IMPORTED_MODULE_4__.RuntimeError('UnknownCategory', 'Only can get the top and bottom ys of stavenotes and tabnotes');
+        throw new _util__WEBPACK_IMPORTED_MODULE_5__.RuntimeError('UnknownCategory', 'Only can get the top and bottom ys of stavenotes and tabnotes');
     }
 }
 /**
@@ -993,8 +958,8 @@ function getBottomY(note, textLine) {
  * @returns
  */
 function getInitialOffset(note, position) {
-    const isOnStemTip = (position === ABOVE && note.getStemDirection() === _stem__WEBPACK_IMPORTED_MODULE_1__.Stem.UP) ||
-        (position === BELOW && note.getStemDirection() === _stem__WEBPACK_IMPORTED_MODULE_1__.Stem.DOWN);
+    const isOnStemTip = (position === ABOVE && note.getStemDirection() === _stem__WEBPACK_IMPORTED_MODULE_2__.Stem.UP) ||
+        (position === BELOW && note.getStemDirection() === _stem__WEBPACK_IMPORTED_MODULE_2__.Stem.DOWN);
     if (isStaveOrGraceNote(note)) {
         if (note.hasStem() && isOnStemTip) {
             return 0.5;
@@ -1021,10 +986,10 @@ function getInitialOffset(note, position) {
  *
  * See `tests/articulation_tests.ts` for usage examples.
  */
-class Articulation extends _modifier__WEBPACK_IMPORTED_MODULE_0__.Modifier {
+class Articulation extends _modifier__WEBPACK_IMPORTED_MODULE_1__.Modifier {
     /** Articulations category string. */
     static get CATEGORY() {
-        return _typeguard__WEBPACK_IMPORTED_MODULE_3__.Category.Articulation;
+        return _typeguard__WEBPACK_IMPORTED_MODULE_4__.Category.Articulation;
     }
     /**
      * FIXME:
@@ -1054,13 +1019,13 @@ class Articulation extends _modifier__WEBPACK_IMPORTED_MODULE_0__.Modifier {
             const note = articulation.checkAttachedNote();
             maxGlyphWidth = Math.max(note.getGlyphWidth(), maxGlyphWidth);
             let lines = 5;
-            const stemDirection = note.hasStem() ? note.getStemDirection() : _stem__WEBPACK_IMPORTED_MODULE_1__.Stem.UP;
+            const stemDirection = note.hasStem() ? note.getStemDirection() : _stem__WEBPACK_IMPORTED_MODULE_2__.Stem.UP;
             let stemHeight = 0;
             // Decide if we need to consider beam direction in placement.
-            if ((0,_typeguard__WEBPACK_IMPORTED_MODULE_3__.isStemmableNote)(note)) {
+            if ((0,_typeguard__WEBPACK_IMPORTED_MODULE_4__.isStemmableNote)(note)) {
                 const stem = note.getStem();
                 if (stem) {
-                    stemHeight = Math.abs(stem.getHeight()) / _tables__WEBPACK_IMPORTED_MODULE_2__.Tables.STAVE_LINE_DISTANCE;
+                    stemHeight = Math.abs(stem.getHeight()) / _tables__WEBPACK_IMPORTED_MODULE_3__.Tables.STAVE_LINE_DISTANCE;
                 }
             }
             const stave = note.getStave();
@@ -1069,7 +1034,7 @@ class Articulation extends _modifier__WEBPACK_IMPORTED_MODULE_0__.Modifier {
             }
             if (articulation.getPosition() === ABOVE) {
                 let noteLine = note.getLineNumber(true);
-                if (stemDirection === _stem__WEBPACK_IMPORTED_MODULE_1__.Stem.UP) {
+                if (stemDirection === _stem__WEBPACK_IMPORTED_MODULE_2__.Stem.UP) {
                     noteLine += stemHeight;
                 }
                 let increment = getIncrement(articulation, state.topTextLine, ABOVE);
@@ -1083,7 +1048,7 @@ class Articulation extends _modifier__WEBPACK_IMPORTED_MODULE_0__.Modifier {
             }
             else if (articulation.getPosition() === BELOW) {
                 let noteLine = Math.max(lines - note.getLineNumber(), 0);
-                if (stemDirection === _stem__WEBPACK_IMPORTED_MODULE_1__.Stem.DOWN) {
+                if (stemDirection === _stem__WEBPACK_IMPORTED_MODULE_2__.Stem.DOWN) {
                     noteLine += stemHeight;
                 }
                 let increment = getIncrement(articulation, state.textLine, BELOW);
@@ -1118,7 +1083,7 @@ class Articulation extends _modifier__WEBPACK_IMPORTED_MODULE_0__.Modifier {
             .map(([name, position]) => {
             const artic = { type: articNameToCode[name] };
             if (position)
-                artic.position = _modifier__WEBPACK_IMPORTED_MODULE_0__.Modifier.PositionString[position];
+                artic.position = _modifier__WEBPACK_IMPORTED_MODULE_1__.Modifier.PositionString[position];
             return builder.getFactory().Articulation(artic);
         })
             .map((artic) => note.addModifier(artic, 0));
@@ -1138,8 +1103,8 @@ class Articulation extends _modifier__WEBPACK_IMPORTED_MODULE_0__.Modifier {
         this.height = 0;
         this.type = type;
         this.position = ABOVE;
-        if (!_tables__WEBPACK_IMPORTED_MODULE_2__.Tables.articulationCodes(this.type)) {
-            if (((_a = this.type.codePointAt(0)) !== null && _a !== void 0 ? _a : 0) % 2 == 0)
+        if (!_tables__WEBPACK_IMPORTED_MODULE_3__.Tables.articulationCodes(this.type)) {
+            if (((_a = this.type.codePointAt(0)) !== null && _a !== void 0 ? _a : 0) % 2 === 0)
                 this.position = ABOVE;
             else
                 this.position = BELOW;
@@ -1148,14 +1113,14 @@ class Articulation extends _modifier__WEBPACK_IMPORTED_MODULE_0__.Modifier {
         this.reset();
     }
     reset() {
-        this.articulation = _tables__WEBPACK_IMPORTED_MODULE_2__.Tables.articulationCodes(this.type);
+        this.articulation = _tables__WEBPACK_IMPORTED_MODULE_3__.Tables.articulationCodes(this.type);
         // Use type as glyph code, if not defined as articulation code
         if (!this.articulation) {
             this.articulation = { code: this.type, betweenLines: false };
         }
         const code = (this.position === ABOVE ? this.articulation.aboveCode : this.articulation.belowCode) ||
             this.articulation.code ||
-            '\u0000';
+            _glyphs__WEBPACK_IMPORTED_MODULE_0__.Glyphs.null;
         this.text = code;
         this.measureText();
     }
@@ -1174,7 +1139,7 @@ class Articulation extends _modifier__WEBPACK_IMPORTED_MODULE_0__.Modifier {
         const canSitBetweenLines = this.articulation.betweenLines;
         const stave = note.checkStave();
         const staffSpace = stave.getSpacingBetweenLines();
-        const isTab = (0,_typeguard__WEBPACK_IMPORTED_MODULE_3__.isTabNote)(note);
+        const isTab = (0,_typeguard__WEBPACK_IMPORTED_MODULE_4__.isTabNote)(note);
         // Articulations are centered over/under the note head.
         const { x } = note.getModifierStartXY(position, index);
         const shouldSitOutsideStaff = !canSitBetweenLines || isTab;
@@ -2413,7 +2378,7 @@ class Bend extends _modifier__WEBPACK_IMPORTED_MODULE_1__.Modifier {
             lastBend.x = start.x;
             start.x += lastDrawnWidth;
         }
-        if (!lastBend || lastBend.x == undefined) {
+        if (!lastBend || lastBend.x === undefined) {
             throw new _util__WEBPACK_IMPORTED_MODULE_3__.RuntimeError('NoLastBendForBend', 'Internal error.');
         }
         // Final arrowhead and text
@@ -2591,7 +2556,7 @@ class BoundingBoxComputation {
         const p01x = p1x - p0x;
         const p12x = p2x - p1x;
         let denom = p01x - p12x;
-        if (denom != 0) {
+        if (denom !== 0) {
             const t = p01x / denom;
             if (t > 0 && t < 1) {
                 const it = 1 - t;
@@ -2601,7 +2566,7 @@ class BoundingBoxComputation {
         const p01y = p1y - p0y;
         const p12y = p2y - p1y;
         denom = p01y - p12y;
-        if (denom != 0) {
+        if (denom !== 0) {
             const t = p01y / denom;
             if (t > 0 && t < 1) {
                 const it = 1 - t;
@@ -2719,6 +2684,7 @@ class CanvasContext extends _rendercontext__WEBPACK_IMPORTED_MODULE_1__.RenderCo
         /** Height of one line of text (in pixels). */
         this.textHeight = 0;
         this.context2D = context;
+        this.curTransfrom = context.getTransform();
         if (!context.canvas) {
             this.canvas = {
                 width: CanvasContext.WIDTH,
@@ -2741,6 +2707,15 @@ class CanvasContext extends _rendercontext__WEBPACK_IMPORTED_MODULE_1__.RenderCo
     }
     closeGroup() {
         // Containers not implemented.
+    }
+    openRotation(angleDegrees, x, y) {
+        this.curTransfrom = this.context2D.getTransform();
+        this.context2D.translate(x, y);
+        this.context2D.rotate((angleDegrees * Math.PI) / 180);
+        this.context2D.translate(-x, -y);
+    }
+    closeRotation() {
+        this.context2D.setTransform(this.curTransfrom);
     }
     // eslint-disable-next-line
     add(child) {
@@ -3335,10 +3310,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   Clef: () => (/* binding */ Clef)
 /* harmony export */ });
-/* harmony import */ var _stavemodifier__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./stavemodifier */ "./src/stavemodifier.ts");
-/* harmony import */ var _tables__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./tables */ "./src/tables.ts");
-/* harmony import */ var _typeguard__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./typeguard */ "./src/typeguard.ts");
-/* harmony import */ var _util__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./util */ "./src/util.ts");
+/* harmony import */ var _glyphs__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./glyphs */ "./src/glyphs.ts");
+/* harmony import */ var _stavemodifier__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./stavemodifier */ "./src/stavemodifier.ts");
+/* harmony import */ var _tables__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./tables */ "./src/tables.ts");
+/* harmony import */ var _typeguard__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./typeguard */ "./src/typeguard.ts");
+/* harmony import */ var _util__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./util */ "./src/util.ts");
 // Copyright (c) 2023-present VexFlow contributors: https://github.com/vexflow/vexflow/graphs/contributors
 // MIT License
 // Co-author: Benjamin W. Bohl
@@ -3346,72 +3322,74 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+
 // eslint-disable-next-line
 function L(...args) {
     if (Clef.DEBUG)
-        (0,_util__WEBPACK_IMPORTED_MODULE_3__.log)('Vex.Flow.Clef', args);
+        (0,_util__WEBPACK_IMPORTED_MODULE_4__.log)('Vex.Flow.Clef', args);
 }
 /**
  * Clef implements various types of clefs that can be rendered on a stave.
  *
  * See `tests/clef_tests.ts` for usage examples.
  */
-class Clef extends _stavemodifier__WEBPACK_IMPORTED_MODULE_0__.StaveModifier {
+class Clef extends _stavemodifier__WEBPACK_IMPORTED_MODULE_1__.StaveModifier {
     static get CATEGORY() {
-        return _typeguard__WEBPACK_IMPORTED_MODULE_2__.Category.Clef;
+        return _typeguard__WEBPACK_IMPORTED_MODULE_3__.Category.Clef;
     }
     /**
      * Every clef name is associated with a glyph code from the font file
      * and a default stave line number.
      */
     static get types() {
+        const { gClef, fClef, cClef, unpitchedPercussionClef1, sixStringTabClef } = _glyphs__WEBPACK_IMPORTED_MODULE_0__.Glyphs;
         return {
             treble: {
-                code: '\uE050' /*gClef*/,
+                code: gClef,
                 line: 3,
             },
             bass: {
-                code: '\uE062' /*fClef*/,
+                code: fClef,
                 line: 1,
             },
             alto: {
-                code: '\uE05C' /*cClef*/,
+                code: cClef,
                 line: 2,
             },
             tenor: {
-                code: '\uE05C' /*cClef*/,
+                code: cClef,
                 line: 1,
             },
             percussion: {
-                code: '\uE069' /*unpitchedPercussionClef1*/,
+                code: unpitchedPercussionClef1,
                 line: 2,
             },
             soprano: {
-                code: '\uE05C' /*cClef*/,
+                code: cClef,
                 line: 4,
             },
             'mezzo-soprano': {
-                code: '\uE05C' /*cClef*/,
+                code: cClef,
                 line: 3,
             },
             'baritone-c': {
-                code: '\uE05C' /*cClef*/,
+                code: cClef,
                 line: 0,
             },
             'baritone-f': {
-                code: '\uE062' /*fClef*/,
+                code: fClef,
                 line: 2,
             },
             subbass: {
-                code: '\uE062' /*fClef*/,
+                code: fClef,
                 line: 0,
             },
             french: {
-                code: '\uE050' /*gClef*/,
+                code: gClef,
                 line: 4,
             },
             tab: {
-                code: '\uE06D' /*6stringTabClef*/,
+                code: sixStringTabClef,
                 line: 2.5,
             },
         };
@@ -3427,7 +3405,7 @@ class Clef extends _stavemodifier__WEBPACK_IMPORTED_MODULE_0__.StaveModifier {
         this.line = Clef.types['treble'].line;
         this.size = 'default';
         this.type = 'treble';
-        this.setPosition(_stavemodifier__WEBPACK_IMPORTED_MODULE_0__.StaveModifierPosition.BEGIN);
+        this.setPosition(_stavemodifier__WEBPACK_IMPORTED_MODULE_1__.StaveModifierPosition.BEGIN);
         this.setType(type, size, annotation);
         L('Creating clef:', type);
     }
@@ -3438,17 +3416,21 @@ class Clef extends _stavemodifier__WEBPACK_IMPORTED_MODULE_0__.StaveModifier {
         this.line = Clef.types[type].line;
         this.size = size !== null && size !== void 0 ? size : 'default';
         // If an annotation, such as 8va, is specified, add it to the Clef object.
-        if (annotation == '8va') {
-            if (this.code == '\uE050' /*gClef*/)
-                this.code = '\uE053' /*gClef8va*/;
-            if (this.code == '\uE062' /*fClef*/)
-                this.code = '\uE065' /*fClef8va*/;
+        if (annotation === '8va') {
+            if (this.code === _glyphs__WEBPACK_IMPORTED_MODULE_0__.Glyphs.gClef) {
+                this.code = _glyphs__WEBPACK_IMPORTED_MODULE_0__.Glyphs.gClef8va;
+            }
+            if (this.code === _glyphs__WEBPACK_IMPORTED_MODULE_0__.Glyphs.fClef) {
+                this.code = _glyphs__WEBPACK_IMPORTED_MODULE_0__.Glyphs.fClef8va;
+            }
         }
-        if (annotation == '8vb') {
-            if (this.code == '\uE050' /*gClef*/)
-                this.code = '\uE052' /*gClef8vb*/;
-            if (this.code == '\uE062' /*fClef*/)
-                this.code = '\uE064' /*fClef8vb*/;
+        if (annotation === '8vb') {
+            if (this.code === _glyphs__WEBPACK_IMPORTED_MODULE_0__.Glyphs.gClef) {
+                this.code = _glyphs__WEBPACK_IMPORTED_MODULE_0__.Glyphs.gClef8vb;
+            }
+            if (this.code === _glyphs__WEBPACK_IMPORTED_MODULE_0__.Glyphs.fClef) {
+                this.code = _glyphs__WEBPACK_IMPORTED_MODULE_0__.Glyphs.fClef8vb;
+            }
         }
         this.text = this.code;
         this.textFont.size = Math.floor(Clef.getPoint(this.size));
@@ -3458,7 +3440,7 @@ class Clef extends _stavemodifier__WEBPACK_IMPORTED_MODULE_0__.StaveModifier {
     /** Get point for clefs. */
     static getPoint(size) {
         // for sizes other than 'default', clef is 2/3 of the default value
-        return size == 'default' ? _tables__WEBPACK_IMPORTED_MODULE_1__.Tables.lookupMetric('fontSize') : (_tables__WEBPACK_IMPORTED_MODULE_1__.Tables.lookupMetric('fontSize') / 3) * 2;
+        return size === 'default' ? _tables__WEBPACK_IMPORTED_MODULE_2__.Tables.lookupMetric('fontSize') : (_tables__WEBPACK_IMPORTED_MODULE_2__.Tables.lookupMetric('fontSize') * 2) / 3;
     }
     /** Set associated stave. */
     setStave(stave) {
@@ -3596,6 +3578,7 @@ class Crescendo extends _note__WEBPACK_IMPORTED_MODULE_0__.Note {
     }
     // Initialize the crescendo's properties
     constructor(noteStruct) {
+        var _a;
         super(noteStruct);
         this.options = {
             // Extensions to the length of the crescendo on either side
@@ -3607,7 +3590,7 @@ class Crescendo extends _note__WEBPACK_IMPORTED_MODULE_0__.Note {
         // Whether the object is a decrescendo
         this.decrescendo = false;
         // The staff line to be placed on
-        this.line = noteStruct.line || 0;
+        this.line = (_a = noteStruct.line) !== null && _a !== void 0 ? _a : 0;
         // The height at the open end of the cresc/decresc
         this.height = 15;
     }
@@ -3842,7 +3825,7 @@ class Dot extends _modifier__WEBPACK_IMPORTED_MODULE_0__.Modifier {
                     note.addModifier(dot, i);
                 }
             }
-            else if ((options === null || options === void 0 ? void 0 : options.index) != undefined) {
+            else if ((options === null || options === void 0 ? void 0 : options.index) !== undefined) {
                 const dot = new Dot();
                 note.addModifier(dot, options === null || options === void 0 ? void 0 : options.index);
             }
@@ -3905,7 +3888,7 @@ class Dot extends _modifier__WEBPACK_IMPORTED_MODULE_0__.Modifier {
                 else {
                     // note is on a line, so shift dot to space above the line
                     halfShiftY = 0.5;
-                    if (lastNote != null && !lastNote.isRest() && lastLine != null && lastLine - line === 0.5) {
+                    if (lastNote !== null && !lastNote.isRest() && lastLine !== null && lastLine - line === 0.5) {
                         // previous note on a space, so shift dot to space below the line
                         halfShiftY = -0.5;
                     }
@@ -4289,7 +4272,7 @@ class Builder {
         });
         const autoStem = stem === 'auto'; // StaveNoteStruct expects the underscore & lowercase.
         // Build a GhostNote or StaveNote using the information we gathered.
-        const note = (type === null || type === void 0 ? void 0 : type.toLowerCase()) == 'g'
+        const note = (type === null || type === void 0 ? void 0 : type.toLowerCase()) === 'g'
             ? factory.GhostNote({ duration, dots })
             : factory.StaveNote({ keys, duration, dots, type, clef, autoStem });
         if (!autoStem)
@@ -4605,7 +4588,7 @@ class Element {
         var _b;
         if (!__classPrivateFieldGet(this, _Element_attrs, "f").class)
             return false;
-        return ((_b = __classPrivateFieldGet(this, _Element_attrs, "f").class) === null || _b === void 0 ? void 0 : _b.split(' ').indexOf(className)) != -1;
+        return ((_b = __classPrivateFieldGet(this, _Element_attrs, "f").class) === null || _b === void 0 ? void 0 : _b.split(' ').indexOf(className)) !== -1;
     }
     /** Add a class label (An element can have multiple class labels). */
     addClass(className) {
@@ -5097,10 +5080,10 @@ class Factory {
     }
     initRenderer() {
         const { elementId, width, height, background } = this.options.renderer;
-        if (elementId == null) {
+        if (elementId === null) {
             return;
         }
-        if (elementId == '') {
+        if (elementId === '') {
             L(this);
             throw new _util__WEBPACK_IMPORTED_MODULE_38__.RuntimeError('renderer.elementId not set in FactoryOptions');
         }
@@ -5285,17 +5268,19 @@ class Factory {
     Articulation(params) {
         var _a;
         const articulation = new _articulation__WEBPACK_IMPORTED_MODULE_2__.Articulation((_a = params === null || params === void 0 ? void 0 : params.type) !== null && _a !== void 0 ? _a : 'a.');
-        if ((params === null || params === void 0 ? void 0 : params.position) != undefined)
+        if ((params === null || params === void 0 ? void 0 : params.position) !== undefined)
             articulation.setPosition(params.position);
-        if ((params === null || params === void 0 ? void 0 : params.betweenLines) != undefined)
+        if ((params === null || params === void 0 ? void 0 : params.betweenLines) !== undefined)
             articulation.setBetweenLines(params.betweenLines);
         articulation.setContext(this.context);
         return articulation;
     }
     Ornament(type, params) {
-        const options = Object.assign({ type, position: 0, accidental: '' }, params);
+        const options = Object.assign({ type, accidental: '' }, params);
         const ornament = new _ornament__WEBPACK_IMPORTED_MODULE_19__.Ornament(type);
-        ornament.setPosition(options.position);
+        if ((params === null || params === void 0 ? void 0 : params.position) !== undefined) {
+            ornament.setPosition(params.position);
+        }
         if (options.upperAccidental) {
             ornament.setUpperAccidental(options.upperAccidental);
         }
@@ -5538,52 +5523,52 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _ghostnote__WEBPACK_IMPORTED_MODULE_22__ = __webpack_require__(/*! ./ghostnote */ "./src/ghostnote.ts");
 /* harmony import */ var _glyph__WEBPACK_IMPORTED_MODULE_23__ = __webpack_require__(/*! ./glyph */ "./src/glyph.ts");
 /* harmony import */ var _glyphnote__WEBPACK_IMPORTED_MODULE_24__ = __webpack_require__(/*! ./glyphnote */ "./src/glyphnote.ts");
-/* harmony import */ var _gracenote__WEBPACK_IMPORTED_MODULE_25__ = __webpack_require__(/*! ./gracenote */ "./src/gracenote.ts");
-/* harmony import */ var _gracenotegroup__WEBPACK_IMPORTED_MODULE_26__ = __webpack_require__(/*! ./gracenotegroup */ "./src/gracenotegroup.ts");
-/* harmony import */ var _gracetabnote__WEBPACK_IMPORTED_MODULE_27__ = __webpack_require__(/*! ./gracetabnote */ "./src/gracetabnote.ts");
-/* harmony import */ var _keymanager__WEBPACK_IMPORTED_MODULE_28__ = __webpack_require__(/*! ./keymanager */ "./src/keymanager.ts");
-/* harmony import */ var _keysignature__WEBPACK_IMPORTED_MODULE_29__ = __webpack_require__(/*! ./keysignature */ "./src/keysignature.ts");
-/* harmony import */ var _keysignote__WEBPACK_IMPORTED_MODULE_30__ = __webpack_require__(/*! ./keysignote */ "./src/keysignote.ts");
-/* harmony import */ var _modifier__WEBPACK_IMPORTED_MODULE_31__ = __webpack_require__(/*! ./modifier */ "./src/modifier.ts");
-/* harmony import */ var _modifiercontext__WEBPACK_IMPORTED_MODULE_32__ = __webpack_require__(/*! ./modifiercontext */ "./src/modifiercontext.ts");
-/* harmony import */ var _multimeasurerest__WEBPACK_IMPORTED_MODULE_33__ = __webpack_require__(/*! ./multimeasurerest */ "./src/multimeasurerest.ts");
-/* harmony import */ var _music__WEBPACK_IMPORTED_MODULE_34__ = __webpack_require__(/*! ./music */ "./src/music.ts");
-/* harmony import */ var _note__WEBPACK_IMPORTED_MODULE_35__ = __webpack_require__(/*! ./note */ "./src/note.ts");
-/* harmony import */ var _notehead__WEBPACK_IMPORTED_MODULE_36__ = __webpack_require__(/*! ./notehead */ "./src/notehead.ts");
-/* harmony import */ var _notesubgroup__WEBPACK_IMPORTED_MODULE_37__ = __webpack_require__(/*! ./notesubgroup */ "./src/notesubgroup.ts");
-/* harmony import */ var _ornament__WEBPACK_IMPORTED_MODULE_38__ = __webpack_require__(/*! ./ornament */ "./src/ornament.ts");
-/* harmony import */ var _parenthesis__WEBPACK_IMPORTED_MODULE_39__ = __webpack_require__(/*! ./parenthesis */ "./src/parenthesis.ts");
-/* harmony import */ var _parser__WEBPACK_IMPORTED_MODULE_40__ = __webpack_require__(/*! ./parser */ "./src/parser.ts");
-/* harmony import */ var _pedalmarking__WEBPACK_IMPORTED_MODULE_41__ = __webpack_require__(/*! ./pedalmarking */ "./src/pedalmarking.ts");
-/* harmony import */ var _registry__WEBPACK_IMPORTED_MODULE_42__ = __webpack_require__(/*! ./registry */ "./src/registry.ts");
-/* harmony import */ var _rendercontext__WEBPACK_IMPORTED_MODULE_43__ = __webpack_require__(/*! ./rendercontext */ "./src/rendercontext.ts");
-/* harmony import */ var _renderer__WEBPACK_IMPORTED_MODULE_44__ = __webpack_require__(/*! ./renderer */ "./src/renderer.ts");
-/* harmony import */ var _repeatnote__WEBPACK_IMPORTED_MODULE_45__ = __webpack_require__(/*! ./repeatnote */ "./src/repeatnote.ts");
-/* harmony import */ var _stave__WEBPACK_IMPORTED_MODULE_46__ = __webpack_require__(/*! ./stave */ "./src/stave.ts");
-/* harmony import */ var _stavebarline__WEBPACK_IMPORTED_MODULE_47__ = __webpack_require__(/*! ./stavebarline */ "./src/stavebarline.ts");
-/* harmony import */ var _staveconnector__WEBPACK_IMPORTED_MODULE_48__ = __webpack_require__(/*! ./staveconnector */ "./src/staveconnector.ts");
-/* harmony import */ var _stavehairpin__WEBPACK_IMPORTED_MODULE_49__ = __webpack_require__(/*! ./stavehairpin */ "./src/stavehairpin.ts");
-/* harmony import */ var _staveline__WEBPACK_IMPORTED_MODULE_50__ = __webpack_require__(/*! ./staveline */ "./src/staveline.ts");
-/* harmony import */ var _stavemodifier__WEBPACK_IMPORTED_MODULE_51__ = __webpack_require__(/*! ./stavemodifier */ "./src/stavemodifier.ts");
-/* harmony import */ var _stavenote__WEBPACK_IMPORTED_MODULE_52__ = __webpack_require__(/*! ./stavenote */ "./src/stavenote.ts");
-/* harmony import */ var _staverepetition__WEBPACK_IMPORTED_MODULE_53__ = __webpack_require__(/*! ./staverepetition */ "./src/staverepetition.ts");
-/* harmony import */ var _stavetempo__WEBPACK_IMPORTED_MODULE_54__ = __webpack_require__(/*! ./stavetempo */ "./src/stavetempo.ts");
-/* harmony import */ var _stavetext__WEBPACK_IMPORTED_MODULE_55__ = __webpack_require__(/*! ./stavetext */ "./src/stavetext.ts");
-/* harmony import */ var _stavetie__WEBPACK_IMPORTED_MODULE_56__ = __webpack_require__(/*! ./stavetie */ "./src/stavetie.ts");
-/* harmony import */ var _stavevolta__WEBPACK_IMPORTED_MODULE_57__ = __webpack_require__(/*! ./stavevolta */ "./src/stavevolta.ts");
-/* harmony import */ var _stem__WEBPACK_IMPORTED_MODULE_58__ = __webpack_require__(/*! ./stem */ "./src/stem.ts");
-/* harmony import */ var _stringnumber__WEBPACK_IMPORTED_MODULE_59__ = __webpack_require__(/*! ./stringnumber */ "./src/stringnumber.ts");
-/* harmony import */ var _strokes__WEBPACK_IMPORTED_MODULE_60__ = __webpack_require__(/*! ./strokes */ "./src/strokes.ts");
-/* harmony import */ var _svgcontext__WEBPACK_IMPORTED_MODULE_61__ = __webpack_require__(/*! ./svgcontext */ "./src/svgcontext.ts");
-/* harmony import */ var _system__WEBPACK_IMPORTED_MODULE_62__ = __webpack_require__(/*! ./system */ "./src/system.ts");
-/* harmony import */ var _tables__WEBPACK_IMPORTED_MODULE_63__ = __webpack_require__(/*! ./tables */ "./src/tables.ts");
-/* harmony import */ var _tabnote__WEBPACK_IMPORTED_MODULE_64__ = __webpack_require__(/*! ./tabnote */ "./src/tabnote.ts");
-/* harmony import */ var _tabslide__WEBPACK_IMPORTED_MODULE_65__ = __webpack_require__(/*! ./tabslide */ "./src/tabslide.ts");
-/* harmony import */ var _tabstave__WEBPACK_IMPORTED_MODULE_66__ = __webpack_require__(/*! ./tabstave */ "./src/tabstave.ts");
-/* harmony import */ var _tabtie__WEBPACK_IMPORTED_MODULE_67__ = __webpack_require__(/*! ./tabtie */ "./src/tabtie.ts");
-/* harmony import */ var _textbracket__WEBPACK_IMPORTED_MODULE_68__ = __webpack_require__(/*! ./textbracket */ "./src/textbracket.ts");
-/* harmony import */ var _textdynamics__WEBPACK_IMPORTED_MODULE_69__ = __webpack_require__(/*! ./textdynamics */ "./src/textdynamics.ts");
-/* harmony import */ var _textformatter__WEBPACK_IMPORTED_MODULE_70__ = __webpack_require__(/*! ./textformatter */ "./src/textformatter.ts");
+/* harmony import */ var _glyphs__WEBPACK_IMPORTED_MODULE_25__ = __webpack_require__(/*! ./glyphs */ "./src/glyphs.ts");
+/* harmony import */ var _gracenote__WEBPACK_IMPORTED_MODULE_26__ = __webpack_require__(/*! ./gracenote */ "./src/gracenote.ts");
+/* harmony import */ var _gracenotegroup__WEBPACK_IMPORTED_MODULE_27__ = __webpack_require__(/*! ./gracenotegroup */ "./src/gracenotegroup.ts");
+/* harmony import */ var _gracetabnote__WEBPACK_IMPORTED_MODULE_28__ = __webpack_require__(/*! ./gracetabnote */ "./src/gracetabnote.ts");
+/* harmony import */ var _keymanager__WEBPACK_IMPORTED_MODULE_29__ = __webpack_require__(/*! ./keymanager */ "./src/keymanager.ts");
+/* harmony import */ var _keysignature__WEBPACK_IMPORTED_MODULE_30__ = __webpack_require__(/*! ./keysignature */ "./src/keysignature.ts");
+/* harmony import */ var _keysignote__WEBPACK_IMPORTED_MODULE_31__ = __webpack_require__(/*! ./keysignote */ "./src/keysignote.ts");
+/* harmony import */ var _modifier__WEBPACK_IMPORTED_MODULE_32__ = __webpack_require__(/*! ./modifier */ "./src/modifier.ts");
+/* harmony import */ var _modifiercontext__WEBPACK_IMPORTED_MODULE_33__ = __webpack_require__(/*! ./modifiercontext */ "./src/modifiercontext.ts");
+/* harmony import */ var _multimeasurerest__WEBPACK_IMPORTED_MODULE_34__ = __webpack_require__(/*! ./multimeasurerest */ "./src/multimeasurerest.ts");
+/* harmony import */ var _music__WEBPACK_IMPORTED_MODULE_35__ = __webpack_require__(/*! ./music */ "./src/music.ts");
+/* harmony import */ var _note__WEBPACK_IMPORTED_MODULE_36__ = __webpack_require__(/*! ./note */ "./src/note.ts");
+/* harmony import */ var _notehead__WEBPACK_IMPORTED_MODULE_37__ = __webpack_require__(/*! ./notehead */ "./src/notehead.ts");
+/* harmony import */ var _notesubgroup__WEBPACK_IMPORTED_MODULE_38__ = __webpack_require__(/*! ./notesubgroup */ "./src/notesubgroup.ts");
+/* harmony import */ var _ornament__WEBPACK_IMPORTED_MODULE_39__ = __webpack_require__(/*! ./ornament */ "./src/ornament.ts");
+/* harmony import */ var _parenthesis__WEBPACK_IMPORTED_MODULE_40__ = __webpack_require__(/*! ./parenthesis */ "./src/parenthesis.ts");
+/* harmony import */ var _parser__WEBPACK_IMPORTED_MODULE_41__ = __webpack_require__(/*! ./parser */ "./src/parser.ts");
+/* harmony import */ var _pedalmarking__WEBPACK_IMPORTED_MODULE_42__ = __webpack_require__(/*! ./pedalmarking */ "./src/pedalmarking.ts");
+/* harmony import */ var _registry__WEBPACK_IMPORTED_MODULE_43__ = __webpack_require__(/*! ./registry */ "./src/registry.ts");
+/* harmony import */ var _rendercontext__WEBPACK_IMPORTED_MODULE_44__ = __webpack_require__(/*! ./rendercontext */ "./src/rendercontext.ts");
+/* harmony import */ var _renderer__WEBPACK_IMPORTED_MODULE_45__ = __webpack_require__(/*! ./renderer */ "./src/renderer.ts");
+/* harmony import */ var _repeatnote__WEBPACK_IMPORTED_MODULE_46__ = __webpack_require__(/*! ./repeatnote */ "./src/repeatnote.ts");
+/* harmony import */ var _stave__WEBPACK_IMPORTED_MODULE_47__ = __webpack_require__(/*! ./stave */ "./src/stave.ts");
+/* harmony import */ var _stavebarline__WEBPACK_IMPORTED_MODULE_48__ = __webpack_require__(/*! ./stavebarline */ "./src/stavebarline.ts");
+/* harmony import */ var _staveconnector__WEBPACK_IMPORTED_MODULE_49__ = __webpack_require__(/*! ./staveconnector */ "./src/staveconnector.ts");
+/* harmony import */ var _stavehairpin__WEBPACK_IMPORTED_MODULE_50__ = __webpack_require__(/*! ./stavehairpin */ "./src/stavehairpin.ts");
+/* harmony import */ var _staveline__WEBPACK_IMPORTED_MODULE_51__ = __webpack_require__(/*! ./staveline */ "./src/staveline.ts");
+/* harmony import */ var _stavemodifier__WEBPACK_IMPORTED_MODULE_52__ = __webpack_require__(/*! ./stavemodifier */ "./src/stavemodifier.ts");
+/* harmony import */ var _stavenote__WEBPACK_IMPORTED_MODULE_53__ = __webpack_require__(/*! ./stavenote */ "./src/stavenote.ts");
+/* harmony import */ var _staverepetition__WEBPACK_IMPORTED_MODULE_54__ = __webpack_require__(/*! ./staverepetition */ "./src/staverepetition.ts");
+/* harmony import */ var _stavetempo__WEBPACK_IMPORTED_MODULE_55__ = __webpack_require__(/*! ./stavetempo */ "./src/stavetempo.ts");
+/* harmony import */ var _stavetext__WEBPACK_IMPORTED_MODULE_56__ = __webpack_require__(/*! ./stavetext */ "./src/stavetext.ts");
+/* harmony import */ var _stavetie__WEBPACK_IMPORTED_MODULE_57__ = __webpack_require__(/*! ./stavetie */ "./src/stavetie.ts");
+/* harmony import */ var _stavevolta__WEBPACK_IMPORTED_MODULE_58__ = __webpack_require__(/*! ./stavevolta */ "./src/stavevolta.ts");
+/* harmony import */ var _stem__WEBPACK_IMPORTED_MODULE_59__ = __webpack_require__(/*! ./stem */ "./src/stem.ts");
+/* harmony import */ var _stringnumber__WEBPACK_IMPORTED_MODULE_60__ = __webpack_require__(/*! ./stringnumber */ "./src/stringnumber.ts");
+/* harmony import */ var _strokes__WEBPACK_IMPORTED_MODULE_61__ = __webpack_require__(/*! ./strokes */ "./src/strokes.ts");
+/* harmony import */ var _svgcontext__WEBPACK_IMPORTED_MODULE_62__ = __webpack_require__(/*! ./svgcontext */ "./src/svgcontext.ts");
+/* harmony import */ var _system__WEBPACK_IMPORTED_MODULE_63__ = __webpack_require__(/*! ./system */ "./src/system.ts");
+/* harmony import */ var _tables__WEBPACK_IMPORTED_MODULE_64__ = __webpack_require__(/*! ./tables */ "./src/tables.ts");
+/* harmony import */ var _tabnote__WEBPACK_IMPORTED_MODULE_65__ = __webpack_require__(/*! ./tabnote */ "./src/tabnote.ts");
+/* harmony import */ var _tabslide__WEBPACK_IMPORTED_MODULE_66__ = __webpack_require__(/*! ./tabslide */ "./src/tabslide.ts");
+/* harmony import */ var _tabstave__WEBPACK_IMPORTED_MODULE_67__ = __webpack_require__(/*! ./tabstave */ "./src/tabstave.ts");
+/* harmony import */ var _tabtie__WEBPACK_IMPORTED_MODULE_68__ = __webpack_require__(/*! ./tabtie */ "./src/tabtie.ts");
+/* harmony import */ var _textbracket__WEBPACK_IMPORTED_MODULE_69__ = __webpack_require__(/*! ./textbracket */ "./src/textbracket.ts");
+/* harmony import */ var _textdynamics__WEBPACK_IMPORTED_MODULE_70__ = __webpack_require__(/*! ./textdynamics */ "./src/textdynamics.ts");
 /* harmony import */ var _textnote__WEBPACK_IMPORTED_MODULE_71__ = __webpack_require__(/*! ./textnote */ "./src/textnote.ts");
 /* harmony import */ var _tickcontext__WEBPACK_IMPORTED_MODULE_72__ = __webpack_require__(/*! ./tickcontext */ "./src/tickcontext.ts");
 /* harmony import */ var _timesignature__WEBPACK_IMPORTED_MODULE_73__ = __webpack_require__(/*! ./timesignature */ "./src/timesignature.ts");
@@ -5729,27 +5714,39 @@ class Flow {
         // Introduce the correct font stacks step by step.
         switch (fontNames[0]) {
             case 'Bravura':
-                _tables__WEBPACK_IMPORTED_MODULE_63__.CommonMetrics.fontFamily = 'Bravura,Roboto Slab';
+                _tables__WEBPACK_IMPORTED_MODULE_64__.CommonMetrics.fontFamily = 'Bravura,Roboto Slab';
                 break;
             case 'Gonville':
-                _tables__WEBPACK_IMPORTED_MODULE_63__.CommonMetrics.fontFamily = 'GonvilleSmufl,Bravura,Roboto Slab';
+                _tables__WEBPACK_IMPORTED_MODULE_64__.CommonMetrics.fontFamily = 'GonvilleSmufl,Bravura,Roboto Slab';
                 break;
             case 'Leland':
-                _tables__WEBPACK_IMPORTED_MODULE_63__.CommonMetrics.fontFamily = 'Leland,Bravura,Roboto Slab';
+                _tables__WEBPACK_IMPORTED_MODULE_64__.CommonMetrics.fontFamily = 'Leland,Bravura,Roboto Slab';
                 break;
             case 'Petaluma':
-                _tables__WEBPACK_IMPORTED_MODULE_63__.CommonMetrics.fontFamily = 'Petaluma,Bravura,Petaluma Script';
+                _tables__WEBPACK_IMPORTED_MODULE_64__.CommonMetrics.fontFamily = 'Petaluma,Bravura,Petaluma Script';
                 break;
             case 'MuseJazz':
-                _tables__WEBPACK_IMPORTED_MODULE_63__.CommonMetrics.fontFamily = 'MuseJazz,Bravura,Academico';
+                _tables__WEBPACK_IMPORTED_MODULE_64__.CommonMetrics.fontFamily = 'MuseJazz,Bravura,Academico';
+                break;
+            case 'Gootville':
+                _tables__WEBPACK_IMPORTED_MODULE_64__.CommonMetrics.fontFamily = 'Gootville,Bravura,Academico';
+                break;
+            case 'Finale Ash':
+                _tables__WEBPACK_IMPORTED_MODULE_64__.CommonMetrics.fontFamily = 'Finale Ash,Bravura,Academico';
+                break;
+            case 'Finale Maestro':
+                _tables__WEBPACK_IMPORTED_MODULE_64__.CommonMetrics.fontFamily = 'Finale Maestro,Bravura,Academico';
+                break;
+            case 'Finale Broadway':
+                _tables__WEBPACK_IMPORTED_MODULE_64__.CommonMetrics.fontFamily = 'Finale Broadway,Bravura,Academico';
                 break;
             default:
-                _tables__WEBPACK_IMPORTED_MODULE_63__.CommonMetrics.fontFamily = fontNames.join(',');
+                _tables__WEBPACK_IMPORTED_MODULE_64__.CommonMetrics.fontFamily = fontNames.join(',');
         }
         // HACK-END
         // Convert the array of font names into an array of Font objects.
         const fonts = fontNames.map((fontName) => _font__WEBPACK_IMPORTED_MODULE_18__.Font.load(fontName));
-        _tables__WEBPACK_IMPORTED_MODULE_63__.Tables.MUSIC_FONT_STACK = fonts;
+        _tables__WEBPACK_IMPORTED_MODULE_64__.Tables.MUSIC_FONT_STACK = fonts;
         _glyph__WEBPACK_IMPORTED_MODULE_23__.Glyph.MUSIC_FONT_STACK = fonts.slice();
         _glyph__WEBPACK_IMPORTED_MODULE_23__.Glyph.CURRENT_CACHE_KEY = fontNames.join(',');
         return fonts;
@@ -5765,105 +5762,102 @@ class Flow {
         });
     }
     static getMusicFont() {
-        const fonts = _tables__WEBPACK_IMPORTED_MODULE_63__.Tables.MUSIC_FONT_STACK;
+        const fonts = _tables__WEBPACK_IMPORTED_MODULE_64__.Tables.MUSIC_FONT_STACK;
         return fonts.map((font) => font.getName());
     }
     static getMusicFontStack() {
-        return _tables__WEBPACK_IMPORTED_MODULE_63__.Tables.MUSIC_FONT_STACK;
+        return _tables__WEBPACK_IMPORTED_MODULE_64__.Tables.MUSIC_FONT_STACK;
     }
     static get RENDER_PRECISION_PLACES() {
-        return _tables__WEBPACK_IMPORTED_MODULE_63__.Tables.RENDER_PRECISION_PLACES;
+        return _tables__WEBPACK_IMPORTED_MODULE_64__.Tables.RENDER_PRECISION_PLACES;
     }
     static set RENDER_PRECISION_PLACES(precision) {
-        _tables__WEBPACK_IMPORTED_MODULE_63__.Tables.RENDER_PRECISION_PLACES = precision;
+        _tables__WEBPACK_IMPORTED_MODULE_64__.Tables.RENDER_PRECISION_PLACES = precision;
     }
     static get SOFTMAX_FACTOR() {
-        return _tables__WEBPACK_IMPORTED_MODULE_63__.Tables.SOFTMAX_FACTOR;
+        return _tables__WEBPACK_IMPORTED_MODULE_64__.Tables.SOFTMAX_FACTOR;
     }
     static set SOFTMAX_FACTOR(factor) {
-        _tables__WEBPACK_IMPORTED_MODULE_63__.Tables.SOFTMAX_FACTOR = factor;
+        _tables__WEBPACK_IMPORTED_MODULE_64__.Tables.SOFTMAX_FACTOR = factor;
     }
     static get NOTATION_FONT_SCALE() {
-        return _tables__WEBPACK_IMPORTED_MODULE_63__.Tables.NOTATION_FONT_SCALE;
+        return _tables__WEBPACK_IMPORTED_MODULE_64__.Tables.NOTATION_FONT_SCALE;
     }
     static set NOTATION_FONT_SCALE(value) {
-        _tables__WEBPACK_IMPORTED_MODULE_63__.Tables.NOTATION_FONT_SCALE = value;
+        _tables__WEBPACK_IMPORTED_MODULE_64__.Tables.NOTATION_FONT_SCALE = value;
     }
     static get TABLATURE_FONT_SCALE() {
-        return _tables__WEBPACK_IMPORTED_MODULE_63__.Tables.TABLATURE_FONT_SCALE;
+        return _tables__WEBPACK_IMPORTED_MODULE_64__.Tables.TABLATURE_FONT_SCALE;
     }
     static set TABLATURE_FONT_SCALE(value) {
-        _tables__WEBPACK_IMPORTED_MODULE_63__.Tables.TABLATURE_FONT_SCALE = value;
+        _tables__WEBPACK_IMPORTED_MODULE_64__.Tables.TABLATURE_FONT_SCALE = value;
     }
     static get RESOLUTION() {
-        return _tables__WEBPACK_IMPORTED_MODULE_63__.Tables.RESOLUTION;
+        return _tables__WEBPACK_IMPORTED_MODULE_64__.Tables.RESOLUTION;
     }
     static set RESOLUTION(value) {
-        _tables__WEBPACK_IMPORTED_MODULE_63__.Tables.RESOLUTION = value;
+        _tables__WEBPACK_IMPORTED_MODULE_64__.Tables.RESOLUTION = value;
     }
     static get SLASH_NOTEHEAD_WIDTH() {
-        return _tables__WEBPACK_IMPORTED_MODULE_63__.Tables.SLASH_NOTEHEAD_WIDTH;
+        return _tables__WEBPACK_IMPORTED_MODULE_64__.Tables.SLASH_NOTEHEAD_WIDTH;
     }
     static set SLASH_NOTEHEAD_WIDTH(value) {
-        _tables__WEBPACK_IMPORTED_MODULE_63__.Tables.SLASH_NOTEHEAD_WIDTH = value;
+        _tables__WEBPACK_IMPORTED_MODULE_64__.Tables.SLASH_NOTEHEAD_WIDTH = value;
     }
     static get STAVE_LINE_DISTANCE() {
-        return _tables__WEBPACK_IMPORTED_MODULE_63__.Tables.STAVE_LINE_DISTANCE;
+        return _tables__WEBPACK_IMPORTED_MODULE_64__.Tables.STAVE_LINE_DISTANCE;
     }
     static set STAVE_LINE_DISTANCE(value) {
-        _tables__WEBPACK_IMPORTED_MODULE_63__.Tables.STAVE_LINE_DISTANCE = value;
+        _tables__WEBPACK_IMPORTED_MODULE_64__.Tables.STAVE_LINE_DISTANCE = value;
     }
     static get STAVE_LINE_THICKNESS() {
-        return _tables__WEBPACK_IMPORTED_MODULE_63__.Tables.STAVE_LINE_THICKNESS;
+        return _tables__WEBPACK_IMPORTED_MODULE_64__.Tables.STAVE_LINE_THICKNESS;
     }
     static set STAVE_LINE_THICKNESS(value) {
-        _tables__WEBPACK_IMPORTED_MODULE_63__.Tables.STAVE_LINE_THICKNESS = value;
+        _tables__WEBPACK_IMPORTED_MODULE_64__.Tables.STAVE_LINE_THICKNESS = value;
     }
     static get STEM_HEIGHT() {
-        return _tables__WEBPACK_IMPORTED_MODULE_63__.Tables.STEM_HEIGHT;
+        return _tables__WEBPACK_IMPORTED_MODULE_64__.Tables.STEM_HEIGHT;
     }
     static set STEM_HEIGHT(value) {
-        _tables__WEBPACK_IMPORTED_MODULE_63__.Tables.STEM_HEIGHT = value;
+        _tables__WEBPACK_IMPORTED_MODULE_64__.Tables.STEM_HEIGHT = value;
     }
     static get STEM_WIDTH() {
-        return _tables__WEBPACK_IMPORTED_MODULE_63__.Tables.STEM_WIDTH;
+        return _tables__WEBPACK_IMPORTED_MODULE_64__.Tables.STEM_WIDTH;
     }
     static set STEM_WIDTH(value) {
-        _tables__WEBPACK_IMPORTED_MODULE_63__.Tables.STEM_WIDTH = value;
+        _tables__WEBPACK_IMPORTED_MODULE_64__.Tables.STEM_WIDTH = value;
     }
     static get TIME4_4() {
-        return _tables__WEBPACK_IMPORTED_MODULE_63__.Tables.TIME4_4;
-    }
-    static get accidentalMap() {
-        return _tables__WEBPACK_IMPORTED_MODULE_63__.Tables.accidentalMap;
+        return _tables__WEBPACK_IMPORTED_MODULE_64__.Tables.TIME4_4;
     }
     static get unicode() {
-        return _tables__WEBPACK_IMPORTED_MODULE_63__.Tables.unicode;
+        return _tables__WEBPACK_IMPORTED_MODULE_64__.Tables.unicode;
     }
     static keySignature(spec) {
-        return _tables__WEBPACK_IMPORTED_MODULE_63__.Tables.keySignature(spec);
+        return _tables__WEBPACK_IMPORTED_MODULE_64__.Tables.keySignature(spec);
     }
     static hasKeySignature(spec) {
-        return _tables__WEBPACK_IMPORTED_MODULE_63__.Tables.hasKeySignature(spec);
+        return _tables__WEBPACK_IMPORTED_MODULE_64__.Tables.hasKeySignature(spec);
     }
     static getKeySignatures() {
-        return _tables__WEBPACK_IMPORTED_MODULE_63__.Tables.getKeySignatures();
+        return _tables__WEBPACK_IMPORTED_MODULE_64__.Tables.getKeySignatures();
     }
     static clefProperties(clef) {
-        return _tables__WEBPACK_IMPORTED_MODULE_63__.Tables.clefProperties(clef);
+        return _tables__WEBPACK_IMPORTED_MODULE_64__.Tables.clefProperties(clef);
     }
     // eslint-disable-next-line
     static keyProperties(key, clef, params) {
-        return _tables__WEBPACK_IMPORTED_MODULE_63__.Tables.keyProperties(key, clef, params);
+        return _tables__WEBPACK_IMPORTED_MODULE_64__.Tables.keyProperties(key, clef, params);
     }
     static durationToTicks(duration) {
-        return _tables__WEBPACK_IMPORTED_MODULE_63__.Tables.durationToTicks(duration);
+        return _tables__WEBPACK_IMPORTED_MODULE_64__.Tables.durationToTicks(duration);
     }
 }
 Flow.Accidental = _accidental__WEBPACK_IMPORTED_MODULE_0__.Accidental;
 Flow.Annotation = _annotation__WEBPACK_IMPORTED_MODULE_1__.Annotation;
 Flow.Articulation = _articulation__WEBPACK_IMPORTED_MODULE_2__.Articulation;
-Flow.Barline = _stavebarline__WEBPACK_IMPORTED_MODULE_47__.Barline;
+Flow.Barline = _stavebarline__WEBPACK_IMPORTED_MODULE_48__.Barline;
 Flow.BarNote = _barnote__WEBPACK_IMPORTED_MODULE_3__.BarNote;
 Flow.Beam = _beam__WEBPACK_IMPORTED_MODULE_4__.Beam;
 Flow.Bend = _bend__WEBPACK_IMPORTED_MODULE_5__.Bend;
@@ -5886,49 +5880,49 @@ Flow.FretHandFinger = _frethandfinger__WEBPACK_IMPORTED_MODULE_21__.FretHandFing
 Flow.GhostNote = _ghostnote__WEBPACK_IMPORTED_MODULE_22__.GhostNote;
 Flow.Glyph = _glyph__WEBPACK_IMPORTED_MODULE_23__.Glyph;
 Flow.GlyphNote = _glyphnote__WEBPACK_IMPORTED_MODULE_24__.GlyphNote;
-Flow.GraceNote = _gracenote__WEBPACK_IMPORTED_MODULE_25__.GraceNote;
-Flow.GraceNoteGroup = _gracenotegroup__WEBPACK_IMPORTED_MODULE_26__.GraceNoteGroup;
-Flow.GraceTabNote = _gracetabnote__WEBPACK_IMPORTED_MODULE_27__.GraceTabNote;
-Flow.KeyManager = _keymanager__WEBPACK_IMPORTED_MODULE_28__.KeyManager;
-Flow.KeySignature = _keysignature__WEBPACK_IMPORTED_MODULE_29__.KeySignature;
-Flow.KeySigNote = _keysignote__WEBPACK_IMPORTED_MODULE_30__.KeySigNote;
-Flow.Modifier = _modifier__WEBPACK_IMPORTED_MODULE_31__.Modifier;
-Flow.ModifierContext = _modifiercontext__WEBPACK_IMPORTED_MODULE_32__.ModifierContext;
-Flow.MultiMeasureRest = _multimeasurerest__WEBPACK_IMPORTED_MODULE_33__.MultiMeasureRest;
-Flow.Music = _music__WEBPACK_IMPORTED_MODULE_34__.Music;
-Flow.Note = _note__WEBPACK_IMPORTED_MODULE_35__.Note;
-Flow.NoteHead = _notehead__WEBPACK_IMPORTED_MODULE_36__.NoteHead;
-Flow.NoteSubGroup = _notesubgroup__WEBPACK_IMPORTED_MODULE_37__.NoteSubGroup;
-Flow.Ornament = _ornament__WEBPACK_IMPORTED_MODULE_38__.Ornament;
-Flow.Parenthesis = _parenthesis__WEBPACK_IMPORTED_MODULE_39__.Parenthesis;
-Flow.Parser = _parser__WEBPACK_IMPORTED_MODULE_40__.Parser;
-Flow.PedalMarking = _pedalmarking__WEBPACK_IMPORTED_MODULE_41__.PedalMarking;
-Flow.Registry = _registry__WEBPACK_IMPORTED_MODULE_42__.Registry;
-Flow.RenderContext = _rendercontext__WEBPACK_IMPORTED_MODULE_43__.RenderContext;
-Flow.Renderer = _renderer__WEBPACK_IMPORTED_MODULE_44__.Renderer;
-Flow.RepeatNote = _repeatnote__WEBPACK_IMPORTED_MODULE_45__.RepeatNote;
-Flow.Repetition = _staverepetition__WEBPACK_IMPORTED_MODULE_53__.Repetition;
-Flow.Stave = _stave__WEBPACK_IMPORTED_MODULE_46__.Stave;
-Flow.StaveConnector = _staveconnector__WEBPACK_IMPORTED_MODULE_48__.StaveConnector;
-Flow.StaveHairpin = _stavehairpin__WEBPACK_IMPORTED_MODULE_49__.StaveHairpin;
-Flow.StaveLine = _staveline__WEBPACK_IMPORTED_MODULE_50__.StaveLine;
-Flow.StaveModifier = _stavemodifier__WEBPACK_IMPORTED_MODULE_51__.StaveModifier;
-Flow.StaveNote = _stavenote__WEBPACK_IMPORTED_MODULE_52__.StaveNote;
-Flow.StaveTempo = _stavetempo__WEBPACK_IMPORTED_MODULE_54__.StaveTempo;
-Flow.StaveText = _stavetext__WEBPACK_IMPORTED_MODULE_55__.StaveText;
-Flow.StaveTie = _stavetie__WEBPACK_IMPORTED_MODULE_56__.StaveTie;
-Flow.Stem = _stem__WEBPACK_IMPORTED_MODULE_58__.Stem;
-Flow.StringNumber = _stringnumber__WEBPACK_IMPORTED_MODULE_59__.StringNumber;
-Flow.Stroke = _strokes__WEBPACK_IMPORTED_MODULE_60__.Stroke;
-Flow.SVGContext = _svgcontext__WEBPACK_IMPORTED_MODULE_61__.SVGContext;
-Flow.System = _system__WEBPACK_IMPORTED_MODULE_62__.System;
-Flow.TabNote = _tabnote__WEBPACK_IMPORTED_MODULE_64__.TabNote;
-Flow.TabSlide = _tabslide__WEBPACK_IMPORTED_MODULE_65__.TabSlide;
-Flow.TabStave = _tabstave__WEBPACK_IMPORTED_MODULE_66__.TabStave;
-Flow.TabTie = _tabtie__WEBPACK_IMPORTED_MODULE_67__.TabTie;
-Flow.TextBracket = _textbracket__WEBPACK_IMPORTED_MODULE_68__.TextBracket;
-Flow.TextDynamics = _textdynamics__WEBPACK_IMPORTED_MODULE_69__.TextDynamics;
-Flow.TextFormatter = _textformatter__WEBPACK_IMPORTED_MODULE_70__.TextFormatter;
+Flow.Glyphs = _glyphs__WEBPACK_IMPORTED_MODULE_25__.Glyphs;
+Flow.GraceNote = _gracenote__WEBPACK_IMPORTED_MODULE_26__.GraceNote;
+Flow.GraceNoteGroup = _gracenotegroup__WEBPACK_IMPORTED_MODULE_27__.GraceNoteGroup;
+Flow.GraceTabNote = _gracetabnote__WEBPACK_IMPORTED_MODULE_28__.GraceTabNote;
+Flow.KeyManager = _keymanager__WEBPACK_IMPORTED_MODULE_29__.KeyManager;
+Flow.KeySignature = _keysignature__WEBPACK_IMPORTED_MODULE_30__.KeySignature;
+Flow.KeySigNote = _keysignote__WEBPACK_IMPORTED_MODULE_31__.KeySigNote;
+Flow.Modifier = _modifier__WEBPACK_IMPORTED_MODULE_32__.Modifier;
+Flow.ModifierContext = _modifiercontext__WEBPACK_IMPORTED_MODULE_33__.ModifierContext;
+Flow.MultiMeasureRest = _multimeasurerest__WEBPACK_IMPORTED_MODULE_34__.MultiMeasureRest;
+Flow.Music = _music__WEBPACK_IMPORTED_MODULE_35__.Music;
+Flow.Note = _note__WEBPACK_IMPORTED_MODULE_36__.Note;
+Flow.NoteHead = _notehead__WEBPACK_IMPORTED_MODULE_37__.NoteHead;
+Flow.NoteSubGroup = _notesubgroup__WEBPACK_IMPORTED_MODULE_38__.NoteSubGroup;
+Flow.Ornament = _ornament__WEBPACK_IMPORTED_MODULE_39__.Ornament;
+Flow.Parenthesis = _parenthesis__WEBPACK_IMPORTED_MODULE_40__.Parenthesis;
+Flow.Parser = _parser__WEBPACK_IMPORTED_MODULE_41__.Parser;
+Flow.PedalMarking = _pedalmarking__WEBPACK_IMPORTED_MODULE_42__.PedalMarking;
+Flow.Registry = _registry__WEBPACK_IMPORTED_MODULE_43__.Registry;
+Flow.RenderContext = _rendercontext__WEBPACK_IMPORTED_MODULE_44__.RenderContext;
+Flow.Renderer = _renderer__WEBPACK_IMPORTED_MODULE_45__.Renderer;
+Flow.RepeatNote = _repeatnote__WEBPACK_IMPORTED_MODULE_46__.RepeatNote;
+Flow.Repetition = _staverepetition__WEBPACK_IMPORTED_MODULE_54__.Repetition;
+Flow.Stave = _stave__WEBPACK_IMPORTED_MODULE_47__.Stave;
+Flow.StaveConnector = _staveconnector__WEBPACK_IMPORTED_MODULE_49__.StaveConnector;
+Flow.StaveHairpin = _stavehairpin__WEBPACK_IMPORTED_MODULE_50__.StaveHairpin;
+Flow.StaveLine = _staveline__WEBPACK_IMPORTED_MODULE_51__.StaveLine;
+Flow.StaveModifier = _stavemodifier__WEBPACK_IMPORTED_MODULE_52__.StaveModifier;
+Flow.StaveNote = _stavenote__WEBPACK_IMPORTED_MODULE_53__.StaveNote;
+Flow.StaveTempo = _stavetempo__WEBPACK_IMPORTED_MODULE_55__.StaveTempo;
+Flow.StaveText = _stavetext__WEBPACK_IMPORTED_MODULE_56__.StaveText;
+Flow.StaveTie = _stavetie__WEBPACK_IMPORTED_MODULE_57__.StaveTie;
+Flow.Stem = _stem__WEBPACK_IMPORTED_MODULE_59__.Stem;
+Flow.StringNumber = _stringnumber__WEBPACK_IMPORTED_MODULE_60__.StringNumber;
+Flow.Stroke = _strokes__WEBPACK_IMPORTED_MODULE_61__.Stroke;
+Flow.SVGContext = _svgcontext__WEBPACK_IMPORTED_MODULE_62__.SVGContext;
+Flow.System = _system__WEBPACK_IMPORTED_MODULE_63__.System;
+Flow.TabNote = _tabnote__WEBPACK_IMPORTED_MODULE_65__.TabNote;
+Flow.TabSlide = _tabslide__WEBPACK_IMPORTED_MODULE_66__.TabSlide;
+Flow.TabStave = _tabstave__WEBPACK_IMPORTED_MODULE_67__.TabStave;
+Flow.TabTie = _tabtie__WEBPACK_IMPORTED_MODULE_68__.TabTie;
+Flow.TextBracket = _textbracket__WEBPACK_IMPORTED_MODULE_69__.TextBracket;
+Flow.TextDynamics = _textdynamics__WEBPACK_IMPORTED_MODULE_70__.TextDynamics;
 Flow.TextNote = _textnote__WEBPACK_IMPORTED_MODULE_71__.TextNote;
 Flow.TickContext = _tickcontext__WEBPACK_IMPORTED_MODULE_72__.TickContext;
 Flow.TimeSignature = _timesignature__WEBPACK_IMPORTED_MODULE_73__.TimeSignature;
@@ -5939,7 +5933,7 @@ Flow.Tuplet = _tuplet__WEBPACK_IMPORTED_MODULE_77__.Tuplet;
 Flow.Vibrato = _vibrato__WEBPACK_IMPORTED_MODULE_79__.Vibrato;
 Flow.VibratoBracket = _vibratobracket__WEBPACK_IMPORTED_MODULE_80__.VibratoBracket;
 Flow.Voice = _voice__WEBPACK_IMPORTED_MODULE_81__.Voice;
-Flow.Volta = _stavevolta__WEBPACK_IMPORTED_MODULE_57__.Volta;
+Flow.Volta = _stavevolta__WEBPACK_IMPORTED_MODULE_58__.Volta;
 // Exported Enums.
 // Sorted by the module / file they are exported from.
 Flow.AnnotationHorizontalJustify = _annotation__WEBPACK_IMPORTED_MODULE_1__.AnnotationHorizontalJustify;
@@ -5950,13 +5944,13 @@ Flow.SymbolModifiers = _chordsymbol__WEBPACK_IMPORTED_MODULE_9__.SymbolModifiers
 Flow.CurvePosition = _curve__WEBPACK_IMPORTED_MODULE_13__.CurvePosition;
 Flow.FontWeight = _font__WEBPACK_IMPORTED_MODULE_18__.FontWeight;
 Flow.FontStyle = _font__WEBPACK_IMPORTED_MODULE_18__.FontStyle;
-Flow.ModifierPosition = _modifier__WEBPACK_IMPORTED_MODULE_31__.ModifierPosition;
-Flow.RendererBackends = _renderer__WEBPACK_IMPORTED_MODULE_44__.RendererBackends;
-Flow.RendererLineEndType = _renderer__WEBPACK_IMPORTED_MODULE_44__.RendererLineEndType;
-Flow.BarlineType = _stavebarline__WEBPACK_IMPORTED_MODULE_47__.BarlineType;
-Flow.StaveModifierPosition = _stavemodifier__WEBPACK_IMPORTED_MODULE_51__.StaveModifierPosition;
-Flow.VoltaType = _stavevolta__WEBPACK_IMPORTED_MODULE_57__.VoltaType;
-Flow.TextBracketPosition = _textbracket__WEBPACK_IMPORTED_MODULE_68__.TextBracketPosition;
+Flow.ModifierPosition = _modifier__WEBPACK_IMPORTED_MODULE_32__.ModifierPosition;
+Flow.RendererBackends = _renderer__WEBPACK_IMPORTED_MODULE_45__.RendererBackends;
+Flow.RendererLineEndType = _renderer__WEBPACK_IMPORTED_MODULE_45__.RendererLineEndType;
+Flow.BarlineType = _stavebarline__WEBPACK_IMPORTED_MODULE_48__.BarlineType;
+Flow.StaveModifierPosition = _stavemodifier__WEBPACK_IMPORTED_MODULE_52__.StaveModifierPosition;
+Flow.VoltaType = _stavevolta__WEBPACK_IMPORTED_MODULE_58__.VoltaType;
+Flow.TextBracketPosition = _textbracket__WEBPACK_IMPORTED_MODULE_69__.TextBracketPosition;
 Flow.TextJustification = _textnote__WEBPACK_IMPORTED_MODULE_71__.TextJustification;
 Flow.VoiceMode = _voice__WEBPACK_IMPORTED_MODULE_81__.VoiceMode;
 
@@ -9954,87 +9948,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 const CommonMetrics = {
     smufl: true,
-    accidental: {
-        noteheadAccidentalPadding: 1,
-        leftPadding: 2,
-        accidentalSpacing: 3,
-    },
-    ornament: {
-        brassScoop: {
-            xOffset: -12,
-            yOffset: 0,
-            stemUpYOffset: 0,
-            reportedWidth: 20,
-        },
-        brassDoitMedium: {
-            xOffset: 16,
-            yOffset: 0,
-            stemUpYOffset: 0,
-            reportedWidth: 22,
-        },
-        brassFallLipShort: {
-            xOffset: 16,
-            yOffset: 0,
-            stemUpYOffset: 0,
-            reportedWidth: 15,
-        },
-        brassLiftMedium: {
-            xOffset: 16,
-            yOffset: 5,
-            stemUpYOffset: 0,
-            reportedWidth: 5,
-        },
-        brassFallRoughMedium: {
-            xOffset: 16,
-            yOffset: 28,
-            stemUpYOffset: 0,
-            reportedWidth: 5,
-        },
-        brassBend: {
-            xOffset: 2,
-            yOffset: -8,
-            stemUpYOffset: 25,
-            reportedWidth: 5,
-        },
-        brassMuteClosed: {
-            xOffset: 3,
-            yOffset: -8,
-            stemUpYOffset: 25,
-            reportedWidth: 5,
-        },
-        brassMuteOpen: {
-            xOffset: 3,
-            yOffset: -7,
-            stemUpYOffset: 25,
-            reportedWidth: 5,
-        },
-        brassFlip: {
-            xOffset: 10,
-            yOffset: 0,
-            stemUpYOffset: 7,
-            reportedWidth: 10,
-        },
-        brassJazzTurn: {
-            xOffset: 0,
-            yOffset: 0,
-            stemUpYOffset: 8,
-            reportedWidth: 31,
-        },
-        brassSmear: {
-            xOffset: 10,
-            yOffset: 0,
-            stemUpYOffset: 8,
-            reportedWidth: 5,
-        },
-    },
-    parenthesis: {
-        default: {
-            width: 7,
-        },
-        gracenote: {
-            width: 3,
-        },
-    },
     // These are for numeric digits, such as in time signatures
     digits: {
         // used by TimeSignature objects
@@ -10049,25 +9962,6 @@ const CommonMetrics = {
         articStaccatissimoBelow: {
             padding: 2,
         },
-    },
-    staveRepetition: {
-        symbolText: {
-            offsetX: 12,
-            offsetY: 25,
-            spacing: 5,
-        },
-        coda: {
-            offsetY: 25,
-        },
-        segno: {
-            offsetY: 10,
-        },
-    },
-    stringNumber: {
-        verticalPadding: 8,
-        stemPadding: 2,
-        leftPadding: 5,
-        rightPadding: 6,
     },
     tuplet: {
         noteHeadOffset: 20,
@@ -10096,24 +9990,6 @@ const CommonMetrics = {
             shiftX: -0.75,
             staveTempo: {
                 shiftX: -1,
-            },
-        },
-        strokeStraight: {
-            arrowheadBlackDown: {
-                shiftX: -4.5,
-            },
-            arrowheadBlackUp: {
-                shiftX: -0.85,
-            },
-        },
-        strokeWiggly: {
-            arrowheadBlackDown: {
-                shiftX: -1,
-                shiftY: 1,
-            },
-            arrowheadBlackUp: {
-                shiftX: -1,
-                shiftY: 1,
             },
         },
         textNote: {
@@ -12557,14 +12433,22 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _load_bravura__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./load_bravura */ "./src/fonts/load_bravura.ts");
 /* harmony import */ var _load_custom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./load_custom */ "./src/fonts/load_custom.ts");
-/* harmony import */ var _load_gonville__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./load_gonville */ "./src/fonts/load_gonville.ts");
-/* harmony import */ var _load_leland__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./load_leland */ "./src/fonts/load_leland.ts");
-/* harmony import */ var _load_musejazz__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./load_musejazz */ "./src/fonts/load_musejazz.ts");
-/* harmony import */ var _load_petaluma__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./load_petaluma */ "./src/fonts/load_petaluma.ts");
+/* harmony import */ var _load_finaleash__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./load_finaleash */ "./src/fonts/load_finaleash.ts");
+/* harmony import */ var _load_finalebroadway__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./load_finalebroadway */ "./src/fonts/load_finalebroadway.ts");
+/* harmony import */ var _load_finalemaestro__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./load_finalemaestro */ "./src/fonts/load_finalemaestro.ts");
+/* harmony import */ var _load_gonville__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./load_gonville */ "./src/fonts/load_gonville.ts");
+/* harmony import */ var _load_gootville__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./load_gootville */ "./src/fonts/load_gootville.ts");
+/* harmony import */ var _load_leland__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./load_leland */ "./src/fonts/load_leland.ts");
+/* harmony import */ var _load_musejazz__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./load_musejazz */ "./src/fonts/load_musejazz.ts");
+/* harmony import */ var _load_petaluma__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./load_petaluma */ "./src/fonts/load_petaluma.ts");
 // Copyright (c) 2023-present VexFlow contributors: https://github.com/vexflow/vexflow/graphs/contributors
 // MIT License
 //
 // vexflow.js statically bundles & preloads all of our music engraving fonts.
+
+
+
+
 
 
 
@@ -12576,11 +12460,15 @@ __webpack_require__.r(__webpack_exports__);
 // Populate our font "database" with all our music fonts.
 function loadAllMusicFonts() {
     (0,_load_bravura__WEBPACK_IMPORTED_MODULE_0__.loadBravura)();
-    (0,_load_gonville__WEBPACK_IMPORTED_MODULE_2__.loadGonville)();
-    (0,_load_petaluma__WEBPACK_IMPORTED_MODULE_5__.loadPetaluma)();
+    (0,_load_finaleash__WEBPACK_IMPORTED_MODULE_2__.loadFinaleAsh)();
+    (0,_load_finalebroadway__WEBPACK_IMPORTED_MODULE_3__.loadFinaleBroadway)();
+    (0,_load_finalemaestro__WEBPACK_IMPORTED_MODULE_4__.loadFinaleMaestro)();
+    (0,_load_gonville__WEBPACK_IMPORTED_MODULE_5__.loadGonville)();
+    (0,_load_gootville__WEBPACK_IMPORTED_MODULE_6__.loadGootville)();
+    (0,_load_petaluma__WEBPACK_IMPORTED_MODULE_9__.loadPetaluma)();
     (0,_load_custom__WEBPACK_IMPORTED_MODULE_1__.loadCustom)();
-    (0,_load_leland__WEBPACK_IMPORTED_MODULE_3__.loadLeland)();
-    (0,_load_musejazz__WEBPACK_IMPORTED_MODULE_4__.loadMuseJazz)();
+    (0,_load_leland__WEBPACK_IMPORTED_MODULE_7__.loadLeland)();
+    (0,_load_musejazz__WEBPACK_IMPORTED_MODULE_8__.loadMuseJazz)();
     // ADD_MUSIC_FONT
     // loadXXX();
 }
@@ -12646,6 +12534,105 @@ function loadCustom() {
 
 /***/ }),
 
+/***/ "./src/fonts/load_finaleash.ts":
+/*!*************************************!*\
+  !*** ./src/fonts/load_finaleash.ts ***!
+  \*************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   loadFinaleAsh: () => (/* binding */ loadFinaleAsh)
+/* harmony export */ });
+/* harmony import */ var _font__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../font */ "./src/font.ts");
+/* harmony import */ var _bravura_glyphs__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./bravura_glyphs */ "./src/fonts/bravura_glyphs.ts");
+/* harmony import */ var _common_metrics__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./common_metrics */ "./src/fonts/common_metrics.ts");
+// Copyright (c) 2023-present VexFlow contributors: https://github.com/vexflow/vexflow/graphs/contributors
+// MIT License
+// If you are adding a new music engraving font, search for instances of ADD_MUSIC_FONT throughout the code base.
+// To compile your new font into vexflow.js, take a look at src/fonts/load_all.ts
+// You can export a font module which can be dynamically loaded by vexflow-core.js (see: Gruntfile.js).
+// ADD_MUSIC_FONT
+// To add a new music engraving font XXX, make a copy of this file and name it load_xxx.ts.
+// Then you will need to generate xxx_glyphs.ts and xxx_metrics.ts.
+// xxx_glyphs.ts is created by tools/fonts/fontgen_smufl.js
+// xxx_metrics.ts is created by hand. You could copy bravura_metrics.ts and modify/remove/add entries where necessary.
+
+
+
+function loadFinaleAsh() {
+    _font__WEBPACK_IMPORTED_MODULE_0__.Font.load('Finale Ash', _bravura_glyphs__WEBPACK_IMPORTED_MODULE_1__.BravuraFont, _common_metrics__WEBPACK_IMPORTED_MODULE_2__.CommonMetrics);
+}
+
+
+/***/ }),
+
+/***/ "./src/fonts/load_finalebroadway.ts":
+/*!******************************************!*\
+  !*** ./src/fonts/load_finalebroadway.ts ***!
+  \******************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   loadFinaleBroadway: () => (/* binding */ loadFinaleBroadway)
+/* harmony export */ });
+/* harmony import */ var _font__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../font */ "./src/font.ts");
+/* harmony import */ var _bravura_glyphs__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./bravura_glyphs */ "./src/fonts/bravura_glyphs.ts");
+/* harmony import */ var _common_metrics__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./common_metrics */ "./src/fonts/common_metrics.ts");
+// Copyright (c) 2023-present VexFlow contributors: https://github.com/vexflow/vexflow/graphs/contributors
+// MIT License
+// If you are adding a new music engraving font, search for instances of ADD_MUSIC_FONT throughout the code base.
+// To compile your new font into vexflow.js, take a look at src/fonts/load_all.ts
+// You can export a font module which can be dynamically loaded by vexflow-core.js (see: Gruntfile.js).
+// ADD_MUSIC_FONT
+// To add a new music engraving font XXX, make a copy of this file and name it load_xxx.ts.
+// Then you will need to generate xxx_glyphs.ts and xxx_metrics.ts.
+// xxx_glyphs.ts is created by tools/fonts/fontgen_smufl.js
+// xxx_metrics.ts is created by hand. You could copy bravura_metrics.ts and modify/remove/add entries where necessary.
+
+
+
+function loadFinaleBroadway() {
+    _font__WEBPACK_IMPORTED_MODULE_0__.Font.load('Finale Broadway', _bravura_glyphs__WEBPACK_IMPORTED_MODULE_1__.BravuraFont, _common_metrics__WEBPACK_IMPORTED_MODULE_2__.CommonMetrics);
+}
+
+
+/***/ }),
+
+/***/ "./src/fonts/load_finalemaestro.ts":
+/*!*****************************************!*\
+  !*** ./src/fonts/load_finalemaestro.ts ***!
+  \*****************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   loadFinaleMaestro: () => (/* binding */ loadFinaleMaestro)
+/* harmony export */ });
+/* harmony import */ var _font__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../font */ "./src/font.ts");
+/* harmony import */ var _bravura_glyphs__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./bravura_glyphs */ "./src/fonts/bravura_glyphs.ts");
+/* harmony import */ var _common_metrics__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./common_metrics */ "./src/fonts/common_metrics.ts");
+// Copyright (c) 2023-present VexFlow contributors: https://github.com/vexflow/vexflow/graphs/contributors
+// MIT License
+// If you are adding a new music engraving font, search for instances of ADD_MUSIC_FONT throughout the code base.
+// To compile your new font into vexflow.js, take a look at src/fonts/load_all.ts
+// You can export a font module which can be dynamically loaded by vexflow-core.js (see: Gruntfile.js).
+// ADD_MUSIC_FONT
+// To add a new music engraving font XXX, make a copy of this file and name it load_xxx.ts.
+// Then you will need to generate xxx_glyphs.ts and xxx_metrics.ts.
+// xxx_glyphs.ts is created by tools/fonts/fontgen_smufl.js
+// xxx_metrics.ts is created by hand. You could copy bravura_metrics.ts and modify/remove/add entries where necessary.
+
+
+
+function loadFinaleMaestro() {
+    _font__WEBPACK_IMPORTED_MODULE_0__.Font.load('Finale Maestro', _bravura_glyphs__WEBPACK_IMPORTED_MODULE_1__.BravuraFont, _common_metrics__WEBPACK_IMPORTED_MODULE_2__.CommonMetrics);
+}
+
+
+/***/ }),
+
 /***/ "./src/fonts/load_gonville.ts":
 /*!************************************!*\
   !*** ./src/fonts/load_gonville.ts ***!
@@ -12666,6 +12653,39 @@ __webpack_require__.r(__webpack_exports__);
 
 function loadGonville() {
     _font__WEBPACK_IMPORTED_MODULE_0__.Font.load('Gonville', _gonville_glyphs__WEBPACK_IMPORTED_MODULE_2__.GonvilleSmuflFont, _common_metrics__WEBPACK_IMPORTED_MODULE_1__.CommonMetrics);
+}
+
+
+/***/ }),
+
+/***/ "./src/fonts/load_gootville.ts":
+/*!*************************************!*\
+  !*** ./src/fonts/load_gootville.ts ***!
+  \*************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   loadGootville: () => (/* binding */ loadGootville)
+/* harmony export */ });
+/* harmony import */ var _font__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../font */ "./src/font.ts");
+/* harmony import */ var _bravura_glyphs__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./bravura_glyphs */ "./src/fonts/bravura_glyphs.ts");
+/* harmony import */ var _common_metrics__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./common_metrics */ "./src/fonts/common_metrics.ts");
+// Copyright (c) 2023-present VexFlow contributors: https://github.com/vexflow/vexflow/graphs/contributors
+// MIT License
+// If you are adding a new music engraving font, search for instances of ADD_MUSIC_FONT throughout the code base.
+// To compile your new font into vexflow.js, take a look at src/fonts/load_all.ts
+// You can export a font module which can be dynamically loaded by vexflow-core.js (see: Gruntfile.js).
+// ADD_MUSIC_FONT
+// To add a new music engraving font XXX, make a copy of this file and name it load_xxx.ts.
+// Then you will need to generate xxx_glyphs.ts and xxx_metrics.ts.
+// xxx_glyphs.ts is created by tools/fonts/fontgen_smufl.js
+// xxx_metrics.ts is created by hand. You could copy bravura_metrics.ts and modify/remove/add entries where necessary.
+
+
+
+function loadGootville() {
+    _font__WEBPACK_IMPORTED_MODULE_0__.Font.load('Gootville', _bravura_glyphs__WEBPACK_IMPORTED_MODULE_1__.BravuraFont, _common_metrics__WEBPACK_IMPORTED_MODULE_2__.CommonMetrics);
 }
 
 
@@ -14408,4546 +14428,6 @@ const PetalumaFont = {
 
 /***/ }),
 
-/***/ "./src/fonts/petalumascript_glyphs.ts":
-/*!********************************************!*\
-  !*** ./src/fonts/petalumascript_glyphs.ts ***!
-  \********************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   PetalumaScriptFont: () => (/* binding */ PetalumaScriptFont)
-/* harmony export */ });
-const PetalumaScriptFont = {
-    spacing: 50,
-    glyphs: {
-        ' ': {
-            xMin: 0,
-            xMax: 250,
-            yMin: 0,
-            yMax: 500,
-            ha: 500,
-            leftSideBearing: 0,
-            advanceWidth: 250,
-        },
-        '0': {
-            xMin: 33,
-            xMax: 534,
-            yMin: -13,
-            yMax: 751,
-            ha: 764,
-            leftSideBearing: 33,
-            advanceWidth: 570,
-        },
-        '1': {
-            xMin: 48,
-            xMax: 235,
-            yMin: -17,
-            yMax: 734,
-            ha: 751,
-            leftSideBearing: 48,
-            advanceWidth: 286,
-        },
-        '2': {
-            xMin: 56,
-            xMax: 571,
-            yMin: -19,
-            yMax: 741,
-            ha: 760,
-            leftSideBearing: 56,
-            advanceWidth: 626,
-        },
-        '3': {
-            xMin: 50,
-            xMax: 528,
-            yMin: -7,
-            yMax: 731,
-            ha: 738,
-            leftSideBearing: 50,
-            advanceWidth: 589,
-        },
-        '4': {
-            xMin: 38,
-            xMax: 564,
-            yMin: -13,
-            yMax: 743,
-            ha: 756,
-            leftSideBearing: 38,
-            advanceWidth: 614,
-        },
-        '5': {
-            xMin: 42,
-            xMax: 601,
-            yMin: -34,
-            yMax: 743,
-            ha: 777,
-            leftSideBearing: 42,
-            advanceWidth: 648,
-        },
-        '6': {
-            xMin: 47,
-            xMax: 606,
-            yMin: -16,
-            yMax: 743,
-            ha: 759,
-            leftSideBearing: 47,
-            advanceWidth: 667,
-        },
-        '7': {
-            xMin: 47,
-            xMax: 567,
-            yMin: 5,
-            yMax: 739,
-            ha: 734,
-            leftSideBearing: 0,
-            advanceWidth: 615,
-        },
-        '8': {
-            xMin: 40,
-            xMax: 541,
-            yMin: -15,
-            yMax: 752,
-            ha: 767,
-            leftSideBearing: 40,
-            advanceWidth: 585,
-        },
-        '9': {
-            xMin: 40,
-            xMax: 537,
-            yMin: -52,
-            yMax: 736,
-            ha: 788,
-            leftSideBearing: 40,
-            advanceWidth: 592,
-        },
-        '!': {
-            xMin: 49,
-            xMax: 180,
-            yMin: -7,
-            yMax: 761,
-            ha: 768,
-            leftSideBearing: 49,
-            advanceWidth: 230,
-        },
-        '"': {
-            xMin: 39,
-            xMax: 304,
-            yMin: 596,
-            yMax: 804,
-            ha: 208,
-            leftSideBearing: 39,
-            advanceWidth: 353,
-        },
-        '#': {
-            xMin: 33,
-            xMax: 599,
-            yMin: -8,
-            yMax: 765,
-            ha: 773,
-            leftSideBearing: 33,
-            advanceWidth: 648,
-        },
-        $: {
-            xMin: 53,
-            xMax: 495,
-            yMin: -111,
-            yMax: 823,
-            ha: 934,
-            leftSideBearing: 53,
-            advanceWidth: 560,
-        },
-        '%': {
-            xMin: 35,
-            xMax: 656,
-            yMin: -128,
-            yMax: 808,
-            ha: 936,
-            leftSideBearing: 35,
-            advanceWidth: 711,
-        },
-        '&': {
-            xMin: 53,
-            xMax: 441,
-            yMin: -3,
-            yMax: 753,
-            ha: 756,
-            leftSideBearing: 53,
-            advanceWidth: 500,
-        },
-        "'": {
-            xMin: 43,
-            xMax: 161,
-            yMin: 590,
-            yMax: 811,
-            ha: 221,
-            leftSideBearing: 43,
-            advanceWidth: 217,
-        },
-        '(': {
-            xMin: 41,
-            xMax: 311,
-            yMin: -36,
-            yMax: 845,
-            ha: 881,
-            leftSideBearing: 41,
-            advanceWidth: 308,
-        },
-        ')': {
-            xMin: -8,
-            xMax: 257,
-            yMin: -21,
-            yMax: 852,
-            ha: 873,
-            leftSideBearing: -8,
-            advanceWidth: 280,
-        },
-        '*': {
-            xMin: 59,
-            xMax: 539,
-            yMin: 175,
-            yMax: 589,
-            ha: 414,
-            leftSideBearing: 59,
-            advanceWidth: 601,
-        },
-        '+': {
-            xMin: 33,
-            xMax: 361,
-            yMin: 180,
-            yMax: 587,
-            ha: 407,
-            leftSideBearing: 33,
-            advanceWidth: 400,
-        },
-        ',': {
-            xMin: 15,
-            xMax: 176,
-            yMin: -129,
-            yMax: 92,
-            ha: 221,
-            leftSideBearing: 15,
-            advanceWidth: 205,
-        },
-        '-': {
-            xMin: 40,
-            xMax: 380,
-            yMin: 317,
-            yMax: 452,
-            ha: 135,
-            leftSideBearing: 40,
-            advanceWidth: 422,
-        },
-        '.': {
-            xMin: 48,
-            xMax: 185,
-            yMin: -56,
-            yMax: 84,
-            ha: 140,
-            leftSideBearing: 48,
-            advanceWidth: 227,
-        },
-        '/': {
-            xMin: -58,
-            xMax: 654,
-            yMin: -122,
-            yMax: 844,
-            ha: 966,
-            leftSideBearing: -58,
-            advanceWidth: 626,
-        },
-        ':': {
-            xMin: 65,
-            xMax: 225,
-            yMin: 97,
-            yMax: 536,
-            ha: 439,
-            leftSideBearing: 65,
-            advanceWidth: 302,
-        },
-        ';': {
-            xMin: 13,
-            xMax: 295,
-            yMin: -139,
-            yMax: 536,
-            ha: 675,
-            leftSideBearing: 13,
-            advanceWidth: 334,
-        },
-        '<': {
-            xMin: 28,
-            xMax: 438,
-            yMin: -1,
-            yMax: 607,
-            ha: 608,
-            leftSideBearing: 28,
-            advanceWidth: 475,
-        },
-        '=': {
-            xMin: 40,
-            xMax: 383,
-            yMin: 199.9598640852289,
-            yMax: 541,
-            ha: 341.0401359147711,
-            leftSideBearing: 40,
-            advanceWidth: 422,
-        },
-        '>': {
-            xMin: 35,
-            xMax: 421,
-            yMin: 28,
-            yMax: 632,
-            ha: 604,
-            leftSideBearing: 35,
-            advanceWidth: 466,
-        },
-        '?': {
-            xMin: 45,
-            xMax: 548,
-            yMin: -17,
-            yMax: 767,
-            ha: 784,
-            leftSideBearing: 45,
-            advanceWidth: 592,
-        },
-        '@': {
-            xMin: 51,
-            xMax: 730,
-            yMin: -78,
-            yMax: 753,
-            ha: 831,
-            leftSideBearing: 51,
-            advanceWidth: 781,
-        },
-        A: {
-            xMin: 37,
-            xMax: 554,
-            yMin: -4,
-            yMax: 746,
-            ha: 750,
-            leftSideBearing: 37,
-            advanceWidth: 617,
-        },
-        B: {
-            xMin: 37,
-            xMax: 532,
-            yMin: 3,
-            yMax: 783,
-            ha: 780,
-            leftSideBearing: 37,
-            advanceWidth: 579,
-        },
-        C: {
-            xMin: 37,
-            xMax: 583,
-            yMin: -3,
-            yMax: 775,
-            ha: 778,
-            leftSideBearing: 37,
-            advanceWidth: 623,
-        },
-        D: {
-            xMin: 50,
-            xMax: 530,
-            yMin: -15,
-            yMax: 749,
-            ha: 764,
-            leftSideBearing: 50,
-            advanceWidth: 579,
-        },
-        E: {
-            xMin: 45,
-            xMax: 531,
-            yMin: -1,
-            yMax: 743,
-            ha: 744,
-            leftSideBearing: 45,
-            advanceWidth: 585,
-        },
-        F: {
-            xMin: 45,
-            xMax: 459,
-            yMin: 23,
-            yMax: 727,
-            ha: 704,
-            leftSideBearing: 45,
-            advanceWidth: 510,
-        },
-        G: {
-            xMin: 31,
-            xMax: 577,
-            yMin: -8,
-            yMax: 733,
-            ha: 741,
-            leftSideBearing: 31,
-            advanceWidth: 611,
-        },
-        H: {
-            xMin: 37,
-            xMax: 493,
-            yMin: -22,
-            yMax: 758,
-            ha: 780,
-            leftSideBearing: 37,
-            advanceWidth: 535,
-        },
-        I: {
-            xMin: 47,
-            xMax: 501,
-            yMin: -3,
-            yMax: 731,
-            ha: 734,
-            leftSideBearing: 47,
-            advanceWidth: 541,
-        },
-        J: {
-            xMin: 33,
-            xMax: 531,
-            yMin: -23,
-            yMax: 725,
-            ha: 748,
-            leftSideBearing: 33,
-            advanceWidth: 573,
-        },
-        K: {
-            xMin: 43,
-            xMax: 505,
-            yMin: -10,
-            yMax: 740,
-            ha: 750,
-            leftSideBearing: 43,
-            advanceWidth: 560,
-        },
-        L: {
-            xMin: 49,
-            xMax: 457,
-            yMin: -2,
-            yMax: 746,
-            ha: 748,
-            leftSideBearing: 49,
-            advanceWidth: 510,
-        },
-        M: {
-            xMin: 35,
-            xMax: 699,
-            yMin: 1,
-            yMax: 744,
-            ha: 743,
-            leftSideBearing: 35,
-            advanceWidth: 743,
-        },
-        N: {
-            xMin: 34,
-            xMax: 533,
-            yMin: -17,
-            yMax: 761,
-            ha: 778,
-            leftSideBearing: 34,
-            advanceWidth: 579,
-        },
-        O: {
-            xMin: 41,
-            xMax: 608,
-            yMin: -5,
-            yMax: 735,
-            ha: 740,
-            leftSideBearing: 41,
-            advanceWidth: 667,
-        },
-        P: {
-            xMin: 53,
-            xMax: 451,
-            yMin: -18,
-            yMax: 735,
-            ha: 753,
-            leftSideBearing: 53,
-            advanceWidth: 497,
-        },
-        Q: {
-            xMin: 40,
-            xMax: 599,
-            yMin: -67,
-            yMax: 744,
-            ha: 811,
-            leftSideBearing: 40,
-            advanceWidth: 648,
-        },
-        R: {
-            xMin: 39,
-            xMax: 487,
-            yMin: 16,
-            yMax: 735,
-            ha: 719,
-            leftSideBearing: 39,
-            advanceWidth: 535,
-        },
-        S: {
-            xMin: 35,
-            xMax: 552,
-            yMin: -47,
-            yMax: 708,
-            ha: 755,
-            leftSideBearing: 35,
-            advanceWidth: 604,
-        },
-        T: {
-            xMin: 26,
-            xMax: 656,
-            yMin: -13,
-            yMax: 718,
-            ha: 731,
-            leftSideBearing: 26,
-            advanceWidth: 705,
-        },
-        U: {
-            xMin: 41,
-            xMax: 518,
-            yMin: -20,
-            yMax: 748,
-            ha: 768,
-            leftSideBearing: 41,
-            advanceWidth: 567,
-        },
-        V: {
-            xMin: 47,
-            xMax: 509,
-            yMin: -26,
-            yMax: 744,
-            ha: 770,
-            leftSideBearing: 47,
-            advanceWidth: 567,
-        },
-        W: {
-            xMin: 44,
-            xMax: 789,
-            yMin: -35,
-            yMax: 720,
-            ha: 755,
-            leftSideBearing: 44,
-            advanceWidth: 833,
-        },
-        X: {
-            xMin: 63,
-            xMax: 635,
-            yMin: -10,
-            yMax: 745,
-            ha: 755,
-            leftSideBearing: 63,
-            advanceWidth: 680,
-        },
-        Y: {
-            xMin: 43,
-            xMax: 503,
-            yMin: -21,
-            yMax: 734,
-            ha: 755,
-            leftSideBearing: 43,
-            advanceWidth: 541,
-        },
-        Z: {
-            xMin: 42,
-            xMax: 584,
-            yMin: -10,
-            yMax: 739,
-            ha: 749,
-            leftSideBearing: 42,
-            advanceWidth: 629,
-        },
-        '[': {
-            xMin: 46,
-            xMax: 346,
-            yMin: -150,
-            yMax: 884,
-            ha: 1034,
-            leftSideBearing: 46,
-            advanceWidth: 291,
-        },
-        '\\': {
-            xMin: 20,
-            xMax: 616,
-            yMin: -100,
-            yMax: 797,
-            ha: 897,
-            leftSideBearing: 20,
-            advanceWidth: 645,
-        },
-        ']': {
-            xMin: -76,
-            xMax: 226,
-            yMin: -150,
-            yMax: 881,
-            ha: 1031,
-            leftSideBearing: -76,
-            advanceWidth: 297,
-        },
-        '^': {
-            xMin: 43,
-            xMax: 437,
-            yMin: 517,
-            yMax: 812,
-            ha: 295,
-            leftSideBearing: 43,
-            advanceWidth: 478,
-        },
-        _: {
-            xMin: 29,
-            xMax: 563,
-            yMin: -110,
-            yMax: -1,
-            ha: 109,
-            leftSideBearing: 29,
-            advanceWidth: 598,
-        },
-        '`': {
-            xMin: 54,
-            xMax: 321,
-            yMin: 540,
-            yMax: 747,
-            ha: 207,
-            leftSideBearing: 54,
-            advanceWidth: 368,
-        },
-        a: {
-            xMin: 20,
-            xMax: 447,
-            yMin: -17,
-            yMax: 495,
-            ha: 512,
-            leftSideBearing: 20,
-            advanceWidth: 494,
-        },
-        b: {
-            xMin: 37,
-            xMax: 466,
-            yMin: -27,
-            yMax: 770,
-            ha: 797,
-            leftSideBearing: 37,
-            advanceWidth: 510,
-        },
-        c: {
-            xMin: 35,
-            xMax: 456,
-            yMin: -9,
-            yMax: 507,
-            ha: 516,
-            leftSideBearing: 35,
-            advanceWidth: 460,
-        },
-        d: {
-            xMin: 45,
-            xMax: 520,
-            yMin: -15,
-            yMax: 764,
-            ha: 779,
-            leftSideBearing: 45,
-            advanceWidth: 560,
-        },
-        e: {
-            xMin: 33,
-            xMax: 370,
-            yMin: -5,
-            yMax: 501,
-            ha: 506,
-            leftSideBearing: 33,
-            advanceWidth: 397,
-        },
-        f: {
-            xMin: 35,
-            xMax: 411,
-            yMin: -13,
-            yMax: 695,
-            ha: 708,
-            leftSideBearing: 35,
-            advanceWidth: 453,
-        },
-        g: {
-            xMin: 33,
-            xMax: 551,
-            yMin: -257,
-            yMax: 505,
-            ha: 762,
-            leftSideBearing: 33,
-            advanceWidth: 611,
-        },
-        h: {
-            xMin: 32,
-            xMax: 458,
-            yMin: -29,
-            yMax: 743,
-            ha: 772,
-            leftSideBearing: 32,
-            advanceWidth: 491,
-        },
-        i: {
-            xMin: 45,
-            xMax: 167,
-            yMin: -13,
-            yMax: 631,
-            ha: 644,
-            leftSideBearing: 45,
-            advanceWidth: 220,
-        },
-        j: {
-            xMin: -127,
-            xMax: 261,
-            yMin: -231,
-            yMax: 601,
-            ha: 832,
-            leftSideBearing: -127,
-            advanceWidth: 308,
-        },
-        k: {
-            xMin: 39,
-            xMax: 443,
-            yMin: -3,
-            yMax: 700,
-            ha: 703,
-            leftSideBearing: 39,
-            advanceWidth: 497,
-        },
-        l: {
-            xMin: 58,
-            xMax: 168,
-            yMin: -8,
-            yMax: 686,
-            ha: 694,
-            leftSideBearing: 58,
-            advanceWidth: 227,
-        },
-        m: {
-            xMin: 39,
-            xMax: 688,
-            yMin: -14,
-            yMax: 501,
-            ha: 515,
-            leftSideBearing: 39,
-            advanceWidth: 718,
-        },
-        n: {
-            xMin: 45,
-            xMax: 491,
-            yMin: -32,
-            yMax: 512,
-            ha: 544,
-            leftSideBearing: 45,
-            advanceWidth: 541,
-        },
-        o: {
-            xMin: 41,
-            xMax: 424,
-            yMin: -12,
-            yMax: 493,
-            ha: 505,
-            leftSideBearing: 41,
-            advanceWidth: 447,
-        },
-        p: {
-            xMin: 25,
-            xMax: 529,
-            yMin: -260,
-            yMax: 500,
-            ha: 760,
-            leftSideBearing: 25,
-            advanceWidth: 573,
-        },
-        q: {
-            xMin: 53,
-            xMax: 603,
-            yMin: -235,
-            yMax: 514,
-            ha: 749,
-            leftSideBearing: 53,
-            advanceWidth: 623,
-        },
-        r: {
-            xMin: 32,
-            xMax: 407,
-            yMin: -7,
-            yMax: 492,
-            ha: 499,
-            leftSideBearing: 32,
-            advanceWidth: 460,
-        },
-        s: {
-            xMin: 49,
-            xMax: 416,
-            yMin: -12,
-            yMax: 519,
-            ha: 531,
-            leftSideBearing: 49,
-            advanceWidth: 460,
-        },
-        t: {
-            xMin: 32,
-            xMax: 442,
-            yMin: -5,
-            yMax: 684,
-            ha: 689,
-            leftSideBearing: 32,
-            advanceWidth: 469,
-        },
-        u: {
-            xMin: 41,
-            xMax: 487,
-            yMin: -5,
-            yMax: 507,
-            ha: 512,
-            leftSideBearing: 41,
-            advanceWidth: 510,
-        },
-        v: {
-            xMin: 16,
-            xMax: 441,
-            yMin: -20,
-            yMax: 542,
-            ha: 562,
-            leftSideBearing: 16,
-            advanceWidth: 456,
-        },
-        w: {
-            xMin: 39,
-            xMax: 639,
-            yMin: -22,
-            yMax: 505,
-            ha: 527,
-            leftSideBearing: 39,
-            advanceWidth: 661,
-        },
-        x: {
-            xMin: 15,
-            xMax: 505,
-            yMin: -39,
-            yMax: 539,
-            ha: 578,
-            leftSideBearing: 15,
-            advanceWidth: 541,
-        },
-        y: {
-            xMin: -98,
-            xMax: 501,
-            yMin: -242,
-            yMax: 511,
-            ha: 753,
-            leftSideBearing: -98,
-            advanceWidth: 548,
-        },
-        z: {
-            xMin: 27,
-            xMax: 479,
-            yMin: -3,
-            yMax: 494,
-            ha: 497,
-            leftSideBearing: 27,
-            advanceWidth: 494,
-        },
-        '{': {
-            xMin: 0,
-            xMax: 0,
-            yMin: 0,
-            yMax: 0,
-            ha: 0,
-            leftSideBearing: 0,
-            advanceWidth: 308,
-        },
-        '|': {
-            xMin: 0,
-            xMax: 0,
-            yMin: 0,
-            yMax: 0,
-            ha: 0,
-            leftSideBearing: 0,
-            advanceWidth: 308,
-        },
-        '}': {
-            xMin: 0,
-            xMax: 0,
-            yMin: 0,
-            yMax: 0,
-            ha: 0,
-            leftSideBearing: 0,
-            advanceWidth: 308,
-        },
-        '~': {
-            xMin: 0,
-            xMax: 0,
-            yMin: 0,
-            yMax: 0,
-            ha: 0,
-            leftSideBearing: 0,
-            advanceWidth: 308,
-        },
-    },
-    fontFamily: 'Petaluma Script',
-    resolution: 1000,
-    generatedOn: '2020-06-14T18:33:25.407Z',
-};
-
-
-/***/ }),
-
-/***/ "./src/fonts/robotoslab_glyphs.ts":
-/*!****************************************!*\
-  !*** ./src/fonts/robotoslab_glyphs.ts ***!
-  \****************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   RobotoSlabFont: () => (/* binding */ RobotoSlabFont)
-/* harmony export */ });
-const RobotoSlabFont = {
-    spacing: 50,
-    glyphs: {
-        ' ': {
-            xMin: 0,
-            xMax: 509,
-            yMin: 0,
-            yMax: 2000,
-            ha: 2000,
-            leftSideBearing: 0,
-            advanceWidth: 509,
-        },
-        '0': {
-            xMin: 121,
-            xMax: 1048,
-            yMin: -21,
-            yMax: 1477,
-            ha: 1498,
-            leftSideBearing: 121,
-            advanceWidth: 1168,
-        },
-        '1': {
-            xMin: 117,
-            xMax: 767,
-            yMin: 0,
-            yMax: 1456,
-            ha: 1456,
-            leftSideBearing: 117,
-            advanceWidth: 844,
-        },
-        '2': {
-            xMin: 75.8474576645637,
-            xMax: 1040,
-            yMin: 0,
-            yMax: 1477,
-            ha: 1477,
-            leftSideBearing: 75,
-            advanceWidth: 1131,
-        },
-        '3': {
-            xMin: 74.85365853658536,
-            xMax: 994,
-            yMin: -21,
-            yMax: 1477,
-            ha: 1498,
-            leftSideBearing: 74,
-            advanceWidth: 1106,
-        },
-        '4': {
-            xMin: 63,
-            xMax: 1114,
-            yMin: 0,
-            yMax: 1456,
-            ha: 1456,
-            leftSideBearing: 63,
-            advanceWidth: 1187,
-        },
-        '5': {
-            xMin: 96.8448275474953,
-            xMax: 982,
-            yMin: -21,
-            yMax: 1456,
-            ha: 1477,
-            leftSideBearing: 96,
-            advanceWidth: 1081,
-        },
-        '6': {
-            xMin: 121,
-            xMax: 1067,
-            yMin: -21,
-            yMax: 1477,
-            ha: 1498,
-            leftSideBearing: 121,
-            advanceWidth: 1144,
-        },
-        '7': {
-            xMin: 76,
-            xMax: 1060,
-            yMin: 0,
-            yMax: 1456,
-            ha: 1456,
-            leftSideBearing: -30,
-            advanceWidth: 1128,
-        },
-        '8': {
-            xMin: 92,
-            xMax: 1039,
-            yMin: -21,
-            yMax: 1477,
-            ha: 1498,
-            leftSideBearing: 92,
-            advanceWidth: 1131,
-        },
-        '9': {
-            xMin: 84,
-            xMax: 1026,
-            yMin: -21,
-            yMax: 1477,
-            ha: 1498,
-            leftSideBearing: 84,
-            advanceWidth: 1154,
-        },
-        '!': {
-            xMin: 143,
-            xMax: 340,
-            yMin: 0,
-            yMax: 1456,
-            ha: 1456,
-            leftSideBearing: 143,
-            advanceWidth: 483,
-        },
-        '"': {
-            xMin: 166,
-            xMax: 634,
-            yMin: 1055,
-            yMax: 1560,
-            ha: 505,
-            leftSideBearing: 166,
-            advanceWidth: 770,
-        },
-        '#': {
-            xMin: 63,
-            xMax: 1179,
-            yMin: 0,
-            yMax: 1456,
-            ha: 1456,
-            leftSideBearing: 63,
-            advanceWidth: 1246,
-        },
-        $: {
-            xMin: 81.92156915727656,
-            xMax: 1012,
-            yMin: -208,
-            yMax: 1693,
-            ha: 1901,
-            leftSideBearing: 81,
-            advanceWidth: 1110,
-        },
-        '%': {
-            xMin: 77,
-            xMax: 1384,
-            yMin: -21,
-            yMax: 1477,
-            ha: 1498,
-            leftSideBearing: 77,
-            advanceWidth: 1460,
-        },
-        '&': {
-            xMin: 74,
-            xMax: 1242,
-            yMin: -21,
-            yMax: 1477,
-            ha: 1498,
-            leftSideBearing: 74,
-            advanceWidth: 1289,
-        },
-        "'": {
-            xMin: 166,
-            xMax: 324,
-            yMin: 1055,
-            yMax: 1560,
-            ha: 505,
-            leftSideBearing: 166,
-            advanceWidth: 460,
-        },
-        '(': {
-            xMin: 114,
-            xMax: 650,
-            yMin: -463,
-            yMax: 1636,
-            ha: 2099,
-            leftSideBearing: 114,
-            advanceWidth: 662,
-        },
-        ')': {
-            xMin: 11,
-            xMax: 547,
-            yMin: -463,
-            yMax: 1636,
-            ha: 2099,
-            leftSideBearing: 11,
-            advanceWidth: 654,
-        },
-        '*': {
-            xMin: 66,
-            xMax: 893,
-            yMin: 607,
-            yMax: 1456,
-            ha: 849,
-            leftSideBearing: 66,
-            advanceWidth: 958,
-        },
-        '+': {
-            xMin: 73,
-            xMax: 1071,
-            yMin: 146,
-            yMax: 1206,
-            ha: 1060,
-            leftSideBearing: 73,
-            advanceWidth: 1145,
-        },
-        ',': {
-            xMin: 23,
-            xMax: 315,
-            yMin: -311,
-            yMax: 221,
-            ha: 532,
-            leftSideBearing: 23,
-            advanceWidth: 404,
-        },
-        '-': {
-            xMin: 154,
-            xMax: 643,
-            yMin: 538,
-            yMax: 692,
-            ha: 154,
-            leftSideBearing: 154,
-            advanceWidth: 797,
-        },
-        '.': {
-            xMin: 145,
-            xMax: 342,
-            yMin: 0,
-            yMax: 202,
-            ha: 202,
-            leftSideBearing: 145,
-            advanceWidth: 493,
-        },
-        '/': {
-            xMin: 0,
-            xMax: 774,
-            yMin: -125,
-            yMax: 1456,
-            ha: 1581,
-            leftSideBearing: 0,
-            advanceWidth: 824,
-        },
-        ':': {
-            xMin: 145,
-            xMax: 342,
-            yMin: 0,
-            yMax: 1082,
-            ha: 1082,
-            leftSideBearing: 145,
-            advanceWidth: 419,
-        },
-        ';': {
-            xMin: 53,
-            xMax: 345,
-            yMin: -311,
-            yMax: 1082,
-            ha: 1393,
-            leftSideBearing: 53,
-            advanceWidth: 424,
-        },
-        '<': {
-            xMin: 76,
-            xMax: 892,
-            yMin: 107,
-            yMax: 1013,
-            ha: 906,
-            leftSideBearing: 76,
-            advanceWidth: 1017,
-        },
-        '=': {
-            xMin: 147,
-            xMax: 981,
-            yMin: 407,
-            yMax: 987,
-            ha: 580,
-            leftSideBearing: 147,
-            advanceWidth: 1127,
-        },
-        '>': {
-            xMin: 125,
-            xMax: 980,
-            yMin: 87,
-            yMax: 993,
-            ha: 906,
-            leftSideBearing: 125,
-            advanceWidth: 1060,
-        },
-        '?': {
-            xMin: 65.92660602419838,
-            xMax: 890,
-            yMin: 0,
-            yMax: 1477,
-            ha: 1477,
-            leftSideBearing: 65,
-            advanceWidth: 953,
-        },
-        '@': {
-            xMin: 84.3592218305664,
-            xMax: 1705.2346925277395,
-            yMin: -453,
-            yMax: 1431,
-            ha: 1884,
-            leftSideBearing: 84,
-            advanceWidth: 1821,
-        },
-        A: {
-            xMin: 70,
-            xMax: 1463,
-            yMin: 0,
-            yMax: 1456,
-            ha: 1456,
-            leftSideBearing: 70,
-            advanceWidth: 1533,
-        },
-        B: {
-            xMin: 81,
-            xMax: 1253,
-            yMin: 0,
-            yMax: 1456,
-            ha: 1456,
-            leftSideBearing: 81,
-            advanceWidth: 1322,
-        },
-        C: {
-            xMin: 80,
-            xMax: 1174,
-            yMin: -21,
-            yMax: 1477,
-            ha: 1498,
-            leftSideBearing: 80,
-            advanceWidth: 1290,
-        },
-        D: {
-            xMin: 81,
-            xMax: 1291,
-            yMin: 0,
-            yMax: 1456,
-            ha: 1456,
-            leftSideBearing: 81,
-            advanceWidth: 1356,
-        },
-        E: {
-            xMin: 81,
-            xMax: 1190,
-            yMin: 0,
-            yMax: 1456,
-            ha: 1456,
-            leftSideBearing: 81,
-            advanceWidth: 1306,
-        },
-        F: {
-            xMin: 81,
-            xMax: 1176,
-            yMin: 0,
-            yMax: 1456,
-            ha: 1456,
-            leftSideBearing: 81,
-            advanceWidth: 1256,
-        },
-        G: {
-            xMin: 80,
-            xMax: 1226,
-            yMin: -21,
-            yMax: 1477,
-            ha: 1498,
-            leftSideBearing: 80,
-            advanceWidth: 1346,
-        },
-        H: {
-            xMin: 81,
-            xMax: 1497,
-            yMin: 0,
-            yMax: 1456,
-            ha: 1456,
-            leftSideBearing: 81,
-            advanceWidth: 1578,
-        },
-        I: {
-            xMin: 81,
-            xMax: 604,
-            yMin: 0,
-            yMax: 1456,
-            ha: 1456,
-            leftSideBearing: 81,
-            advanceWidth: 685,
-        },
-        J: {
-            xMin: 60,
-            xMax: 1100,
-            yMin: -21,
-            yMax: 1456,
-            ha: 1477,
-            leftSideBearing: 60,
-            advanceWidth: 1169,
-        },
-        K: {
-            xMin: 81,
-            xMax: 1427,
-            yMin: 0,
-            yMax: 1456,
-            ha: 1456,
-            leftSideBearing: 81,
-            advanceWidth: 1501,
-        },
-        L: {
-            xMin: 81,
-            xMax: 1130,
-            yMin: 0,
-            yMax: 1456,
-            ha: 1456,
-            leftSideBearing: 81,
-            advanceWidth: 1210,
-        },
-        M: {
-            xMin: 94,
-            xMax: 1888,
-            yMin: 0,
-            yMax: 1456,
-            ha: 1456,
-            leftSideBearing: 94,
-            advanceWidth: 1982,
-        },
-        N: {
-            xMin: 83,
-            xMax: 1509,
-            yMin: 0,
-            yMax: 1456,
-            ha: 1456,
-            leftSideBearing: 83,
-            advanceWidth: 1592,
-        },
-        O: {
-            xMin: 70,
-            xMax: 1281,
-            yMin: -21,
-            yMax: 1477,
-            ha: 1498,
-            leftSideBearing: 70,
-            advanceWidth: 1351,
-        },
-        P: {
-            xMin: 81,
-            xMax: 1242,
-            yMin: 0,
-            yMax: 1456,
-            ha: 1456,
-            leftSideBearing: 81,
-            advanceWidth: 1297,
-        },
-        Q: {
-            xMin: 70,
-            xMax: 1348,
-            yMin: -245,
-            yMax: 1477,
-            ha: 1722,
-            leftSideBearing: 70,
-            advanceWidth: 1376,
-        },
-        R: {
-            xMin: 81,
-            xMax: 1285,
-            yMin: 0,
-            yMax: 1455,
-            ha: 1455,
-            leftSideBearing: 81,
-            advanceWidth: 1385,
-        },
-        S: {
-            xMin: 115,
-            xMax: 1116,
-            yMin: -21,
-            yMax: 1477,
-            ha: 1498,
-            leftSideBearing: 115,
-            advanceWidth: 1206,
-        },
-        T: {
-            xMin: 96,
-            xMax: 1306,
-            yMin: 0,
-            yMax: 1456,
-            ha: 1456,
-            leftSideBearing: 96,
-            advanceWidth: 1406,
-        },
-        U: {
-            xMin: 70,
-            xMax: 1452,
-            yMin: -21,
-            yMax: 1456,
-            ha: 1477,
-            leftSideBearing: 70,
-            advanceWidth: 1522,
-        },
-        V: {
-            xMin: 65,
-            xMax: 1443,
-            yMin: 0,
-            yMax: 1456,
-            ha: 1456,
-            leftSideBearing: 65,
-            advanceWidth: 1508,
-        },
-        W: {
-            xMin: 72,
-            xMax: 2057,
-            yMin: 0,
-            yMax: 1456,
-            ha: 1456,
-            leftSideBearing: 72,
-            advanceWidth: 2129,
-        },
-        X: {
-            xMin: 80,
-            xMax: 1449,
-            yMin: 0,
-            yMax: 1456,
-            ha: 1456,
-            leftSideBearing: 80,
-            advanceWidth: 1529,
-        },
-        Y: {
-            xMin: 65,
-            xMax: 1396,
-            yMin: 0,
-            yMax: 1456,
-            ha: 1456,
-            leftSideBearing: 65,
-            advanceWidth: 1461,
-        },
-        Z: {
-            xMin: 90,
-            xMax: 1107,
-            yMin: 0,
-            yMax: 1456,
-            ha: 1456,
-            leftSideBearing: 90,
-            advanceWidth: 1197,
-        },
-        '[': {
-            xMin: 157,
-            xMax: 541,
-            yMin: -312,
-            yMax: 1664,
-            ha: 1976,
-            leftSideBearing: 157,
-            advanceWidth: 573,
-        },
-        '\\': {
-            xMin: 36,
-            xMax: 830,
-            yMin: -125,
-            yMax: 1456,
-            ha: 1581,
-            leftSideBearing: 36,
-            advanceWidth: 841,
-        },
-        ']': {
-            xMin: 23,
-            xMax: 408,
-            yMin: -312,
-            yMax: 1664,
-            ha: 1976,
-            leftSideBearing: 23,
-            advanceWidth: 552,
-        },
-        '^': {
-            xMin: 71,
-            xMax: 802,
-            yMin: 729,
-            yMax: 1456,
-            ha: 727,
-            leftSideBearing: 71,
-            advanceWidth: 864,
-        },
-        _: {
-            xMin: 119,
-            xMax: 1041,
-            yMin: -154,
-            yMax: 0,
-            ha: 154,
-            leftSideBearing: 119,
-            advanceWidth: 1168,
-        },
-        '`': {
-            xMin: 40,
-            xMax: 456,
-            yMin: 1288,
-            yMax: 1560,
-            ha: 272,
-            leftSideBearing: 40,
-            advanceWidth: 496,
-        },
-        a: {
-            xMin: 79,
-            xMax: 1053,
-            yMin: -21,
-            yMax: 1102,
-            ha: 1123,
-            leftSideBearing: 79,
-            advanceWidth: 1132,
-        },
-        b: {
-            xMin: -16,
-            xMax: 1071,
-            yMin: -21,
-            yMax: 1560,
-            ha: 1581,
-            leftSideBearing: -16,
-            advanceWidth: 1145,
-        },
-        c: {
-            xMin: 78,
-            xMax: 988,
-            yMin: -21,
-            yMax: 1102,
-            ha: 1123,
-            leftSideBearing: 78,
-            advanceWidth: 1067,
-        },
-        d: {
-            xMin: 78,
-            xMax: 1156,
-            yMin: -21,
-            yMax: 1560,
-            ha: 1581,
-            leftSideBearing: 78,
-            advanceWidth: 1218,
-        },
-        e: {
-            xMin: 74,
-            xMax: 980,
-            yMin: -21,
-            yMax: 1102,
-            ha: 1123,
-            leftSideBearing: 74,
-            advanceWidth: 1059,
-        },
-        f: {
-            xMin: 64,
-            xMax: 731,
-            yMin: 0,
-            yMax: 1581,
-            ha: 1581,
-            leftSideBearing: 64,
-            advanceWidth: 725,
-        },
-        g: {
-            xMin: 78,
-            xMax: 1133,
-            yMin: -437,
-            yMax: 1102,
-            ha: 1539,
-            leftSideBearing: 78,
-            advanceWidth: 1157,
-        },
-        h: {
-            xMin: 49,
-            xMax: 1255,
-            yMin: 0,
-            yMax: 1560,
-            ha: 1560,
-            leftSideBearing: 49,
-            advanceWidth: 1315,
-        },
-        i: {
-            xMin: 67,
-            xMax: 590,
-            yMin: 0,
-            yMax: 1560,
-            ha: 1560,
-            leftSideBearing: 67,
-            advanceWidth: 652,
-        },
-        j: {
-            xMin: -56,
-            xMax: 381,
-            yMin: -437,
-            yMax: 1560,
-            ha: 1997,
-            leftSideBearing: -56,
-            advanceWidth: 525,
-        },
-        k: {
-            xMin: 64,
-            xMax: 1248,
-            yMin: 0,
-            yMax: 1560,
-            ha: 1560,
-            leftSideBearing: 64,
-            advanceWidth: 1287,
-        },
-        l: {
-            xMin: 64,
-            xMax: 587,
-            yMin: 0,
-            yMax: 1560,
-            ha: 1560,
-            leftSideBearing: 64,
-            advanceWidth: 653,
-        },
-        m: {
-            xMin: 74,
-            xMax: 1905,
-            yMin: 0,
-            yMax: 1102,
-            ha: 1102,
-            leftSideBearing: 74,
-            advanceWidth: 1977,
-        },
-        n: {
-            xMin: 74,
-            xMax: 1278,
-            yMin: 0,
-            yMax: 1102,
-            ha: 1102,
-            leftSideBearing: 74,
-            advanceWidth: 1343,
-        },
-        o: {
-            xMin: 78,
-            xMax: 1046,
-            yMin: -21,
-            yMax: 1102,
-            ha: 1123,
-            leftSideBearing: 78,
-            advanceWidth: 1124,
-        },
-        p: {
-            xMin: 34,
-            xMax: 1119,
-            yMin: -416,
-            yMax: 1102,
-            ha: 1518,
-            leftSideBearing: 34,
-            advanceWidth: 1197,
-        },
-        q: {
-            xMin: 78,
-            xMax: 1135,
-            yMin: -416,
-            yMax: 1102,
-            ha: 1518,
-            leftSideBearing: 78,
-            advanceWidth: 1139,
-        },
-        r: {
-            xMin: 72,
-            xMax: 808,
-            yMin: 0,
-            yMax: 1102,
-            ha: 1102,
-            leftSideBearing: 72,
-            advanceWidth: 854,
-        },
-        s: {
-            xMin: 104,
-            xMax: 933,
-            yMin: -21,
-            yMax: 1102,
-            ha: 1123,
-            leftSideBearing: 104,
-            advanceWidth: 1022,
-        },
-        t: {
-            xMin: 24,
-            xMax: 678,
-            yMin: -17,
-            yMax: 1343,
-            ha: 1360,
-            leftSideBearing: 24,
-            advanceWidth: 730,
-        },
-        u: {
-            xMin: 52,
-            xMax: 1181,
-            yMin: -21,
-            yMax: 1082,
-            ha: 1103,
-            leftSideBearing: 52,
-            advanceWidth: 1245,
-        },
-        v: {
-            xMin: 26,
-            xMax: 1176,
-            yMin: 0,
-            yMax: 1082,
-            ha: 1082,
-            leftSideBearing: 26,
-            advanceWidth: 1206,
-        },
-        w: {
-            xMin: 52,
-            xMax: 1777,
-            yMin: 0,
-            yMax: 1082,
-            ha: 1082,
-            leftSideBearing: 52,
-            advanceWidth: 1823,
-        },
-        x: {
-            xMin: 42,
-            xMax: 1163,
-            yMin: 0,
-            yMax: 1082,
-            ha: 1082,
-            leftSideBearing: 42,
-            advanceWidth: 1203,
-        },
-        y: {
-            xMin: 24,
-            xMax: 1172,
-            yMin: -437,
-            yMax: 1082,
-            ha: 1519,
-            leftSideBearing: 24,
-            advanceWidth: 1192,
-        },
-        z: {
-            xMin: 88,
-            xMax: 960,
-            yMin: 0,
-            yMax: 1082,
-            ha: 1082,
-            leftSideBearing: 88,
-            advanceWidth: 1032,
-        },
-        '{': {
-            xMin: 63,
-            xMax: 671,
-            yMin: -364,
-            yMax: 1597,
-            ha: 1961,
-            leftSideBearing: 63,
-            advanceWidth: 701,
-        },
-        '|': {
-            xMin: 150,
-            xMax: 307,
-            yMin: -270,
-            yMax: 1456,
-            ha: 1726,
-            leftSideBearing: 150,
-            advanceWidth: 451,
-        },
-        '}': {
-            xMin: 27,
-            xMax: 635,
-            yMin: -364,
-            yMax: 1597,
-            ha: 1961,
-            leftSideBearing: 27,
-            advanceWidth: 701,
-        },
-        '~': {
-            xMin: 121,
-            xMax: 1257,
-            yMin: 401,
-            yMax: 803,
-            ha: 402,
-            leftSideBearing: 121,
-            advanceWidth: 1386,
-        },
-    },
-    fontFamily: 'Roboto Slab',
-    resolution: 2048,
-    generatedOn: '2020-06-15T19:12:58.120Z',
-};
-
-
-/***/ }),
-
-/***/ "./src/fonts/sans_bold_text_metrics.ts":
-/*!*********************************************!*\
-  !*** ./src/fonts/sans_bold_text_metrics.ts ***!
-  \*********************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   SansFontBold: () => (/* binding */ SansFontBold)
-/* harmony export */ });
-const SansFontBold = {
-    glyphs: {
-        '0': {
-            xMin: 86,
-            xMax: 1038,
-            yMin: -25,
-            yMax: 1472,
-            ha: 1497,
-            leftSideBearing: 86,
-            advanceWidth: 1139,
-        },
-        '1': {
-            xMin: 162,
-            xMax: 806,
-            yMin: 0,
-            yMax: 1472,
-            ha: 1472,
-            leftSideBearing: 162,
-            advanceWidth: 1139,
-        },
-        '2': {
-            xMin: 51,
-            xMax: 1036,
-            yMin: 0,
-            yMax: 1472,
-            ha: 1472,
-            leftSideBearing: 51,
-            advanceWidth: 1139,
-        },
-        '3': {
-            xMin: 77,
-            xMax: 1051,
-            yMin: -25,
-            yMax: 1472,
-            ha: 1497,
-            leftSideBearing: 77,
-            advanceWidth: 1139,
-        },
-        '4': {
-            xMin: 38,
-            xMax: 1092,
-            yMin: 0,
-            yMax: 1472,
-            ha: 1472,
-            leftSideBearing: 38,
-            advanceWidth: 1139,
-        },
-        '5': {
-            xMin: 91,
-            xMax: 1077,
-            yMin: -25,
-            yMax: 1446,
-            ha: 1471,
-            leftSideBearing: 91,
-            advanceWidth: 1139,
-        },
-        '6': {
-            xMin: 87,
-            xMax: 1066,
-            yMin: -25,
-            yMax: 1472,
-            ha: 1497,
-            leftSideBearing: 87,
-            advanceWidth: 1139,
-        },
-        '7': {
-            xMin: 87,
-            xMax: 1048,
-            yMin: 0,
-            yMax: 1446,
-            ha: 1446,
-            leftSideBearing: 87,
-            advanceWidth: 1139,
-        },
-        '8': {
-            xMin: 83,
-            xMax: 1047,
-            yMin: -26,
-            yMax: 1472,
-            ha: 1498,
-            leftSideBearing: 83,
-            advanceWidth: 1139,
-        },
-        '9': {
-            xMin: 65,
-            xMax: 1044,
-            yMin: -26,
-            yMax: 1472,
-            ha: 1498,
-            leftSideBearing: 65,
-            advanceWidth: 1139,
-        },
-        ' ': {
-            xMin: 0,
-            xMax: 0,
-            yMin: 0,
-            yMax: 0,
-            ha: 0,
-            leftSideBearing: 0,
-            advanceWidth: 569,
-        },
-        '!': {
-            xMin: 184,
-            xMax: 488,
-            yMin: 0,
-            yMax: 1466,
-            ha: 1466,
-            leftSideBearing: 184,
-            advanceWidth: 682,
-        },
-        '"': {
-            xMin: 112,
-            xMax: 869,
-            yMin: 945,
-            yMax: 1466,
-            ha: 521,
-            leftSideBearing: 112,
-            advanceWidth: 971,
-        },
-        '#': {
-            xMin: 18,
-            xMax: 1115,
-            yMin: -25,
-            yMax: 1491,
-            ha: 1516,
-            leftSideBearing: 18,
-            advanceWidth: 1139,
-        },
-        $: {
-            xMin: 70,
-            xMax: 1048,
-            yMin: -205,
-            yMax: 1584,
-            ha: 1789,
-            leftSideBearing: 70,
-            advanceWidth: 1139,
-        },
-        '%': {
-            xMin: 89,
-            xMax: 1725,
-            yMin: -59,
-            yMax: 1491,
-            ha: 1550,
-            leftSideBearing: 89,
-            advanceWidth: 1821,
-        },
-        '&': {
-            xMin: 90,
-            xMax: 1446,
-            yMin: -38,
-            yMax: 1491,
-            ha: 1529,
-            leftSideBearing: 90,
-            advanceWidth: 1479,
-        },
-        "'": {
-            xMin: 92,
-            xMax: 398,
-            yMin: 945,
-            yMax: 1466,
-            ha: 521,
-            leftSideBearing: 92,
-            advanceWidth: 487,
-        },
-        '(': {
-            xMin: 107,
-            xMax: 616,
-            yMin: -431,
-            yMax: 1491,
-            ha: 1922,
-            leftSideBearing: 107,
-            advanceWidth: 682,
-        },
-        ')': {
-            xMin: 67,
-            xMax: 576,
-            yMin: -431,
-            yMax: 1491,
-            ha: 1922,
-            leftSideBearing: 67,
-            advanceWidth: 682,
-        },
-        '*': {
-            xMin: 28,
-            xMax: 753,
-            yMin: 792,
-            yMax: 1491,
-            ha: 699,
-            leftSideBearing: 28,
-            advanceWidth: 797,
-        },
-        '+': {
-            xMin: 85,
-            xMax: 1110,
-            yMin: 211,
-            yMax: 1236,
-            ha: 1025,
-            leftSideBearing: 85,
-            advanceWidth: 1196,
-        },
-        ',': {
-            xMin: 117,
-            xMax: 421,
-            yMin: -327,
-            yMax: 281,
-            ha: 608,
-            leftSideBearing: 117,
-            advanceWidth: 569,
-        },
-        '-': {
-            xMin: 115,
-            xMax: 667,
-            yMin: 391,
-            yMax: 672,
-            ha: 281,
-            leftSideBearing: 115,
-            advanceWidth: 682,
-        },
-        '.': {
-            xMin: 147,
-            xMax: 428,
-            yMin: 0,
-            yMax: 281,
-            ha: 281,
-            leftSideBearing: 147,
-            advanceWidth: 569,
-        },
-        '/': {
-            xMin: -3,
-            xMax: 571,
-            yMin: -25,
-            yMax: 1491,
-            ha: 1516,
-            leftSideBearing: -3,
-            advanceWidth: 569,
-        },
-        ':': {
-            xMin: 201,
-            xMax: 482,
-            yMin: 0,
-            yMax: 1062,
-            ha: 1062,
-            leftSideBearing: 201,
-            advanceWidth: 682,
-        },
-        ';': {
-            xMin: 170,
-            xMax: 474,
-            yMin: -327,
-            yMax: 1062,
-            ha: 1389,
-            leftSideBearing: 170,
-            advanceWidth: 682,
-        },
-        '<': {
-            xMin: 95,
-            xMax: 1100,
-            yMin: 167,
-            yMax: 1281,
-            ha: 1114,
-            leftSideBearing: 95,
-            advanceWidth: 1196,
-        },
-        '=': {
-            xMin: 85,
-            xMax: 1110,
-            yMin: 372,
-            yMax: 1074,
-            ha: 702,
-            leftSideBearing: 85,
-            advanceWidth: 1196,
-        },
-        '>': {
-            xMin: 95,
-            xMax: 1101,
-            yMin: 166,
-            yMax: 1279,
-            ha: 1113,
-            leftSideBearing: 95,
-            advanceWidth: 1196,
-        },
-        '?': {
-            xMin: 106,
-            xMax: 1158,
-            yMin: 0,
-            yMax: 1481,
-            ha: 1481,
-            leftSideBearing: 106,
-            advanceWidth: 1251,
-        },
-        '@': {
-            xMin: 61,
-            xMax: 1990,
-            yMin: -431,
-            yMax: 1492,
-            ha: 1923,
-            leftSideBearing: 61,
-            advanceWidth: 1997,
-        },
-        A: {
-            xMin: 0,
-            xMax: 1471,
-            yMin: 0,
-            yMax: 1466,
-            ha: 1466,
-            leftSideBearing: 0,
-            advanceWidth: 1479,
-        },
-        B: {
-            xMin: 150,
-            xMax: 1378,
-            yMin: 0,
-            yMax: 1466,
-            ha: 1466,
-            leftSideBearing: 150,
-            advanceWidth: 1479,
-        },
-        C: {
-            xMin: 97,
-            xMax: 1374,
-            yMin: -25,
-            yMax: 1491,
-            ha: 1516,
-            leftSideBearing: 97,
-            advanceWidth: 1479,
-        },
-        D: {
-            xMin: 148,
-            xMax: 1377,
-            yMin: 0,
-            yMax: 1466,
-            ha: 1466,
-            leftSideBearing: 148,
-            advanceWidth: 1479,
-        },
-        E: {
-            xMin: 149,
-            xMax: 1264,
-            yMin: 0,
-            yMax: 1466,
-            ha: 1466,
-            leftSideBearing: 149,
-            advanceWidth: 1366,
-        },
-        F: {
-            xMin: 151,
-            xMax: 1156,
-            yMin: 0,
-            yMax: 1466,
-            ha: 1466,
-            leftSideBearing: 151,
-            advanceWidth: 1251,
-        },
-        G: {
-            xMin: 98,
-            xMax: 1469,
-            yMin: -25,
-            yMax: 1491,
-            ha: 1516,
-            leftSideBearing: 98,
-            advanceWidth: 1593,
-        },
-        H: {
-            xMin: 150,
-            xMax: 1322,
-            yMin: 0,
-            yMax: 1466,
-            ha: 1466,
-            leftSideBearing: 150,
-            advanceWidth: 1479,
-        },
-        I: {
-            xMin: 140,
-            xMax: 436,
-            yMin: 0,
-            yMax: 1466,
-            ha: 1466,
-            leftSideBearing: 140,
-            advanceWidth: 569,
-        },
-        J: {
-            xMin: 35,
-            xMax: 973,
-            yMin: -25,
-            yMax: 1466,
-            ha: 1491,
-            leftSideBearing: 35,
-            advanceWidth: 1139,
-        },
-        K: {
-            xMin: 153,
-            xMax: 1475,
-            yMin: 0,
-            yMax: 1466,
-            ha: 1466,
-            leftSideBearing: 153,
-            advanceWidth: 1479,
-        },
-        L: {
-            xMin: 157,
-            xMax: 1189,
-            yMin: 0,
-            yMax: 1454,
-            ha: 1454,
-            leftSideBearing: 157,
-            advanceWidth: 1251,
-        },
-        M: {
-            xMin: 145,
-            xMax: 1561,
-            yMin: 0,
-            yMax: 1466,
-            ha: 1466,
-            leftSideBearing: 145,
-            advanceWidth: 1706,
-        },
-        N: {
-            xMin: 152,
-            xMax: 1315,
-            yMin: 0,
-            yMax: 1466,
-            ha: 1466,
-            leftSideBearing: 152,
-            advanceWidth: 1479,
-        },
-        O: {
-            xMin: 89,
-            xMax: 1511,
-            yMin: -25,
-            yMax: 1491,
-            ha: 1516,
-            leftSideBearing: 89,
-            advanceWidth: 1593,
-        },
-        P: {
-            xMin: 149,
-            xMax: 1272,
-            yMin: 0,
-            yMax: 1466,
-            ha: 1466,
-            leftSideBearing: 149,
-            advanceWidth: 1366,
-        },
-        Q: {
-            xMin: 89,
-            xMax: 1566,
-            yMin: -147,
-            yMax: 1491,
-            ha: 1638,
-            leftSideBearing: 89,
-            advanceWidth: 1593,
-        },
-        R: {
-            xMin: 150,
-            xMax: 1468,
-            yMin: 0,
-            yMax: 1466,
-            ha: 1466,
-            leftSideBearing: 150,
-            advanceWidth: 1479,
-        },
-        S: {
-            xMin: 74,
-            xMax: 1266,
-            yMin: -26,
-            yMax: 1491,
-            ha: 1517,
-            leftSideBearing: 74,
-            advanceWidth: 1366,
-        },
-        T: {
-            xMin: 44,
-            xMax: 1209,
-            yMin: 0,
-            yMax: 1466,
-            ha: 1466,
-            leftSideBearing: 44,
-            advanceWidth: 1251,
-        },
-        U: {
-            xMin: 147,
-            xMax: 1316,
-            yMin: -25,
-            yMax: 1466,
-            ha: 1491,
-            leftSideBearing: 147,
-            advanceWidth: 1479,
-        },
-        V: {
-            xMin: -1,
-            xMax: 1364,
-            yMin: 0,
-            yMax: 1466,
-            ha: 1466,
-            leftSideBearing: -1,
-            advanceWidth: 1366,
-        },
-        W: {
-            xMin: 7,
-            xMax: 1931,
-            yMin: 0,
-            yMax: 1466,
-            ha: 1466,
-            leftSideBearing: 7,
-            advanceWidth: 1933,
-        },
-        X: {
-            xMin: 0,
-            xMax: 1363,
-            yMin: 0,
-            yMax: 1466,
-            ha: 1466,
-            leftSideBearing: 0,
-            advanceWidth: 1366,
-        },
-        Y: {
-            xMin: -3,
-            xMax: 1368,
-            yMin: 0,
-            yMax: 1466,
-            ha: 1466,
-            leftSideBearing: -3,
-            advanceWidth: 1366,
-        },
-        Z: {
-            xMin: 22,
-            xMax: 1213,
-            yMin: 0,
-            yMax: 1466,
-            ha: 1466,
-            leftSideBearing: 22,
-            advanceWidth: 1251,
-        },
-        '[': {
-            xMin: 146,
-            xMax: 644,
-            yMin: -413,
-            yMax: 1466,
-            ha: 1879,
-            leftSideBearing: 146,
-            advanceWidth: 682,
-        },
-        '\\': {
-            xMin: -3,
-            xMax: 571,
-            yMin: -25,
-            yMax: 1491,
-            ha: 1516,
-            leftSideBearing: -3,
-            advanceWidth: 569,
-        },
-        ']': {
-            xMin: 38,
-            xMax: 536,
-            yMin: -413,
-            yMax: 1466,
-            ha: 1879,
-            leftSideBearing: 38,
-            advanceWidth: 682,
-        },
-        '^': {
-            xMin: 115,
-            xMax: 1080,
-            yMin: 692,
-            yMax: 1491,
-            ha: 799,
-            leftSideBearing: 115,
-            advanceWidth: 1196,
-        },
-        _: {
-            xMin: -19,
-            xMax: 1149,
-            yMin: -405,
-            yMax: -223,
-            ha: 182,
-            leftSideBearing: -19,
-            advanceWidth: 1139,
-        },
-        '`': {
-            xMin: 42,
-            xMax: 495,
-            yMin: 1192,
-            yMax: 1491,
-            ha: 299,
-            leftSideBearing: 42,
-            advanceWidth: 682,
-        },
-        a: {
-            xMin: 73,
-            xMax: 1070,
-            yMin: -24,
-            yMax: 1086,
-            ha: 1110,
-            leftSideBearing: 73,
-            advanceWidth: 1139,
-        },
-        b: {
-            xMin: 135,
-            xMax: 1172,
-            yMin: -24,
-            yMax: 1466,
-            ha: 1490,
-            leftSideBearing: 135,
-            advanceWidth: 1251,
-        },
-        c: {
-            xMin: 85,
-            xMax: 1087,
-            yMin: -24,
-            yMax: 1086,
-            ha: 1110,
-            leftSideBearing: 85,
-            advanceWidth: 1139,
-        },
-        d: {
-            xMin: 84,
-            xMax: 1121,
-            yMin: -24,
-            yMax: 1466,
-            ha: 1490,
-            leftSideBearing: 84,
-            advanceWidth: 1251,
-        },
-        e: {
-            xMin: 65,
-            xMax: 1057.2517482517483,
-            yMin: -24,
-            yMax: 1086,
-            ha: 1110,
-            leftSideBearing: 65,
-            advanceWidth: 1139,
-        },
-        f: {
-            xMin: 24,
-            xMax: 742,
-            yMin: 0,
-            yMax: 1491,
-            ha: 1491,
-            leftSideBearing: 24,
-            advanceWidth: 682,
-        },
-        g: {
-            xMin: 84,
-            xMax: 1120,
-            yMin: -431,
-            yMax: 1086,
-            ha: 1517,
-            leftSideBearing: 84,
-            advanceWidth: 1251,
-        },
-        h: {
-            xMin: 146,
-            xMax: 1113,
-            yMin: 0,
-            yMax: 1466,
-            ha: 1466,
-            leftSideBearing: 146,
-            advanceWidth: 1251,
-        },
-        i: {
-            xMin: 147,
-            xMax: 428,
-            yMin: 0,
-            yMax: 1466,
-            ha: 1466,
-            leftSideBearing: 147,
-            advanceWidth: 569,
-        },
-        j: {
-            xMin: -94,
-            xMax: 422,
-            yMin: -431,
-            yMax: 1466,
-            ha: 1897,
-            leftSideBearing: -94,
-            advanceWidth: 569,
-        },
-        k: {
-            xMin: 137,
-            xMax: 1119,
-            yMin: 0,
-            yMax: 1466,
-            ha: 1466,
-            leftSideBearing: 137,
-            advanceWidth: 1139,
-        },
-        l: {
-            xMin: 147,
-            xMax: 428,
-            yMin: 0,
-            yMax: 1466,
-            ha: 1466,
-            leftSideBearing: 147,
-            advanceWidth: 569,
-        },
-        m: {
-            xMin: 126,
-            xMax: 1688,
-            yMin: 0,
-            yMax: 1086,
-            ha: 1086,
-            leftSideBearing: 126,
-            advanceWidth: 1821,
-        },
-        n: {
-            xMin: 145,
-            xMax: 1113,
-            yMin: 0,
-            yMax: 1086,
-            ha: 1086,
-            leftSideBearing: 145,
-            advanceWidth: 1251,
-        },
-        o: {
-            xMin: 82,
-            xMax: 1178,
-            yMin: -24,
-            yMax: 1086,
-            ha: 1110,
-            leftSideBearing: 82,
-            advanceWidth: 1251,
-        },
-        p: {
-            xMin: 139,
-            xMax: 1175,
-            yMin: -404,
-            yMax: 1086,
-            ha: 1490,
-            leftSideBearing: 139,
-            advanceWidth: 1251,
-        },
-        q: {
-            xMin: 91,
-            xMax: 1122,
-            yMin: -404,
-            yMax: 1086,
-            ha: 1490,
-            leftSideBearing: 91,
-            advanceWidth: 1251,
-        },
-        r: {
-            xMin: 135,
-            xMax: 823,
-            yMin: 0,
-            yMax: 1086,
-            ha: 1086,
-            leftSideBearing: 135,
-            advanceWidth: 797,
-        },
-        s: {
-            xMin: 48,
-            xMax: 1040,
-            yMin: -24,
-            yMax: 1086,
-            ha: 1110,
-            leftSideBearing: 48,
-            advanceWidth: 1139,
-        },
-        t: {
-            xMin: 31,
-            xMax: 657,
-            yMin: -24,
-            yMax: 1437,
-            ha: 1461,
-            leftSideBearing: 31,
-            advanceWidth: 682,
-        },
-        u: {
-            xMin: 141,
-            xMax: 1107,
-            yMin: -24,
-            yMax: 1062,
-            ha: 1086,
-            leftSideBearing: 141,
-            advanceWidth: 1251,
-        },
-        v: {
-            xMin: 11,
-            xMax: 1114,
-            yMin: 0,
-            yMax: 1062,
-            ha: 1062,
-            leftSideBearing: 11,
-            advanceWidth: 1139,
-        },
-        w: {
-            xMin: 9,
-            xMax: 1592,
-            yMin: 0,
-            yMax: 1062,
-            ha: 1062,
-            leftSideBearing: 9,
-            advanceWidth: 1593,
-        },
-        x: {
-            xMin: 12,
-            xMax: 1120,
-            yMin: 0,
-            yMax: 1062,
-            ha: 1062,
-            leftSideBearing: 12,
-            advanceWidth: 1139,
-        },
-        y: {
-            xMin: 14,
-            xMax: 1106,
-            yMin: -431,
-            yMax: 1062,
-            ha: 1493,
-            leftSideBearing: 14,
-            advanceWidth: 1139,
-        },
-        z: {
-            xMin: 34,
-            xMax: 982,
-            yMin: 0,
-            yMax: 1062,
-            ha: 1062,
-            leftSideBearing: 34,
-            advanceWidth: 1024,
-        },
-        '{': {
-            xMin: 60,
-            xMax: 744,
-            yMin: -431,
-            yMax: 1491,
-            ha: 1922,
-            leftSideBearing: 60,
-            advanceWidth: 797,
-        },
-        '|': {
-            xMin: 176,
-            xMax: 399,
-            yMin: -431,
-            yMax: 1491,
-            ha: 1922,
-            leftSideBearing: 176,
-            advanceWidth: 573,
-        },
-        '}': {
-            xMin: 45,
-            xMax: 729,
-            yMin: -431,
-            yMax: 1491,
-            ha: 1922,
-            leftSideBearing: 45,
-            advanceWidth: 797,
-        },
-        '~': {
-            xMin: 67,
-            xMax: 1129,
-            yMin: 519,
-            yMax: 924,
-            ha: 405,
-            leftSideBearing: 67,
-            advanceWidth: 1196,
-        },
-    },
-    fontFamily: 'Arial',
-    resolution: 2048,
-    generatedOn: '2022-11-04T20:05:21.000Z',
-};
-
-
-/***/ }),
-
-/***/ "./src/fonts/sans_text_metrics.ts":
-/*!****************************************!*\
-  !*** ./src/fonts/sans_text_metrics.ts ***!
-  \****************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   SansFont: () => (/* binding */ SansFont)
-/* harmony export */ });
-const SansFont = {
-    smufl: false,
-    name: 'SANS',
-    spacing: 50,
-    Description: 'Built-in sans-serif font',
-    bold: true,
-    italic: true,
-    monospaced: false,
-    serifs: false,
-    glyphs: {
-        '0': {
-            xMin: 85,
-            xMax: 1041,
-            yMin: -25,
-            yMax: 1472,
-            ha: 1497,
-            leftSideBearing: 85,
-            advanceWidth: 1139,
-        },
-        '1': {
-            xMin: 223,
-            xMax: 763,
-            yMin: 0,
-            yMax: 1472,
-            ha: 1472,
-            leftSideBearing: 223,
-            advanceWidth: 1139,
-        },
-        '2': {
-            xMin: 61.840001123045234,
-            xMax: 1031,
-            yMin: 0,
-            yMax: 1472,
-            ha: 1472,
-            leftSideBearing: 61,
-            advanceWidth: 1139,
-        },
-        '3': {
-            xMin: 86,
-            xMax: 1046,
-            yMin: -26,
-            yMax: 1472,
-            ha: 1498,
-            leftSideBearing: 86,
-            advanceWidth: 1139,
-        },
-        '4': {
-            xMin: 26,
-            xMax: 1040,
-            yMin: 0,
-            yMax: 1466,
-            ha: 1466,
-            leftSideBearing: 26,
-            advanceWidth: 1139,
-        },
-        '5': {
-            xMin: 85,
-            xMax: 1057,
-            yMin: -25,
-            yMax: 1446,
-            ha: 1471,
-            leftSideBearing: 85,
-            advanceWidth: 1139,
-        },
-        '6': {
-            xMin: 77,
-            xMax: 1045,
-            yMin: -25,
-            yMax: 1472,
-            ha: 1497,
-            leftSideBearing: 77,
-            advanceWidth: 1139,
-        },
-        '7': {
-            xMin: 97,
-            xMax: 1046,
-            yMin: 0,
-            yMax: 1447,
-            ha: 1447,
-            leftSideBearing: 97,
-            advanceWidth: 1139,
-        },
-        '8': {
-            xMin: 83,
-            xMax: 1049,
-            yMin: -25,
-            yMax: 1472,
-            ha: 1497,
-            leftSideBearing: 83,
-            advanceWidth: 1139,
-        },
-        '9': {
-            xMin: 85,
-            xMax: 1049,
-            yMin: -25,
-            yMax: 1472,
-            ha: 1497,
-            leftSideBearing: 85,
-            advanceWidth: 1139,
-        },
-        ' ': {
-            xMin: 0,
-            xMax: 0,
-            yMin: 0,
-            yMax: 0,
-            ha: 0,
-            leftSideBearing: 0,
-            advanceWidth: 569,
-        },
-        '!': {
-            xMin: 176,
-            xMax: 399,
-            yMin: 0,
-            yMax: 1466,
-            ha: 1466,
-            leftSideBearing: 176,
-            advanceWidth: 569,
-        },
-        '"': {
-            xMin: 94,
-            xMax: 631,
-            yMin: 947,
-            yMax: 1466,
-            ha: 519,
-            leftSideBearing: 94,
-            advanceWidth: 727,
-        },
-        '#': {
-            xMin: 21,
-            xMax: 1113,
-            yMin: -25,
-            yMax: 1491,
-            ha: 1516,
-            leftSideBearing: 21,
-            advanceWidth: 1139,
-        },
-        $: {
-            xMin: 73,
-            xMax: 1043,
-            yMin: -211,
-            yMax: 1601,
-            ha: 1812,
-            leftSideBearing: 73,
-            advanceWidth: 1139,
-        },
-        '%': {
-            xMin: 119,
-            xMax: 1695,
-            yMin: -54,
-            yMax: 1491,
-            ha: 1545,
-            leftSideBearing: 119,
-            advanceWidth: 1821,
-        },
-        '&': {
-            xMin: 88,
-            xMax: 1319,
-            yMin: -34,
-            yMax: 1491,
-            ha: 1525,
-            leftSideBearing: 88,
-            advanceWidth: 1366,
-        },
-        "'": {
-            xMin: 90,
-            xMax: 295,
-            yMin: 947,
-            yMax: 1466,
-            ha: 519,
-            leftSideBearing: 90,
-            advanceWidth: 391,
-        },
-        '(': {
-            xMin: 124,
-            xMax: 608,
-            yMin: -431,
-            yMax: 1491,
-            ha: 1922,
-            leftSideBearing: 124,
-            advanceWidth: 682,
-        },
-        ')': {
-            xMin: 124,
-            xMax: 608,
-            yMin: -431,
-            yMax: 1491,
-            ha: 1922,
-            leftSideBearing: 124,
-            advanceWidth: 682,
-        },
-        '*': {
-            xMin: 64,
-            xMax: 725,
-            yMin: 867,
-            yMax: 1491,
-            ha: 624,
-            leftSideBearing: 64,
-            advanceWidth: 797,
-        },
-        '+': {
-            xMin: 114,
-            xMax: 1082,
-            yMin: 237,
-            yMax: 1206,
-            ha: 969,
-            leftSideBearing: 114,
-            advanceWidth: 1196,
-        },
-        ',': {
-            xMin: 170,
-            xMax: 387,
-            yMin: -290,
-            yMax: 205,
-            ha: 495,
-            leftSideBearing: 170,
-            advanceWidth: 569,
-        },
-        '-': {
-            xMin: 65,
-            xMax: 618,
-            yMin: 440,
-            yMax: 621,
-            ha: 181,
-            leftSideBearing: 65,
-            advanceWidth: 682,
-        },
-        '.': {
-            xMin: 186,
-            xMax: 391,
-            yMin: 0,
-            yMax: 205,
-            ha: 205,
-            leftSideBearing: 186,
-            advanceWidth: 569,
-        },
-        '/': {
-            xMin: 0,
-            xMax: 569,
-            yMin: -25,
-            yMax: 1491,
-            ha: 1516,
-            leftSideBearing: 0,
-            advanceWidth: 569,
-        },
-        ':': {
-            xMin: 185,
-            xMax: 390,
-            yMin: 0,
-            yMax: 1062,
-            ha: 1062,
-            leftSideBearing: 185,
-            advanceWidth: 569,
-        },
-        ';': {
-            xMin: 170,
-            xMax: 387,
-            yMin: -290,
-            yMax: 1062,
-            ha: 1352,
-            leftSideBearing: 170,
-            advanceWidth: 569,
-        },
-        '<': {
-            xMin: 112,
-            xMax: 1083,
-            yMin: 226,
-            yMax: 1219,
-            ha: 993,
-            leftSideBearing: 112,
-            advanceWidth: 1196,
-        },
-        '=': {
-            xMin: 114,
-            xMax: 1082,
-            yMin: 417,
-            yMax: 1030,
-            ha: 613,
-            leftSideBearing: 114,
-            advanceWidth: 1196,
-        },
-        '>': {
-            xMin: 112,
-            xMax: 1083,
-            yMin: 226,
-            yMax: 1219,
-            ha: 993,
-            leftSideBearing: 112,
-            advanceWidth: 1196,
-        },
-        '?': {
-            xMin: 90,
-            xMax: 1036,
-            yMin: 0,
-            yMax: 1491,
-            ha: 1491,
-            leftSideBearing: 90,
-            advanceWidth: 1139,
-        },
-        '@': {
-            xMin: 111,
-            xMax: 2005,
-            yMin: -431,
-            yMax: 1493,
-            ha: 1924,
-            leftSideBearing: 111,
-            advanceWidth: 2079,
-        },
-        A: {
-            xMin: -3,
-            xMax: 1369,
-            yMin: 0,
-            yMax: 1466,
-            ha: 1466,
-            leftSideBearing: -3,
-            advanceWidth: 1366,
-        },
-        B: {
-            xMin: 150,
-            xMax: 1257,
-            yMin: 0,
-            yMax: 1466,
-            ha: 1466,
-            leftSideBearing: 150,
-            advanceWidth: 1366,
-        },
-        C: {
-            xMin: 102,
-            xMax: 1398,
-            yMin: -25,
-            yMax: 1491,
-            ha: 1516,
-            leftSideBearing: 102,
-            advanceWidth: 1479,
-        },
-        D: {
-            xMin: 158,
-            xMax: 1370,
-            yMin: 0,
-            yMax: 1466,
-            ha: 1466,
-            leftSideBearing: 158,
-            advanceWidth: 1479,
-        },
-        E: {
-            xMin: 162,
-            xMax: 1256,
-            yMin: 0,
-            yMax: 1466,
-            ha: 1466,
-            leftSideBearing: 162,
-            advanceWidth: 1366,
-        },
-        F: {
-            xMin: 168,
-            xMax: 1157,
-            yMin: 0,
-            yMax: 1466,
-            ha: 1466,
-            leftSideBearing: 168,
-            advanceWidth: 1251,
-        },
-        G: {
-            xMin: 109,
-            xMax: 1465,
-            yMin: -25,
-            yMax: 1491,
-            ha: 1516,
-            leftSideBearing: 109,
-            advanceWidth: 1593,
-        },
-        H: {
-            xMin: 164,
-            xMax: 1314,
-            yMin: 0,
-            yMax: 1466,
-            ha: 1466,
-            leftSideBearing: 164,
-            advanceWidth: 1479,
-        },
-        I: {
-            xMin: 191,
-            xMax: 385,
-            yMin: 0,
-            yMax: 1466,
-            ha: 1466,
-            leftSideBearing: 191,
-            advanceWidth: 569,
-        },
-        J: {
-            xMin: 58.84976474807333,
-            xMax: 865,
-            yMin: -25,
-            yMax: 1466,
-            ha: 1491,
-            leftSideBearing: 58,
-            advanceWidth: 1024,
-        },
-        K: {
-            xMin: 150,
-            xMax: 1362,
-            yMin: 0,
-            yMax: 1466,
-            ha: 1466,
-            leftSideBearing: 150,
-            advanceWidth: 1366,
-        },
-        L: {
-            xMin: 150,
-            xMax: 1066,
-            yMin: 0,
-            yMax: 1466,
-            ha: 1466,
-            leftSideBearing: 150,
-            advanceWidth: 1139,
-        },
-        M: {
-            xMin: 152,
-            xMax: 1551,
-            yMin: 0,
-            yMax: 1466,
-            ha: 1466,
-            leftSideBearing: 152,
-            advanceWidth: 1706,
-        },
-        N: {
-            xMin: 156,
-            xMax: 1311,
-            yMin: 0,
-            yMax: 1466,
-            ha: 1466,
-            leftSideBearing: 156,
-            advanceWidth: 1479,
-        },
-        O: {
-            xMin: 99,
-            xMax: 1501,
-            yMin: -25,
-            yMax: 1492,
-            ha: 1517,
-            leftSideBearing: 99,
-            advanceWidth: 1593,
-        },
-        P: {
-            xMin: 158,
-            xMax: 1277,
-            yMin: 0,
-            yMax: 1466,
-            ha: 1466,
-            leftSideBearing: 158,
-            advanceWidth: 1366,
-        },
-        Q: {
-            xMin: 88,
-            xMax: 1518,
-            yMin: -114,
-            yMax: 1492,
-            ha: 1606,
-            leftSideBearing: 88,
-            advanceWidth: 1593,
-        },
-        R: {
-            xMin: 161,
-            xMax: 1453,
-            yMin: 0,
-            yMax: 1466,
-            ha: 1466,
-            leftSideBearing: 161,
-            advanceWidth: 1479,
-        },
-        S: {
-            xMin: 92,
-            xMax: 1259,
-            yMin: -25,
-            yMax: 1491,
-            ha: 1516,
-            leftSideBearing: 92,
-            advanceWidth: 1366,
-        },
-        T: {
-            xMin: 48,
-            xMax: 1210,
-            yMin: 0,
-            yMax: 1466,
-            ha: 1466,
-            leftSideBearing: 48,
-            advanceWidth: 1251,
-        },
-        U: {
-            xMin: 161,
-            xMax: 1314,
-            yMin: -25,
-            yMax: 1466,
-            ha: 1491,
-            leftSideBearing: 161,
-            advanceWidth: 1479,
-        },
-        V: {
-            xMin: 9,
-            xMax: 1350,
-            yMin: 0,
-            yMax: 1466,
-            ha: 1466,
-            leftSideBearing: 9,
-            advanceWidth: 1366,
-        },
-        W: {
-            xMin: 25,
-            xMax: 1910,
-            yMin: 0,
-            yMax: 1466,
-            ha: 1466,
-            leftSideBearing: 25,
-            advanceWidth: 1933,
-        },
-        X: {
-            xMin: 9,
-            xMax: 1353,
-            yMin: 0,
-            yMax: 1466,
-            ha: 1466,
-            leftSideBearing: 9,
-            advanceWidth: 1366,
-        },
-        Y: {
-            xMin: 6,
-            xMax: 1350,
-            yMin: 0,
-            yMax: 1466,
-            ha: 1466,
-            leftSideBearing: 6,
-            advanceWidth: 1366,
-        },
-        Z: {
-            xMin: 41,
-            xMax: 1200,
-            yMin: 0,
-            yMax: 1466,
-            ha: 1466,
-            leftSideBearing: 41,
-            advanceWidth: 1251,
-        },
-        '[': {
-            xMin: 139,
-            xMax: 536,
-            yMin: -407,
-            yMax: 1466,
-            ha: 1873,
-            leftSideBearing: 139,
-            advanceWidth: 569,
-        },
-        '\\': {
-            xMin: 0,
-            xMax: 569,
-            yMin: -25,
-            yMax: 1491,
-            ha: 1516,
-            leftSideBearing: 0,
-            advanceWidth: 569,
-        },
-        ']': {
-            xMin: 39,
-            xMax: 436,
-            yMin: -407,
-            yMax: 1466,
-            ha: 1873,
-            leftSideBearing: 39,
-            advanceWidth: 569,
-        },
-        '^': {
-            xMin: 54,
-            xMax: 907,
-            yMin: 690,
-            yMax: 1491,
-            ha: 801,
-            leftSideBearing: 54,
-            advanceWidth: 961,
-        },
-        _: {
-            xMin: -31,
-            xMax: 1162,
-            yMin: -407,
-            yMax: -277,
-            ha: 130,
-            leftSideBearing: -31,
-            advanceWidth: 1139,
-        },
-        '`': {
-            xMin: 89,
-            xMax: 465,
-            yMin: 1194,
-            yMax: 1474,
-            ha: 280,
-            leftSideBearing: 89,
-            advanceWidth: 682,
-        },
-        a: {
-            xMin: 74,
-            xMax: 1052,
-            yMin: -24,
-            yMax: 1086,
-            ha: 1110,
-            leftSideBearing: 74,
-            advanceWidth: 1139,
-        },
-        b: {
-            xMin: 134,
-            xMax: 1055,
-            yMin: -24,
-            yMax: 1466,
-            ha: 1490,
-            leftSideBearing: 134,
-            advanceWidth: 1139,
-        },
-        c: {
-            xMin: 80,
-            xMax: 1005,
-            yMin: -24,
-            yMax: 1086,
-            ha: 1110,
-            leftSideBearing: 80,
-            advanceWidth: 1024,
-        },
-        d: {
-            xMin: 70,
-            xMax: 991,
-            yMin: -24,
-            yMax: 1466,
-            ha: 1490,
-            leftSideBearing: 70,
-            advanceWidth: 1139,
-        },
-        e: {
-            xMin: 75,
-            xMax: 1054,
-            yMin: -24,
-            yMax: 1086,
-            ha: 1110,
-            leftSideBearing: 75,
-            advanceWidth: 1139,
-        },
-        f: {
-            xMin: 19,
-            xMax: 640,
-            yMin: 0,
-            yMax: 1491,
-            ha: 1491,
-            leftSideBearing: 19,
-            advanceWidth: 569,
-        },
-        g: {
-            xMin: 66,
-            xMax: 1002,
-            yMin: -431,
-            yMax: 1086,
-            ha: 1517,
-            leftSideBearing: 66,
-            advanceWidth: 1139,
-        },
-        h: {
-            xMin: 135,
-            xMax: 1000,
-            yMin: 0,
-            yMax: 1466,
-            ha: 1466,
-            leftSideBearing: 135,
-            advanceWidth: 1139,
-        },
-        i: {
-            xMin: 136,
-            xMax: 316,
-            yMin: 0,
-            yMax: 1466,
-            ha: 1466,
-            leftSideBearing: 136,
-            advanceWidth: 455,
-        },
-        j: {
-            xMin: -94,
-            xMax: 314,
-            yMin: -431,
-            yMax: 1466,
-            ha: 1897,
-            leftSideBearing: -94,
-            advanceWidth: 455,
-        },
-        k: {
-            xMin: 136,
-            xMax: 1016,
-            yMin: 0,
-            yMax: 1466,
-            ha: 1466,
-            leftSideBearing: 136,
-            advanceWidth: 1024,
-        },
-        l: {
-            xMin: 131,
-            xMax: 311,
-            yMin: 0,
-            yMax: 1466,
-            ha: 1466,
-            leftSideBearing: 131,
-            advanceWidth: 455,
-        },
-        m: {
-            xMin: 135,
-            xMax: 1574,
-            yMin: 0,
-            yMax: 1086,
-            ha: 1086,
-            leftSideBearing: 135,
-            advanceWidth: 1706,
-        },
-        n: {
-            xMin: 135,
-            xMax: 998,
-            yMin: 0,
-            yMax: 1086,
-            ha: 1086,
-            leftSideBearing: 135,
-            advanceWidth: 1139,
-        },
-        o: {
-            xMin: 68,
-            xMax: 1063,
-            yMin: -24,
-            yMax: 1086,
-            ha: 1110,
-            leftSideBearing: 68,
-            advanceWidth: 1139,
-        },
-        p: {
-            xMin: 135,
-            xMax: 1057,
-            yMin: -407,
-            yMax: 1086,
-            ha: 1493,
-            leftSideBearing: 135,
-            advanceWidth: 1139,
-        },
-        q: {
-            xMin: 72,
-            xMax: 992,
-            yMin: -407,
-            yMax: 1086,
-            ha: 1493,
-            leftSideBearing: 72,
-            advanceWidth: 1139,
-        },
-        r: {
-            xMin: 133,
-            xMax: 710,
-            yMin: 0,
-            yMax: 1086,
-            ha: 1086,
-            leftSideBearing: 133,
-            advanceWidth: 682,
-        },
-        s: {
-            xMin: 63,
-            xMax: 945,
-            yMin: -24,
-            yMax: 1086,
-            ha: 1110,
-            leftSideBearing: 63,
-            advanceWidth: 1024,
-        },
-        t: {
-            xMin: 36,
-            xMax: 554,
-            yMin: -14,
-            yMax: 1433,
-            ha: 1447,
-            leftSideBearing: 36,
-            advanceWidth: 569,
-        },
-        u: {
-            xMin: 131,
-            xMax: 992,
-            yMin: -24,
-            yMax: 1062,
-            ha: 1086,
-            leftSideBearing: 131,
-            advanceWidth: 1139,
-        },
-        v: {
-            xMin: 26,
-            xMax: 1000,
-            yMin: 0,
-            yMax: 1062,
-            ha: 1062,
-            leftSideBearing: 26,
-            advanceWidth: 1024,
-        },
-        w: {
-            xMin: 6,
-            xMax: 1463,
-            yMin: 0,
-            yMax: 1062,
-            ha: 1062,
-            leftSideBearing: 6,
-            advanceWidth: 1479,
-        },
-        x: {
-            xMin: 15,
-            xMax: 1009,
-            yMin: 0,
-            yMax: 1062,
-            ha: 1062,
-            leftSideBearing: 15,
-            advanceWidth: 1024,
-        },
-        y: {
-            xMin: 33,
-            xMax: 1006,
-            yMin: -431,
-            yMax: 1062,
-            ha: 1493,
-            leftSideBearing: 33,
-            advanceWidth: 1024,
-        },
-        z: {
-            xMin: 40,
-            xMax: 980,
-            yMin: 0,
-            yMax: 1062,
-            ha: 1062,
-            leftSideBearing: 40,
-            advanceWidth: 1024,
-        },
-        '{': {
-            xMin: 57,
-            xMax: 636,
-            yMin: -431,
-            yMax: 1491,
-            ha: 1922,
-            leftSideBearing: 57,
-            advanceWidth: 684,
-        },
-        '|': {
-            xMin: 188,
-            xMax: 345,
-            yMin: -431,
-            yMax: 1491,
-            ha: 1922,
-            leftSideBearing: 188,
-            advanceWidth: 532,
-        },
-        '}': {
-            xMin: 47,
-            xMax: 626,
-            yMin: -431,
-            yMax: 1491,
-            ha: 1922,
-            leftSideBearing: 47,
-            advanceWidth: 684,
-        },
-        '~': {
-            xMin: 87,
-            xMax: 1110,
-            yMin: 557,
-            yMax: 885,
-            ha: 328,
-            leftSideBearing: 87,
-            advanceWidth: 1196,
-        },
-    },
-    fontFamily: 'sans-serif',
-    resolution: 2048,
-    generatedOn: '2020-10-18T18:48:11.823Z',
-};
-
-
-/***/ }),
-
-/***/ "./src/fonts/serif_text_metrics.ts":
-/*!*****************************************!*\
-  !*** ./src/fonts/serif_text_metrics.ts ***!
-  \*****************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   SerifFont: () => (/* binding */ SerifFont)
-/* harmony export */ });
-const SerifFont = {
-    smufl: false,
-    name: 'SERIF',
-    spacing: 50,
-    Description: 'Built-in serif font',
-    bold: true,
-    italic: true,
-    monospaced: false,
-    serifs: true,
-    glyphs: {
-        '0': {
-            xMin: 49,
-            xMax: 975,
-            yMin: -27,
-            yMax: 1383,
-            ha: 1410,
-            leftSideBearing: 49,
-            advanceWidth: 1024,
-        },
-        '1': {
-            xMin: 227,
-            xMax: 811,
-            yMin: 0,
-            yMax: 1383,
-            ha: 1383,
-            leftSideBearing: 227,
-            advanceWidth: 1024,
-        },
-        '2': {
-            xMin: 61,
-            xMax: 965,
-            yMin: 0,
-            yMax: 1383,
-            ha: 1383,
-            leftSideBearing: 61,
-            advanceWidth: 1024,
-        },
-        '3': {
-            xMin: 88,
-            xMax: 883,
-            yMin: -27,
-            yMax: 1383,
-            ha: 1410,
-            leftSideBearing: 88,
-            advanceWidth: 1024,
-        },
-        '4': {
-            xMin: 25,
-            xMax: 967,
-            yMin: 0,
-            yMax: 1384,
-            ha: 1384,
-            leftSideBearing: 25,
-            advanceWidth: 1024,
-        },
-        '5': {
-            xMin: 66,
-            xMax: 898,
-            yMin: -27,
-            yMax: 1409,
-            ha: 1436,
-            leftSideBearing: 66,
-            advanceWidth: 1024,
-        },
-        '6': {
-            xMin: 70,
-            xMax: 958,
-            yMin: -27,
-            yMax: 1401,
-            ha: 1428,
-            leftSideBearing: 70,
-            advanceWidth: 1024,
-        },
-        '7': {
-            xMin: 41,
-            xMax: 920,
-            yMin: -16,
-            yMax: 1356,
-            ha: 1372,
-            leftSideBearing: 41,
-            advanceWidth: 1024,
-        },
-        '8': {
-            xMin: 115,
-            xMax: 911,
-            yMin: -27,
-            yMax: 1383,
-            ha: 1410,
-            leftSideBearing: 115,
-            advanceWidth: 1024,
-        },
-        '9': {
-            xMin: 61,
-            xMax: 940,
-            yMin: -41,
-            yMax: 1383,
-            ha: 1424,
-            leftSideBearing: 61,
-            advanceWidth: 1024,
-        },
-        ' ': {
-            xMin: 0,
-            xMax: 0,
-            yMin: 0,
-            yMax: 0,
-            ha: 0,
-            leftSideBearing: 0,
-            advanceWidth: 512,
-        },
-        '!': {
-            xMin: 266,
-            xMax: 488,
-            yMin: -22,
-            yMax: 1383,
-            ha: 1405,
-            leftSideBearing: 266,
-            advanceWidth: 682,
-        },
-        '"': {
-            xMin: 157.2000021972655,
-            xMax: 678.2500021457677,
-            yMin: 881,
-            yMax: 1385,
-            ha: 504,
-            leftSideBearing: 157,
-            advanceWidth: 836,
-        },
-        '#': {
-            xMin: 10,
-            xMax: 1016,
-            yMin: -1,
-            yMax: 1356,
-            ha: 1357,
-            leftSideBearing: 10,
-            advanceWidth: 1024,
-        },
-        $: {
-            xMin: 90,
-            xMax: 936,
-            yMin: -180,
-            yMax: 1492,
-            ha: 1672,
-            leftSideBearing: 90,
-            advanceWidth: 1024,
-        },
-        '%': {
-            xMin: 125,
-            xMax: 1581,
-            yMin: -30,
-            yMax: 1388,
-            ha: 1418,
-            leftSideBearing: 125,
-            advanceWidth: 1706,
-        },
-        '&': {
-            xMin: 86,
-            xMax: 1536,
-            yMin: -28,
-            yMax: 1383,
-            ha: 1411,
-            leftSideBearing: 86,
-            advanceWidth: 1593,
-        },
-        "'": {
-            xMin: 97.20000219726548,
-            xMax: 273.2500021457677,
-            yMin: 881,
-            yMax: 1385,
-            ha: 504,
-            leftSideBearing: 97,
-            advanceWidth: 369,
-        },
-        '(': {
-            xMin: 98,
-            xMax: 623,
-            yMin: -363,
-            yMax: 1383,
-            ha: 1746,
-            leftSideBearing: 98,
-            advanceWidth: 682,
-        },
-        ')': {
-            xMin: 59,
-            xMax: 584,
-            yMin: -363,
-            yMax: 1383,
-            ha: 1746,
-            leftSideBearing: 59,
-            advanceWidth: 682,
-        },
-        '*': {
-            xMin: 137.96078522291893,
-            xMax: 886.039214777081,
-            yMin: 543,
-            yMax: 1383,
-            ha: 840,
-            leftSideBearing: 137,
-            advanceWidth: 1024,
-        },
-        '+': {
-            xMin: 61,
-            xMax: 1093,
-            yMin: 2,
-            yMax: 1034,
-            ha: 1032,
-            leftSideBearing: 61,
-            advanceWidth: 1155,
-        },
-        ',': {
-            xMin: 115,
-            xMax: 399,
-            yMin: -291,
-            yMax: 208,
-            ha: 499,
-            leftSideBearing: 115,
-            advanceWidth: 512,
-        },
-        '-': {
-            xMin: 80,
-            xMax: 584,
-            yMin: 396,
-            yMax: 525,
-            ha: 129,
-            leftSideBearing: 80,
-            advanceWidth: 682,
-        },
-        '.': {
-            xMin: 143,
-            xMax: 371,
-            yMin: -22,
-            yMax: 205,
-            ha: 227,
-            leftSideBearing: 143,
-            advanceWidth: 512,
-        },
-        '/': {
-            xMin: -17,
-            xMax: 586,
-            yMin: -27,
-            yMax: 1383,
-            ha: 1410,
-            leftSideBearing: -17,
-            advanceWidth: 569,
-        },
-        ':': {
-            xMin: 166,
-            xMax: 394,
-            yMin: -22,
-            yMax: 943,
-            ha: 965,
-            leftSideBearing: 166,
-            advanceWidth: 569,
-        },
-        ';': {
-            xMin: 164,
-            xMax: 448,
-            yMin: -290,
-            yMax: 943,
-            ha: 1233,
-            leftSideBearing: 164,
-            advanceWidth: 569,
-        },
-        '<': {
-            xMin: 57,
-            xMax: 1098,
-            yMin: -15,
-            yMax: 1051,
-            ha: 1066,
-            leftSideBearing: 57,
-            advanceWidth: 1155,
-        },
-        '=': {
-            xMin: 61,
-            xMax: 1093,
-            yMin: 246,
-            yMax: 791,
-            ha: 545,
-            leftSideBearing: 61,
-            advanceWidth: 1155,
-        },
-        '>': {
-            xMin: 57,
-            xMax: 1098,
-            yMin: -15,
-            yMax: 1051,
-            ha: 1066,
-            leftSideBearing: 57,
-            advanceWidth: 1155,
-        },
-        '?': {
-            xMin: 139,
-            xMax: 848,
-            yMin: -15,
-            yMax: 1383,
-            ha: 1398,
-            leftSideBearing: 139,
-            advanceWidth: 909,
-        },
-        '@': {
-            xMin: 238,
-            xMax: 1657,
-            yMin: -29,
-            yMax: 1386,
-            ha: 1415,
-            leftSideBearing: 238,
-            advanceWidth: 1886,
-        },
-        A: {
-            xMin: 31,
-            xMax: 1445,
-            yMin: 0,
-            yMax: 1380,
-            ha: 1380,
-            leftSideBearing: 31,
-            advanceWidth: 1479,
-        },
-        B: {
-            xMin: 35,
-            xMax: 1214,
-            yMin: 0,
-            yMax: 1356,
-            ha: 1356,
-            leftSideBearing: 35,
-            advanceWidth: 1366,
-        },
-        C: {
-            xMin: 57,
-            xMax: 1296,
-            yMin: -28,
-            yMax: 1383,
-            ha: 1411,
-            leftSideBearing: 57,
-            advanceWidth: 1366,
-        },
-        D: {
-            xMin: 33,
-            xMax: 1403,
-            yMin: 0,
-            yMax: 1356,
-            ha: 1356,
-            leftSideBearing: 33,
-            advanceWidth: 1479,
-        },
-        E: {
-            xMin: 25,
-            xMax: 1222,
-            yMin: 0,
-            yMax: 1356,
-            ha: 1356,
-            leftSideBearing: 25,
-            advanceWidth: 1251,
-        },
-        F: {
-            xMin: 25,
-            xMax: 1119,
-            yMin: 0,
-            yMax: 1356,
-            ha: 1356,
-            leftSideBearing: 25,
-            advanceWidth: 1139,
-        },
-        G: {
-            xMin: 66,
-            xMax: 1452,
-            yMin: -28,
-            yMax: 1383,
-            ha: 1411,
-            leftSideBearing: 66,
-            advanceWidth: 1479,
-        },
-        H: {
-            xMin: 39,
-            xMax: 1438,
-            yMin: 0,
-            yMax: 1356,
-            ha: 1356,
-            leftSideBearing: 39,
-            advanceWidth: 1479,
-        },
-        I: {
-            xMin: 37,
-            xMax: 642,
-            yMin: 0,
-            yMax: 1356,
-            ha: 1356,
-            leftSideBearing: 37,
-            advanceWidth: 682,
-        },
-        J: {
-            xMin: 20,
-            xMax: 758,
-            yMin: -28,
-            yMax: 1356,
-            ha: 1384,
-            leftSideBearing: 20,
-            advanceWidth: 797,
-        },
-        K: {
-            xMin: 70,
-            xMax: 1479,
-            yMin: 0,
-            yMax: 1356,
-            ha: 1356,
-            leftSideBearing: 70,
-            advanceWidth: 1479,
-        },
-        L: {
-            xMin: 25,
-            xMax: 1224,
-            yMin: 0,
-            yMax: 1356,
-            ha: 1356,
-            leftSideBearing: 25,
-            advanceWidth: 1251,
-        },
-        M: {
-            xMin: 25,
-            xMax: 1768,
-            yMin: 0,
-            yMax: 1356,
-            ha: 1356,
-            leftSideBearing: 25,
-            advanceWidth: 1821,
-        },
-        N: {
-            xMin: 25,
-            xMax: 1450,
-            yMin: -22,
-            yMax: 1356,
-            ha: 1378,
-            leftSideBearing: 25,
-            advanceWidth: 1479,
-        },
-        O: {
-            xMin: 70,
-            xMax: 1409,
-            yMin: -28,
-            yMax: 1383,
-            ha: 1411,
-            leftSideBearing: 70,
-            advanceWidth: 1479,
-        },
-        P: {
-            xMin: 33,
-            xMax: 1110,
-            yMin: 0,
-            yMax: 1356,
-            ha: 1356,
-            leftSideBearing: 33,
-            advanceWidth: 1139,
-        },
-        Q: {
-            xMin: 70,
-            xMax: 1435,
-            yMin: -364.28571588721996,
-            yMax: 1383,
-            ha: 1747.28571588722,
-            leftSideBearing: 70,
-            advanceWidth: 1479,
-        },
-        R: {
-            xMin: 35,
-            xMax: 1347,
-            yMin: 0,
-            yMax: 1356,
-            ha: 1356,
-            leftSideBearing: 35,
-            advanceWidth: 1366,
-        },
-        S: {
-            xMin: 86,
-            xMax: 1006,
-            yMin: -28,
-            yMax: 1383,
-            ha: 1411,
-            leftSideBearing: 86,
-            advanceWidth: 1139,
-        },
-        T: {
-            xMin: 35,
-            xMax: 1214,
-            yMin: 0,
-            yMax: 1356,
-            ha: 1356,
-            leftSideBearing: 35,
-            advanceWidth: 1251,
-        },
-        U: {
-            xMin: 29,
-            xMax: 1444,
-            yMin: -28,
-            yMax: 1356,
-            ha: 1384,
-            leftSideBearing: 29,
-            advanceWidth: 1479,
-        },
-        V: {
-            xMin: 33,
-            xMax: 1428,
-            yMin: -22,
-            yMax: 1356,
-            ha: 1378,
-            leftSideBearing: 33,
-            advanceWidth: 1479,
-        },
-        W: {
-            xMin: 10,
-            xMax: 1906,
-            yMin: -22,
-            yMax: 1356,
-            ha: 1378,
-            leftSideBearing: 10,
-            advanceWidth: 1933,
-        },
-        X: {
-            xMin: 20,
-            xMax: 1449,
-            yMin: 0,
-            yMax: 1356,
-            ha: 1356,
-            leftSideBearing: 20,
-            advanceWidth: 1479,
-        },
-        Y: {
-            xMin: 45,
-            xMax: 1441,
-            yMin: 0,
-            yMax: 1356,
-            ha: 1356,
-            leftSideBearing: 45,
-            advanceWidth: 1479,
-        },
-        Z: {
-            xMin: 18,
-            xMax: 1222,
-            yMin: 0,
-            yMax: 1356,
-            ha: 1356,
-            leftSideBearing: 18,
-            advanceWidth: 1251,
-        },
-        '[': {
-            xMin: 180,
-            xMax: 612,
-            yMin: -319,
-            yMax: 1355,
-            ha: 1674,
-            leftSideBearing: 180,
-            advanceWidth: 682,
-        },
-        '\\': {
-            xMin: -17,
-            xMax: 586,
-            yMin: -27,
-            yMax: 1383,
-            ha: 1410,
-            leftSideBearing: -17,
-            advanceWidth: 569,
-        },
-        ']': {
-            xMin: 70,
-            xMax: 502,
-            yMin: -319,
-            yMax: 1355,
-            ha: 1674,
-            leftSideBearing: 70,
-            advanceWidth: 682,
-        },
-        '^': {
-            xMin: 49,
-            xMax: 914,
-            yMin: 608,
-            yMax: 1355,
-            ha: 747,
-            leftSideBearing: 49,
-            advanceWidth: 961,
-        },
-        _: {
-            xMin: 0,
-            xMax: 1024,
-            yMin: -255,
-            yMax: -153,
-            ha: 102,
-            leftSideBearing: 0,
-            advanceWidth: 1024,
-        },
-        '`': {
-            xMin: 39,
-            xMax: 499,
-            yMin: 1037,
-            yMax: 1392.509803639748,
-            ha: 355.50980363974804,
-            leftSideBearing: 39,
-            advanceWidth: 682,
-        },
-        a: {
-            xMin: 76,
-            xMax: 905,
-            yMin: -20,
-            yMax: 942,
-            ha: 962,
-            leftSideBearing: 76,
-            advanceWidth: 909,
-        },
-        b: {
-            xMin: 6,
-            xMax: 958,
-            yMin: -20,
-            yMax: 1399,
-            ha: 1419,
-            leftSideBearing: 6,
-            advanceWidth: 1024,
-        },
-        c: {
-            xMin: 51,
-            xMax: 843,
-            yMin: -20,
-            yMax: 942,
-            ha: 962,
-            leftSideBearing: 51,
-            advanceWidth: 909,
-        },
-        d: {
-            xMin: 55,
-            xMax: 1006,
-            yMin: -20,
-            yMax: 1399,
-            ha: 1419,
-            leftSideBearing: 55,
-            advanceWidth: 1024,
-        },
-        e: {
-            xMin: 51,
-            xMax: 868,
-            yMin: -20,
-            yMax: 942,
-            ha: 962,
-            leftSideBearing: 51,
-            advanceWidth: 909,
-        },
-        f: {
-            xMin: 41,
-            xMax: 783,
-            yMin: 0,
-            yMax: 1399,
-            ha: 1399,
-            leftSideBearing: 41,
-            advanceWidth: 682,
-        },
-        g: {
-            xMin: 57,
-            xMax: 963,
-            yMin: -446,
-            yMax: 942,
-            ha: 1388,
-            leftSideBearing: 57,
-            advanceWidth: 1024,
-        },
-        h: {
-            xMin: 18,
-            xMax: 997,
-            yMin: 0,
-            yMax: 1399,
-            ha: 1399,
-            leftSideBearing: 18,
-            advanceWidth: 1024,
-        },
-        i: {
-            xMin: 33,
-            xMax: 516,
-            yMin: 0,
-            yMax: 1399,
-            ha: 1399,
-            leftSideBearing: 33,
-            advanceWidth: 569,
-        },
-        j: {
-            xMin: -142,
-            xMax: 397,
-            yMin: -446,
-            yMax: 1399,
-            ha: 1845,
-            leftSideBearing: -142,
-            advanceWidth: 569,
-        },
-        k: {
-            xMin: 14,
-            xMax: 1029,
-            yMin: 0,
-            yMax: 1399,
-            ha: 1399,
-            leftSideBearing: 14,
-            advanceWidth: 1024,
-        },
-        l: {
-            xMin: 39,
-            xMax: 523,
-            yMin: 0,
-            yMax: 1399,
-            ha: 1399,
-            leftSideBearing: 39,
-            advanceWidth: 569,
-        },
-        m: {
-            xMin: 33,
-            xMax: 1587,
-            yMin: 0,
-            yMax: 944,
-            ha: 944,
-            leftSideBearing: 33,
-            advanceWidth: 1593,
-        },
-        n: {
-            xMin: 33,
-            xMax: 993,
-            yMin: 0,
-            yMax: 944,
-            ha: 944,
-            leftSideBearing: 33,
-            advanceWidth: 1024,
-        },
-        o: {
-            xMin: 59,
-            xMax: 963,
-            yMin: -20,
-            yMax: 942,
-            ha: 962,
-            leftSideBearing: 59,
-            advanceWidth: 1024,
-        },
-        p: {
-            xMin: 10,
-            xMax: 964,
-            yMin: -443,
-            yMax: 944,
-            ha: 1387,
-            leftSideBearing: 10,
-            advanceWidth: 1024,
-        },
-        q: {
-            xMin: 49,
-            xMax: 999,
-            yMin: -443,
-            yMax: 942.0135137169275,
-            ha: 1385.0135137169275,
-            leftSideBearing: 49,
-            advanceWidth: 1024,
-        },
-        r: {
-            xMin: 10,
-            xMax: 685,
-            yMin: 0,
-            yMax: 944,
-            ha: 944,
-            leftSideBearing: 10,
-            advanceWidth: 682,
-        },
-        s: {
-            xMin: 104,
-            xMax: 713,
-            yMin: -20,
-            yMax: 942.0263161804552,
-            ha: 962.0263161804552,
-            leftSideBearing: 104,
-            advanceWidth: 797,
-        },
-        t: {
-            xMin: 27,
-            xMax: 572,
-            yMin: -18,
-            yMax: 1186,
-            ha: 1204,
-            leftSideBearing: 27,
-            advanceWidth: 569,
-        },
-        u: {
-            xMin: 18,
-            xMax: 981,
-            yMin: -21,
-            yMax: 921,
-            ha: 942,
-            leftSideBearing: 18,
-            advanceWidth: 1024,
-        },
-        v: {
-            xMin: 39,
-            xMax: 976,
-            yMin: -28,
-            yMax: 921,
-            ha: 949,
-            leftSideBearing: 39,
-            advanceWidth: 1024,
-        },
-        w: {
-            xMin: 43,
-            xMax: 1423,
-            yMin: -28,
-            yMax: 921,
-            ha: 949,
-            leftSideBearing: 43,
-            advanceWidth: 1479,
-        },
-        x: {
-            xMin: 35,
-            xMax: 989,
-            yMin: 0,
-            yMax: 921,
-            ha: 921,
-            leftSideBearing: 35,
-            advanceWidth: 1024,
-        },
-        y: {
-            xMin: 29,
-            xMax: 976,
-            yMin: -445,
-            yMax: 921,
-            ha: 1366,
-            leftSideBearing: 29,
-            advanceWidth: 1024,
-        },
-        z: {
-            xMin: 55,
-            xMax: 855,
-            yMin: 0,
-            yMax: 921,
-            ha: 921,
-            leftSideBearing: 55,
-            advanceWidth: 909,
-        },
-        '{': {
-            xMin: 205,
-            xMax: 717,
-            yMin: -377,
-            yMax: 1397,
-            ha: 1774,
-            leftSideBearing: 205,
-            advanceWidth: 983,
-        },
-        '|': {
-            xMin: 137,
-            xMax: 273,
-            yMin: -512,
-            yMax: 1535,
-            ha: 2047,
-            leftSideBearing: 137,
-            advanceWidth: 410,
-        },
-        '}': {
-            xMin: 266,
-            xMax: 778,
-            yMin: -377,
-            yMax: 1397,
-            ha: 1774,
-            leftSideBearing: 266,
-            advanceWidth: 983,
-        },
-        '~': {
-            xMin: 82,
-            xMax: 1028,
-            yMin: 380,
-            yMax: 666,
-            ha: 286,
-            leftSideBearing: 82,
-            advanceWidth: 1108,
-        },
-    },
-    fontFamily: 'serif',
-    resolution: 2048,
-    generatedOn: '2020-10-18T19:03:12.514Z',
-};
-
-
-/***/ }),
-
-/***/ "./src/fonts/textfonts.ts":
-/*!********************************!*\
-  !*** ./src/fonts/textfonts.ts ***!
-  \********************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   loadTextFonts: () => (/* binding */ loadTextFonts)
-/* harmony export */ });
-/* harmony import */ var _font__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../font */ "./src/font.ts");
-/* harmony import */ var _textformatter__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../textformatter */ "./src/textformatter.ts");
-/* harmony import */ var _petalumascript_glyphs__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./petalumascript_glyphs */ "./src/fonts/petalumascript_glyphs.ts");
-/* harmony import */ var _robotoslab_glyphs__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./robotoslab_glyphs */ "./src/fonts/robotoslab_glyphs.ts");
-/* harmony import */ var _sans_bold_text_metrics__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./sans_bold_text_metrics */ "./src/fonts/sans_bold_text_metrics.ts");
-/* harmony import */ var _sans_text_metrics__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./sans_text_metrics */ "./src/fonts/sans_text_metrics.ts");
-/* harmony import */ var _serif_text_metrics__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./serif_text_metrics */ "./src/fonts/serif_text_metrics.ts");
-// Copyright (c) 2023-present VexFlow contributors: https://github.com/vexflow/vexflow/graphs/contributors
-// MIT License
-
-
-
-
-
-
-
-function loadTextFonts() {
-    // Sans-serif fallback font, very close to Arial
-    {
-        const fontData = _sans_bold_text_metrics__WEBPACK_IMPORTED_MODULE_4__.SansFontBold;
-        const { fontFamily, resolution, glyphs } = fontData;
-        _font__WEBPACK_IMPORTED_MODULE_0__.Font.load(fontFamily, fontData);
-        // Usually @ is the tallest and widest character, although not the
-        // highest since it starts below the baseline.
-        const maxSizeGlyph = '@';
-        _textformatter__WEBPACK_IMPORTED_MODULE_1__.TextFormatter.registerInfo({
-            family: fontFamily,
-            resolution,
-            glyphs,
-            maxSizeGlyph,
-            monospaced: false,
-            bold: true,
-            italic: false,
-            superscriptOffset: 0.66,
-            subscriptOffset: 0.66,
-            serifs: false,
-            description: 'Generic SANS font',
-        });
-    }
-    // Sans-serif fallback font, very close to Arial
-    {
-        const fontData = _sans_text_metrics__WEBPACK_IMPORTED_MODULE_5__.SansFont;
-        const { fontFamily, resolution, glyphs } = fontData;
-        _font__WEBPACK_IMPORTED_MODULE_0__.Font.load(fontFamily, fontData);
-        // Usually @ is the tallest and widest character, although not the
-        // highest since it starts below the baseline.
-        const maxSizeGlyph = '@';
-        _textformatter__WEBPACK_IMPORTED_MODULE_1__.TextFormatter.registerInfo({
-            family: fontFamily,
-            resolution,
-            glyphs,
-            maxSizeGlyph,
-            monospaced: false,
-            bold: false,
-            italic: false,
-            superscriptOffset: 0.66,
-            subscriptOffset: 0.66,
-            serifs: false,
-            description: 'Generic SANS font',
-        });
-    }
-    // Serif fallback font, very close to Times
-    {
-        const fontData = _serif_text_metrics__WEBPACK_IMPORTED_MODULE_6__.SerifFont;
-        const { fontFamily, resolution, glyphs } = fontData;
-        _font__WEBPACK_IMPORTED_MODULE_0__.Font.load(fontFamily, fontData);
-        // M is wider, but H is taller. :-)
-        // Lowercase b is also taller in this font.
-        const maxSizeGlyph = '@';
-        _textformatter__WEBPACK_IMPORTED_MODULE_1__.TextFormatter.registerInfo({
-            family: fontFamily,
-            resolution,
-            glyphs,
-            maxSizeGlyph,
-            monospaced: false,
-            bold: false,
-            italic: false,
-            superscriptOffset: 0.66,
-            subscriptOffset: 0.66,
-            serifs: true,
-            description: 'Generic SERIF font',
-        });
-    }
-    // Roboto Slab
-    {
-        const fontData = _robotoslab_glyphs__WEBPACK_IMPORTED_MODULE_3__.RobotoSlabFont;
-        const { fontFamily, resolution, glyphs } = fontData;
-        _font__WEBPACK_IMPORTED_MODULE_0__.Font.load(fontFamily, fontData);
-        // Previously we used 'H', but it isn't actually the tallest or the widest.
-        // Interestingly, the lowercase 'b' is the tallest glyph.
-        const maxSizeGlyph = 'b';
-        _textformatter__WEBPACK_IMPORTED_MODULE_1__.TextFormatter.registerInfo({
-            family: fontFamily,
-            resolution,
-            glyphs,
-            maxSizeGlyph,
-            monospaced: false,
-            bold: false,
-            italic: false,
-            superscriptOffset: 0.66,
-            subscriptOffset: 0.66,
-            serifs: true,
-            description: 'Text font to pair with the Bravura / Gonville music fonts.',
-        });
-    }
-    // PetalumaScript
-    {
-        const fontData = _petalumascript_glyphs__WEBPACK_IMPORTED_MODULE_2__.PetalumaScriptFont;
-        const { fontFamily, resolution, glyphs } = fontData;
-        _font__WEBPACK_IMPORTED_MODULE_0__.Font.load(fontFamily, fontData);
-        // M is wider, but H is taller. :-)
-        // Lowercase b is also taller in this font.
-        const maxSizeGlyph = 'b';
-        _textformatter__WEBPACK_IMPORTED_MODULE_1__.TextFormatter.registerInfo({
-            family: fontFamily,
-            resolution,
-            glyphs,
-            maxSizeGlyph,
-            monospaced: false,
-            bold: false,
-            italic: false,
-            superscriptOffset: 0.66,
-            subscriptOffset: 0.66,
-            serifs: false,
-            description: 'Text font to pair with the Petaluma music font.',
-        });
-    }
-}
-
-
-/***/ }),
-
 /***/ "./src/formatter.ts":
 /*!**************************!*\
   !*** ./src/formatter.ts ***!
@@ -18987,7 +14467,7 @@ __webpack_require__.r(__webpack_exports__);
  * total number of ticks in voices.
  */
 function createContexts(voices, makeContext, addToContext) {
-    if (voices.length == 0)
+    if (voices.length === 0)
         return {
             map: {},
             array: [],
@@ -19091,6 +14571,7 @@ class Formatter {
     }
     /** Helper function to plot formatter debug info. */
     static plotDebugging(ctx, formatter, xPos, y1, y2, options) {
+        var _a, _b;
         options = Object.assign({ stavePadding: _tables__WEBPACK_IMPORTED_MODULE_6__.Tables.lookupMetric('Stave.padding') }, options);
         const x = xPos + options.stavePadding;
         const contextGaps = formatter.contextGaps;
@@ -19109,7 +14590,7 @@ class Formatter {
             ctx.fillText(Math.round(gap.x2 - gap.x1).toString(), x + gap.x1, y2 + 12);
         });
         ctx.setFillStyle('red');
-        ctx.fillText(`Loss: ${(formatter.totalCost || 0).toFixed(2)} Shift: ${(formatter.totalShift || 0).toFixed(2)} Gap: ${contextGaps.total.toFixed(2)}`, x - 20, y2 + 27);
+        ctx.fillText(`Loss: ${((_a = formatter.totalCost) !== null && _a !== void 0 ? _a : 0).toFixed(2)} Shift: ${((_b = formatter.totalShift) !== null && _b !== void 0 ? _b : 0).toFixed(2)} Gap: ${contextGaps.total.toFixed(2)}`, x - 20, y2 + 27);
         ctx.restore();
     }
     /**
@@ -19377,7 +14858,7 @@ class Formatter {
     }
     /** Create a `ModifierContext` for each tick in `voices`. */
     createModifierContexts(voices) {
-        if (voices.length == 0)
+        if (voices.length === 0)
             return;
         const resolutionMultiplier = Formatter.getResolutionMultiplier(voices);
         // Initialize tick maps.
@@ -20474,8 +15955,13 @@ class Glyph extends _element__WEBPACK_IMPORTED_MODULE_2__.Element {
         let glyph;
         let font;
         // HACK to see porting progress
-        if (fontStack[0].getName() == 'MuseJazz')
+        if (fontStack[0].getName() === 'MuseJazz' ||
+            fontStack[0].getName() === 'Gootville' ||
+            fontStack[0].getName() === 'Finale Ash' ||
+            fontStack[0].getName() === 'Finale Broadway' ||
+            fontStack[0].getName() === 'Finale Maestro') {
             code = 'timeSigMinus';
+        }
         for (let i = 0; i < fontStack.length; i++) {
             font = fontStack[i];
             glyph = font.getGlyphs()[code];
@@ -20530,7 +16016,7 @@ class Glyph extends _element__WEBPACK_IMPORTED_MODULE_2__.Element {
         var _a;
         const data = Glyph.cache.lookup(code, options === null || options === void 0 ? void 0 : options.category);
         const metrics = data.metrics;
-        if (data.point != -1) {
+        if (data.point !== -1) {
             point = data.point;
         }
         const customScale = (_a = options === null || options === void 0 ? void 0 : options.scale) !== null && _a !== void 0 ? _a : 1;
@@ -20604,7 +16090,7 @@ class Glyph extends _element__WEBPACK_IMPORTED_MODULE_2__.Element {
     }
     static getWidth(code, point, category) {
         const data = Glyph.cache.lookup(code, category);
-        if (data.point != -1) {
+        if (data.point !== -1) {
             point = data.point;
         }
         const scale = (point * 72) / (data.metrics.font.getResolution() * 100);
@@ -20674,7 +16160,7 @@ class Glyph extends _element__WEBPACK_IMPORTED_MODULE_2__.Element {
         const data = Glyph.cache.lookup(this.code, this.options.category);
         this.metrics = data.metrics;
         // Override point from metrics file
-        if (data.point != -1) {
+        if (data.point !== -1) {
             this.point = data.point;
         }
         this.scale = (this.point * 72) / (this.metrics.font.getResolution() * 100);
@@ -20816,6 +16302,6344 @@ class GlyphNote extends _note__WEBPACK_IMPORTED_MODULE_0__.Note {
         this.restoreStyle(ctx);
     }
 }
+
+
+/***/ }),
+
+/***/ "./src/glyphs.ts":
+/*!***********************!*\
+  !*** ./src/glyphs.ts ***!
+  \***********************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   Glyphs: () => (/* binding */ Glyphs)
+/* harmony export */ });
+// This file was generated by `glyph_codes.js'
+// The enum includes all SMuFL glyphs, and a few others that VexFlow uses.
+// See the list of SMuFL glyphs:
+//   https://w3c.github.io/smufl/latest/tables/
+//   https://raw.githubusercontent.com/w3c/smufl/gh-pages/metadata/glyphnames.json
+// We renamed the two SMuFL names that start with a digit:
+//   4stringTabClef => fourStringTabClef
+//   6stringTabClef => sixStringTabClef
+//
+var Glyphs;
+(function (Glyphs) {
+    ////// SPECIAL GLYPHS ///////////////////////////////////////
+    // Null character
+    Glyphs["null"] = "\0";
+    ////// SMuFL GLYPHS /////////////////////////////////////////
+    // U+E06E  4-string tab clef
+    Glyphs["fourStringTabClef"] = "\uE06E";
+    // U+E06D  6-string tab clef
+    Glyphs["sixStringTabClef"] = "\uE06D";
+    // U+E30D  11 large diesis down, 3° down [46 EDO]
+    Glyphs["accSagittal11LargeDiesisDown"] = "\uE30D";
+    // U+E30C  11 large diesis up, (11L), (sharp less 11M), 3° up [46 EDO]
+    Glyphs["accSagittal11LargeDiesisUp"] = "\uE30C";
+    // U+E30B  11 medium diesis down, 1°[17 31] 2°46 down, 1/4-tone down
+    Glyphs["accSagittal11MediumDiesisDown"] = "\uE30B";
+    // U+E30A  11 medium diesis up, (11M), 1°[17 31] 2°46 up, 1/4-tone up
+    Glyphs["accSagittal11MediumDiesisUp"] = "\uE30A";
+    // U+E3AB  11:19 large diesis down
+    Glyphs["accSagittal11v19LargeDiesisDown"] = "\uE3AB";
+    // U+E3AA  11:19 large diesis up, (11:19L, apotome less 11:19M)
+    Glyphs["accSagittal11v19LargeDiesisUp"] = "\uE3AA";
+    // U+E3A3  11:19 medium diesis down
+    Glyphs["accSagittal11v19MediumDiesisDown"] = "\uE3A3";
+    // U+E3A2  11:19 medium diesis up, (11:19M, 11M plus 19s)
+    Glyphs["accSagittal11v19MediumDiesisUp"] = "\uE3A2";
+    // U+E397  11:49 comma down
+    Glyphs["accSagittal11v49CommaDown"] = "\uE397";
+    // U+E396  11:49 comma up, (11:49C, 11M less 49C)
+    Glyphs["accSagittal11v49CommaUp"] = "\uE396";
+    // U+E395  143 comma down
+    Glyphs["accSagittal143CommaDown"] = "\uE395";
+    // U+E394  143 comma up, (143C, 13L less 11M)
+    Glyphs["accSagittal143CommaUp"] = "\uE394";
+    // U+E343  17 comma down
+    Glyphs["accSagittal17CommaDown"] = "\uE343";
+    // U+E342  17 comma up, (17C)
+    Glyphs["accSagittal17CommaUp"] = "\uE342";
+    // U+E393  17 kleisma down
+    Glyphs["accSagittal17KleismaDown"] = "\uE393";
+    // U+E392  17 kleisma up, (17k)
+    Glyphs["accSagittal17KleismaUp"] = "\uE392";
+    // U+E399  19 comma down
+    Glyphs["accSagittal19CommaDown"] = "\uE399";
+    // U+E398  19 comma up, (19C)
+    Glyphs["accSagittal19CommaUp"] = "\uE398";
+    // U+E391  19 schisma down
+    Glyphs["accSagittal19SchismaDown"] = "\uE391";
+    // U+E390  19 schisma up, (19s)
+    Glyphs["accSagittal19SchismaUp"] = "\uE390";
+    // U+E3F5  1 mina down, 1/(5⋅7⋅13)-schismina down, 0.42 cents down
+    Glyphs["accSagittal1MinaDown"] = "\uE3F5";
+    // U+E3F4  1 mina up, 1/(5⋅7⋅13)-schismina up, 0.42 cents up
+    Glyphs["accSagittal1MinaUp"] = "\uE3F4";
+    // U+E3F9  1 tina down, 7²⋅11⋅19/5-schismina down, 0.17 cents down
+    Glyphs["accSagittal1TinaDown"] = "\uE3F9";
+    // U+E3F8  1 tina up, 7²⋅11⋅19/5-schismina up, 0.17 cents up
+    Glyphs["accSagittal1TinaUp"] = "\uE3F8";
+    // U+E371  23 comma down, 2° down [96 EDO], 1/8-tone down
+    Glyphs["accSagittal23CommaDown"] = "\uE371";
+    // U+E370  23 comma up, (23C), 2° up [96 EDO], 1/8-tone up
+    Glyphs["accSagittal23CommaUp"] = "\uE370";
+    // U+E39F  23 small diesis down
+    Glyphs["accSagittal23SmallDiesisDown"] = "\uE39F";
+    // U+E39E  23 small diesis up, (23S)
+    Glyphs["accSagittal23SmallDiesisUp"] = "\uE39E";
+    // U+E307  25 small diesis down, 2° down [53 EDO]
+    Glyphs["accSagittal25SmallDiesisDown"] = "\uE307";
+    // U+E306  25 small diesis up, (25S, ~5:13S, ~37S, 5C plus 5C), 2° up [53 EDO]
+    Glyphs["accSagittal25SmallDiesisUp"] = "\uE306";
+    // U+E3F7  2 minas down, 65/77-schismina down, 0.83 cents down
+    Glyphs["accSagittal2MinasDown"] = "\uE3F7";
+    // U+E3F6  2 minas up, 65/77-schismina up, 0.83 cents up
+    Glyphs["accSagittal2MinasUp"] = "\uE3F6";
+    // U+E3FB  2 tinas down, 1/(7³⋅17)-schismina down, 0.30 cents down
+    Glyphs["accSagittal2TinasDown"] = "\uE3FB";
+    // U+E3FA  2 tinas up, 1/(7³⋅17)-schismina up, 0.30 cents up
+    Glyphs["accSagittal2TinasUp"] = "\uE3FA";
+    // U+E30F  35 large diesis down, 2° down [50 EDO], 5/18-tone down
+    Glyphs["accSagittal35LargeDiesisDown"] = "\uE30F";
+    // U+E30E  35 large diesis up, (35L, ~13L, ~125L, sharp less 35M), 2°50 up
+    Glyphs["accSagittal35LargeDiesisUp"] = "\uE30E";
+    // U+E309  35 medium diesis down, 1°[50] 2°[27] down, 2/9-tone down
+    Glyphs["accSagittal35MediumDiesisDown"] = "\uE309";
+    // U+E308  35 medium diesis up, (35M, ~13M, ~125M, 5C plus 7C), 2/9-tone up
+    Glyphs["accSagittal35MediumDiesisUp"] = "\uE308";
+    // U+E3FD  3 tinas down, 1 mina down, 1/(5⋅7⋅13)-schismina down, 0.42 cents down
+    Glyphs["accSagittal3TinasDown"] = "\uE3FD";
+    // U+E3FC  3 tinas up, 1 mina up, 1/(5⋅7⋅13)-schismina up, 0.42 cents up
+    Glyphs["accSagittal3TinasUp"] = "\uE3FC";
+    // U+E3A9  49 large diesis down
+    Glyphs["accSagittal49LargeDiesisDown"] = "\uE3A9";
+    // U+E3A8  49 large diesis up, (49L, ~31L, apotome less 49M)
+    Glyphs["accSagittal49LargeDiesisUp"] = "\uE3A8";
+    // U+E3A5  49 medium diesis down
+    Glyphs["accSagittal49MediumDiesisDown"] = "\uE3A5";
+    // U+E3A4  49 medium diesis up, (49M, ~31M, 7C plus 7C)
+    Glyphs["accSagittal49MediumDiesisUp"] = "\uE3A4";
+    // U+E39D  49 small diesis down
+    Glyphs["accSagittal49SmallDiesisDown"] = "\uE39D";
+    // U+E39C  49 small diesis up, (49S, ~31S)
+    Glyphs["accSagittal49SmallDiesisUp"] = "\uE39C";
+    // U+E3FF  4 tinas down, 5²⋅11²/7-schismina down, 0.57 cents down
+    Glyphs["accSagittal4TinasDown"] = "\uE3FF";
+    // U+E3FE  4 tinas up, 5²⋅11²/7-schismina up, 0.57 cents up
+    Glyphs["accSagittal4TinasUp"] = "\uE3FE";
+    // U+E345  55 comma down, 3° down [96 EDO], 3/16-tone down
+    Glyphs["accSagittal55CommaDown"] = "\uE345";
+    // U+E344  55 comma up, (55C, 11M less 5C), 3°up [96 EDO], 3/16-tone up
+    Glyphs["accSagittal55CommaUp"] = "\uE344";
+    // U+E303  5 comma down, 1° down [22 27 29 34 41 46 53 96 EDOs], 1/12-tone down
+    Glyphs["accSagittal5CommaDown"] = "\uE303";
+    // U+E302  5 comma up, (5C), 1° up [22 27 29 34 41 46 53 96 EDOs], 1/12-tone up
+    Glyphs["accSagittal5CommaUp"] = "\uE302";
+    // U+E401  5 tinas down, 7⁴/25-schismina down, 0.72 cents down
+    Glyphs["accSagittal5TinasDown"] = "\uE401";
+    // U+E400  5 tinas up, 7⁴/25-schismina up, 0.72 cents up
+    Glyphs["accSagittal5TinasUp"] = "\uE400";
+    // U+E349  5:11 small diesis down
+    Glyphs["accSagittal5v11SmallDiesisDown"] = "\uE349";
+    // U+E348  5:11 small diesis up, (5:11S, ~7:13S, ~11:17S, 5:7k plus 7:11C)
+    Glyphs["accSagittal5v11SmallDiesisUp"] = "\uE348";
+    // U+E3AD  5:13 large diesis down
+    Glyphs["accSagittal5v13LargeDiesisDown"] = "\uE3AD";
+    // U+E3AC  5:13 large diesis up, (5:13L, ~37L, apotome less 5:13M)
+    Glyphs["accSagittal5v13LargeDiesisUp"] = "\uE3AC";
+    // U+E3A1  5:13 medium diesis down
+    Glyphs["accSagittal5v13MediumDiesisDown"] = "\uE3A1";
+    // U+E3A0  5:13 medium diesis up, (5:13M, ~37M, 5C plus 13C)
+    Glyphs["accSagittal5v13MediumDiesisUp"] = "\uE3A0";
+    // U+E373  5:19 comma down, 1/20-tone down
+    Glyphs["accSagittal5v19CommaDown"] = "\uE373";
+    // U+E372  5:19 comma up, (5:19C, 5C plus 19s), 1/20-tone up
+    Glyphs["accSagittal5v19CommaUp"] = "\uE372";
+    // U+E375  5:23 small diesis down, 2° down [60 EDO], 1/5-tone down
+    Glyphs["accSagittal5v23SmallDiesisDown"] = "\uE375";
+    // U+E374  5:23 small diesis up, (5:23S, 5C plus 23C), 2° up [60 EDO], 1/5-tone up
+    Glyphs["accSagittal5v23SmallDiesisUp"] = "\uE374";
+    // U+E3A7  5:49 medium diesis down
+    Glyphs["accSagittal5v49MediumDiesisDown"] = "\uE3A7";
+    // U+E3A6  5:49 medium diesis up, (5:49M, half apotome)
+    Glyphs["accSagittal5v49MediumDiesisUp"] = "\uE3A6";
+    // U+E301  5:7 kleisma down
+    Glyphs["accSagittal5v7KleismaDown"] = "\uE301";
+    // U+E300  5:7 kleisma up, (5:7k, ~11:13k, 7C less 5C)
+    Glyphs["accSagittal5v7KleismaUp"] = "\uE300";
+    // U+E403  6 tinas down, 2 minas down, 65/77-schismina down, 0.83 cents down
+    Glyphs["accSagittal6TinasDown"] = "\uE403";
+    // U+E402  6 tinas up, 2 minas up, 65/77-schismina up, 0.83 cents up
+    Glyphs["accSagittal6TinasUp"] = "\uE402";
+    // U+E305  7 comma down, 1° down [43 EDO], 2° down [72 EDO], 1/6-tone down
+    Glyphs["accSagittal7CommaDown"] = "\uE305";
+    // U+E304  7 comma up, (7C), 1° up [43 EDO], 2° up [72 EDO], 1/6-tone up
+    Glyphs["accSagittal7CommaUp"] = "\uE304";
+    // U+E405  7 tinas down, 7/(5²⋅17)-schismina down, 1.02 cents down
+    Glyphs["accSagittal7TinasDown"] = "\uE405";
+    // U+E404  7 tinas up, 7/(5²⋅17)-schismina up, 1.02 cents up
+    Glyphs["accSagittal7TinasUp"] = "\uE404";
+    // U+E347  7:11 comma down, 1° down [60 EDO], 1/10-tone down
+    Glyphs["accSagittal7v11CommaDown"] = "\uE347";
+    // U+E346  7:11 comma up, (7:11C, ~13:17S, ~29S, 11L less 7C), 1° up [60 EDO]
+    Glyphs["accSagittal7v11CommaUp"] = "\uE346";
+    // U+E341  7:11 kleisma down
+    Glyphs["accSagittal7v11KleismaDown"] = "\uE341";
+    // U+E340  7:11 kleisma up, (7:11k, ~29k)
+    Glyphs["accSagittal7v11KleismaUp"] = "\uE340";
+    // U+E39B  7:19 comma down
+    Glyphs["accSagittal7v19CommaDown"] = "\uE39B";
+    // U+E39A  7:19 comma up, (7:19C, 7C less 19s)
+    Glyphs["accSagittal7v19CommaUp"] = "\uE39A";
+    // U+E407  8 tinas down, 11⋅17/(5²⋅7)-schismina down, 1.14 cents down
+    Glyphs["accSagittal8TinasDown"] = "\uE407";
+    // U+E406  8 tinas up, 11⋅17/(5²⋅7)-schismina up, 1.14 cents up
+    Glyphs["accSagittal8TinasUp"] = "\uE406";
+    // U+E409  9 tinas down, 1/(7²⋅11)-schismina down, 1.26 cents down
+    Glyphs["accSagittal9TinasDown"] = "\uE409";
+    // U+E408  9 tinas up, 1/(7²⋅11)-schismina up, 1.26 cents up
+    Glyphs["accSagittal9TinasUp"] = "\uE408";
+    // U+E3F2  Acute, 5 schisma up (5s), 2 cents up
+    Glyphs["accSagittalAcute"] = "\uE3F2";
+    // U+E335  Double flat, (2 apotomes down)[almost all EDOs], whole-tone down
+    Glyphs["accSagittalDoubleFlat"] = "\uE335";
+    // U+E3E9  Double flat 11:49C-up
+    Glyphs["accSagittalDoubleFlat11v49CUp"] = "\uE3E9";
+    // U+E3EB  Double flat 143C-up
+    Glyphs["accSagittalDoubleFlat143CUp"] = "\uE3EB";
+    // U+E365  Double flat 17C-up
+    Glyphs["accSagittalDoubleFlat17CUp"] = "\uE365";
+    // U+E3ED  Double flat 17k-up
+    Glyphs["accSagittalDoubleFlat17kUp"] = "\uE3ED";
+    // U+E3E7  Double flat 19C-up
+    Glyphs["accSagittalDoubleFlat19CUp"] = "\uE3E7";
+    // U+E3EF  Double flat 19s-up
+    Glyphs["accSagittalDoubleFlat19sUp"] = "\uE3EF";
+    // U+E387  Double flat 23C-up, 14° down [96 EDO], 7/8-tone down
+    Glyphs["accSagittalDoubleFlat23CUp"] = "\uE387";
+    // U+E3E1  Double flat 23S-up
+    Glyphs["accSagittalDoubleFlat23SUp"] = "\uE3E1";
+    // U+E32D  Double flat 25S-up, 8°down [53 EDO]
+    Glyphs["accSagittalDoubleFlat25SUp"] = "\uE32D";
+    // U+E3E3  Double flat 49S-up
+    Glyphs["accSagittalDoubleFlat49SUp"] = "\uE3E3";
+    // U+E363  Double flat 55C-up, 13° down [96 EDO], 13/16-tone down
+    Glyphs["accSagittalDoubleFlat55CUp"] = "\uE363";
+    // U+E331  Double flat 5C-up, 5°[22 29] 7°[34 41] 9°53 down, 11/12 tone down
+    Glyphs["accSagittalDoubleFlat5CUp"] = "\uE331";
+    // U+E35F  Double flat 5:11S-up
+    Glyphs["accSagittalDoubleFlat5v11SUp"] = "\uE35F";
+    // U+E385  Double flat 5:19C-up, 19/20-tone down
+    Glyphs["accSagittalDoubleFlat5v19CUp"] = "\uE385";
+    // U+E383  Double flat 5:23S-up, 8° down [60 EDO], 4/5-tone down
+    Glyphs["accSagittalDoubleFlat5v23SUp"] = "\uE383";
+    // U+E333  Double flat 5:7k-up
+    Glyphs["accSagittalDoubleFlat5v7kUp"] = "\uE333";
+    // U+E32F  Double flat 7C-up, 5° down [43 EDO], 10° down [72 EDO], 5/6-tone down
+    Glyphs["accSagittalDoubleFlat7CUp"] = "\uE32F";
+    // U+E361  Double flat 7:11C-up, 9° down [60 EDO], 9/10-tone down
+    Glyphs["accSagittalDoubleFlat7v11CUp"] = "\uE361";
+    // U+E367  Double flat 7:11k-up
+    Glyphs["accSagittalDoubleFlat7v11kUp"] = "\uE367";
+    // U+E3E5  Double flat 7:19C-up
+    Glyphs["accSagittalDoubleFlat7v19CUp"] = "\uE3E5";
+    // U+E334  Double sharp, (2 apotomes up)[almost all EDOs], whole-tone up
+    Glyphs["accSagittalDoubleSharp"] = "\uE334";
+    // U+E3E8  Double sharp 11:49C-down
+    Glyphs["accSagittalDoubleSharp11v49CDown"] = "\uE3E8";
+    // U+E3EA  Double sharp 143C-down
+    Glyphs["accSagittalDoubleSharp143CDown"] = "\uE3EA";
+    // U+E364  Double sharp 17C-down
+    Glyphs["accSagittalDoubleSharp17CDown"] = "\uE364";
+    // U+E3EC  Double sharp 17k-down
+    Glyphs["accSagittalDoubleSharp17kDown"] = "\uE3EC";
+    // U+E3E6  Double sharp 19C-down
+    Glyphs["accSagittalDoubleSharp19CDown"] = "\uE3E6";
+    // U+E3EE  Double sharp 19s-down
+    Glyphs["accSagittalDoubleSharp19sDown"] = "\uE3EE";
+    // U+E386  Double sharp 23C-down, 14°up [96 EDO], 7/8-tone up
+    Glyphs["accSagittalDoubleSharp23CDown"] = "\uE386";
+    // U+E3E0  Double sharp 23S-down
+    Glyphs["accSagittalDoubleSharp23SDown"] = "\uE3E0";
+    // U+E32C  Double sharp 25S-down, 8°up [53 EDO]
+    Glyphs["accSagittalDoubleSharp25SDown"] = "\uE32C";
+    // U+E3E2  Double sharp 49S-down
+    Glyphs["accSagittalDoubleSharp49SDown"] = "\uE3E2";
+    // U+E362  Double sharp 55C-down, 13° up [96 EDO], 13/16-tone up
+    Glyphs["accSagittalDoubleSharp55CDown"] = "\uE362";
+    // U+E330  Double sharp 5C-down, 5°[22 29] 7°[34 41] 9°53 up, 11/12 tone up
+    Glyphs["accSagittalDoubleSharp5CDown"] = "\uE330";
+    // U+E35E  Double sharp 5:11S-down
+    Glyphs["accSagittalDoubleSharp5v11SDown"] = "\uE35E";
+    // U+E384  Double sharp 5:19C-down, 19/20-tone up
+    Glyphs["accSagittalDoubleSharp5v19CDown"] = "\uE384";
+    // U+E382  Double sharp 5:23S-down, 8° up [60 EDO], 4/5-tone up
+    Glyphs["accSagittalDoubleSharp5v23SDown"] = "\uE382";
+    // U+E332  Double sharp 5:7k-down
+    Glyphs["accSagittalDoubleSharp5v7kDown"] = "\uE332";
+    // U+E32E  Double sharp 7C-down, 5°[43] 10°[72] up, 5/6-tone up
+    Glyphs["accSagittalDoubleSharp7CDown"] = "\uE32E";
+    // U+E360  Double sharp 7:11C-down, 9° up [60 EDO], 9/10-tone up
+    Glyphs["accSagittalDoubleSharp7v11CDown"] = "\uE360";
+    // U+E366  Double sharp 7:11k-down
+    Glyphs["accSagittalDoubleSharp7v11kDown"] = "\uE366";
+    // U+E3E4  Double sharp 7:19C-down
+    Glyphs["accSagittalDoubleSharp7v19CDown"] = "\uE3E4";
+    // U+E319  Flat, (apotome down)[almost all EDOs], 1/2-tone down
+    Glyphs["accSagittalFlat"] = "\uE319";
+    // U+E329  Flat 11L-down, 8° up [46 EDO]
+    Glyphs["accSagittalFlat11LDown"] = "\uE329";
+    // U+E327  Flat 11M-down, 3° down [17 31 EDOs], 7° down [46 EDO], 3/4-tone down
+    Glyphs["accSagittalFlat11MDown"] = "\uE327";
+    // U+E3DB  Flat 11:19L-down
+    Glyphs["accSagittalFlat11v19LDown"] = "\uE3DB";
+    // U+E3D3  Flat 11:19M-down
+    Glyphs["accSagittalFlat11v19MDown"] = "\uE3D3";
+    // U+E3C7  Flat 11:49C-down
+    Glyphs["accSagittalFlat11v49CDown"] = "\uE3C7";
+    // U+E3B9  Flat 11:49C-up
+    Glyphs["accSagittalFlat11v49CUp"] = "\uE3B9";
+    // U+E3C5  Flat 143C-down
+    Glyphs["accSagittalFlat143CDown"] = "\uE3C5";
+    // U+E3BB  Flat 143C-up
+    Glyphs["accSagittalFlat143CUp"] = "\uE3BB";
+    // U+E357  Flat 17C-down
+    Glyphs["accSagittalFlat17CDown"] = "\uE357";
+    // U+E351  Flat 17C-up
+    Glyphs["accSagittalFlat17CUp"] = "\uE351";
+    // U+E3C3  Flat 17k-down
+    Glyphs["accSagittalFlat17kDown"] = "\uE3C3";
+    // U+E3BD  Flat 17k-up
+    Glyphs["accSagittalFlat17kUp"] = "\uE3BD";
+    // U+E3C9  Flat 19C-down
+    Glyphs["accSagittalFlat19CDown"] = "\uE3C9";
+    // U+E3B7  Flat 19C-up
+    Glyphs["accSagittalFlat19CUp"] = "\uE3B7";
+    // U+E3C1  Flat 19s-down
+    Glyphs["accSagittalFlat19sDown"] = "\uE3C1";
+    // U+E3BF  Flat 19s-up
+    Glyphs["accSagittalFlat19sUp"] = "\uE3BF";
+    // U+E37D  Flat 23C-down, 10° down [96 EDO], 5/8-tone down
+    Glyphs["accSagittalFlat23CDown"] = "\uE37D";
+    // U+E37B  Flat 23C-up, 6° down [96 EDO], 3/8-tone down
+    Glyphs["accSagittalFlat23CUp"] = "\uE37B";
+    // U+E3CF  Flat 23S-down
+    Glyphs["accSagittalFlat23SDown"] = "\uE3CF";
+    // U+E3B1  Flat 23S-up
+    Glyphs["accSagittalFlat23SUp"] = "\uE3B1";
+    // U+E323  Flat 25S-down, 7° down [53 EDO]
+    Glyphs["accSagittalFlat25SDown"] = "\uE323";
+    // U+E311  Flat 25S-up, 3° down [53 EDO]
+    Glyphs["accSagittalFlat25SUp"] = "\uE311";
+    // U+E32B  Flat 35L-down, 5° down [50 EDO]
+    Glyphs["accSagittalFlat35LDown"] = "\uE32B";
+    // U+E325  Flat 35M-down, 4° down [50 EDO], 6° down [27 EDO], 13/18-tone down
+    Glyphs["accSagittalFlat35MDown"] = "\uE325";
+    // U+E3D9  Flat 49L-down
+    Glyphs["accSagittalFlat49LDown"] = "\uE3D9";
+    // U+E3D5  Flat 49M-down
+    Glyphs["accSagittalFlat49MDown"] = "\uE3D5";
+    // U+E3CD  Flat 49S-down
+    Glyphs["accSagittalFlat49SDown"] = "\uE3CD";
+    // U+E3B3  Flat 49S-up
+    Glyphs["accSagittalFlat49SUp"] = "\uE3B3";
+    // U+E359  Flat 55C-down, 11° down [96 EDO], 11/16-tone down
+    Glyphs["accSagittalFlat55CDown"] = "\uE359";
+    // U+E34F  Flat 55C-up, 5° down [96 EDO], 5/16-tone down
+    Glyphs["accSagittalFlat55CUp"] = "\uE34F";
+    // U+E31F  Flat 5C-down, 4°[22 29] 5°[27 34 41] 6°[39 46 53] down, 7/12-tone down
+    Glyphs["accSagittalFlat5CDown"] = "\uE31F";
+    // U+E315  Flat 5C-up, 2°[22 29] 3°[27 34 41] 4°[39 46 53] 5°72 7°[96] down, 5/12-tone down
+    Glyphs["accSagittalFlat5CUp"] = "\uE315";
+    // U+E35D  Flat 5:11S-down
+    Glyphs["accSagittalFlat5v11SDown"] = "\uE35D";
+    // U+E34B  Flat 5:11S-up
+    Glyphs["accSagittalFlat5v11SUp"] = "\uE34B";
+    // U+E3DD  Flat 5:13L-down
+    Glyphs["accSagittalFlat5v13LDown"] = "\uE3DD";
+    // U+E3D1  Flat 5:13M-down
+    Glyphs["accSagittalFlat5v13MDown"] = "\uE3D1";
+    // U+E37F  Flat 5:19C-down, 11/20-tone down
+    Glyphs["accSagittalFlat5v19CDown"] = "\uE37F";
+    // U+E379  Flat 5:19C-up, 9/20-tone down
+    Glyphs["accSagittalFlat5v19CUp"] = "\uE379";
+    // U+E381  Flat 5:23S-down, 7° down [60 EDO], 7/10-tone down
+    Glyphs["accSagittalFlat5v23SDown"] = "\uE381";
+    // U+E377  Flat 5:23S-up, 3° down [60 EDO], 3/10-tone down
+    Glyphs["accSagittalFlat5v23SUp"] = "\uE377";
+    // U+E3D7  Flat 5:49M-down
+    Glyphs["accSagittalFlat5v49MDown"] = "\uE3D7";
+    // U+E31D  Flat 5:7k-down
+    Glyphs["accSagittalFlat5v7kDown"] = "\uE31D";
+    // U+E317  Flat 5:7k-up
+    Glyphs["accSagittalFlat5v7kUp"] = "\uE317";
+    // U+E321  Flat 7C-down, 4° down [43 EDO], 8° down [72 EDO], 2/3-tone down
+    Glyphs["accSagittalFlat7CDown"] = "\uE321";
+    // U+E313  Flat 7C-up, 2° down [43 EDO], 4° down [72 EDO], 1/3-tone down
+    Glyphs["accSagittalFlat7CUp"] = "\uE313";
+    // U+E35B  Flat 7:11C-down, 6° down [60 EDO], 3/5- tone down
+    Glyphs["accSagittalFlat7v11CDown"] = "\uE35B";
+    // U+E34D  Flat 7:11C-up, 4° down [60 EDO], 2/5-tone down
+    Glyphs["accSagittalFlat7v11CUp"] = "\uE34D";
+    // U+E355  Flat 7:11k-down
+    Glyphs["accSagittalFlat7v11kDown"] = "\uE355";
+    // U+E353  Flat 7:11k-up
+    Glyphs["accSagittalFlat7v11kUp"] = "\uE353";
+    // U+E3CB  Flat 7:19C-down
+    Glyphs["accSagittalFlat7v19CDown"] = "\uE3CB";
+    // U+E3B5  Flat 7:19C-up
+    Glyphs["accSagittalFlat7v19CUp"] = "\uE3B5";
+    // U+E40B  Fractional tina down, 77/(5⋅37)-schismina down, 0.08 cents down
+    Glyphs["accSagittalFractionalTinaDown"] = "\uE40B";
+    // U+E40A  Fractional tina up, 77/(5⋅37)-schismina up, 0.08 cents up
+    Glyphs["accSagittalFractionalTinaUp"] = "\uE40A";
+    // U+E3F3  Grave, 5 schisma down, 2 cents down
+    Glyphs["accSagittalGrave"] = "\uE3F3";
+    // U+E3F1  Shaft down, (natural for use with only diacritics down)
+    Glyphs["accSagittalShaftDown"] = "\uE3F1";
+    // U+E3F0  Shaft up, (natural for use with only diacritics up)
+    Glyphs["accSagittalShaftUp"] = "\uE3F0";
+    // U+E318  Sharp, (apotome up)[almost all EDOs], 1/2-tone up
+    Glyphs["accSagittalSharp"] = "\uE318";
+    // U+E328  Sharp 11L-up, 8° up [46 EDO]
+    Glyphs["accSagittalSharp11LUp"] = "\uE328";
+    // U+E326  Sharp 11M-up, 3° up [17 31 EDOs], 7° up [46 EDO], 3/4-tone up
+    Glyphs["accSagittalSharp11MUp"] = "\uE326";
+    // U+E3DA  Sharp 11:19L-up
+    Glyphs["accSagittalSharp11v19LUp"] = "\uE3DA";
+    // U+E3D2  Sharp 11:19M-up
+    Glyphs["accSagittalSharp11v19MUp"] = "\uE3D2";
+    // U+E3B8  Sharp 11:49C-down
+    Glyphs["accSagittalSharp11v49CDown"] = "\uE3B8";
+    // U+E3C6  Sharp 11:49C-up
+    Glyphs["accSagittalSharp11v49CUp"] = "\uE3C6";
+    // U+E3BA  Sharp 143C-down
+    Glyphs["accSagittalSharp143CDown"] = "\uE3BA";
+    // U+E3C4  Sharp 143C-up
+    Glyphs["accSagittalSharp143CUp"] = "\uE3C4";
+    // U+E350  Sharp 17C-down
+    Glyphs["accSagittalSharp17CDown"] = "\uE350";
+    // U+E356  Sharp 17C-up
+    Glyphs["accSagittalSharp17CUp"] = "\uE356";
+    // U+E3BC  Sharp 17k-down
+    Glyphs["accSagittalSharp17kDown"] = "\uE3BC";
+    // U+E3C2  Sharp 17k-up
+    Glyphs["accSagittalSharp17kUp"] = "\uE3C2";
+    // U+E3B6  Sharp 19C-down
+    Glyphs["accSagittalSharp19CDown"] = "\uE3B6";
+    // U+E3C8  Sharp 19C-up
+    Glyphs["accSagittalSharp19CUp"] = "\uE3C8";
+    // U+E3BE  Sharp 19s-down
+    Glyphs["accSagittalSharp19sDown"] = "\uE3BE";
+    // U+E3C0  Sharp 19s-up
+    Glyphs["accSagittalSharp19sUp"] = "\uE3C0";
+    // U+E37A  Sharp 23C-down, 6° up [96 EDO], 3/8-tone up
+    Glyphs["accSagittalSharp23CDown"] = "\uE37A";
+    // U+E37C  Sharp 23C-up, 10° up [96 EDO], 5/8-tone up
+    Glyphs["accSagittalSharp23CUp"] = "\uE37C";
+    // U+E3B0  Sharp 23S-down
+    Glyphs["accSagittalSharp23SDown"] = "\uE3B0";
+    // U+E3CE  Sharp 23S-up
+    Glyphs["accSagittalSharp23SUp"] = "\uE3CE";
+    // U+E310  Sharp 25S-down, 3° up [53 EDO]
+    Glyphs["accSagittalSharp25SDown"] = "\uE310";
+    // U+E322  Sharp 25S-up, 7° up [53 EDO]
+    Glyphs["accSagittalSharp25SUp"] = "\uE322";
+    // U+E32A  Sharp 35L-up, 5° up [50 EDO]
+    Glyphs["accSagittalSharp35LUp"] = "\uE32A";
+    // U+E324  Sharp 35M-up, 4° up [50 EDO], 6° up [27 EDO], 13/18-tone up
+    Glyphs["accSagittalSharp35MUp"] = "\uE324";
+    // U+E3D8  Sharp 49L-up
+    Glyphs["accSagittalSharp49LUp"] = "\uE3D8";
+    // U+E3D4  Sharp 49M-up
+    Glyphs["accSagittalSharp49MUp"] = "\uE3D4";
+    // U+E3B2  Sharp 49S-down
+    Glyphs["accSagittalSharp49SDown"] = "\uE3B2";
+    // U+E3CC  Sharp 49S-up
+    Glyphs["accSagittalSharp49SUp"] = "\uE3CC";
+    // U+E34E  Sharp 55C-down, 5° up [96 EDO], 5/16-tone up
+    Glyphs["accSagittalSharp55CDown"] = "\uE34E";
+    // U+E358  Sharp 55C-up, 11° up [96 EDO], 11/16-tone up
+    Glyphs["accSagittalSharp55CUp"] = "\uE358";
+    // U+E314  Sharp 5C-down, 2°[22 29] 3°[27 34 41] 4°[39 46 53] 5°[72] 7°[96] up, 5/12-tone up
+    Glyphs["accSagittalSharp5CDown"] = "\uE314";
+    // U+E31E  Sharp 5C-up, 4°[22 29] 5°[27 34 41] 6°[39 46 53] up, 7/12-tone up
+    Glyphs["accSagittalSharp5CUp"] = "\uE31E";
+    // U+E34A  Sharp 5:11S-down
+    Glyphs["accSagittalSharp5v11SDown"] = "\uE34A";
+    // U+E35C  Sharp 5:11S-up
+    Glyphs["accSagittalSharp5v11SUp"] = "\uE35C";
+    // U+E3DC  Sharp 5:13L-up
+    Glyphs["accSagittalSharp5v13LUp"] = "\uE3DC";
+    // U+E3D0  Sharp 5:13M-up
+    Glyphs["accSagittalSharp5v13MUp"] = "\uE3D0";
+    // U+E378  Sharp 5:19C-down, 9/20-tone up
+    Glyphs["accSagittalSharp5v19CDown"] = "\uE378";
+    // U+E37E  Sharp 5:19C-up, 11/20-tone up
+    Glyphs["accSagittalSharp5v19CUp"] = "\uE37E";
+    // U+E376  Sharp 5:23S-down, 3° up [60 EDO], 3/10-tone up
+    Glyphs["accSagittalSharp5v23SDown"] = "\uE376";
+    // U+E380  Sharp 5:23S-up, 7° up [60 EDO], 7/10-tone up
+    Glyphs["accSagittalSharp5v23SUp"] = "\uE380";
+    // U+E3D6  Sharp 5:49M-up, (one and a half apotomes)
+    Glyphs["accSagittalSharp5v49MUp"] = "\uE3D6";
+    // U+E316  Sharp 5:7k-down
+    Glyphs["accSagittalSharp5v7kDown"] = "\uE316";
+    // U+E31C  Sharp 5:7k-up
+    Glyphs["accSagittalSharp5v7kUp"] = "\uE31C";
+    // U+E312  Sharp 7C-down, 2° up [43 EDO], 4° up [72 EDO], 1/3-tone up
+    Glyphs["accSagittalSharp7CDown"] = "\uE312";
+    // U+E320  Sharp 7C-up, 4° up [43 EDO], 8° up [72 EDO], 2/3-tone up
+    Glyphs["accSagittalSharp7CUp"] = "\uE320";
+    // U+E34C  Sharp 7:11C-down, 4° up [60 EDO], 2/5-tone up
+    Glyphs["accSagittalSharp7v11CDown"] = "\uE34C";
+    // U+E35A  Sharp 7:11C-up, 6° up [60 EDO], 3/5- tone up
+    Glyphs["accSagittalSharp7v11CUp"] = "\uE35A";
+    // U+E352  Sharp 7:11k-down
+    Glyphs["accSagittalSharp7v11kDown"] = "\uE352";
+    // U+E354  Sharp 7:11k-up
+    Glyphs["accSagittalSharp7v11kUp"] = "\uE354";
+    // U+E3B4  Sharp 7:19C-down
+    Glyphs["accSagittalSharp7v19CDown"] = "\uE3B4";
+    // U+E3CA  Sharp 7:19C-up
+    Glyphs["accSagittalSharp7v19CUp"] = "\uE3CA";
+    // U+E31A  Unused
+    Glyphs["accSagittalUnused1"] = "\uE31A";
+    // U+E31B  Unused
+    Glyphs["accSagittalUnused2"] = "\uE31B";
+    // U+E3DE  Unused
+    Glyphs["accSagittalUnused3"] = "\uE3DE";
+    // U+E3DF  Unused
+    Glyphs["accSagittalUnused4"] = "\uE3DF";
+    // U+E8CA  Combining accordion coupler dot
+    Glyphs["accdnCombDot"] = "\uE8CA";
+    // U+E8C8  Combining left hand, 2 ranks, empty
+    Glyphs["accdnCombLH2RanksEmpty"] = "\uE8C8";
+    // U+E8C9  Combining left hand, 3 ranks, empty (square)
+    Glyphs["accdnCombLH3RanksEmptySquare"] = "\uE8C9";
+    // U+E8C6  Combining right hand, 3 ranks, empty
+    Glyphs["accdnCombRH3RanksEmpty"] = "\uE8C6";
+    // U+E8C7  Combining right hand, 4 ranks, empty
+    Glyphs["accdnCombRH4RanksEmpty"] = "\uE8C7";
+    // U+E079  Diatonic accordion clef
+    Glyphs["accdnDiatonicClef"] = "\uE079";
+    // U+E8BC  Left hand, 2 ranks, 16' stop (round)
+    Glyphs["accdnLH2Ranks16Round"] = "\uE8BC";
+    // U+E8BD  Left hand, 2 ranks, 8' stop + 16' stop (round)
+    Glyphs["accdnLH2Ranks8Plus16Round"] = "\uE8BD";
+    // U+E8BB  Left hand, 2 ranks, 8' stop (round)
+    Glyphs["accdnLH2Ranks8Round"] = "\uE8BB";
+    // U+E8C0  Left hand, 2 ranks, full master (round)
+    Glyphs["accdnLH2RanksFullMasterRound"] = "\uE8C0";
+    // U+E8BF  Left hand, 2 ranks, master + 16' stop (round)
+    Glyphs["accdnLH2RanksMasterPlus16Round"] = "\uE8BF";
+    // U+E8BE  Left hand, 2 ranks, master (round)
+    Glyphs["accdnLH2RanksMasterRound"] = "\uE8BE";
+    // U+E8C4  Left hand, 3 ranks, 2' stop + 8' stop (square)
+    Glyphs["accdnLH3Ranks2Plus8Square"] = "\uE8C4";
+    // U+E8C2  Left hand, 3 ranks, 2' stop (square)
+    Glyphs["accdnLH3Ranks2Square"] = "\uE8C2";
+    // U+E8C1  Left hand, 3 ranks, 8' stop (square)
+    Glyphs["accdnLH3Ranks8Square"] = "\uE8C1";
+    // U+E8C3  Left hand, 3 ranks, double 8' stop (square)
+    Glyphs["accdnLH3RanksDouble8Square"] = "\uE8C3";
+    // U+E8C5  Left hand, 3 ranks, 2' stop + double 8' stop (tutti) (square)
+    Glyphs["accdnLH3RanksTuttiSquare"] = "\uE8C5";
+    // U+E8CC  Pull
+    Glyphs["accdnPull"] = "\uE8CC";
+    // U+E8CB  Push
+    Glyphs["accdnPush"] = "\uE8CB";
+    // U+E8AC  Right hand, 3 ranks, 8' stop + upper tremolo 8' stop + 16' stop (accordion)
+    Glyphs["accdnRH3RanksAccordion"] = "\uE8AC";
+    // U+E8A8  Right hand, 3 ranks, lower tremolo 8' stop + 8' stop + upper tremolo 8' stop (authentic musette)
+    Glyphs["accdnRH3RanksAuthenticMusette"] = "\uE8A8";
+    // U+E8AB  Right hand, 3 ranks, 8' stop + 16' stop (bandoneón)
+    Glyphs["accdnRH3RanksBandoneon"] = "\uE8AB";
+    // U+E8A4  Right hand, 3 ranks, 16' stop (bassoon)
+    Glyphs["accdnRH3RanksBassoon"] = "\uE8A4";
+    // U+E8A1  Right hand, 3 ranks, 8' stop (clarinet)
+    Glyphs["accdnRH3RanksClarinet"] = "\uE8A1";
+    // U+E8B1  Right hand, 3 ranks, lower tremolo 8' stop + 8' stop + upper tremolo 8' stop + 16' stop
+    Glyphs["accdnRH3RanksDoubleTremoloLower8ve"] = "\uE8B1";
+    // U+E8B2  Right hand, 3 ranks, 4' stop + lower tremolo 8' stop + 8' stop + upper tremolo 8' stop
+    Glyphs["accdnRH3RanksDoubleTremoloUpper8ve"] = "\uE8B2";
+    // U+E8B3  Right hand, 3 ranks, 4' stop + lower tremolo 8' stop + 8' stop + upper tremolo 8' stop + 16' stop
+    Glyphs["accdnRH3RanksFullFactory"] = "\uE8B3";
+    // U+E8AA  Right hand, 3 ranks, 4' stop + 8' stop + 16' stop (harmonium)
+    Glyphs["accdnRH3RanksHarmonium"] = "\uE8AA";
+    // U+E8A7  Right hand, 3 ranks, 4' stop + 8' stop + upper tremolo 8' stop (imitation musette)
+    Glyphs["accdnRH3RanksImitationMusette"] = "\uE8A7";
+    // U+E8A3  Right hand, 3 ranks, lower tremolo 8' stop
+    Glyphs["accdnRH3RanksLowerTremolo8"] = "\uE8A3";
+    // U+E8AD  Right hand, 3 ranks, 4' stop + lower tremolo 8' stop + upper tremolo 8' stop + 16' stop (master)
+    Glyphs["accdnRH3RanksMaster"] = "\uE8AD";
+    // U+E8A5  Right hand, 3 ranks, 4' stop + 8' stop (oboe)
+    Glyphs["accdnRH3RanksOboe"] = "\uE8A5";
+    // U+E8A9  Right hand, 3 ranks, 4' stop + 16' stop (organ)
+    Glyphs["accdnRH3RanksOrgan"] = "\uE8A9";
+    // U+E8A0  Right hand, 3 ranks, 4' stop (piccolo)
+    Glyphs["accdnRH3RanksPiccolo"] = "\uE8A0";
+    // U+E8AF  Right hand, 3 ranks, lower tremolo 8' stop + upper tremolo 8' stop + 16' stop
+    Glyphs["accdnRH3RanksTremoloLower8ve"] = "\uE8AF";
+    // U+E8B0  Right hand, 3 ranks, 4' stop + lower tremolo 8' stop + upper tremolo 8' stop
+    Glyphs["accdnRH3RanksTremoloUpper8ve"] = "\uE8B0";
+    // U+E8AE  Right hand, 3 ranks, lower tremolo 8' stop + upper tremolo 8' stop
+    Glyphs["accdnRH3RanksTwoChoirs"] = "\uE8AE";
+    // U+E8A2  Right hand, 3 ranks, upper tremolo 8' stop
+    Glyphs["accdnRH3RanksUpperTremolo8"] = "\uE8A2";
+    // U+E8A6  Right hand, 3 ranks, 8' stop + upper tremolo 8' stop (violin)
+    Glyphs["accdnRH3RanksViolin"] = "\uE8A6";
+    // U+E8B5  Right hand, 4 ranks, alto
+    Glyphs["accdnRH4RanksAlto"] = "\uE8B5";
+    // U+E8BA  Right hand, 4 ranks, bass/alto
+    Glyphs["accdnRH4RanksBassAlto"] = "\uE8BA";
+    // U+E8B7  Right hand, 4 ranks, master
+    Glyphs["accdnRH4RanksMaster"] = "\uE8B7";
+    // U+E8B8  Right hand, 4 ranks, soft bass
+    Glyphs["accdnRH4RanksSoftBass"] = "\uE8B8";
+    // U+E8B9  Right hand, 4 ranks, soft tenor
+    Glyphs["accdnRH4RanksSoftTenor"] = "\uE8B9";
+    // U+E8B4  Right hand, 4 ranks, soprano
+    Glyphs["accdnRH4RanksSoprano"] = "\uE8B4";
+    // U+E8B6  Right hand, 4 ranks, tenor
+    Glyphs["accdnRH4RanksTenor"] = "\uE8B6";
+    // U+E8CD  Ricochet (2 tones)
+    Glyphs["accdnRicochet2"] = "\uE8CD";
+    // U+E8CE  Ricochet (3 tones)
+    Glyphs["accdnRicochet3"] = "\uE8CE";
+    // U+E8CF  Ricochet (4 tones)
+    Glyphs["accdnRicochet4"] = "\uE8CF";
+    // U+E8D0  Ricochet (5 tones)
+    Glyphs["accdnRicochet5"] = "\uE8D0";
+    // U+E8D1  Ricochet (6 tones)
+    Glyphs["accdnRicochet6"] = "\uE8D1";
+    // U+E8D2  Combining ricochet for stem (2 tones)
+    Glyphs["accdnRicochetStem2"] = "\uE8D2";
+    // U+E8D3  Combining ricochet for stem (3 tones)
+    Glyphs["accdnRicochetStem3"] = "\uE8D3";
+    // U+E8D4  Combining ricochet for stem (4 tones)
+    Glyphs["accdnRicochetStem4"] = "\uE8D4";
+    // U+E8D5  Combining ricochet for stem (5 tones)
+    Glyphs["accdnRicochetStem5"] = "\uE8D5";
+    // U+E8D6  Combining ricochet for stem (6 tones)
+    Glyphs["accdnRicochetStem6"] = "\uE8D6";
+    // U+E454  1-comma flat
+    Glyphs["accidental1CommaFlat"] = "\uE454";
+    // U+E450  1-comma sharp
+    Glyphs["accidental1CommaSharp"] = "\uE450";
+    // U+E455  2-comma flat
+    Glyphs["accidental2CommaFlat"] = "\uE455";
+    // U+E451  2-comma sharp
+    Glyphs["accidental2CommaSharp"] = "\uE451";
+    // U+E456  3-comma flat
+    Glyphs["accidental3CommaFlat"] = "\uE456";
+    // U+E452  3-comma sharp
+    Glyphs["accidental3CommaSharp"] = "\uE452";
+    // U+E457  4-comma flat
+    Glyphs["accidental4CommaFlat"] = "\uE457";
+    // U+E453  5-comma sharp
+    Glyphs["accidental5CommaSharp"] = "\uE453";
+    // U+E27B  Arrow down (lower by one quarter-tone)
+    Glyphs["accidentalArrowDown"] = "\uE27B";
+    // U+E27A  Arrow up (raise by one quarter-tone)
+    Glyphs["accidentalArrowUp"] = "\uE27A";
+    // U+E442  Bakiye (flat)
+    Glyphs["accidentalBakiyeFlat"] = "\uE442";
+    // U+E445  Bakiye (sharp)
+    Glyphs["accidentalBakiyeSharp"] = "\uE445";
+    // U+E26C  Accidental bracket, left
+    Glyphs["accidentalBracketLeft"] = "\uE26C";
+    // U+E26D  Accidental bracket, right
+    Glyphs["accidentalBracketRight"] = "\uE26D";
+    // U+E440  Büyük mücenneb (flat)
+    Glyphs["accidentalBuyukMucennebFlat"] = "\uE440";
+    // U+E447  Büyük mücenneb (sharp)
+    Glyphs["accidentalBuyukMucennebSharp"] = "\uE447";
+    // U+E2EF  Combining close curly brace
+    Glyphs["accidentalCombiningCloseCurlyBrace"] = "\uE2EF";
+    // U+E2E6  Combining lower by one 17-limit schisma
+    Glyphs["accidentalCombiningLower17Schisma"] = "\uE2E6";
+    // U+E2E8  Combining lower by one 19-limit schisma
+    Glyphs["accidentalCombiningLower19Schisma"] = "\uE2E8";
+    // U+E2EA  Combining lower by one 23-limit comma
+    Glyphs["accidentalCombiningLower23Limit29LimitComma"] = "\uE2EA";
+    // U+EE50  Combining lower by one 29-limit comma
+    Glyphs["accidentalCombiningLower29LimitComma"] = "\uEE50";
+    // U+E2EC  Combining lower by one 31-limit schisma
+    Glyphs["accidentalCombiningLower31Schisma"] = "\uE2EC";
+    // U+EE52  Combining lower by one 37-limit quartertone
+    Glyphs["accidentalCombiningLower37Quartertone"] = "\uEE52";
+    // U+EE54  Combining lower by one 41-limit comma
+    Glyphs["accidentalCombiningLower41Comma"] = "\uEE54";
+    // U+EE56  Combining lower by one 43-limit comma
+    Glyphs["accidentalCombiningLower43Comma"] = "\uEE56";
+    // U+EE58  Combining lower by one 47-limit quartertone
+    Glyphs["accidentalCombiningLower47Quartertone"] = "\uEE58";
+    // U+E2F7  Combining lower by one 53-limit comma
+    Glyphs["accidentalCombiningLower53LimitComma"] = "\uE2F7";
+    // U+E2EE  Combining open curly brace
+    Glyphs["accidentalCombiningOpenCurlyBrace"] = "\uE2EE";
+    // U+E2E7  Combining raise by one 17-limit schisma
+    Glyphs["accidentalCombiningRaise17Schisma"] = "\uE2E7";
+    // U+E2E9  Combining raise by one 19-limit schisma
+    Glyphs["accidentalCombiningRaise19Schisma"] = "\uE2E9";
+    // U+E2EB  Combining raise by one 23-limit comma
+    Glyphs["accidentalCombiningRaise23Limit29LimitComma"] = "\uE2EB";
+    // U+EE51  Combining raise by one 29-limit comma
+    Glyphs["accidentalCombiningRaise29LimitComma"] = "\uEE51";
+    // U+E2ED  Combining raise by one 31-limit schisma
+    Glyphs["accidentalCombiningRaise31Schisma"] = "\uE2ED";
+    // U+EE53  Combining raise by one 37-limit quartertone
+    Glyphs["accidentalCombiningRaise37Quartertone"] = "\uEE53";
+    // U+EE55  Combining raise by one 41-limit comma
+    Glyphs["accidentalCombiningRaise41Comma"] = "\uEE55";
+    // U+EE57  Combining raise by one 43-limit comma
+    Glyphs["accidentalCombiningRaise43Comma"] = "\uEE57";
+    // U+EE59  Combining raise by one 47-limit quartertone
+    Glyphs["accidentalCombiningRaise47Quartertone"] = "\uEE59";
+    // U+E2F8  Combining raise by one 53-limit comma
+    Glyphs["accidentalCombiningRaise53LimitComma"] = "\uE2F8";
+    // U+E47A  Syntonic/Didymus comma (80:81) down (Bosanquet)
+    Glyphs["accidentalCommaSlashDown"] = "\uE47A";
+    // U+E479  Syntonic/Didymus comma (80:81) up (Bosanquet)
+    Glyphs["accidentalCommaSlashUp"] = "\uE479";
+    // U+E264  Double flat
+    Glyphs["accidentalDoubleFlat"] = "\uE264";
+    // U+1D12B  Double flat
+    Glyphs["accidentalDoubleFlatAlternate"] = "\uD834\uDD2B";
+    // U+ED30  Arabic double flat
+    Glyphs["accidentalDoubleFlatArabic"] = "\uED30";
+    // U+E2F0  Double flat equal tempered semitone
+    Glyphs["accidentalDoubleFlatEqualTempered"] = "\uE2F0";
+    // U+E2C0  Double flat lowered by one syntonic comma
+    Glyphs["accidentalDoubleFlatOneArrowDown"] = "\uE2C0";
+    // U+E2C5  Double flat raised by one syntonic comma
+    Glyphs["accidentalDoubleFlatOneArrowUp"] = "\uE2C5";
+    // U+E483  Reversed double flat
+    Glyphs["accidentalDoubleFlatReversed"] = "\uE483";
+    // U+E2D4  Double flat lowered by three syntonic commas
+    Glyphs["accidentalDoubleFlatThreeArrowsDown"] = "\uE2D4";
+    // U+E2D9  Double flat raised by three syntonic commas
+    Glyphs["accidentalDoubleFlatThreeArrowsUp"] = "\uE2D9";
+    // U+E485  Turned double flat
+    Glyphs["accidentalDoubleFlatTurned"] = "\uE485";
+    // U+E2CA  Double flat lowered by two syntonic commas
+    Glyphs["accidentalDoubleFlatTwoArrowsDown"] = "\uE2CA";
+    // U+E2CF  Double flat raised by two syntonic commas
+    Glyphs["accidentalDoubleFlatTwoArrowsUp"] = "\uE2CF";
+    // U+E263  Double sharp
+    Glyphs["accidentalDoubleSharp"] = "\uE263";
+    // U+1D12A  Double sharp
+    Glyphs["accidentalDoubleSharpAlternate"] = "\uD834\uDD2A";
+    // U+ED38  Arabic double sharp
+    Glyphs["accidentalDoubleSharpArabic"] = "\uED38";
+    // U+E2F4  Double sharp equal tempered semitone
+    Glyphs["accidentalDoubleSharpEqualTempered"] = "\uE2F4";
+    // U+E2C4  Double sharp lowered by one syntonic comma
+    Glyphs["accidentalDoubleSharpOneArrowDown"] = "\uE2C4";
+    // U+E2C9  Double sharp raised by one syntonic comma
+    Glyphs["accidentalDoubleSharpOneArrowUp"] = "\uE2C9";
+    // U+E2D8  Double sharp lowered by three syntonic commas
+    Glyphs["accidentalDoubleSharpThreeArrowsDown"] = "\uE2D8";
+    // U+E2DD  Double sharp raised by three syntonic commas
+    Glyphs["accidentalDoubleSharpThreeArrowsUp"] = "\uE2DD";
+    // U+E2CE  Double sharp lowered by two syntonic commas
+    Glyphs["accidentalDoubleSharpTwoArrowsDown"] = "\uE2CE";
+    // U+E2D3  Double sharp raised by two syntonic commas
+    Glyphs["accidentalDoubleSharpTwoArrowsUp"] = "\uE2D3";
+    // U+E2FA  Enharmonically reinterpret accidental almost equal to
+    Glyphs["accidentalEnharmonicAlmostEqualTo"] = "\uE2FA";
+    // U+E2FB  Enharmonically reinterpret accidental equals
+    Glyphs["accidentalEnharmonicEquals"] = "\uE2FB";
+    // U+E2F9  Enharmonically reinterpret accidental tilde
+    Glyphs["accidentalEnharmonicTilde"] = "\uE2F9";
+    // U+E296  Filled reversed flat and flat
+    Glyphs["accidentalFilledReversedFlatAndFlat"] = "\uE296";
+    // U+E298  Filled reversed flat and flat with arrow down
+    Glyphs["accidentalFilledReversedFlatAndFlatArrowDown"] = "\uE298";
+    // U+E297  Filled reversed flat and flat with arrow up
+    Glyphs["accidentalFilledReversedFlatAndFlatArrowUp"] = "\uE297";
+    // U+E293  Filled reversed flat with arrow down
+    Glyphs["accidentalFilledReversedFlatArrowDown"] = "\uE293";
+    // U+E292  Filled reversed flat with arrow up
+    Glyphs["accidentalFilledReversedFlatArrowUp"] = "\uE292";
+    // U+E279  Five-quarter-tones flat
+    Glyphs["accidentalFiveQuarterTonesFlatArrowDown"] = "\uE279";
+    // U+E276  Five-quarter-tones sharp
+    Glyphs["accidentalFiveQuarterTonesSharpArrowUp"] = "\uE276";
+    // U+E260  Flat
+    Glyphs["accidentalFlat"] = "\uE260";
+    // U+266D  Flat
+    Glyphs["accidentalFlatAlternate"] = "\u266D";
+    // U+ED32  Arabic half-tone flat
+    Glyphs["accidentalFlatArabic"] = "\uED32";
+    // U+E2F1  Flat equal tempered semitone
+    Glyphs["accidentalFlatEqualTempered"] = "\uE2F1";
+    // U+ED53  Lowered flat (Stockhausen)
+    Glyphs["accidentalFlatLoweredStockhausen"] = "\uED53";
+    // U+E2C1  Flat lowered by one syntonic comma
+    Glyphs["accidentalFlatOneArrowDown"] = "\uE2C1";
+    // U+E2C6  Flat raised by one syntonic comma
+    Glyphs["accidentalFlatOneArrowUp"] = "\uE2C6";
+    // U+ED52  Raised flat (Stockhausen)
+    Glyphs["accidentalFlatRaisedStockhausen"] = "\uED52";
+    // U+ED5C  Repeated flat, note on line (Stockhausen)
+    Glyphs["accidentalFlatRepeatedLineStockhausen"] = "\uED5C";
+    // U+ED5B  Repeated flat, note in space (Stockhausen)
+    Glyphs["accidentalFlatRepeatedSpaceStockhausen"] = "\uED5B";
+    // U+E2D5  Flat lowered by three syntonic commas
+    Glyphs["accidentalFlatThreeArrowsDown"] = "\uE2D5";
+    // U+E2DA  Flat raised by three syntonic commas
+    Glyphs["accidentalFlatThreeArrowsUp"] = "\uE2DA";
+    // U+E484  Turned flat
+    Glyphs["accidentalFlatTurned"] = "\uE484";
+    // U+E2CB  Flat lowered by two syntonic commas
+    Glyphs["accidentalFlatTwoArrowsDown"] = "\uE2CB";
+    // U+E2D0  Flat raised by two syntonic commas
+    Glyphs["accidentalFlatTwoArrowsUp"] = "\uE2D0";
+    // U+EE65  Quarter-tone higher (Alois Hába)
+    Glyphs["accidentalHabaFlatQuarterToneHigher"] = "\uEE65";
+    // U+EE69  Three quarter-tones lower (Alois Hába)
+    Glyphs["accidentalHabaFlatThreeQuarterTonesLower"] = "\uEE69";
+    // U+EE64  Quarter-tone higher (Alois Hába)
+    Glyphs["accidentalHabaQuarterToneHigher"] = "\uEE64";
+    // U+EE67  Quarter-tone lower (Alois Hába)
+    Glyphs["accidentalHabaQuarterToneLower"] = "\uEE67";
+    // U+EE68  Quarter-tone lower (Alois Hába)
+    Glyphs["accidentalHabaSharpQuarterToneLower"] = "\uEE68";
+    // U+EE66  Three quarter-tones higher (Alois Hába)
+    Glyphs["accidentalHabaSharpThreeQuarterTonesHigher"] = "\uEE66";
+    // U+E29A  Half sharp with arrow down
+    Glyphs["accidentalHalfSharpArrowDown"] = "\uE29A";
+    // U+E299  Half sharp with arrow up
+    Glyphs["accidentalHalfSharpArrowUp"] = "\uE299";
+    // U+E2B6  Thirteen (raise by 65:64)
+    Glyphs["accidentalJohnston13"] = "\uE2B6";
+    // U+E2B7  Inverted 13 (lower by 65:64)
+    Glyphs["accidentalJohnston31"] = "\uE2B7";
+    // U+E2B5  Down arrow (lower by 33:32)
+    Glyphs["accidentalJohnstonDown"] = "\uE2B5";
+    // U+E2B2  Inverted seven (raise by 36:35)
+    Glyphs["accidentalJohnstonEl"] = "\uE2B2";
+    // U+E2B1  Minus (lower by 81:80)
+    Glyphs["accidentalJohnstonMinus"] = "\uE2B1";
+    // U+E2B0  Plus (raise by 81:80)
+    Glyphs["accidentalJohnstonPlus"] = "\uE2B0";
+    // U+E2B3  Seven (lower by 36:35)
+    Glyphs["accidentalJohnstonSeven"] = "\uE2B3";
+    // U+E2B4  Up arrow (raise by 33:32)
+    Glyphs["accidentalJohnstonUp"] = "\uE2B4";
+    // U+E443  Koma (flat)
+    Glyphs["accidentalKomaFlat"] = "\uE443";
+    // U+E444  Koma (sharp)
+    Glyphs["accidentalKomaSharp"] = "\uE444";
+    // U+E460  Koron (quarter tone flat)
+    Glyphs["accidentalKoron"] = "\uE460";
+    // U+E441  Küçük mücenneb (flat)
+    Glyphs["accidentalKucukMucennebFlat"] = "\uE441";
+    // U+E446  Küçük mücenneb (sharp)
+    Glyphs["accidentalKucukMucennebSharp"] = "\uE446";
+    // U+E47D  Large double sharp
+    Glyphs["accidentalLargeDoubleSharp"] = "\uE47D";
+    // U+E2DE  Lower by one septimal comma
+    Glyphs["accidentalLowerOneSeptimalComma"] = "\uE2DE";
+    // U+E2E4  Lower by one tridecimal quartertone
+    Glyphs["accidentalLowerOneTridecimalQuartertone"] = "\uE2E4";
+    // U+E2E2  Lower by one undecimal quartertone
+    Glyphs["accidentalLowerOneUndecimalQuartertone"] = "\uE2E2";
+    // U+E2E0  Lower by two septimal commas
+    Glyphs["accidentalLowerTwoSeptimalCommas"] = "\uE2E0";
+    // U+ED51  Lowered (Stockhausen)
+    Glyphs["accidentalLoweredStockhausen"] = "\uED51";
+    // U+E284  Narrow reversed flat(quarter-tone flat)
+    Glyphs["accidentalNarrowReversedFlat"] = "\uE284";
+    // U+E285  Narrow reversed flat and flat(three-quarter-tones flat)
+    Glyphs["accidentalNarrowReversedFlatAndFlat"] = "\uE285";
+    // U+E261  Natural
+    Glyphs["accidentalNatural"] = "\uE261";
+    // U+266E  Natural
+    Glyphs["accidentalNaturalAlternate"] = "\u266E";
+    // U+ED34  Arabic natural
+    Glyphs["accidentalNaturalArabic"] = "\uED34";
+    // U+E2F2  Natural equal tempered semitone
+    Glyphs["accidentalNaturalEqualTempered"] = "\uE2F2";
+    // U+E267  Natural flat
+    Glyphs["accidentalNaturalFlat"] = "\uE267";
+    // U+ED55  Lowered natural (Stockhausen)
+    Glyphs["accidentalNaturalLoweredStockhausen"] = "\uED55";
+    // U+E2C2  Natural lowered by one syntonic comma
+    Glyphs["accidentalNaturalOneArrowDown"] = "\uE2C2";
+    // U+E2C7  Natural raised by one syntonic comma
+    Glyphs["accidentalNaturalOneArrowUp"] = "\uE2C7";
+    // U+ED54  Raised natural (Stockhausen)
+    Glyphs["accidentalNaturalRaisedStockhausen"] = "\uED54";
+    // U+E482  Reversed natural
+    Glyphs["accidentalNaturalReversed"] = "\uE482";
+    // U+E268  Natural sharp
+    Glyphs["accidentalNaturalSharp"] = "\uE268";
+    // U+E2D6  Natural lowered by three syntonic commas
+    Glyphs["accidentalNaturalThreeArrowsDown"] = "\uE2D6";
+    // U+E2DB  Natural raised by three syntonic commas
+    Glyphs["accidentalNaturalThreeArrowsUp"] = "\uE2DB";
+    // U+E2CC  Natural lowered by two syntonic commas
+    Glyphs["accidentalNaturalTwoArrowsDown"] = "\uE2CC";
+    // U+E2D1  Natural raised by two syntonic commas
+    Glyphs["accidentalNaturalTwoArrowsUp"] = "\uE2D1";
+    // U+E29C  One and a half sharps with arrow down
+    Glyphs["accidentalOneAndAHalfSharpsArrowDown"] = "\uE29C";
+    // U+E29B  One and a half sharps with arrow up
+    Glyphs["accidentalOneAndAHalfSharpsArrowUp"] = "\uE29B";
+    // U+E48F  One-quarter-tone flat (Ferneyhough)
+    Glyphs["accidentalOneQuarterToneFlatFerneyhough"] = "\uE48F";
+    // U+ED59  One-quarter-tone flat (Stockhausen)
+    Glyphs["accidentalOneQuarterToneFlatStockhausen"] = "\uED59";
+    // U+E48E  One-quarter-tone sharp (Ferneyhough)
+    Glyphs["accidentalOneQuarterToneSharpFerneyhough"] = "\uE48E";
+    // U+ED58  One-quarter-tone sharp (Stockhausen)
+    Glyphs["accidentalOneQuarterToneSharpStockhausen"] = "\uED58";
+    // U+E48B  One-third-tone flat (Ferneyhough)
+    Glyphs["accidentalOneThirdToneFlatFerneyhough"] = "\uE48B";
+    // U+E48A  One-third-tone sharp (Ferneyhough)
+    Glyphs["accidentalOneThirdToneSharpFerneyhough"] = "\uE48A";
+    // U+E26A  Accidental parenthesis, left
+    Glyphs["accidentalParensLeft"] = "\uE26A";
+    // U+E26B  Accidental parenthesis, right
+    Glyphs["accidentalParensRight"] = "\uE26B";
+    // U+E2F5  Lower by one equal tempered quarter-tone
+    Glyphs["accidentalQuarterFlatEqualTempered"] = "\uE2F5";
+    // U+E2F6  Raise by one equal tempered quarter tone
+    Glyphs["accidentalQuarterSharpEqualTempered"] = "\uE2F6";
+    // U+E47F  Quarter-tone flat
+    Glyphs["accidentalQuarterToneFlat4"] = "\uE47F";
+    // U+1D133  Quarter-tone flat
+    Glyphs["accidentalQuarterToneFlat4Alternate"] = "\uD834\uDD33";
+    // U+ED33  Arabic quarter-tone flat
+    Glyphs["accidentalQuarterToneFlatArabic"] = "\uED33";
+    // U+E270  Quarter-tone flat
+    Glyphs["accidentalQuarterToneFlatArrowUp"] = "\uE270";
+    // U+1D12C  Quarter-tone flat
+    Glyphs["accidentalQuarterToneFlatArrowUpAlternate"] = "\uD834\uDD2C";
+    // U+E480  Filled reversed flat (quarter-tone flat)
+    Glyphs["accidentalQuarterToneFlatFilledReversed"] = "\uE480";
+    // U+E273  Quarter-tone flat
+    Glyphs["accidentalQuarterToneFlatNaturalArrowDown"] = "\uE273";
+    // U+1D12F  Quarter-tone flat
+    Glyphs["accidentalQuarterToneFlatNaturalArrowDownAlternate"] = "\uD834\uDD2F";
+    // U+E478  Quarter tone flat (Penderecki)
+    Glyphs["accidentalQuarterToneFlatPenderecki"] = "\uE478";
+    // U+E280  Reversed flat (quarter-tone flat) (Stein)
+    Glyphs["accidentalQuarterToneFlatStein"] = "\uE280";
+    // U+E488  Quarter-tone flat (van Blankenburg)
+    Glyphs["accidentalQuarterToneFlatVanBlankenburg"] = "\uE488";
+    // U+E47E  Quarter-tone sharp
+    Glyphs["accidentalQuarterToneSharp4"] = "\uE47E";
+    // U+1D132  Quarter-tone sharp
+    Glyphs["accidentalQuarterToneSharp4Alternate"] = "\uD834\uDD32";
+    // U+ED35  Arabic quarter-tone sharp
+    Glyphs["accidentalQuarterToneSharpArabic"] = "\uED35";
+    // U+E275  Quarter-tone sharp
+    Glyphs["accidentalQuarterToneSharpArrowDown"] = "\uE275";
+    // U+1D131  Quarter-tone sharp
+    Glyphs["accidentalQuarterToneSharpArrowDownAlternate"] = "\uD834\uDD31";
+    // U+E472  Quarter tone sharp (Bussotti)
+    Glyphs["accidentalQuarterToneSharpBusotti"] = "\uE472";
+    // U+E272  Quarter-tone sharp
+    Glyphs["accidentalQuarterToneSharpNaturalArrowUp"] = "\uE272";
+    // U+1D12E  Quarter-tone sharp
+    Glyphs["accidentalQuarterToneSharpNaturalArrowUpAlternate"] = "\uD834\uDD2E";
+    // U+E282  Half sharp (quarter-tone sharp) (Stein)
+    Glyphs["accidentalQuarterToneSharpStein"] = "\uE282";
+    // U+E475  Quarter tone sharp with wiggly tail
+    Glyphs["accidentalQuarterToneSharpWiggle"] = "\uE475";
+    // U+E2DF  Raise by one septimal comma
+    Glyphs["accidentalRaiseOneSeptimalComma"] = "\uE2DF";
+    // U+E2E5  Raise by one tridecimal quartertone
+    Glyphs["accidentalRaiseOneTridecimalQuartertone"] = "\uE2E5";
+    // U+E2E3  Raise by one undecimal quartertone
+    Glyphs["accidentalRaiseOneUndecimalQuartertone"] = "\uE2E3";
+    // U+E2E1  Raise by two septimal commas
+    Glyphs["accidentalRaiseTwoSeptimalCommas"] = "\uE2E1";
+    // U+ED50  Raised (Stockhausen)
+    Glyphs["accidentalRaisedStockhausen"] = "\uED50";
+    // U+E295  Reversed flat and flat with arrow down
+    Glyphs["accidentalReversedFlatAndFlatArrowDown"] = "\uE295";
+    // U+E294  Reversed flat and flat with arrow up
+    Glyphs["accidentalReversedFlatAndFlatArrowUp"] = "\uE294";
+    // U+E291  Reversed flat with arrow down
+    Glyphs["accidentalReversedFlatArrowDown"] = "\uE291";
+    // U+E290  Reversed flat with arrow up
+    Glyphs["accidentalReversedFlatArrowUp"] = "\uE290";
+    // U+E262  Sharp
+    Glyphs["accidentalSharp"] = "\uE262";
+    // U+266F  Sharp
+    Glyphs["accidentalSharpAlternate"] = "\u266F";
+    // U+ED36  Arabic half-tone sharp
+    Glyphs["accidentalSharpArabic"] = "\uED36";
+    // U+E2F3  Sharp equal tempered semitone
+    Glyphs["accidentalSharpEqualTempered"] = "\uE2F3";
+    // U+ED57  Lowered sharp (Stockhausen)
+    Glyphs["accidentalSharpLoweredStockhausen"] = "\uED57";
+    // U+E2C3  Sharp lowered by one syntonic comma
+    Glyphs["accidentalSharpOneArrowDown"] = "\uE2C3";
+    // U+E2C8  Sharp raised by one syntonic comma
+    Glyphs["accidentalSharpOneArrowUp"] = "\uE2C8";
+    // U+E473  One or three quarter tones sharp
+    Glyphs["accidentalSharpOneHorizontalStroke"] = "\uE473";
+    // U+ED56  Raised sharp (Stockhausen)
+    Glyphs["accidentalSharpRaisedStockhausen"] = "\uED56";
+    // U+ED5E  Repeated sharp, note on line (Stockhausen)
+    Glyphs["accidentalSharpRepeatedLineStockhausen"] = "\uED5E";
+    // U+ED5D  Repeated sharp, note in space (Stockhausen)
+    Glyphs["accidentalSharpRepeatedSpaceStockhausen"] = "\uED5D";
+    // U+E481  Reversed sharp
+    Glyphs["accidentalSharpReversed"] = "\uE481";
+    // U+E269  Sharp sharp
+    Glyphs["accidentalSharpSharp"] = "\uE269";
+    // U+E2D7  Sharp lowered by three syntonic commas
+    Glyphs["accidentalSharpThreeArrowsDown"] = "\uE2D7";
+    // U+E2DC  Sharp raised by three syntonic commas
+    Glyphs["accidentalSharpThreeArrowsUp"] = "\uE2DC";
+    // U+E2CD  Sharp lowered by two syntonic commas
+    Glyphs["accidentalSharpTwoArrowsDown"] = "\uE2CD";
+    // U+E2D2  Sharp raised by two syntonic commas
+    Glyphs["accidentalSharpTwoArrowsUp"] = "\uE2D2";
+    // U+E2A0  1/12 tone low
+    Glyphs["accidentalSims12Down"] = "\uE2A0";
+    // U+E2A3  1/12 tone high
+    Glyphs["accidentalSims12Up"] = "\uE2A3";
+    // U+E2A2  1/4 tone low
+    Glyphs["accidentalSims4Down"] = "\uE2A2";
+    // U+E2A5  1/4 tone high
+    Glyphs["accidentalSims4Up"] = "\uE2A5";
+    // U+E2A1  1/6 tone low
+    Glyphs["accidentalSims6Down"] = "\uE2A1";
+    // U+E2A4  1/6 tone high
+    Glyphs["accidentalSims6Up"] = "\uE2A4";
+    // U+E461  Sori (quarter tone sharp)
+    Glyphs["accidentalSori"] = "\uE461";
+    // U+E477  Byzantine-style Bakiye flat (Tavener)
+    Glyphs["accidentalTavenerFlat"] = "\uE477";
+    // U+E476  Byzantine-style Büyük mücenneb sharp (Tavener)
+    Glyphs["accidentalTavenerSharp"] = "\uE476";
+    // U+ED31  Arabic three-quarter-tones flat
+    Glyphs["accidentalThreeQuarterTonesFlatArabic"] = "\uED31";
+    // U+E271  Three-quarter-tones flat
+    Glyphs["accidentalThreeQuarterTonesFlatArrowDown"] = "\uE271";
+    // U+1D12D  Three-quarter-tones flat
+    Glyphs["accidentalThreeQuarterTonesFlatArrowDownAlternate"] = "\uD834\uDD2D";
+    // U+E278  Three-quarter-tones flat
+    Glyphs["accidentalThreeQuarterTonesFlatArrowUp"] = "\uE278";
+    // U+E489  Three-quarter-tones flat (Couper)
+    Glyphs["accidentalThreeQuarterTonesFlatCouper"] = "\uE489";
+    // U+E486  Three-quarter-tones flat (Grisey)
+    Glyphs["accidentalThreeQuarterTonesFlatGrisey"] = "\uE486";
+    // U+E487  Three-quarter-tones flat (Tartini)
+    Glyphs["accidentalThreeQuarterTonesFlatTartini"] = "\uE487";
+    // U+E281  Reversed flat and flat (three-quarter-tones flat) (Zimmermann)
+    Glyphs["accidentalThreeQuarterTonesFlatZimmermann"] = "\uE281";
+    // U+ED37  Arabic three-quarter-tones sharp
+    Glyphs["accidentalThreeQuarterTonesSharpArabic"] = "\uED37";
+    // U+E277  Three-quarter-tones sharp
+    Glyphs["accidentalThreeQuarterTonesSharpArrowDown"] = "\uE277";
+    // U+E274  Three-quarter-tones sharp
+    Glyphs["accidentalThreeQuarterTonesSharpArrowUp"] = "\uE274";
+    // U+1D130  Three-quarter-tones sharp
+    Glyphs["accidentalThreeQuarterTonesSharpArrowUpAlternate"] = "\uD834\uDD30";
+    // U+E474  Three quarter tones sharp (Bussotti)
+    Glyphs["accidentalThreeQuarterTonesSharpBusotti"] = "\uE474";
+    // U+E283  One and a half sharps (three-quarter-tones sharp) (Stein)
+    Glyphs["accidentalThreeQuarterTonesSharpStein"] = "\uE283";
+    // U+ED5A  Three-quarter-tones sharp (Stockhausen)
+    Glyphs["accidentalThreeQuarterTonesSharpStockhausen"] = "\uED5A";
+    // U+E266  Triple flat
+    Glyphs["accidentalTripleFlat"] = "\uE266";
+    // U+E265  Triple sharp
+    Glyphs["accidentalTripleSharp"] = "\uE265";
+    // U+E48D  Two-third-tones flat (Ferneyhough)
+    Glyphs["accidentalTwoThirdTonesFlatFerneyhough"] = "\uE48D";
+    // U+E48C  Two-third-tones sharp (Ferneyhough)
+    Glyphs["accidentalTwoThirdTonesSharpFerneyhough"] = "\uE48C";
+    // U+EE61  Accidental down
+    Glyphs["accidentalUpsAndDownsDown"] = "\uEE61";
+    // U+EE63  Accidental less
+    Glyphs["accidentalUpsAndDownsLess"] = "\uEE63";
+    // U+EE62  Accidental more
+    Glyphs["accidentalUpsAndDownsMore"] = "\uEE62";
+    // U+EE60  Accidental up
+    Glyphs["accidentalUpsAndDownsUp"] = "\uEE60";
+    // U+E47C  Wilson minus (5 comma down)
+    Glyphs["accidentalWilsonMinus"] = "\uE47C";
+    // U+E47B  Wilson plus (5 comma up)
+    Glyphs["accidentalWilsonPlus"] = "\uE47B";
+    // U+E434  5/6 tone flat
+    Glyphs["accidentalWyschnegradsky10TwelfthsFlat"] = "\uE434";
+    // U+E429  5/6 tone sharp
+    Glyphs["accidentalWyschnegradsky10TwelfthsSharp"] = "\uE429";
+    // U+E435  11/12 tone flat
+    Glyphs["accidentalWyschnegradsky11TwelfthsFlat"] = "\uE435";
+    // U+E42A  11/12 tone sharp
+    Glyphs["accidentalWyschnegradsky11TwelfthsSharp"] = "\uE42A";
+    // U+E42B  1/12 tone flat
+    Glyphs["accidentalWyschnegradsky1TwelfthsFlat"] = "\uE42B";
+    // U+E420  1/12 tone sharp
+    Glyphs["accidentalWyschnegradsky1TwelfthsSharp"] = "\uE420";
+    // U+E42C  1/6 tone flat
+    Glyphs["accidentalWyschnegradsky2TwelfthsFlat"] = "\uE42C";
+    // U+E421  1/6 tone sharp
+    Glyphs["accidentalWyschnegradsky2TwelfthsSharp"] = "\uE421";
+    // U+E42D  1/4 tone flat
+    Glyphs["accidentalWyschnegradsky3TwelfthsFlat"] = "\uE42D";
+    // U+E422  1/4 tone sharp
+    Glyphs["accidentalWyschnegradsky3TwelfthsSharp"] = "\uE422";
+    // U+E42E  1/3 tone flat
+    Glyphs["accidentalWyschnegradsky4TwelfthsFlat"] = "\uE42E";
+    // U+E423  1/3 tone sharp
+    Glyphs["accidentalWyschnegradsky4TwelfthsSharp"] = "\uE423";
+    // U+E42F  5/12 tone flat
+    Glyphs["accidentalWyschnegradsky5TwelfthsFlat"] = "\uE42F";
+    // U+E424  5/12 tone sharp
+    Glyphs["accidentalWyschnegradsky5TwelfthsSharp"] = "\uE424";
+    // U+E430  1/2 tone flat
+    Glyphs["accidentalWyschnegradsky6TwelfthsFlat"] = "\uE430";
+    // U+E425  1/2 tone sharp
+    Glyphs["accidentalWyschnegradsky6TwelfthsSharp"] = "\uE425";
+    // U+E431  7/12 tone flat
+    Glyphs["accidentalWyschnegradsky7TwelfthsFlat"] = "\uE431";
+    // U+E426  7/12 tone sharp
+    Glyphs["accidentalWyschnegradsky7TwelfthsSharp"] = "\uE426";
+    // U+E432  2/3 tone flat
+    Glyphs["accidentalWyschnegradsky8TwelfthsFlat"] = "\uE432";
+    // U+E427  2/3 tone sharp
+    Glyphs["accidentalWyschnegradsky8TwelfthsSharp"] = "\uE427";
+    // U+E433  3/4 tone flat
+    Glyphs["accidentalWyschnegradsky9TwelfthsFlat"] = "\uE433";
+    // U+E428  3/4 tone sharp
+    Glyphs["accidentalWyschnegradsky9TwelfthsSharp"] = "\uE428";
+    // U+E470  One-third-tone sharp (Xenakis)
+    Glyphs["accidentalXenakisOneThirdToneSharp"] = "\uE470";
+    // U+E471  Two-third-tones sharp (Xenakis)
+    Glyphs["accidentalXenakisTwoThirdTonesSharp"] = "\uE471";
+    // U+E86A  Choralmelodie (Berg)
+    Glyphs["analyticsChoralmelodie"] = "\uE86A";
+    // U+E863  End of stimme
+    Glyphs["analyticsEndStimme"] = "\uE863";
+    // U+1D1A8  End of stimme
+    Glyphs["analyticsEndStimmeAlternate"] = "\uD834\uDDA8";
+    // U+E86B  Hauptrhythmus (Berg)
+    Glyphs["analyticsHauptrhythmus"] = "\uE86B";
+    // U+E860  Hauptstimme
+    Glyphs["analyticsHauptstimme"] = "\uE860";
+    // U+1D1A6  Hauptstimme
+    Glyphs["analyticsHauptstimmeAlternate"] = "\uD834\uDDA6";
+    // U+E869  Inversion 1
+    Glyphs["analyticsInversion1"] = "\uE869";
+    // U+E861  Nebenstimme
+    Glyphs["analyticsNebenstimme"] = "\uE861";
+    // U+1D1A7  Nebenstimme
+    Glyphs["analyticsNebenstimmeAlternate"] = "\uD834\uDDA7";
+    // U+E862  Start of stimme
+    Glyphs["analyticsStartStimme"] = "\uE862";
+    // U+E864  Theme
+    Glyphs["analyticsTheme"] = "\uE864";
+    // U+E868  Theme 1
+    Glyphs["analyticsTheme1"] = "\uE868";
+    // U+E867  Inversion of theme
+    Glyphs["analyticsThemeInversion"] = "\uE867";
+    // U+E865  Retrograde of theme
+    Glyphs["analyticsThemeRetrograde"] = "\uE865";
+    // U+E866  Retrograde inversion of theme
+    Glyphs["analyticsThemeRetrogradeInversion"] = "\uE866";
+    // U+E63C  Arpeggiato
+    Glyphs["arpeggiato"] = "\uE63C";
+    // U+E635  Arpeggiato down
+    Glyphs["arpeggiatoDown"] = "\uE635";
+    // U+1D184  Arpeggiato down
+    Glyphs["arpeggiatoDownAlternate"] = "\uD834\uDD84";
+    // U+E634  Arpeggiato up
+    Glyphs["arpeggiatoUp"] = "\uE634";
+    // U+1D183  Arpeggiato up
+    Glyphs["arpeggiatoUpAlternate"] = "\uD834\uDD83";
+    // U+EB64  Black arrow down (S)
+    Glyphs["arrowBlackDown"] = "\uEB64";
+    // U+EB65  Black arrow down-left (SW)
+    Glyphs["arrowBlackDownLeft"] = "\uEB65";
+    // U+EB63  Black arrow down-right (SE)
+    Glyphs["arrowBlackDownRight"] = "\uEB63";
+    // U+EB66  Black arrow left (W)
+    Glyphs["arrowBlackLeft"] = "\uEB66";
+    // U+EB62  Black arrow right (E)
+    Glyphs["arrowBlackRight"] = "\uEB62";
+    // U+EB60  Black arrow up (N)
+    Glyphs["arrowBlackUp"] = "\uEB60";
+    // U+EB67  Black arrow up-left (NW)
+    Glyphs["arrowBlackUpLeft"] = "\uEB67";
+    // U+EB61  Black arrow up-right (NE)
+    Glyphs["arrowBlackUpRight"] = "\uEB61";
+    // U+EB74  Open arrow down (S)
+    Glyphs["arrowOpenDown"] = "\uEB74";
+    // U+EB75  Open arrow down-left (SW)
+    Glyphs["arrowOpenDownLeft"] = "\uEB75";
+    // U+EB73  Open arrow down-right (SE)
+    Glyphs["arrowOpenDownRight"] = "\uEB73";
+    // U+EB76  Open arrow left (W)
+    Glyphs["arrowOpenLeft"] = "\uEB76";
+    // U+EB72  Open arrow right (E)
+    Glyphs["arrowOpenRight"] = "\uEB72";
+    // U+EB70  Open arrow up (N)
+    Glyphs["arrowOpenUp"] = "\uEB70";
+    // U+EB77  Open arrow up-left (NW)
+    Glyphs["arrowOpenUpLeft"] = "\uEB77";
+    // U+EB71  Open arrow up-right (NE)
+    Glyphs["arrowOpenUpRight"] = "\uEB71";
+    // U+EB6C  White arrow down (S)
+    Glyphs["arrowWhiteDown"] = "\uEB6C";
+    // U+EB6D  White arrow down-left (SW)
+    Glyphs["arrowWhiteDownLeft"] = "\uEB6D";
+    // U+EB6B  White arrow down-right (SE)
+    Glyphs["arrowWhiteDownRight"] = "\uEB6B";
+    // U+EB6E  White arrow left (W)
+    Glyphs["arrowWhiteLeft"] = "\uEB6E";
+    // U+EB6A  White arrow right (E)
+    Glyphs["arrowWhiteRight"] = "\uEB6A";
+    // U+EB68  White arrow up (N)
+    Glyphs["arrowWhiteUp"] = "\uEB68";
+    // U+EB6F  White arrow up-left (NW)
+    Glyphs["arrowWhiteUpLeft"] = "\uEB6F";
+    // U+EB69  White arrow up-right (NE)
+    Glyphs["arrowWhiteUpRight"] = "\uEB69";
+    // U+EB7C  Black arrowhead down (S)
+    Glyphs["arrowheadBlackDown"] = "\uEB7C";
+    // U+EB7D  Black arrowhead down-left (SW)
+    Glyphs["arrowheadBlackDownLeft"] = "\uEB7D";
+    // U+EB7B  Black arrowhead down-right (SE)
+    Glyphs["arrowheadBlackDownRight"] = "\uEB7B";
+    // U+EB7E  Black arrowhead left (W)
+    Glyphs["arrowheadBlackLeft"] = "\uEB7E";
+    // U+EB7A  Black arrowhead right (E)
+    Glyphs["arrowheadBlackRight"] = "\uEB7A";
+    // U+EB78  Black arrowhead up (N)
+    Glyphs["arrowheadBlackUp"] = "\uEB78";
+    // U+EB7F  Black arrowhead up-left (NW)
+    Glyphs["arrowheadBlackUpLeft"] = "\uEB7F";
+    // U+EB79  Black arrowhead up-right (NE)
+    Glyphs["arrowheadBlackUpRight"] = "\uEB79";
+    // U+EB8C  Open arrowhead down (S)
+    Glyphs["arrowheadOpenDown"] = "\uEB8C";
+    // U+EB8D  Open arrowhead down-left (SW)
+    Glyphs["arrowheadOpenDownLeft"] = "\uEB8D";
+    // U+EB8B  Open arrowhead down-right (SE)
+    Glyphs["arrowheadOpenDownRight"] = "\uEB8B";
+    // U+EB8E  Open arrowhead left (W)
+    Glyphs["arrowheadOpenLeft"] = "\uEB8E";
+    // U+EB8A  Open arrowhead right (E)
+    Glyphs["arrowheadOpenRight"] = "\uEB8A";
+    // U+EB88  Open arrowhead up (N)
+    Glyphs["arrowheadOpenUp"] = "\uEB88";
+    // U+EB8F  Open arrowhead up-left (NW)
+    Glyphs["arrowheadOpenUpLeft"] = "\uEB8F";
+    // U+EB89  Open arrowhead up-right (NE)
+    Glyphs["arrowheadOpenUpRight"] = "\uEB89";
+    // U+EB84  White arrowhead down (S)
+    Glyphs["arrowheadWhiteDown"] = "\uEB84";
+    // U+EB85  White arrowhead down-left (SW)
+    Glyphs["arrowheadWhiteDownLeft"] = "\uEB85";
+    // U+EB83  White arrowhead down-right (SE)
+    Glyphs["arrowheadWhiteDownRight"] = "\uEB83";
+    // U+EB86  White arrowhead left (W)
+    Glyphs["arrowheadWhiteLeft"] = "\uEB86";
+    // U+EB82  White arrowhead right (E)
+    Glyphs["arrowheadWhiteRight"] = "\uEB82";
+    // U+EB80  White arrowhead up (N)
+    Glyphs["arrowheadWhiteUp"] = "\uEB80";
+    // U+EB87  White arrowhead up-left (NW)
+    Glyphs["arrowheadWhiteUpLeft"] = "\uEB87";
+    // U+EB81  White arrowhead up-right (NE)
+    Glyphs["arrowheadWhiteUpRight"] = "\uEB81";
+    // U+E4A0  Accent above
+    Glyphs["articAccentAbove"] = "\uE4A0";
+    // U+1D17B  Accent above
+    Glyphs["articAccentAboveAlternate"] = "\uD834\uDD7B";
+    // U+E4A1  Accent below
+    Glyphs["articAccentBelow"] = "\uE4A1";
+    // U+E4B0  Accent-staccato above
+    Glyphs["articAccentStaccatoAbove"] = "\uE4B0";
+    // U+1D181  Accent-staccato above
+    Glyphs["articAccentStaccatoAboveAlternate"] = "\uD834\uDD81";
+    // U+E4B1  Accent-staccato below
+    Glyphs["articAccentStaccatoBelow"] = "\uE4B1";
+    // U+E4BA  Laissez vibrer (l.v.) above
+    Glyphs["articLaissezVibrerAbove"] = "\uE4BA";
+    // U+E4BB  Laissez vibrer (l.v.) below
+    Glyphs["articLaissezVibrerBelow"] = "\uE4BB";
+    // U+E4AC  Marcato above
+    Glyphs["articMarcatoAbove"] = "\uE4AC";
+    // U+1D17F  Marcato above
+    Glyphs["articMarcatoAboveAlternate"] = "\uD834\uDD7F";
+    // U+E4AD  Marcato below
+    Glyphs["articMarcatoBelow"] = "\uE4AD";
+    // U+E4AE  Marcato-staccato above
+    Glyphs["articMarcatoStaccatoAbove"] = "\uE4AE";
+    // U+1D180  Marcato-staccato above
+    Glyphs["articMarcatoStaccatoAboveAlternate"] = "\uD834\uDD80";
+    // U+E4AF  Marcato-staccato below
+    Glyphs["articMarcatoStaccatoBelow"] = "\uE4AF";
+    // U+E4BC  Marcato-tenuto above
+    Glyphs["articMarcatoTenutoAbove"] = "\uE4BC";
+    // U+E4BD  Marcato-tenuto below
+    Glyphs["articMarcatoTenutoBelow"] = "\uE4BD";
+    // U+ED40  Soft accent above
+    Glyphs["articSoftAccentAbove"] = "\uED40";
+    // U+ED41  Soft accent below
+    Glyphs["articSoftAccentBelow"] = "\uED41";
+    // U+ED42  Soft accent-staccato above
+    Glyphs["articSoftAccentStaccatoAbove"] = "\uED42";
+    // U+ED43  Soft accent-staccato below
+    Glyphs["articSoftAccentStaccatoBelow"] = "\uED43";
+    // U+ED44  Soft accent-tenuto above
+    Glyphs["articSoftAccentTenutoAbove"] = "\uED44";
+    // U+ED45  Soft accent-tenuto below
+    Glyphs["articSoftAccentTenutoBelow"] = "\uED45";
+    // U+ED46  Soft accent-tenuto-staccato above
+    Glyphs["articSoftAccentTenutoStaccatoAbove"] = "\uED46";
+    // U+ED47  Soft accent-tenuto-staccato below
+    Glyphs["articSoftAccentTenutoStaccatoBelow"] = "\uED47";
+    // U+E4A6  Staccatissimo above
+    Glyphs["articStaccatissimoAbove"] = "\uE4A6";
+    // U+1D17E  Staccatissimo above
+    Glyphs["articStaccatissimoAboveAlternate"] = "\uD834\uDD7E";
+    // U+E4A7  Staccatissimo below
+    Glyphs["articStaccatissimoBelow"] = "\uE4A7";
+    // U+E4AA  Staccatissimo stroke above
+    Glyphs["articStaccatissimoStrokeAbove"] = "\uE4AA";
+    // U+E4AB  Staccatissimo stroke below
+    Glyphs["articStaccatissimoStrokeBelow"] = "\uE4AB";
+    // U+E4A8  Staccatissimo wedge above
+    Glyphs["articStaccatissimoWedgeAbove"] = "\uE4A8";
+    // U+E4A9  Staccatissimo wedge below
+    Glyphs["articStaccatissimoWedgeBelow"] = "\uE4A9";
+    // U+E4A2  Staccato above
+    Glyphs["articStaccatoAbove"] = "\uE4A2";
+    // U+1D17C  Staccato above
+    Glyphs["articStaccatoAboveAlternate"] = "\uD834\uDD7C";
+    // U+E4A3  Staccato below
+    Glyphs["articStaccatoBelow"] = "\uE4A3";
+    // U+E4B6  Stress above
+    Glyphs["articStressAbove"] = "\uE4B6";
+    // U+E4B7  Stress below
+    Glyphs["articStressBelow"] = "\uE4B7";
+    // U+E4A4  Tenuto above
+    Glyphs["articTenutoAbove"] = "\uE4A4";
+    // U+1D17D  Tenuto above
+    Glyphs["articTenutoAboveAlternate"] = "\uD834\uDD7D";
+    // U+E4B4  Tenuto-accent above
+    Glyphs["articTenutoAccentAbove"] = "\uE4B4";
+    // U+E4B5  Tenuto-accent below
+    Glyphs["articTenutoAccentBelow"] = "\uE4B5";
+    // U+E4A5  Tenuto below
+    Glyphs["articTenutoBelow"] = "\uE4A5";
+    // U+E4B2  Louré (tenuto-staccato) above
+    Glyphs["articTenutoStaccatoAbove"] = "\uE4B2";
+    // U+1D182  Louré (tenuto-staccato) above
+    Glyphs["articTenutoStaccatoAboveAlternate"] = "\uD834\uDD82";
+    // U+E4B3  Louré (tenuto-staccato) below
+    Glyphs["articTenutoStaccatoBelow"] = "\uE4B3";
+    // U+E4B8  Unstress above
+    Glyphs["articUnstressAbove"] = "\uE4B8";
+    // U+E4B9  Unstress below
+    Glyphs["articUnstressBelow"] = "\uE4B9";
+    // U+E1E7  Augmentation dot
+    Glyphs["augmentationDot"] = "\uE1E7";
+    // U+1D16D  Augmentation dot
+    Glyphs["augmentationDotAlternate"] = "\uD834\uDD6D";
+    // U+E036  Dashed barline
+    Glyphs["barlineDashed"] = "\uE036";
+    // U+1D104  Dashed barline
+    Glyphs["barlineDashedAlternate"] = "\uD834\uDD04";
+    // U+E037  Dotted barline
+    Glyphs["barlineDotted"] = "\uE037";
+    // U+E031  Double barline
+    Glyphs["barlineDouble"] = "\uE031";
+    // U+1D101  Double barline
+    Glyphs["barlineDoubleAlternate"] = "\uD834\uDD01";
+    // U+E032  Final barline
+    Glyphs["barlineFinal"] = "\uE032";
+    // U+1D102  Final barline
+    Glyphs["barlineFinalAlternate"] = "\uD834\uDD02";
+    // U+E034  Heavy barline
+    Glyphs["barlineHeavy"] = "\uE034";
+    // U+E035  Heavy double barline
+    Glyphs["barlineHeavyHeavy"] = "\uE035";
+    // U+E033  Reverse final barline
+    Glyphs["barlineReverseFinal"] = "\uE033";
+    // U+1D103  Reverse final barline
+    Glyphs["barlineReverseFinalAlternate"] = "\uD834\uDD03";
+    // U+E038  Short barline
+    Glyphs["barlineShort"] = "\uE038";
+    // U+1D105  Short barline
+    Glyphs["barlineShortAlternate"] = "\uD834\uDD05";
+    // U+E030  Single barline
+    Glyphs["barlineSingle"] = "\uE030";
+    // U+1D100  Single barline
+    Glyphs["barlineSingleAlternate"] = "\uD834\uDD00";
+    // U+E039  Tick barline
+    Glyphs["barlineTick"] = "\uE039";
+    // U+EAF4  Accel./rit. beam 1 (widest)
+    Glyphs["beamAccelRit1"] = "\uEAF4";
+    // U+EAFD  Accel./rit. beam 10
+    Glyphs["beamAccelRit10"] = "\uEAFD";
+    // U+EAFE  Accel./rit. beam 11
+    Glyphs["beamAccelRit11"] = "\uEAFE";
+    // U+EAFF  Accel./rit. beam 12
+    Glyphs["beamAccelRit12"] = "\uEAFF";
+    // U+EB00  Accel./rit. beam 13
+    Glyphs["beamAccelRit13"] = "\uEB00";
+    // U+EB01  Accel./rit. beam 14
+    Glyphs["beamAccelRit14"] = "\uEB01";
+    // U+EB02  Accel./rit. beam 15 (narrowest)
+    Glyphs["beamAccelRit15"] = "\uEB02";
+    // U+EAF5  Accel./rit. beam 2
+    Glyphs["beamAccelRit2"] = "\uEAF5";
+    // U+EAF6  Accel./rit. beam 3
+    Glyphs["beamAccelRit3"] = "\uEAF6";
+    // U+EAF7  Accel./rit. beam 4
+    Glyphs["beamAccelRit4"] = "\uEAF7";
+    // U+EAF8  Accel./rit. beam 5
+    Glyphs["beamAccelRit5"] = "\uEAF8";
+    // U+EAF9  Accel./rit. beam 6
+    Glyphs["beamAccelRit6"] = "\uEAF9";
+    // U+EAFA  Accel./rit. beam 7
+    Glyphs["beamAccelRit7"] = "\uEAFA";
+    // U+EAFB  Accel./rit. beam 8
+    Glyphs["beamAccelRit8"] = "\uEAFB";
+    // U+EAFC  Accel./rit. beam 9
+    Glyphs["beamAccelRit9"] = "\uEAFC";
+    // U+EB03  Accel./rit. beam terminating line
+    Glyphs["beamAccelRitFinal"] = "\uEB03";
+    // U+E000  Brace
+    Glyphs["brace"] = "\uE000";
+    // U+1D114  Brace
+    Glyphs["braceAlternate"] = "\uD834\uDD14";
+    // U+E002  Bracket
+    Glyphs["bracket"] = "\uE002";
+    // U+1D115  Bracket
+    Glyphs["bracketAlternate"] = "\uD834\uDD15";
+    // U+E004  Bracket bottom
+    Glyphs["bracketBottom"] = "\uE004";
+    // U+E003  Bracket top
+    Glyphs["bracketTop"] = "\uE003";
+    // U+E5E3  Bend
+    Glyphs["brassBend"] = "\uE5E3";
+    // U+1D189  Bend
+    Glyphs["brassBendAlternate"] = "\uD834\uDD89";
+    // U+E5D6  Doit, long
+    Glyphs["brassDoitLong"] = "\uE5D6";
+    // U+E5D5  Doit, medium
+    Glyphs["brassDoitMedium"] = "\uE5D5";
+    // U+E5D4  Doit, short
+    Glyphs["brassDoitShort"] = "\uE5D4";
+    // U+1D185  Doit, short
+    Glyphs["brassDoitShortAlternate"] = "\uD834\uDD85";
+    // U+E5D9  Lip fall, long
+    Glyphs["brassFallLipLong"] = "\uE5D9";
+    // U+E5D8  Lip fall, medium
+    Glyphs["brassFallLipMedium"] = "\uE5D8";
+    // U+E5D7  Lip fall, short
+    Glyphs["brassFallLipShort"] = "\uE5D7";
+    // U+1D186  Lip fall, short
+    Glyphs["brassFallLipShortAlternate"] = "\uD834\uDD86";
+    // U+E5DF  Rough fall, long
+    Glyphs["brassFallRoughLong"] = "\uE5DF";
+    // U+E5DE  Rough fall, medium
+    Glyphs["brassFallRoughMedium"] = "\uE5DE";
+    // U+E5DD  Rough fall, short
+    Glyphs["brassFallRoughShort"] = "\uE5DD";
+    // U+E5DC  Smooth fall, long
+    Glyphs["brassFallSmoothLong"] = "\uE5DC";
+    // U+E5DB  Smooth fall, medium
+    Glyphs["brassFallSmoothMedium"] = "\uE5DB";
+    // U+E5DA  Smooth fall, short
+    Glyphs["brassFallSmoothShort"] = "\uE5DA";
+    // U+E5E1  Flip
+    Glyphs["brassFlip"] = "\uE5E1";
+    // U+1D187  Flip
+    Glyphs["brassFlipAlternate"] = "\uD834\uDD87";
+    // U+E5E8  Harmon mute, stem in
+    Glyphs["brassHarmonMuteClosed"] = "\uE5E8";
+    // U+E5E9  Harmon mute, stem extended, left
+    Glyphs["brassHarmonMuteStemHalfLeft"] = "\uE5E9";
+    // U+E5EA  Harmon mute, stem extended, right
+    Glyphs["brassHarmonMuteStemHalfRight"] = "\uE5EA";
+    // U+E5EB  Harmon mute, stem out
+    Glyphs["brassHarmonMuteStemOpen"] = "\uE5EB";
+    // U+E5E4  Jazz turn
+    Glyphs["brassJazzTurn"] = "\uE5E4";
+    // U+E5D3  Lift, long
+    Glyphs["brassLiftLong"] = "\uE5D3";
+    // U+E5D2  Lift, medium
+    Glyphs["brassLiftMedium"] = "\uE5D2";
+    // U+E5D1  Lift, short
+    Glyphs["brassLiftShort"] = "\uE5D1";
+    // U+E5EE  Smooth lift, long
+    Glyphs["brassLiftSmoothLong"] = "\uE5EE";
+    // U+E5ED  Smooth lift, medium
+    Glyphs["brassLiftSmoothMedium"] = "\uE5ED";
+    // U+E5EC  Smooth lift, short
+    Glyphs["brassLiftSmoothShort"] = "\uE5EC";
+    // U+E5E5  Muted (closed)
+    Glyphs["brassMuteClosed"] = "\uE5E5";
+    // U+E5E6  Half-muted (half-closed)
+    Glyphs["brassMuteHalfClosed"] = "\uE5E6";
+    // U+E5E7  Open
+    Glyphs["brassMuteOpen"] = "\uE5E7";
+    // U+E5E0  Plop
+    Glyphs["brassPlop"] = "\uE5E0";
+    // U+E5D0  Scoop
+    Glyphs["brassScoop"] = "\uE5D0";
+    // U+E5E2  Smear
+    Glyphs["brassSmear"] = "\uE5E2";
+    // U+1D188  Smear
+    Glyphs["brassSmearAlternate"] = "\uD834\uDD88";
+    // U+E5EF  Valve trill
+    Glyphs["brassValveTrill"] = "\uE5EF";
+    // U+E4CE  Breath mark (comma)
+    Glyphs["breathMarkComma"] = "\uE4CE";
+    // U+1D112  Breath mark (comma)
+    Glyphs["breathMarkCommaAlternate"] = "\uD834\uDD12";
+    // U+E4D5  Breath mark (Salzedo)
+    Glyphs["breathMarkSalzedo"] = "\uE4D5";
+    // U+E4CF  Breath mark (tick-like)
+    Glyphs["breathMarkTick"] = "\uE4CF";
+    // U+E4D0  Breath mark (upbow-like)
+    Glyphs["breathMarkUpbow"] = "\uE4D0";
+    // U+E078  Bridge clef
+    Glyphs["bridgeClef"] = "\uE078";
+    // U+E22A  Buzz roll
+    Glyphs["buzzRoll"] = "\uE22A";
+    // U+E05C  C clef
+    Glyphs["cClef"] = "\uE05C";
+    // U+1D121  C clef
+    Glyphs["cClefAlternate"] = "\uD834\uDD21";
+    // U+E05D  C clef ottava bassa
+    Glyphs["cClef8vb"] = "\uE05D";
+    // U+E05F  C clef, arrow down
+    Glyphs["cClefArrowDown"] = "\uE05F";
+    // U+E05E  C clef, arrow up
+    Glyphs["cClefArrowUp"] = "\uE05E";
+    // U+E07B  C clef change
+    Glyphs["cClefChange"] = "\uE07B";
+    // U+E061  Combining C clef
+    Glyphs["cClefCombining"] = "\uE061";
+    // U+E075  Reversed C clef
+    Glyphs["cClefReversed"] = "\uE075";
+    // U+E060  C clef (19th century)
+    Glyphs["cClefSquare"] = "\uE060";
+    // U+E4D1  Caesura
+    Glyphs["caesura"] = "\uE4D1";
+    // U+1D113  Caesura
+    Glyphs["caesuraAlternate"] = "\uD834\uDD13";
+    // U+E4D4  Curved caesura
+    Glyphs["caesuraCurved"] = "\uE4D4";
+    // U+E4D3  Short caesura
+    Glyphs["caesuraShort"] = "\uE4D3";
+    // U+E4D7  Single stroke caesura
+    Glyphs["caesuraSingleStroke"] = "\uE4D7";
+    // U+E4D2  Thick caesura
+    Glyphs["caesuraThick"] = "\uE4D2";
+    // U+E9D6  Accentus above
+    Glyphs["chantAccentusAbove"] = "\uE9D6";
+    // U+E9D7  Accentus below
+    Glyphs["chantAccentusBelow"] = "\uE9D7";
+    // U+E994  Punctum auctum, ascending
+    Glyphs["chantAuctumAsc"] = "\uE994";
+    // U+E995  Punctum auctum, descending
+    Glyphs["chantAuctumDesc"] = "\uE995";
+    // U+E9D9  Augmentum (mora)
+    Glyphs["chantAugmentum"] = "\uE9D9";
+    // U+E8F8  Caesura
+    Glyphs["chantCaesura"] = "\uE8F8";
+    // U+E906  Plainchant C clef
+    Glyphs["chantCclef"] = "\uE906";
+    // U+1D1D0  Plainchant C clef
+    Glyphs["chantCclefAlternate"] = "\uD834\uDDD0";
+    // U+E9D2  Circulus above
+    Glyphs["chantCirculusAbove"] = "\uE9D2";
+    // U+E9D3  Circulus below
+    Glyphs["chantCirculusBelow"] = "\uE9D3";
+    // U+E9BD  Connecting line, ascending 2nd
+    Glyphs["chantConnectingLineAsc2nd"] = "\uE9BD";
+    // U+E9BE  Connecting line, ascending 3rd
+    Glyphs["chantConnectingLineAsc3rd"] = "\uE9BE";
+    // U+E9BF  Connecting line, ascending 4th
+    Glyphs["chantConnectingLineAsc4th"] = "\uE9BF";
+    // U+E9C0  Connecting line, ascending 5th
+    Glyphs["chantConnectingLineAsc5th"] = "\uE9C0";
+    // U+E9C1  Connecting line, ascending 6th
+    Glyphs["chantConnectingLineAsc6th"] = "\uE9C1";
+    // U+EA08  Plainchant custos, stem down, high position
+    Glyphs["chantCustosStemDownPosHigh"] = "\uEA08";
+    // U+EA09  Plainchant custos, stem down, highest position
+    Glyphs["chantCustosStemDownPosHighest"] = "\uEA09";
+    // U+EA07  Plainchant custos, stem down, middle position
+    Glyphs["chantCustosStemDownPosMiddle"] = "\uEA07";
+    // U+EA05  Plainchant custos, stem up, low position
+    Glyphs["chantCustosStemUpPosLow"] = "\uEA05";
+    // U+EA04  Plainchant custos, stem up, lowest position
+    Glyphs["chantCustosStemUpPosLowest"] = "\uEA04";
+    // U+EA06  Plainchant custos, stem up, middle position
+    Glyphs["chantCustosStemUpPosMiddle"] = "\uEA06";
+    // U+E9B3  Punctum deminutum, lower
+    Glyphs["chantDeminutumLower"] = "\uE9B3";
+    // U+E9B2  Punctum deminutum, upper
+    Glyphs["chantDeminutumUpper"] = "\uE9B2";
+    // U+E8F6  Divisio finalis
+    Glyphs["chantDivisioFinalis"] = "\uE8F6";
+    // U+E8F4  Divisio maior
+    Glyphs["chantDivisioMaior"] = "\uE8F4";
+    // U+E8F5  Divisio maxima
+    Glyphs["chantDivisioMaxima"] = "\uE8F5";
+    // U+E8F3  Divisio minima
+    Glyphs["chantDivisioMinima"] = "\uE8F3";
+    // U+E9B4  Entry line, ascending 2nd
+    Glyphs["chantEntryLineAsc2nd"] = "\uE9B4";
+    // U+E9B5  Entry line, ascending 3rd
+    Glyphs["chantEntryLineAsc3rd"] = "\uE9B5";
+    // U+E9B6  Entry line, ascending 4th
+    Glyphs["chantEntryLineAsc4th"] = "\uE9B6";
+    // U+E9B7  Entry line, ascending 5th
+    Glyphs["chantEntryLineAsc5th"] = "\uE9B7";
+    // U+E9B8  Entry line, ascending 6th
+    Glyphs["chantEntryLineAsc6th"] = "\uE9B8";
+    // U+E9D8  Episema
+    Glyphs["chantEpisema"] = "\uE9D8";
+    // U+E902  Plainchant F clef
+    Glyphs["chantFclef"] = "\uE902";
+    // U+1D1D1  Plainchant F clef
+    Glyphs["chantFclefAlternate"] = "\uD834\uDDD1";
+    // U+E9D0  Ictus above
+    Glyphs["chantIctusAbove"] = "\uE9D0";
+    // U+E9D1  Ictus below
+    Glyphs["chantIctusBelow"] = "\uE9D1";
+    // U+E9B9  Ligated stroke, descending 2nd
+    Glyphs["chantLigaturaDesc2nd"] = "\uE9B9";
+    // U+E9BA  Ligated stroke, descending 3rd
+    Glyphs["chantLigaturaDesc3rd"] = "\uE9BA";
+    // U+E9BB  Ligated stroke, descending 4th
+    Glyphs["chantLigaturaDesc4th"] = "\uE9BB";
+    // U+E9BC  Ligated stroke, descending 5th
+    Glyphs["chantLigaturaDesc5th"] = "\uE9BC";
+    // U+E99C  Oriscus ascending
+    Glyphs["chantOriscusAscending"] = "\uE99C";
+    // U+E99D  Oriscus descending
+    Glyphs["chantOriscusDescending"] = "\uE99D";
+    // U+E99E  Oriscus liquescens
+    Glyphs["chantOriscusLiquescens"] = "\uE99E";
+    // U+E9B0  Podatus, lower
+    Glyphs["chantPodatusLower"] = "\uE9B0";
+    // U+E9B1  Podatus, upper
+    Glyphs["chantPodatusUpper"] = "\uE9B1";
+    // U+1D1D4  Podatus, upper
+    Glyphs["chantPodatusUpperAlternate"] = "\uD834\uDDD4";
+    // U+E990  Punctum
+    Glyphs["chantPunctum"] = "\uE990";
+    // U+E998  Punctum cavum
+    Glyphs["chantPunctumCavum"] = "\uE998";
+    // U+E9A1  Punctum deminutum
+    Glyphs["chantPunctumDeminutum"] = "\uE9A1";
+    // U+E991  Punctum inclinatum
+    Glyphs["chantPunctumInclinatum"] = "\uE991";
+    // U+E992  Punctum inclinatum auctum
+    Glyphs["chantPunctumInclinatumAuctum"] = "\uE992";
+    // U+E993  Punctum inclinatum deminutum
+    Glyphs["chantPunctumInclinatumDeminutum"] = "\uE993";
+    // U+E999  Punctum linea
+    Glyphs["chantPunctumLinea"] = "\uE999";
+    // U+E99A  Punctum linea cavum
+    Glyphs["chantPunctumLineaCavum"] = "\uE99A";
+    // U+E996  Punctum virga
+    Glyphs["chantPunctumVirga"] = "\uE996";
+    // U+1D1D3  Punctum virga
+    Glyphs["chantPunctumVirgaAlternate"] = "\uD834\uDDD3";
+    // U+E997  Punctum virga, reversed
+    Glyphs["chantPunctumVirgaReversed"] = "\uE997";
+    // U+E99B  Quilisma
+    Glyphs["chantQuilisma"] = "\uE99B";
+    // U+E9D4  Semicirculus above
+    Glyphs["chantSemicirculusAbove"] = "\uE9D4";
+    // U+E9D5  Semicirculus below
+    Glyphs["chantSemicirculusBelow"] = "\uE9D5";
+    // U+E8F0  Plainchant staff
+    Glyphs["chantStaff"] = "\uE8F0";
+    // U+E8F2  Plainchant staff (narrow)
+    Glyphs["chantStaffNarrow"] = "\uE8F2";
+    // U+E8F1  Plainchant staff (wide)
+    Glyphs["chantStaffWide"] = "\uE8F1";
+    // U+E99F  Strophicus
+    Glyphs["chantStrophicus"] = "\uE99F";
+    // U+E9A0  Strophicus auctus
+    Glyphs["chantStrophicusAuctus"] = "\uE9A0";
+    // U+E9C2  Strophicus liquescens, 2nd
+    Glyphs["chantStrophicusLiquescens2nd"] = "\uE9C2";
+    // U+E9C3  Strophicus liquescens, 3rd
+    Glyphs["chantStrophicusLiquescens3rd"] = "\uE9C3";
+    // U+E9C4  Strophicus liquescens, 4th
+    Glyphs["chantStrophicusLiquescens4th"] = "\uE9C4";
+    // U+E9C5  Strophicus liquescens, 5th
+    Glyphs["chantStrophicusLiquescens5th"] = "\uE9C5";
+    // U+E8F7  Virgula
+    Glyphs["chantVirgula"] = "\uE8F7";
+    // U+E07E  15 for clefs
+    Glyphs["clef15"] = "\uE07E";
+    // U+E07D  8 for clefs
+    Glyphs["clef8"] = "\uE07D";
+    // U+E07F  Combining clef change
+    Glyphs["clefChangeCombining"] = "\uE07F";
+    // U+E048  Coda
+    Glyphs["coda"] = "\uE048";
+    // U+1D10C  Coda
+    Glyphs["codaAlternate"] = "\uD834\uDD0C";
+    // U+E049  Square coda
+    Glyphs["codaSquare"] = "\uE049";
+    // U+E897  Beat 2, compound time
+    Glyphs["conductorBeat2Compound"] = "\uE897";
+    // U+E894  Beat 2, simple time
+    Glyphs["conductorBeat2Simple"] = "\uE894";
+    // U+E898  Beat 3, compound time
+    Glyphs["conductorBeat3Compound"] = "\uE898";
+    // U+E895  Beat 3, simple time
+    Glyphs["conductorBeat3Simple"] = "\uE895";
+    // U+E899  Beat 4, compound time
+    Glyphs["conductorBeat4Compound"] = "\uE899";
+    // U+E896  Beat 4, simple time
+    Glyphs["conductorBeat4Simple"] = "\uE896";
+    // U+E891  Left-hand beat or cue
+    Glyphs["conductorLeftBeat"] = "\uE891";
+    // U+E892  Right-hand beat or cue
+    Glyphs["conductorRightBeat"] = "\uE892";
+    // U+E890  Strong beat or cue
+    Glyphs["conductorStrongBeat"] = "\uE890";
+    // U+E89A  Unconducted/free passages
+    Glyphs["conductorUnconducted"] = "\uE89A";
+    // U+E893  Weak beat or cue
+    Glyphs["conductorWeakBeat"] = "\uE893";
+    // U+E8E0  Begin beam
+    Glyphs["controlBeginBeam"] = "\uE8E0";
+    // U+1D173  Begin beam
+    Glyphs["controlBeginBeamAlternate"] = "\uD834\uDD73";
+    // U+E8E6  Begin phrase
+    Glyphs["controlBeginPhrase"] = "\uE8E6";
+    // U+1D179  Begin phrase
+    Glyphs["controlBeginPhraseAlternate"] = "\uD834\uDD79";
+    // U+E8E4  Begin slur
+    Glyphs["controlBeginSlur"] = "\uE8E4";
+    // U+1D177  Begin slur
+    Glyphs["controlBeginSlurAlternate"] = "\uD834\uDD77";
+    // U+E8E2  Begin tie
+    Glyphs["controlBeginTie"] = "\uE8E2";
+    // U+1D175  Begin tie
+    Glyphs["controlBeginTieAlternate"] = "\uD834\uDD75";
+    // U+E8E1  End beam
+    Glyphs["controlEndBeam"] = "\uE8E1";
+    // U+1D174  End beam
+    Glyphs["controlEndBeamAlternate"] = "\uD834\uDD74";
+    // U+E8E7  End phrase
+    Glyphs["controlEndPhrase"] = "\uE8E7";
+    // U+1D17A  End phrase
+    Glyphs["controlEndPhraseAlternate"] = "\uD834\uDD7A";
+    // U+E8E5  End slur
+    Glyphs["controlEndSlur"] = "\uE8E5";
+    // U+1D178  End slur
+    Glyphs["controlEndSlurAlternate"] = "\uD834\uDD78";
+    // U+E8E3  End tie
+    Glyphs["controlEndTie"] = "\uE8E3";
+    // U+1D176  End tie
+    Glyphs["controlEndTieAlternate"] = "\uD834\uDD76";
+    // U+ED64  Double flat
+    Glyphs["csymAccidentalDoubleFlat"] = "\uED64";
+    // U+ED63  Double sharp
+    Glyphs["csymAccidentalDoubleSharp"] = "\uED63";
+    // U+ED60  Flat
+    Glyphs["csymAccidentalFlat"] = "\uED60";
+    // U+ED61  Natural
+    Glyphs["csymAccidentalNatural"] = "\uED61";
+    // U+ED62  Sharp
+    Glyphs["csymAccidentalSharp"] = "\uED62";
+    // U+ED66  Triple flat
+    Glyphs["csymAccidentalTripleFlat"] = "\uED66";
+    // U+ED65  Triple sharp
+    Glyphs["csymAccidentalTripleSharp"] = "\uED65";
+    // U+E87B  Slash for altered bass note
+    Glyphs["csymAlteredBassSlash"] = "\uE87B";
+    // U+E872  Augmented
+    Glyphs["csymAugmented"] = "\uE872";
+    // U+E877  Double-height left bracket
+    Glyphs["csymBracketLeftTall"] = "\uE877";
+    // U+E878  Double-height right bracket
+    Glyphs["csymBracketRightTall"] = "\uE878";
+    // U+E87C  Slash for chord symbols arranged diagonally
+    Glyphs["csymDiagonalArrangementSlash"] = "\uE87C";
+    // U+E870  Diminished
+    Glyphs["csymDiminished"] = "\uE870";
+    // U+1D1A9  Diminished
+    Glyphs["csymDiminishedAlternate"] = "\uD834\uDDA9";
+    // U+E871  Half-diminished
+    Glyphs["csymHalfDiminished"] = "\uE871";
+    // U+E873  Major seventh
+    Glyphs["csymMajorSeventh"] = "\uE873";
+    // U+E874  Minor
+    Glyphs["csymMinor"] = "\uE874";
+    // U+E875  Double-height left parenthesis
+    Glyphs["csymParensLeftTall"] = "\uE875";
+    // U+E879  Triple-height left parenthesis
+    Glyphs["csymParensLeftVeryTall"] = "\uE879";
+    // U+E876  Double-height right parenthesis
+    Glyphs["csymParensRightTall"] = "\uE876";
+    // U+E87A  Triple-height right parenthesis
+    Glyphs["csymParensRightVeryTall"] = "\uE87A";
+    // U+E4D6  Curlew (Britten)
+    Glyphs["curlewSign"] = "\uE4D6";
+    // U+E046  Da capo
+    Glyphs["daCapo"] = "\uE046";
+    // U+1D10A  Da capo
+    Glyphs["daCapoAlternate"] = "\uD834\uDD0A";
+    // U+E045  Dal segno
+    Glyphs["dalSegno"] = "\uE045";
+    // U+1D109  Dal segno
+    Glyphs["dalSegnoAlternate"] = "\uD834\uDD09";
+    // U+EA3C  Daseian excellentes 1
+    Glyphs["daseianExcellentes1"] = "\uEA3C";
+    // U+EA3D  Daseian excellentes 2
+    Glyphs["daseianExcellentes2"] = "\uEA3D";
+    // U+EA3E  Daseian excellentes 3
+    Glyphs["daseianExcellentes3"] = "\uEA3E";
+    // U+EA3F  Daseian excellentes 4
+    Glyphs["daseianExcellentes4"] = "\uEA3F";
+    // U+EA34  Daseian finales 1
+    Glyphs["daseianFinales1"] = "\uEA34";
+    // U+EA35  Daseian finales 2
+    Glyphs["daseianFinales2"] = "\uEA35";
+    // U+EA36  Daseian finales 3
+    Glyphs["daseianFinales3"] = "\uEA36";
+    // U+EA37  Daseian finales 4
+    Glyphs["daseianFinales4"] = "\uEA37";
+    // U+EA30  Daseian graves 1
+    Glyphs["daseianGraves1"] = "\uEA30";
+    // U+EA31  Daseian graves 2
+    Glyphs["daseianGraves2"] = "\uEA31";
+    // U+EA32  Daseian graves 3
+    Glyphs["daseianGraves3"] = "\uEA32";
+    // U+EA33  Daseian graves 4
+    Glyphs["daseianGraves4"] = "\uEA33";
+    // U+EA40  Daseian residua 1
+    Glyphs["daseianResidua1"] = "\uEA40";
+    // U+EA41  Daseian residua 2
+    Glyphs["daseianResidua2"] = "\uEA41";
+    // U+EA38  Daseian superiores 1
+    Glyphs["daseianSuperiores1"] = "\uEA38";
+    // U+EA39  Daseian superiores 2
+    Glyphs["daseianSuperiores2"] = "\uEA39";
+    // U+EA3A  Daseian superiores 3
+    Glyphs["daseianSuperiores3"] = "\uEA3A";
+    // U+EA3B  Daseian superiores 4
+    Glyphs["daseianSuperiores4"] = "\uEA3B";
+    // U+E234  Double lateral roll (Stevens)
+    Glyphs["doubleLateralRollStevens"] = "\uE234";
+    // U+E5F0  Double-tongue above
+    Glyphs["doubleTongueAbove"] = "\uE5F0";
+    // U+1D18A  Double-tongue above
+    Glyphs["doubleTongueAboveAlternate"] = "\uD834\uDD8A";
+    // U+E5F1  Double-tongue below
+    Glyphs["doubleTongueBelow"] = "\uE5F1";
+    // U+E546  Colon separator for combined dynamics
+    Glyphs["dynamicCombinedSeparatorColon"] = "\uE546";
+    // U+E547  Hyphen separator for combined dynamics
+    Glyphs["dynamicCombinedSeparatorHyphen"] = "\uE547";
+    // U+E549  Slash separator for combined dynamics
+    Glyphs["dynamicCombinedSeparatorSlash"] = "\uE549";
+    // U+E548  Space separator for combined dynamics
+    Glyphs["dynamicCombinedSeparatorSpace"] = "\uE548";
+    // U+E53E  Crescendo
+    Glyphs["dynamicCrescendoHairpin"] = "\uE53E";
+    // U+1D192  Crescendo
+    Glyphs["dynamicCrescendoHairpinAlternate"] = "\uD834\uDD92";
+    // U+E53F  Diminuendo
+    Glyphs["dynamicDiminuendoHairpin"] = "\uE53F";
+    // U+1D193  Diminuendo
+    Glyphs["dynamicDiminuendoHairpinAlternate"] = "\uD834\uDD93";
+    // U+E52F  ff
+    Glyphs["dynamicFF"] = "\uE52F";
+    // U+E530  fff
+    Glyphs["dynamicFFF"] = "\uE530";
+    // U+E531  ffff
+    Glyphs["dynamicFFFF"] = "\uE531";
+    // U+E532  fffff
+    Glyphs["dynamicFFFFF"] = "\uE532";
+    // U+E533  ffffff
+    Glyphs["dynamicFFFFFF"] = "\uE533";
+    // U+E522  Forte
+    Glyphs["dynamicForte"] = "\uE522";
+    // U+1D191  Forte
+    Glyphs["dynamicForteAlternate"] = "\uD834\uDD91";
+    // U+E534  Forte-piano
+    Glyphs["dynamicFortePiano"] = "\uE534";
+    // U+E535  Forzando
+    Glyphs["dynamicForzando"] = "\uE535";
+    // U+E544  Left bracket (for hairpins)
+    Glyphs["dynamicHairpinBracketLeft"] = "\uE544";
+    // U+E545  Right bracket (for hairpins)
+    Glyphs["dynamicHairpinBracketRight"] = "\uE545";
+    // U+E542  Left parenthesis (for hairpins)
+    Glyphs["dynamicHairpinParenthesisLeft"] = "\uE542";
+    // U+E543  Right parenthesis (for hairpins)
+    Glyphs["dynamicHairpinParenthesisRight"] = "\uE543";
+    // U+E52D  mf
+    Glyphs["dynamicMF"] = "\uE52D";
+    // U+E52C  mp
+    Glyphs["dynamicMP"] = "\uE52C";
+    // U+E540  Messa di voce
+    Glyphs["dynamicMessaDiVoce"] = "\uE540";
+    // U+E521  Mezzo
+    Glyphs["dynamicMezzo"] = "\uE521";
+    // U+1D190  Mezzo
+    Glyphs["dynamicMezzoAlternate"] = "\uD834\uDD90";
+    // U+E526  Niente
+    Glyphs["dynamicNiente"] = "\uE526";
+    // U+E541  Niente (for hairpins)
+    Glyphs["dynamicNienteForHairpin"] = "\uE541";
+    // U+E52E  pf
+    Glyphs["dynamicPF"] = "\uE52E";
+    // U+E52B  pp
+    Glyphs["dynamicPP"] = "\uE52B";
+    // U+E52A  ppp
+    Glyphs["dynamicPPP"] = "\uE52A";
+    // U+E529  pppp
+    Glyphs["dynamicPPPP"] = "\uE529";
+    // U+E528  ppppp
+    Glyphs["dynamicPPPPP"] = "\uE528";
+    // U+E527  pppppp
+    Glyphs["dynamicPPPPPP"] = "\uE527";
+    // U+E520  Piano
+    Glyphs["dynamicPiano"] = "\uE520";
+    // U+1D18F  Piano
+    Glyphs["dynamicPianoAlternate"] = "\uD834\uDD8F";
+    // U+E523  Rinforzando
+    Glyphs["dynamicRinforzando"] = "\uE523";
+    // U+1D18C  Rinforzando
+    Glyphs["dynamicRinforzandoAlternate"] = "\uD834\uDD8C";
+    // U+E53C  Rinforzando 1
+    Glyphs["dynamicRinforzando1"] = "\uE53C";
+    // U+E53D  Rinforzando 2
+    Glyphs["dynamicRinforzando2"] = "\uE53D";
+    // U+E524  Sforzando
+    Glyphs["dynamicSforzando"] = "\uE524";
+    // U+1D18D  Sforzando
+    Glyphs["dynamicSforzandoAlternate"] = "\uD834\uDD8D";
+    // U+E536  Sforzando 1
+    Glyphs["dynamicSforzando1"] = "\uE536";
+    // U+E538  Sforzando-pianissimo
+    Glyphs["dynamicSforzandoPianissimo"] = "\uE538";
+    // U+E537  Sforzando-piano
+    Glyphs["dynamicSforzandoPiano"] = "\uE537";
+    // U+E539  Sforzato
+    Glyphs["dynamicSforzato"] = "\uE539";
+    // U+E53B  Sforzatissimo
+    Glyphs["dynamicSforzatoFF"] = "\uE53B";
+    // U+E53A  Sforzato-piano
+    Glyphs["dynamicSforzatoPiano"] = "\uE53A";
+    // U+E525  Z
+    Glyphs["dynamicZ"] = "\uE525";
+    // U+1D18E  Z
+    Glyphs["dynamicZAlternate"] = "\uD834\uDD8E";
+    // U+EB46  Eight channels (7.1 surround)
+    Glyphs["elecAudioChannelsEight"] = "\uEB46";
+    // U+EB43  Five channels
+    Glyphs["elecAudioChannelsFive"] = "\uEB43";
+    // U+EB42  Four channels
+    Glyphs["elecAudioChannelsFour"] = "\uEB42";
+    // U+EB3E  One channel (mono)
+    Glyphs["elecAudioChannelsOne"] = "\uEB3E";
+    // U+EB45  Seven channels
+    Glyphs["elecAudioChannelsSeven"] = "\uEB45";
+    // U+EB44  Six channels (5.1 surround)
+    Glyphs["elecAudioChannelsSix"] = "\uEB44";
+    // U+EB40  Three channels (frontal)
+    Glyphs["elecAudioChannelsThreeFrontal"] = "\uEB40";
+    // U+EB41  Three channels (surround)
+    Glyphs["elecAudioChannelsThreeSurround"] = "\uEB41";
+    // U+EB3F  Two channels (stereo)
+    Glyphs["elecAudioChannelsTwo"] = "\uEB3F";
+    // U+EB49  Audio in
+    Glyphs["elecAudioIn"] = "\uEB49";
+    // U+EB3C  Mono audio setup
+    Glyphs["elecAudioMono"] = "\uEB3C";
+    // U+EB4A  Audio out
+    Glyphs["elecAudioOut"] = "\uEB4A";
+    // U+EB3D  Stereo audio setup
+    Glyphs["elecAudioStereo"] = "\uEB3D";
+    // U+EB1B  Camera
+    Glyphs["elecCamera"] = "\uEB1B";
+    // U+EB4D  Data in
+    Glyphs["elecDataIn"] = "\uEB4D";
+    // U+EB4E  Data out
+    Glyphs["elecDataOut"] = "\uEB4E";
+    // U+EB13  Disc
+    Glyphs["elecDisc"] = "\uEB13";
+    // U+EB4F  Download
+    Glyphs["elecDownload"] = "\uEB4F";
+    // U+EB2B  Eject
+    Glyphs["elecEject"] = "\uEB2B";
+    // U+EB1F  Fast-forward
+    Glyphs["elecFastForward"] = "\uEB1F";
+    // U+EB11  Headphones
+    Glyphs["elecHeadphones"] = "\uEB11";
+    // U+EB12  Headset
+    Glyphs["elecHeadset"] = "\uEB12";
+    // U+EB47  Line in
+    Glyphs["elecLineIn"] = "\uEB47";
+    // U+EB48  Line out
+    Glyphs["elecLineOut"] = "\uEB48";
+    // U+EB23  Loop
+    Glyphs["elecLoop"] = "\uEB23";
+    // U+EB1A  Loudspeaker
+    Glyphs["elecLoudspeaker"] = "\uEB1A";
+    // U+EB36  MIDI controller 0%
+    Glyphs["elecMIDIController0"] = "\uEB36";
+    // U+EB3B  MIDI controller 100%
+    Glyphs["elecMIDIController100"] = "\uEB3B";
+    // U+EB37  MIDI controller 20%
+    Glyphs["elecMIDIController20"] = "\uEB37";
+    // U+EB38  MIDI controller 40%
+    Glyphs["elecMIDIController40"] = "\uEB38";
+    // U+EB39  MIDI controller 60%
+    Glyphs["elecMIDIController60"] = "\uEB39";
+    // U+EB3A  MIDI controller 80%
+    Glyphs["elecMIDIController80"] = "\uEB3A";
+    // U+EB34  MIDI in
+    Glyphs["elecMIDIIn"] = "\uEB34";
+    // U+EB35  MIDI out
+    Glyphs["elecMIDIOut"] = "\uEB35";
+    // U+EB10  Microphone
+    Glyphs["elecMicrophone"] = "\uEB10";
+    // U+EB28  Mute microphone
+    Glyphs["elecMicrophoneMute"] = "\uEB28";
+    // U+EB29  Unmute microphone
+    Glyphs["elecMicrophoneUnmute"] = "\uEB29";
+    // U+EB15  Mixing console
+    Glyphs["elecMixingConsole"] = "\uEB15";
+    // U+EB18  Monitor
+    Glyphs["elecMonitor"] = "\uEB18";
+    // U+EB26  Mute
+    Glyphs["elecMute"] = "\uEB26";
+    // U+EB1E  Pause
+    Glyphs["elecPause"] = "\uEB1E";
+    // U+EB1C  Play
+    Glyphs["elecPlay"] = "\uEB1C";
+    // U+EB2A  Power on/off
+    Glyphs["elecPowerOnOff"] = "\uEB2A";
+    // U+EB19  Projector
+    Glyphs["elecProjector"] = "\uEB19";
+    // U+EB24  Replay
+    Glyphs["elecReplay"] = "\uEB24";
+    // U+EB20  Rewind
+    Glyphs["elecRewind"] = "\uEB20";
+    // U+EB25  Shuffle
+    Glyphs["elecShuffle"] = "\uEB25";
+    // U+EB22  Skip backwards
+    Glyphs["elecSkipBackwards"] = "\uEB22";
+    // U+EB21  Skip forwards
+    Glyphs["elecSkipForwards"] = "\uEB21";
+    // U+EB1D  Stop
+    Glyphs["elecStop"] = "\uEB1D";
+    // U+EB14  Tape
+    Glyphs["elecTape"] = "\uEB14";
+    // U+EB16  USB connection
+    Glyphs["elecUSB"] = "\uEB16";
+    // U+EB27  Unmute
+    Glyphs["elecUnmute"] = "\uEB27";
+    // U+EB50  Upload
+    Glyphs["elecUpload"] = "\uEB50";
+    // U+EB17  Video camera
+    Glyphs["elecVideoCamera"] = "\uEB17";
+    // U+EB4B  Video in
+    Glyphs["elecVideoIn"] = "\uEB4B";
+    // U+EB4C  Video out
+    Glyphs["elecVideoOut"] = "\uEB4C";
+    // U+EB2C  Combining volume fader
+    Glyphs["elecVolumeFader"] = "\uEB2C";
+    // U+EB2D  Combining volume fader thumb
+    Glyphs["elecVolumeFaderThumb"] = "\uEB2D";
+    // U+EB2E  Volume level 0%
+    Glyphs["elecVolumeLevel0"] = "\uEB2E";
+    // U+EB33  Volume level 100%
+    Glyphs["elecVolumeLevel100"] = "\uEB33";
+    // U+EB2F  Volume level 20%
+    Glyphs["elecVolumeLevel20"] = "\uEB2F";
+    // U+EB30  Volume level 40%
+    Glyphs["elecVolumeLevel40"] = "\uEB30";
+    // U+EB31  Volume level 60%
+    Glyphs["elecVolumeLevel60"] = "\uEB31";
+    // U+EB32  Volume level 80%
+    Glyphs["elecVolumeLevel80"] = "\uEB32";
+    // U+E062  F clef
+    Glyphs["fClef"] = "\uE062";
+    // U+1D122  F clef
+    Glyphs["fClefAlternate"] = "\uD834\uDD22";
+    // U+E066  F clef quindicesima alta
+    Glyphs["fClef15ma"] = "\uE066";
+    // U+E063  F clef quindicesima bassa
+    Glyphs["fClef15mb"] = "\uE063";
+    // U+E065  F clef ottava alta
+    Glyphs["fClef8va"] = "\uE065";
+    // U+1D123  F clef ottava alta
+    Glyphs["fClef8vaAlternate"] = "\uD834\uDD23";
+    // U+E064  F clef ottava bassa
+    Glyphs["fClef8vb"] = "\uE064";
+    // U+1D124  F clef ottava bassa
+    Glyphs["fClef8vbAlternate"] = "\uD834\uDD24";
+    // U+E068  F clef, arrow down
+    Glyphs["fClefArrowDown"] = "\uE068";
+    // U+E067  F clef, arrow up
+    Glyphs["fClefArrowUp"] = "\uE067";
+    // U+E07C  F clef change
+    Glyphs["fClefChange"] = "\uE07C";
+    // U+E076  Reversed F clef
+    Glyphs["fClefReversed"] = "\uE076";
+    // U+E077  Turned F clef
+    Glyphs["fClefTurned"] = "\uE077";
+    // U+E4C0  Fermata above
+    Glyphs["fermataAbove"] = "\uE4C0";
+    // U+1D110  Fermata above
+    Glyphs["fermataAboveAlternate"] = "\uD834\uDD10";
+    // U+E4C1  Fermata below
+    Glyphs["fermataBelow"] = "\uE4C1";
+    // U+1D111  Fermata below
+    Glyphs["fermataBelowAlternate"] = "\uD834\uDD11";
+    // U+E4C6  Long fermata above
+    Glyphs["fermataLongAbove"] = "\uE4C6";
+    // U+E4C7  Long fermata below
+    Glyphs["fermataLongBelow"] = "\uE4C7";
+    // U+E4CA  Long fermata (Henze) above
+    Glyphs["fermataLongHenzeAbove"] = "\uE4CA";
+    // U+E4CB  Long fermata (Henze) below
+    Glyphs["fermataLongHenzeBelow"] = "\uE4CB";
+    // U+E4C4  Short fermata above
+    Glyphs["fermataShortAbove"] = "\uE4C4";
+    // U+E4C5  Short fermata below
+    Glyphs["fermataShortBelow"] = "\uE4C5";
+    // U+E4CC  Short fermata (Henze) above
+    Glyphs["fermataShortHenzeAbove"] = "\uE4CC";
+    // U+E4CD  Short fermata (Henze) below
+    Glyphs["fermataShortHenzeBelow"] = "\uE4CD";
+    // U+E4C8  Very long fermata above
+    Glyphs["fermataVeryLongAbove"] = "\uE4C8";
+    // U+E4C9  Very long fermata below
+    Glyphs["fermataVeryLongBelow"] = "\uE4C9";
+    // U+E4C2  Very short fermata above
+    Glyphs["fermataVeryShortAbove"] = "\uE4C2";
+    // U+E4C3  Very short fermata below
+    Glyphs["fermataVeryShortBelow"] = "\uE4C3";
+    // U+EA50  Figured bass 0
+    Glyphs["figbass0"] = "\uEA50";
+    // U+EA51  Figured bass 1
+    Glyphs["figbass1"] = "\uEA51";
+    // U+EA52  Figured bass 2
+    Glyphs["figbass2"] = "\uEA52";
+    // U+EA53  Figured bass 2 raised by half-step
+    Glyphs["figbass2Raised"] = "\uEA53";
+    // U+EA54  Figured bass 3
+    Glyphs["figbass3"] = "\uEA54";
+    // U+EA55  Figured bass 4
+    Glyphs["figbass4"] = "\uEA55";
+    // U+EA56  Figured bass 4 raised by half-step
+    Glyphs["figbass4Raised"] = "\uEA56";
+    // U+EA57  Figured bass 5
+    Glyphs["figbass5"] = "\uEA57";
+    // U+EA58  Figured bass 5 raised by half-step
+    Glyphs["figbass5Raised1"] = "\uEA58";
+    // U+EA59  Figured bass 5 raised by half-step 2
+    Glyphs["figbass5Raised2"] = "\uEA59";
+    // U+EA5A  Figured bass diminished 5
+    Glyphs["figbass5Raised3"] = "\uEA5A";
+    // U+EA5B  Figured bass 6
+    Glyphs["figbass6"] = "\uEA5B";
+    // U+EA5C  Figured bass 6 raised by half-step
+    Glyphs["figbass6Raised"] = "\uEA5C";
+    // U+EA6F  Figured bass 6 raised by half-step 2
+    Glyphs["figbass6Raised2"] = "\uEA6F";
+    // U+EA5D  Figured bass 7
+    Glyphs["figbass7"] = "\uEA5D";
+    // U+ECC0  Figured bass 7 diminished
+    Glyphs["figbass7Diminished"] = "\uECC0";
+    // U+EA5E  Figured bass 7 raised by half-step
+    Glyphs["figbass7Raised1"] = "\uEA5E";
+    // U+EA5F  Figured bass 7 lowered by a half-step
+    Glyphs["figbass7Raised2"] = "\uEA5F";
+    // U+EA60  Figured bass 8
+    Glyphs["figbass8"] = "\uEA60";
+    // U+EA61  Figured bass 9
+    Glyphs["figbass9"] = "\uEA61";
+    // U+EA62  Figured bass 9 raised by half-step
+    Glyphs["figbass9Raised"] = "\uEA62";
+    // U+EA68  Figured bass [
+    Glyphs["figbassBracketLeft"] = "\uEA68";
+    // U+EA69  Figured bass ]
+    Glyphs["figbassBracketRight"] = "\uEA69";
+    // U+EA6E  Combining lower
+    Glyphs["figbassCombiningLowering"] = "\uEA6E";
+    // U+EA6D  Combining raise
+    Glyphs["figbassCombiningRaising"] = "\uEA6D";
+    // U+EA63  Figured bass double flat
+    Glyphs["figbassDoubleFlat"] = "\uEA63";
+    // U+EA67  Figured bass double sharp
+    Glyphs["figbassDoubleSharp"] = "\uEA67";
+    // U+EA64  Figured bass flat
+    Glyphs["figbassFlat"] = "\uEA64";
+    // U+EA65  Figured bass natural
+    Glyphs["figbassNatural"] = "\uEA65";
+    // U+EA6A  Figured bass (
+    Glyphs["figbassParensLeft"] = "\uEA6A";
+    // U+EA6B  Figured bass )
+    Glyphs["figbassParensRight"] = "\uEA6B";
+    // U+EA6C  Figured bass +
+    Glyphs["figbassPlus"] = "\uEA6C";
+    // U+EA66  Figured bass sharp
+    Glyphs["figbassSharp"] = "\uEA66";
+    // U+ECC1  Figured bass triple flat
+    Glyphs["figbassTripleFlat"] = "\uECC1";
+    // U+ECC2  Figured bass triple sharp
+    Glyphs["figbassTripleSharp"] = "\uECC2";
+    // U+ED10  Fingering 0 (open string)
+    Glyphs["fingering0"] = "\uED10";
+    // U+ED80  Fingering 0 italic (open string)
+    Glyphs["fingering0Italic"] = "\uED80";
+    // U+ED11  Fingering 1 (thumb)
+    Glyphs["fingering1"] = "\uED11";
+    // U+ED81  Fingering 1 italic (thumb)
+    Glyphs["fingering1Italic"] = "\uED81";
+    // U+ED12  Fingering 2 (index finger)
+    Glyphs["fingering2"] = "\uED12";
+    // U+ED82  Fingering 2 italic (index finger)
+    Glyphs["fingering2Italic"] = "\uED82";
+    // U+ED13  Fingering 3 (middle finger)
+    Glyphs["fingering3"] = "\uED13";
+    // U+ED83  Fingering 3 italic (middle finger)
+    Glyphs["fingering3Italic"] = "\uED83";
+    // U+ED14  Fingering 4 (ring finger)
+    Glyphs["fingering4"] = "\uED14";
+    // U+ED84  Fingering 4 italic (ring finger)
+    Glyphs["fingering4Italic"] = "\uED84";
+    // U+ED15  Fingering 5 (little finger)
+    Glyphs["fingering5"] = "\uED15";
+    // U+ED85  Fingering 5 italic (little finger)
+    Glyphs["fingering5Italic"] = "\uED85";
+    // U+ED24  Fingering 6
+    Glyphs["fingering6"] = "\uED24";
+    // U+ED86  Fingering 6 italic
+    Glyphs["fingering6Italic"] = "\uED86";
+    // U+ED25  Fingering 7
+    Glyphs["fingering7"] = "\uED25";
+    // U+ED87  Fingering 7 italic
+    Glyphs["fingering7Italic"] = "\uED87";
+    // U+ED26  Fingering 8
+    Glyphs["fingering8"] = "\uED26";
+    // U+ED88  Fingering 8 italic
+    Glyphs["fingering8Italic"] = "\uED88";
+    // U+ED27  Fingering 9
+    Glyphs["fingering9"] = "\uED27";
+    // U+ED89  Fingering 9 italic
+    Glyphs["fingering9Italic"] = "\uED89";
+    // U+ED1B  Fingering a (anular; right-hand ring finger for guitar)
+    Glyphs["fingeringALower"] = "\uED1B";
+    // U+ED1C  Fingering c (right-hand little finger for guitar)
+    Glyphs["fingeringCLower"] = "\uED1C";
+    // U+ED1E  Fingering e (right-hand little finger for guitar)
+    Glyphs["fingeringELower"] = "\uED1E";
+    // U+ED19  Fingering i (indicio; right-hand index finger for guitar)
+    Glyphs["fingeringILower"] = "\uED19";
+    // U+ED2A  Fingering left bracket
+    Glyphs["fingeringLeftBracket"] = "\uED2A";
+    // U+ED8C  Fingering left bracket italic
+    Glyphs["fingeringLeftBracketItalic"] = "\uED8C";
+    // U+ED28  Fingering left parenthesis
+    Glyphs["fingeringLeftParenthesis"] = "\uED28";
+    // U+ED8A  Fingering left parenthesis italic
+    Glyphs["fingeringLeftParenthesisItalic"] = "\uED8A";
+    // U+ED1A  Fingering m (medio; right-hand middle finger for guitar)
+    Glyphs["fingeringMLower"] = "\uED1A";
+    // U+ED23  Multiple notes played by thumb or single finger
+    Glyphs["fingeringMultipleNotes"] = "\uED23";
+    // U+ED1F  Fingering o (right-hand little finger for guitar)
+    Glyphs["fingeringOLower"] = "\uED1F";
+    // U+ED17  Fingering p (pulgar; right-hand thumb for guitar)
+    Glyphs["fingeringPLower"] = "\uED17";
+    // U+ED8E  Fingering q (right-hand little finger for guitar)
+    Glyphs["fingeringQLower"] = "\uED8E";
+    // U+ED2B  Fingering right bracket
+    Glyphs["fingeringRightBracket"] = "\uED2B";
+    // U+ED8D  Fingering right bracket italic
+    Glyphs["fingeringRightBracketItalic"] = "\uED8D";
+    // U+ED29  Fingering right parenthesis
+    Glyphs["fingeringRightParenthesis"] = "\uED29";
+    // U+ED8B  Fingering right parenthesis italic
+    Glyphs["fingeringRightParenthesisItalic"] = "\uED8B";
+    // U+ED8F  Fingering s (right-hand little finger for guitar)
+    Glyphs["fingeringSLower"] = "\uED8F";
+    // U+ED2C  Fingering middle dot separator
+    Glyphs["fingeringSeparatorMiddleDot"] = "\uED2C";
+    // U+ED2D  Fingering white middle dot separator
+    Glyphs["fingeringSeparatorMiddleDotWhite"] = "\uED2D";
+    // U+ED2E  Fingering forward slash separator
+    Glyphs["fingeringSeparatorSlash"] = "\uED2E";
+    // U+ED20  Finger substitution above
+    Glyphs["fingeringSubstitutionAbove"] = "\uED20";
+    // U+ED21  Finger substitution below
+    Glyphs["fingeringSubstitutionBelow"] = "\uED21";
+    // U+ED22  Finger substitution dash
+    Glyphs["fingeringSubstitutionDash"] = "\uED22";
+    // U+ED18  Fingering t (right-hand thumb for guitar)
+    Glyphs["fingeringTLower"] = "\uED18";
+    // U+ED16  Fingering T (left-hand thumb for guitar)
+    Glyphs["fingeringTUpper"] = "\uED16";
+    // U+ED1D  Fingering x (right-hand little finger for guitar)
+    Glyphs["fingeringXLower"] = "\uED1D";
+    // U+E24F  Combining flag 8 (1024th) below
+    Glyphs["flag1024thDown"] = "\uE24F";
+    // U+E24E  Combining flag 8 (1024th) above
+    Glyphs["flag1024thUp"] = "\uE24E";
+    // U+E249  Combining flag 5 (128th) below
+    Glyphs["flag128thDown"] = "\uE249";
+    // U+E248  Combining flag 5 (128th) above
+    Glyphs["flag128thUp"] = "\uE248";
+    // U+1D172  Combining flag 5 (128th) above
+    Glyphs["flag128thUpAlternate"] = "\uD834\uDD72";
+    // U+E243  Combining flag 2 (16th) below
+    Glyphs["flag16thDown"] = "\uE243";
+    // U+E242  Combining flag 2 (16th) above
+    Glyphs["flag16thUp"] = "\uE242";
+    // U+1D16F  Combining flag 2 (16th) above
+    Glyphs["flag16thUpAlternate"] = "\uD834\uDD6F";
+    // U+E24B  Combining flag 6 (256th) below
+    Glyphs["flag256thDown"] = "\uE24B";
+    // U+E24A  Combining flag 6 (256th) above
+    Glyphs["flag256thUp"] = "\uE24A";
+    // U+E245  Combining flag 3 (32nd) below
+    Glyphs["flag32ndDown"] = "\uE245";
+    // U+E244  Combining flag 3 (32nd) above
+    Glyphs["flag32ndUp"] = "\uE244";
+    // U+1D170  Combining flag 3 (32nd) above
+    Glyphs["flag32ndUpAlternate"] = "\uD834\uDD70";
+    // U+E24D  Combining flag 7 (512th) below
+    Glyphs["flag512thDown"] = "\uE24D";
+    // U+E24C  Combining flag 7 (512th) above
+    Glyphs["flag512thUp"] = "\uE24C";
+    // U+E247  Combining flag 4 (64th) below
+    Glyphs["flag64thDown"] = "\uE247";
+    // U+E246  Combining flag 4 (64th) above
+    Glyphs["flag64thUp"] = "\uE246";
+    // U+1D171  Combining flag 4 (64th) above
+    Glyphs["flag64thUpAlternate"] = "\uD834\uDD71";
+    // U+E241  Combining flag 1 (8th) below
+    Glyphs["flag8thDown"] = "\uE241";
+    // U+E240  Combining flag 1 (8th) above
+    Glyphs["flag8thUp"] = "\uE240";
+    // U+1D16E  Combining flag 1 (8th) above
+    Glyphs["flag8thUpAlternate"] = "\uD834\uDD6E";
+    // U+E251  Internal combining flag below
+    Glyphs["flagInternalDown"] = "\uE251";
+    // U+E250  Internal combining flag above
+    Glyphs["flagInternalUp"] = "\uE250";
+    // U+E850  3-string fretboard
+    Glyphs["fretboard3String"] = "\uE850";
+    // U+E851  3-string fretboard at nut
+    Glyphs["fretboard3StringNut"] = "\uE851";
+    // U+E852  4-string fretboard
+    Glyphs["fretboard4String"] = "\uE852";
+    // U+1D11D  4-string fretboard
+    Glyphs["fretboard4StringAlternate"] = "\uD834\uDD1D";
+    // U+E853  4-string fretboard at nut
+    Glyphs["fretboard4StringNut"] = "\uE853";
+    // U+E854  5-string fretboard
+    Glyphs["fretboard5String"] = "\uE854";
+    // U+E855  5-string fretboard at nut
+    Glyphs["fretboard5StringNut"] = "\uE855";
+    // U+E856  6-string fretboard
+    Glyphs["fretboard6String"] = "\uE856";
+    // U+1D11C  6-string fretboard
+    Glyphs["fretboard6StringAlternate"] = "\uD834\uDD1C";
+    // U+E857  6-string fretboard at nut
+    Glyphs["fretboard6StringNut"] = "\uE857";
+    // U+E858  Fingered fret (filled circle)
+    Glyphs["fretboardFilledCircle"] = "\uE858";
+    // U+E85A  Open string (O)
+    Glyphs["fretboardO"] = "\uE85A";
+    // U+E859  String not played (X)
+    Glyphs["fretboardX"] = "\uE859";
+    // U+EA93  Function theory angle bracket left
+    Glyphs["functionAngleLeft"] = "\uEA93";
+    // U+EA94  Function theory angle bracket right
+    Glyphs["functionAngleRight"] = "\uEA94";
+    // U+EA8F  Function theory bracket left
+    Glyphs["functionBracketLeft"] = "\uEA8F";
+    // U+EA90  Function theory bracket right
+    Glyphs["functionBracketRight"] = "\uEA90";
+    // U+EA81  Function theory dominant of dominant
+    Glyphs["functionDD"] = "\uEA81";
+    // U+EA80  Function theory minor dominant
+    Glyphs["functionDLower"] = "\uEA80";
+    // U+EA7F  Function theory major dominant
+    Glyphs["functionDUpper"] = "\uEA7F";
+    // U+EA78  Function theory 8
+    Glyphs["functionEight"] = "\uEA78";
+    // U+EA99  Function theory F
+    Glyphs["functionFUpper"] = "\uEA99";
+    // U+EA75  Function theory 5
+    Glyphs["functionFive"] = "\uEA75";
+    // U+EA74  Function theory 4
+    Glyphs["functionFour"] = "\uEA74";
+    // U+EA84  Function theory g
+    Glyphs["functionGLower"] = "\uEA84";
+    // U+EA83  Function theory G
+    Glyphs["functionGUpper"] = "\uEA83";
+    // U+EA7C  Function theory greater than
+    Glyphs["functionGreaterThan"] = "\uEA7C";
+    // U+EA9B  Function theory i
+    Glyphs["functionILower"] = "\uEA9B";
+    // U+EA9A  Function theory I
+    Glyphs["functionIUpper"] = "\uEA9A";
+    // U+EA9D  Function theory k
+    Glyphs["functionKLower"] = "\uEA9D";
+    // U+EA9C  Function theory K
+    Glyphs["functionKUpper"] = "\uEA9C";
+    // U+EA9F  Function theory l
+    Glyphs["functionLLower"] = "\uEA9F";
+    // U+EA9E  Function theory L
+    Glyphs["functionLUpper"] = "\uEA9E";
+    // U+EA7A  Function theory less than
+    Glyphs["functionLessThan"] = "\uEA7A";
+    // U+ED01  Function theory m
+    Glyphs["functionMLower"] = "\uED01";
+    // U+ED00  Function theory M
+    Glyphs["functionMUpper"] = "\uED00";
+    // U+EA7B  Function theory minus
+    Glyphs["functionMinus"] = "\uEA7B";
+    // U+EA86  Function theory n
+    Glyphs["functionNLower"] = "\uEA86";
+    // U+EA85  Function theory N
+    Glyphs["functionNUpper"] = "\uEA85";
+    // U+ED02  Function theory superscript N
+    Glyphs["functionNUpperSuperscript"] = "\uED02";
+    // U+EA79  Function theory 9
+    Glyphs["functionNine"] = "\uEA79";
+    // U+EA71  Function theory 1
+    Glyphs["functionOne"] = "\uEA71";
+    // U+EA88  Function theory p
+    Glyphs["functionPLower"] = "\uEA88";
+    // U+EA87  Function theory P
+    Glyphs["functionPUpper"] = "\uEA87";
+    // U+EA91  Function theory parenthesis left
+    Glyphs["functionParensLeft"] = "\uEA91";
+    // U+EA92  Function theory parenthesis right
+    Glyphs["functionParensRight"] = "\uEA92";
+    // U+EA98  Function theory prefix plus
+    Glyphs["functionPlus"] = "\uEA98";
+    // U+ED03  Function theory r
+    Glyphs["functionRLower"] = "\uED03";
+    // U+EA95  Function theory repetition 1
+    Glyphs["functionRepetition1"] = "\uEA95";
+    // U+EA96  Function theory repetition 2
+    Glyphs["functionRepetition2"] = "\uEA96";
+    // U+EA97  Function theory prefix ring
+    Glyphs["functionRing"] = "\uEA97";
+    // U+EA8A  Function theory minor subdominant
+    Glyphs["functionSLower"] = "\uEA8A";
+    // U+EA7E  Function theory minor subdominant of subdominant
+    Glyphs["functionSSLower"] = "\uEA7E";
+    // U+EA7D  Function theory major subdominant of subdominant
+    Glyphs["functionSSUpper"] = "\uEA7D";
+    // U+EA89  Function theory major subdominant
+    Glyphs["functionSUpper"] = "\uEA89";
+    // U+EA77  Function theory 7
+    Glyphs["functionSeven"] = "\uEA77";
+    // U+EA76  Function theory 6
+    Glyphs["functionSix"] = "\uEA76";
+    // U+EA82  Function theory double dominant seventh
+    Glyphs["functionSlashedDD"] = "\uEA82";
+    // U+EA8C  Function theory minor tonic
+    Glyphs["functionTLower"] = "\uEA8C";
+    // U+EA8B  Function theory tonic
+    Glyphs["functionTUpper"] = "\uEA8B";
+    // U+EA73  Function theory 3
+    Glyphs["functionThree"] = "\uEA73";
+    // U+EA72  Function theory 2
+    Glyphs["functionTwo"] = "\uEA72";
+    // U+EA8E  Function theory v
+    Glyphs["functionVLower"] = "\uEA8E";
+    // U+EA8D  Function theory V
+    Glyphs["functionVUpper"] = "\uEA8D";
+    // U+EA70  Function theory 0
+    Glyphs["functionZero"] = "\uEA70";
+    // U+E050  G clef
+    Glyphs["gClef"] = "\uE050";
+    // U+1D11E  G clef
+    Glyphs["gClefAlternate"] = "\uD834\uDD1E";
+    // U+E054  G clef quindicesima alta
+    Glyphs["gClef15ma"] = "\uE054";
+    // U+E051  G clef quindicesima bassa
+    Glyphs["gClef15mb"] = "\uE051";
+    // U+E053  G clef ottava alta
+    Glyphs["gClef8va"] = "\uE053";
+    // U+1D11F  G clef ottava alta
+    Glyphs["gClef8vaAlternate"] = "\uD834\uDD1F";
+    // U+E052  G clef ottava bassa
+    Glyphs["gClef8vb"] = "\uE052";
+    // U+1D120  G clef ottava bassa
+    Glyphs["gClef8vbAlternate"] = "\uD834\uDD20";
+    // U+E056  G clef ottava bassa with C clef
+    Glyphs["gClef8vbCClef"] = "\uE056";
+    // U+E055  G clef ottava bassa (old style)
+    Glyphs["gClef8vbOld"] = "\uE055";
+    // U+E057  G clef, optionally ottava bassa
+    Glyphs["gClef8vbParens"] = "\uE057";
+    // U+E05B  G clef, arrow down
+    Glyphs["gClefArrowDown"] = "\uE05B";
+    // U+E05A  G clef, arrow up
+    Glyphs["gClefArrowUp"] = "\uE05A";
+    // U+E07A  G clef change
+    Glyphs["gClefChange"] = "\uE07A";
+    // U+E059  Combining G clef, number above
+    Glyphs["gClefLigatedNumberAbove"] = "\uE059";
+    // U+E058  Combining G clef, number below
+    Glyphs["gClefLigatedNumberBelow"] = "\uE058";
+    // U+E073  Reversed G clef
+    Glyphs["gClefReversed"] = "\uE073";
+    // U+E074  Turned G clef
+    Glyphs["gClefTurned"] = "\uE074";
+    // U+E586  Glissando down
+    Glyphs["glissandoDown"] = "\uE586";
+    // U+1D1B2  Glissando down
+    Glyphs["glissandoDownAlternate"] = "\uD834\uDDB2";
+    // U+E585  Glissando up
+    Glyphs["glissandoUp"] = "\uE585";
+    // U+1D1B1  Glissando up
+    Glyphs["glissandoUpAlternate"] = "\uD834\uDDB1";
+    // U+E561  Slashed grace note stem down
+    Glyphs["graceNoteAcciaccaturaStemDown"] = "\uE561";
+    // U+E560  Slashed grace note stem up
+    Glyphs["graceNoteAcciaccaturaStemUp"] = "\uE560";
+    // U+1D194  Slashed grace note stem up
+    Glyphs["graceNoteAcciaccaturaStemUpAlternate"] = "\uD834\uDD94";
+    // U+E563  Grace note stem down
+    Glyphs["graceNoteAppoggiaturaStemDown"] = "\uE563";
+    // U+E562  Grace note stem up
+    Glyphs["graceNoteAppoggiaturaStemUp"] = "\uE562";
+    // U+1D195  Grace note stem up
+    Glyphs["graceNoteAppoggiaturaStemUpAlternate"] = "\uD834\uDD95";
+    // U+E565  Slash for stem down grace note
+    Glyphs["graceNoteSlashStemDown"] = "\uE565";
+    // U+E564  Slash for stem up grace note
+    Glyphs["graceNoteSlashStemUp"] = "\uE564";
+    // U+E848  Full barré
+    Glyphs["guitarBarreFull"] = "\uE848";
+    // U+E849  Half barré
+    Glyphs["guitarBarreHalf"] = "\uE849";
+    // U+E83F  Closed wah/volume pedal
+    Glyphs["guitarClosePedal"] = "\uE83F";
+    // U+E843  Fade in
+    Glyphs["guitarFadeIn"] = "\uE843";
+    // U+E844  Fade out
+    Glyphs["guitarFadeOut"] = "\uE844";
+    // U+E842  Golpe (tapping the pick guard)
+    Glyphs["guitarGolpe"] = "\uE842";
+    // U+E83E  Half-open wah/volume pedal
+    Glyphs["guitarHalfOpenPedal"] = "\uE83E";
+    // U+E840  Left-hand tapping
+    Glyphs["guitarLeftHandTapping"] = "\uE840";
+    // U+E83D  Open wah/volume pedal
+    Glyphs["guitarOpenPedal"] = "\uE83D";
+    // U+E841  Right-hand tapping
+    Glyphs["guitarRightHandTapping"] = "\uE841";
+    // U+E832  Guitar shake
+    Glyphs["guitarShake"] = "\uE832";
+    // U+E833  String number 0
+    Glyphs["guitarString0"] = "\uE833";
+    // U+E834  String number 1
+    Glyphs["guitarString1"] = "\uE834";
+    // U+E84A  String number 10
+    Glyphs["guitarString10"] = "\uE84A";
+    // U+E84B  String number 11
+    Glyphs["guitarString11"] = "\uE84B";
+    // U+E84C  String number 12
+    Glyphs["guitarString12"] = "\uE84C";
+    // U+E84D  String number 13
+    Glyphs["guitarString13"] = "\uE84D";
+    // U+E835  String number 2
+    Glyphs["guitarString2"] = "\uE835";
+    // U+E836  String number 3
+    Glyphs["guitarString3"] = "\uE836";
+    // U+E837  String number 4
+    Glyphs["guitarString4"] = "\uE837";
+    // U+E838  String number 5
+    Glyphs["guitarString5"] = "\uE838";
+    // U+E839  String number 6
+    Glyphs["guitarString6"] = "\uE839";
+    // U+E83A  String number 7
+    Glyphs["guitarString7"] = "\uE83A";
+    // U+E83B  String number 8
+    Glyphs["guitarString8"] = "\uE83B";
+    // U+E83C  String number 9
+    Glyphs["guitarString9"] = "\uE83C";
+    // U+E847  Strum direction down
+    Glyphs["guitarStrumDown"] = "\uE847";
+    // U+E846  Strum direction up
+    Glyphs["guitarStrumUp"] = "\uE846";
+    // U+E831  Guitar vibrato bar dip
+    Glyphs["guitarVibratoBarDip"] = "\uE831";
+    // U+E830  Guitar vibrato bar scoop
+    Glyphs["guitarVibratoBarScoop"] = "\uE830";
+    // U+EAB2  Vibrato wiggle segment
+    Glyphs["guitarVibratoStroke"] = "\uEAB2";
+    // U+E845  Volume swell
+    Glyphs["guitarVolumeSwell"] = "\uE845";
+    // U+EAB3  Wide vibrato wiggle segment
+    Glyphs["guitarWideVibratoStroke"] = "\uEAB3";
+    // U+E81F  Belltree
+    Glyphs["handbellsBelltree"] = "\uE81F";
+    // U+E81E  Damp 3
+    Glyphs["handbellsDamp3"] = "\uE81E";
+    // U+E81B  Echo
+    Glyphs["handbellsEcho1"] = "\uE81B";
+    // U+E81C  Echo 2
+    Glyphs["handbellsEcho2"] = "\uE81C";
+    // U+E81D  Gyro
+    Glyphs["handbellsGyro"] = "\uE81D";
+    // U+E812  Hand martellato
+    Glyphs["handbellsHandMartellato"] = "\uE812";
+    // U+E815  Mallet, bell on table
+    Glyphs["handbellsMalletBellOnTable"] = "\uE815";
+    // U+E814  Mallet, bell suspended
+    Glyphs["handbellsMalletBellSuspended"] = "\uE814";
+    // U+E816  Mallet lift
+    Glyphs["handbellsMalletLft"] = "\uE816";
+    // U+E810  Martellato
+    Glyphs["handbellsMartellato"] = "\uE810";
+    // U+E811  Martellato lift
+    Glyphs["handbellsMartellatoLift"] = "\uE811";
+    // U+E813  Muted martellato
+    Glyphs["handbellsMutedMartellato"] = "\uE813";
+    // U+E817  Pluck lift
+    Glyphs["handbellsPluckLift"] = "\uE817";
+    // U+E81A  Swing
+    Glyphs["handbellsSwing"] = "\uE81A";
+    // U+E819  Swing down
+    Glyphs["handbellsSwingDown"] = "\uE819";
+    // U+E818  Swing up
+    Glyphs["handbellsSwingUp"] = "\uE818";
+    // U+E821  Table pair of handbells
+    Glyphs["handbellsTablePairBells"] = "\uE821";
+    // U+E820  Table single handbell
+    Glyphs["handbellsTableSingleBell"] = "\uE820";
+    // U+E68F  Metal rod pictogram
+    Glyphs["harpMetalRod"] = "\uE68F";
+    // U+E681  Harp pedal centered (natural)
+    Glyphs["harpPedalCentered"] = "\uE681";
+    // U+E683  Harp pedal divider
+    Glyphs["harpPedalDivider"] = "\uE683";
+    // U+E682  Harp pedal lowered (sharp)
+    Glyphs["harpPedalLowered"] = "\uE682";
+    // U+E680  Harp pedal raised (flat)
+    Glyphs["harpPedalRaised"] = "\uE680";
+    // U+E695  Ascending aeolian chords (Salzedo)
+    Glyphs["harpSalzedoAeolianAscending"] = "\uE695";
+    // U+E696  Descending aeolian chords (Salzedo)
+    Glyphs["harpSalzedoAeolianDescending"] = "\uE696";
+    // U+E69A  Damp above (Salzedo)
+    Glyphs["harpSalzedoDampAbove"] = "\uE69A";
+    // U+E699  Damp below (Salzedo)
+    Glyphs["harpSalzedoDampBelow"] = "\uE699";
+    // U+E698  Damp with both hands (Salzedo)
+    Glyphs["harpSalzedoDampBothHands"] = "\uE698";
+    // U+E697  Damp only low strings (Salzedo)
+    Glyphs["harpSalzedoDampLowStrings"] = "\uE697";
+    // U+E68D  Fluidic sounds, left hand (Salzedo)
+    Glyphs["harpSalzedoFluidicSoundsLeft"] = "\uE68D";
+    // U+E68E  Fluidic sounds, right hand (Salzedo)
+    Glyphs["harpSalzedoFluidicSoundsRight"] = "\uE68E";
+    // U+E69C  Isolated sounds (Salzedo)
+    Glyphs["harpSalzedoIsolatedSounds"] = "\uE69C";
+    // U+E688  Metallic sounds (Salzedo)
+    Glyphs["harpSalzedoMetallicSounds"] = "\uE688";
+    // U+E69B  Metallic sounds, one string (Salzedo)
+    Glyphs["harpSalzedoMetallicSoundsOneString"] = "\uE69B";
+    // U+E68C  Muffle totally (Salzedo)
+    Glyphs["harpSalzedoMuffleTotally"] = "\uE68C";
+    // U+E685  Oboic flux (Salzedo)
+    Glyphs["harpSalzedoOboicFlux"] = "\uE685";
+    // U+E68A  Play at upper end of strings (Salzedo)
+    Glyphs["harpSalzedoPlayUpperEnd"] = "\uE68A";
+    // U+E684  Slide with suppleness (Salzedo)
+    Glyphs["harpSalzedoSlideWithSuppleness"] = "\uE684";
+    // U+E69D  Snare drum effect (Salzedo)
+    Glyphs["harpSalzedoSnareDrum"] = "\uE69D";
+    // U+E689  Tam-tam sounds (Salzedo)
+    Glyphs["harpSalzedoTamTamSounds"] = "\uE689";
+    // U+E686  Thunder effect (Salzedo)
+    Glyphs["harpSalzedoThunderEffect"] = "\uE686";
+    // U+E68B  Timpanic sounds (Salzedo)
+    Glyphs["harpSalzedoTimpanicSounds"] = "\uE68B";
+    // U+E687  Whistling sounds (Salzedo)
+    Glyphs["harpSalzedoWhistlingSounds"] = "\uE687";
+    // U+E694  Combining string noise for stem
+    Glyphs["harpStringNoiseStem"] = "\uE694";
+    // U+E690  Tuning key pictogram
+    Glyphs["harpTuningKey"] = "\uE690";
+    // U+E693  Retune strings for glissando
+    Glyphs["harpTuningKeyGlissando"] = "\uE693";
+    // U+E691  Use handle of tuning key pictogram
+    Glyphs["harpTuningKeyHandle"] = "\uE691";
+    // U+E692  Use shank of tuning key pictogram
+    Glyphs["harpTuningKeyShank"] = "\uE692";
+    // U+ED70  Indian drum clef
+    Glyphs["indianDrumClef"] = "\uED70";
+    // U+EDE2  Back-chug
+    Glyphs["kahnBackChug"] = "\uEDE2";
+    // U+EDD8  Back-flap
+    Glyphs["kahnBackFlap"] = "\uEDD8";
+    // U+EDE1  Back-riff
+    Glyphs["kahnBackRiff"] = "\uEDE1";
+    // U+EDDA  Back-rip
+    Glyphs["kahnBackRip"] = "\uEDDA";
+    // U+EDC6  Ball-change
+    Glyphs["kahnBallChange"] = "\uEDC6";
+    // U+EDCD  Ball-dig
+    Glyphs["kahnBallDig"] = "\uEDCD";
+    // U+EDA7  Brush-backward
+    Glyphs["kahnBrushBackward"] = "\uEDA7";
+    // U+EDA6  Brush-forward
+    Glyphs["kahnBrushForward"] = "\uEDA6";
+    // U+EDDD  Chug
+    Glyphs["kahnChug"] = "\uEDDD";
+    // U+EDB8  Clap
+    Glyphs["kahnClap"] = "\uEDB8";
+    // U+EDBA  Double-snap
+    Glyphs["kahnDoubleSnap"] = "\uEDBA";
+    // U+EDEB  Double-wing
+    Glyphs["kahnDoubleWing"] = "\uEDEB";
+    // U+EDB2  Draw-step
+    Glyphs["kahnDrawStep"] = "\uEDB2";
+    // U+EDB3  Draw-tap
+    Glyphs["kahnDrawTap"] = "\uEDB3";
+    // U+EDCF  Flam
+    Glyphs["kahnFlam"] = "\uEDCF";
+    // U+EDD5  Flap
+    Glyphs["kahnFlap"] = "\uEDD5";
+    // U+EDD7  Flap-step
+    Glyphs["kahnFlapStep"] = "\uEDD7";
+    // U+EDA9  Flat
+    Glyphs["kahnFlat"] = "\uEDA9";
+    // U+EDB0  Flea-hop
+    Glyphs["kahnFleaHop"] = "\uEDB0";
+    // U+EDB1  Flea-tap
+    Glyphs["kahnFleaTap"] = "\uEDB1";
+    // U+EDA8  Grace-tap
+    Glyphs["kahnGraceTap"] = "\uEDA8";
+    // U+EDD1  Grace-tap-change
+    Glyphs["kahnGraceTapChange"] = "\uEDD1";
+    // U+EDD0  Grace-tap-hop
+    Glyphs["kahnGraceTapHop"] = "\uEDD0";
+    // U+EDD3  Grace-tap-stamp
+    Glyphs["kahnGraceTapStamp"] = "\uEDD3";
+    // U+EDAA  Heel
+    Glyphs["kahnHeel"] = "\uEDAA";
+    // U+EDC9  Heel-change
+    Glyphs["kahnHeelChange"] = "\uEDC9";
+    // U+EDBB  Heel-click
+    Glyphs["kahnHeelClick"] = "\uEDBB";
+    // U+EDB6  Heel-drop
+    Glyphs["kahnHeelDrop"] = "\uEDB6";
+    // U+EDC4  Heel-step
+    Glyphs["kahnHeelStep"] = "\uEDC4";
+    // U+EDCB  Heel-tap
+    Glyphs["kahnHeelTap"] = "\uEDCB";
+    // U+EDA2  Hop
+    Glyphs["kahnHop"] = "\uEDA2";
+    // U+EDA5  Jump-apart
+    Glyphs["kahnJumpApart"] = "\uEDA5";
+    // U+EDA4  Jump-together
+    Glyphs["kahnJumpTogether"] = "\uEDA4";
+    // U+EDAD  Knee-inward
+    Glyphs["kahnKneeInward"] = "\uEDAD";
+    // U+EDAC  Knee-outward
+    Glyphs["kahnKneeOutward"] = "\uEDAC";
+    // U+EDA3  Leap
+    Glyphs["kahnLeap"] = "\uEDA3";
+    // U+EDD2  Leap-flat-foot
+    Glyphs["kahnLeapFlatFoot"] = "\uEDD2";
+    // U+EDD4  Leap-heel-click
+    Glyphs["kahnLeapHeelClick"] = "\uEDD4";
+    // U+EDBF  Left-catch
+    Glyphs["kahnLeftCatch"] = "\uEDBF";
+    // U+EDBD  Left-cross
+    Glyphs["kahnLeftCross"] = "\uEDBD";
+    // U+EDEE  Left-foot
+    Glyphs["kahnLeftFoot"] = "\uEDEE";
+    // U+EDC1  Left-toe-strike
+    Glyphs["kahnLeftToeStrike"] = "\uEDC1";
+    // U+EDF0  Left-turn
+    Glyphs["kahnLeftTurn"] = "\uEDF0";
+    // U+EDEC  Over-the-top
+    Glyphs["kahnOverTheTop"] = "\uEDEC";
+    // U+EDED  Over-the-top-tap
+    Glyphs["kahnOverTheTopTap"] = "\uEDED";
+    // U+EDE3  Pull
+    Glyphs["kahnPull"] = "\uEDE3";
+    // U+EDDE  Push
+    Glyphs["kahnPush"] = "\uEDDE";
+    // U+EDE0  Riff
+    Glyphs["kahnRiff"] = "\uEDE0";
+    // U+EDE7  Riffle
+    Glyphs["kahnRiffle"] = "\uEDE7";
+    // U+EDC0  Right-catch
+    Glyphs["kahnRightCatch"] = "\uEDC0";
+    // U+EDBE  Right-cross
+    Glyphs["kahnRightCross"] = "\uEDBE";
+    // U+EDEF  Right-foot
+    Glyphs["kahnRightFoot"] = "\uEDEF";
+    // U+EDC2  Right-toe-strike
+    Glyphs["kahnRightToeStrike"] = "\uEDC2";
+    // U+EDF1  Right-turn
+    Glyphs["kahnRightTurn"] = "\uEDF1";
+    // U+EDD6  Rip
+    Glyphs["kahnRip"] = "\uEDD6";
+    // U+EDE8  Ripple
+    Glyphs["kahnRipple"] = "\uEDE8";
+    // U+EDAE  Scrape
+    Glyphs["kahnScrape"] = "\uEDAE";
+    // U+EDDC  Scuff
+    Glyphs["kahnScuff"] = "\uEDDC";
+    // U+EDE6  Scuffle
+    Glyphs["kahnScuffle"] = "\uEDE6";
+    // U+EDE5  Shuffle
+    Glyphs["kahnShuffle"] = "\uEDE5";
+    // U+EDCE  Slam
+    Glyphs["kahnSlam"] = "\uEDCE";
+    // U+EDD9  Slap
+    Glyphs["kahnSlap"] = "\uEDD9";
+    // U+EDB4  Slide-step
+    Glyphs["kahnSlideStep"] = "\uEDB4";
+    // U+EDB5  Slide-tap
+    Glyphs["kahnSlideTap"] = "\uEDB5";
+    // U+EDB9  Snap
+    Glyphs["kahnSnap"] = "\uEDB9";
+    // U+EDC3  Stamp
+    Glyphs["kahnStamp"] = "\uEDC3";
+    // U+EDC8  Stamp-stamp
+    Glyphs["kahnStampStamp"] = "\uEDC8";
+    // U+EDA0  Step
+    Glyphs["kahnStep"] = "\uEDA0";
+    // U+EDC7  Step-stamp
+    Glyphs["kahnStepStamp"] = "\uEDC7";
+    // U+EDCA  Stomp
+    Glyphs["kahnStomp"] = "\uEDCA";
+    // U+EDDB  Stomp-brush
+    Glyphs["kahnStompBrush"] = "\uEDDB";
+    // U+EDA1  Tap
+    Glyphs["kahnTap"] = "\uEDA1";
+    // U+EDAB  Toe
+    Glyphs["kahnToe"] = "\uEDAB";
+    // U+EDBC  Toe-click
+    Glyphs["kahnToeClick"] = "\uEDBC";
+    // U+EDB7  Toe-drop
+    Glyphs["kahnToeDrop"] = "\uEDB7";
+    // U+EDC5  Toe-step
+    Glyphs["kahnToeStep"] = "\uEDC5";
+    // U+EDCC  Toe-tap
+    Glyphs["kahnToeTap"] = "\uEDCC";
+    // U+EDAF  Trench
+    Glyphs["kahnTrench"] = "\uEDAF";
+    // U+EDE9  Wing
+    Glyphs["kahnWing"] = "\uEDE9";
+    // U+EDEA  Wing-change
+    Glyphs["kahnWingChange"] = "\uEDEA";
+    // U+EDE4  Zank
+    Glyphs["kahnZank"] = "\uEDE4";
+    // U+EDDF  Zink
+    Glyphs["kahnZink"] = "\uEDDF";
+    // U+E668  Clavichord bebung, 2 finger movements (above)
+    Glyphs["keyboardBebung2DotsAbove"] = "\uE668";
+    // U+E669  Clavichord bebung, 2 finger movements (below)
+    Glyphs["keyboardBebung2DotsBelow"] = "\uE669";
+    // U+E66A  Clavichord bebung, 3 finger movements (above)
+    Glyphs["keyboardBebung3DotsAbove"] = "\uE66A";
+    // U+E66B  Clavichord bebung, 3 finger movements (below)
+    Glyphs["keyboardBebung3DotsBelow"] = "\uE66B";
+    // U+E66C  Clavichord bebung, 4 finger movements (above)
+    Glyphs["keyboardBebung4DotsAbove"] = "\uE66C";
+    // U+E66D  Clavichord bebung, 4 finger movements (below)
+    Glyphs["keyboardBebung4DotsBelow"] = "\uE66D";
+    // U+E65E  Left pedal pictogram
+    Glyphs["keyboardLeftPedalPictogram"] = "\uE65E";
+    // U+E65F  Middle pedal pictogram
+    Glyphs["keyboardMiddlePedalPictogram"] = "\uE65F";
+    // U+E653  Pedal d
+    Glyphs["keyboardPedalD"] = "\uE653";
+    // U+E654  Pedal dot
+    Glyphs["keyboardPedalDot"] = "\uE654";
+    // U+E652  Pedal e
+    Glyphs["keyboardPedalE"] = "\uE652";
+    // U+E656  Half-pedal mark
+    Glyphs["keyboardPedalHalf"] = "\uE656";
+    // U+1D1B0  Half-pedal mark
+    Glyphs["keyboardPedalHalfAlternate"] = "\uD834\uDDB0";
+    // U+E65B  Half pedal mark 1
+    Glyphs["keyboardPedalHalf2"] = "\uE65B";
+    // U+E65C  Half pedal mark 2
+    Glyphs["keyboardPedalHalf3"] = "\uE65C";
+    // U+E661  Pedal heel 1
+    Glyphs["keyboardPedalHeel1"] = "\uE661";
+    // U+E662  Pedal heel 2
+    Glyphs["keyboardPedalHeel2"] = "\uE662";
+    // U+E663  Pedal heel 3 (Davis)
+    Glyphs["keyboardPedalHeel3"] = "\uE663";
+    // U+E674  Pedal heel to toe
+    Glyphs["keyboardPedalHeelToToe"] = "\uE674";
+    // U+E666  Pedal heel or toe
+    Glyphs["keyboardPedalHeelToe"] = "\uE666";
+    // U+E673  Pedal hook end
+    Glyphs["keyboardPedalHookEnd"] = "\uE673";
+    // U+E672  Pedal hook start
+    Glyphs["keyboardPedalHookStart"] = "\uE672";
+    // U+E658  Pedal hyphen
+    Glyphs["keyboardPedalHyphen"] = "\uE658";
+    // U+E651  Pedal P
+    Glyphs["keyboardPedalP"] = "\uE651";
+    // U+E676  Left parenthesis for pedal marking
+    Glyphs["keyboardPedalParensLeft"] = "\uE676";
+    // U+E677  Right parenthesis for pedal marking
+    Glyphs["keyboardPedalParensRight"] = "\uE677";
+    // U+E650  Pedal mark
+    Glyphs["keyboardPedalPed"] = "\uE650";
+    // U+1D1AE  Pedal mark
+    Glyphs["keyboardPedalPedAlternate"] = "\uD834\uDDAE";
+    // U+E65A  Pedal S
+    Glyphs["keyboardPedalS"] = "\uE65A";
+    // U+E659  Sostenuto pedal mark
+    Glyphs["keyboardPedalSost"] = "\uE659";
+    // U+E664  Pedal toe 1
+    Glyphs["keyboardPedalToe1"] = "\uE664";
+    // U+E665  Pedal toe 2
+    Glyphs["keyboardPedalToe2"] = "\uE665";
+    // U+E675  Pedal toe to heel
+    Glyphs["keyboardPedalToeToHeel"] = "\uE675";
+    // U+E655  Pedal up mark
+    Glyphs["keyboardPedalUp"] = "\uE655";
+    // U+1D1AF  Pedal up mark
+    Glyphs["keyboardPedalUpAlternate"] = "\uD834\uDDAF";
+    // U+E657  Pedal up notch
+    Glyphs["keyboardPedalUpNotch"] = "\uE657";
+    // U+E65D  Pedal up special
+    Glyphs["keyboardPedalUpSpecial"] = "\uE65D";
+    // U+E670  Play with left hand
+    Glyphs["keyboardPlayWithLH"] = "\uE670";
+    // U+E671  Play with left hand (end)
+    Glyphs["keyboardPlayWithLHEnd"] = "\uE671";
+    // U+E66E  Play with right hand
+    Glyphs["keyboardPlayWithRH"] = "\uE66E";
+    // U+E66F  Play with right hand (end)
+    Glyphs["keyboardPlayWithRHEnd"] = "\uE66F";
+    // U+E667  Pluck strings inside piano (Maderna)
+    Glyphs["keyboardPluckInside"] = "\uE667";
+    // U+E660  Right pedal pictogram
+    Glyphs["keyboardRightPedalPictogram"] = "\uE660";
+    // U+EC3E  Kievan flat
+    Glyphs["kievanAccidentalFlat"] = "\uEC3E";
+    // U+1D1E8  Kievan flat
+    Glyphs["kievanAccidentalFlatAlternate"] = "\uD834\uDDE8";
+    // U+EC3D  Kievan sharp
+    Glyphs["kievanAccidentalSharp"] = "\uEC3D";
+    // U+EC3C  Kievan augmentation dot
+    Glyphs["kievanAugmentationDot"] = "\uEC3C";
+    // U+EC30  Kievan C clef (tse-fa-ut)
+    Glyphs["kievanCClef"] = "\uEC30";
+    // U+1D1DE  Kievan C clef (tse-fa-ut)
+    Glyphs["kievanCClefAlternate"] = "\uD834\uDDDE";
+    // U+EC31  Kievan ending symbol
+    Glyphs["kievanEndingSymbol"] = "\uEC31";
+    // U+1D1DF  Kievan ending symbol
+    Glyphs["kievanEndingSymbolAlternate"] = "\uD834\uDDDF";
+    // U+EC3A  Kievan eighth note, stem down
+    Glyphs["kievanNote8thStemDown"] = "\uEC3A";
+    // U+1D1E6  Kievan eighth note, stem down
+    Glyphs["kievanNote8thStemDownAlternate"] = "\uD834\uDDE6";
+    // U+EC39  Kievan eighth note, stem up
+    Glyphs["kievanNote8thStemUp"] = "\uEC39";
+    // U+1D1E7  Kievan eighth note, stem up
+    Glyphs["kievanNote8thStemUpAlternate"] = "\uD834\uDDE7";
+    // U+EC3B  Kievan beam
+    Glyphs["kievanNoteBeam"] = "\uEC3B";
+    // U+EC35  Kievan half note (on staff line)
+    Glyphs["kievanNoteHalfStaffLine"] = "\uEC35";
+    // U+1D1E3  Kievan half note (on staff line)
+    Glyphs["kievanNoteHalfStaffLineAlternate"] = "\uD834\uDDE3";
+    // U+EC36  Kievan half note (in staff space)
+    Glyphs["kievanNoteHalfStaffSpace"] = "\uEC36";
+    // U+EC38  Kievan quarter note, stem down
+    Glyphs["kievanNoteQuarterStemDown"] = "\uEC38";
+    // U+1D1E4  Kievan quarter note, stem down
+    Glyphs["kievanNoteQuarterStemDownAlternate"] = "\uD834\uDDE4";
+    // U+EC37  Kievan quarter note, stem up
+    Glyphs["kievanNoteQuarterStemUp"] = "\uEC37";
+    // U+1D1E5  Kievan quarter note, stem up
+    Glyphs["kievanNoteQuarterStemUpAlternate"] = "\uD834\uDDE5";
+    // U+EC32  Kievan reciting note
+    Glyphs["kievanNoteReciting"] = "\uEC32";
+    // U+1D1E1  Kievan reciting note
+    Glyphs["kievanNoteRecitingAlternate"] = "\uD834\uDDE1";
+    // U+EC33  Kievan whole note
+    Glyphs["kievanNoteWhole"] = "\uEC33";
+    // U+1D1E2  Kievan whole note
+    Glyphs["kievanNoteWholeAlternate"] = "\uD834\uDDE2";
+    // U+EC34  Kievan final whole note
+    Glyphs["kievanNoteWholeFinal"] = "\uEC34";
+    // U+1D1E0  Kievan final whole note
+    Glyphs["kievanNoteWholeFinalAlternate"] = "\uD834\uDDE0";
+    // U+EC40  Do hand sign
+    Glyphs["kodalyHandDo"] = "\uEC40";
+    // U+EC43  Fa hand sign
+    Glyphs["kodalyHandFa"] = "\uEC43";
+    // U+EC45  La hand sign
+    Glyphs["kodalyHandLa"] = "\uEC45";
+    // U+EC42  Mi hand sign
+    Glyphs["kodalyHandMi"] = "\uEC42";
+    // U+EC41  Re hand sign
+    Glyphs["kodalyHandRe"] = "\uEC41";
+    // U+EC44  So hand sign
+    Glyphs["kodalyHandSo"] = "\uEC44";
+    // U+EC46  Ti hand sign
+    Glyphs["kodalyHandTi"] = "\uEC46";
+    // U+E04C  Left repeat sign within bar
+    Glyphs["leftRepeatSmall"] = "\uE04C";
+    // U+E022  Leger line
+    Glyphs["legerLine"] = "\uE022";
+    // U+E024  Leger line (narrow)
+    Glyphs["legerLineNarrow"] = "\uE024";
+    // U+E023  Leger line (wide)
+    Glyphs["legerLineWide"] = "\uE023";
+    // U+EBA4  Lute tablature end repeat barline
+    Glyphs["luteBarlineEndRepeat"] = "\uEBA4";
+    // U+EBA5  Lute tablature final barline
+    Glyphs["luteBarlineFinal"] = "\uEBA5";
+    // U+EBA3  Lute tablature start repeat barline
+    Glyphs["luteBarlineStartRepeat"] = "\uEBA3";
+    // U+EBAB  16th note (semiquaver) duration sign
+    Glyphs["luteDuration16th"] = "\uEBAB";
+    // U+EBAC  32nd note (demisemiquaver) duration sign
+    Glyphs["luteDuration32nd"] = "\uEBAC";
+    // U+EBAA  Eighth note (quaver) duration sign
+    Glyphs["luteDuration8th"] = "\uEBAA";
+    // U+EBA6  Double whole note (breve) duration sign
+    Glyphs["luteDurationDoubleWhole"] = "\uEBA6";
+    // U+EBA8  Half note (minim) duration sign
+    Glyphs["luteDurationHalf"] = "\uEBA8";
+    // U+EBA9  Quarter note (crotchet) duration sign
+    Glyphs["luteDurationQuarter"] = "\uEBA9";
+    // U+EBA7  Whole note (semibreve) duration sign
+    Glyphs["luteDurationWhole"] = "\uEBA7";
+    // U+EBAE  Right-hand fingering, first finger
+    Glyphs["luteFingeringRHFirst"] = "\uEBAE";
+    // U+EBAF  Right-hand fingering, second finger
+    Glyphs["luteFingeringRHSecond"] = "\uEBAF";
+    // U+EBB0  Right-hand fingering, third finger
+    Glyphs["luteFingeringRHThird"] = "\uEBB0";
+    // U+EBAD  Right-hand fingering, thumb
+    Glyphs["luteFingeringRHThumb"] = "\uEBAD";
+    // U+EBD0  10th course (diapason)
+    Glyphs["luteFrench10thCourse"] = "\uEBD0";
+    // U+EBCD  Seventh course (diapason)
+    Glyphs["luteFrench7thCourse"] = "\uEBCD";
+    // U+EBCE  Eighth course (diapason)
+    Glyphs["luteFrench8thCourse"] = "\uEBCE";
+    // U+EBCF  Ninth course (diapason)
+    Glyphs["luteFrench9thCourse"] = "\uEBCF";
+    // U+EBD5  Appoggiatura from above
+    Glyphs["luteFrenchAppoggiaturaAbove"] = "\uEBD5";
+    // U+EBD4  Appoggiatura from below
+    Glyphs["luteFrenchAppoggiaturaBelow"] = "\uEBD4";
+    // U+EBC0  Open string (a)
+    Glyphs["luteFrenchFretA"] = "\uEBC0";
+    // U+EBC1  First fret (b)
+    Glyphs["luteFrenchFretB"] = "\uEBC1";
+    // U+EBC2  Second fret (c)
+    Glyphs["luteFrenchFretC"] = "\uEBC2";
+    // U+EBC3  Third fret (d)
+    Glyphs["luteFrenchFretD"] = "\uEBC3";
+    // U+EBC4  Fourth fret (e)
+    Glyphs["luteFrenchFretE"] = "\uEBC4";
+    // U+EBC5  Fifth fret (f)
+    Glyphs["luteFrenchFretF"] = "\uEBC5";
+    // U+EBC6  Sixth fret (g)
+    Glyphs["luteFrenchFretG"] = "\uEBC6";
+    // U+EBC7  Seventh fret (h)
+    Glyphs["luteFrenchFretH"] = "\uEBC7";
+    // U+EBC8  Eighth fret (i)
+    Glyphs["luteFrenchFretI"] = "\uEBC8";
+    // U+EBC9  Ninth fret (k)
+    Glyphs["luteFrenchFretK"] = "\uEBC9";
+    // U+EBCA  10th fret (l)
+    Glyphs["luteFrenchFretL"] = "\uEBCA";
+    // U+EBCB  11th fret (m)
+    Glyphs["luteFrenchFretM"] = "\uEBCB";
+    // U+EBCC  12th fret (n)
+    Glyphs["luteFrenchFretN"] = "\uEBCC";
+    // U+EBD3  Inverted mordent
+    Glyphs["luteFrenchMordentInverted"] = "\uEBD3";
+    // U+EBD2  Mordent with lower auxiliary
+    Glyphs["luteFrenchMordentLower"] = "\uEBD2";
+    // U+EBD1  Mordent with upper auxiliary
+    Glyphs["luteFrenchMordentUpper"] = "\uEBD1";
+    // U+EC00  5th course, 1st fret (a)
+    Glyphs["luteGermanALower"] = "\uEC00";
+    // U+EC17  6th course, 1st fret (A)
+    Glyphs["luteGermanAUpper"] = "\uEC17";
+    // U+EC01  4th course, 1st fret (b)
+    Glyphs["luteGermanBLower"] = "\uEC01";
+    // U+EC18  6th course, 2nd fret (B)
+    Glyphs["luteGermanBUpper"] = "\uEC18";
+    // U+EC02  3rd course, 1st fret (c)
+    Glyphs["luteGermanCLower"] = "\uEC02";
+    // U+EC19  6th course, 3rd fret (C)
+    Glyphs["luteGermanCUpper"] = "\uEC19";
+    // U+EC03  2nd course, 1st fret (d)
+    Glyphs["luteGermanDLower"] = "\uEC03";
+    // U+EC1A  6th course, 4th fret (D)
+    Glyphs["luteGermanDUpper"] = "\uEC1A";
+    // U+EC04  1st course, 1st fret (e)
+    Glyphs["luteGermanELower"] = "\uEC04";
+    // U+EC1B  6th course, 5th fret (E)
+    Glyphs["luteGermanEUpper"] = "\uEC1B";
+    // U+EC05  5th course, 2nd fret (f)
+    Glyphs["luteGermanFLower"] = "\uEC05";
+    // U+EC1C  6th course, 6th fret (F)
+    Glyphs["luteGermanFUpper"] = "\uEC1C";
+    // U+EC06  4th course, 2nd fret (g)
+    Glyphs["luteGermanGLower"] = "\uEC06";
+    // U+EC1D  6th course, 7th fret (G)
+    Glyphs["luteGermanGUpper"] = "\uEC1D";
+    // U+EC07  3rd course, 2nd fret (h)
+    Glyphs["luteGermanHLower"] = "\uEC07";
+    // U+EC1E  6th course, 8th fret (H)
+    Glyphs["luteGermanHUpper"] = "\uEC1E";
+    // U+EC08  2nd course, 2nd fret (i)
+    Glyphs["luteGermanILower"] = "\uEC08";
+    // U+EC1F  6th course, 9th fret (I)
+    Glyphs["luteGermanIUpper"] = "\uEC1F";
+    // U+EC09  1st course, 2nd fret (k)
+    Glyphs["luteGermanKLower"] = "\uEC09";
+    // U+EC20  6th course, 10th fret (K)
+    Glyphs["luteGermanKUpper"] = "\uEC20";
+    // U+EC0A  5th course, 3rd fret (l)
+    Glyphs["luteGermanLLower"] = "\uEC0A";
+    // U+EC21  6th course, 11th fret (L)
+    Glyphs["luteGermanLUpper"] = "\uEC21";
+    // U+EC0B  4th course, 3rd fret (m)
+    Glyphs["luteGermanMLower"] = "\uEC0B";
+    // U+EC22  6th course, 12th fret (M)
+    Glyphs["luteGermanMUpper"] = "\uEC22";
+    // U+EC0C  3rd course, 3rd fret (n)
+    Glyphs["luteGermanNLower"] = "\uEC0C";
+    // U+EC23  6th course, 13th fret (N)
+    Glyphs["luteGermanNUpper"] = "\uEC23";
+    // U+EC0D  2nd course, 3rd fret (o)
+    Glyphs["luteGermanOLower"] = "\uEC0D";
+    // U+EC0E  1st course, 3rd fret (p)
+    Glyphs["luteGermanPLower"] = "\uEC0E";
+    // U+EC0F  5th course, 4th fret (q)
+    Glyphs["luteGermanQLower"] = "\uEC0F";
+    // U+EC10  4th course, 4th fret (r)
+    Glyphs["luteGermanRLower"] = "\uEC10";
+    // U+EC11  3rd course, 4th fret (s)
+    Glyphs["luteGermanSLower"] = "\uEC11";
+    // U+EC12  2nd course, 4th fret (t)
+    Glyphs["luteGermanTLower"] = "\uEC12";
+    // U+EC13  1st course, 4th fret (v)
+    Glyphs["luteGermanVLower"] = "\uEC13";
+    // U+EC14  5th course, 5th fret (x)
+    Glyphs["luteGermanXLower"] = "\uEC14";
+    // U+EC15  4th course, 5th fret (y)
+    Glyphs["luteGermanYLower"] = "\uEC15";
+    // U+EC16  3rd course, 5th fret (z)
+    Glyphs["luteGermanZLower"] = "\uEC16";
+    // U+EBF1  C sol fa ut clef
+    Glyphs["luteItalianClefCSolFaUt"] = "\uEBF1";
+    // U+EBF0  F fa ut clef
+    Glyphs["luteItalianClefFFaUt"] = "\uEBF0";
+    // U+EBE0  Open string (0)
+    Glyphs["luteItalianFret0"] = "\uEBE0";
+    // U+EBE1  First fret (1)
+    Glyphs["luteItalianFret1"] = "\uEBE1";
+    // U+EBE2  Second fret (2)
+    Glyphs["luteItalianFret2"] = "\uEBE2";
+    // U+EBE3  Third fret (3)
+    Glyphs["luteItalianFret3"] = "\uEBE3";
+    // U+EBE4  Fourth fret (4)
+    Glyphs["luteItalianFret4"] = "\uEBE4";
+    // U+EBE5  Fifth fret (5)
+    Glyphs["luteItalianFret5"] = "\uEBE5";
+    // U+EBE6  Sixth fret (6)
+    Glyphs["luteItalianFret6"] = "\uEBE6";
+    // U+EBE7  Seventh fret (7)
+    Glyphs["luteItalianFret7"] = "\uEBE7";
+    // U+EBE8  Eighth fret (8)
+    Glyphs["luteItalianFret8"] = "\uEBE8";
+    // U+EBE9  Ninth fret (9)
+    Glyphs["luteItalianFret9"] = "\uEBE9";
+    // U+EBF4  Hold finger in place
+    Glyphs["luteItalianHoldFinger"] = "\uEBF4";
+    // U+EBF3  Hold note
+    Glyphs["luteItalianHoldNote"] = "\uEBF3";
+    // U+EBF5  Release finger
+    Glyphs["luteItalianReleaseFinger"] = "\uEBF5";
+    // U+EBEA  Fast tempo indication (de Mudarra)
+    Glyphs["luteItalianTempoFast"] = "\uEBEA";
+    // U+EBEC  Neither fast nor slow tempo indication (de Mudarra)
+    Glyphs["luteItalianTempoNeitherFastNorSlow"] = "\uEBEC";
+    // U+EBED  Slow tempo indication (de Mudarra)
+    Glyphs["luteItalianTempoSlow"] = "\uEBED";
+    // U+EBEB  Somewhat fast tempo indication (de Narvaez)
+    Glyphs["luteItalianTempoSomewhatFast"] = "\uEBEB";
+    // U+EBEE  Very slow indication (de Narvaez)
+    Glyphs["luteItalianTempoVerySlow"] = "\uEBEE";
+    // U+EBEF  Triple time indication
+    Glyphs["luteItalianTimeTriple"] = "\uEBEF";
+    // U+EBF2  Single-finger tremolo or mordent
+    Glyphs["luteItalianTremolo"] = "\uEBF2";
+    // U+EBF6  Vibrato (verre cassé)
+    Glyphs["luteItalianVibrato"] = "\uEBF6";
+    // U+EBA0  Lute tablature staff, 6 courses
+    Glyphs["luteStaff6Lines"] = "\uEBA0";
+    // U+EBA2  Lute tablature staff, 6 courses (narrow)
+    Glyphs["luteStaff6LinesNarrow"] = "\uEBA2";
+    // U+EBA1  Lute tablature staff, 6 courses (wide)
+    Glyphs["luteStaff6LinesWide"] = "\uEBA1";
+    // U+E551  Elision
+    Glyphs["lyricsElision"] = "\uE551";
+    // U+E550  Narrow elision
+    Glyphs["lyricsElisionNarrow"] = "\uE550";
+    // U+E552  Wide elision
+    Glyphs["lyricsElisionWide"] = "\uE552";
+    // U+E553  Baseline hyphen
+    Glyphs["lyricsHyphenBaseline"] = "\uE553";
+    // U+E554  Non-breaking baseline hyphen
+    Glyphs["lyricsHyphenBaselineNonBreaking"] = "\uE554";
+    // U+E555  Text repeats
+    Glyphs["lyricsTextRepeat"] = "\uE555";
+    // U+E9E1  Flat, hard b (mi)
+    Glyphs["medRenFlatHardB"] = "\uE9E1";
+    // U+E9E0  Flat, soft b (fa)
+    Glyphs["medRenFlatSoftB"] = "\uE9E0";
+    // U+1D1D2  Flat, soft b (fa)
+    Glyphs["medRenFlatSoftBAlternate"] = "\uD834\uDDD2";
+    // U+E9E4  Flat with dot
+    Glyphs["medRenFlatWithDot"] = "\uE9E4";
+    // U+EA24  G clef (Corpus Monodicum)
+    Glyphs["medRenGClefCMN"] = "\uEA24";
+    // U+EA22  Liquescence
+    Glyphs["medRenLiquescenceCMN"] = "\uEA22";
+    // U+EA26  Liquescent ascending (Corpus Monodicum)
+    Glyphs["medRenLiquescentAscCMN"] = "\uEA26";
+    // U+EA27  Liquescent descending (Corpus Monodicum)
+    Glyphs["medRenLiquescentDescCMN"] = "\uEA27";
+    // U+E9E2  Natural
+    Glyphs["medRenNatural"] = "\uE9E2";
+    // U+E9E5  Natural with interrupted cross
+    Glyphs["medRenNaturalWithCross"] = "\uE9E5";
+    // U+EA2A  Oriscus (Corpus Monodicum)
+    Glyphs["medRenOriscusCMN"] = "\uEA2A";
+    // U+EA23  Plica
+    Glyphs["medRenPlicaCMN"] = "\uEA23";
+    // U+EA25  Punctum (Corpus Monodicum)
+    Glyphs["medRenPunctumCMN"] = "\uEA25";
+    // U+EA28  Quilisma (Corpus Monodicum)
+    Glyphs["medRenQuilismaCMN"] = "\uEA28";
+    // U+E9E3  Croix
+    Glyphs["medRenSharpCroix"] = "\uE9E3";
+    // U+1D1CF  Croix
+    Glyphs["medRenSharpCroixAlternate"] = "\uD834\uDDCF";
+    // U+EA29  Strophicus (Corpus Monodicum)
+    Glyphs["medRenStrophicusCMN"] = "\uEA29";
+    // U+EA10  Alteration sign
+    Glyphs["mensuralAlterationSign"] = "\uEA10";
+    // U+E952  Black mensural brevis
+    Glyphs["mensuralBlackBrevis"] = "\uE952";
+    // U+E956  Black mensural void brevis
+    Glyphs["mensuralBlackBrevisVoid"] = "\uE956";
+    // U+E95A  Black mensural dragma
+    Glyphs["mensuralBlackDragma"] = "\uE95A";
+    // U+E951  Black mensural longa
+    Glyphs["mensuralBlackLonga"] = "\uE951";
+    // U+E950  Black mensural maxima
+    Glyphs["mensuralBlackMaxima"] = "\uE950";
+    // U+E954  Black mensural minima
+    Glyphs["mensuralBlackMinima"] = "\uE954";
+    // U+1D1BC  Black mensural minima
+    Glyphs["mensuralBlackMinimaAlternate"] = "\uD834\uDDBC";
+    // U+E958  Black mensural void minima
+    Glyphs["mensuralBlackMinimaVoid"] = "\uE958";
+    // U+1D1BB  Black mensural void minima
+    Glyphs["mensuralBlackMinimaVoidAlternate"] = "\uD834\uDDBB";
+    // U+E953  Black mensural semibrevis
+    Glyphs["mensuralBlackSemibrevis"] = "\uE953";
+    // U+1D1BA  Black mensural semibrevis
+    Glyphs["mensuralBlackSemibrevisAlternate"] = "\uD834\uDDBA";
+    // U+E959  Black mensural semibrevis caudata
+    Glyphs["mensuralBlackSemibrevisCaudata"] = "\uE959";
+    // U+E95B  Black mensural oblique semibrevis
+    Glyphs["mensuralBlackSemibrevisOblique"] = "\uE95B";
+    // U+E957  Black mensural void semibrevis
+    Glyphs["mensuralBlackSemibrevisVoid"] = "\uE957";
+    // U+1D1B9  Black mensural void semibrevis
+    Glyphs["mensuralBlackSemibrevisVoidAlternate"] = "\uD834\uDDB9";
+    // U+E955  Black mensural semiminima
+    Glyphs["mensuralBlackSemiminima"] = "\uE955";
+    // U+E905  Mensural C clef
+    Glyphs["mensuralCclef"] = "\uE905";
+    // U+E90A  Petrucci C clef, high position
+    Glyphs["mensuralCclefPetrucciPosHigh"] = "\uE90A";
+    // U+E90B  Petrucci C clef, highest position
+    Glyphs["mensuralCclefPetrucciPosHighest"] = "\uE90B";
+    // U+E908  Petrucci C clef, low position
+    Glyphs["mensuralCclefPetrucciPosLow"] = "\uE908";
+    // U+E907  Petrucci C clef, lowest position
+    Glyphs["mensuralCclefPetrucciPosLowest"] = "\uE907";
+    // U+E909  Petrucci C clef, middle position
+    Glyphs["mensuralCclefPetrucciPosMiddle"] = "\uE909";
+    // U+EA0F  Coloration end, round
+    Glyphs["mensuralColorationEndRound"] = "\uEA0F";
+    // U+EA0D  Coloration end, square
+    Glyphs["mensuralColorationEndSquare"] = "\uEA0D";
+    // U+EA0E  Coloration start, round
+    Glyphs["mensuralColorationStartRound"] = "\uEA0E";
+    // U+EA0C  Coloration start, square
+    Glyphs["mensuralColorationStartSquare"] = "\uEA0C";
+    // U+E940  Combining stem diagonal
+    Glyphs["mensuralCombStemDiagonal"] = "\uE940";
+    // U+E93F  Combining stem down
+    Glyphs["mensuralCombStemDown"] = "\uE93F";
+    // U+E948  Combining stem with extended flag down
+    Glyphs["mensuralCombStemDownFlagExtended"] = "\uE948";
+    // U+E946  Combining stem with flared flag down
+    Glyphs["mensuralCombStemDownFlagFlared"] = "\uE946";
+    // U+E94C  Combining stem with fusa flag down
+    Glyphs["mensuralCombStemDownFlagFusa"] = "\uE94C";
+    // U+E944  Combining stem with flag left down
+    Glyphs["mensuralCombStemDownFlagLeft"] = "\uE944";
+    // U+E942  Combining stem with flag right down
+    Glyphs["mensuralCombStemDownFlagRight"] = "\uE942";
+    // U+E94A  Combining stem with semiminima flag down
+    Glyphs["mensuralCombStemDownFlagSemiminima"] = "\uE94A";
+    // U+E93E  Combining stem up
+    Glyphs["mensuralCombStemUp"] = "\uE93E";
+    // U+E947  Combining stem with extended flag up
+    Glyphs["mensuralCombStemUpFlagExtended"] = "\uE947";
+    // U+E945  Combining stem with flared flag up
+    Glyphs["mensuralCombStemUpFlagFlared"] = "\uE945";
+    // U+E94B  Combining stem with fusa flag up
+    Glyphs["mensuralCombStemUpFlagFusa"] = "\uE94B";
+    // U+E943  Combining stem with flag left up
+    Glyphs["mensuralCombStemUpFlagLeft"] = "\uE943";
+    // U+E941  Combining stem with flag right up
+    Glyphs["mensuralCombStemUpFlagRight"] = "\uE941";
+    // U+E949  Combining stem with semiminima flag up
+    Glyphs["mensuralCombStemUpFlagSemiminima"] = "\uE949";
+    // U+EA0A  Checkmark custos
+    Glyphs["mensuralCustosCheckmark"] = "\uEA0A";
+    // U+EA03  Mensural custos down
+    Glyphs["mensuralCustosDown"] = "\uEA03";
+    // U+EA0B  Turn-like custos
+    Glyphs["mensuralCustosTurn"] = "\uEA0B";
+    // U+EA02  Mensural custos up
+    Glyphs["mensuralCustosUp"] = "\uEA02";
+    // U+E903  Mensural F clef
+    Glyphs["mensuralFclef"] = "\uE903";
+    // U+E904  Petrucci F clef
+    Glyphs["mensuralFclefPetrucci"] = "\uE904";
+    // U+E900  Mensural G clef
+    Glyphs["mensuralGclef"] = "\uE900";
+    // U+E901  Petrucci G clef
+    Glyphs["mensuralGclefPetrucci"] = "\uE901";
+    // U+E92D  Modus imperfectum, vertical
+    Glyphs["mensuralModusImperfectumVert"] = "\uE92D";
+    // U+E92C  Modus perfectum, vertical
+    Glyphs["mensuralModusPerfectumVert"] = "\uE92C";
+    // U+E934  Longa/brevis notehead, black
+    Glyphs["mensuralNoteheadLongaBlack"] = "\uE934";
+    // U+E936  Longa/brevis notehead, black and void
+    Glyphs["mensuralNoteheadLongaBlackVoid"] = "\uE936";
+    // U+E935  Longa/brevis notehead, void
+    Glyphs["mensuralNoteheadLongaVoid"] = "\uE935";
+    // U+E937  Longa/brevis notehead, white
+    Glyphs["mensuralNoteheadLongaWhite"] = "\uE937";
+    // U+E930  Maxima notehead, black
+    Glyphs["mensuralNoteheadMaximaBlack"] = "\uE930";
+    // U+E932  Maxima notehead, black and void
+    Glyphs["mensuralNoteheadMaximaBlackVoid"] = "\uE932";
+    // U+E931  Maxima notehead, void
+    Glyphs["mensuralNoteheadMaximaVoid"] = "\uE931";
+    // U+E933  Maxima notehead, white
+    Glyphs["mensuralNoteheadMaximaWhite"] = "\uE933";
+    // U+E93C  Minima notehead, white
+    Glyphs["mensuralNoteheadMinimaWhite"] = "\uE93C";
+    // U+E938  Semibrevis notehead, black
+    Glyphs["mensuralNoteheadSemibrevisBlack"] = "\uE938";
+    // U+E93A  Semibrevis notehead, black and void
+    Glyphs["mensuralNoteheadSemibrevisBlackVoid"] = "\uE93A";
+    // U+E93B  Semibrevis notehead, black and void (turned)
+    Glyphs["mensuralNoteheadSemibrevisBlackVoidTurned"] = "\uE93B";
+    // U+E939  Semibrevis notehead, void
+    Glyphs["mensuralNoteheadSemibrevisVoid"] = "\uE939";
+    // U+E93D  Semiminima/fusa notehead, white
+    Glyphs["mensuralNoteheadSemiminimaWhite"] = "\uE93D";
+    // U+E970  Oblique form, ascending 2nd, black
+    Glyphs["mensuralObliqueAsc2ndBlack"] = "\uE970";
+    // U+E972  Oblique form, ascending 2nd, black and void
+    Glyphs["mensuralObliqueAsc2ndBlackVoid"] = "\uE972";
+    // U+E971  Oblique form, ascending 2nd, void
+    Glyphs["mensuralObliqueAsc2ndVoid"] = "\uE971";
+    // U+E973  Oblique form, ascending 2nd, white
+    Glyphs["mensuralObliqueAsc2ndWhite"] = "\uE973";
+    // U+E974  Oblique form, ascending 3rd, black
+    Glyphs["mensuralObliqueAsc3rdBlack"] = "\uE974";
+    // U+E976  Oblique form, ascending 3rd, black and void
+    Glyphs["mensuralObliqueAsc3rdBlackVoid"] = "\uE976";
+    // U+E975  Oblique form, ascending 3rd, void
+    Glyphs["mensuralObliqueAsc3rdVoid"] = "\uE975";
+    // U+E977  Oblique form, ascending 3rd, white
+    Glyphs["mensuralObliqueAsc3rdWhite"] = "\uE977";
+    // U+E978  Oblique form, ascending 4th, black
+    Glyphs["mensuralObliqueAsc4thBlack"] = "\uE978";
+    // U+E97A  Oblique form, ascending 4th, black and void
+    Glyphs["mensuralObliqueAsc4thBlackVoid"] = "\uE97A";
+    // U+E979  Oblique form, ascending 4th, void
+    Glyphs["mensuralObliqueAsc4thVoid"] = "\uE979";
+    // U+E97B  Oblique form, ascending 4th, white
+    Glyphs["mensuralObliqueAsc4thWhite"] = "\uE97B";
+    // U+E97C  Oblique form, ascending 5th, black
+    Glyphs["mensuralObliqueAsc5thBlack"] = "\uE97C";
+    // U+E97E  Oblique form, ascending 5th, black and void
+    Glyphs["mensuralObliqueAsc5thBlackVoid"] = "\uE97E";
+    // U+E97D  Oblique form, ascending 5th, void
+    Glyphs["mensuralObliqueAsc5thVoid"] = "\uE97D";
+    // U+E97F  Oblique form, ascending 5th, white
+    Glyphs["mensuralObliqueAsc5thWhite"] = "\uE97F";
+    // U+E980  Oblique form, descending 2nd, black
+    Glyphs["mensuralObliqueDesc2ndBlack"] = "\uE980";
+    // U+E982  Oblique form, descending 2nd, black and void
+    Glyphs["mensuralObliqueDesc2ndBlackVoid"] = "\uE982";
+    // U+E981  Oblique form, descending 2nd, void
+    Glyphs["mensuralObliqueDesc2ndVoid"] = "\uE981";
+    // U+E983  Oblique form, descending 2nd, white
+    Glyphs["mensuralObliqueDesc2ndWhite"] = "\uE983";
+    // U+E984  Oblique form, descending 3rd, black
+    Glyphs["mensuralObliqueDesc3rdBlack"] = "\uE984";
+    // U+E986  Oblique form, descending 3rd, black and void
+    Glyphs["mensuralObliqueDesc3rdBlackVoid"] = "\uE986";
+    // U+E985  Oblique form, descending 3rd, void
+    Glyphs["mensuralObliqueDesc3rdVoid"] = "\uE985";
+    // U+E987  Oblique form, descending 3rd, white
+    Glyphs["mensuralObliqueDesc3rdWhite"] = "\uE987";
+    // U+E988  Oblique form, descending 4th, black
+    Glyphs["mensuralObliqueDesc4thBlack"] = "\uE988";
+    // U+E98A  Oblique form, descending 4th, black and void
+    Glyphs["mensuralObliqueDesc4thBlackVoid"] = "\uE98A";
+    // U+E989  Oblique form, descending 4th, void
+    Glyphs["mensuralObliqueDesc4thVoid"] = "\uE989";
+    // U+E98B  Oblique form, descending 4th, white
+    Glyphs["mensuralObliqueDesc4thWhite"] = "\uE98B";
+    // U+E98C  Oblique form, descending 5th, black
+    Glyphs["mensuralObliqueDesc5thBlack"] = "\uE98C";
+    // U+E98E  Oblique form, descending 5th, black and void
+    Glyphs["mensuralObliqueDesc5thBlackVoid"] = "\uE98E";
+    // U+E98D  Oblique form, descending 5th, void
+    Glyphs["mensuralObliqueDesc5thVoid"] = "\uE98D";
+    // U+E98F  Oblique form, descending 5th, white
+    Glyphs["mensuralObliqueDesc5thWhite"] = "\uE98F";
+    // U+E910  Tempus perfectum cum prolatione perfecta (9/8)
+    Glyphs["mensuralProlation1"] = "\uE910";
+    // U+1D1C7  Tempus perfectum cum prolatione perfecta (9/8)
+    Glyphs["mensuralProlation1Alternate"] = "\uD834\uDDC7";
+    // U+E919  Tempus imperfectum cum prolatione imperfecta diminution 4
+    Glyphs["mensuralProlation10"] = "\uE919";
+    // U+1D1CE  Tempus imperfectum cum prolatione imperfecta diminution 4
+    Glyphs["mensuralProlation10Alternate"] = "\uD834\uDDCE";
+    // U+E91A  Tempus imperfectum cum prolatione imperfecta diminution 5
+    Glyphs["mensuralProlation11"] = "\uE91A";
+    // U+E911  Tempus perfectum cum prolatione imperfecta (3/4)
+    Glyphs["mensuralProlation2"] = "\uE911";
+    // U+1D1C8  Tempus perfectum cum prolatione imperfecta (3/4)
+    Glyphs["mensuralProlation2Alternate"] = "\uD834\uDDC8";
+    // U+E912  Tempus perfectum cum prolatione imperfecta diminution 1 (3/8)
+    Glyphs["mensuralProlation3"] = "\uE912";
+    // U+1D1C9  Tempus perfectum cum prolatione imperfecta diminution 1 (3/8)
+    Glyphs["mensuralProlation3Alternate"] = "\uD834\uDDC9";
+    // U+E913  Tempus perfectum cum prolatione perfecta diminution 2 (9/16)
+    Glyphs["mensuralProlation4"] = "\uE913";
+    // U+E914  Tempus imperfectum cum prolatione perfecta (6/8)
+    Glyphs["mensuralProlation5"] = "\uE914";
+    // U+1D1CA  Tempus imperfectum cum prolatione perfecta (6/8)
+    Glyphs["mensuralProlation5Alternate"] = "\uD834\uDDCA";
+    // U+E915  Tempus imperfectum cum prolatione imperfecta (2/4)
+    Glyphs["mensuralProlation6"] = "\uE915";
+    // U+1D1CB  Tempus imperfectum cum prolatione imperfecta (2/4)
+    Glyphs["mensuralProlation6Alternate"] = "\uD834\uDDCB";
+    // U+E916  Tempus imperfectum cum prolatione imperfecta diminution 1 (2/2)
+    Glyphs["mensuralProlation7"] = "\uE916";
+    // U+1D1CC  Tempus imperfectum cum prolatione imperfecta diminution 1 (2/2)
+    Glyphs["mensuralProlation7Alternate"] = "\uD834\uDDCC";
+    // U+E917  Tempus imperfectum cum prolatione imperfecta diminution 2 (6/16)
+    Glyphs["mensuralProlation8"] = "\uE917";
+    // U+E918  Tempus imperfectum cum prolatione imperfecta diminution 3 (2/2)
+    Glyphs["mensuralProlation9"] = "\uE918";
+    // U+1D1CD  Tempus imperfectum cum prolatione imperfecta diminution 3 (2/2)
+    Glyphs["mensuralProlation9Alternate"] = "\uD834\uDDCD";
+    // U+E920  Combining dot
+    Glyphs["mensuralProlationCombiningDot"] = "\uE920";
+    // U+E924  Combining void dot
+    Glyphs["mensuralProlationCombiningDotVoid"] = "\uE924";
+    // U+E925  Combining vertical stroke
+    Glyphs["mensuralProlationCombiningStroke"] = "\uE925";
+    // U+E922  Combining three dots horizontal
+    Glyphs["mensuralProlationCombiningThreeDots"] = "\uE922";
+    // U+E923  Combining three dots triangular
+    Glyphs["mensuralProlationCombiningThreeDotsTri"] = "\uE923";
+    // U+E921  Combining two dots
+    Glyphs["mensuralProlationCombiningTwoDots"] = "\uE921";
+    // U+E926  Mensural proportion 1
+    Glyphs["mensuralProportion1"] = "\uE926";
+    // U+E927  Mensural proportion 2
+    Glyphs["mensuralProportion2"] = "\uE927";
+    // U+E928  Mensural proportion 3
+    Glyphs["mensuralProportion3"] = "\uE928";
+    // U+E929  Mensural proportion 4
+    Glyphs["mensuralProportion4"] = "\uE929";
+    // U+EE90  Mensural proportion 5
+    Glyphs["mensuralProportion5"] = "\uEE90";
+    // U+EE91  Mensural proportion 6
+    Glyphs["mensuralProportion6"] = "\uEE91";
+    // U+EE92  Mensural proportion 7
+    Glyphs["mensuralProportion7"] = "\uEE92";
+    // U+EE93  Mensural proportion 8
+    Glyphs["mensuralProportion8"] = "\uEE93";
+    // U+EE94  Mensural proportion 9
+    Glyphs["mensuralProportion9"] = "\uEE94";
+    // U+E92B  Mensural proportion major
+    Glyphs["mensuralProportionMajor"] = "\uE92B";
+    // U+E92A  Mensural proportion minor
+    Glyphs["mensuralProportionMinor"] = "\uE92A";
+    // U+E91C  Proportio dupla 1
+    Glyphs["mensuralProportionProportioDupla1"] = "\uE91C";
+    // U+E91D  Proportio dupla 2
+    Glyphs["mensuralProportionProportioDupla2"] = "\uE91D";
+    // U+E91F  Proportio quadrupla
+    Glyphs["mensuralProportionProportioQuadrupla"] = "\uE91F";
+    // U+E91E  Proportio tripla
+    Glyphs["mensuralProportionProportioTripla"] = "\uE91E";
+    // U+E91B  Tempus perfectum
+    Glyphs["mensuralProportionTempusPerfectum"] = "\uE91B";
+    // U+E9F3  Brevis rest
+    Glyphs["mensuralRestBrevis"] = "\uE9F3";
+    // U+1D1C3  Brevis rest
+    Glyphs["mensuralRestBrevisAlternate"] = "\uD834\uDDC3";
+    // U+E9F7  Fusa rest
+    Glyphs["mensuralRestFusa"] = "\uE9F7";
+    // U+E9F2  Longa imperfecta rest
+    Glyphs["mensuralRestLongaImperfecta"] = "\uE9F2";
+    // U+1D1C2  Longa imperfecta rest
+    Glyphs["mensuralRestLongaImperfectaAlternate"] = "\uD834\uDDC2";
+    // U+E9F1  Longa perfecta rest
+    Glyphs["mensuralRestLongaPerfecta"] = "\uE9F1";
+    // U+1D1C1  Longa perfecta rest
+    Glyphs["mensuralRestLongaPerfectaAlternate"] = "\uD834\uDDC1";
+    // U+E9F0  Maxima rest
+    Glyphs["mensuralRestMaxima"] = "\uE9F0";
+    // U+E9F5  Minima rest
+    Glyphs["mensuralRestMinima"] = "\uE9F5";
+    // U+1D1C5  Minima rest
+    Glyphs["mensuralRestMinimaAlternate"] = "\uD834\uDDC5";
+    // U+E9F4  Semibrevis rest
+    Glyphs["mensuralRestSemibrevis"] = "\uE9F4";
+    // U+1D1C4  Semibrevis rest
+    Glyphs["mensuralRestSemibrevisAlternate"] = "\uD834\uDDC4";
+    // U+E9F8  Semifusa rest
+    Glyphs["mensuralRestSemifusa"] = "\uE9F8";
+    // U+E9F6  Semiminima rest
+    Glyphs["mensuralRestSemiminima"] = "\uE9F6";
+    // U+1D1C6  Semiminima rest
+    Glyphs["mensuralRestSemiminimaAlternate"] = "\uD834\uDDC6";
+    // U+EA01  Signum congruentiae down
+    Glyphs["mensuralSignumDown"] = "\uEA01";
+    // U+EA00  Signum congruentiae up
+    Glyphs["mensuralSignumUp"] = "\uEA00";
+    // U+E92F  Tempus imperfectum, horizontal
+    Glyphs["mensuralTempusImperfectumHoriz"] = "\uE92F";
+    // U+E92E  Tempus perfectum, horizontal
+    Glyphs["mensuralTempusPerfectumHoriz"] = "\uE92E";
+    // U+E95E  White mensural brevis
+    Glyphs["mensuralWhiteBrevis"] = "\uE95E";
+    // U+1D1B8  White mensural brevis
+    Glyphs["mensuralWhiteBrevisAlternate"] = "\uD834\uDDB8";
+    // U+E961  White mensural fusa
+    Glyphs["mensuralWhiteFusa"] = "\uE961";
+    // U+1D1BE  White mensural fusa
+    Glyphs["mensuralWhiteFusaAlternate"] = "\uD834\uDDBE";
+    // U+E95D  White mensural longa
+    Glyphs["mensuralWhiteLonga"] = "\uE95D";
+    // U+1D1B7  White mensural longa
+    Glyphs["mensuralWhiteLongaAlternate"] = "\uD834\uDDB7";
+    // U+E95C  White mensural maxima
+    Glyphs["mensuralWhiteMaxima"] = "\uE95C";
+    // U+1D1B6  White mensural maxima
+    Glyphs["mensuralWhiteMaximaAlternate"] = "\uD834\uDDB6";
+    // U+E95F  White mensural minima
+    Glyphs["mensuralWhiteMinima"] = "\uE95F";
+    // U+E962  White mensural semibrevis
+    Glyphs["mensuralWhiteSemibrevis"] = "\uE962";
+    // U+1D1B9  White mensural semibrevis
+    Glyphs["mensuralWhiteSemibrevisAlternate"] = "\uD834\uDDB9";
+    // U+E960  White mensural semiminima
+    Glyphs["mensuralWhiteSemiminima"] = "\uE960";
+    // U+ECB7  Augmentation dot
+    Glyphs["metAugmentationDot"] = "\uECB7";
+    // U+ECB6  1024th note (semihemidemisemihemidemisemiquaver) stem down
+    Glyphs["metNote1024thDown"] = "\uECB6";
+    // U+ECB5  1024th note (semihemidemisemihemidemisemiquaver) stem up
+    Glyphs["metNote1024thUp"] = "\uECB5";
+    // U+ECB0  128th note (semihemidemisemiquaver) stem down
+    Glyphs["metNote128thDown"] = "\uECB0";
+    // U+ECAF  128th note (semihemidemisemiquaver) stem up
+    Glyphs["metNote128thUp"] = "\uECAF";
+    // U+ECAA  16th note (semiquaver) stem down
+    Glyphs["metNote16thDown"] = "\uECAA";
+    // U+ECA9  16th note (semiquaver) stem up
+    Glyphs["metNote16thUp"] = "\uECA9";
+    // U+ECB2  256th note (demisemihemidemisemiquaver) stem down
+    Glyphs["metNote256thDown"] = "\uECB2";
+    // U+ECB1  256th note (demisemihemidemisemiquaver) stem up
+    Glyphs["metNote256thUp"] = "\uECB1";
+    // U+ECAC  32nd note (demisemiquaver) stem down
+    Glyphs["metNote32ndDown"] = "\uECAC";
+    // U+ECAB  32nd note (demisemiquaver) stem up
+    Glyphs["metNote32ndUp"] = "\uECAB";
+    // U+ECB4  512th note (hemidemisemihemidemisemiquaver) stem down
+    Glyphs["metNote512thDown"] = "\uECB4";
+    // U+ECB3  512th note (hemidemisemihemidemisemiquaver) stem up
+    Glyphs["metNote512thUp"] = "\uECB3";
+    // U+ECAE  64th note (hemidemisemiquaver) stem down
+    Glyphs["metNote64thDown"] = "\uECAE";
+    // U+ECAD  64th note (hemidemisemiquaver) stem up
+    Glyphs["metNote64thUp"] = "\uECAD";
+    // U+ECA8  Eighth note (quaver) stem down
+    Glyphs["metNote8thDown"] = "\uECA8";
+    // U+ECA7  Eighth note (quaver) stem up
+    Glyphs["metNote8thUp"] = "\uECA7";
+    // U+ECA0  Double whole note (breve)
+    Glyphs["metNoteDoubleWhole"] = "\uECA0";
+    // U+ECA1  Double whole note (square)
+    Glyphs["metNoteDoubleWholeSquare"] = "\uECA1";
+    // U+ECA4  Half note (minim) stem down
+    Glyphs["metNoteHalfDown"] = "\uECA4";
+    // U+ECA3  Half note (minim) stem up
+    Glyphs["metNoteHalfUp"] = "\uECA3";
+    // U+ECA6  Quarter note (crotchet) stem down
+    Glyphs["metNoteQuarterDown"] = "\uECA6";
+    // U+ECA5  Quarter note (crotchet) stem up
+    Glyphs["metNoteQuarterUp"] = "\uECA5";
+    // U+ECA2  Whole note (semibreve)
+    Glyphs["metNoteWhole"] = "\uECA2";
+    // U+EC63  Left-pointing arrow for metric modulation
+    Glyphs["metricModulationArrowLeft"] = "\uEC63";
+    // U+EC64  Right-pointing arrow for metric modulation
+    Glyphs["metricModulationArrowRight"] = "\uEC64";
+    // U+EC61  Do not copy
+    Glyphs["miscDoNotCopy"] = "\uEC61";
+    // U+EC60  Do not photocopy
+    Glyphs["miscDoNotPhotocopy"] = "\uEC60";
+    // U+EC62  Eyeglasses
+    Glyphs["miscEyeglasses"] = "\uEC62";
+    // U+E1E6  1024th note (semihemidemisemihemidemisemiquaver) stem down
+    Glyphs["note1024thDown"] = "\uE1E6";
+    // U+E1E5  1024th note (semihemidemisemihemidemisemiquaver) stem up
+    Glyphs["note1024thUp"] = "\uE1E5";
+    // U+E1E0  128th note (semihemidemisemiquaver) stem down
+    Glyphs["note128thDown"] = "\uE1E0";
+    // U+E1DF  128th note (semihemidemisemiquaver) stem up
+    Glyphs["note128thUp"] = "\uE1DF";
+    // U+1D164  128th note (semihemidemisemiquaver) stem up
+    Glyphs["note128thUpAlternate"] = "\uD834\uDD64";
+    // U+E1DA  16th note (semiquaver) stem down
+    Glyphs["note16thDown"] = "\uE1DA";
+    // U+E1D9  16th note (semiquaver) stem up
+    Glyphs["note16thUp"] = "\uE1D9";
+    // U+1D161  16th note (semiquaver) stem up
+    Glyphs["note16thUpAlternate"] = "\uD834\uDD61";
+    // U+E1E2  256th note (demisemihemidemisemiquaver) stem down
+    Glyphs["note256thDown"] = "\uE1E2";
+    // U+E1E1  256th note (demisemihemidemisemiquaver) stem up
+    Glyphs["note256thUp"] = "\uE1E1";
+    // U+E1DC  32nd note (demisemiquaver) stem down
+    Glyphs["note32ndDown"] = "\uE1DC";
+    // U+E1DB  32nd note (demisemiquaver) stem up
+    Glyphs["note32ndUp"] = "\uE1DB";
+    // U+1D162  32nd note (demisemiquaver) stem up
+    Glyphs["note32ndUpAlternate"] = "\uD834\uDD62";
+    // U+E1E4  512th note (hemidemisemihemidemisemiquaver) stem down
+    Glyphs["note512thDown"] = "\uE1E4";
+    // U+E1E3  512th note (hemidemisemihemidemisemiquaver) stem up
+    Glyphs["note512thUp"] = "\uE1E3";
+    // U+E1DE  64th note (hemidemisemiquaver) stem down
+    Glyphs["note64thDown"] = "\uE1DE";
+    // U+E1DD  64th note (hemidemisemiquaver) stem up
+    Glyphs["note64thUp"] = "\uE1DD";
+    // U+1D163  64th note (hemidemisemiquaver) stem up
+    Glyphs["note64thUpAlternate"] = "\uD834\uDD63";
+    // U+E1D8  Eighth note (quaver) stem down
+    Glyphs["note8thDown"] = "\uE1D8";
+    // U+E1D7  Eighth note (quaver) stem up
+    Glyphs["note8thUp"] = "\uE1D7";
+    // U+1D160  Eighth note (quaver) stem up
+    Glyphs["note8thUpAlternate"] = "\uD834\uDD60";
+    // U+E197  A (black note)
+    Glyphs["noteABlack"] = "\uE197";
+    // U+E196  A flat (black note)
+    Glyphs["noteAFlatBlack"] = "\uE196";
+    // U+E17F  A flat (half note)
+    Glyphs["noteAFlatHalf"] = "\uE17F";
+    // U+E168  A flat (whole note)
+    Glyphs["noteAFlatWhole"] = "\uE168";
+    // U+E180  A (half note)
+    Glyphs["noteAHalf"] = "\uE180";
+    // U+E198  A sharp (black note)
+    Glyphs["noteASharpBlack"] = "\uE198";
+    // U+E181  A sharp (half note)
+    Glyphs["noteASharpHalf"] = "\uE181";
+    // U+E16A  A sharp (whole note)
+    Glyphs["noteASharpWhole"] = "\uE16A";
+    // U+E169  A (whole note)
+    Glyphs["noteAWhole"] = "\uE169";
+    // U+E19A  B (black note)
+    Glyphs["noteBBlack"] = "\uE19A";
+    // U+E199  B flat (black note)
+    Glyphs["noteBFlatBlack"] = "\uE199";
+    // U+E182  B flat (half note)
+    Glyphs["noteBFlatHalf"] = "\uE182";
+    // U+E16B  B flat (whole note)
+    Glyphs["noteBFlatWhole"] = "\uE16B";
+    // U+E183  B (half note)
+    Glyphs["noteBHalf"] = "\uE183";
+    // U+E19B  B sharp (black note)
+    Glyphs["noteBSharpBlack"] = "\uE19B";
+    // U+E184  B sharp (half note)
+    Glyphs["noteBSharpHalf"] = "\uE184";
+    // U+E16D  B sharp (whole note)
+    Glyphs["noteBSharpWhole"] = "\uE16D";
+    // U+E16C  B (whole note)
+    Glyphs["noteBWhole"] = "\uE16C";
+    // U+E19D  C (black note)
+    Glyphs["noteCBlack"] = "\uE19D";
+    // U+E19C  C flat (black note)
+    Glyphs["noteCFlatBlack"] = "\uE19C";
+    // U+E185  C flat (half note)
+    Glyphs["noteCFlatHalf"] = "\uE185";
+    // U+E16E  C flat (whole note)
+    Glyphs["noteCFlatWhole"] = "\uE16E";
+    // U+E186  C (half note)
+    Glyphs["noteCHalf"] = "\uE186";
+    // U+E19E  C sharp (black note)
+    Glyphs["noteCSharpBlack"] = "\uE19E";
+    // U+E187  C sharp (half note)
+    Glyphs["noteCSharpHalf"] = "\uE187";
+    // U+E170  C sharp (whole note)
+    Glyphs["noteCSharpWhole"] = "\uE170";
+    // U+E16F  C (whole note)
+    Glyphs["noteCWhole"] = "\uE16F";
+    // U+E1A0  D (black note)
+    Glyphs["noteDBlack"] = "\uE1A0";
+    // U+E19F  D flat (black note)
+    Glyphs["noteDFlatBlack"] = "\uE19F";
+    // U+E188  D flat (half note)
+    Glyphs["noteDFlatHalf"] = "\uE188";
+    // U+E171  D flat (whole note)
+    Glyphs["noteDFlatWhole"] = "\uE171";
+    // U+E189  D (half note)
+    Glyphs["noteDHalf"] = "\uE189";
+    // U+E1A1  D sharp (black note)
+    Glyphs["noteDSharpBlack"] = "\uE1A1";
+    // U+E18A  D sharp (half note)
+    Glyphs["noteDSharpHalf"] = "\uE18A";
+    // U+E173  D sharp (whole note)
+    Glyphs["noteDSharpWhole"] = "\uE173";
+    // U+E172  D (whole note)
+    Glyphs["noteDWhole"] = "\uE172";
+    // U+EEF2  Di (black note)
+    Glyphs["noteDiBlack"] = "\uEEF2";
+    // U+EEE9  Di (half note)
+    Glyphs["noteDiHalf"] = "\uEEE9";
+    // U+EEE0  Di (whole note)
+    Glyphs["noteDiWhole"] = "\uEEE0";
+    // U+E160  Do (black note)
+    Glyphs["noteDoBlack"] = "\uE160";
+    // U+E158  Do (half note)
+    Glyphs["noteDoHalf"] = "\uE158";
+    // U+E150  Do (whole note)
+    Glyphs["noteDoWhole"] = "\uE150";
+    // U+E1D0  Double whole note (breve)
+    Glyphs["noteDoubleWhole"] = "\uE1D0";
+    // U+1D15C  Double whole note (breve)
+    Glyphs["noteDoubleWholeAlternate"] = "\uD834\uDD5C";
+    // U+E1D1  Double whole note (square)
+    Glyphs["noteDoubleWholeSquare"] = "\uE1D1";
+    // U+E1A3  E (black note)
+    Glyphs["noteEBlack"] = "\uE1A3";
+    // U+E1A2  E flat (black note)
+    Glyphs["noteEFlatBlack"] = "\uE1A2";
+    // U+E18B  E flat (half note)
+    Glyphs["noteEFlatHalf"] = "\uE18B";
+    // U+E174  E flat (whole note)
+    Glyphs["noteEFlatWhole"] = "\uE174";
+    // U+E18C  E (half note)
+    Glyphs["noteEHalf"] = "\uE18C";
+    // U+E1A4  E sharp (black note)
+    Glyphs["noteESharpBlack"] = "\uE1A4";
+    // U+E18D  E sharp (half note)
+    Glyphs["noteESharpHalf"] = "\uE18D";
+    // U+E176  E sharp (whole note)
+    Glyphs["noteESharpWhole"] = "\uE176";
+    // U+E175  E (whole note)
+    Glyphs["noteEWhole"] = "\uE175";
+    // U+E1AF  Empty black note
+    Glyphs["noteEmptyBlack"] = "\uE1AF";
+    // U+E1AE  Empty half note
+    Glyphs["noteEmptyHalf"] = "\uE1AE";
+    // U+E1AD  Empty whole note
+    Glyphs["noteEmptyWhole"] = "\uE1AD";
+    // U+E1A6  F (black note)
+    Glyphs["noteFBlack"] = "\uE1A6";
+    // U+E1A5  F flat (black note)
+    Glyphs["noteFFlatBlack"] = "\uE1A5";
+    // U+E18E  F flat (half note)
+    Glyphs["noteFFlatHalf"] = "\uE18E";
+    // U+E177  F flat (whole note)
+    Glyphs["noteFFlatWhole"] = "\uE177";
+    // U+E18F  F (half note)
+    Glyphs["noteFHalf"] = "\uE18F";
+    // U+E1A7  F sharp (black note)
+    Glyphs["noteFSharpBlack"] = "\uE1A7";
+    // U+E190  F sharp (half note)
+    Glyphs["noteFSharpHalf"] = "\uE190";
+    // U+E179  F sharp (whole note)
+    Glyphs["noteFSharpWhole"] = "\uE179";
+    // U+E178  F (whole note)
+    Glyphs["noteFWhole"] = "\uE178";
+    // U+E163  Fa (black note)
+    Glyphs["noteFaBlack"] = "\uE163";
+    // U+E15B  Fa (half note)
+    Glyphs["noteFaHalf"] = "\uE15B";
+    // U+E153  Fa (whole note)
+    Glyphs["noteFaWhole"] = "\uE153";
+    // U+EEF6  Fi (black note)
+    Glyphs["noteFiBlack"] = "\uEEF6";
+    // U+EEED  Fi (half note)
+    Glyphs["noteFiHalf"] = "\uEEED";
+    // U+EEE4  Fi (whole note)
+    Glyphs["noteFiWhole"] = "\uEEE4";
+    // U+E1A9  G (black note)
+    Glyphs["noteGBlack"] = "\uE1A9";
+    // U+E1A8  G flat (black note)
+    Glyphs["noteGFlatBlack"] = "\uE1A8";
+    // U+E191  G flat (half note)
+    Glyphs["noteGFlatHalf"] = "\uE191";
+    // U+E17A  G flat (whole note)
+    Glyphs["noteGFlatWhole"] = "\uE17A";
+    // U+E192  G (half note)
+    Glyphs["noteGHalf"] = "\uE192";
+    // U+E1AA  G sharp (black note)
+    Glyphs["noteGSharpBlack"] = "\uE1AA";
+    // U+E193  G sharp (half note)
+    Glyphs["noteGSharpHalf"] = "\uE193";
+    // U+E17C  G sharp (whole note)
+    Glyphs["noteGSharpWhole"] = "\uE17C";
+    // U+E17B  G (whole note)
+    Glyphs["noteGWhole"] = "\uE17B";
+    // U+E1AB  H (black note)
+    Glyphs["noteHBlack"] = "\uE1AB";
+    // U+E194  H (half note)
+    Glyphs["noteHHalf"] = "\uE194";
+    // U+E1AC  H sharp (black note)
+    Glyphs["noteHSharpBlack"] = "\uE1AC";
+    // U+E195  H sharp (half note)
+    Glyphs["noteHSharpHalf"] = "\uE195";
+    // U+E17E  H sharp (whole note)
+    Glyphs["noteHSharpWhole"] = "\uE17E";
+    // U+E17D  H (whole note)
+    Glyphs["noteHWhole"] = "\uE17D";
+    // U+E1D4  Half note (minim) stem down
+    Glyphs["noteHalfDown"] = "\uE1D4";
+    // U+E1D3  Half note (minim) stem up
+    Glyphs["noteHalfUp"] = "\uE1D3";
+    // U+1D15E  Half note (minim) stem up
+    Glyphs["noteHalfUpAlternate"] = "\uD834\uDD5E";
+    // U+E165  La (black note)
+    Glyphs["noteLaBlack"] = "\uE165";
+    // U+E15D  La (half note)
+    Glyphs["noteLaHalf"] = "\uE15D";
+    // U+E155  La (whole note)
+    Glyphs["noteLaWhole"] = "\uE155";
+    // U+EEF9  Le (black note)
+    Glyphs["noteLeBlack"] = "\uEEF9";
+    // U+EEF0  Le (half note)
+    Glyphs["noteLeHalf"] = "\uEEF0";
+    // U+EEE7  Le (whole note)
+    Glyphs["noteLeWhole"] = "\uEEE7";
+    // U+EEF8  Li (black note)
+    Glyphs["noteLiBlack"] = "\uEEF8";
+    // U+EEEF  Li (half note)
+    Glyphs["noteLiHalf"] = "\uEEEF";
+    // U+EEE6  Li (whole note)
+    Glyphs["noteLiWhole"] = "\uEEE6";
+    // U+EEF5  Me (black note)
+    Glyphs["noteMeBlack"] = "\uEEF5";
+    // U+EEEC  Me (half note)
+    Glyphs["noteMeHalf"] = "\uEEEC";
+    // U+EEE3  Me (whole note)
+    Glyphs["noteMeWhole"] = "\uEEE3";
+    // U+E162  Mi (black note)
+    Glyphs["noteMiBlack"] = "\uE162";
+    // U+E15A  Mi (half note)
+    Glyphs["noteMiHalf"] = "\uE15A";
+    // U+E152  Mi (whole note)
+    Glyphs["noteMiWhole"] = "\uE152";
+    // U+E1D6  Quarter note (crotchet) stem down
+    Glyphs["noteQuarterDown"] = "\uE1D6";
+    // U+E1D5  Quarter note (crotchet) stem up
+    Glyphs["noteQuarterUp"] = "\uE1D5";
+    // U+1D15F  Quarter note (crotchet) stem up
+    Glyphs["noteQuarterUpAlternate"] = "\uD834\uDD5F";
+    // U+EEF4  Ra (black note)
+    Glyphs["noteRaBlack"] = "\uEEF4";
+    // U+EEEB  Ra (half note)
+    Glyphs["noteRaHalf"] = "\uEEEB";
+    // U+EEE2  Ra (whole note)
+    Glyphs["noteRaWhole"] = "\uEEE2";
+    // U+E161  Re (black note)
+    Glyphs["noteReBlack"] = "\uE161";
+    // U+E159  Re (half note)
+    Glyphs["noteReHalf"] = "\uE159";
+    // U+E151  Re (whole note)
+    Glyphs["noteReWhole"] = "\uE151";
+    // U+EEF3  Ri (black note)
+    Glyphs["noteRiBlack"] = "\uEEF3";
+    // U+EEEA  Ri (half note)
+    Glyphs["noteRiHalf"] = "\uEEEA";
+    // U+EEE1  Ri (whole note)
+    Glyphs["noteRiWhole"] = "\uEEE1";
+    // U+EEF7  Se (black note)
+    Glyphs["noteSeBlack"] = "\uEEF7";
+    // U+EEEE  Se (half note)
+    Glyphs["noteSeHalf"] = "\uEEEE";
+    // U+EEE5  Se (whole note)
+    Glyphs["noteSeWhole"] = "\uEEE5";
+    // U+E1C9  Arrowhead left black (Funk 7-shape re)
+    Glyphs["noteShapeArrowheadLeftBlack"] = "\uE1C9";
+    // U+ECDC  Arrowhead left double whole (Funk 7-shape re)
+    Glyphs["noteShapeArrowheadLeftDoubleWhole"] = "\uECDC";
+    // U+E1C8  Arrowhead left white (Funk 7-shape re)
+    Glyphs["noteShapeArrowheadLeftWhite"] = "\uE1C8";
+    // U+E1B9  Diamond black (4-shape mi; 7-shape mi)
+    Glyphs["noteShapeDiamondBlack"] = "\uE1B9";
+    // U+ECD4  Diamond double whole (4-shape mi; 7-shape mi)
+    Glyphs["noteShapeDiamondDoubleWhole"] = "\uECD4";
+    // U+E1B8  Diamond white (4-shape mi; 7-shape mi)
+    Glyphs["noteShapeDiamondWhite"] = "\uE1B8";
+    // U+E1C5  Isosceles triangle black (Walker 7-shape ti)
+    Glyphs["noteShapeIsoscelesTriangleBlack"] = "\uE1C5";
+    // U+ECDA  Isosceles triangle double whole (Walker 7-shape ti)
+    Glyphs["noteShapeIsoscelesTriangleDoubleWhole"] = "\uECDA";
+    // U+E1C4  Isosceles triangle white (Walker 7-shape ti)
+    Glyphs["noteShapeIsoscelesTriangleWhite"] = "\uE1C4";
+    // U+E1C1  Inverted keystone black (Walker 7-shape do)
+    Glyphs["noteShapeKeystoneBlack"] = "\uE1C1";
+    // U+ECD8  Inverted keystone double whole (Walker 7-shape do)
+    Glyphs["noteShapeKeystoneDoubleWhole"] = "\uECD8";
+    // U+E1C0  Inverted keystone white (Walker 7-shape do)
+    Glyphs["noteShapeKeystoneWhite"] = "\uE1C0";
+    // U+E1BD  Moon black (Aikin 7-shape re)
+    Glyphs["noteShapeMoonBlack"] = "\uE1BD";
+    // U+ECD6  Moon double whole (Aikin 7-shape re)
+    Glyphs["noteShapeMoonDoubleWhole"] = "\uECD6";
+    // U+E1C7  Moon left black (Funk 7-shape do)
+    Glyphs["noteShapeMoonLeftBlack"] = "\uE1C7";
+    // U+ECDB  Moon left double whole (Funk 7-shape do)
+    Glyphs["noteShapeMoonLeftDoubleWhole"] = "\uECDB";
+    // U+E1C6  Moon left white (Funk 7-shape do)
+    Glyphs["noteShapeMoonLeftWhite"] = "\uE1C6";
+    // U+E1BC  Moon white (Aikin 7-shape re)
+    Glyphs["noteShapeMoonWhite"] = "\uE1BC";
+    // U+E1C3  Quarter moon black (Walker 7-shape re)
+    Glyphs["noteShapeQuarterMoonBlack"] = "\uE1C3";
+    // U+ECD9  Quarter moon double whole (Walker 7-shape re)
+    Glyphs["noteShapeQuarterMoonDoubleWhole"] = "\uECD9";
+    // U+E1C2  Quarter moon white (Walker 7-shape re)
+    Glyphs["noteShapeQuarterMoonWhite"] = "\uE1C2";
+    // U+E1B1  Round black (4-shape sol; 7-shape so)
+    Glyphs["noteShapeRoundBlack"] = "\uE1B1";
+    // U+ECD0  Round double whole (4-shape sol; 7-shape so)
+    Glyphs["noteShapeRoundDoubleWhole"] = "\uECD0";
+    // U+E1B0  Round white (4-shape sol; 7-shape so)
+    Glyphs["noteShapeRoundWhite"] = "\uE1B0";
+    // U+E1B3  Square black (4-shape la; Aikin 7-shape la)
+    Glyphs["noteShapeSquareBlack"] = "\uE1B3";
+    // U+ECD1  Square double whole (4-shape la; Aikin 7-shape la)
+    Glyphs["noteShapeSquareDoubleWhole"] = "\uECD1";
+    // U+E1B2  Square white (4-shape la; Aikin 7-shape la)
+    Glyphs["noteShapeSquareWhite"] = "\uE1B2";
+    // U+E1B7  Triangle left black (stem up; 4-shape fa; 7-shape fa)
+    Glyphs["noteShapeTriangleLeftBlack"] = "\uE1B7";
+    // U+ECD3  Triangle left double whole (stem up; 4-shape fa; 7-shape fa)
+    Glyphs["noteShapeTriangleLeftDoubleWhole"] = "\uECD3";
+    // U+E1B6  Triangle left white (stem up; 4-shape fa; 7-shape fa)
+    Glyphs["noteShapeTriangleLeftWhite"] = "\uE1B6";
+    // U+E1B5  Triangle right black (stem down; 4-shape fa; 7-shape fa)
+    Glyphs["noteShapeTriangleRightBlack"] = "\uE1B5";
+    // U+ECD2  Triangle right double whole (stem down; 4-shape fa; 7-shape fa)
+    Glyphs["noteShapeTriangleRightDoubleWhole"] = "\uECD2";
+    // U+E1B4  Triangle right white (stem down; 4-shape fa; 7-shape fa)
+    Glyphs["noteShapeTriangleRightWhite"] = "\uE1B4";
+    // U+E1BF  Triangle-round black (Aikin 7-shape ti)
+    Glyphs["noteShapeTriangleRoundBlack"] = "\uE1BF";
+    // U+ECD7  Triangle-round white (Aikin 7-shape ti)
+    Glyphs["noteShapeTriangleRoundDoubleWhole"] = "\uECD7";
+    // U+E1CB  Triangle-round left black (Funk 7-shape ti)
+    Glyphs["noteShapeTriangleRoundLeftBlack"] = "\uE1CB";
+    // U+ECDD  Triangle-round left double whole (Funk 7-shape ti)
+    Glyphs["noteShapeTriangleRoundLeftDoubleWhole"] = "\uECDD";
+    // U+E1CA  Triangle-round left white (Funk 7-shape ti)
+    Glyphs["noteShapeTriangleRoundLeftWhite"] = "\uE1CA";
+    // U+E1BE  Triangle-round white (Aikin 7-shape ti)
+    Glyphs["noteShapeTriangleRoundWhite"] = "\uE1BE";
+    // U+E1BB  Triangle up black (Aikin 7-shape do)
+    Glyphs["noteShapeTriangleUpBlack"] = "\uE1BB";
+    // U+ECD5  Triangle up double whole (Aikin 7-shape do)
+    Glyphs["noteShapeTriangleUpDoubleWhole"] = "\uECD5";
+    // U+E1BA  Triangle up white (Aikin 7-shape do)
+    Glyphs["noteShapeTriangleUpWhite"] = "\uE1BA";
+    // U+E167  Si (black note)
+    Glyphs["noteSiBlack"] = "\uE167";
+    // U+E15F  Si (half note)
+    Glyphs["noteSiHalf"] = "\uE15F";
+    // U+E157  Si (whole note)
+    Glyphs["noteSiWhole"] = "\uE157";
+    // U+E164  So (black note)
+    Glyphs["noteSoBlack"] = "\uE164";
+    // U+E15C  So (half note)
+    Glyphs["noteSoHalf"] = "\uE15C";
+    // U+E154  So (whole note)
+    Glyphs["noteSoWhole"] = "\uE154";
+    // U+EEFA  Te (black note)
+    Glyphs["noteTeBlack"] = "\uEEFA";
+    // U+EEF1  Te (half note)
+    Glyphs["noteTeHalf"] = "\uEEF1";
+    // U+EEE8  Te (whole note)
+    Glyphs["noteTeWhole"] = "\uEEE8";
+    // U+E166  Ti (black note)
+    Glyphs["noteTiBlack"] = "\uE166";
+    // U+E15E  Ti (half note)
+    Glyphs["noteTiHalf"] = "\uE15E";
+    // U+E156  Ti (whole note)
+    Glyphs["noteTiWhole"] = "\uE156";
+    // U+E1D2  Whole note (semibreve)
+    Glyphs["noteWhole"] = "\uE1D2";
+    // U+1D15D  Whole note (semibreve)
+    Glyphs["noteWholeAlternate"] = "\uD834\uDD5D";
+    // U+E0A4  Black notehead
+    Glyphs["noteheadBlack"] = "\uE0A4";
+    // U+1D158  Black notehead
+    Glyphs["noteheadBlackAlternate"] = "\uD834\uDD58";
+    // U+E0F7  Circle slash notehead
+    Glyphs["noteheadCircleSlash"] = "\uE0F7";
+    // U+E0B3  Circle X notehead
+    Glyphs["noteheadCircleX"] = "\uE0B3";
+    // U+1D145  Circle X notehead
+    Glyphs["noteheadCircleXAlternate"] = "\uD834\uDD45";
+    // U+E0B0  Circle X double whole
+    Glyphs["noteheadCircleXDoubleWhole"] = "\uE0B0";
+    // U+E0B2  Circle X half
+    Glyphs["noteheadCircleXHalf"] = "\uE0B2";
+    // U+E0B1  Circle X whole
+    Glyphs["noteheadCircleXWhole"] = "\uE0B1";
+    // U+E0E4  Circled black notehead
+    Glyphs["noteheadCircledBlack"] = "\uE0E4";
+    // U+E0E8  Black notehead in large circle
+    Glyphs["noteheadCircledBlackLarge"] = "\uE0E8";
+    // U+E0E7  Circled double whole notehead
+    Glyphs["noteheadCircledDoubleWhole"] = "\uE0E7";
+    // U+E0EB  Double whole notehead in large circle
+    Glyphs["noteheadCircledDoubleWholeLarge"] = "\uE0EB";
+    // U+E0E5  Circled half notehead
+    Glyphs["noteheadCircledHalf"] = "\uE0E5";
+    // U+E0E9  Half notehead in large circle
+    Glyphs["noteheadCircledHalfLarge"] = "\uE0E9";
+    // U+E0E6  Circled whole notehead
+    Glyphs["noteheadCircledWhole"] = "\uE0E6";
+    // U+E0EA  Whole notehead in large circle
+    Glyphs["noteheadCircledWholeLarge"] = "\uE0EA";
+    // U+E0EC  Cross notehead in large circle
+    Glyphs["noteheadCircledXLarge"] = "\uE0EC";
+    // U+E124  Double whole note cluster, 2nd
+    Glyphs["noteheadClusterDoubleWhole2nd"] = "\uE124";
+    // U+E128  Double whole note cluster, 3rd
+    Glyphs["noteheadClusterDoubleWhole3rd"] = "\uE128";
+    // U+E12E  Combining double whole note cluster, bottom
+    Glyphs["noteheadClusterDoubleWholeBottom"] = "\uE12E";
+    // U+E12D  Combining double whole note cluster, middle
+    Glyphs["noteheadClusterDoubleWholeMiddle"] = "\uE12D";
+    // U+E12C  Combining double whole note cluster, top
+    Glyphs["noteheadClusterDoubleWholeTop"] = "\uE12C";
+    // U+E126  Half note cluster, 2nd
+    Glyphs["noteheadClusterHalf2nd"] = "\uE126";
+    // U+E12A  Half note cluster, 3rd
+    Glyphs["noteheadClusterHalf3rd"] = "\uE12A";
+    // U+E134  Combining half note cluster, bottom
+    Glyphs["noteheadClusterHalfBottom"] = "\uE134";
+    // U+E133  Combining half note cluster, middle
+    Glyphs["noteheadClusterHalfMiddle"] = "\uE133";
+    // U+E132  Combining half note cluster, top
+    Glyphs["noteheadClusterHalfTop"] = "\uE132";
+    // U+E127  Quarter note cluster, 2nd
+    Glyphs["noteheadClusterQuarter2nd"] = "\uE127";
+    // U+E12B  Quarter note cluster, 3rd
+    Glyphs["noteheadClusterQuarter3rd"] = "\uE12B";
+    // U+E137  Combining quarter note cluster, bottom
+    Glyphs["noteheadClusterQuarterBottom"] = "\uE137";
+    // U+E136  Combining quarter note cluster, middle
+    Glyphs["noteheadClusterQuarterMiddle"] = "\uE136";
+    // U+E135  Combining quarter note cluster, top
+    Glyphs["noteheadClusterQuarterTop"] = "\uE135";
+    // U+E123  Cluster notehead black (round)
+    Glyphs["noteheadClusterRoundBlack"] = "\uE123";
+    // U+E122  Cluster notehead white (round)
+    Glyphs["noteheadClusterRoundWhite"] = "\uE122";
+    // U+E121  Cluster notehead black (square)
+    Glyphs["noteheadClusterSquareBlack"] = "\uE121";
+    // U+1D15B  Cluster notehead black (square)
+    Glyphs["noteheadClusterSquareBlackAlternate"] = "\uD834\uDD5B";
+    // U+E120  Cluster notehead white (square)
+    Glyphs["noteheadClusterSquareWhite"] = "\uE120";
+    // U+1D15A  Cluster notehead white (square)
+    Glyphs["noteheadClusterSquareWhiteAlternate"] = "\uD834\uDD5A";
+    // U+E125  Whole note cluster, 2nd
+    Glyphs["noteheadClusterWhole2nd"] = "\uE125";
+    // U+E129  Whole note cluster, 3rd
+    Glyphs["noteheadClusterWhole3rd"] = "\uE129";
+    // U+E131  Combining whole note cluster, bottom
+    Glyphs["noteheadClusterWholeBottom"] = "\uE131";
+    // U+E130  Combining whole note cluster, middle
+    Glyphs["noteheadClusterWholeMiddle"] = "\uE130";
+    // U+E12F  Combining whole note cluster, top
+    Glyphs["noteheadClusterWholeTop"] = "\uE12F";
+    // U+EEAE  4/11 note (eleventh note series, Cowell)
+    Glyphs["noteheadCowellEleventhNoteSeriesHalf"] = "\uEEAE";
+    // U+EEAD  8/11 note (eleventh note series, Cowell)
+    Glyphs["noteheadCowellEleventhNoteSeriesWhole"] = "\uEEAD";
+    // U+EEAF  2/11 note (eleventh note series, Cowell)
+    Glyphs["noteheadCowellEleventhSeriesBlack"] = "\uEEAF";
+    // U+EEB5  2/15 note (fifteenth note series, Cowell)
+    Glyphs["noteheadCowellFifteenthNoteSeriesBlack"] = "\uEEB5";
+    // U+EEB4  4/15 note (fifteenth note series, Cowell)
+    Glyphs["noteheadCowellFifteenthNoteSeriesHalf"] = "\uEEB4";
+    // U+EEB3  8/15 note (fifteenth note series, Cowell)
+    Glyphs["noteheadCowellFifteenthNoteSeriesWhole"] = "\uEEB3";
+    // U+EEA6  1/5 note (fifth note series, Cowell)
+    Glyphs["noteheadCowellFifthNoteSeriesBlack"] = "\uEEA6";
+    // U+EEA5  2/5 note (fifth note series, Cowell)
+    Glyphs["noteheadCowellFifthNoteSeriesHalf"] = "\uEEA5";
+    // U+EEA4  4/5 note (fifth note series, Cowell)
+    Glyphs["noteheadCowellFifthNoteSeriesWhole"] = "\uEEA4";
+    // U+EEAC  2/9 note (ninth note series, Cowell)
+    Glyphs["noteheadCowellNinthNoteSeriesBlack"] = "\uEEAC";
+    // U+EEAB  4/9 note (ninth note series, Cowell)
+    Glyphs["noteheadCowellNinthNoteSeriesHalf"] = "\uEEAB";
+    // U+EEAA  8/9 note (ninth note series, Cowell)
+    Glyphs["noteheadCowellNinthNoteSeriesWhole"] = "\uEEAA";
+    // U+EEA9  1/7 note (seventh note series, Cowell)
+    Glyphs["noteheadCowellSeventhNoteSeriesBlack"] = "\uEEA9";
+    // U+EEA8  2/7 note (seventh note series, Cowell)
+    Glyphs["noteheadCowellSeventhNoteSeriesHalf"] = "\uEEA8";
+    // U+EEA7  4/7 note (seventh note series, Cowell)
+    Glyphs["noteheadCowellSeventhNoteSeriesWhole"] = "\uEEA7";
+    // U+EEA3  1/6 note (third note series, Cowell)
+    Glyphs["noteheadCowellThirdNoteSeriesBlack"] = "\uEEA3";
+    // U+EEA2  1/3 note (third note series, Cowell)
+    Glyphs["noteheadCowellThirdNoteSeriesHalf"] = "\uEEA2";
+    // U+EEA1  2/3 note (third note series, Cowell)
+    Glyphs["noteheadCowellThirdNoteSeriesWhole"] = "\uEEA1";
+    // U+EEB2  2/13 note (thirteenth note series, Cowell)
+    Glyphs["noteheadCowellThirteenthNoteSeriesBlack"] = "\uEEB2";
+    // U+EEB1  4/13 note (thirteenth note series, Cowell)
+    Glyphs["noteheadCowellThirteenthNoteSeriesHalf"] = "\uEEB1";
+    // U+EEB0  8/13 note (thirteenth note series, Cowell)
+    Glyphs["noteheadCowellThirteenthNoteSeriesWhole"] = "\uEEB0";
+    // U+E0DB  Diamond black notehead
+    Glyphs["noteheadDiamondBlack"] = "\uE0DB";
+    // U+E0E2  Diamond black notehead (old)
+    Glyphs["noteheadDiamondBlackOld"] = "\uE0E2";
+    // U+E0DC  Diamond black notehead (wide)
+    Glyphs["noteheadDiamondBlackWide"] = "\uE0DC";
+    // U+E139  Black diamond cluster, 2nd
+    Glyphs["noteheadDiamondClusterBlack2nd"] = "\uE139";
+    // U+E13B  Black diamond cluster, 3rd
+    Glyphs["noteheadDiamondClusterBlack3rd"] = "\uE13B";
+    // U+E141  Combining black diamond cluster, bottom
+    Glyphs["noteheadDiamondClusterBlackBottom"] = "\uE141";
+    // U+E140  Combining black diamond cluster, middle
+    Glyphs["noteheadDiamondClusterBlackMiddle"] = "\uE140";
+    // U+E13F  Combining black diamond cluster, top
+    Glyphs["noteheadDiamondClusterBlackTop"] = "\uE13F";
+    // U+E138  White diamond cluster, 2nd
+    Glyphs["noteheadDiamondClusterWhite2nd"] = "\uE138";
+    // U+E13A  White diamond cluster, 3rd
+    Glyphs["noteheadDiamondClusterWhite3rd"] = "\uE13A";
+    // U+E13E  Combining white diamond cluster, bottom
+    Glyphs["noteheadDiamondClusterWhiteBottom"] = "\uE13E";
+    // U+E13D  Combining white diamond cluster, middle
+    Glyphs["noteheadDiamondClusterWhiteMiddle"] = "\uE13D";
+    // U+E13C  Combining white diamond cluster, top
+    Glyphs["noteheadDiamondClusterWhiteTop"] = "\uE13C";
+    // U+E0D7  Diamond double whole notehead
+    Glyphs["noteheadDiamondDoubleWhole"] = "\uE0D7";
+    // U+E0DF  Diamond double whole notehead (old)
+    Glyphs["noteheadDiamondDoubleWholeOld"] = "\uE0DF";
+    // U+E0D9  Diamond half notehead
+    Glyphs["noteheadDiamondHalf"] = "\uE0D9";
+    // U+E0E3  Half-filled diamond notehead
+    Glyphs["noteheadDiamondHalfFilled"] = "\uE0E3";
+    // U+E0E1  Diamond half notehead (old)
+    Glyphs["noteheadDiamondHalfOld"] = "\uE0E1";
+    // U+E0DA  Diamond half notehead (wide)
+    Glyphs["noteheadDiamondHalfWide"] = "\uE0DA";
+    // U+E0FC  Open diamond notehead
+    Glyphs["noteheadDiamondOpen"] = "\uE0FC";
+    // U+E0DD  Diamond white notehead
+    Glyphs["noteheadDiamondWhite"] = "\uE0DD";
+    // U+E0DE  Diamond white notehead (wide)
+    Glyphs["noteheadDiamondWhiteWide"] = "\uE0DE";
+    // U+E0D8  Diamond whole notehead
+    Glyphs["noteheadDiamondWhole"] = "\uE0D8";
+    // U+E0E0  Diamond whole notehead (old)
+    Glyphs["noteheadDiamondWholeOld"] = "\uE0E0";
+    // U+E0A0  Double whole (breve) notehead
+    Glyphs["noteheadDoubleWhole"] = "\uE0A0";
+    // U+E0A1  Double whole (breve) notehead (square)
+    Glyphs["noteheadDoubleWholeSquare"] = "\uE0A1";
+    // U+E0B4  Double whole notehead with X
+    Glyphs["noteheadDoubleWholeWithX"] = "\uE0B4";
+    // U+E0A3  Half (minim) notehead
+    Glyphs["noteheadHalf"] = "\uE0A3";
+    // U+1D157  Half (minim) notehead
+    Glyphs["noteheadHalfAlternate"] = "\uD834\uDD57";
+    // U+E0FB  Filled half (minim) notehead
+    Glyphs["noteheadHalfFilled"] = "\uE0FB";
+    // U+E0B6  Half notehead with X
+    Glyphs["noteheadHalfWithX"] = "\uE0B6";
+    // U+E0F8  Heavy X notehead
+    Glyphs["noteheadHeavyX"] = "\uE0F8";
+    // U+E0F9  Heavy X with hat notehead
+    Glyphs["noteheadHeavyXHat"] = "\uE0F9";
+    // U+E0F4  Large arrow down (lowest pitch) black notehead
+    Glyphs["noteheadLargeArrowDownBlack"] = "\uE0F4";
+    // U+E0F1  Large arrow down (lowest pitch) double whole notehead
+    Glyphs["noteheadLargeArrowDownDoubleWhole"] = "\uE0F1";
+    // U+E0F3  Large arrow down (lowest pitch) half notehead
+    Glyphs["noteheadLargeArrowDownHalf"] = "\uE0F3";
+    // U+E0F2  Large arrow down (lowest pitch) whole notehead
+    Glyphs["noteheadLargeArrowDownWhole"] = "\uE0F2";
+    // U+E0F0  Large arrow up (highest pitch) black notehead
+    Glyphs["noteheadLargeArrowUpBlack"] = "\uE0F0";
+    // U+E0ED  Large arrow up (highest pitch) double whole notehead
+    Glyphs["noteheadLargeArrowUpDoubleWhole"] = "\uE0ED";
+    // U+E0EF  Large arrow up (highest pitch) half notehead
+    Glyphs["noteheadLargeArrowUpHalf"] = "\uE0EF";
+    // U+E0EE  Large arrow up (highest pitch) whole notehead
+    Glyphs["noteheadLargeArrowUpWhole"] = "\uE0EE";
+    // U+E0CB  Moon notehead black
+    Glyphs["noteheadMoonBlack"] = "\uE0CB";
+    // U+1D153  Moon notehead black
+    Glyphs["noteheadMoonBlackAlternate"] = "\uD834\uDD53";
+    // U+E0CA  Moon notehead white
+    Glyphs["noteheadMoonWhite"] = "\uE0CA";
+    // U+1D152  Moon notehead white
+    Glyphs["noteheadMoonWhiteAlternate"] = "\uD834\uDD52";
+    // U+EEA0  Sine notehead (Nancarrow)
+    Glyphs["noteheadNancarrowSine"] = "\uEEA0";
+    // U+E0A5  Null notehead
+    Glyphs["noteheadNull"] = "\uE0A5";
+    // U+1D159  Null notehead
+    Glyphs["noteheadNullAlternate"] = "\uD834\uDD59";
+    // U+E0CE  Parenthesis notehead
+    Glyphs["noteheadParenthesis"] = "\uE0CE";
+    // U+1D156  Parenthesis notehead
+    Glyphs["noteheadParenthesisAlternate"] = "\uD834\uDD56";
+    // U+E0F5  Opening parenthesis
+    Glyphs["noteheadParenthesisLeft"] = "\uE0F5";
+    // U+E0F6  Closing parenthesis
+    Glyphs["noteheadParenthesisRight"] = "\uE0F6";
+    // U+E0AF  Plus notehead black
+    Glyphs["noteheadPlusBlack"] = "\uE0AF";
+    // U+1D144  Plus notehead black
+    Glyphs["noteheadPlusBlackAlternate"] = "\uD834\uDD44";
+    // U+E0AC  Plus notehead double whole
+    Glyphs["noteheadPlusDoubleWhole"] = "\uE0AC";
+    // U+E0AE  Plus notehead half
+    Glyphs["noteheadPlusHalf"] = "\uE0AE";
+    // U+E0AD  Plus notehead whole
+    Glyphs["noteheadPlusWhole"] = "\uE0AD";
+    // U+E144  Combining black rectangular cluster, bottom
+    Glyphs["noteheadRectangularClusterBlackBottom"] = "\uE144";
+    // U+E143  Combining black rectangular cluster, middle
+    Glyphs["noteheadRectangularClusterBlackMiddle"] = "\uE143";
+    // U+E142  Combining black rectangular cluster, top
+    Glyphs["noteheadRectangularClusterBlackTop"] = "\uE142";
+    // U+E147  Combining white rectangular cluster, bottom
+    Glyphs["noteheadRectangularClusterWhiteBottom"] = "\uE147";
+    // U+E146  Combining white rectangular cluster, middle
+    Glyphs["noteheadRectangularClusterWhiteMiddle"] = "\uE146";
+    // U+E145  Combining white rectangular cluster, top
+    Glyphs["noteheadRectangularClusterWhiteTop"] = "\uE145";
+    // U+E113  Round black notehead
+    Glyphs["noteheadRoundBlack"] = "\uE113";
+    // U+E11C  Round black notehead, double slashed
+    Glyphs["noteheadRoundBlackDoubleSlashed"] = "\uE11C";
+    // U+E110  Large round black notehead
+    Glyphs["noteheadRoundBlackLarge"] = "\uE110";
+    // U+E118  Round black notehead, slashed
+    Glyphs["noteheadRoundBlackSlashed"] = "\uE118";
+    // U+E116  Large round black notehead, slashed
+    Glyphs["noteheadRoundBlackSlashedLarge"] = "\uE116";
+    // U+E114  Round white notehead
+    Glyphs["noteheadRoundWhite"] = "\uE114";
+    // U+E11D  Round white notehead, double slashed
+    Glyphs["noteheadRoundWhiteDoubleSlashed"] = "\uE11D";
+    // U+E111  Large round white notehead
+    Glyphs["noteheadRoundWhiteLarge"] = "\uE111";
+    // U+E119  Round white notehead, slashed
+    Glyphs["noteheadRoundWhiteSlashed"] = "\uE119";
+    // U+E117  Large round white notehead, slashed
+    Glyphs["noteheadRoundWhiteSlashedLarge"] = "\uE117";
+    // U+E115  Round white notehead with dot
+    Glyphs["noteheadRoundWhiteWithDot"] = "\uE115";
+    // U+E112  Large round white notehead with dot
+    Glyphs["noteheadRoundWhiteWithDotLarge"] = "\uE112";
+    // U+E104  Large white diamond
+    Glyphs["noteheadSlashDiamondWhite"] = "\uE104";
+    // U+E101  Slash with horizontal ends
+    Glyphs["noteheadSlashHorizontalEnds"] = "\uE101";
+    // U+1D10D  Slash with horizontal ends
+    Glyphs["noteheadSlashHorizontalEndsAlternate"] = "\uD834\uDD0D";
+    // U+E108  Muted slash with horizontal ends
+    Glyphs["noteheadSlashHorizontalEndsMuted"] = "\uE108";
+    // U+E100  Slash with vertical ends
+    Glyphs["noteheadSlashVerticalEnds"] = "\uE100";
+    // U+E107  Muted slash with vertical ends
+    Glyphs["noteheadSlashVerticalEndsMuted"] = "\uE107";
+    // U+E105  Small slash with vertical ends
+    Glyphs["noteheadSlashVerticalEndsSmall"] = "\uE105";
+    // U+E10A  White slash double whole
+    Glyphs["noteheadSlashWhiteDoubleWhole"] = "\uE10A";
+    // U+E103  White slash half
+    Glyphs["noteheadSlashWhiteHalf"] = "\uE103";
+    // U+E109  Muted white slash
+    Glyphs["noteheadSlashWhiteMuted"] = "\uE109";
+    // U+E102  White slash whole
+    Glyphs["noteheadSlashWhiteWhole"] = "\uE102";
+    // U+E106  Large X notehead
+    Glyphs["noteheadSlashX"] = "\uE106";
+    // U+E0CF  Slashed black notehead (bottom left to top right)
+    Glyphs["noteheadSlashedBlack1"] = "\uE0CF";
+    // U+E0D0  Slashed black notehead (top left to bottom right)
+    Glyphs["noteheadSlashedBlack2"] = "\uE0D0";
+    // U+E0D5  Slashed double whole notehead (bottom left to top right)
+    Glyphs["noteheadSlashedDoubleWhole1"] = "\uE0D5";
+    // U+E0D6  Slashed double whole notehead (top left to bottom right)
+    Glyphs["noteheadSlashedDoubleWhole2"] = "\uE0D6";
+    // U+E0D1  Slashed half notehead (bottom left to top right)
+    Glyphs["noteheadSlashedHalf1"] = "\uE0D1";
+    // U+E0D2  Slashed half notehead (top left to bottom right)
+    Glyphs["noteheadSlashedHalf2"] = "\uE0D2";
+    // U+E0D3  Slashed whole notehead (bottom left to top right)
+    Glyphs["noteheadSlashedWhole1"] = "\uE0D3";
+    // U+E0D4  Slashed whole notehead (top left to bottom right)
+    Glyphs["noteheadSlashedWhole2"] = "\uE0D4";
+    // U+E0B9  Square notehead black
+    Glyphs["noteheadSquareBlack"] = "\uE0B9";
+    // U+1D147  Square notehead black
+    Glyphs["noteheadSquareBlackAlternate"] = "\uD834\uDD47";
+    // U+E11A  Large square black notehead
+    Glyphs["noteheadSquareBlackLarge"] = "\uE11A";
+    // U+E11B  Large square white notehead
+    Glyphs["noteheadSquareBlackWhite"] = "\uE11B";
+    // U+E0B8  Square notehead white
+    Glyphs["noteheadSquareWhite"] = "\uE0B8";
+    // U+1D146  Square notehead white
+    Glyphs["noteheadSquareWhiteAlternate"] = "\uD834\uDD46";
+    // U+E0C7  Triangle notehead down black
+    Glyphs["noteheadTriangleDownBlack"] = "\uE0C7";
+    // U+1D14F  Triangle notehead down black
+    Glyphs["noteheadTriangleDownBlackAlternate"] = "\uD834\uDD4F";
+    // U+E0C3  Triangle notehead down double whole
+    Glyphs["noteheadTriangleDownDoubleWhole"] = "\uE0C3";
+    // U+E0C5  Triangle notehead down half
+    Glyphs["noteheadTriangleDownHalf"] = "\uE0C5";
+    // U+E0C6  Triangle notehead down white
+    Glyphs["noteheadTriangleDownWhite"] = "\uE0C6";
+    // U+1D14E  Triangle notehead down white
+    Glyphs["noteheadTriangleDownWhiteAlternate"] = "\uD834\uDD4E";
+    // U+E0C4  Triangle notehead down whole
+    Glyphs["noteheadTriangleDownWhole"] = "\uE0C4";
+    // U+E0C0  Triangle notehead left black
+    Glyphs["noteheadTriangleLeftBlack"] = "\uE0C0";
+    // U+1D14B  Triangle notehead left black
+    Glyphs["noteheadTriangleLeftBlackAlternate"] = "\uD834\uDD4B";
+    // U+E0BF  Triangle notehead left white
+    Glyphs["noteheadTriangleLeftWhite"] = "\uE0BF";
+    // U+1D14A  Triangle notehead left white
+    Glyphs["noteheadTriangleLeftWhiteAlternate"] = "\uD834\uDD4A";
+    // U+E0C2  Triangle notehead right black
+    Glyphs["noteheadTriangleRightBlack"] = "\uE0C2";
+    // U+1D14D  Triangle notehead right black
+    Glyphs["noteheadTriangleRightBlackAlternate"] = "\uD834\uDD4D";
+    // U+E0C1  Triangle notehead right white
+    Glyphs["noteheadTriangleRightWhite"] = "\uE0C1";
+    // U+1D14C  Triangle notehead right white
+    Glyphs["noteheadTriangleRightWhiteAlternate"] = "\uD834\uDD4C";
+    // U+E0CD  Triangle-round notehead down black
+    Glyphs["noteheadTriangleRoundDownBlack"] = "\uE0CD";
+    // U+1D155  Triangle-round notehead down black
+    Glyphs["noteheadTriangleRoundDownBlackAlternate"] = "\uD834\uDD55";
+    // U+E0CC  Triangle-round notehead down white
+    Glyphs["noteheadTriangleRoundDownWhite"] = "\uE0CC";
+    // U+1D154  Triangle-round notehead down white
+    Glyphs["noteheadTriangleRoundDownWhiteAlternate"] = "\uD834\uDD54";
+    // U+E0BE  Triangle notehead up black
+    Glyphs["noteheadTriangleUpBlack"] = "\uE0BE";
+    // U+1D149  Triangle notehead up black
+    Glyphs["noteheadTriangleUpBlackAlternate"] = "\uD834\uDD49";
+    // U+E0BA  Triangle notehead up double whole
+    Glyphs["noteheadTriangleUpDoubleWhole"] = "\uE0BA";
+    // U+E0BC  Triangle notehead up half
+    Glyphs["noteheadTriangleUpHalf"] = "\uE0BC";
+    // U+E0C9  Triangle notehead up right black
+    Glyphs["noteheadTriangleUpRightBlack"] = "\uE0C9";
+    // U+1D151  Triangle notehead up right black
+    Glyphs["noteheadTriangleUpRightBlackAlternate"] = "\uD834\uDD51";
+    // U+E0C8  Triangle notehead up right white
+    Glyphs["noteheadTriangleUpRightWhite"] = "\uE0C8";
+    // U+1D150  Triangle notehead up right white
+    Glyphs["noteheadTriangleUpRightWhiteAlternate"] = "\uD834\uDD50";
+    // U+E0BD  Triangle notehead up white
+    Glyphs["noteheadTriangleUpWhite"] = "\uE0BD";
+    // U+1D148  Triangle notehead up white
+    Glyphs["noteheadTriangleUpWhiteAlternate"] = "\uD834\uDD48";
+    // U+E0BB  Triangle notehead up whole
+    Glyphs["noteheadTriangleUpWhole"] = "\uE0BB";
+    // U+E0B7  Void notehead with X
+    Glyphs["noteheadVoidWithX"] = "\uE0B7";
+    // U+E0A2  Whole (semibreve) notehead
+    Glyphs["noteheadWhole"] = "\uE0A2";
+    // U+E0FA  Filled whole (semibreve) notehead
+    Glyphs["noteheadWholeFilled"] = "\uE0FA";
+    // U+E0B5  Whole notehead with X
+    Glyphs["noteheadWholeWithX"] = "\uE0B5";
+    // U+E0A9  X notehead black
+    Glyphs["noteheadXBlack"] = "\uE0A9";
+    // U+1D143  X notehead black
+    Glyphs["noteheadXBlackAlternate"] = "\uD834\uDD43";
+    // U+E0A6  X notehead double whole
+    Glyphs["noteheadXDoubleWhole"] = "\uE0A6";
+    // U+E0A8  X notehead half
+    Glyphs["noteheadXHalf"] = "\uE0A8";
+    // U+E0AA  Ornate X notehead
+    Glyphs["noteheadXOrnate"] = "\uE0AA";
+    // U+E0AB  Ornate X notehead in ellipse
+    Glyphs["noteheadXOrnateEllipse"] = "\uE0AB";
+    // U+E0A7  X notehead whole
+    Glyphs["noteheadXWhole"] = "\uE0A7";
+    // U+EC91  a (baseline)
+    Glyphs["octaveBaselineA"] = "\uEC91";
+    // U+EC93  b (baseline)
+    Glyphs["octaveBaselineB"] = "\uEC93";
+    // U+EC95  m (baseline)
+    Glyphs["octaveBaselineM"] = "\uEC95";
+    // U+EC97  v (baseline)
+    Glyphs["octaveBaselineV"] = "\uEC97";
+    // U+E51F  Bassa
+    Glyphs["octaveBassa"] = "\uE51F";
+    // U+EC90  Loco
+    Glyphs["octaveLoco"] = "\uEC90";
+    // U+E51A  Left parenthesis for octave signs
+    Glyphs["octaveParensLeft"] = "\uE51A";
+    // U+E51B  Right parenthesis for octave signs
+    Glyphs["octaveParensRight"] = "\uE51B";
+    // U+EC92  a (superscript)
+    Glyphs["octaveSuperscriptA"] = "\uEC92";
+    // U+EC94  b (superscript)
+    Glyphs["octaveSuperscriptB"] = "\uEC94";
+    // U+EC96  m (superscript)
+    Glyphs["octaveSuperscriptM"] = "\uEC96";
+    // U+EC98  v (superscript)
+    Glyphs["octaveSuperscriptV"] = "\uEC98";
+    // U+E233  One-handed roll (Stevens)
+    Glyphs["oneHandedRollStevens"] = "\uE233";
+    // U+EE2E  Two Fusae
+    Glyphs["organGerman2Fusae"] = "\uEE2E";
+    // U+EE2C  Two Minimae
+    Glyphs["organGerman2Minimae"] = "\uEE2C";
+    // U+EE19  Combining double octave line above
+    Glyphs["organGerman2OctaveUp"] = "\uEE19";
+    // U+EE2F  Two Semifusae
+    Glyphs["organGerman2Semifusae"] = "\uEE2F";
+    // U+EE2D  Two Semiminimae
+    Glyphs["organGerman2Semiminimae"] = "\uEE2D";
+    // U+EE32  Three Fusae
+    Glyphs["organGerman3Fusae"] = "\uEE32";
+    // U+EE30  Three Minimae
+    Glyphs["organGerman3Minimae"] = "\uEE30";
+    // U+EE33  Three Semifusae
+    Glyphs["organGerman3Semifusae"] = "\uEE33";
+    // U+EE31  Three Semiminimae
+    Glyphs["organGerman3Semiminimae"] = "\uEE31";
+    // U+EE36  Four Fusae
+    Glyphs["organGerman4Fusae"] = "\uEE36";
+    // U+EE34  Four Minimae
+    Glyphs["organGerman4Minimae"] = "\uEE34";
+    // U+EE37  Four Semifusae
+    Glyphs["organGerman4Semifusae"] = "\uEE37";
+    // U+EE35  Four Semiminimae
+    Glyphs["organGerman4Semiminimae"] = "\uEE35";
+    // U+EE3A  Five Fusae
+    Glyphs["organGerman5Fusae"] = "\uEE3A";
+    // U+EE38  Five Minimae
+    Glyphs["organGerman5Minimae"] = "\uEE38";
+    // U+EE3B  Five Semifusae
+    Glyphs["organGerman5Semifusae"] = "\uEE3B";
+    // U+EE39  Five Semiminimae
+    Glyphs["organGerman5Semiminimae"] = "\uEE39";
+    // U+EE3E  Six Fusae
+    Glyphs["organGerman6Fusae"] = "\uEE3E";
+    // U+EE3C  Six Minimae
+    Glyphs["organGerman6Minimae"] = "\uEE3C";
+    // U+EE3F  Six Semifusae
+    Glyphs["organGerman6Semifusae"] = "\uEE3F";
+    // U+EE3D  Six Semiminimae
+    Glyphs["organGerman6Semiminimae"] = "\uEE3D";
+    // U+EE15  German organ tablature small A
+    Glyphs["organGermanALower"] = "\uEE15";
+    // U+EE09  German organ tablature great A
+    Glyphs["organGermanAUpper"] = "\uEE09";
+    // U+EE1C  Rhythm Dot
+    Glyphs["organGermanAugmentationDot"] = "\uEE1C";
+    // U+EE16  German organ tablature small B
+    Glyphs["organGermanBLower"] = "\uEE16";
+    // U+EE0A  German organ tablature great B
+    Glyphs["organGermanBUpper"] = "\uEE0A";
+    // U+EE25  Brevis (Binary) Buxheimer Orgelbuch
+    Glyphs["organGermanBuxheimerBrevis2"] = "\uEE25";
+    // U+EE24  Brevis (Ternary) Buxheimer Orgelbuch
+    Glyphs["organGermanBuxheimerBrevis3"] = "\uEE24";
+    // U+EE1E  Minima Rest Buxheimer Orgelbuch
+    Glyphs["organGermanBuxheimerMinimaRest"] = "\uEE1E";
+    // U+EE26  Semibrevis Buxheimer Orgelbuch
+    Glyphs["organGermanBuxheimerSemibrevis"] = "\uEE26";
+    // U+EE1D  Semibrevis Rest Buxheimer Orgelbuch
+    Glyphs["organGermanBuxheimerSemibrevisRest"] = "\uEE1D";
+    // U+EE0C  German organ tablature small C
+    Glyphs["organGermanCLower"] = "\uEE0C";
+    // U+EE00  German organ tablature great C
+    Glyphs["organGermanCUpper"] = "\uEE00";
+    // U+EE0D  German organ tablature small Cis
+    Glyphs["organGermanCisLower"] = "\uEE0D";
+    // U+EE01  German organ tablature great Cis
+    Glyphs["organGermanCisUpper"] = "\uEE01";
+    // U+EE0E  German organ tablature small D
+    Glyphs["organGermanDLower"] = "\uEE0E";
+    // U+EE02  German organ tablature great D
+    Glyphs["organGermanDUpper"] = "\uEE02";
+    // U+EE0F  German organ tablature small Dis
+    Glyphs["organGermanDisLower"] = "\uEE0F";
+    // U+EE03  German organ tablature great Dis
+    Glyphs["organGermanDisUpper"] = "\uEE03";
+    // U+EE10  German organ tablature small E
+    Glyphs["organGermanELower"] = "\uEE10";
+    // U+EE04  German organ tablature great E
+    Glyphs["organGermanEUpper"] = "\uEE04";
+    // U+EE11  German organ tablature small F
+    Glyphs["organGermanFLower"] = "\uEE11";
+    // U+EE05  German organ tablature great F
+    Glyphs["organGermanFUpper"] = "\uEE05";
+    // U+EE12  German organ tablature small Fis
+    Glyphs["organGermanFisLower"] = "\uEE12";
+    // U+EE06  German organ tablature great Fis
+    Glyphs["organGermanFisUpper"] = "\uEE06";
+    // U+EE2A  Fusa
+    Glyphs["organGermanFusa"] = "\uEE2A";
+    // U+EE22  Fusa Rest
+    Glyphs["organGermanFusaRest"] = "\uEE22";
+    // U+EE13  German organ tablature small G
+    Glyphs["organGermanGLower"] = "\uEE13";
+    // U+EE07  German organ tablature great G
+    Glyphs["organGermanGUpper"] = "\uEE07";
+    // U+EE14  German organ tablature small Gis
+    Glyphs["organGermanGisLower"] = "\uEE14";
+    // U+EE08  German organ tablature great Gis
+    Glyphs["organGermanGisUpper"] = "\uEE08";
+    // U+EE17  German organ tablature small H
+    Glyphs["organGermanHLower"] = "\uEE17";
+    // U+EE0B  German organ tablature great H
+    Glyphs["organGermanHUpper"] = "\uEE0B";
+    // U+EE28  Minima
+    Glyphs["organGermanMinima"] = "\uEE28";
+    // U+EE20  Minima Rest
+    Glyphs["organGermanMinimaRest"] = "\uEE20";
+    // U+EE1A  Combining single octave line below
+    Glyphs["organGermanOctaveDown"] = "\uEE1A";
+    // U+EE18  Combining single octave line above
+    Glyphs["organGermanOctaveUp"] = "\uEE18";
+    // U+EE27  Semibrevis
+    Glyphs["organGermanSemibrevis"] = "\uEE27";
+    // U+EE1F  Semibrevis Rest
+    Glyphs["organGermanSemibrevisRest"] = "\uEE1F";
+    // U+EE2B  Semifusa
+    Glyphs["organGermanSemifusa"] = "\uEE2B";
+    // U+EE23  Semifusa Rest
+    Glyphs["organGermanSemifusaRest"] = "\uEE23";
+    // U+EE29  Semiminima
+    Glyphs["organGermanSemiminima"] = "\uEE29";
+    // U+EE21  Semiminima Rest
+    Glyphs["organGermanSemiminimaRest"] = "\uEE21";
+    // U+EE1B  Tie
+    Glyphs["organGermanTie"] = "\uEE1B";
+    // U+E59A  Ornament bottom left concave stroke
+    Glyphs["ornamentBottomLeftConcaveStroke"] = "\uE59A";
+    // U+E59B  Ornament bottom left concave stroke, large
+    Glyphs["ornamentBottomLeftConcaveStrokeLarge"] = "\uE59B";
+    // U+1D1A1  Ornament bottom left concave stroke, large
+    Glyphs["ornamentBottomLeftConcaveStrokeLargeAlternate"] = "\uD834\uDDA1";
+    // U+E59C  Ornament bottom left convex stroke
+    Glyphs["ornamentBottomLeftConvexStroke"] = "\uE59C";
+    // U+E5A7  Ornament bottom right concave stroke
+    Glyphs["ornamentBottomRightConcaveStroke"] = "\uE5A7";
+    // U+1D19F  Ornament bottom right concave stroke
+    Glyphs["ornamentBottomRightConcaveStrokeAlternate"] = "\uD834\uDD9F";
+    // U+E5A8  Ornament bottom right convex stroke
+    Glyphs["ornamentBottomRightConvexStroke"] = "\uE5A8";
+    // U+E581  Comma
+    Glyphs["ornamentComma"] = "\uE581";
+    // U+E57E  Double oblique straight lines NW-SE
+    Glyphs["ornamentDoubleObliqueLinesAfterNote"] = "\uE57E";
+    // U+E57D  Double oblique straight lines SW-NE
+    Glyphs["ornamentDoubleObliqueLinesBeforeNote"] = "\uE57D";
+    // U+E578  Curve below
+    Glyphs["ornamentDownCurve"] = "\uE578";
+    // U+E56F  Haydn ornament
+    Glyphs["ornamentHaydn"] = "\uE56F";
+    // U+E592  Ornament high left concave stroke
+    Glyphs["ornamentHighLeftConcaveStroke"] = "\uE592";
+    // U+E593  Ornament high left convex stroke
+    Glyphs["ornamentHighLeftConvexStroke"] = "\uE593";
+    // U+1D1A2  Ornament high left convex stroke
+    Glyphs["ornamentHighLeftConvexStrokeAlternate"] = "\uD834\uDDA2";
+    // U+E5A2  Ornament high right concave stroke
+    Glyphs["ornamentHighRightConcaveStroke"] = "\uE5A2";
+    // U+E5A3  Ornament high right convex stroke
+    Glyphs["ornamentHighRightConvexStroke"] = "\uE5A3";
+    // U+E576  Hook after note
+    Glyphs["ornamentHookAfterNote"] = "\uE576";
+    // U+E575  Hook before note
+    Glyphs["ornamentHookBeforeNote"] = "\uE575";
+    // U+E572  Left-facing half circle
+    Glyphs["ornamentLeftFacingHalfCircle"] = "\uE572";
+    // U+E574  Left-facing hook
+    Glyphs["ornamentLeftFacingHook"] = "\uE574";
+    // U+E597  Ornament left +
+    Glyphs["ornamentLeftPlus"] = "\uE597";
+    // U+E596  Ornament left shake t
+    Glyphs["ornamentLeftShakeT"] = "\uE596";
+    // U+E594  Ornament left vertical stroke
+    Glyphs["ornamentLeftVerticalStroke"] = "\uE594";
+    // U+1D19B  Ornament left vertical stroke
+    Glyphs["ornamentLeftVerticalStrokeAlternate"] = "\uD834\uDD9B";
+    // U+E595  Ornament left vertical stroke with cross (+)
+    Glyphs["ornamentLeftVerticalStrokeWithCross"] = "\uE595";
+    // U+E598  Ornament low left concave stroke
+    Glyphs["ornamentLowLeftConcaveStroke"] = "\uE598";
+    // U+E599  Ornament low left convex stroke
+    Glyphs["ornamentLowLeftConvexStroke"] = "\uE599";
+    // U+1D1A4  Ornament low left convex stroke
+    Glyphs["ornamentLowLeftConvexStrokeAlternate"] = "\uD834\uDDA4";
+    // U+E5A5  Ornament low right concave stroke
+    Glyphs["ornamentLowRightConcaveStroke"] = "\uE5A5";
+    // U+1D1A3  Ornament low right concave stroke
+    Glyphs["ornamentLowRightConcaveStrokeAlternate"] = "\uD834\uDDA3";
+    // U+E5A6  Ornament low right convex stroke
+    Glyphs["ornamentLowRightConvexStroke"] = "\uE5A6";
+    // U+E59F  Ornament middle vertical stroke
+    Glyphs["ornamentMiddleVerticalStroke"] = "\uE59F";
+    // U+1D1A0  Ornament middle vertical stroke
+    Glyphs["ornamentMiddleVerticalStrokeAlternate"] = "\uD834\uDDA0";
+    // U+E56D  Mordent
+    Glyphs["ornamentMordent"] = "\uE56D";
+    // U+E57C  Oblique straight line NW-SE
+    Glyphs["ornamentObliqueLineAfterNote"] = "\uE57C";
+    // U+E57B  Oblique straight line SW-NE
+    Glyphs["ornamentObliqueLineBeforeNote"] = "\uE57B";
+    // U+E580  Oblique straight line tilted NW-SE
+    Glyphs["ornamentObliqueLineHorizAfterNote"] = "\uE580";
+    // U+E57F  Oblique straight line tilted SW-NE
+    Glyphs["ornamentObliqueLineHorizBeforeNote"] = "\uE57F";
+    // U+EA21  Oriscus
+    Glyphs["ornamentOriscus"] = "\uEA21";
+    // U+E588  Pincé (Couperin)
+    Glyphs["ornamentPinceCouperin"] = "\uE588";
+    // U+E570  Port de voix
+    Glyphs["ornamentPortDeVoixV"] = "\uE570";
+    // U+E5B2  Supported appoggiatura trill
+    Glyphs["ornamentPrecompAppoggTrill"] = "\uE5B2";
+    // U+E5B3  Supported appoggiatura trill with two-note suffix
+    Glyphs["ornamentPrecompAppoggTrillSuffix"] = "\uE5B3";
+    // U+E5BE  Cadence
+    Glyphs["ornamentPrecompCadence"] = "\uE5BE";
+    // U+E5C1  Cadence with upper prefix
+    Glyphs["ornamentPrecompCadenceUpperPrefix"] = "\uE5C1";
+    // U+E5C2  Cadence with upper prefix and turn
+    Glyphs["ornamentPrecompCadenceUpperPrefixTurn"] = "\uE5C2";
+    // U+E5BF  Cadence with turn
+    Glyphs["ornamentPrecompCadenceWithTurn"] = "\uE5BF";
+    // U+E5B1  Descending slide
+    Glyphs["ornamentPrecompDescendingSlide"] = "\uE5B1";
+    // U+E5C0  Double cadence with lower prefix
+    Glyphs["ornamentPrecompDoubleCadenceLowerPrefix"] = "\uE5C0";
+    // U+E5C3  Double cadence with upper prefix
+    Glyphs["ornamentPrecompDoubleCadenceUpperPrefix"] = "\uE5C3";
+    // U+E5C4  Double cadence with upper prefix and turn
+    Glyphs["ornamentPrecompDoubleCadenceUpperPrefixTurn"] = "\uE5C4";
+    // U+E5C7  Inverted mordent with upper prefix
+    Glyphs["ornamentPrecompInvertedMordentUpperPrefix"] = "\uE5C7";
+    // U+E5C5  Mordent with release
+    Glyphs["ornamentPrecompMordentRelease"] = "\uE5C5";
+    // U+E5C6  Mordent with upper prefix
+    Glyphs["ornamentPrecompMordentUpperPrefix"] = "\uE5C6";
+    // U+E5BC  Pre-beat port de voix followed by multiple mordent (Dandrieu)
+    Glyphs["ornamentPrecompPortDeVoixMordent"] = "\uE5BC";
+    // U+E5B0  Slide
+    Glyphs["ornamentPrecompSlide"] = "\uE5B0";
+    // U+E5B8  Slide-trill with two-note suffix (J.S. Bach)
+    Glyphs["ornamentPrecompSlideTrillBach"] = "\uE5B8";
+    // U+E5B5  Slide-trill (D'Anglebert)
+    Glyphs["ornamentPrecompSlideTrillDAnglebert"] = "\uE5B5";
+    // U+E5B6  Slide-trill with one-note suffix (Marpurg)
+    Glyphs["ornamentPrecompSlideTrillMarpurg"] = "\uE5B6";
+    // U+E5B9  Slide-trill (Muffat)
+    Glyphs["ornamentPrecompSlideTrillMuffat"] = "\uE5B9";
+    // U+E5BA  Slide-trill with two-note suffix (Muffat)
+    Glyphs["ornamentPrecompSlideTrillSuffixMuffat"] = "\uE5BA";
+    // U+E5C8  Trill with lower suffix
+    Glyphs["ornamentPrecompTrillLowerSuffix"] = "\uE5C8";
+    // U+E5BB  Trill with two-note suffix (Dandrieu)
+    Glyphs["ornamentPrecompTrillSuffixDandrieu"] = "\uE5BB";
+    // U+E5BD  Trill with mordent
+    Glyphs["ornamentPrecompTrillWithMordent"] = "\uE5BD";
+    // U+E5B7  Turn-trill with two-note suffix (J.S. Bach)
+    Glyphs["ornamentPrecompTurnTrillBach"] = "\uE5B7";
+    // U+E5B4  Turn-trill (D'Anglebert)
+    Glyphs["ornamentPrecompTurnTrillDAnglebert"] = "\uE5B4";
+    // U+EA20  Quilisma
+    Glyphs["ornamentQuilisma"] = "\uEA20";
+    // U+E571  Right-facing half circle
+    Glyphs["ornamentRightFacingHalfCircle"] = "\uE571";
+    // U+E573  Right-facing hook
+    Glyphs["ornamentRightFacingHook"] = "\uE573";
+    // U+E5A4  Ornament right vertical stroke
+    Glyphs["ornamentRightVerticalStroke"] = "\uE5A4";
+    // U+E587  Schleifer (long mordent)
+    Glyphs["ornamentSchleifer"] = "\uE587";
+    // U+E582  Shake
+    Glyphs["ornamentShake3"] = "\uE582";
+    // U+E584  Shake (Muffat)
+    Glyphs["ornamentShakeMuffat1"] = "\uE584";
+    // U+E57A  Short oblique straight line NW-SE
+    Glyphs["ornamentShortObliqueLineAfterNote"] = "\uE57A";
+    // U+E579  Short oblique straight line SW-NE
+    Glyphs["ornamentShortObliqueLineBeforeNote"] = "\uE579";
+    // U+E56C  Short trill
+    Glyphs["ornamentShortTrill"] = "\uE56C";
+    // U+E590  Ornament top left concave stroke
+    Glyphs["ornamentTopLeftConcaveStroke"] = "\uE590";
+    // U+E591  Ornament top left convex stroke
+    Glyphs["ornamentTopLeftConvexStroke"] = "\uE591";
+    // U+1D1A5  Ornament top left convex stroke
+    Glyphs["ornamentTopLeftConvexStrokeAlternate"] = "\uD834\uDDA5";
+    // U+E5A0  Ornament top right concave stroke
+    Glyphs["ornamentTopRightConcaveStroke"] = "\uE5A0";
+    // U+E5A1  Ornament top right convex stroke
+    Glyphs["ornamentTopRightConvexStroke"] = "\uE5A1";
+    // U+1D19E  Ornament top right convex stroke
+    Glyphs["ornamentTopRightConvexStrokeAlternate"] = "\uD834\uDD9E";
+    // U+E56E  Tremblement
+    Glyphs["ornamentTremblement"] = "\uE56E";
+    // U+E589  Tremblement appuyé (Couperin)
+    Glyphs["ornamentTremblementCouperin"] = "\uE589";
+    // U+E566  Trill
+    Glyphs["ornamentTrill"] = "\uE566";
+    // U+1D196  Trill
+    Glyphs["ornamentTrillAlternate"] = "\uD834\uDD96";
+    // U+E567  Turn
+    Glyphs["ornamentTurn"] = "\uE567";
+    // U+1D197  Turn
+    Glyphs["ornamentTurnAlternate"] = "\uD834\uDD97";
+    // U+E568  Inverted turn
+    Glyphs["ornamentTurnInverted"] = "\uE568";
+    // U+1D198  Inverted turn
+    Glyphs["ornamentTurnInvertedAlternate"] = "\uD834\uDD98";
+    // U+E569  Turn with slash
+    Glyphs["ornamentTurnSlash"] = "\uE569";
+    // U+1D199  Turn with slash
+    Glyphs["ornamentTurnSlashAlternate"] = "\uD834\uDD99";
+    // U+E56A  Turn up
+    Glyphs["ornamentTurnUp"] = "\uE56A";
+    // U+1D19A  Turn up
+    Glyphs["ornamentTurnUpAlternate"] = "\uD834\uDD9A";
+    // U+E56B  Inverted turn up
+    Glyphs["ornamentTurnUpS"] = "\uE56B";
+    // U+E577  Curve above
+    Glyphs["ornamentUpCurve"] = "\uE577";
+    // U+E583  Vertical line
+    Glyphs["ornamentVerticalLine"] = "\uE583";
+    // U+E59D  Ornament zig-zag line without right-hand end
+    Glyphs["ornamentZigZagLineNoRightEnd"] = "\uE59D";
+    // U+1D19C  Ornament zig-zag line without right-hand end
+    Glyphs["ornamentZigZagLineNoRightEndAlternate"] = "\uD834\uDD9C";
+    // U+E59E  Ornament zig-zag line with right-hand end
+    Glyphs["ornamentZigZagLineWithRightEnd"] = "\uE59E";
+    // U+1D19D  Ornament zig-zag line with right-hand end
+    Glyphs["ornamentZigZagLineWithRightEndAlternate"] = "\uD834\uDD9D";
+    // U+E510  Ottava
+    Glyphs["ottava"] = "\uE510";
+    // U+E511  Ottava alta
+    Glyphs["ottavaAlta"] = "\uE511";
+    // U+1D136  Ottava alta
+    Glyphs["ottavaAltaAlternate"] = "\uD834\uDD36";
+    // U+E512  Ottava bassa
+    Glyphs["ottavaBassa"] = "\uE512";
+    // U+1D137  Ottava bassa
+    Glyphs["ottavaBassaAlternate"] = "\uD834\uDD37";
+    // U+E513  Ottava bassa (ba)
+    Glyphs["ottavaBassaBa"] = "\uE513";
+    // U+E51C  Ottava bassa (8vb)
+    Glyphs["ottavaBassaVb"] = "\uE51C";
+    // U+E22B  Penderecki unmeasured tremolo
+    Glyphs["pendereckiTremolo"] = "\uE22B";
+    // U+E717  Agogo
+    Glyphs["pictAgogo"] = "\uE717";
+    // U+E712  Almglocken
+    Glyphs["pictAlmglocken"] = "\uE712";
+    // U+E701  Anvil
+    Glyphs["pictAnvil"] = "\uE701";
+    // U+E6C3  Bamboo tube chimes
+    Glyphs["pictBambooChimes"] = "\uE6C3";
+    // U+E6FB  Bamboo scraper
+    Glyphs["pictBambooScraper"] = "\uE6FB";
+    // U+E6D4  Bass drum
+    Glyphs["pictBassDrum"] = "\uE6D4";
+    // U+E6D5  Bass drum on side
+    Glyphs["pictBassDrumOnSide"] = "\uE6D5";
+    // U+E7DE  Bow
+    Glyphs["pictBeaterBow"] = "\uE7DE";
+    // U+E7EB  Box for percussion beater
+    Glyphs["pictBeaterBox"] = "\uE7EB";
+    // U+E7DA  Brass mallets down
+    Glyphs["pictBeaterBrassMalletsDown"] = "\uE7DA";
+    // U+E7EE  Brass mallets left
+    Glyphs["pictBeaterBrassMalletsLeft"] = "\uE7EE";
+    // U+E7ED  Brass mallets right
+    Glyphs["pictBeaterBrassMalletsRight"] = "\uE7ED";
+    // U+E7D9  Brass mallets up
+    Glyphs["pictBeaterBrassMalletsUp"] = "\uE7D9";
+    // U+E7EA  Combining dashed circle for round beaters (plated)
+    Glyphs["pictBeaterCombiningDashedCircle"] = "\uE7EA";
+    // U+E7E9  Combining parentheses for round beaters (padded)
+    Glyphs["pictBeaterCombiningParentheses"] = "\uE7E9";
+    // U+E7A1  Double bass drum stick down
+    Glyphs["pictBeaterDoubleBassDrumDown"] = "\uE7A1";
+    // U+E7A0  Double bass drum stick up
+    Glyphs["pictBeaterDoubleBassDrumUp"] = "\uE7A0";
+    // U+E7E4  Finger
+    Glyphs["pictBeaterFinger"] = "\uE7E4";
+    // U+E7E6  Fingernails
+    Glyphs["pictBeaterFingernails"] = "\uE7E6";
+    // U+E7E5  Fist
+    Glyphs["pictBeaterFist"] = "\uE7E5";
+    // U+E7DD  Guiro scraper
+    Glyphs["pictBeaterGuiroScraper"] = "\uE7DD";
+    // U+E7E1  Hammer
+    Glyphs["pictBeaterHammer"] = "\uE7E1";
+    // U+E7D0  Metal hammer, down
+    Glyphs["pictBeaterHammerMetalDown"] = "\uE7D0";
+    // U+E7CF  Metal hammer, up
+    Glyphs["pictBeaterHammerMetalUp"] = "\uE7CF";
+    // U+E7CE  Plastic hammer, down
+    Glyphs["pictBeaterHammerPlasticDown"] = "\uE7CE";
+    // U+E7CD  Plastic hammer, up
+    Glyphs["pictBeaterHammerPlasticUp"] = "\uE7CD";
+    // U+E7CC  Wooden hammer, down
+    Glyphs["pictBeaterHammerWoodDown"] = "\uE7CC";
+    // U+E7CB  Wooden hammer, up
+    Glyphs["pictBeaterHammerWoodUp"] = "\uE7CB";
+    // U+E7E3  Hand
+    Glyphs["pictBeaterHand"] = "\uE7E3";
+    // U+E79D  Hard bass drum stick down
+    Glyphs["pictBeaterHardBassDrumDown"] = "\uE79D";
+    // U+E79C  Hard bass drum stick up
+    Glyphs["pictBeaterHardBassDrumUp"] = "\uE79C";
+    // U+E785  Hard glockenspiel stick down
+    Glyphs["pictBeaterHardGlockenspielDown"] = "\uE785";
+    // U+E787  Hard glockenspiel stick left
+    Glyphs["pictBeaterHardGlockenspielLeft"] = "\uE787";
+    // U+E786  Hard glockenspiel stick right
+    Glyphs["pictBeaterHardGlockenspielRight"] = "\uE786";
+    // U+E784  Hard glockenspiel stick up
+    Glyphs["pictBeaterHardGlockenspielUp"] = "\uE784";
+    // U+E791  Hard timpani stick down
+    Glyphs["pictBeaterHardTimpaniDown"] = "\uE791";
+    // U+E793  Hard timpani stick left
+    Glyphs["pictBeaterHardTimpaniLeft"] = "\uE793";
+    // U+E792  Hard timpani stick right
+    Glyphs["pictBeaterHardTimpaniRight"] = "\uE792";
+    // U+E790  Hard timpani stick up
+    Glyphs["pictBeaterHardTimpaniUp"] = "\uE790";
+    // U+E779  Hard xylophone stick down
+    Glyphs["pictBeaterHardXylophoneDown"] = "\uE779";
+    // U+E77B  Hard xylophone stick left
+    Glyphs["pictBeaterHardXylophoneLeft"] = "\uE77B";
+    // U+E77A  Hard xylophone stick right
+    Glyphs["pictBeaterHardXylophoneRight"] = "\uE77A";
+    // U+E778  Hard xylophone stick up
+    Glyphs["pictBeaterHardXylophoneUp"] = "\uE778";
+    // U+E7AB  Hard yarn beater down
+    Glyphs["pictBeaterHardYarnDown"] = "\uE7AB";
+    // U+E7AD  Hard yarn beater left
+    Glyphs["pictBeaterHardYarnLeft"] = "\uE7AD";
+    // U+E7AC  Hard yarn beater right
+    Glyphs["pictBeaterHardYarnRight"] = "\uE7AC";
+    // U+E7AA  Hard yarn beater up
+    Glyphs["pictBeaterHardYarnUp"] = "\uE7AA";
+    // U+E7D4  Jazz sticks down
+    Glyphs["pictBeaterJazzSticksDown"] = "\uE7D4";
+    // U+E7D3  Jazz sticks up
+    Glyphs["pictBeaterJazzSticksUp"] = "\uE7D3";
+    // U+E7E2  Knitting needle
+    Glyphs["pictBeaterKnittingNeedle"] = "\uE7E2";
+    // U+E7DF  Chime hammer up
+    Glyphs["pictBeaterMallet"] = "\uE7DF";
+    // U+E7EC  Chime hammer down
+    Glyphs["pictBeaterMalletDown"] = "\uE7EC";
+    // U+E79B  Medium bass drum stick down
+    Glyphs["pictBeaterMediumBassDrumDown"] = "\uE79B";
+    // U+E79A  Medium bass drum stick up
+    Glyphs["pictBeaterMediumBassDrumUp"] = "\uE79A";
+    // U+E78D  Medium timpani stick down
+    Glyphs["pictBeaterMediumTimpaniDown"] = "\uE78D";
+    // U+E78F  Medium timpani stick left
+    Glyphs["pictBeaterMediumTimpaniLeft"] = "\uE78F";
+    // U+E78E  Medium timpani stick right
+    Glyphs["pictBeaterMediumTimpaniRight"] = "\uE78E";
+    // U+E78C  Medium timpani stick up
+    Glyphs["pictBeaterMediumTimpaniUp"] = "\uE78C";
+    // U+E775  Medium xylophone stick down
+    Glyphs["pictBeaterMediumXylophoneDown"] = "\uE775";
+    // U+E777  Medium xylophone stick left
+    Glyphs["pictBeaterMediumXylophoneLeft"] = "\uE777";
+    // U+E776  Medium xylophone stick right
+    Glyphs["pictBeaterMediumXylophoneRight"] = "\uE776";
+    // U+E774  Medium xylophone stick up
+    Glyphs["pictBeaterMediumXylophoneUp"] = "\uE774";
+    // U+E7A7  Medium yarn beater down
+    Glyphs["pictBeaterMediumYarnDown"] = "\uE7A7";
+    // U+E7A9  Medium yarn beater left
+    Glyphs["pictBeaterMediumYarnLeft"] = "\uE7A9";
+    // U+E7A8  Medium yarn beater right
+    Glyphs["pictBeaterMediumYarnRight"] = "\uE7A8";
+    // U+E7A6  Medium yarn beater up
+    Glyphs["pictBeaterMediumYarnUp"] = "\uE7A6";
+    // U+E79F  Metal bass drum stick down
+    Glyphs["pictBeaterMetalBassDrumDown"] = "\uE79F";
+    // U+E79E  Metal bass drum stick up
+    Glyphs["pictBeaterMetalBassDrumUp"] = "\uE79E";
+    // U+E7C8  Metal beater down
+    Glyphs["pictBeaterMetalDown"] = "\uE7C8";
+    // U+E7E0  Metal hammer
+    Glyphs["pictBeaterMetalHammer"] = "\uE7E0";
+    // U+E7CA  Metal beater, left
+    Glyphs["pictBeaterMetalLeft"] = "\uE7CA";
+    // U+E7C9  Metal beater, right
+    Glyphs["pictBeaterMetalRight"] = "\uE7C9";
+    // U+E7C7  Metal beater, up
+    Glyphs["pictBeaterMetalUp"] = "\uE7C7";
+    // U+E7D2  Snare sticks down
+    Glyphs["pictBeaterSnareSticksDown"] = "\uE7D2";
+    // U+E7D1  Snare sticks up
+    Glyphs["pictBeaterSnareSticksUp"] = "\uE7D1";
+    // U+E799  Soft bass drum stick down
+    Glyphs["pictBeaterSoftBassDrumDown"] = "\uE799";
+    // U+E798  Soft bass drum stick up
+    Glyphs["pictBeaterSoftBassDrumUp"] = "\uE798";
+    // U+E781  Soft glockenspiel stick down
+    Glyphs["pictBeaterSoftGlockenspielDown"] = "\uE781";
+    // U+E783  Soft glockenspiel stick left
+    Glyphs["pictBeaterSoftGlockenspielLeft"] = "\uE783";
+    // U+E782  Soft glockenspiel stick right
+    Glyphs["pictBeaterSoftGlockenspielRight"] = "\uE782";
+    // U+E780  Soft glockenspiel stick up
+    Glyphs["pictBeaterSoftGlockenspielUp"] = "\uE780";
+    // U+E789  Soft timpani stick down
+    Glyphs["pictBeaterSoftTimpaniDown"] = "\uE789";
+    // U+E78B  Soft timpani stick left
+    Glyphs["pictBeaterSoftTimpaniLeft"] = "\uE78B";
+    // U+E78A  Soft timpani stick right
+    Glyphs["pictBeaterSoftTimpaniRight"] = "\uE78A";
+    // U+E788  Soft timpani stick up
+    Glyphs["pictBeaterSoftTimpaniUp"] = "\uE788";
+    // U+E7DB  Soft xylophone beaters
+    Glyphs["pictBeaterSoftXylophone"] = "\uE7DB";
+    // U+E771  Soft xylophone stick down
+    Glyphs["pictBeaterSoftXylophoneDown"] = "\uE771";
+    // U+E773  Soft xylophone stick left
+    Glyphs["pictBeaterSoftXylophoneLeft"] = "\uE773";
+    // U+E772  Soft xylophone stick right
+    Glyphs["pictBeaterSoftXylophoneRight"] = "\uE772";
+    // U+E770  Soft xylophone stick up
+    Glyphs["pictBeaterSoftXylophoneUp"] = "\uE770";
+    // U+E7A3  Soft yarn beater down
+    Glyphs["pictBeaterSoftYarnDown"] = "\uE7A3";
+    // U+E7A5  Soft yarn beater left
+    Glyphs["pictBeaterSoftYarnLeft"] = "\uE7A5";
+    // U+E7A4  Soft yarn beater right
+    Glyphs["pictBeaterSoftYarnRight"] = "\uE7A4";
+    // U+E7A2  Soft yarn beater up
+    Glyphs["pictBeaterSoftYarnUp"] = "\uE7A2";
+    // U+E7DC  Spoon-shaped wooden mallet
+    Glyphs["pictBeaterSpoonWoodenMallet"] = "\uE7DC";
+    // U+E7AF  Superball beater down
+    Glyphs["pictBeaterSuperballDown"] = "\uE7AF";
+    // U+E7B1  Superball beater left
+    Glyphs["pictBeaterSuperballLeft"] = "\uE7B1";
+    // U+E7B0  Superball beater right
+    Glyphs["pictBeaterSuperballRight"] = "\uE7B0";
+    // U+E7AE  Superball beater up
+    Glyphs["pictBeaterSuperballUp"] = "\uE7AE";
+    // U+E7D6  Triangle beater down
+    Glyphs["pictBeaterTriangleDown"] = "\uE7D6";
+    // U+E7EF  Triangle beater plain
+    Glyphs["pictBeaterTrianglePlain"] = "\uE7EF";
+    // U+E7D5  Triangle beater up
+    Glyphs["pictBeaterTriangleUp"] = "\uE7D5";
+    // U+E7D8  Wire brushes down
+    Glyphs["pictBeaterWireBrushesDown"] = "\uE7D8";
+    // U+E7D7  Wire brushes up
+    Glyphs["pictBeaterWireBrushesUp"] = "\uE7D7";
+    // U+E795  Wood timpani stick down
+    Glyphs["pictBeaterWoodTimpaniDown"] = "\uE795";
+    // U+E797  Wood timpani stick left
+    Glyphs["pictBeaterWoodTimpaniLeft"] = "\uE797";
+    // U+E796  Wood timpani stick right
+    Glyphs["pictBeaterWoodTimpaniRight"] = "\uE796";
+    // U+E794  Wood timpani stick up
+    Glyphs["pictBeaterWoodTimpaniUp"] = "\uE794";
+    // U+E77D  Wood xylophone stick down
+    Glyphs["pictBeaterWoodXylophoneDown"] = "\uE77D";
+    // U+E77F  Wood xylophone stick left
+    Glyphs["pictBeaterWoodXylophoneLeft"] = "\uE77F";
+    // U+E77E  Wood xylophone stick right
+    Glyphs["pictBeaterWoodXylophoneRight"] = "\uE77E";
+    // U+E77C  Wood xylophone stick up
+    Glyphs["pictBeaterWoodXylophoneUp"] = "\uE77C";
+    // U+E714  Bell
+    Glyphs["pictBell"] = "\uE714";
+    // U+E72A  Bell of cymbal
+    Glyphs["pictBellOfCymbal"] = "\uE72A";
+    // U+E713  Bell plate
+    Glyphs["pictBellPlate"] = "\uE713";
+    // U+E71A  Bell tree
+    Glyphs["pictBellTree"] = "\uE71A";
+    // U+E751  Bird whistle
+    Glyphs["pictBirdWhistle"] = "\uE751";
+    // U+E6F7  Board clapper
+    Glyphs["pictBoardClapper"] = "\uE6F7";
+    // U+E6DD  Bongos
+    Glyphs["pictBongos"] = "\uE6DD";
+    // U+E6E1  Brake drum
+    Glyphs["pictBrakeDrum"] = "\uE6E1";
+    // U+E743  Cabasa
+    Glyphs["pictCabasa"] = "\uE743";
+    // U+E761  Cannon
+    Glyphs["pictCannon"] = "\uE761";
+    // U+E755  Car horn
+    Glyphs["pictCarHorn"] = "\uE755";
+    // U+E6F8  Castanets
+    Glyphs["pictCastanets"] = "\uE6F8";
+    // U+E6F9  Castanets with handle
+    Glyphs["pictCastanetsWithHandle"] = "\uE6F9";
+    // U+E6B0  Celesta
+    Glyphs["pictCelesta"] = "\uE6B0";
+    // U+E716  Cencerro
+    Glyphs["pictCencerro"] = "\uE716";
+    // U+E7FE  Center (Weinberg)
+    Glyphs["pictCenter1"] = "\uE7FE";
+    // U+E7FF  Center (Ghent)
+    Glyphs["pictCenter2"] = "\uE7FF";
+    // U+E800  Center (Caltabiano)
+    Glyphs["pictCenter3"] = "\uE800";
+    // U+E748  Chain rattle
+    Glyphs["pictChainRattle"] = "\uE748";
+    // U+E6C2  Chimes
+    Glyphs["pictChimes"] = "\uE6C2";
+    // U+E726  Chinese cymbal
+    Glyphs["pictChineseCymbal"] = "\uE726";
+    // U+E805  Choke (Weinberg)
+    Glyphs["pictChokeCymbal"] = "\uE805";
+    // U+E6F2  Claves
+    Glyphs["pictClaves"] = "\uE6F2";
+    // U+E7E7  Coins
+    Glyphs["pictCoins"] = "\uE7E7";
+    // U+E6DE  Conga
+    Glyphs["pictConga"] = "\uE6DE";
+    // U+E711  Cow bell
+    Glyphs["pictCowBell"] = "\uE711";
+    // U+E720  Crash cymbals
+    Glyphs["pictCrashCymbals"] = "\uE720";
+    // U+E6AE  Crotales
+    Glyphs["pictCrotales"] = "\uE6AE";
+    // U+E80C  Combining crush for stem
+    Glyphs["pictCrushStem"] = "\uE80C";
+    // U+E6E4  Cuica
+    Glyphs["pictCuica"] = "\uE6E4";
+    // U+E728  Cymbal tongs
+    Glyphs["pictCymbalTongs"] = "\uE728";
+    // U+E7F9  Damp
+    Glyphs["pictDamp1"] = "\uE7F9";
+    // U+E7FA  Damp 2
+    Glyphs["pictDamp2"] = "\uE7FA";
+    // U+E7FB  Damp 3
+    Glyphs["pictDamp3"] = "\uE7FB";
+    // U+E7FC  Damp 4
+    Glyphs["pictDamp4"] = "\uE7FC";
+    // U+E80D  Combining X for stem (dead note)
+    Glyphs["pictDeadNoteStem"] = "\uE80D";
+    // U+E7E8  Drum stick
+    Glyphs["pictDrumStick"] = "\uE7E8";
+    // U+E757  Duck call
+    Glyphs["pictDuckCall"] = "\uE757";
+    // U+E729  Edge of cymbal
+    Glyphs["pictEdgeOfCymbal"] = "\uE729";
+    // U+E6A9  Empty trapezoid
+    Glyphs["pictEmptyTrap"] = "\uE6A9";
+    // U+E727  Finger cymbals
+    Glyphs["pictFingerCymbals"] = "\uE727";
+    // U+E740  Flexatone
+    Glyphs["pictFlexatone"] = "\uE740";
+    // U+E6F5  Football rattle
+    Glyphs["pictFootballRatchet"] = "\uE6F5";
+    // U+E765  Glass harmonica
+    Glyphs["pictGlassHarmonica"] = "\uE765";
+    // U+E764  Glass harp
+    Glyphs["pictGlassHarp"] = "\uE764";
+    // U+E6C6  Glass plate chimes
+    Glyphs["pictGlassPlateChimes"] = "\uE6C6";
+    // U+E6C5  Glass tube chimes
+    Glyphs["pictGlassTubeChimes"] = "\uE6C5";
+    // U+E6A0  Glockenspiel
+    Glyphs["pictGlsp"] = "\uE6A0";
+    // U+E6AA  Glockenspiel (Smith Brindle)
+    Glyphs["pictGlspSmithBrindle"] = "\uE6AA";
+    // U+E6E2  Goblet drum (djembe, dumbek)
+    Glyphs["pictGobletDrum"] = "\uE6E2";
+    // U+E732  Gong
+    Glyphs["pictGong"] = "\uE732";
+    // U+E733  Gong with button (nipple)
+    Glyphs["pictGongWithButton"] = "\uE733";
+    // U+E6F3  Guiro
+    Glyphs["pictGuiro"] = "\uE6F3";
+    // U+E7C4  Hard gum beater, down
+    Glyphs["pictGumHardDown"] = "\uE7C4";
+    // U+E7C6  Hard gum beater, left
+    Glyphs["pictGumHardLeft"] = "\uE7C6";
+    // U+E7C5  Hard gum beater, right
+    Glyphs["pictGumHardRight"] = "\uE7C5";
+    // U+E7C3  Hard gum beater, up
+    Glyphs["pictGumHardUp"] = "\uE7C3";
+    // U+E7C0  Medium gum beater, down
+    Glyphs["pictGumMediumDown"] = "\uE7C0";
+    // U+E7C2  Medium gum beater, left
+    Glyphs["pictGumMediumLeft"] = "\uE7C2";
+    // U+E7C1  Medium gum beater, right
+    Glyphs["pictGumMediumRight"] = "\uE7C1";
+    // U+E7BF  Medium gum beater, up
+    Glyphs["pictGumMediumUp"] = "\uE7BF";
+    // U+E7BC  Soft gum beater, down
+    Glyphs["pictGumSoftDown"] = "\uE7BC";
+    // U+E7BE  Soft gum beater, left
+    Glyphs["pictGumSoftLeft"] = "\uE7BE";
+    // U+E7BD  Soft gum beater, right
+    Glyphs["pictGumSoftRight"] = "\uE7BD";
+    // U+E7BB  Soft gum beater, up
+    Glyphs["pictGumSoftUp"] = "\uE7BB";
+    // U+E7F6  Half-open
+    Glyphs["pictHalfOpen1"] = "\uE7F6";
+    // U+E7F7  Half-open 2 (Weinberg)
+    Glyphs["pictHalfOpen2"] = "\uE7F7";
+    // U+E715  Handbell
+    Glyphs["pictHandbell"] = "\uE715";
+    // U+E722  Hi-hat
+    Glyphs["pictHiHat"] = "\uE722";
+    // U+E723  Hi-hat cymbals on stand
+    Glyphs["pictHiHatOnStand"] = "\uE723";
+    // U+E767  Jaw harp
+    Glyphs["pictJawHarp"] = "\uE767";
+    // U+E719  Jingle bells
+    Glyphs["pictJingleBells"] = "\uE719";
+    // U+E756  Klaxon horn
+    Glyphs["pictKlaxonHorn"] = "\uE756";
+    // U+E807  Right hand (Agostini)
+    Glyphs["pictLeftHandCircle"] = "\uE807";
+    // U+E763  Lion's roar
+    Glyphs["pictLionsRoar"] = "\uE763";
+    // U+E6B1  Lithophone
+    Glyphs["pictLithophone"] = "\uE6B1";
+    // U+E6DF  Log drum
+    Glyphs["pictLogDrum"] = "\uE6DF";
+    // U+E75A  Lotus flute
+    Glyphs["pictLotusFlute"] = "\uE75A";
+    // U+E6A6  Marimba
+    Glyphs["pictMar"] = "\uE6A6";
+    // U+E6AC  Marimba (Smith Brindle)
+    Glyphs["pictMarSmithBrindle"] = "\uE6AC";
+    // U+E741  Maraca
+    Glyphs["pictMaraca"] = "\uE741";
+    // U+E742  Maracas
+    Glyphs["pictMaracas"] = "\uE742";
+    // U+E759  Megaphone
+    Glyphs["pictMegaphone"] = "\uE759";
+    // U+E6C8  Metal plate chimes
+    Glyphs["pictMetalPlateChimes"] = "\uE6C8";
+    // U+E6C7  Metal tube chimes
+    Glyphs["pictMetalTubeChimes"] = "\uE6C7";
+    // U+E766  Musical saw
+    Glyphs["pictMusicalSaw"] = "\uE766";
+    // U+E804  Normal position (Caltabiano)
+    Glyphs["pictNormalPosition"] = "\uE804";
+    // U+E7F4  On rim
+    Glyphs["pictOnRim"] = "\uE7F4";
+    // U+E7F8  Open
+    Glyphs["pictOpen"] = "\uE7F8";
+    // U+E7F5  Closed / rim shot
+    Glyphs["pictOpenRimShot"] = "\uE7F5";
+    // U+E760  Pistol shot
+    Glyphs["pictPistolShot"] = "\uE760";
+    // U+E752  Police whistle
+    Glyphs["pictPoliceWhistle"] = "\uE752";
+    // U+E6FA  Quijada (jawbone)
+    Glyphs["pictQuijada"] = "\uE6FA";
+    // U+E747  Rainstick
+    Glyphs["pictRainstick"] = "\uE747";
+    // U+E6F4  Ratchet
+    Glyphs["pictRatchet"] = "\uE6F4";
+    // U+E6FC  Reco-reco
+    Glyphs["pictRecoReco"] = "\uE6FC";
+    // U+E806  Left hand (Agostini)
+    Glyphs["pictRightHandSquare"] = "\uE806";
+    // U+E801  Rim or edge (Weinberg)
+    Glyphs["pictRim1"] = "\uE801";
+    // U+E802  Rim (Ghent)
+    Glyphs["pictRim2"] = "\uE802";
+    // U+E803  Rim (Caltabiano)
+    Glyphs["pictRim3"] = "\uE803";
+    // U+E7FD  Rim shot for stem
+    Glyphs["pictRimShotOnStem"] = "\uE7FD";
+    // U+E762  Sandpaper blocks
+    Glyphs["pictSandpaperBlocks"] = "\uE762";
+    // U+E7F3  Scrape around rim (counter-clockwise)
+    Glyphs["pictScrapeAroundRim"] = "\uE7F3";
+    // U+E80E  Scrape around rim (clockwise)
+    Glyphs["pictScrapeAroundRimClockwise"] = "\uE80E";
+    // U+E7F1  Scrape from center to edge
+    Glyphs["pictScrapeCenterToEdge"] = "\uE7F1";
+    // U+E7F2  Scrape from edge to center
+    Glyphs["pictScrapeEdgeToCenter"] = "\uE7F2";
+    // U+E718  Shell bells
+    Glyphs["pictShellBells"] = "\uE718";
+    // U+E6C4  Shell chimes
+    Glyphs["pictShellChimes"] = "\uE6C4";
+    // U+E753  Siren
+    Glyphs["pictSiren"] = "\uE753";
+    // U+E746  Sistrum
+    Glyphs["pictSistrum"] = "\uE746";
+    // U+E724  Sizzle cymbal
+    Glyphs["pictSizzleCymbal"] = "\uE724";
+    // U+E710  Sleigh bell
+    Glyphs["pictSleighBell"] = "\uE710";
+    // U+E734  Slide brush on gong
+    Glyphs["pictSlideBrushOnGong"] = "\uE734";
+    // U+E750  Slide whistle
+    Glyphs["pictSlideWhistle"] = "\uE750";
+    // U+E6E0  Slit drum
+    Glyphs["pictSlitDrum"] = "\uE6E0";
+    // U+E6D1  Snare drum
+    Glyphs["pictSnareDrum"] = "\uE6D1";
+    // U+E6D3  Military snare drum
+    Glyphs["pictSnareDrumMilitary"] = "\uE6D3";
+    // U+E6D2  Snare drum, snares off
+    Glyphs["pictSnareDrumSnaresOff"] = "\uE6D2";
+    // U+E6AF  Steel drums
+    Glyphs["pictSteelDrums"] = "\uE6AF";
+    // U+E7F0  Stick shot
+    Glyphs["pictStickShot"] = "\uE7F0";
+    // U+E7B2  Superball
+    Glyphs["pictSuperball"] = "\uE7B2";
+    // U+E721  Suspended cymbal
+    Glyphs["pictSuspendedCymbal"] = "\uE721";
+    // U+E808  Combining swish for stem
+    Glyphs["pictSwishStem"] = "\uE808";
+    // U+E6E3  Indian tabla
+    Glyphs["pictTabla"] = "\uE6E3";
+    // U+E730  Tam-tam
+    Glyphs["pictTamTam"] = "\uE730";
+    // U+E731  Tam-tam with beater (Smith Brindle)
+    Glyphs["pictTamTamWithBeater"] = "\uE731";
+    // U+E6DB  Tambourine
+    Glyphs["pictTambourine"] = "\uE6DB";
+    // U+E6F1  Temple blocks
+    Glyphs["pictTempleBlocks"] = "\uE6F1";
+    // U+E6D6  Tenor drum
+    Glyphs["pictTenorDrum"] = "\uE6D6";
+    // U+E744  Thundersheet
+    Glyphs["pictThundersheet"] = "\uE744";
+    // U+E6DC  Timbales
+    Glyphs["pictTimbales"] = "\uE6DC";
+    // U+E6D0  Timpani
+    Glyphs["pictTimpani"] = "\uE6D0";
+    // U+E6D7  Tom-tom
+    Glyphs["pictTomTom"] = "\uE6D7";
+    // U+E6D8  Chinese tom-tom
+    Glyphs["pictTomTomChinese"] = "\uE6D8";
+    // U+E6DA  Indo-American tom tom
+    Glyphs["pictTomTomIndoAmerican"] = "\uE6DA";
+    // U+E6D9  Japanese tom-tom
+    Glyphs["pictTomTomJapanese"] = "\uE6D9";
+    // U+E700  Triangle
+    Glyphs["pictTriangle"] = "\uE700";
+    // U+E6B2  Tubaphone
+    Glyphs["pictTubaphone"] = "\uE6B2";
+    // U+E6C0  Tubular bells
+    Glyphs["pictTubularBells"] = "\uE6C0";
+    // U+E80A  Combining turn left for stem
+    Glyphs["pictTurnLeftStem"] = "\uE80A";
+    // U+E80B  Combining turn left or right for stem
+    Glyphs["pictTurnRightLeftStem"] = "\uE80B";
+    // U+E809  Combining turn right for stem
+    Glyphs["pictTurnRightStem"] = "\uE809";
+    // U+E6A7  Vibraphone
+    Glyphs["pictVib"] = "\uE6A7";
+    // U+E6A8  Metallophone (vibraphone motor off)
+    Glyphs["pictVibMotorOff"] = "\uE6A8";
+    // U+E6AD  Vibraphone (Smith Brindle)
+    Glyphs["pictVibSmithBrindle"] = "\uE6AD";
+    // U+E745  Vibraslap
+    Glyphs["pictVibraslap"] = "\uE745";
+    // U+E725  Vietnamese hat cymbal
+    Glyphs["pictVietnameseHat"] = "\uE725";
+    // U+E6F6  Whip
+    Glyphs["pictWhip"] = "\uE6F6";
+    // U+E6C1  Wind chimes (glass)
+    Glyphs["pictWindChimesGlass"] = "\uE6C1";
+    // U+E754  Wind machine
+    Glyphs["pictWindMachine"] = "\uE754";
+    // U+E758  Wind whistle (or mouth siren)
+    Glyphs["pictWindWhistle"] = "\uE758";
+    // U+E6F0  Wood block
+    Glyphs["pictWoodBlock"] = "\uE6F0";
+    // U+E7B4  Wound beater, hard core down
+    Glyphs["pictWoundHardDown"] = "\uE7B4";
+    // U+E7B6  Wound beater, hard core left
+    Glyphs["pictWoundHardLeft"] = "\uE7B6";
+    // U+E7B5  Wound beater, hard core right
+    Glyphs["pictWoundHardRight"] = "\uE7B5";
+    // U+E7B3  Wound beater, hard core up
+    Glyphs["pictWoundHardUp"] = "\uE7B3";
+    // U+E7B8  Wound beater, soft core down
+    Glyphs["pictWoundSoftDown"] = "\uE7B8";
+    // U+E7BA  Wound beater, soft core left
+    Glyphs["pictWoundSoftLeft"] = "\uE7BA";
+    // U+E7B9  Wound beater, soft core right
+    Glyphs["pictWoundSoftRight"] = "\uE7B9";
+    // U+E7B7  Wound beater, soft core up
+    Glyphs["pictWoundSoftUp"] = "\uE7B7";
+    // U+E6A1  Xylophone
+    Glyphs["pictXyl"] = "\uE6A1";
+    // U+E6A3  Bass xylophone
+    Glyphs["pictXylBass"] = "\uE6A3";
+    // U+E6AB  Xylophone (Smith Brindle)
+    Glyphs["pictXylSmithBrindle"] = "\uE6AB";
+    // U+E6A2  Tenor xylophone
+    Glyphs["pictXylTenor"] = "\uE6A2";
+    // U+E6A5  Trough tenor xylophone
+    Glyphs["pictXylTenorTrough"] = "\uE6A5";
+    // U+E6A4  Trough xylophone
+    Glyphs["pictXylTrough"] = "\uE6A4";
+    // U+E632  Buzz pizzicato
+    Glyphs["pluckedBuzzPizzicato"] = "\uE632";
+    // U+E638  Damp
+    Glyphs["pluckedDamp"] = "\uE638";
+    // U+1D1B4  Damp
+    Glyphs["pluckedDampAlternate"] = "\uD834\uDDB4";
+    // U+E639  Damp all
+    Glyphs["pluckedDampAll"] = "\uE639";
+    // U+1D1B5  Damp all
+    Glyphs["pluckedDampAllAlternate"] = "\uD834\uDDB5";
+    // U+E63B  Damp for stem
+    Glyphs["pluckedDampOnStem"] = "\uE63B";
+    // U+E637  Fingernail flick
+    Glyphs["pluckedFingernailFlick"] = "\uE637";
+    // U+E633  Left-hand pizzicato
+    Glyphs["pluckedLeftHandPizzicato"] = "\uE633";
+    // U+E63A  Plectrum
+    Glyphs["pluckedPlectrum"] = "\uE63A";
+    // U+E631  Snap pizzicato above
+    Glyphs["pluckedSnapPizzicatoAbove"] = "\uE631";
+    // U+E630  Snap pizzicato below
+    Glyphs["pluckedSnapPizzicatoBelow"] = "\uE630";
+    // U+1D1AD  Snap pizzicato below
+    Glyphs["pluckedSnapPizzicatoBelowAlternate"] = "\uD834\uDDAD";
+    // U+E636  With fingernails
+    Glyphs["pluckedWithFingernails"] = "\uE636";
+    // U+1D1B3  With fingernails
+    Glyphs["pluckedWithFingernailsAlternate"] = "\uD834\uDDB3";
+    // U+E514  Quindicesima
+    Glyphs["quindicesima"] = "\uE514";
+    // U+E515  Quindicesima alta
+    Glyphs["quindicesimaAlta"] = "\uE515";
+    // U+E516  Quindicesima bassa
+    Glyphs["quindicesimaBassa"] = "\uE516";
+    // U+1D139  Quindicesima bassa
+    Glyphs["quindicesimaBassaAlternate"] = "\uD834\uDD39";
+    // U+E51D  Quindicesima bassa (mb)
+    Glyphs["quindicesimaBassaMb"] = "\uE51D";
+    // U+E500  Repeat last bar
+    Glyphs["repeat1Bar"] = "\uE500";
+    // U+1D10E  Repeat last bar
+    Glyphs["repeat1BarAlternate"] = "\uD834\uDD0E";
+    // U+E501  Repeat last two bars
+    Glyphs["repeat2Bars"] = "\uE501";
+    // U+1D10F  Repeat last two bars
+    Glyphs["repeat2BarsAlternate"] = "\uD834\uDD0F";
+    // U+E502  Repeat last four bars
+    Glyphs["repeat4Bars"] = "\uE502";
+    // U+E505  Repeat bar lower dot
+    Glyphs["repeatBarLowerDot"] = "\uE505";
+    // U+E504  Repeat bar slash
+    Glyphs["repeatBarSlash"] = "\uE504";
+    // U+E503  Repeat bar upper dot
+    Glyphs["repeatBarUpperDot"] = "\uE503";
+    // U+E044  Single repeat dot
+    Glyphs["repeatDot"] = "\uE044";
+    // U+E043  Repeat dots
+    Glyphs["repeatDots"] = "\uE043";
+    // U+1D108  Repeat dots
+    Glyphs["repeatDotsAlternate"] = "\uD834\uDD08";
+    // U+E040  Left (start) repeat sign
+    Glyphs["repeatLeft"] = "\uE040";
+    // U+1D106  Left (start) repeat sign
+    Glyphs["repeatLeftAlternate"] = "\uD834\uDD06";
+    // U+E041  Right (end) repeat sign
+    Glyphs["repeatRight"] = "\uE041";
+    // U+1D107  Right (end) repeat sign
+    Glyphs["repeatRightAlternate"] = "\uD834\uDD07";
+    // U+E042  Right and left repeat sign
+    Glyphs["repeatRightLeft"] = "\uE042";
+    // U+E4ED  1024th rest
+    Glyphs["rest1024th"] = "\uE4ED";
+    // U+E4EA  128th (semihemidemisemiquaver) rest
+    Glyphs["rest128th"] = "\uE4EA";
+    // U+1D142  128th (semihemidemisemiquaver) rest
+    Glyphs["rest128thAlternate"] = "\uD834\uDD42";
+    // U+E4E7  16th (semiquaver) rest
+    Glyphs["rest16th"] = "\uE4E7";
+    // U+1D13F  16th (semiquaver) rest
+    Glyphs["rest16thAlternate"] = "\uD834\uDD3F";
+    // U+E4EB  256th rest
+    Glyphs["rest256th"] = "\uE4EB";
+    // U+E4E8  32nd (demisemiquaver) rest
+    Glyphs["rest32nd"] = "\uE4E8";
+    // U+1D140  32nd (demisemiquaver) rest
+    Glyphs["rest32ndAlternate"] = "\uD834\uDD40";
+    // U+E4EC  512th rest
+    Glyphs["rest512th"] = "\uE4EC";
+    // U+E4E9  64th (hemidemisemiquaver) rest
+    Glyphs["rest64th"] = "\uE4E9";
+    // U+1D141  64th (hemidemisemiquaver) rest
+    Glyphs["rest64thAlternate"] = "\uD834\uDD41";
+    // U+E4E6  Eighth (quaver) rest
+    Glyphs["rest8th"] = "\uE4E6";
+    // U+1D13E  Eighth (quaver) rest
+    Glyphs["rest8thAlternate"] = "\uD834\uDD3E";
+    // U+E4E2  Double whole (breve) rest
+    Glyphs["restDoubleWhole"] = "\uE4E2";
+    // U+1D13A  Double whole (breve) rest
+    Glyphs["restDoubleWholeAlternate"] = "\uD834\uDD3A";
+    // U+E4F3  Double whole rest on leger lines
+    Glyphs["restDoubleWholeLegerLine"] = "\uE4F3";
+    // U+E4EE  Multiple measure rest
+    Glyphs["restHBar"] = "\uE4EE";
+    // U+1D129  Multiple measure rest
+    Glyphs["restHBarAlternate"] = "\uD834\uDD29";
+    // U+E4EF  H-bar, left half
+    Glyphs["restHBarLeft"] = "\uE4EF";
+    // U+E4F0  H-bar, middle
+    Glyphs["restHBarMiddle"] = "\uE4F0";
+    // U+E4F1  H-bar, right half
+    Glyphs["restHBarRight"] = "\uE4F1";
+    // U+E4E4  Half (minim) rest
+    Glyphs["restHalf"] = "\uE4E4";
+    // U+1D13C  Half (minim) rest
+    Glyphs["restHalfAlternate"] = "\uD834\uDD3C";
+    // U+E4F5  Half rest on leger line
+    Glyphs["restHalfLegerLine"] = "\uE4F5";
+    // U+E4E1  Longa rest
+    Glyphs["restLonga"] = "\uE4E1";
+    // U+E4E0  Maxima rest
+    Glyphs["restMaxima"] = "\uE4E0";
+    // U+E4E5  Quarter (crotchet) rest
+    Glyphs["restQuarter"] = "\uE4E5";
+    // U+1D13D  Quarter (crotchet) rest
+    Glyphs["restQuarterAlternate"] = "\uD834\uDD3D";
+    // U+E4F2  Old-style quarter (crotchet) rest
+    Glyphs["restQuarterOld"] = "\uE4F2";
+    // U+E4F6  Z-style quarter (crotchet) rest
+    Glyphs["restQuarterZ"] = "\uE4F6";
+    // U+E4E3  Whole (semibreve) rest
+    Glyphs["restWhole"] = "\uE4E3";
+    // U+1D13B  Whole (semibreve) rest
+    Glyphs["restWholeAlternate"] = "\uD834\uDD3B";
+    // U+E4F4  Whole rest on leger line
+    Glyphs["restWholeLegerLine"] = "\uE4F4";
+    // U+E001  Reversed brace
+    Glyphs["reversedBrace"] = "\uE001";
+    // U+E006  Reversed bracket bottom
+    Glyphs["reversedBracketBottom"] = "\uE006";
+    // U+E005  Reversed bracket top
+    Glyphs["reversedBracketTop"] = "\uE005";
+    // U+E04D  Right repeat sign within bar
+    Glyphs["rightRepeatSmall"] = "\uE04D";
+    // U+EF00  Scale degree 1
+    Glyphs["scaleDegree1"] = "\uEF00";
+    // U+EF01  Scale degree 2
+    Glyphs["scaleDegree2"] = "\uEF01";
+    // U+EF02  Scale degree 3
+    Glyphs["scaleDegree3"] = "\uEF02";
+    // U+EF03  Scale degree 4
+    Glyphs["scaleDegree4"] = "\uEF03";
+    // U+EF04  Scale degree 5
+    Glyphs["scaleDegree5"] = "\uEF04";
+    // U+EF05  Scale degree 6
+    Glyphs["scaleDegree6"] = "\uEF05";
+    // U+EF06  Scale degree 7
+    Glyphs["scaleDegree7"] = "\uEF06";
+    // U+EF07  Scale degree 8
+    Glyphs["scaleDegree8"] = "\uEF07";
+    // U+EF08  Scale degree 9
+    Glyphs["scaleDegree9"] = "\uEF08";
+    // U+E06F  Schäffer clef
+    Glyphs["schaefferClef"] = "\uE06F";
+    // U+E072  Schäffer F clef to G clef change
+    Glyphs["schaefferFClefToGClef"] = "\uE072";
+    // U+E071  Schäffer G clef to F clef change
+    Glyphs["schaefferGClefToFClef"] = "\uE071";
+    // U+E070  Schäffer previous clef
+    Glyphs["schaefferPreviousClef"] = "\uE070";
+    // U+E047  Segno
+    Glyphs["segno"] = "\uE047";
+    // U+1D10B  Segno
+    Glyphs["segnoAlternate"] = "\uD834\uDD0B";
+    // U+E04A  Segno (serpent)
+    Glyphs["segnoSerpent1"] = "\uE04A";
+    // U+E04B  Segno (serpent with vertical lines)
+    Glyphs["segnoSerpent2"] = "\uE04B";
+    // U+E06B  Semi-pitched percussion clef 1
+    Glyphs["semipitchedPercussionClef1"] = "\uE06B";
+    // U+E06C  Semi-pitched percussion clef 2
+    Glyphs["semipitchedPercussionClef2"] = "\uE06C";
+    // U+EC52  Flat
+    Glyphs["smnFlat"] = "\uEC52";
+    // U+EC53  Flat (white)
+    Glyphs["smnFlatWhite"] = "\uEC53";
+    // U+EC57  Double flat history sign
+    Glyphs["smnHistoryDoubleFlat"] = "\uEC57";
+    // U+EC55  Double sharp history sign
+    Glyphs["smnHistoryDoubleSharp"] = "\uEC55";
+    // U+EC56  Flat history sign
+    Glyphs["smnHistoryFlat"] = "\uEC56";
+    // U+EC54  Sharp history sign
+    Glyphs["smnHistorySharp"] = "\uEC54";
+    // U+EC58  Natural (N)
+    Glyphs["smnNatural"] = "\uEC58";
+    // U+EC50  Sharp stem up
+    Glyphs["smnSharp"] = "\uEC50";
+    // U+EC59  Sharp stem down
+    Glyphs["smnSharpDown"] = "\uEC59";
+    // U+EC51  Sharp (white) stem up
+    Glyphs["smnSharpWhite"] = "\uEC51";
+    // U+EC5A  Sharp (white) stem down
+    Glyphs["smnSharpWhiteDown"] = "\uEC5A";
+    // U+E00A  Split bar divider (bar spans a system break)
+    Glyphs["splitBarDivider"] = "\uE00A";
+    // U+E010  1-line staff
+    Glyphs["staff1Line"] = "\uE010";
+    // U+1D116  1-line staff
+    Glyphs["staff1LineAlternate"] = "\uD834\uDD16";
+    // U+E01C  1-line staff (narrow)
+    Glyphs["staff1LineNarrow"] = "\uE01C";
+    // U+E016  1-line staff (wide)
+    Glyphs["staff1LineWide"] = "\uE016";
+    // U+E011  2-line staff
+    Glyphs["staff2Lines"] = "\uE011";
+    // U+1D117  2-line staff
+    Glyphs["staff2LinesAlternate"] = "\uD834\uDD17";
+    // U+E01D  2-line staff (narrow)
+    Glyphs["staff2LinesNarrow"] = "\uE01D";
+    // U+E017  2-line staff (wide)
+    Glyphs["staff2LinesWide"] = "\uE017";
+    // U+E012  3-line staff
+    Glyphs["staff3Lines"] = "\uE012";
+    // U+1D118  3-line staff
+    Glyphs["staff3LinesAlternate"] = "\uD834\uDD18";
+    // U+E01E  3-line staff (narrow)
+    Glyphs["staff3LinesNarrow"] = "\uE01E";
+    // U+E018  3-line staff (wide)
+    Glyphs["staff3LinesWide"] = "\uE018";
+    // U+E013  4-line staff
+    Glyphs["staff4Lines"] = "\uE013";
+    // U+1D119  4-line staff
+    Glyphs["staff4LinesAlternate"] = "\uD834\uDD19";
+    // U+E01F  4-line staff (narrow)
+    Glyphs["staff4LinesNarrow"] = "\uE01F";
+    // U+E019  4-line staff (wide)
+    Glyphs["staff4LinesWide"] = "\uE019";
+    // U+E014  5-line staff
+    Glyphs["staff5Lines"] = "\uE014";
+    // U+1D11A  5-line staff
+    Glyphs["staff5LinesAlternate"] = "\uD834\uDD1A";
+    // U+E020  5-line staff (narrow)
+    Glyphs["staff5LinesNarrow"] = "\uE020";
+    // U+E01A  5-line staff (wide)
+    Glyphs["staff5LinesWide"] = "\uE01A";
+    // U+E015  6-line staff
+    Glyphs["staff6Lines"] = "\uE015";
+    // U+1D11B  6-line staff
+    Glyphs["staff6LinesAlternate"] = "\uD834\uDD1B";
+    // U+E021  6-line staff (narrow)
+    Glyphs["staff6LinesNarrow"] = "\uE021";
+    // U+E01B  6-line staff (wide)
+    Glyphs["staff6LinesWide"] = "\uE01B";
+    // U+E00B  Staff divide arrow down
+    Glyphs["staffDivideArrowDown"] = "\uE00B";
+    // U+E00C  Staff divide arrow up
+    Glyphs["staffDivideArrowUp"] = "\uE00C";
+    // U+E00D  Staff divide arrows
+    Glyphs["staffDivideArrowUpDown"] = "\uE00D";
+    // U+EB98  Lower 1 staff position
+    Glyphs["staffPosLower1"] = "\uEB98";
+    // U+EB99  Lower 2 staff positions
+    Glyphs["staffPosLower2"] = "\uEB99";
+    // U+EB9A  Lower 3 staff positions
+    Glyphs["staffPosLower3"] = "\uEB9A";
+    // U+EB9B  Lower 4 staff positions
+    Glyphs["staffPosLower4"] = "\uEB9B";
+    // U+EB9C  Lower 5 staff positions
+    Glyphs["staffPosLower5"] = "\uEB9C";
+    // U+EB9D  Lower 6 staff positions
+    Glyphs["staffPosLower6"] = "\uEB9D";
+    // U+EB9E  Lower 7 staff positions
+    Glyphs["staffPosLower7"] = "\uEB9E";
+    // U+EB9F  Lower 8 staff positions
+    Glyphs["staffPosLower8"] = "\uEB9F";
+    // U+EB90  Raise 1 staff position
+    Glyphs["staffPosRaise1"] = "\uEB90";
+    // U+EB91  Raise 2 staff positions
+    Glyphs["staffPosRaise2"] = "\uEB91";
+    // U+EB92  Raise 3 staff positions
+    Glyphs["staffPosRaise3"] = "\uEB92";
+    // U+EB93  Raise 4 staff positions
+    Glyphs["staffPosRaise4"] = "\uEB93";
+    // U+EB94  Raise 5 staff positions
+    Glyphs["staffPosRaise5"] = "\uEB94";
+    // U+EB95  Raise 6 staff positions
+    Glyphs["staffPosRaise6"] = "\uEB95";
+    // U+EB96  Raise 7 staff positions
+    Glyphs["staffPosRaise7"] = "\uEB96";
+    // U+EB97  Raise 8 staff positions
+    Glyphs["staffPosRaise8"] = "\uEB97";
+    // U+E210  Combining stem
+    Glyphs["stem"] = "\uE210";
+    // U+1D165  Combining stem
+    Glyphs["stemAlternate"] = "\uD834\uDD65";
+    // U+E215  Combining bow on bridge stem
+    Glyphs["stemBowOnBridge"] = "\uE215";
+    // U+E216  Combining bow on tailpiece stem
+    Glyphs["stemBowOnTailpiece"] = "\uE216";
+    // U+E217  Combining buzz roll stem
+    Glyphs["stemBuzzRoll"] = "\uE217";
+    // U+E218  Combining damp stem
+    Glyphs["stemDamp"] = "\uE218";
+    // U+E21F  Combining harp string noise stem
+    Glyphs["stemHarpStringNoise"] = "\uE21F";
+    // U+E21A  Combining multiphonics (black) stem
+    Glyphs["stemMultiphonicsBlack"] = "\uE21A";
+    // U+E21C  Combining multiphonics (black and white) stem
+    Glyphs["stemMultiphonicsBlackWhite"] = "\uE21C";
+    // U+E21B  Combining multiphonics (white) stem
+    Glyphs["stemMultiphonicsWhite"] = "\uE21B";
+    // U+E213  Combining Penderecki unmeasured tremolo stem
+    Glyphs["stemPendereckiTremolo"] = "\uE213";
+    // U+E21E  Combining rim shot stem
+    Glyphs["stemRimShot"] = "\uE21E";
+    // U+E211  Combining sprechgesang stem
+    Glyphs["stemSprechgesang"] = "\uE211";
+    // U+1D166  Combining sprechgesang stem
+    Glyphs["stemSprechgesangAlternate"] = "\uD834\uDD66";
+    // U+E214  Combining sul ponticello (bow behind bridge) stem
+    Glyphs["stemSulPonticello"] = "\uE214";
+    // U+E21D  Combining sussurando stem
+    Glyphs["stemSussurando"] = "\uE21D";
+    // U+E212  Combining swished stem
+    Glyphs["stemSwished"] = "\uE212";
+    // U+E219  Combining vibrato pulse accent (Saunders) stem
+    Glyphs["stemVibratoPulse"] = "\uE219";
+    // U+E232  Stockhausen irregular tremolo ("Morsen", like Morse code)
+    Glyphs["stockhausenTremolo"] = "\uE232";
+    // U+E618  Bow behind bridge (sul ponticello)
+    Glyphs["stringsBowBehindBridge"] = "\uE618";
+    // U+E62A  Bow behind bridge on four strings
+    Glyphs["stringsBowBehindBridgeFourStrings"] = "\uE62A";
+    // U+E627  Bow behind bridge on one string
+    Glyphs["stringsBowBehindBridgeOneString"] = "\uE627";
+    // U+E629  Bow behind bridge on three strings
+    Glyphs["stringsBowBehindBridgeThreeStrings"] = "\uE629";
+    // U+E628  Bow behind bridge on two strings
+    Glyphs["stringsBowBehindBridgeTwoStrings"] = "\uE628";
+    // U+E619  Bow on top of bridge
+    Glyphs["stringsBowOnBridge"] = "\uE619";
+    // U+E61A  Bow on tailpiece
+    Glyphs["stringsBowOnTailpiece"] = "\uE61A";
+    // U+E626  Change bow direction, indeterminate
+    Glyphs["stringsChangeBowDirection"] = "\uE626";
+    // U+E610  Down bow
+    Glyphs["stringsDownBow"] = "\uE610";
+    // U+1D1AA  Down bow
+    Glyphs["stringsDownBowAlternate"] = "\uD834\uDDAA";
+    // U+EE82  Down bow, away from body
+    Glyphs["stringsDownBowAwayFromBody"] = "\uEE82";
+    // U+EE84  Down bow, beyond bridge
+    Glyphs["stringsDownBowBeyondBridge"] = "\uEE84";
+    // U+EE80  Down bow, towards body
+    Glyphs["stringsDownBowTowardsBody"] = "\uEE80";
+    // U+E611  Turned down bow
+    Glyphs["stringsDownBowTurned"] = "\uE611";
+    // U+E622  Fouetté
+    Glyphs["stringsFouette"] = "\uE622";
+    // U+E615  Half-harmonic
+    Glyphs["stringsHalfHarmonic"] = "\uE615";
+    // U+E614  Harmonic
+    Glyphs["stringsHarmonic"] = "\uE614";
+    // U+1D1AC  Harmonic
+    Glyphs["stringsHarmonicAlternate"] = "\uD834\uDDAC";
+    // U+E620  Jeté (gettato) above
+    Glyphs["stringsJeteAbove"] = "\uE620";
+    // U+E621  Jeté (gettato) below
+    Glyphs["stringsJeteBelow"] = "\uE621";
+    // U+E617  Mute off
+    Glyphs["stringsMuteOff"] = "\uE617";
+    // U+E616  Mute on
+    Glyphs["stringsMuteOn"] = "\uE616";
+    // U+E61B  Overpressure, down bow
+    Glyphs["stringsOverpressureDownBow"] = "\uE61B";
+    // U+E61F  Overpressure, no bow direction
+    Glyphs["stringsOverpressureNoDirection"] = "\uE61F";
+    // U+E61D  Overpressure possibile, down bow
+    Glyphs["stringsOverpressurePossibileDownBow"] = "\uE61D";
+    // U+E61E  Overpressure possibile, up bow
+    Glyphs["stringsOverpressurePossibileUpBow"] = "\uE61E";
+    // U+E61C  Overpressure, up bow
+    Glyphs["stringsOverpressureUpBow"] = "\uE61C";
+    // U+EE88  Scrape, circular clockwise
+    Glyphs["stringsScrapeCircularClockwise"] = "\uEE88";
+    // U+EE89  Scrape, circular counter-clockwise
+    Glyphs["stringsScrapeCircularCounterclockwise"] = "\uEE89";
+    // U+EE86  Scrape, parallel inward
+    Glyphs["stringsScrapeParallelInward"] = "\uEE86";
+    // U+EE87  Scrape, parallel outward
+    Glyphs["stringsScrapeParallelOutward"] = "\uEE87";
+    // U+E624  Thumb position
+    Glyphs["stringsThumbPosition"] = "\uE624";
+    // U+E625  Turned thumb position
+    Glyphs["stringsThumbPositionTurned"] = "\uE625";
+    // U+EE8A  Triple chop, inward
+    Glyphs["stringsTripleChopInward"] = "\uEE8A";
+    // U+EE8B  Triple chop, outward
+    Glyphs["stringsTripleChopOutward"] = "\uEE8B";
+    // U+E612  Up bow
+    Glyphs["stringsUpBow"] = "\uE612";
+    // U+1D1AB  Up bow
+    Glyphs["stringsUpBowAlternate"] = "\uD834\uDDAB";
+    // U+EE83  Up bow, away from body
+    Glyphs["stringsUpBowAwayFromBody"] = "\uEE83";
+    // U+EE85  Up bow, beyond bridge
+    Glyphs["stringsUpBowBeyondBridge"] = "\uEE85";
+    // U+EE81  Up bow, towards body
+    Glyphs["stringsUpBowTowardsBody"] = "\uEE81";
+    // U+E613  Turned up bow
+    Glyphs["stringsUpBowTurned"] = "\uE613";
+    // U+E623  Vibrato pulse accent (Saunders) for stem
+    Glyphs["stringsVibratoPulse"] = "\uE623";
+    // U+EE72  Swiss rudiments doublé black notehead
+    Glyphs["swissRudimentsNoteheadBlackDouble"] = "\uEE72";
+    // U+EE70  Swiss rudiments flam black notehead
+    Glyphs["swissRudimentsNoteheadBlackFlam"] = "\uEE70";
+    // U+EE73  Swiss rudiments doublé half (minim) notehead
+    Glyphs["swissRudimentsNoteheadHalfDouble"] = "\uEE73";
+    // U+EE71  Swiss rudiments flam half (minim) notehead
+    Glyphs["swissRudimentsNoteheadHalfFlam"] = "\uEE71";
+    // U+E007  System divider
+    Glyphs["systemDivider"] = "\uE007";
+    // U+E009  Extra long system divider
+    Glyphs["systemDividerExtraLong"] = "\uE009";
+    // U+E008  Long system divider
+    Glyphs["systemDividerLong"] = "\uE008";
+    // U+E1FC  Augmentation dot
+    Glyphs["textAugmentationDot"] = "\uE1FC";
+    // U+E1F5  Black note, fractional 16th beam, long stem
+    Glyphs["textBlackNoteFrac16thLongStem"] = "\uE1F5";
+    // U+E1F4  Black note, fractional 16th beam, short stem
+    Glyphs["textBlackNoteFrac16thShortStem"] = "\uE1F4";
+    // U+E1F6  Black note, fractional 32nd beam, long stem
+    Glyphs["textBlackNoteFrac32ndLongStem"] = "\uE1F6";
+    // U+E1F3  Black note, fractional 8th beam, long stem
+    Glyphs["textBlackNoteFrac8thLongStem"] = "\uE1F3";
+    // U+E1F2  Black note, fractional 8th beam, short stem
+    Glyphs["textBlackNoteFrac8thShortStem"] = "\uE1F2";
+    // U+E1F1  Black note, long stem
+    Glyphs["textBlackNoteLongStem"] = "\uE1F1";
+    // U+E1F0  Black note, short stem
+    Glyphs["textBlackNoteShortStem"] = "\uE1F0";
+    // U+E1FA  Continuing 16th beam for long stem
+    Glyphs["textCont16thBeamLongStem"] = "\uE1FA";
+    // U+E1F9  Continuing 16th beam for short stem
+    Glyphs["textCont16thBeamShortStem"] = "\uE1F9";
+    // U+E1FB  Continuing 32nd beam for long stem
+    Glyphs["textCont32ndBeamLongStem"] = "\uE1FB";
+    // U+E1F8  Continuing 8th beam for long stem
+    Glyphs["textCont8thBeamLongStem"] = "\uE1F8";
+    // U+E1F7  Continuing 8th beam for short stem
+    Glyphs["textCont8thBeamShortStem"] = "\uE1F7";
+    // U+E209  Headless black note, fractional 16th beam, long stem
+    Glyphs["textHeadlessBlackNoteFrac16thLongStem"] = "\uE209";
+    // U+E208  Headless black note, fractional 16th beam, short stem
+    Glyphs["textHeadlessBlackNoteFrac16thShortStem"] = "\uE208";
+    // U+E20A  Headless black note, fractional 32nd beam, long stem
+    Glyphs["textHeadlessBlackNoteFrac32ndLongStem"] = "\uE20A";
+    // U+E207  Headless black note, fractional 8th beam, long stem
+    Glyphs["textHeadlessBlackNoteFrac8thLongStem"] = "\uE207";
+    // U+E206  Headless black note, fractional 8th beam, short stem
+    Glyphs["textHeadlessBlackNoteFrac8thShortStem"] = "\uE206";
+    // U+E205  Headless black note, long stem
+    Glyphs["textHeadlessBlackNoteLongStem"] = "\uE205";
+    // U+E204  Headless black note, short stem
+    Glyphs["textHeadlessBlackNoteShortStem"] = "\uE204";
+    // U+E1FD  Tie
+    Glyphs["textTie"] = "\uE1FD";
+    // U+E202  Tuplet number 3 for long stem
+    Glyphs["textTuplet3LongStem"] = "\uE202";
+    // U+E1FF  Tuplet number 3 for short stem
+    Glyphs["textTuplet3ShortStem"] = "\uE1FF";
+    // U+E203  Tuplet bracket end for long stem
+    Glyphs["textTupletBracketEndLongStem"] = "\uE203";
+    // U+E200  Tuplet bracket end for short stem
+    Glyphs["textTupletBracketEndShortStem"] = "\uE200";
+    // U+E201  Tuplet bracket start for long stem
+    Glyphs["textTupletBracketStartLongStem"] = "\uE201";
+    // U+E1FE  Tuplet bracket start for short stem
+    Glyphs["textTupletBracketStartShortStem"] = "\uE1FE";
+    // U+E080  Time signature 0
+    Glyphs["timeSig0"] = "\uE080";
+    // U+ECF0  Reversed time signature 0
+    Glyphs["timeSig0Reversed"] = "\uECF0";
+    // U+ECE0  Turned time signature 0
+    Glyphs["timeSig0Turned"] = "\uECE0";
+    // U+E081  Time signature 1
+    Glyphs["timeSig1"] = "\uE081";
+    // U+ECF1  Reversed time signature 1
+    Glyphs["timeSig1Reversed"] = "\uECF1";
+    // U+ECE1  Turned time signature 1
+    Glyphs["timeSig1Turned"] = "\uECE1";
+    // U+E082  Time signature 2
+    Glyphs["timeSig2"] = "\uE082";
+    // U+ECF2  Reversed time signature 2
+    Glyphs["timeSig2Reversed"] = "\uECF2";
+    // U+ECE2  Turned time signature 2
+    Glyphs["timeSig2Turned"] = "\uECE2";
+    // U+E083  Time signature 3
+    Glyphs["timeSig3"] = "\uE083";
+    // U+ECF3  Reversed time signature 3
+    Glyphs["timeSig3Reversed"] = "\uECF3";
+    // U+ECE3  Turned time signature 3
+    Glyphs["timeSig3Turned"] = "\uECE3";
+    // U+E084  Time signature 4
+    Glyphs["timeSig4"] = "\uE084";
+    // U+ECF4  Reversed time signature 4
+    Glyphs["timeSig4Reversed"] = "\uECF4";
+    // U+ECE4  Turned time signature 4
+    Glyphs["timeSig4Turned"] = "\uECE4";
+    // U+E085  Time signature 5
+    Glyphs["timeSig5"] = "\uE085";
+    // U+ECF5  Reversed time signature 5
+    Glyphs["timeSig5Reversed"] = "\uECF5";
+    // U+ECE5  Turned time signature 5
+    Glyphs["timeSig5Turned"] = "\uECE5";
+    // U+E086  Time signature 6
+    Glyphs["timeSig6"] = "\uE086";
+    // U+ECF6  Reversed time signature 6
+    Glyphs["timeSig6Reversed"] = "\uECF6";
+    // U+ECE6  Turned time signature 6
+    Glyphs["timeSig6Turned"] = "\uECE6";
+    // U+E087  Time signature 7
+    Glyphs["timeSig7"] = "\uE087";
+    // U+ECF7  Reversed time signature 7
+    Glyphs["timeSig7Reversed"] = "\uECF7";
+    // U+ECE7  Turned time signature 7
+    Glyphs["timeSig7Turned"] = "\uECE7";
+    // U+E088  Time signature 8
+    Glyphs["timeSig8"] = "\uE088";
+    // U+ECF8  Reversed time signature 8
+    Glyphs["timeSig8Reversed"] = "\uECF8";
+    // U+ECE8  Turned time signature 8
+    Glyphs["timeSig8Turned"] = "\uECE8";
+    // U+E089  Time signature 9
+    Glyphs["timeSig9"] = "\uE089";
+    // U+ECF9  Reversed time signature 9
+    Glyphs["timeSig9Reversed"] = "\uECF9";
+    // U+ECE9  Turned time signature 9
+    Glyphs["timeSig9Turned"] = "\uECE9";
+    // U+EC80  Left bracket for whole time signature
+    Glyphs["timeSigBracketLeft"] = "\uEC80";
+    // U+EC82  Left bracket for numerator only
+    Glyphs["timeSigBracketLeftSmall"] = "\uEC82";
+    // U+EC81  Right bracket for whole time signature
+    Glyphs["timeSigBracketRight"] = "\uEC81";
+    // U+EC83  Right bracket for numerator only
+    Glyphs["timeSigBracketRightSmall"] = "\uEC83";
+    // U+E09F  Control character for denominator digit
+    Glyphs["timeSigCombDenominator"] = "\uE09F";
+    // U+E09E  Control character for numerator digit
+    Glyphs["timeSigCombNumerator"] = "\uE09E";
+    // U+E096  Time signature comma
+    Glyphs["timeSigComma"] = "\uE096";
+    // U+E08A  Common time
+    Glyphs["timeSigCommon"] = "\uE08A";
+    // U+1D134  Common time
+    Glyphs["timeSigCommonAlternate"] = "\uD834\uDD34";
+    // U+ECFA  Reversed common time
+    Glyphs["timeSigCommonReversed"] = "\uECFA";
+    // U+ECEA  Turned common time
+    Glyphs["timeSigCommonTurned"] = "\uECEA";
+    // U+EC85  Cut time (Bach)
+    Glyphs["timeSigCut2"] = "\uEC85";
+    // U+EC86  Cut triple time (9/8)
+    Glyphs["timeSigCut3"] = "\uEC86";
+    // U+E08B  Cut time
+    Glyphs["timeSigCutCommon"] = "\uE08B";
+    // U+1D135  Cut time
+    Glyphs["timeSigCutCommonAlternate"] = "\uD834\uDD35";
+    // U+ECFB  Reversed cut time
+    Glyphs["timeSigCutCommonReversed"] = "\uECFB";
+    // U+ECEB  Turned cut time
+    Glyphs["timeSigCutCommonTurned"] = "\uECEB";
+    // U+E08F  Time signature equals
+    Glyphs["timeSigEquals"] = "\uE08F";
+    // U+E098  Time signature fraction ½
+    Glyphs["timeSigFractionHalf"] = "\uE098";
+    // U+E09A  Time signature fraction ⅓
+    Glyphs["timeSigFractionOneThird"] = "\uE09A";
+    // U+E097  Time signature fraction ¼
+    Glyphs["timeSigFractionQuarter"] = "\uE097";
+    // U+E099  Time signature fraction ¾
+    Glyphs["timeSigFractionThreeQuarters"] = "\uE099";
+    // U+E09B  Time signature fraction ⅔
+    Glyphs["timeSigFractionTwoThirds"] = "\uE09B";
+    // U+E08E  Time signature fraction slash
+    Glyphs["timeSigFractionalSlash"] = "\uE08E";
+    // U+E090  Time signature minus
+    Glyphs["timeSigMinus"] = "\uE090";
+    // U+E091  Time signature multiply
+    Glyphs["timeSigMultiply"] = "\uE091";
+    // U+E09D  Open time signature (Penderecki)
+    Glyphs["timeSigOpenPenderecki"] = "\uE09D";
+    // U+E094  Left parenthesis for whole time signature
+    Glyphs["timeSigParensLeft"] = "\uE094";
+    // U+E092  Left parenthesis for numerator only
+    Glyphs["timeSigParensLeftSmall"] = "\uE092";
+    // U+E095  Right parenthesis for whole time signature
+    Glyphs["timeSigParensRight"] = "\uE095";
+    // U+E093  Right parenthesis for numerator only
+    Glyphs["timeSigParensRightSmall"] = "\uE093";
+    // U+E08C  Time signature +
+    Glyphs["timeSigPlus"] = "\uE08C";
+    // U+E08D  Time signature + (for numerators)
+    Glyphs["timeSigPlusSmall"] = "\uE08D";
+    // U+EC84  Time signature slash separator
+    Glyphs["timeSigSlash"] = "\uEC84";
+    // U+E09C  Open time signature
+    Glyphs["timeSigX"] = "\uE09C";
+    // U+E220  Combining tremolo 1
+    Glyphs["tremolo1"] = "\uE220";
+    // U+1D167  Combining tremolo 1
+    Glyphs["tremolo1Alternate"] = "\uD834\uDD67";
+    // U+E221  Combining tremolo 2
+    Glyphs["tremolo2"] = "\uE221";
+    // U+1D168  Combining tremolo 2
+    Glyphs["tremolo2Alternate"] = "\uD834\uDD68";
+    // U+E222  Combining tremolo 3
+    Glyphs["tremolo3"] = "\uE222";
+    // U+1D169  Combining tremolo 3
+    Glyphs["tremolo3Alternate"] = "\uD834\uDD69";
+    // U+E223  Combining tremolo 4
+    Glyphs["tremolo4"] = "\uE223";
+    // U+E224  Combining tremolo 5
+    Glyphs["tremolo5"] = "\uE224";
+    // U+E22E  Divide measured tremolo by 2
+    Glyphs["tremoloDivisiDots2"] = "\uE22E";
+    // U+E22F  Divide measured tremolo by 3
+    Glyphs["tremoloDivisiDots3"] = "\uE22F";
+    // U+E230  Divide measured tremolo by 4
+    Glyphs["tremoloDivisiDots4"] = "\uE230";
+    // U+E231  Divide measured tremolo by 6
+    Glyphs["tremoloDivisiDots6"] = "\uE231";
+    // U+E225  Fingered tremolo 1
+    Glyphs["tremoloFingered1"] = "\uE225";
+    // U+1D16A  Fingered tremolo 1
+    Glyphs["tremoloFingered1Alternate"] = "\uD834\uDD6A";
+    // U+E226  Fingered tremolo 2
+    Glyphs["tremoloFingered2"] = "\uE226";
+    // U+1D16B  Fingered tremolo 2
+    Glyphs["tremoloFingered2Alternate"] = "\uD834\uDD6B";
+    // U+E227  Fingered tremolo 3
+    Glyphs["tremoloFingered3"] = "\uE227";
+    // U+1D16C  Fingered tremolo 3
+    Glyphs["tremoloFingered3Alternate"] = "\uD834\uDD6C";
+    // U+E228  Fingered tremolo 4
+    Glyphs["tremoloFingered4"] = "\uE228";
+    // U+E229  Fingered tremolo 5
+    Glyphs["tremoloFingered5"] = "\uE229";
+    // U+E5F2  Triple-tongue above
+    Glyphs["tripleTongueAbove"] = "\uE5F2";
+    // U+1D18B  Triple-tongue above
+    Glyphs["tripleTongueAboveAlternate"] = "\uD834\uDD8B";
+    // U+E5F3  Triple-tongue below
+    Glyphs["tripleTongueBelow"] = "\uE5F3";
+    // U+E880  Tuplet 0
+    Glyphs["tuplet0"] = "\uE880";
+    // U+E881  Tuplet 1
+    Glyphs["tuplet1"] = "\uE881";
+    // U+E882  Tuplet 2
+    Glyphs["tuplet2"] = "\uE882";
+    // U+E883  Tuplet 3
+    Glyphs["tuplet3"] = "\uE883";
+    // U+E884  Tuplet 4
+    Glyphs["tuplet4"] = "\uE884";
+    // U+E885  Tuplet 5
+    Glyphs["tuplet5"] = "\uE885";
+    // U+E886  Tuplet 6
+    Glyphs["tuplet6"] = "\uE886";
+    // U+E887  Tuplet 7
+    Glyphs["tuplet7"] = "\uE887";
+    // U+E888  Tuplet 8
+    Glyphs["tuplet8"] = "\uE888";
+    // U+E889  Tuplet 9
+    Glyphs["tuplet9"] = "\uE889";
+    // U+E88A  Tuplet colon
+    Glyphs["tupletColon"] = "\uE88A";
+    // U+E22C  Wieniawski unmeasured tremolo
+    Glyphs["unmeasuredTremolo"] = "\uE22C";
+    // U+E22D  Wieniawski unmeasured tremolo (simpler)
+    Glyphs["unmeasuredTremoloSimple"] = "\uE22D";
+    // U+E069  Unpitched percussion clef 1
+    Glyphs["unpitchedPercussionClef1"] = "\uE069";
+    // U+1D125  Unpitched percussion clef 1
+    Glyphs["unpitchedPercussionClef1Alternate"] = "\uD834\uDD25";
+    // U+E06A  Unpitched percussion clef 2
+    Glyphs["unpitchedPercussionClef2"] = "\uE06A";
+    // U+1D126  Unpitched percussion clef 2
+    Glyphs["unpitchedPercussionClef2Alternate"] = "\uD834\uDD26";
+    // U+E517  Ventiduesima
+    Glyphs["ventiduesima"] = "\uE517";
+    // U+E518  Ventiduesima alta
+    Glyphs["ventiduesimaAlta"] = "\uE518";
+    // U+E519  Ventiduesima bassa
+    Glyphs["ventiduesimaBassa"] = "\uE519";
+    // U+E51E  Ventiduesima bassa (mb)
+    Glyphs["ventiduesimaBassaMb"] = "\uE51E";
+    // U+E649  Finger click (Stockhausen)
+    Glyphs["vocalFingerClickStockhausen"] = "\uE649";
+    // U+E64B  Halb gesungen (semi-sprechgesang)
+    Glyphs["vocalHalbGesungen"] = "\uE64B";
+    // U+E640  Mouth closed
+    Glyphs["vocalMouthClosed"] = "\uE640";
+    // U+E642  Mouth open
+    Glyphs["vocalMouthOpen"] = "\uE642";
+    // U+E644  Mouth pursed
+    Glyphs["vocalMouthPursed"] = "\uE644";
+    // U+E641  Mouth slightly open
+    Glyphs["vocalMouthSlightlyOpen"] = "\uE641";
+    // U+E643  Mouth wide open
+    Glyphs["vocalMouthWideOpen"] = "\uE643";
+    // U+E647  Nasal voice
+    Glyphs["vocalNasalVoice"] = "\uE647";
+    // U+E645  Sprechgesang
+    Glyphs["vocalSprechgesang"] = "\uE645";
+    // U+E648  Tongue click (Stockhausen)
+    Glyphs["vocalTongueClickStockhausen"] = "\uE648";
+    // U+E64A  Tongue and finger click (Stockhausen)
+    Glyphs["vocalTongueFingerClickStockhausen"] = "\uE64A";
+    // U+E646  Combining sussurando for stem
+    Glyphs["vocalsSussurando"] = "\uE646";
+    // U+EAAA  Arpeggiato wiggle segment, downwards
+    Glyphs["wiggleArpeggiatoDown"] = "\uEAAA";
+    // U+EAAE  Arpeggiato arrowhead down
+    Glyphs["wiggleArpeggiatoDownArrow"] = "\uEAAE";
+    // U+EAAC  Arpeggiato downward swash
+    Glyphs["wiggleArpeggiatoDownSwash"] = "\uEAAC";
+    // U+EAA9  Arpeggiato wiggle segment, upwards
+    Glyphs["wiggleArpeggiatoUp"] = "\uEAA9";
+    // U+EAAD  Arpeggiato arrowhead up
+    Glyphs["wiggleArpeggiatoUpArrow"] = "\uEAAD";
+    // U+EAAB  Arpeggiato upward swash
+    Glyphs["wiggleArpeggiatoUpSwash"] = "\uEAAB";
+    // U+EAC9  Circular motion segment
+    Glyphs["wiggleCircular"] = "\uEAC9";
+    // U+EAC0  Constant circular motion segment
+    Glyphs["wiggleCircularConstant"] = "\uEAC0";
+    // U+EAC1  Constant circular motion segment (flipped)
+    Glyphs["wiggleCircularConstantFlipped"] = "\uEAC1";
+    // U+EAC3  Constant circular motion segment (flipped, large)
+    Glyphs["wiggleCircularConstantFlippedLarge"] = "\uEAC3";
+    // U+EAC2  Constant circular motion segment (large)
+    Glyphs["wiggleCircularConstantLarge"] = "\uEAC2";
+    // U+EACB  Circular motion end
+    Glyphs["wiggleCircularEnd"] = "\uEACB";
+    // U+EAC8  Circular motion segment, large
+    Glyphs["wiggleCircularLarge"] = "\uEAC8";
+    // U+EAC7  Circular motion segment, larger
+    Glyphs["wiggleCircularLarger"] = "\uEAC7";
+    // U+EAC6  Circular motion segment, larger still
+    Glyphs["wiggleCircularLargerStill"] = "\uEAC6";
+    // U+EAC5  Circular motion segment, largest
+    Glyphs["wiggleCircularLargest"] = "\uEAC5";
+    // U+EACA  Circular motion segment, small
+    Glyphs["wiggleCircularSmall"] = "\uEACA";
+    // U+EAC4  Circular motion start
+    Glyphs["wiggleCircularStart"] = "\uEAC4";
+    // U+EAAF  Glissando wiggle segment
+    Glyphs["wiggleGlissando"] = "\uEAAF";
+    // U+EABD  Group glissando 1
+    Glyphs["wiggleGlissandoGroup1"] = "\uEABD";
+    // U+EABE  Group glissando 2
+    Glyphs["wiggleGlissandoGroup2"] = "\uEABE";
+    // U+EABF  Group glissando 3
+    Glyphs["wiggleGlissandoGroup3"] = "\uEABF";
+    // U+EAF0  Quasi-random squiggle 1
+    Glyphs["wiggleRandom1"] = "\uEAF0";
+    // U+EAF1  Quasi-random squiggle 2
+    Glyphs["wiggleRandom2"] = "\uEAF1";
+    // U+EAF2  Quasi-random squiggle 3
+    Glyphs["wiggleRandom3"] = "\uEAF2";
+    // U+EAF3  Quasi-random squiggle 4
+    Glyphs["wiggleRandom4"] = "\uEAF3";
+    // U+EABB  Sawtooth line segment
+    Glyphs["wiggleSawtooth"] = "\uEABB";
+    // U+EABA  Narrow sawtooth line segment
+    Glyphs["wiggleSawtoothNarrow"] = "\uEABA";
+    // U+EABC  Wide sawtooth line segment
+    Glyphs["wiggleSawtoothWide"] = "\uEABC";
+    // U+EAB8  Square wave line segment
+    Glyphs["wiggleSquareWave"] = "\uEAB8";
+    // U+EAB7  Narrow square wave line segment
+    Glyphs["wiggleSquareWaveNarrow"] = "\uEAB7";
+    // U+EAB9  Wide square wave line segment
+    Glyphs["wiggleSquareWaveWide"] = "\uEAB9";
+    // U+EAA4  Trill wiggle segment
+    Glyphs["wiggleTrill"] = "\uEAA4";
+    // U+EAA3  Trill wiggle segment, fast
+    Glyphs["wiggleTrillFast"] = "\uEAA3";
+    // U+EAA2  Trill wiggle segment, faster
+    Glyphs["wiggleTrillFaster"] = "\uEAA2";
+    // U+EAA1  Trill wiggle segment, faster still
+    Glyphs["wiggleTrillFasterStill"] = "\uEAA1";
+    // U+EAA0  Trill wiggle segment, fastest
+    Glyphs["wiggleTrillFastest"] = "\uEAA0";
+    // U+EAA5  Trill wiggle segment, slow
+    Glyphs["wiggleTrillSlow"] = "\uEAA5";
+    // U+EAA6  Trill wiggle segment, slower
+    Glyphs["wiggleTrillSlower"] = "\uEAA6";
+    // U+EAA7  Trill wiggle segment, slower still
+    Glyphs["wiggleTrillSlowerStill"] = "\uEAA7";
+    // U+EAA8  Trill wiggle segment, slowest
+    Glyphs["wiggleTrillSlowest"] = "\uEAA8";
+    // U+EAEE  Vibrato largest, slower
+    Glyphs["wiggleVIbratoLargestSlower"] = "\uEAEE";
+    // U+EAE0  Vibrato medium, slower
+    Glyphs["wiggleVIbratoMediumSlower"] = "\uEAE0";
+    // U+EAB0  Vibrato / shake wiggle segment
+    Glyphs["wiggleVibrato"] = "\uEAB0";
+    // U+EAE5  Vibrato large, fast
+    Glyphs["wiggleVibratoLargeFast"] = "\uEAE5";
+    // U+EAE4  Vibrato large, faster
+    Glyphs["wiggleVibratoLargeFaster"] = "\uEAE4";
+    // U+EAE3  Vibrato large, faster still
+    Glyphs["wiggleVibratoLargeFasterStill"] = "\uEAE3";
+    // U+EAE2  Vibrato large, fastest
+    Glyphs["wiggleVibratoLargeFastest"] = "\uEAE2";
+    // U+EAE6  Vibrato large, slow
+    Glyphs["wiggleVibratoLargeSlow"] = "\uEAE6";
+    // U+EAE7  Vibrato large, slower
+    Glyphs["wiggleVibratoLargeSlower"] = "\uEAE7";
+    // U+EAE8  Vibrato large, slowest
+    Glyphs["wiggleVibratoLargeSlowest"] = "\uEAE8";
+    // U+EAEC  Vibrato largest, fast
+    Glyphs["wiggleVibratoLargestFast"] = "\uEAEC";
+    // U+EAEB  Vibrato largest, faster
+    Glyphs["wiggleVibratoLargestFaster"] = "\uEAEB";
+    // U+EAEA  Vibrato largest, faster still
+    Glyphs["wiggleVibratoLargestFasterStill"] = "\uEAEA";
+    // U+EAE9  Vibrato largest, fastest
+    Glyphs["wiggleVibratoLargestFastest"] = "\uEAE9";
+    // U+EAED  Vibrato largest, slow
+    Glyphs["wiggleVibratoLargestSlow"] = "\uEAED";
+    // U+EAEF  Vibrato largest, slowest
+    Glyphs["wiggleVibratoLargestSlowest"] = "\uEAEF";
+    // U+EADE  Vibrato medium, fast
+    Glyphs["wiggleVibratoMediumFast"] = "\uEADE";
+    // U+EADD  Vibrato medium, faster
+    Glyphs["wiggleVibratoMediumFaster"] = "\uEADD";
+    // U+EADC  Vibrato medium, faster still
+    Glyphs["wiggleVibratoMediumFasterStill"] = "\uEADC";
+    // U+EADB  Vibrato medium, fastest
+    Glyphs["wiggleVibratoMediumFastest"] = "\uEADB";
+    // U+EADF  Vibrato medium, slow
+    Glyphs["wiggleVibratoMediumSlow"] = "\uEADF";
+    // U+EAE1  Vibrato medium, slowest
+    Glyphs["wiggleVibratoMediumSlowest"] = "\uEAE1";
+    // U+EAD7  Vibrato small, fast
+    Glyphs["wiggleVibratoSmallFast"] = "\uEAD7";
+    // U+EAD6  Vibrato small, faster
+    Glyphs["wiggleVibratoSmallFaster"] = "\uEAD6";
+    // U+EAD5  Vibrato small, faster still
+    Glyphs["wiggleVibratoSmallFasterStill"] = "\uEAD5";
+    // U+EAD4  Vibrato small, fastest
+    Glyphs["wiggleVibratoSmallFastest"] = "\uEAD4";
+    // U+EAD8  Vibrato small, slow
+    Glyphs["wiggleVibratoSmallSlow"] = "\uEAD8";
+    // U+EAD9  Vibrato small, slower
+    Glyphs["wiggleVibratoSmallSlower"] = "\uEAD9";
+    // U+EADA  Vibrato small, slowest
+    Glyphs["wiggleVibratoSmallSlowest"] = "\uEADA";
+    // U+EAD0  Vibrato smallest, fast
+    Glyphs["wiggleVibratoSmallestFast"] = "\uEAD0";
+    // U+EACF  Vibrato smallest, faster
+    Glyphs["wiggleVibratoSmallestFaster"] = "\uEACF";
+    // U+EACE  Vibrato smallest, faster still
+    Glyphs["wiggleVibratoSmallestFasterStill"] = "\uEACE";
+    // U+EACD  Vibrato smallest, fastest
+    Glyphs["wiggleVibratoSmallestFastest"] = "\uEACD";
+    // U+EAD1  Vibrato smallest, slow
+    Glyphs["wiggleVibratoSmallestSlow"] = "\uEAD1";
+    // U+EAD2  Vibrato smallest, slower
+    Glyphs["wiggleVibratoSmallestSlower"] = "\uEAD2";
+    // U+EAD3  Vibrato smallest, slowest
+    Glyphs["wiggleVibratoSmallestSlowest"] = "\uEAD3";
+    // U+EACC  Vibrato start
+    Glyphs["wiggleVibratoStart"] = "\uEACC";
+    // U+EAB1  Wide vibrato / shake wiggle segment
+    Glyphs["wiggleVibratoWide"] = "\uEAB1";
+    // U+EAB5  Wavy line segment
+    Glyphs["wiggleWavy"] = "\uEAB5";
+    // U+EAB4  Narrow wavy line segment
+    Glyphs["wiggleWavyNarrow"] = "\uEAB4";
+    // U+EAB6  Wide wavy line segment
+    Glyphs["wiggleWavyWide"] = "\uEAB6";
+    // U+E5F4  Closed hole
+    Glyphs["windClosedHole"] = "\uE5F4";
+    // U+E5FB  Flatter embouchure
+    Glyphs["windFlatEmbouchure"] = "\uE5FB";
+    // U+E5F6  Half-closed hole
+    Glyphs["windHalfClosedHole1"] = "\uE5F6";
+    // U+E5F7  Half-closed hole 2
+    Glyphs["windHalfClosedHole2"] = "\uE5F7";
+    // U+E5F8  Half-open hole
+    Glyphs["windHalfClosedHole3"] = "\uE5F8";
+    // U+E5FE  Somewhat relaxed embouchure
+    Glyphs["windLessRelaxedEmbouchure"] = "\uE5FE";
+    // U+E600  Somewhat tight embouchure
+    Glyphs["windLessTightEmbouchure"] = "\uE600";
+    // U+E60A  Mouthpiece or hand pop
+    Glyphs["windMouthpiecePop"] = "\uE60A";
+    // U+E607  Combining multiphonics (black) for stem
+    Glyphs["windMultiphonicsBlackStem"] = "\uE607";
+    // U+E609  Combining multiphonics (black and white) for stem
+    Glyphs["windMultiphonicsBlackWhiteStem"] = "\uE609";
+    // U+E608  Combining multiphonics (white) for stem
+    Glyphs["windMultiphonicsWhiteStem"] = "\uE608";
+    // U+E5F9  Open hole
+    Glyphs["windOpenHole"] = "\uE5F9";
+    // U+E606  Much more reed (push inwards)
+    Glyphs["windReedPositionIn"] = "\uE606";
+    // U+E604  Normal reed position
+    Glyphs["windReedPositionNormal"] = "\uE604";
+    // U+E605  Very little reed (pull outwards)
+    Glyphs["windReedPositionOut"] = "\uE605";
+    // U+E5FD  Relaxed embouchure
+    Glyphs["windRelaxedEmbouchure"] = "\uE5FD";
+    // U+E60B  Rim only
+    Glyphs["windRimOnly"] = "\uE60B";
+    // U+E5FC  Sharper embouchure
+    Glyphs["windSharpEmbouchure"] = "\uE5FC";
+    // U+E603  Very tight embouchure / strong air pressure
+    Glyphs["windStrongAirPressure"] = "\uE603";
+    // U+E5F5  Three-quarters closed hole
+    Glyphs["windThreeQuartersClosedHole"] = "\uE5F5";
+    // U+E5FF  Tight embouchure
+    Glyphs["windTightEmbouchure"] = "\uE5FF";
+    // U+E5FA  Trill key
+    Glyphs["windTrillKey"] = "\uE5FA";
+    // U+E601  Very tight embouchure
+    Glyphs["windVeryTightEmbouchure"] = "\uE601";
+    // U+E602  Very relaxed embouchure / weak air-pressure
+    Glyphs["windWeakAirPressure"] = "\uE602";
+})(Glyphs || (Glyphs = {}));
 
 
 /***/ }),
@@ -21197,7 +23021,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   BoundingBoxComputation: () => (/* reexport safe */ _boundingboxcomputation__WEBPACK_IMPORTED_MODULE_7__.BoundingBoxComputation),
 /* harmony export */   Builder: () => (/* reexport safe */ _easyscore__WEBPACK_IMPORTED_MODULE_15__.Builder),
 /* harmony export */   CanvasContext: () => (/* reexport safe */ _canvascontext__WEBPACK_IMPORTED_MODULE_8__.CanvasContext),
-/* harmony export */   Category: () => (/* reexport safe */ _typeguard__WEBPACK_IMPORTED_MODULE_81__.Category),
+/* harmony export */   Category: () => (/* reexport safe */ _typeguard__WEBPACK_IMPORTED_MODULE_80__.Category),
 /* harmony export */   ChordSymbol: () => (/* reexport safe */ _chordsymbol__WEBPACK_IMPORTED_MODULE_9__.ChordSymbol),
 /* harmony export */   ChordSymbolBlock: () => (/* reexport safe */ _chordsymbol__WEBPACK_IMPORTED_MODULE_9__.ChordSymbolBlock),
 /* harmony export */   ChordSymbolHorizontalJustify: () => (/* reexport safe */ _chordsymbol__WEBPACK_IMPORTED_MODULE_9__.ChordSymbolHorizontalJustify),
@@ -21249,7 +23073,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   RendererLineEndType: () => (/* reexport safe */ _renderer__WEBPACK_IMPORTED_MODULE_45__.RendererLineEndType),
 /* harmony export */   RepeatNote: () => (/* reexport safe */ _repeatnote__WEBPACK_IMPORTED_MODULE_46__.RepeatNote),
 /* harmony export */   Repetition: () => (/* reexport safe */ _staverepetition__WEBPACK_IMPORTED_MODULE_54__.Repetition),
-/* harmony export */   RuntimeError: () => (/* reexport safe */ _util__WEBPACK_IMPORTED_MODULE_82__.RuntimeError),
+/* harmony export */   RuntimeError: () => (/* reexport safe */ _util__WEBPACK_IMPORTED_MODULE_81__.RuntimeError),
 /* harmony export */   SVGContext: () => (/* reexport safe */ _svgcontext__WEBPACK_IMPORTED_MODULE_64__.SVGContext),
 /* harmony export */   Stave: () => (/* reexport safe */ _stave__WEBPACK_IMPORTED_MODULE_47__.Stave),
 /* harmony export */   StaveConnector: () => (/* reexport safe */ _staveconnector__WEBPACK_IMPORTED_MODULE_49__.StaveConnector),
@@ -21275,48 +23099,50 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   TextBracket: () => (/* reexport safe */ _textbracket__WEBPACK_IMPORTED_MODULE_70__.TextBracket),
 /* harmony export */   TextBracketPosition: () => (/* reexport safe */ _textbracket__WEBPACK_IMPORTED_MODULE_70__.TextBracketPosition),
 /* harmony export */   TextDynamics: () => (/* reexport safe */ _textdynamics__WEBPACK_IMPORTED_MODULE_71__.TextDynamics),
-/* harmony export */   TextFormatter: () => (/* reexport safe */ _textformatter__WEBPACK_IMPORTED_MODULE_72__.TextFormatter),
-/* harmony export */   TextJustification: () => (/* reexport safe */ _textnote__WEBPACK_IMPORTED_MODULE_73__.TextJustification),
-/* harmony export */   TextNote: () => (/* reexport safe */ _textnote__WEBPACK_IMPORTED_MODULE_73__.TextNote),
-/* harmony export */   TickContext: () => (/* reexport safe */ _tickcontext__WEBPACK_IMPORTED_MODULE_75__.TickContext),
-/* harmony export */   Tickable: () => (/* reexport safe */ _tickable__WEBPACK_IMPORTED_MODULE_74__.Tickable),
-/* harmony export */   TimeSigNote: () => (/* reexport safe */ _timesignote__WEBPACK_IMPORTED_MODULE_77__.TimeSigNote),
-/* harmony export */   TimeSignature: () => (/* reexport safe */ _timesignature__WEBPACK_IMPORTED_MODULE_76__.TimeSignature),
-/* harmony export */   Tremolo: () => (/* reexport safe */ _tremolo__WEBPACK_IMPORTED_MODULE_78__.Tremolo),
-/* harmony export */   Tuning: () => (/* reexport safe */ _tuning__WEBPACK_IMPORTED_MODULE_79__.Tuning),
-/* harmony export */   Tuplet: () => (/* reexport safe */ _tuplet__WEBPACK_IMPORTED_MODULE_80__.Tuplet),
-/* harmony export */   TupletLocation: () => (/* reexport safe */ _tuplet__WEBPACK_IMPORTED_MODULE_80__.TupletLocation),
-/* harmony export */   Vex: () => (/* reexport safe */ _vex__WEBPACK_IMPORTED_MODULE_83__.Vex),
-/* harmony export */   Vibrato: () => (/* reexport safe */ _vibrato__WEBPACK_IMPORTED_MODULE_84__.Vibrato),
-/* harmony export */   VibratoBracket: () => (/* reexport safe */ _vibratobracket__WEBPACK_IMPORTED_MODULE_85__.VibratoBracket),
-/* harmony export */   Voice: () => (/* reexport safe */ _voice__WEBPACK_IMPORTED_MODULE_86__.Voice),
-/* harmony export */   VoiceMode: () => (/* reexport safe */ _voice__WEBPACK_IMPORTED_MODULE_86__.VoiceMode),
+/* harmony export */   TextJustification: () => (/* reexport safe */ _textnote__WEBPACK_IMPORTED_MODULE_72__.TextJustification),
+/* harmony export */   TextNote: () => (/* reexport safe */ _textnote__WEBPACK_IMPORTED_MODULE_72__.TextNote),
+/* harmony export */   TickContext: () => (/* reexport safe */ _tickcontext__WEBPACK_IMPORTED_MODULE_74__.TickContext),
+/* harmony export */   Tickable: () => (/* reexport safe */ _tickable__WEBPACK_IMPORTED_MODULE_73__.Tickable),
+/* harmony export */   TimeSigNote: () => (/* reexport safe */ _timesignote__WEBPACK_IMPORTED_MODULE_76__.TimeSigNote),
+/* harmony export */   TimeSignature: () => (/* reexport safe */ _timesignature__WEBPACK_IMPORTED_MODULE_75__.TimeSignature),
+/* harmony export */   Tremolo: () => (/* reexport safe */ _tremolo__WEBPACK_IMPORTED_MODULE_77__.Tremolo),
+/* harmony export */   Tuning: () => (/* reexport safe */ _tuning__WEBPACK_IMPORTED_MODULE_78__.Tuning),
+/* harmony export */   Tuplet: () => (/* reexport safe */ _tuplet__WEBPACK_IMPORTED_MODULE_79__.Tuplet),
+/* harmony export */   TupletLocation: () => (/* reexport safe */ _tuplet__WEBPACK_IMPORTED_MODULE_79__.TupletLocation),
+/* harmony export */   Vex: () => (/* reexport safe */ _vex__WEBPACK_IMPORTED_MODULE_82__.Vex),
+/* harmony export */   Vibrato: () => (/* reexport safe */ _vibrato__WEBPACK_IMPORTED_MODULE_83__.Vibrato),
+/* harmony export */   VibratoBracket: () => (/* reexport safe */ _vibratobracket__WEBPACK_IMPORTED_MODULE_84__.VibratoBracket),
+/* harmony export */   Voice: () => (/* reexport safe */ _voice__WEBPACK_IMPORTED_MODULE_85__.Voice),
+/* harmony export */   VoiceMode: () => (/* reexport safe */ _voice__WEBPACK_IMPORTED_MODULE_85__.VoiceMode),
 /* harmony export */   Volta: () => (/* reexport safe */ _stavevolta__WEBPACK_IMPORTED_MODULE_59__.Volta),
 /* harmony export */   VoltaType: () => (/* reexport safe */ _stavevolta__WEBPACK_IMPORTED_MODULE_59__.VoltaType),
-/* harmony export */   defined: () => (/* reexport safe */ _util__WEBPACK_IMPORTED_MODULE_82__.defined),
+/* harmony export */   defined: () => (/* reexport safe */ _util__WEBPACK_IMPORTED_MODULE_81__.defined),
 /* harmony export */   drawDot: () => (/* reexport safe */ _rendercontext__WEBPACK_IMPORTED_MODULE_44__.drawDot),
-/* harmony export */   globalObject: () => (/* reexport safe */ _util__WEBPACK_IMPORTED_MODULE_82__.globalObject),
-/* harmony export */   isAccidental: () => (/* reexport safe */ _typeguard__WEBPACK_IMPORTED_MODULE_81__.isAccidental),
-/* harmony export */   isAnnotation: () => (/* reexport safe */ _typeguard__WEBPACK_IMPORTED_MODULE_81__.isAnnotation),
-/* harmony export */   isBarline: () => (/* reexport safe */ _typeguard__WEBPACK_IMPORTED_MODULE_81__.isBarline),
-/* harmony export */   isCategory: () => (/* reexport safe */ _typeguard__WEBPACK_IMPORTED_MODULE_81__.isCategory),
-/* harmony export */   isDot: () => (/* reexport safe */ _typeguard__WEBPACK_IMPORTED_MODULE_81__.isDot),
-/* harmony export */   isGraceNote: () => (/* reexport safe */ _typeguard__WEBPACK_IMPORTED_MODULE_81__.isGraceNote),
-/* harmony export */   isGraceNoteGroup: () => (/* reexport safe */ _typeguard__WEBPACK_IMPORTED_MODULE_81__.isGraceNoteGroup),
-/* harmony export */   isHTMLCanvas: () => (/* reexport safe */ _web__WEBPACK_IMPORTED_MODULE_87__.isHTMLCanvas),
-/* harmony export */   isHTMLDiv: () => (/* reexport safe */ _web__WEBPACK_IMPORTED_MODULE_87__.isHTMLDiv),
-/* harmony export */   isNote: () => (/* reexport safe */ _typeguard__WEBPACK_IMPORTED_MODULE_81__.isNote),
-/* harmony export */   isRenderContext: () => (/* reexport safe */ _typeguard__WEBPACK_IMPORTED_MODULE_81__.isRenderContext),
-/* harmony export */   isStaveNote: () => (/* reexport safe */ _typeguard__WEBPACK_IMPORTED_MODULE_81__.isStaveNote),
-/* harmony export */   isStemmableNote: () => (/* reexport safe */ _typeguard__WEBPACK_IMPORTED_MODULE_81__.isStemmableNote),
-/* harmony export */   isTabNote: () => (/* reexport safe */ _typeguard__WEBPACK_IMPORTED_MODULE_81__.isTabNote),
-/* harmony export */   log: () => (/* reexport safe */ _util__WEBPACK_IMPORTED_MODULE_82__.log),
-/* harmony export */   midLine: () => (/* reexport safe */ _util__WEBPACK_IMPORTED_MODULE_82__.midLine),
-/* harmony export */   normalizeAngle: () => (/* reexport safe */ _util__WEBPACK_IMPORTED_MODULE_82__.normalizeAngle),
-/* harmony export */   prefix: () => (/* reexport safe */ _util__WEBPACK_IMPORTED_MODULE_82__.prefix),
-/* harmony export */   sumArray: () => (/* reexport safe */ _util__WEBPACK_IMPORTED_MODULE_82__.sumArray),
-/* harmony export */   upperFirst: () => (/* reexport safe */ _util__WEBPACK_IMPORTED_MODULE_82__.upperFirst),
-/* harmony export */   warn: () => (/* reexport safe */ _util__WEBPACK_IMPORTED_MODULE_82__.warn)
+/* harmony export */   getBottomY: () => (/* reexport safe */ _articulation__WEBPACK_IMPORTED_MODULE_2__.getBottomY),
+/* harmony export */   getInitialOffset: () => (/* reexport safe */ _articulation__WEBPACK_IMPORTED_MODULE_2__.getInitialOffset),
+/* harmony export */   getTopY: () => (/* reexport safe */ _articulation__WEBPACK_IMPORTED_MODULE_2__.getTopY),
+/* harmony export */   globalObject: () => (/* reexport safe */ _util__WEBPACK_IMPORTED_MODULE_81__.globalObject),
+/* harmony export */   isAccidental: () => (/* reexport safe */ _typeguard__WEBPACK_IMPORTED_MODULE_80__.isAccidental),
+/* harmony export */   isAnnotation: () => (/* reexport safe */ _typeguard__WEBPACK_IMPORTED_MODULE_80__.isAnnotation),
+/* harmony export */   isBarline: () => (/* reexport safe */ _typeguard__WEBPACK_IMPORTED_MODULE_80__.isBarline),
+/* harmony export */   isCategory: () => (/* reexport safe */ _typeguard__WEBPACK_IMPORTED_MODULE_80__.isCategory),
+/* harmony export */   isDot: () => (/* reexport safe */ _typeguard__WEBPACK_IMPORTED_MODULE_80__.isDot),
+/* harmony export */   isGraceNote: () => (/* reexport safe */ _typeguard__WEBPACK_IMPORTED_MODULE_80__.isGraceNote),
+/* harmony export */   isGraceNoteGroup: () => (/* reexport safe */ _typeguard__WEBPACK_IMPORTED_MODULE_80__.isGraceNoteGroup),
+/* harmony export */   isHTMLCanvas: () => (/* reexport safe */ _web__WEBPACK_IMPORTED_MODULE_86__.isHTMLCanvas),
+/* harmony export */   isHTMLDiv: () => (/* reexport safe */ _web__WEBPACK_IMPORTED_MODULE_86__.isHTMLDiv),
+/* harmony export */   isNote: () => (/* reexport safe */ _typeguard__WEBPACK_IMPORTED_MODULE_80__.isNote),
+/* harmony export */   isRenderContext: () => (/* reexport safe */ _typeguard__WEBPACK_IMPORTED_MODULE_80__.isRenderContext),
+/* harmony export */   isStaveNote: () => (/* reexport safe */ _typeguard__WEBPACK_IMPORTED_MODULE_80__.isStaveNote),
+/* harmony export */   isStemmableNote: () => (/* reexport safe */ _typeguard__WEBPACK_IMPORTED_MODULE_80__.isStemmableNote),
+/* harmony export */   isTabNote: () => (/* reexport safe */ _typeguard__WEBPACK_IMPORTED_MODULE_80__.isTabNote),
+/* harmony export */   log: () => (/* reexport safe */ _util__WEBPACK_IMPORTED_MODULE_81__.log),
+/* harmony export */   midLine: () => (/* reexport safe */ _util__WEBPACK_IMPORTED_MODULE_81__.midLine),
+/* harmony export */   normalizeAngle: () => (/* reexport safe */ _util__WEBPACK_IMPORTED_MODULE_81__.normalizeAngle),
+/* harmony export */   prefix: () => (/* reexport safe */ _util__WEBPACK_IMPORTED_MODULE_81__.prefix),
+/* harmony export */   sumArray: () => (/* reexport safe */ _util__WEBPACK_IMPORTED_MODULE_81__.sumArray),
+/* harmony export */   upperFirst: () => (/* reexport safe */ _util__WEBPACK_IMPORTED_MODULE_81__.upperFirst),
+/* harmony export */   warn: () => (/* reexport safe */ _util__WEBPACK_IMPORTED_MODULE_81__.warn)
 /* harmony export */ });
 /* harmony import */ var _accidental__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./accidental */ "./src/accidental.ts");
 /* harmony import */ var _annotation__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./annotation */ "./src/annotation.ts");
@@ -21390,22 +23216,21 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _tabtie__WEBPACK_IMPORTED_MODULE_69__ = __webpack_require__(/*! ./tabtie */ "./src/tabtie.ts");
 /* harmony import */ var _textbracket__WEBPACK_IMPORTED_MODULE_70__ = __webpack_require__(/*! ./textbracket */ "./src/textbracket.ts");
 /* harmony import */ var _textdynamics__WEBPACK_IMPORTED_MODULE_71__ = __webpack_require__(/*! ./textdynamics */ "./src/textdynamics.ts");
-/* harmony import */ var _textformatter__WEBPACK_IMPORTED_MODULE_72__ = __webpack_require__(/*! ./textformatter */ "./src/textformatter.ts");
-/* harmony import */ var _textnote__WEBPACK_IMPORTED_MODULE_73__ = __webpack_require__(/*! ./textnote */ "./src/textnote.ts");
-/* harmony import */ var _tickable__WEBPACK_IMPORTED_MODULE_74__ = __webpack_require__(/*! ./tickable */ "./src/tickable.ts");
-/* harmony import */ var _tickcontext__WEBPACK_IMPORTED_MODULE_75__ = __webpack_require__(/*! ./tickcontext */ "./src/tickcontext.ts");
-/* harmony import */ var _timesignature__WEBPACK_IMPORTED_MODULE_76__ = __webpack_require__(/*! ./timesignature */ "./src/timesignature.ts");
-/* harmony import */ var _timesignote__WEBPACK_IMPORTED_MODULE_77__ = __webpack_require__(/*! ./timesignote */ "./src/timesignote.ts");
-/* harmony import */ var _tremolo__WEBPACK_IMPORTED_MODULE_78__ = __webpack_require__(/*! ./tremolo */ "./src/tremolo.ts");
-/* harmony import */ var _tuning__WEBPACK_IMPORTED_MODULE_79__ = __webpack_require__(/*! ./tuning */ "./src/tuning.ts");
-/* harmony import */ var _tuplet__WEBPACK_IMPORTED_MODULE_80__ = __webpack_require__(/*! ./tuplet */ "./src/tuplet.ts");
-/* harmony import */ var _typeguard__WEBPACK_IMPORTED_MODULE_81__ = __webpack_require__(/*! ./typeguard */ "./src/typeguard.ts");
-/* harmony import */ var _util__WEBPACK_IMPORTED_MODULE_82__ = __webpack_require__(/*! ./util */ "./src/util.ts");
-/* harmony import */ var _vex__WEBPACK_IMPORTED_MODULE_83__ = __webpack_require__(/*! ./vex */ "./src/vex.ts");
-/* harmony import */ var _vibrato__WEBPACK_IMPORTED_MODULE_84__ = __webpack_require__(/*! ./vibrato */ "./src/vibrato.ts");
-/* harmony import */ var _vibratobracket__WEBPACK_IMPORTED_MODULE_85__ = __webpack_require__(/*! ./vibratobracket */ "./src/vibratobracket.ts");
-/* harmony import */ var _voice__WEBPACK_IMPORTED_MODULE_86__ = __webpack_require__(/*! ./voice */ "./src/voice.ts");
-/* harmony import */ var _web__WEBPACK_IMPORTED_MODULE_87__ = __webpack_require__(/*! ./web */ "./src/web.ts");
+/* harmony import */ var _textnote__WEBPACK_IMPORTED_MODULE_72__ = __webpack_require__(/*! ./textnote */ "./src/textnote.ts");
+/* harmony import */ var _tickable__WEBPACK_IMPORTED_MODULE_73__ = __webpack_require__(/*! ./tickable */ "./src/tickable.ts");
+/* harmony import */ var _tickcontext__WEBPACK_IMPORTED_MODULE_74__ = __webpack_require__(/*! ./tickcontext */ "./src/tickcontext.ts");
+/* harmony import */ var _timesignature__WEBPACK_IMPORTED_MODULE_75__ = __webpack_require__(/*! ./timesignature */ "./src/timesignature.ts");
+/* harmony import */ var _timesignote__WEBPACK_IMPORTED_MODULE_76__ = __webpack_require__(/*! ./timesignote */ "./src/timesignote.ts");
+/* harmony import */ var _tremolo__WEBPACK_IMPORTED_MODULE_77__ = __webpack_require__(/*! ./tremolo */ "./src/tremolo.ts");
+/* harmony import */ var _tuning__WEBPACK_IMPORTED_MODULE_78__ = __webpack_require__(/*! ./tuning */ "./src/tuning.ts");
+/* harmony import */ var _tuplet__WEBPACK_IMPORTED_MODULE_79__ = __webpack_require__(/*! ./tuplet */ "./src/tuplet.ts");
+/* harmony import */ var _typeguard__WEBPACK_IMPORTED_MODULE_80__ = __webpack_require__(/*! ./typeguard */ "./src/typeguard.ts");
+/* harmony import */ var _util__WEBPACK_IMPORTED_MODULE_81__ = __webpack_require__(/*! ./util */ "./src/util.ts");
+/* harmony import */ var _vex__WEBPACK_IMPORTED_MODULE_82__ = __webpack_require__(/*! ./vex */ "./src/vex.ts");
+/* harmony import */ var _vibrato__WEBPACK_IMPORTED_MODULE_83__ = __webpack_require__(/*! ./vibrato */ "./src/vibrato.ts");
+/* harmony import */ var _vibratobracket__WEBPACK_IMPORTED_MODULE_84__ = __webpack_require__(/*! ./vibratobracket */ "./src/vibratobracket.ts");
+/* harmony import */ var _voice__WEBPACK_IMPORTED_MODULE_85__ = __webpack_require__(/*! ./voice */ "./src/voice.ts");
+/* harmony import */ var _web__WEBPACK_IMPORTED_MODULE_86__ = __webpack_require__(/*! ./web */ "./src/web.ts");
 // Copyright (c) 2023-present VexFlow contributors: https://github.com/vexflow/vexflow/graphs/contributors
 // MIT License
 
@@ -21476,7 +23301,6 @@ __webpack_require__.r(__webpack_exports__);
 
 
 // Do not export './tables' because it is internal. Its public API is accessible via Vex.Flow.*.
-
 
 
 
@@ -21582,7 +23406,7 @@ class KeyManager {
         }
         // Then search for a note of equivalent value in our altered scale
         const valueNote = this.scaleMapByValue[this.music.getNoteValue(note)];
-        if (valueNote != null) {
+        if (valueNote !== undefined) {
             return {
                 note: valueNote,
                 accidental: this.music.getNoteParts(valueNote).accidental,
@@ -21591,7 +23415,7 @@ class KeyManager {
         }
         // Then search for a note of equivalent value in the original scale
         const originalValueNote = this.originalScaleMapByValue[this.music.getNoteValue(note)];
-        if (originalValueNote != null) {
+        if (originalValueNote !== undefined) {
             this.scaleMap[modparts.root] = originalValueNote;
             delete this.scaleMapByValue[this.music.getNoteValue(scaleNote)];
             this.scaleMapByValue[this.music.getNoteValue(note)] = originalValueNote;
@@ -22866,13 +24690,15 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   Note: () => (/* binding */ Note)
 /* harmony export */ });
-/* harmony import */ var _rendercontext__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./rendercontext */ "./src/rendercontext.ts");
-/* harmony import */ var _tables__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./tables */ "./src/tables.ts");
-/* harmony import */ var _tickable__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./tickable */ "./src/tickable.ts");
-/* harmony import */ var _typeguard__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./typeguard */ "./src/typeguard.ts");
-/* harmony import */ var _util__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./util */ "./src/util.ts");
+/* harmony import */ var _glyphs__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./glyphs */ "./src/glyphs.ts");
+/* harmony import */ var _rendercontext__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./rendercontext */ "./src/rendercontext.ts");
+/* harmony import */ var _tables__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./tables */ "./src/tables.ts");
+/* harmony import */ var _tickable__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./tickable */ "./src/tickable.ts");
+/* harmony import */ var _typeguard__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./typeguard */ "./src/typeguard.ts");
+/* harmony import */ var _util__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./util */ "./src/util.ts");
 // Copyright (c) 2023-present VexFlow contributors: https://github.com/vexflow/vexflow/graphs/contributors
 // MIT License
+
 
 
 
@@ -22887,31 +24713,32 @@ __webpack_require__.r(__webpack_exports__);
  * surround a note are called *modifiers*, and every note has an associated
  * array of them. All notes also have a rendering context and belong to a stave.
  */
-class Note extends _tickable__WEBPACK_IMPORTED_MODULE_2__.Tickable {
+class Note extends _tickable__WEBPACK_IMPORTED_MODULE_3__.Tickable {
     //////////////////////////////////////////////////////////////////////////////////////////////////
     // STATIC MEMBERS
     static get CATEGORY() {
-        return _typeguard__WEBPACK_IMPORTED_MODULE_3__.Category.Note;
+        return _typeguard__WEBPACK_IMPORTED_MODULE_4__.Category.Note;
     }
     // Return a glyph given duration and type. The type can be a custom glyph code from customNoteHeads.
     // The default type is a regular note ('n').
     static getGlyphProps(duration, type = 'n') {
-        duration = _tables__WEBPACK_IMPORTED_MODULE_1__.Tables.sanitizeDuration(duration);
+        duration = _tables__WEBPACK_IMPORTED_MODULE_2__.Tables.sanitizeDuration(duration);
         // Lookup duration for default glyph head code
-        let code = _tables__WEBPACK_IMPORTED_MODULE_1__.Tables.durationCodes[duration];
+        let code = _tables__WEBPACK_IMPORTED_MODULE_2__.Tables.durationCodes[duration];
         if (code === undefined) {
-            code = _tables__WEBPACK_IMPORTED_MODULE_1__.Tables.durationCodes['4'];
+            code = _tables__WEBPACK_IMPORTED_MODULE_2__.Tables.durationCodes['4'];
         }
         // Try and get the note head
-        const codeNoteHead = _tables__WEBPACK_IMPORTED_MODULE_1__.Tables.codeNoteHead(type.toUpperCase(), duration);
+        const codeNoteHead = _tables__WEBPACK_IMPORTED_MODULE_2__.Tables.codeNoteHead(type.toUpperCase(), duration);
         // Merge duration props for 'duration' with the note head properties.
-        if (codeNoteHead !== '\u0000') {
+        if (codeNoteHead !== _glyphs__WEBPACK_IMPORTED_MODULE_0__.Glyphs.null) {
             code = Object.assign(Object.assign({}, code), { codeHead: codeNoteHead });
         }
         return code;
     }
     /** Debug helper. Displays various note metrics for the given note. */
     static plotMetrics(ctx, note, yPos) {
+        var _a;
         const metrics = note.getMetrics();
         const xStart = note.getAbsoluteX() - metrics.modLeftPx - metrics.leftDisplacedHeadPx;
         const xPre1 = note.getAbsoluteX() - metrics.leftDisplacedHeadPx;
@@ -22919,10 +24746,10 @@ class Note extends _tickable__WEBPACK_IMPORTED_MODULE_2__.Tickable {
         const xPost1 = note.getAbsoluteX() + metrics.notePx;
         const xPost2 = note.getAbsoluteX() + metrics.notePx + metrics.rightDisplacedHeadPx;
         const xEnd = note.getAbsoluteX() + metrics.notePx + metrics.rightDisplacedHeadPx + metrics.modRightPx;
-        const xFreedomRight = xEnd + (note.getFormatterMetrics().freedom.right || 0);
+        const xFreedomRight = xEnd + ((_a = note.getFormatterMetrics().freedom.right) !== null && _a !== void 0 ? _a : 0);
         const xWidth = xEnd - xStart;
         ctx.save();
-        ctx.setFont(_tables__WEBPACK_IMPORTED_MODULE_1__.Tables.lookupMetric('fontFamily'), 8);
+        ctx.setFont(_tables__WEBPACK_IMPORTED_MODULE_2__.Tables.lookupMetric('fontFamily'), 8);
         ctx.fillText(Math.round(xWidth) + 'px', xStart + note.getXShift(), yPos);
         const y = yPos + 7;
         function stroke(x1, x2, color, yy = y) {
@@ -22941,7 +24768,7 @@ class Note extends _tickable__WEBPACK_IMPORTED_MODULE_2__.Tickable {
         stroke(xPost2, xEnd, 'red');
         stroke(xEnd, xFreedomRight, '#DD0');
         stroke(xStart - note.getXShift(), xStart, '#BBB'); // Shift
-        (0,_rendercontext__WEBPACK_IMPORTED_MODULE_0__.drawDot)(ctx, xAbs + note.getXShift(), y, 'blue');
+        (0,_rendercontext__WEBPACK_IMPORTED_MODULE_1__.drawDot)(ctx, xAbs + note.getXShift(), y, 'blue');
         const formatterMetrics = note.getFormatterMetrics();
         if (formatterMetrics.iterations > 0) {
             const spaceDeviation = formatterMetrics.space.deviation;
@@ -22973,7 +24800,7 @@ class Note extends _tickable__WEBPACK_IMPORTED_MODULE_2__.Tickable {
         }
         // If specified type is invalid, return undefined.
         let type = noteStruct.type;
-        if (type && !_tables__WEBPACK_IMPORTED_MODULE_1__.Tables.validTypes[type]) {
+        if (type && !_tables__WEBPACK_IMPORTED_MODULE_2__.Tables.validTypes[type]) {
             return undefined;
         }
         // If no type specified, check duration or custom types
@@ -22990,7 +24817,7 @@ class Note extends _tickable__WEBPACK_IMPORTED_MODULE_2__.Tickable {
             }
         }
         // Calculate the tick duration of the note
-        let ticks = _tables__WEBPACK_IMPORTED_MODULE_1__.Tables.durationToTicks(durationProps.duration);
+        let ticks = _tables__WEBPACK_IMPORTED_MODULE_2__.Tables.durationToTicks(durationProps.duration);
         if (!ticks) {
             return undefined;
         }
@@ -23024,12 +24851,12 @@ class Note extends _tickable__WEBPACK_IMPORTED_MODULE_2__.Tickable {
     constructor(noteStruct) {
         super();
         if (!noteStruct) {
-            throw new _util__WEBPACK_IMPORTED_MODULE_4__.RuntimeError('BadArguments', 'Note must have valid initialization data to identify duration and type.');
+            throw new _util__WEBPACK_IMPORTED_MODULE_5__.RuntimeError('BadArguments', 'Note must have valid initialization data to identify duration and type.');
         }
         /** Parses `noteStruct` and get note properties. */
         const parsedNoteStruct = Note.parseNoteStruct(noteStruct);
         if (!parsedNoteStruct) {
-            throw new _util__WEBPACK_IMPORTED_MODULE_4__.RuntimeError('BadArguments', `Invalid note initialization object: ${JSON.stringify(noteStruct)}`);
+            throw new _util__WEBPACK_IMPORTED_MODULE_5__.RuntimeError('BadArguments', `Invalid note initialization object: ${JSON.stringify(noteStruct)}`);
         }
         // Set note properties from parameters.
         this.keys = noteStruct.keys || [];
@@ -23112,7 +24939,7 @@ class Note extends _tickable__WEBPACK_IMPORTED_MODULE_2__.Tickable {
     }
     /** Check and get the target stave. */
     checkStave() {
-        return (0,_util__WEBPACK_IMPORTED_MODULE_4__.defined)(this.stave, 'NoStave', 'No stave attached to instance.');
+        return (0,_util__WEBPACK_IMPORTED_MODULE_5__.defined)(this.stave, 'NoStave', 'No stave attached to instance.');
     }
     /** Set the target stave. */
     setStave(stave) {
@@ -23174,7 +25001,7 @@ class Note extends _tickable__WEBPACK_IMPORTED_MODULE_2__.Tickable {
      */
     getYs() {
         if (this.ys.length === 0) {
-            throw new _util__WEBPACK_IMPORTED_MODULE_4__.RuntimeError('NoYValues', 'No Y-values calculated for this note.');
+            throw new _util__WEBPACK_IMPORTED_MODULE_5__.RuntimeError('NoYValues', 'No Y-values calculated for this note.');
         }
         return this.ys;
     }
@@ -23188,7 +25015,7 @@ class Note extends _tickable__WEBPACK_IMPORTED_MODULE_2__.Tickable {
     /** Return the voice that this note belongs in. */
     getVoice() {
         if (!this.voice)
-            throw new _util__WEBPACK_IMPORTED_MODULE_4__.RuntimeError('NoVoice', 'Note has no voice.');
+            throw new _util__WEBPACK_IMPORTED_MODULE_5__.RuntimeError('NoVoice', 'Note has no voice.');
         return this.voice;
     }
     /** Attach this note to `voice`. */
@@ -23213,7 +25040,7 @@ class Note extends _tickable__WEBPACK_IMPORTED_MODULE_2__.Tickable {
     }
     /** Accessor to isDotted. */
     isDotted() {
-        return this.getModifiersByType(_typeguard__WEBPACK_IMPORTED_MODULE_3__.Category.Dot).length > 0;
+        return this.getModifiersByType(_typeguard__WEBPACK_IMPORTED_MODULE_4__.Category.Dot).length > 0;
     }
     /** Accessor to hasStem. */
     hasStem() {
@@ -23229,7 +25056,7 @@ class Note extends _tickable__WEBPACK_IMPORTED_MODULE_2__.Tickable {
     }
     /** Check and get the beam. */
     checkBeam() {
-        return (0,_util__WEBPACK_IMPORTED_MODULE_4__.defined)(this.beam, 'NoBeam', 'No beam attached to instance');
+        return (0,_util__WEBPACK_IMPORTED_MODULE_5__.defined)(this.beam, 'NoBeam', 'No beam attached to instance');
     }
     /** Check it has a beam. */
     hasBeam() {
@@ -23257,7 +25084,7 @@ class Note extends _tickable__WEBPACK_IMPORTED_MODULE_2__.Tickable {
         // Some versions of VexFlow had the two parameters reversed.
         // Check here and throw an error if the argument types are not correct.
         if (typeof modifier !== 'object' || typeof index !== 'number') {
-            throw new _util__WEBPACK_IMPORTED_MODULE_4__.RuntimeError('WrongParams', 'Incorrect call signature. Use ' + signature + ' instead.');
+            throw new _util__WEBPACK_IMPORTED_MODULE_5__.RuntimeError('WrongParams', 'Incorrect call signature. Use ' + signature + ' instead.');
         }
         modifier.setNote(this);
         modifier.setIndex(index);
@@ -23272,7 +25099,7 @@ class Note extends _tickable__WEBPACK_IMPORTED_MODULE_2__.Tickable {
     // eslint-disable-next-line
     getModifierStartXY(position, index, options) {
         if (!this.preFormatted) {
-            throw new _util__WEBPACK_IMPORTED_MODULE_4__.RuntimeError('UnformattedNote', "Can't call GetModifierStartXY on an unformatted note");
+            throw new _util__WEBPACK_IMPORTED_MODULE_5__.RuntimeError('UnformattedNote', "Can't call GetModifierStartXY on an unformatted note");
         }
         return {
             x: this.getAbsoluteX(),
@@ -23299,7 +25126,7 @@ class Note extends _tickable__WEBPACK_IMPORTED_MODULE_2__.Tickable {
     /** Get the metrics for this note. */
     getMetrics() {
         if (!this.preFormatted) {
-            throw new _util__WEBPACK_IMPORTED_MODULE_4__.RuntimeError('UnformattedNote', "Can't call getMetrics on an unformatted note.");
+            throw new _util__WEBPACK_IMPORTED_MODULE_5__.RuntimeError('UnformattedNote', "Can't call getMetrics on an unformatted note.");
         }
         const modLeftPx = this.modifierContext ? this.modifierContext.getState().leftShift : 0;
         const modRightPx = this.modifierContext ? this.modifierContext.getState().rightShift : 0;
@@ -23334,26 +25161,20 @@ class Note extends _tickable__WEBPACK_IMPORTED_MODULE_2__.Tickable {
         // Position note to left edge of tick context.
         let x = tickContext.getX();
         if (this.stave) {
-            x += this.stave.getNoteStartX() + _tables__WEBPACK_IMPORTED_MODULE_1__.Tables.lookupMetric('Stave.padding', 0);
+            x += this.stave.getNoteStartX() + _tables__WEBPACK_IMPORTED_MODULE_2__.Tables.lookupMetric('Stave.padding', 0);
         }
         if (this.isCenterAligned()) {
             x += this.getCenterXShift();
         }
         return x;
     }
-    /** Get point for notes. */
-    static getPoint(size) {
-        const fontSize = _tables__WEBPACK_IMPORTED_MODULE_1__.Tables.lookupMetric('fontSize');
-        // for sizes other than 'default', note is 2/3 of the default value
-        return size === 'default' ? fontSize : (fontSize * 3) / 5;
-    }
     /** Get the direction of the stem. */
     getStemDirection() {
-        throw new _util__WEBPACK_IMPORTED_MODULE_4__.RuntimeError('NoStem', 'No stem attached to this note.');
+        throw new _util__WEBPACK_IMPORTED_MODULE_5__.RuntimeError('NoStem', 'No stem attached to this note.');
     }
     /** Get the top and bottom `y` values of the stem. */
     getStemExtents() {
-        throw new _util__WEBPACK_IMPORTED_MODULE_4__.RuntimeError('NoStem', 'No stem attached to this note.');
+        throw new _util__WEBPACK_IMPORTED_MODULE_5__.RuntimeError('NoStem', 'No stem attached to this note.');
     }
     /** Get the `x` coordinate to the right of the note. */
     getTieRightX() {
@@ -23622,9 +25443,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   Ornament: () => (/* binding */ Ornament)
 /* harmony export */ });
-/* harmony import */ var _glyph__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./glyph */ "./src/glyph.ts");
-/* harmony import */ var _modifier__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./modifier */ "./src/modifier.ts");
-/* harmony import */ var _stem__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./stem */ "./src/stem.ts");
+/* harmony import */ var _articulation__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./articulation */ "./src/articulation.ts");
+/* harmony import */ var _element__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./element */ "./src/element.ts");
+/* harmony import */ var _modifier__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./modifier */ "./src/modifier.ts");
 /* harmony import */ var _tables__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./tables */ "./src/tables.ts");
 /* harmony import */ var _tickcontext__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./tickcontext */ "./src/tickcontext.ts");
 /* harmony import */ var _typeguard__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./typeguard */ "./src/typeguard.ts");
@@ -23651,7 +25472,7 @@ function L(...args) {
  *
  * See `tests/ornament_tests.ts` for usage examples.
  */
-class Ornament extends _modifier__WEBPACK_IMPORTED_MODULE_1__.Modifier {
+class Ornament extends _modifier__WEBPACK_IMPORTED_MODULE_2__.Modifier {
     /** Ornaments category string. */
     static get CATEGORY() {
         return _typeguard__WEBPACK_IMPORTED_MODULE_5__.Category.Ornament;
@@ -23666,50 +25487,26 @@ class Ornament extends _modifier__WEBPACK_IMPORTED_MODULE_1__.Modifier {
         let width = 0; // width is used by ornaments, which are always centered on the note head
         let rightShift = state.rightShift; // jazz ornaments calculate r/l shift separately
         let leftShift = state.leftShift;
-        let yOffset = 0;
         for (let i = 0; i < ornaments.length; ++i) {
             const ornament = ornaments[i];
             const increment = 2;
-            if (Ornament.ornamentRelease.indexOf(ornament.type) >= 0) {
+            if (ornament.position === _modifier__WEBPACK_IMPORTED_MODULE_2__.ModifierPosition.RIGHT) {
                 ornament.xShift += rightShift + 2;
+                rightShift += ornament.width + Ornament.minPadding;
             }
-            if (Ornament.ornamentAttack.indexOf(ornament.type) >= 0) {
-                ornament.xShift -= leftShift + 2;
+            else if (ornament.position === _modifier__WEBPACK_IMPORTED_MODULE_2__.ModifierPosition.LEFT) {
+                ornament.xShift -= leftShift + ornament.width + 2;
+                leftShift += ornament.width + Ornament.minPadding;
             }
-            if (ornament.reportedWidth && ornament.xShift < 0) {
-                leftShift += ornament.reportedWidth;
-            }
-            else if (ornament.reportedWidth && ornament.xShift >= 0) {
-                rightShift += ornament.reportedWidth + Ornament.minPadding;
+            else if (ornament.position === _modifier__WEBPACK_IMPORTED_MODULE_2__.ModifierPosition.ABOVE) {
+                width = Math.max(ornament.getWidth(), width);
+                ornament.setTextLine(state.topTextLine);
+                state.topTextLine += increment;
             }
             else {
                 width = Math.max(ornament.getWidth(), width);
-            }
-            // articulations above/below the line can be stacked.
-            if (Ornament.ornamentArticulation.indexOf(ornament.type) >= 0) {
-                // Unfortunately we don't know the stem direction.  So we base it
-                // on the line number, but also allow it to be overridden.
-                const ornamentNote = (0,_util__WEBPACK_IMPORTED_MODULE_6__.defined)(ornament.note, 'NoAttachedNote');
-                if (ornamentNote.getLineNumber() >= 3 || ornament.getPosition() === _modifier__WEBPACK_IMPORTED_MODULE_1__.Modifier.Position.ABOVE) {
-                    state.topTextLine += increment;
-                    ornament.yShift += yOffset;
-                    yOffset -= ornament.glyph.bbox.getH();
-                }
-                else {
-                    state.textLine += increment;
-                    ornament.yShift += yOffset;
-                    yOffset += ornament.glyph.bbox.getH();
-                }
-            }
-            else {
-                if (ornament.getPosition() === _modifier__WEBPACK_IMPORTED_MODULE_1__.Modifier.Position.ABOVE) {
-                    ornament.setTextLine(state.topTextLine);
-                    state.topTextLine += increment;
-                }
-                else {
-                    ornament.setTextLine(state.textLine);
-                    state.textLine += increment;
-                }
+                ornament.setTextLine(state.textLine);
+                state.textLine += increment;
             }
         }
         // Note: 'legit' ornaments don't consider other modifiers when calculating their
@@ -23737,7 +25534,7 @@ class Ornament extends _modifier__WEBPACK_IMPORTED_MODULE_1__.Modifier {
      * stem goes up or down.
      */
     static get ornamentAlignWithNoteHead() {
-        return ['doit', 'fall', 'fallLong', 'doitLong', 'bend', 'plungerClosed', 'plungerOpen', 'scoop'];
+        return ['doit', 'fall', 'fallLong', 'doitLong', 'scoop'];
     }
     /**
      * An ornament that happens on the release of the note, generally placed after the
@@ -23746,19 +25543,18 @@ class Ornament extends _modifier__WEBPACK_IMPORTED_MODULE_1__.Modifier {
     static get ornamentRelease() {
         return ['doit', 'fall', 'fallLong', 'doitLong', 'jazzTurn', 'smear', 'flip'];
     }
+    static get ornamentLeft() {
+        return ['scoop'];
+    }
+    static get ornamentRight() {
+        return ['doit', 'fall', 'fallLong', 'doitLong'];
+    }
+    static get ornamentYShift() {
+        return ['fallLong'];
+    }
     /** ornamentArticulation goes above/below the note based on space availablity */
     static get ornamentArticulation() {
         return ['bend', 'plungerClosed', 'plungerOpen'];
-    }
-    /**
-     * Legacy ornaments have hard-coded metrics.  If additional ornament types are
-     * added, get their metrics here.
-     */
-    getMetrics() {
-        const ornamentMetrics = _tables__WEBPACK_IMPORTED_MODULE_3__.Tables.currentMusicFont().getMetrics().ornament;
-        if (!ornamentMetrics)
-            throw new _util__WEBPACK_IMPORTED_MODULE_6__.RuntimeError('BadMetrics', `ornament missing`);
-        return ornamentMetrics[this.ornament.code];
     }
     /**
      * Create a new ornament of type `type`, which is an entry in
@@ -23766,42 +25562,45 @@ class Ornament extends _modifier__WEBPACK_IMPORTED_MODULE_1__.Modifier {
      */
     constructor(type) {
         super();
+        // Default position ABOVE
+        this.position = _modifier__WEBPACK_IMPORTED_MODULE_2__.ModifierPosition.ABOVE;
+        if (Ornament.ornamentRight.indexOf(type) >= 0) {
+            this.position = _modifier__WEBPACK_IMPORTED_MODULE_2__.ModifierPosition.RIGHT;
+        }
+        if (Ornament.ornamentLeft.indexOf(type) >= 0) {
+            this.position = _modifier__WEBPACK_IMPORTED_MODULE_2__.ModifierPosition.LEFT;
+        }
         this.type = type;
         this.delayed = false;
         this.renderOptions = {
-            fontScale: _tables__WEBPACK_IMPORTED_MODULE_3__.Tables.NOTATION_FONT_SCALE,
             accidentalLowerPadding: 3,
             accidentalUpperPadding: 3,
         };
-        this.ornament = _tables__WEBPACK_IMPORTED_MODULE_3__.Tables.ornamentCodes(this.type);
-        // new ornaments have their origin at the origin, and have more specific
-        // metrics.  Legacy ornaments do some
-        // x scaling, and have hard-coded metrics
-        const metrics = this.getMetrics();
         // some jazz ornaments are above or below depending on stem direction.
         this.adjustForStemDirection = false;
-        // some jazz ornaments like falls are supposed to overlap with future bars
-        // and so we report a different width than they actually take up.
-        this.reportedWidth = metrics && metrics.reportedWidth ? metrics.reportedWidth : 0;
-        this.stemUpYOffset = metrics && metrics.stemUpYOffset ? metrics.stemUpYOffset : 0;
         this.ornamentAlignWithNoteHead = Ornament.ornamentAlignWithNoteHead.indexOf(this.type) >= 0;
-        if (!this.ornament) {
-            throw new _util__WEBPACK_IMPORTED_MODULE_6__.RuntimeError('ArgumentError', `Ornament not found: '${this.type}'`);
-        }
-        this.xShift = metrics ? metrics.xOffset : 0;
-        this.yShift = metrics ? metrics.yOffset : 0;
-        this.glyph = new _glyph__WEBPACK_IMPORTED_MODULE_0__.Glyph(this.ornament.code, this.renderOptions.fontScale, {
-            category: `ornament.${this.ornament.code}`,
-        });
         // Is this a jazz ornament that goes between this note and the next note.
         if (Ornament.ornamentNoteTransition.indexOf(this.type) >= 0) {
             this.delayed = true;
         }
-        // Legacy ornaments need this.  I don't know why, but horizontal spacing issues
-        // happen if I don't set it.
-        if (!metrics) {
-            this.glyph.setOrigin(0.5, 1.0); // FIXME: SMuFL won't require a vertical origin shift
+        this.text = _tables__WEBPACK_IMPORTED_MODULE_3__.Tables.ornamentCodes(this.type);
+        this.measureText();
+    }
+    /** Set note attached to ornament. */
+    setNote(note) {
+        super.setNote(note);
+        // articulations above/below the line can be stacked.
+        if (Ornament.ornamentArticulation.indexOf(this.type) >= 0) {
+            // Unfortunately we don't know the stem direction.  So we base it
+            // on the line number, but also allow it to be overridden.
+            if (note.getLineNumber() >= 3) {
+                this.position = _modifier__WEBPACK_IMPORTED_MODULE_2__.Modifier.Position.ABOVE;
+            }
+            else {
+                this.position = _modifier__WEBPACK_IMPORTED_MODULE_2__.Modifier.Position.BELOW;
+            }
         }
+        return this;
     }
     /** Set whether the ornament is to be delayed. */
     setDelayed(delayed) {
@@ -23810,16 +25609,16 @@ class Ornament extends _modifier__WEBPACK_IMPORTED_MODULE_1__.Modifier {
     }
     /** Set the upper accidental for the ornament. */
     setUpperAccidental(accid) {
-        const scale = this.renderOptions.fontScale / 1.3;
-        this.accidentalUpper = new _glyph__WEBPACK_IMPORTED_MODULE_0__.Glyph(_tables__WEBPACK_IMPORTED_MODULE_3__.Tables.accidentalCodesOld(accid).code, scale);
-        this.accidentalUpper.setOrigin(0.5, 1.0);
+        this.accidentalUpper = new _element__WEBPACK_IMPORTED_MODULE_1__.Element();
+        this.accidentalUpper.setText(_tables__WEBPACK_IMPORTED_MODULE_3__.Tables.accidentalCodes(accid));
+        this.accidentalUpper.measureText();
         return this;
     }
     /** Set the lower accidental for the ornament. */
     setLowerAccidental(accid) {
-        const scale = this.renderOptions.fontScale / 1.3;
-        this.accidentalLower = new _glyph__WEBPACK_IMPORTED_MODULE_0__.Glyph(_tables__WEBPACK_IMPORTED_MODULE_3__.Tables.accidentalCodesOld(accid).code, scale);
-        this.accidentalLower.setOrigin(0.5, 1.0);
+        this.accidentalLower = new _element__WEBPACK_IMPORTED_MODULE_1__.Element();
+        this.accidentalLower.setText(_tables__WEBPACK_IMPORTED_MODULE_3__.Tables.accidentalCodes(accid));
+        this.accidentalLower.measureText();
         return this;
     }
     /** Render ornament in position next to note. */
@@ -23827,52 +25626,31 @@ class Ornament extends _modifier__WEBPACK_IMPORTED_MODULE_1__.Modifier {
         const ctx = this.checkContext();
         const note = this.checkAttachedNote();
         this.setRendered();
-        const stemDir = note.getStemDirection();
         const stave = note.checkStave();
         this.applyStyle();
         ctx.openGroup('ornament', this.getAttribute('id'));
-        // Get stem extents
-        const stemExtents = note.checkStem().getExtents();
-        let y = stemDir === _stem__WEBPACK_IMPORTED_MODULE_2__.Stem.DOWN ? stemExtents.baseY : stemExtents.topY;
-        // TabNotes don't have stems attached to them. Tab stems are rendered outside the stave.
-        if ((0,_typeguard__WEBPACK_IMPORTED_MODULE_5__.isTabNote)(note)) {
-            if (note.hasStem()) {
-                if (stemDir === _stem__WEBPACK_IMPORTED_MODULE_2__.Stem.DOWN) {
-                    y = stave.getYForTopText(this.textLine);
-                }
-            }
-            else {
-                // Without a stem
-                y = stave.getYForTopText(this.textLine);
-            }
-        }
-        const isPlacedOnNoteheadSide = stemDir === _stem__WEBPACK_IMPORTED_MODULE_2__.Stem.DOWN;
-        const spacing = stave.getSpacingBetweenLines();
-        let lineSpacing = 1;
-        // Beamed stems are longer than quarter note stems, adjust accordingly
-        if (!isPlacedOnNoteheadSide && note.hasBeam()) {
-            lineSpacing += 0.5;
-        }
-        const totalSpacing = spacing * (this.textLine + lineSpacing);
-        const glyphYBetweenLines = y - totalSpacing;
         // Get initial coordinates for the modifier position
         const start = note.getModifierStartXY(this.position, this.index);
         let glyphX = start.x;
+        const staffSpace = stave.getSpacingBetweenLines();
+        const initialOffset = (0,_articulation__WEBPACK_IMPORTED_MODULE_0__.getInitialOffset)(note, this.position);
         // If the ornament is aligned with the note head, don't consider the stave y
         // but use the 'natural' modifier y
-        let glyphY = this.ornamentAlignWithNoteHead
-            ? start.y
-            : Math.min(stave.getYForTopText(this.textLine), glyphYBetweenLines);
-        glyphY += this.yShift;
+        let glyphY = this.ornamentAlignWithNoteHead ? start.y : 0;
+        if (this.position === _modifier__WEBPACK_IMPORTED_MODULE_2__.ModifierPosition.ABOVE) {
+            glyphY = (0,_articulation__WEBPACK_IMPORTED_MODULE_0__.getTopY)(note, this.textLine) - (this.textLine + initialOffset) * staffSpace;
+        }
+        if (this.position === _modifier__WEBPACK_IMPORTED_MODULE_2__.ModifierPosition.BELOW) {
+            glyphY = (0,_articulation__WEBPACK_IMPORTED_MODULE_0__.getBottomY)(note, this.textLine) + (this.textLine + initialOffset + 1.5) * staffSpace;
+        }
         // Ajdust x position if ornament is delayed
         if (this.delayed) {
             let delayXShift = 0;
-            const startX = glyphX - (stave.getX() - 10);
+            const startX = note.getTickContext().getX();
             if (this.delayXShift !== undefined) {
                 delayXShift = this.delayXShift;
             }
             else {
-                delayXShift += this.glyph.getMetrics().width / 2;
                 const nextContext = _tickcontext__WEBPACK_IMPORTED_MODULE_4__.TickContext.getNextContext(note.getTickContext());
                 if (nextContext) {
                     delayXShift += (nextContext.getX() - startX) * 0.5;
@@ -23884,22 +25662,20 @@ class Ornament extends _modifier__WEBPACK_IMPORTED_MODULE_1__.Modifier {
             }
             glyphX += delayXShift;
         }
-        L('Rendering ornament: ', this.ornament, glyphX, glyphY);
+        L('Rendering ornament: ', this.text.charCodeAt(0), glyphX, glyphY);
         if (this.accidentalLower) {
-            this.accidentalLower.render(ctx, glyphX, glyphY);
-            glyphY -= this.accidentalLower.getMetrics().height;
-            glyphY -= this.renderOptions.accidentalLowerPadding;
+            this.accidentalLower.renderText(ctx, glyphX + this.xShift - this.accidentalLower.getWidth() * 0.5, glyphY + this.yShift - this.accidentalLower.getTextMetrics().actualBoundingBoxDescent);
+            glyphY -= this.accidentalLower.getHeight() + this.renderOptions.accidentalLowerPadding;
         }
-        if (this.stemUpYOffset && note.hasStem() && note.getStemDirection() === 1) {
-            glyphY += this.stemUpYOffset;
+        // ornament requires yShift
+        if (Ornament.ornamentYShift.indexOf(this.type) >= 0) {
+            this.yShift += this.getHeight();
         }
-        if (note.getLineNumber() < 5 && Ornament.ornamentNoteTransition.indexOf(this.type) >= 0) {
-            glyphY = note.checkStave().getBoundingBox().getY() + 40;
-        }
-        this.glyph.render(ctx, glyphX + this.xShift, glyphY);
+        this.renderText(ctx, glyphX -
+            (this.position === _modifier__WEBPACK_IMPORTED_MODULE_2__.ModifierPosition.ABOVE || this.position === _modifier__WEBPACK_IMPORTED_MODULE_2__.ModifierPosition.BELOW ? this.width * 0.5 : 0), glyphY);
         if (this.accidentalUpper) {
-            glyphY -= this.glyph.getMetrics().height + this.renderOptions.accidentalUpperPadding;
-            this.accidentalUpper.render(ctx, glyphX, glyphY);
+            glyphY -= this.getHeight() + this.renderOptions.accidentalUpperPadding;
+            this.accidentalUpper.renderText(ctx, glyphX + this.xShift - this.accidentalUpper.getWidth() * 0.5, glyphY + this.yShift - this.accidentalUpper.getTextMetrics().actualBoundingBoxDescent);
         }
         ctx.closeGroup();
         this.restoreStyle();
@@ -23921,30 +25697,24 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   Parenthesis: () => (/* binding */ Parenthesis)
 /* harmony export */ });
-/* harmony import */ var _glyph__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./glyph */ "./src/glyph.ts");
-/* harmony import */ var _modifier__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./modifier */ "./src/modifier.ts");
-/* harmony import */ var _note__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./note */ "./src/note.ts");
-/* harmony import */ var _tables__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./tables */ "./src/tables.ts");
-/* harmony import */ var _typeguard__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./typeguard */ "./src/typeguard.ts");
+/* harmony import */ var _modifier__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./modifier */ "./src/modifier.ts");
+/* harmony import */ var _typeguard__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./typeguard */ "./src/typeguard.ts");
 // Copyright (c) 2023-present VexFlow contributors: https://github.com/vexflow/vexflow/graphs/contributors
 // @author Rodrigo Vilar
 // MIT License
 
 
-
-
-
 /** Parenthesis implements parenthesis modifiers for notes. */
-class Parenthesis extends _modifier__WEBPACK_IMPORTED_MODULE_1__.Modifier {
+class Parenthesis extends _modifier__WEBPACK_IMPORTED_MODULE_0__.Modifier {
     static get CATEGORY() {
-        return _typeguard__WEBPACK_IMPORTED_MODULE_4__.Category.Parenthesis;
+        return _typeguard__WEBPACK_IMPORTED_MODULE_1__.Category.Parenthesis;
     }
     /** Add parentheses to the notes. */
     static buildAndAttach(notes) {
         for (const note of notes) {
             for (let i = 0; i < note.keys.length; i++) {
-                note.addModifier(new Parenthesis(_modifier__WEBPACK_IMPORTED_MODULE_1__.ModifierPosition.LEFT), i);
-                note.addModifier(new Parenthesis(_modifier__WEBPACK_IMPORTED_MODULE_1__.ModifierPosition.RIGHT), i);
+                note.addModifier(new Parenthesis(_modifier__WEBPACK_IMPORTED_MODULE_0__.ModifierPosition.LEFT), i);
+                note.addModifier(new Parenthesis(_modifier__WEBPACK_IMPORTED_MODULE_0__.ModifierPosition.RIGHT), i);
             }
         }
     }
@@ -23960,12 +25730,12 @@ class Parenthesis extends _modifier__WEBPACK_IMPORTED_MODULE_1__.Modifier {
             const pos = parenthesis.getPosition();
             const index = parenthesis.checkIndex();
             let shift = 0;
-            if (pos === _modifier__WEBPACK_IMPORTED_MODULE_1__.ModifierPosition.RIGHT) {
+            if (pos === _modifier__WEBPACK_IMPORTED_MODULE_0__.ModifierPosition.RIGHT) {
                 shift = note.getRightParenthesisPx(index);
                 xWidthR = xWidthR > shift + parenthesis.width ? xWidthR : shift + parenthesis.width;
             }
-            if (pos === _modifier__WEBPACK_IMPORTED_MODULE_1__.ModifierPosition.LEFT) {
-                shift = note.getLeftParenthesisPx(index);
+            if (pos === _modifier__WEBPACK_IMPORTED_MODULE_0__.ModifierPosition.LEFT) {
+                shift = note.getLeftParenthesisPx(index) + parenthesis.width;
                 xWidthL = xWidthL > shift + parenthesis.width ? xWidthL : shift + parenthesis.width;
             }
             parenthesis.setXShift(shift);
@@ -23980,22 +25750,19 @@ class Parenthesis extends _modifier__WEBPACK_IMPORTED_MODULE_1__.Modifier {
      * @param position Modifier.Position.LEFT (default) or Modifier.Position.RIGHT
      */
     constructor(position) {
-        var _a;
         super();
-        this.position = position !== null && position !== void 0 ? position : _modifier__WEBPACK_IMPORTED_MODULE_1__.Modifier.Position.LEFT;
-        this.point = (_a = _tables__WEBPACK_IMPORTED_MODULE_3__.Tables.currentMusicFont().lookupMetric('parenthesis.default.point')) !== null && _a !== void 0 ? _a : _note__WEBPACK_IMPORTED_MODULE_2__.Note.getPoint('default');
-        this.setWidth(_tables__WEBPACK_IMPORTED_MODULE_3__.Tables.currentMusicFont().lookupMetric('parenthesis.default.width'));
+        this.position = position !== null && position !== void 0 ? position : _modifier__WEBPACK_IMPORTED_MODULE_0__.Modifier.Position.LEFT;
+        if (this.position === _modifier__WEBPACK_IMPORTED_MODULE_0__.Modifier.Position.RIGHT) {
+            this.text = '\uE0F6'; /*noteheadParenthesisRight*/
+        }
+        else if (this.position === _modifier__WEBPACK_IMPORTED_MODULE_0__.Modifier.Position.LEFT) {
+            this.text = '\uE0F5'; /*noteheadParenthesisLeft*/
+        }
     }
     /** Set the associated note. */
     setNote(note) {
-        var _a, _b;
         this.note = note;
-        this.point = (_a = _tables__WEBPACK_IMPORTED_MODULE_3__.Tables.currentMusicFont().lookupMetric('parenthesis.default.point')) !== null && _a !== void 0 ? _a : _note__WEBPACK_IMPORTED_MODULE_2__.Note.getPoint('default');
-        this.setWidth(_tables__WEBPACK_IMPORTED_MODULE_3__.Tables.currentMusicFont().lookupMetric('parenthesis.default.width'));
-        if ((0,_typeguard__WEBPACK_IMPORTED_MODULE_4__.isGraceNote)(note)) {
-            this.point = (_b = _tables__WEBPACK_IMPORTED_MODULE_3__.Tables.currentMusicFont().lookupMetric('parenthesis.gracenote.point')) !== null && _b !== void 0 ? _b : _note__WEBPACK_IMPORTED_MODULE_2__.Note.getPoint('gracenote');
-            this.setWidth(_tables__WEBPACK_IMPORTED_MODULE_3__.Tables.currentMusicFont().lookupMetric('parenthesis.gracenote.width'));
-        }
+        this.setFont(note.getFont());
         return this;
     }
     /** Render the parenthesis. */
@@ -24004,18 +25771,7 @@ class Parenthesis extends _modifier__WEBPACK_IMPORTED_MODULE_1__.Modifier {
         const note = this.checkAttachedNote();
         this.setRendered();
         const start = note.getModifierStartXY(this.position, this.index, { forceFlagRight: true });
-        const x = start.x + this.xShift;
-        const y = start.y + this.yShift;
-        if (this.position == _modifier__WEBPACK_IMPORTED_MODULE_1__.Modifier.Position.RIGHT) {
-            _glyph__WEBPACK_IMPORTED_MODULE_0__.Glyph.renderGlyph(ctx, x + 1, y, this.point, 'noteheadParenthesisRight', {
-                category: `noteHead.standard.noteheadParenthesisRight`,
-            });
-        }
-        else if (this.position == _modifier__WEBPACK_IMPORTED_MODULE_1__.Modifier.Position.LEFT) {
-            _glyph__WEBPACK_IMPORTED_MODULE_0__.Glyph.renderGlyph(ctx, x - 2, y, this.point, 'noteheadParenthesisLeft', {
-                category: `noteHead.standard.noteheadParenthesisLeft`,
-            });
-        }
+        this.renderText(ctx, start.x, start.y);
     }
 }
 
@@ -24668,14 +26424,6 @@ class RenderContext {
     get font() {
         return this.getFont();
     }
-    /**
-     * This is kept for backwards compatibility with 3.0.9.
-     * @deprecated use `setFont(...)` instead since it now supports CSS font shorthand.
-     */
-    setRawFont(f) {
-        this.setFont(f);
-        return this;
-    }
 }
 /**
  * Draw a tiny dot marker on the specified context. A great debugging aid.
@@ -24796,7 +26544,7 @@ class Renderer {
             }
             const backend = arg1;
             let element;
-            if (typeof arg0 == 'string') {
+            if (typeof arg0 === 'string') {
                 const maybeElement = document.getElementById(arg0);
                 if (!maybeElement) {
                     throw new _util__WEBPACK_IMPORTED_MODULE_3__.RuntimeError('BadElementId', `Can't find element with ID "${maybeElement}"`);
@@ -25370,6 +27118,7 @@ class Stave extends _element__WEBPACK_IMPORTED_MODULE_2__.Element {
         }
     }
     format() {
+        var _a, _b, _c, _d;
         const begBarline = this.modifiers[0];
         const endBarline = this.modifiers[1];
         const begModifiers = this.getModifiers(_stavemodifier__WEBPACK_IMPORTED_MODULE_5__.StaveModifierPosition.BEGIN);
@@ -25417,11 +27166,11 @@ class Stave extends _element__WEBPACK_IMPORTED_MODULE_2__.Element {
             const layoutMetrics = modifier.getLayoutMetrics();
             if (layoutMetrics) {
                 if (i !== 0) {
-                    widths.right = layoutMetrics.xMax || 0;
-                    widths.paddingRight = layoutMetrics.paddingRight || 0;
+                    widths.right = (_a = layoutMetrics.xMax) !== null && _a !== void 0 ? _a : 0;
+                    widths.paddingRight = (_b = layoutMetrics.paddingRight) !== null && _b !== void 0 ? _b : 0;
                 }
-                widths.left = -layoutMetrics.xMin || 0;
-                widths.paddingLeft = layoutMetrics.paddingLeft || 0;
+                widths.left = (_c = -layoutMetrics.xMin) !== null && _c !== void 0 ? _c : 0;
+                widths.paddingLeft = (_d = layoutMetrics.paddingLeft) !== null && _d !== void 0 ? _d : 0;
                 if (i === endModifiers.length - 1) {
                     widths.paddingLeft = 0;
                 }
@@ -25539,7 +27288,7 @@ class Stave extends _element__WEBPACK_IMPORTED_MODULE_2__.Element {
         // eslint-disable-next-line
         for (const lineConfig in linesConfiguration) {
             // Allow '{}' to be used if the caller just wants the default for a particular node.
-            if (linesConfiguration[lineConfig].visible == undefined) {
+            if (linesConfiguration[lineConfig].visible === undefined) {
                 linesConfiguration[lineConfig] = this.options.lineConfig[lineConfig];
             }
             this.options.lineConfig[lineConfig] = Object.assign(Object.assign({}, this.options.lineConfig[lineConfig]), linesConfiguration[lineConfig]);
@@ -25604,7 +27353,7 @@ class Stave extends _element__WEBPACK_IMPORTED_MODULE_2__.Element {
         staves.forEach((stave) => {
             const modifiers = stave.getModifiers(_stavemodifier__WEBPACK_IMPORTED_MODULE_5__.StaveModifierPosition.BEGIN, _typeguard__WEBPACK_IMPORTED_MODULE_13__.Category.Barline);
             modifiers.forEach((modifier) => {
-                if (modifier.getType() == _stavebarline__WEBPACK_IMPORTED_MODULE_4__.BarlineType.REPEAT_BEGIN)
+                if (modifier.getType() === _stavebarline__WEBPACK_IMPORTED_MODULE_4__.BarlineType.REPEAT_BEGIN)
                     if (modifier.getX() > maxX)
                         maxX = modifier.getX();
             });
@@ -25612,7 +27361,7 @@ class Stave extends _element__WEBPACK_IMPORTED_MODULE_2__.Element {
         staves.forEach((stave) => {
             const modifiers = stave.getModifiers(_stavemodifier__WEBPACK_IMPORTED_MODULE_5__.StaveModifierPosition.BEGIN, _typeguard__WEBPACK_IMPORTED_MODULE_13__.Category.Barline);
             modifiers.forEach((modifier) => {
-                if (modifier.getType() == _stavebarline__WEBPACK_IMPORTED_MODULE_4__.BarlineType.REPEAT_BEGIN)
+                if (modifier.getType() === _stavebarline__WEBPACK_IMPORTED_MODULE_4__.BarlineType.REPEAT_BEGIN)
                     modifier.setX(maxX);
             });
         });
@@ -25849,20 +27598,18 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   StaveConnector: () => (/* binding */ StaveConnector)
 /* harmony export */ });
 /* harmony import */ var _element__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./element */ "./src/element.ts");
-/* harmony import */ var _glyph__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./glyph */ "./src/glyph.ts");
-/* harmony import */ var _tables__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./tables */ "./src/tables.ts");
-/* harmony import */ var _typeguard__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./typeguard */ "./src/typeguard.ts");
-/* harmony import */ var _util__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./util */ "./src/util.ts");
+/* harmony import */ var _tables__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./tables */ "./src/tables.ts");
+/* harmony import */ var _typeguard__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./typeguard */ "./src/typeguard.ts");
+/* harmony import */ var _util__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./util */ "./src/util.ts");
 // Copyright (c) 2023-present VexFlow contributors: https://github.com/vexflow/vexflow/graphs/contributors
 // MIT License
 
 
 
 
-
 function drawBoldDoubleLine(ctx, type, topX, topY, botY) {
     if (type !== StaveConnector.type.BOLD_DOUBLE_LEFT && type !== StaveConnector.type.BOLD_DOUBLE_RIGHT) {
-        throw new _util__WEBPACK_IMPORTED_MODULE_4__.RuntimeError('InvalidConnector', 'A REPEAT_BEGIN or REPEAT_END type must be provided.');
+        throw new _util__WEBPACK_IMPORTED_MODULE_3__.RuntimeError('InvalidConnector', 'A REPEAT_BEGIN or REPEAT_END type must be provided.');
     }
     let xShift = 3;
     let variableWidth = 3.5; // Width for avoiding anti-aliasing width issues
@@ -25879,12 +27626,11 @@ function drawBoldDoubleLine(ctx, type, topX, topY, botY) {
 /** StaveConnector implements the connector lines between staves of a system. */
 class StaveConnector extends _element__WEBPACK_IMPORTED_MODULE_0__.Element {
     static get CATEGORY() {
-        return _typeguard__WEBPACK_IMPORTED_MODULE_3__.Category.StaveConnector;
+        return _typeguard__WEBPACK_IMPORTED_MODULE_2__.Category.StaveConnector;
     }
     constructor(topStave, bottomStave) {
         super();
-        this.thickness = _tables__WEBPACK_IMPORTED_MODULE_2__.Tables.STAVE_LINE_THICKNESS;
-        this.width = 3;
+        this.thickness = _tables__WEBPACK_IMPORTED_MODULE_1__.Tables.STAVE_LINE_THICKNESS;
         this.topStave = topStave;
         this.bottomStave = bottomStave;
         this.type = StaveConnector.type.DOUBLE;
@@ -25914,21 +27660,14 @@ class StaveConnector extends _element__WEBPACK_IMPORTED_MODULE_0__.Element {
     }
     /** Set optional associated Text. */
     setText(text, options = {}) {
-        this.texts.push({
-            content: text,
-            options: Object.assign({ shiftX: 0, shiftY: 0 }, options),
-        });
+        var _a, _b;
+        const textElement = new _element__WEBPACK_IMPORTED_MODULE_0__.Element('StaveConnector.text');
+        textElement.setText(text);
+        textElement.setXShift((_a = options.shiftX) !== null && _a !== void 0 ? _a : 0);
+        textElement.setYShift((_b = options.shiftY) !== null && _b !== void 0 ? _b : 0);
+        textElement.measureText();
+        this.texts.push(textElement);
         return this;
-    }
-    setXShift(xShift) {
-        if (typeof xShift !== 'number') {
-            throw new _util__WEBPACK_IMPORTED_MODULE_4__.RuntimeError('InvalidType', 'xShift must be a Number');
-        }
-        this.xShift = xShift;
-        return this;
-    }
-    getXShift() {
-        return this.xShift;
     }
     /** Render connector and associated text. */
     draw() {
@@ -25936,7 +27675,7 @@ class StaveConnector extends _element__WEBPACK_IMPORTED_MODULE_0__.Element {
         this.setRendered();
         let topY = this.topStave.getYForLine(0);
         let botY = this.bottomStave.getYForLine(this.bottomStave.getNumLines() - 1) + this.thickness;
-        let width = this.width;
+        let width = 3;
         let topX = this.topStave.getX();
         const isRightSidedConnector = this.type === StaveConnector.type.SINGLE_RIGHT ||
             this.type === StaveConnector.type.BOLD_DOUBLE_RIGHT ||
@@ -25945,6 +27684,7 @@ class StaveConnector extends _element__WEBPACK_IMPORTED_MODULE_0__.Element {
             topX = this.topStave.getX() + this.topStave.getWidth();
         }
         let attachmentHeight = botY - topY;
+        const element = new _element__WEBPACK_IMPORTED_MODULE_0__.Element();
         switch (this.type) {
             case StaveConnector.type.SINGLE:
                 width = 1;
@@ -25956,7 +27696,7 @@ class StaveConnector extends _element__WEBPACK_IMPORTED_MODULE_0__.Element {
                 width = 1;
                 break;
             case StaveConnector.type.DOUBLE:
-                topX -= this.width + 2;
+                topX -= 5;
                 topY -= this.thickness;
                 attachmentHeight += 0.5;
                 break;
@@ -25999,9 +27739,11 @@ class StaveConnector extends _element__WEBPACK_IMPORTED_MODULE_0__.Element {
                 topY -= 6;
                 botY += 6;
                 attachmentHeight = botY - topY;
-                _glyph__WEBPACK_IMPORTED_MODULE_1__.Glyph.renderGlyph(ctx, topX - 5, topY, 40, 'bracketTop');
-                _glyph__WEBPACK_IMPORTED_MODULE_1__.Glyph.renderGlyph(ctx, topX - 5, botY, 40, 'bracketBottom');
-                topX -= this.width + 2;
+                element.setText('\ue003' /* bracketTop */);
+                element.renderText(ctx, topX - 5, topY);
+                element.setText('\ue004' /* bracketBottom */);
+                element.renderText(ctx, topX - 5, botY);
+                topX -= 5;
                 break;
             case StaveConnector.type.BOLD_DOUBLE_LEFT:
                 drawBoldDoubleLine(ctx, this.type, topX + this.xShift, topY, botY - this.thickness);
@@ -26016,7 +27758,7 @@ class StaveConnector extends _element__WEBPACK_IMPORTED_MODULE_0__.Element {
             case StaveConnector.type.NONE:
                 break;
             default:
-                throw new _util__WEBPACK_IMPORTED_MODULE_4__.RuntimeError('InvalidType', `The provided StaveConnector.type (${this.type}) is invalid.`);
+                throw new _util__WEBPACK_IMPORTED_MODULE_3__.RuntimeError('InvalidType', `The provided StaveConnector.type (${this.type}) is invalid.`);
         }
         if (this.type !== StaveConnector.type.BRACE &&
             this.type !== StaveConnector.type.BOLD_DOUBLE_LEFT &&
@@ -26028,18 +27770,13 @@ class StaveConnector extends _element__WEBPACK_IMPORTED_MODULE_0__.Element {
         if (this.type === StaveConnector.type.THIN_DOUBLE) {
             ctx.fillRect(topX - 3, topY, width, attachmentHeight);
         }
-        ctx.save();
-        ctx.setLineWidth(2);
-        ctx.setFont(this.textFont);
         // Add stave connector text
         for (let i = 0; i < this.texts.length; i++) {
-            const text = this.texts[i];
-            const textWidth = ctx.measureText('' + text.content).width;
-            const x = this.topStave.getX() - textWidth - 24 + text.options.shiftX;
-            const y = (this.topStave.getYForLine(0) + this.bottomStave.getBottomLineY()) / 2 + text.options.shiftY;
-            ctx.fillText('' + text.content, x, y + 4);
+            const textElement = this.texts[i];
+            const x = this.topStave.getX() - textElement.getWidth() - 24;
+            const y = (this.topStave.getYForLine(0) + this.bottomStave.getBottomLineY()) / 2;
+            textElement.renderText(ctx, x, y + 4);
         }
-        ctx.restore();
     }
 }
 /**
@@ -26134,7 +27871,7 @@ class StaveHairpin extends _element__WEBPACK_IMPORTED_MODULE_0__.Element {
     static FormatByTicksAndDraw(ctx, formatter, notes, type, position, options) {
         var _a, _b;
         const ppt = formatter.pixelsPerTick;
-        if (ppt == null) {
+        if (ppt === null) {
             throw new _util__WEBPACK_IMPORTED_MODULE_3__.RuntimeError('BadArguments', 'A valid Formatter must be provide to draw offsets by ticks.');
         }
         const leftShiftPx = ppt * ((_a = options.leftShiftTicks) !== null && _a !== void 0 ? _a : 0);
@@ -26189,12 +27926,7 @@ class StaveHairpin extends _element__WEBPACK_IMPORTED_MODULE_0__.Element {
         return this;
     }
     setRenderOptions(options) {
-        if (options.height != null &&
-            options.yShift != null &&
-            options.leftShiftPx != null &&
-            options.rightShiftPx != null) {
-            this.renderOptions = options;
-        }
+        this.renderOptions = options;
         return this;
     }
     /**
@@ -26767,7 +28499,8 @@ class StaveNote extends _stemmablenote__WEBPACK_IMPORTED_MODULE_5__.StemmableNot
         let noteL = undefined;
         const draw = [false, false, false];
         for (let i = 0; i < notesList.length; i++) {
-            draw[i] = notesList[i].note.renderOptions.draw == false ? false : true;
+            // If .draw is true or undefined, we set draw[i] = true
+            draw[i] = notesList[i].note.renderOptions.draw !== false;
         }
         if (draw[0] && draw[1] && draw[2]) {
             // Three visible notes
@@ -26856,7 +28589,7 @@ class StaveNote extends _stemmablenote__WEBPACK_IMPORTED_MODULE_5__.StemmableNot
                         else if (noteU.note.voice !== noteL.note.voice) {
                             //If we are not in the same voice
                             if (noteU.stemDirection === noteL.stemDirection) {
-                                if (noteU.line != noteL.line) {
+                                if (noteU.line !== noteL.line) {
                                     xShift = voiceXShift + 2;
                                     noteU.note.setXShift(xShift);
                                 }
@@ -27120,10 +28853,11 @@ class StaveNote extends _stemmablenote__WEBPACK_IMPORTED_MODULE_5__.StemmableNot
     }
     // Calculates and stores the properties for each key in the note
     calculateKeyProps() {
+        var _a;
         let lastLine;
         for (let i = 0; i < this.keys.length; ++i) {
             const key = this.keys[i];
-            const options = { octaveShift: this.octaveShift || 0, duration: this.duration };
+            const options = { octaveShift: (_a = this.octaveShift) !== null && _a !== void 0 ? _a : 0, duration: this.duration };
             const props = _tables__WEBPACK_IMPORTED_MODULE_6__.Tables.keyProperties(key, this.clef, this.noteType, options);
             if (!props) {
                 throw new _util__WEBPACK_IMPORTED_MODULE_8__.RuntimeError('BadArguments', `Invalid key for note properties: ${key}`);
@@ -27139,7 +28873,7 @@ class StaveNote extends _stemmablenote__WEBPACK_IMPORTED_MODULE_5__.StemmableNot
             }
             // Calculate displacement of this note
             const line = props.line;
-            if (lastLine == undefined) {
+            if (lastLine === undefined) {
                 lastLine = line;
             }
             else {
@@ -27563,7 +29297,7 @@ class StaveNote extends _stemmablenote__WEBPACK_IMPORTED_MODULE_5__.StemmableNot
             const modifier = this.modifiers[i];
             const index = modifier.checkIndex();
             const notehead = __classPrivateFieldGet(this, _StaveNote_noteHeads, "f")[index];
-            if (notehead == noteheadParam) {
+            if (notehead === noteheadParam) {
                 const noteheadStyle = notehead.getStyle();
                 notehead.applyStyle(ctx, noteheadStyle);
                 modifier.setContext(ctx);
@@ -27719,21 +29453,17 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   Repetition: () => (/* binding */ Repetition)
 /* harmony export */ });
-/* harmony import */ var _font__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./font */ "./src/font.ts");
-/* harmony import */ var _glyph__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./glyph */ "./src/glyph.ts");
-/* harmony import */ var _stavemodifier__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./stavemodifier */ "./src/stavemodifier.ts");
-/* harmony import */ var _tables__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./tables */ "./src/tables.ts");
-/* harmony import */ var _typeguard__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./typeguard */ "./src/typeguard.ts");
+/* harmony import */ var _stavemodifier__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./stavemodifier */ "./src/stavemodifier.ts");
+/* harmony import */ var _tables__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./tables */ "./src/tables.ts");
+/* harmony import */ var _typeguard__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./typeguard */ "./src/typeguard.ts");
 // Copyright (c) 2023-present VexFlow contributors: https://github.com/vexflow/vexflow/graphs/contributors
 // @author: Larry Kuhns 2011
 
 
 
-
-
-class Repetition extends _stavemodifier__WEBPACK_IMPORTED_MODULE_2__.StaveModifier {
+class Repetition extends _stavemodifier__WEBPACK_IMPORTED_MODULE_0__.StaveModifier {
     static get CATEGORY() {
-        return _typeguard__WEBPACK_IMPORTED_MODULE_4__.Category.Repetition;
+        return _typeguard__WEBPACK_IMPORTED_MODULE_2__.Category.Repetition;
     }
     constructor(type, x, yShift) {
         super();
@@ -27760,10 +29490,10 @@ class Repetition extends _stavemodifier__WEBPACK_IMPORTED_MODULE_2__.StaveModifi
                 this.drawSymbolText(stave, x, 'Coda', true);
                 break;
             case Repetition.type.SEGNO_LEFT:
-                this.drawSignoFixed(stave, x);
+                this.drawSegnoFixed(stave, x);
                 break;
             case Repetition.type.SEGNO_RIGHT:
-                this.drawSignoFixed(stave, x + stave.getWidth());
+                this.drawSegnoFixed(stave, x + stave.getWidth());
                 break;
             case Repetition.type.DC:
                 this.drawSymbolText(stave, x, 'D.C.', false);
@@ -27795,75 +29525,47 @@ class Repetition extends _stavemodifier__WEBPACK_IMPORTED_MODULE_2__.StaveModifi
         return this;
     }
     drawCodaFixed(stave, x) {
-        const y = stave.getYForTopText(stave.getNumLines()) + this.yShift;
-        _glyph__WEBPACK_IMPORTED_MODULE_1__.Glyph.renderGlyph(stave.checkContext(), this.x + x + this.xShift, y + _tables__WEBPACK_IMPORTED_MODULE_3__.Tables.currentMusicFont().lookupMetric('staveRepetition.coda.offsetY'), 40, 'coda', { category: 'coda' });
+        const y = stave.getYForTopText(stave.getNumLines());
+        this.text = '\ue048' /*coda*/;
+        this.renderText(stave.checkContext(), x, y + _tables__WEBPACK_IMPORTED_MODULE_1__.Tables.lookupMetric('Repetition.coda.offsetY'));
         return this;
     }
-    drawSignoFixed(stave, x) {
-        const y = stave.getYForTopText(stave.getNumLines()) + this.yShift;
-        _glyph__WEBPACK_IMPORTED_MODULE_1__.Glyph.renderGlyph(stave.checkContext(), this.x + x + this.xShift, y + _tables__WEBPACK_IMPORTED_MODULE_3__.Tables.currentMusicFont().lookupMetric('staveRepetition.segno.offsetY'), 30, 'segno', { category: 'segno' });
+    drawSegnoFixed(stave, x) {
+        const y = stave.getYForTopText(stave.getNumLines());
+        this.text = '\ue047' /*segno*/;
+        this.renderText(stave.checkContext(), x, y + _tables__WEBPACK_IMPORTED_MODULE_1__.Tables.lookupMetric('Repetition.segno.offsetY'));
         return this;
     }
     drawSymbolText(stave, x, text, drawCoda) {
-        var _a;
         const ctx = stave.checkContext();
-        ctx.save();
-        ctx.setFont(this.textFont);
         let textX = 0;
-        let symbolX = 0;
-        const modifierWidth = stave.getNoteStartX() - this.x;
+        this.text = text;
+        if (drawCoda) {
+            this.text += ' \ue048' /*coda*/;
+        }
+        this.setFont(_tables__WEBPACK_IMPORTED_MODULE_1__.Tables.lookupMetricFontInfo('Repetition.text'));
         switch (this.symbolType) {
-            // To the left with symbol
+            // To the left
             case Repetition.type.CODA_LEFT:
                 // Offset Coda text to right of stave beginning
-                textX = this.x + stave.getVerticalBarWidth();
-                symbolX =
-                    textX +
-                        ctx.measureText(text).width +
-                        _tables__WEBPACK_IMPORTED_MODULE_3__.Tables.currentMusicFont().lookupMetric('staveRepetition.symbolText.offsetX');
+                textX = stave.getVerticalBarWidth();
                 break;
-            // To the right without symbol
+            // To the right
             case Repetition.type.DC:
             case Repetition.type.DC_AL_FINE:
             case Repetition.type.DS:
             case Repetition.type.DS_AL_FINE:
             case Repetition.type.FINE:
-                textX =
-                    this.x +
-                        x +
-                        this.xShift +
-                        stave.getWidth() -
-                        _tables__WEBPACK_IMPORTED_MODULE_3__.Tables.currentMusicFont().lookupMetric('staveRepetition.symbolText.spacing') -
-                        modifierWidth -
-                        ctx.measureText(text).width;
-                break;
-            // To the right with symbol
             default:
                 textX =
-                    this.x +
-                        x +
-                        this.xShift +
+                    x -
+                        (stave.getNoteStartX() - this.x) +
                         stave.getWidth() -
-                        _tables__WEBPACK_IMPORTED_MODULE_3__.Tables.currentMusicFont().lookupMetric('staveRepetition.symbolText.spacing') -
-                        modifierWidth -
-                        ctx.measureText(text).width -
-                        _tables__WEBPACK_IMPORTED_MODULE_3__.Tables.currentMusicFont().lookupMetric('staveRepetition.symbolText.offsetX');
-                symbolX =
-                    textX +
-                        ctx.measureText(text).width +
-                        _tables__WEBPACK_IMPORTED_MODULE_3__.Tables.currentMusicFont().lookupMetric('staveRepetition.symbolText.offsetX');
-                break;
+                        this.width -
+                        _tables__WEBPACK_IMPORTED_MODULE_1__.Tables.lookupMetric('Repetition.text.offsetX');
         }
-        const y = stave.getYForTopText(stave.getNumLines()) +
-            this.yShift +
-            _tables__WEBPACK_IMPORTED_MODULE_3__.Tables.currentMusicFont().lookupMetric('staveRepetition.symbolText.offsetY');
-        if (drawCoda) {
-            _glyph__WEBPACK_IMPORTED_MODULE_1__.Glyph.renderGlyph(ctx, symbolX, y, _font__WEBPACK_IMPORTED_MODULE_0__.Font.convertSizeToPointValue((_a = this.textFont) === null || _a === void 0 ? void 0 : _a.size) * 2, 'coda', {
-                category: 'coda',
-            });
-        }
-        ctx.fillText(text, textX, y + 5);
-        ctx.restore();
+        const y = stave.getYForTopText(stave.getNumLines()) + _tables__WEBPACK_IMPORTED_MODULE_1__.Tables.lookupMetric('Repetition.text.offsetY');
+        this.renderText(ctx, textX, y);
         return this;
     }
 }
@@ -28002,11 +29704,12 @@ class StaveTempo extends _stavemodifier__WEBPACK_IMPORTED_MODULE_1__.StaveModifi
         return this;
     }
     draw(stave, shiftX) {
+        var _a;
         const ctx = stave.checkContext();
         this.setRendered();
         const name = this.tempo.name;
         const duration = this.tempo.duration;
-        const dots = this.tempo.dots || 0;
+        const dots = (_a = this.tempo.dots) !== null && _a !== void 0 ? _a : 0;
         const bpm = this.tempo.bpm;
         let x = this.x + shiftX;
         const y = stave.getYForTopText(1);
@@ -28074,69 +29777,51 @@ class StaveText extends _stavemodifier__WEBPACK_IMPORTED_MODULE_0__.StaveModifie
         return _typeguard__WEBPACK_IMPORTED_MODULE_2__.Category.StaveText;
     }
     constructor(text, position, options = {}) {
+        var _a, _b, _c;
         super();
-        this.setWidth(16);
-        this.text = text;
+        this.setText(text);
+        this.setXShift((_a = options.shiftX) !== null && _a !== void 0 ? _a : 0);
+        this.setYShift((_b = options.shiftY) !== null && _b !== void 0 ? _b : 0);
         this.position = position;
-        this.options = Object.assign({ shiftX: 0, shiftY: 0, justification: _textnote__WEBPACK_IMPORTED_MODULE_1__.TextNote.Justification.CENTER }, options);
-    }
-    setStaveText(text) {
-        this.text = text;
-        return this;
-    }
-    setShiftX(x) {
-        this.shiftX = x;
-        return this;
-    }
-    setShiftY(y) {
-        this.shiftY = y;
-        return this;
-    }
-    setText(text) {
-        this.text = text;
-        return this;
+        this.justification = (_c = options.justification) !== null && _c !== void 0 ? _c : _textnote__WEBPACK_IMPORTED_MODULE_1__.TextNote.Justification.CENTER;
+        this.measureText();
     }
     draw(stave) {
         const ctx = stave.checkContext();
         this.setRendered();
-        ctx.save();
-        ctx.setLineWidth(2);
-        ctx.setFont(this.textFont);
-        const textWidth = ctx.measureText('' + this.text).width;
         let x;
         let y;
         switch (this.position) {
             case _stavemodifier__WEBPACK_IMPORTED_MODULE_0__.StaveModifierPosition.LEFT:
             case _stavemodifier__WEBPACK_IMPORTED_MODULE_0__.StaveModifierPosition.RIGHT:
-                y = (stave.getYForLine(0) + stave.getBottomLineY()) / 2 + this.options.shiftY;
+                y = (stave.getYForLine(0) + stave.getBottomLineY()) / 2;
                 if (this.position === _stavemodifier__WEBPACK_IMPORTED_MODULE_0__.StaveModifierPosition.LEFT) {
-                    x = stave.getX() - textWidth - 24 + this.options.shiftX;
+                    x = stave.getX() - this.width - 24;
                 }
                 else {
-                    x = stave.getX() + stave.getWidth() + 24 + this.options.shiftX;
+                    x = stave.getX() + stave.getWidth() + 24;
                 }
                 break;
             case _stavemodifier__WEBPACK_IMPORTED_MODULE_0__.StaveModifierPosition.ABOVE:
             case _stavemodifier__WEBPACK_IMPORTED_MODULE_0__.StaveModifierPosition.BELOW:
-                x = stave.getX() + this.options.shiftX;
-                if (this.options.justification === _textnote__WEBPACK_IMPORTED_MODULE_1__.TextJustification.CENTER) {
-                    x += stave.getWidth() / 2 - textWidth / 2;
+                x = stave.getX();
+                if (this.justification === _textnote__WEBPACK_IMPORTED_MODULE_1__.TextJustification.CENTER) {
+                    x += stave.getWidth() / 2 - this.width / 2;
                 }
-                else if (this.options.justification === _textnote__WEBPACK_IMPORTED_MODULE_1__.TextJustification.RIGHT) {
-                    x += stave.getWidth() - textWidth;
+                else if (this.justification === _textnote__WEBPACK_IMPORTED_MODULE_1__.TextJustification.RIGHT) {
+                    x += stave.getWidth() - this.width;
                 }
                 if (this.position === _stavemodifier__WEBPACK_IMPORTED_MODULE_0__.StaveModifierPosition.ABOVE) {
-                    y = stave.getYForTopText(2) + this.options.shiftY;
+                    y = stave.getYForTopText(2);
                 }
                 else {
-                    y = stave.getYForBottomText(2) + this.options.shiftY;
+                    y = stave.getYForBottomText(2);
                 }
                 break;
             default:
                 throw new _util__WEBPACK_IMPORTED_MODULE_3__.RuntimeError('InvalidPosition', 'Value Must be in Modifier.Position.');
         }
-        ctx.fillText('' + this.text, x, y + 4);
-        ctx.restore();
+        this.renderText(ctx, x, y + 4);
         return this;
     }
 }
@@ -28378,16 +30063,12 @@ class Volta extends _stavemodifier__WEBPACK_IMPORTED_MODULE_0__.StaveModifier {
     static get type() {
         return VoltaType;
     }
-    constructor(type, number, x, yShift) {
+    constructor(type, label, x, yShift) {
         super();
-        this.volta = type;
+        this.type = type;
         this.x = x;
         this.yShift = yShift;
-        this.number = number;
-    }
-    setShiftY(y) {
-        this.yShift = y;
-        return this;
+        this.text = label;
     }
     draw(stave, x) {
         const ctx = stave.checkContext();
@@ -28395,7 +30076,7 @@ class Volta extends _stavemodifier__WEBPACK_IMPORTED_MODULE_0__.StaveModifier {
         let width = stave.getWidth() - x; // don't include x (offset) for width
         const topY = stave.getYForTopText(stave.getNumLines()) + this.yShift;
         const vertHeight = 1.5 * stave.getSpacingBetweenLines();
-        switch (this.volta) {
+        switch (this.type) {
             case VoltaType.BEGIN:
                 ctx.fillRect(this.x + x, topY, 1, vertHeight);
                 break;
@@ -28412,11 +30093,8 @@ class Volta extends _stavemodifier__WEBPACK_IMPORTED_MODULE_0__.StaveModifier {
                 break;
         }
         // If the beginning of a volta, draw measure number
-        if (this.volta === VoltaType.BEGIN || this.volta === VoltaType.BEGIN_END) {
-            ctx.save();
-            ctx.setFont(this.textFont);
-            ctx.fillText(this.number, this.x + x + 5, topY + 15);
-            ctx.restore();
+        if (this.type === VoltaType.BEGIN || this.type === VoltaType.BEGIN_END) {
+            this.renderText(ctx, x + 5, topY - this.yShift + 15);
         }
         ctx.fillRect(this.x + x, topY, width, 1);
         return this;
@@ -28473,36 +30151,38 @@ class Stem extends _element__WEBPACK_IMPORTED_MODULE_0__.Element {
         return _tables__WEBPACK_IMPORTED_MODULE_1__.Tables.STEM_HEIGHT;
     }
     constructor(options) {
+        var _a, _b, _c, _d, _e, _f, _g;
         super();
         this.stemUpYOffset = 0;
         this.stemDownYOffset = 0;
         this.stemUpYBaseOffset = 0;
         this.stemDownYBaseOffset = 0;
         // Default notehead x bounds
-        this.xBegin = (options === null || options === void 0 ? void 0 : options.xBegin) || 0;
-        this.xEnd = (options === null || options === void 0 ? void 0 : options.xEnd) || 0;
+        this.xBegin = (_a = options === null || options === void 0 ? void 0 : options.xBegin) !== null && _a !== void 0 ? _a : 0;
+        this.xEnd = (_b = options === null || options === void 0 ? void 0 : options.xEnd) !== null && _b !== void 0 ? _b : 0;
         // Y bounds for top/bottom most notehead
-        this.yTop = (options === null || options === void 0 ? void 0 : options.yTop) || 0;
-        this.yBottom = (options === null || options === void 0 ? void 0 : options.yBottom) || 0;
+        this.yTop = (_c = options === null || options === void 0 ? void 0 : options.yTop) !== null && _c !== void 0 ? _c : 0;
+        this.yBottom = (_d = options === null || options === void 0 ? void 0 : options.yBottom) !== null && _d !== void 0 ? _d : 0;
         // Stem top extension
-        this.stemExtension = (options === null || options === void 0 ? void 0 : options.stemExtension) || 0;
+        this.stemExtension = (_e = options === null || options === void 0 ? void 0 : options.stemExtension) !== null && _e !== void 0 ? _e : 0;
         // Direction of the stem
-        this.stemDirection = (options === null || options === void 0 ? void 0 : options.stemDirection) || 0;
+        this.stemDirection = (_f = options === null || options === void 0 ? void 0 : options.stemDirection) !== null && _f !== void 0 ? _f : 0;
         // Flag to override all draw calls
         this.hide = (options === null || options === void 0 ? void 0 : options.hide) || false;
         this.isStemlet = (options === null || options === void 0 ? void 0 : options.isStemlet) || false;
-        this.stemletHeight = (options === null || options === void 0 ? void 0 : options.stemletHeight) || 0;
+        this.stemletHeight = (_g = options === null || options === void 0 ? void 0 : options.stemletHeight) !== null && _g !== void 0 ? _g : 0;
         // Use to adjust the rendered height without affecting
         // the results of `.getExtents()`
         this.renderHeightAdjustment = 0;
         this.setOptions(options);
     }
     setOptions(options) {
+        var _a, _b, _c, _d;
         // Changing where the stem meets the head
-        this.stemUpYOffset = (options === null || options === void 0 ? void 0 : options.stemUpYOffset) || 0;
-        this.stemDownYOffset = (options === null || options === void 0 ? void 0 : options.stemDownYOffset) || 0;
-        this.stemUpYBaseOffset = (options === null || options === void 0 ? void 0 : options.stemUpYBaseOffset) || 0;
-        this.stemDownYBaseOffset = (options === null || options === void 0 ? void 0 : options.stemDownYBaseOffset) || 0;
+        this.stemUpYOffset = (_a = options === null || options === void 0 ? void 0 : options.stemUpYOffset) !== null && _a !== void 0 ? _a : 0;
+        this.stemDownYOffset = (_b = options === null || options === void 0 ? void 0 : options.stemDownYOffset) !== null && _b !== void 0 ? _b : 0;
+        this.stemUpYBaseOffset = (_c = options === null || options === void 0 ? void 0 : options.stemUpYBaseOffset) !== null && _c !== void 0 ? _c : 0;
+        this.stemDownYBaseOffset = (_d = options === null || options === void 0 ? void 0 : options.stemDownYBaseOffset) !== null && _d !== void 0 ? _d : 0;
     }
     // Set the x bounds for the default notehead
     setNoteHeadXBounds(xBegin, xEnd) {
@@ -28556,7 +30236,7 @@ class Stem extends _element__WEBPACK_IMPORTED_MODULE_0__.Element {
         return this;
     }
     adjustHeightForFlag() {
-        this.renderHeightAdjustment = _tables__WEBPACK_IMPORTED_MODULE_1__.Tables.currentMusicFont().lookupMetric('stem.heightAdjustmentForFlag', -3);
+        this.renderHeightAdjustment = _tables__WEBPACK_IMPORTED_MODULE_1__.Tables.lookupMetric('Stem.heightAdjustmentForFlag', -3);
     }
     adjustHeightForBeam() {
         this.renderHeightAdjustment = -Stem.WIDTH / 2;
@@ -28618,11 +30298,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   StemmableNote: () => (/* binding */ StemmableNote)
 /* harmony export */ });
 /* harmony import */ var _element__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./element */ "./src/element.ts");
-/* harmony import */ var _note__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./note */ "./src/note.ts");
-/* harmony import */ var _stem__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./stem */ "./src/stem.ts");
-/* harmony import */ var _tables__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./tables */ "./src/tables.ts");
-/* harmony import */ var _typeguard__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./typeguard */ "./src/typeguard.ts");
-/* harmony import */ var _util__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./util */ "./src/util.ts");
+/* harmony import */ var _glyphs__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./glyphs */ "./src/glyphs.ts");
+/* harmony import */ var _note__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./note */ "./src/note.ts");
+/* harmony import */ var _stem__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./stem */ "./src/stem.ts");
+/* harmony import */ var _tables__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./tables */ "./src/tables.ts");
+/* harmony import */ var _typeguard__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./typeguard */ "./src/typeguard.ts");
+/* harmony import */ var _util__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./util */ "./src/util.ts");
 // Copyright (c) 2023-present VexFlow contributors: https://github.com/vexflow/vexflow/graphs/contributors
 //
 // ## Description
@@ -28634,9 +30315,10 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-class StemmableNote extends _note__WEBPACK_IMPORTED_MODULE_1__.Note {
+
+class StemmableNote extends _note__WEBPACK_IMPORTED_MODULE_2__.Note {
     static get CATEGORY() {
-        return _typeguard__WEBPACK_IMPORTED_MODULE_4__.Category.StemmableNote;
+        return _typeguard__WEBPACK_IMPORTED_MODULE_5__.Category.StemmableNote;
     }
     constructor(noteStruct) {
         super(noteStruct);
@@ -28649,7 +30331,7 @@ class StemmableNote extends _note__WEBPACK_IMPORTED_MODULE_1__.Note {
     }
     checkStem() {
         if (!this.stem) {
-            throw new _util__WEBPACK_IMPORTED_MODULE_5__.RuntimeError('NoStem', 'No stem attached to instance');
+            throw new _util__WEBPACK_IMPORTED_MODULE_6__.RuntimeError('NoStem', 'No stem attached to instance');
         }
         return this.stem;
     }
@@ -28660,7 +30342,7 @@ class StemmableNote extends _note__WEBPACK_IMPORTED_MODULE_1__.Note {
     }
     // Builds and sets a new stem
     buildStem() {
-        const stem = new _stem__WEBPACK_IMPORTED_MODULE_2__.Stem();
+        const stem = new _stem__WEBPACK_IMPORTED_MODULE_3__.Stem();
         this.setStem(stem);
         return this;
     }
@@ -28669,10 +30351,11 @@ class StemmableNote extends _note__WEBPACK_IMPORTED_MODULE_1__.Note {
         const { glyphProps } = this;
         if (this.hasFlag()) {
             const flagCode = 
-            // codeFlagDown = codeFlagUp + 1,, if not defined, code should be 0
-            this.getStemDirection() === _stem__WEBPACK_IMPORTED_MODULE_2__.Stem.DOWN
+            // codeFlagDown = codeFlagUp + 1
+            // if codeFlagUp is undefined, codePoint will be 0
+            this.getStemDirection() === _stem__WEBPACK_IMPORTED_MODULE_3__.Stem.DOWN
                 ? String.fromCodePoint(((_b = (_a = glyphProps.codeFlagUp) === null || _a === void 0 ? void 0 : _a.codePointAt(0)) !== null && _b !== void 0 ? _b : -1) + 1)
-                : (_c = glyphProps.codeFlagUp) !== null && _c !== void 0 ? _c : '\u0000';
+                : (_c = glyphProps.codeFlagUp) !== null && _c !== void 0 ? _c : _glyphs__WEBPACK_IMPORTED_MODULE_1__.Glyphs.null;
             this.flag.setText(flagCode);
             this.flag.fontSize = this.renderOptions.glyphFontScale;
             this.flag.measureText();
@@ -28680,7 +30363,7 @@ class StemmableNote extends _note__WEBPACK_IMPORTED_MODULE_1__.Note {
     }
     // Get the custom glyph associated with the outer note head on the base of the stem.
     getBaseCustomNoteHeadGlyphProps() {
-        if (this.getStemDirection() === _stem__WEBPACK_IMPORTED_MODULE_2__.Stem.DOWN) {
+        if (this.getStemDirection() === _stem__WEBPACK_IMPORTED_MODULE_3__.Stem.DOWN) {
             return this.customGlyphs[this.customGlyphs.length - 1];
         }
         else {
@@ -28689,7 +30372,7 @@ class StemmableNote extends _note__WEBPACK_IMPORTED_MODULE_1__.Note {
     }
     // Get the full length of stem
     getStemLength() {
-        return _stem__WEBPACK_IMPORTED_MODULE_2__.Stem.HEIGHT + this.getStemExtension();
+        return _stem__WEBPACK_IMPORTED_MODULE_3__.Stem.HEIGHT + this.getStemExtension();
     }
     // Get the number of beams for this duration
     getBeamCount() {
@@ -28703,25 +30386,23 @@ class StemmableNote extends _note__WEBPACK_IMPORTED_MODULE_1__.Note {
     }
     // Get the minimum length of stem
     getStemMinimumLength() {
-        const frac = _tables__WEBPACK_IMPORTED_MODULE_3__.Tables.durationToFraction(this.duration);
+        const frac = _tables__WEBPACK_IMPORTED_MODULE_4__.Tables.durationToFraction(this.duration);
+        const beamIsUndefined = this.beam === undefined;
         let length = frac.value() <= 1 ? 0 : 20;
         // if note is flagged, cannot shorten beam
         switch (this.duration) {
             case '8':
-                if (this.beam == undefined)
-                    length = 35;
-                break;
             case '16':
-                length = this.beam == undefined ? 35 : 25;
+                length = beamIsUndefined ? 35 : 25;
                 break;
             case '32':
-                length = this.beam == undefined ? 45 : 35;
+                length = beamIsUndefined ? 45 : 35;
                 break;
             case '64':
-                length = this.beam == undefined ? 50 : 40;
+                length = beamIsUndefined ? 50 : 40;
                 break;
             case '128':
-                length = this.beam == undefined ? 55 : 45;
+                length = beamIsUndefined ? 55 : 45;
                 break;
             default:
                 break;
@@ -28731,14 +30412,14 @@ class StemmableNote extends _note__WEBPACK_IMPORTED_MODULE_1__.Note {
     // Get/set the direction of the stem
     getStemDirection() {
         if (!this.stemDirection)
-            throw new _util__WEBPACK_IMPORTED_MODULE_5__.RuntimeError('NoStem', 'No stem attached to this note.');
+            throw new _util__WEBPACK_IMPORTED_MODULE_6__.RuntimeError('NoStem', 'No stem attached to this note.');
         return this.stemDirection;
     }
     setStemDirection(direction) {
         if (!direction)
-            direction = _stem__WEBPACK_IMPORTED_MODULE_2__.Stem.UP;
-        if (direction !== _stem__WEBPACK_IMPORTED_MODULE_2__.Stem.UP && direction !== _stem__WEBPACK_IMPORTED_MODULE_2__.Stem.DOWN) {
-            throw new _util__WEBPACK_IMPORTED_MODULE_5__.RuntimeError('BadArgument', `Invalid stem direction: ${direction}`);
+            direction = _stem__WEBPACK_IMPORTED_MODULE_3__.Stem.UP;
+        if (direction !== _stem__WEBPACK_IMPORTED_MODULE_3__.Stem.UP && direction !== _stem__WEBPACK_IMPORTED_MODULE_3__.Stem.DOWN) {
+            throw new _util__WEBPACK_IMPORTED_MODULE_6__.RuntimeError('BadArgument', `Invalid stem direction: ${direction}`);
         }
         this.stemDirection = direction;
         // Reset and reformat everything. Flag has to be built before calling getStemExtension.
@@ -28760,7 +30441,7 @@ class StemmableNote extends _note__WEBPACK_IMPORTED_MODULE_1__.Note {
     getStemX() {
         const xBegin = this.getAbsoluteX() + this.xShift;
         const xEnd = this.getAbsoluteX() + this.xShift + this.getGlyphWidth();
-        const stemX = this.stemDirection === _stem__WEBPACK_IMPORTED_MODULE_2__.Stem.DOWN ? xBegin : xEnd;
+        const stemX = this.stemDirection === _stem__WEBPACK_IMPORTED_MODULE_3__.Stem.DOWN ? xBegin : xEnd;
         return stemX;
     }
     // Get the `x` coordinate for the center of the glyph.
@@ -28777,7 +30458,7 @@ class StemmableNote extends _note__WEBPACK_IMPORTED_MODULE_1__.Note {
         const glyphProps = this.getGlyphProps();
         const flagHeight = this.flag.getHeight();
         const scale = this.getStaveNoteScale();
-        if (this.stemExtensionOverride != undefined) {
+        if (this.stemExtensionOverride !== undefined) {
             return this.stemExtensionOverride;
         }
         // Use stemBeamExtension with beams
@@ -28785,17 +30466,17 @@ class StemmableNote extends _note__WEBPACK_IMPORTED_MODULE_1__.Note {
             return glyphProps.stemBeamExtension * scale;
         }
         // If the flag is longer than the stem, extend the stem by the difference.
-        return flagHeight > _stem__WEBPACK_IMPORTED_MODULE_2__.Stem.HEIGHT * scale ? flagHeight - _stem__WEBPACK_IMPORTED_MODULE_2__.Stem.HEIGHT * scale : 0;
+        return flagHeight > _stem__WEBPACK_IMPORTED_MODULE_3__.Stem.HEIGHT * scale ? flagHeight - _stem__WEBPACK_IMPORTED_MODULE_3__.Stem.HEIGHT * scale : 0;
     }
     // Set the stem length to a specific. Will override the default length.
     setStemLength(height) {
-        this.stemExtensionOverride = height - _stem__WEBPACK_IMPORTED_MODULE_2__.Stem.HEIGHT;
+        this.stemExtensionOverride = height - _stem__WEBPACK_IMPORTED_MODULE_3__.Stem.HEIGHT;
         return this;
     }
     // Get the top and bottom `y` values of the stem.
     getStemExtents() {
         if (!this.stem)
-            throw new _util__WEBPACK_IMPORTED_MODULE_5__.RuntimeError('NoStem', 'No stem attached to this note.');
+            throw new _util__WEBPACK_IMPORTED_MODULE_6__.RuntimeError('NoStem', 'No stem attached to this note.');
         return this.stem.getExtents();
     }
     /** Gets the `y` value for the top modifiers at a specific `textLine`. */
@@ -28804,7 +30485,7 @@ class StemmableNote extends _note__WEBPACK_IMPORTED_MODULE_1__.Note {
         if (this.hasStem()) {
             const extents = this.getStemExtents();
             if (!extents)
-                throw new _util__WEBPACK_IMPORTED_MODULE_5__.RuntimeError('InvalidState', 'Stem does not have extents.');
+                throw new _util__WEBPACK_IMPORTED_MODULE_6__.RuntimeError('InvalidState', 'Stem does not have extents.');
             return Math.min(stave.getYForTopText(textLine), extents.topY - this.renderOptions.annotationSpacing * (textLine + 1));
         }
         else {
@@ -28817,7 +30498,7 @@ class StemmableNote extends _note__WEBPACK_IMPORTED_MODULE_1__.Note {
         if (this.hasStem()) {
             const extents = this.getStemExtents();
             if (!extents)
-                throw new _util__WEBPACK_IMPORTED_MODULE_5__.RuntimeError('InvalidState', 'Stem does not have extents.');
+                throw new _util__WEBPACK_IMPORTED_MODULE_6__.RuntimeError('InvalidState', 'Stem does not have extents.');
             return Math.max(stave.getYForTopText(textLine), extents.baseY + this.renderOptions.annotationSpacing * textLine);
         }
         else {
@@ -28825,7 +30506,7 @@ class StemmableNote extends _note__WEBPACK_IMPORTED_MODULE_1__.Note {
         }
     }
     hasFlag() {
-        return this.glyphProps.codeFlagUp != undefined && !this.beam && !this.isRest();
+        return this.glyphProps.codeFlagUp !== undefined && !this.beam && !this.isRest();
     }
     /** Post formats the note. */
     postFormat() {
@@ -28839,7 +30520,7 @@ class StemmableNote extends _note__WEBPACK_IMPORTED_MODULE_1__.Note {
         var _a;
         this.checkContext();
         this.setRendered();
-        this.setStem(new _stem__WEBPACK_IMPORTED_MODULE_2__.Stem(stemOptions));
+        this.setStem(new _stem__WEBPACK_IMPORTED_MODULE_3__.Stem(stemOptions));
         (_a = this.stem) === null || _a === void 0 ? void 0 : _a.setContext(this.getContext()).draw();
     }
 }
@@ -28877,15 +30558,6 @@ __webpack_require__.r(__webpack_exports__);
 class StringNumber extends _modifier__WEBPACK_IMPORTED_MODULE_0__.Modifier {
     static get CATEGORY() {
         return _typeguard__WEBPACK_IMPORTED_MODULE_4__.Category.StringNumber;
-    }
-    static get metrics() {
-        var _a;
-        return ((_a = _tables__WEBPACK_IMPORTED_MODULE_3__.Tables.currentMusicFont().getMetrics().stringNumber) !== null && _a !== void 0 ? _a : {
-            verticalPadding: 0,
-            stemPadding: 0,
-            leftPadding: 0,
-            rightPadding: 0,
-        });
     }
     // ## Static Methods
     // Arrange string numbers inside a `ModifierContext`
@@ -29047,27 +30719,33 @@ class StringNumber extends _modifier__WEBPACK_IMPORTED_MODULE_0__.Modifier {
                 {
                     const ys = note.getYs();
                     dotY = ys.reduce((a, b) => (a < b ? a : b));
-                    if (note.hasStem() && stemDirection == _stem__WEBPACK_IMPORTED_MODULE_2__.Stem.UP) {
-                        dotY = stemExt.topY + StringNumber.metrics.stemPadding;
+                    if (note.hasStem() && stemDirection === _stem__WEBPACK_IMPORTED_MODULE_2__.Stem.UP) {
+                        dotY = stemExt.topY + _tables__WEBPACK_IMPORTED_MODULE_3__.Tables.lookupMetric('StringNumber.stemPadding');
                     }
-                    dotY -= this.radius + StringNumber.metrics.verticalPadding + this.textLine * _tables__WEBPACK_IMPORTED_MODULE_3__.Tables.STAVE_LINE_DISTANCE;
+                    dotY -=
+                        this.radius +
+                            _tables__WEBPACK_IMPORTED_MODULE_3__.Tables.lookupMetric('StringNumber.verticalPadding') +
+                            this.textLine * _tables__WEBPACK_IMPORTED_MODULE_3__.Tables.STAVE_LINE_DISTANCE;
                 }
                 break;
             case _modifier__WEBPACK_IMPORTED_MODULE_0__.Modifier.Position.BELOW:
                 {
                     const ys = note.getYs();
                     dotY = ys.reduce((a, b) => (a > b ? a : b));
-                    if (note.hasStem() && stemDirection == _stem__WEBPACK_IMPORTED_MODULE_2__.Stem.DOWN) {
-                        dotY = stemExt.topY - StringNumber.metrics.stemPadding;
+                    if (note.hasStem() && stemDirection === _stem__WEBPACK_IMPORTED_MODULE_2__.Stem.DOWN) {
+                        dotY = stemExt.topY - _tables__WEBPACK_IMPORTED_MODULE_3__.Tables.lookupMetric('StringNumber.stemPadding');
                     }
-                    dotY += this.radius + StringNumber.metrics.verticalPadding + this.textLine * _tables__WEBPACK_IMPORTED_MODULE_3__.Tables.STAVE_LINE_DISTANCE;
+                    dotY +=
+                        this.radius +
+                            _tables__WEBPACK_IMPORTED_MODULE_3__.Tables.lookupMetric('StringNumber.verticalPadding') +
+                            this.textLine * _tables__WEBPACK_IMPORTED_MODULE_3__.Tables.STAVE_LINE_DISTANCE;
                 }
                 break;
             case _modifier__WEBPACK_IMPORTED_MODULE_0__.Modifier.Position.LEFT:
-                dotX -= this.radius / 2 + StringNumber.metrics.leftPadding;
+                dotX -= this.radius / 2 + _tables__WEBPACK_IMPORTED_MODULE_3__.Tables.lookupMetric('StringNumber.leftPadding');
                 break;
             case _modifier__WEBPACK_IMPORTED_MODULE_0__.Modifier.Position.RIGHT:
-                dotX += this.radius / 2 + StringNumber.metrics.rightPadding;
+                dotX += this.radius / 2 + _tables__WEBPACK_IMPORTED_MODULE_3__.Tables.lookupMetric('StringNumber.rightPadding');
                 break;
             default:
                 throw new _util__WEBPACK_IMPORTED_MODULE_5__.RuntimeError('InvalidPosition', `The position ${this.position} is invalid`);
@@ -29129,7 +30807,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   Stroke: () => (/* binding */ Stroke)
 /* harmony export */ });
-/* harmony import */ var _glyph__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./glyph */ "./src/glyph.ts");
+/* harmony import */ var _element__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./element */ "./src/element.ts");
 /* harmony import */ var _modifier__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./modifier */ "./src/modifier.ts");
 /* harmony import */ var _tables__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./tables */ "./src/tables.ts");
 /* harmony import */ var _typeguard__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./typeguard */ "./src/typeguard.ts");
@@ -29151,7 +30829,7 @@ class Stroke extends _modifier__WEBPACK_IMPORTED_MODULE_1__.Modifier {
     // Arrange strokes inside `ModifierContext`
     static format(strokes, state) {
         const leftShift = state.leftShift;
-        const strokeSpacing = 0;
+        const strokeSpacing = 5;
         if (!strokes || strokes.length === 0)
             return false;
         const strokeList = strokes.map((stroke) => {
@@ -29190,7 +30868,7 @@ class Stroke extends _modifier__WEBPACK_IMPORTED_MODULE_1__.Modifier {
         this.type = type;
         this.position = _modifier__WEBPACK_IMPORTED_MODULE_1__.Modifier.Position.LEFT;
         this.renderOptions = {
-            fontScale: _tables__WEBPACK_IMPORTED_MODULE_2__.Tables.NOTATION_FONT_SCALE,
+            fontScale: _tables__WEBPACK_IMPORTED_MODULE_2__.Tables.lookupMetric('Stroke.fontSize'),
         };
         this.setXShift(0);
         this.setWidth(10);
@@ -29228,113 +30906,76 @@ class Stroke extends _modifier__WEBPACK_IMPORTED_MODULE_1__.Modifier {
             }
         }
         let arrow = '';
-        let arrowShiftX = 0;
         let arrowY = 0;
-        let textShiftX = 0;
         let textY = 0;
         switch (this.type) {
             case Stroke.Type.BRUSH_DOWN:
-                arrow = 'arrowheadBlackUp';
-                arrowShiftX = -3;
-                arrowY = topY - lineSpace / 2 + 10;
+            case Stroke.Type.ROLL_DOWN:
+            case Stroke.Type.RASQUEDO_DOWN:
+                arrow = '\ueb78' /*arrowheadBlackUp*/;
+                arrowY = topY;
+                topY -= lineSpace / 2;
                 botY += lineSpace / 2;
                 break;
             case Stroke.Type.BRUSH_UP:
-                arrow = 'arrowheadBlackDown';
-                arrowShiftX = 0.5;
-                arrowY = botY + lineSpace / 2;
-                topY -= lineSpace / 2;
-                break;
-            case Stroke.Type.ROLL_DOWN:
-            case Stroke.Type.RASQUEDO_DOWN:
-                arrow = 'arrowheadBlackUp';
-                arrowShiftX = -3;
-                textShiftX = this.xShift + arrowShiftX - 2;
-                if ((0,_typeguard__WEBPACK_IMPORTED_MODULE_3__.isStaveNote)(note)) {
-                    topY += 1.5 * lineSpace;
-                    if ((botY - topY) % 2 !== 0) {
-                        botY += 0.5 * lineSpace;
-                    }
-                    else {
-                        botY += lineSpace;
-                    }
-                    arrowY = topY - lineSpace;
-                    textY = botY + lineSpace + 2;
-                }
-                else {
-                    topY += 1.5 * lineSpace;
-                    botY += lineSpace;
-                    arrowY = topY - 0.75 * lineSpace;
-                    textY = botY + 0.25 * lineSpace;
-                }
-                break;
             case Stroke.Type.ROLL_UP:
             case Stroke.Type.RASQUEDO_UP:
-                arrow = 'arrowheadBlackDown';
-                arrowShiftX = -4;
-                textShiftX = this.xShift + arrowShiftX - 1;
-                if ((0,_typeguard__WEBPACK_IMPORTED_MODULE_3__.isStaveNote)(note)) {
-                    arrowY = lineSpace / 2;
-                    topY += 0.5 * lineSpace;
-                    if ((botY - topY) % 2 === 0) {
-                        botY += lineSpace / 2;
-                    }
-                    arrowY = botY + 0.5 * lineSpace;
-                    textY = topY - 1.25 * lineSpace;
-                }
-                else {
-                    topY += 0.25 * lineSpace;
-                    botY += 0.5 * lineSpace;
-                    arrowY = botY + 0.25 * lineSpace;
-                    textY = topY - lineSpace;
-                }
+                arrow = '\ueb7c' /*arrowheadBlackDown*/;
+                arrowY = botY + lineSpace;
+                topY -= lineSpace / 2;
                 break;
             case Stroke.Type.ARPEGGIO_DIRECTIONLESS:
-                topY += 0.5 * lineSpace;
-                botY += lineSpace; // * 0.5 can lead to slight underlap instead of overlap sometimes
+                topY -= lineSpace / 2;
+                botY += lineSpace / 2;
                 break;
             default:
                 throw new _util__WEBPACK_IMPORTED_MODULE_4__.RuntimeError('InvalidType', `The stroke type ${this.type} does not exist`);
         }
-        // The first letter is capitalized.
-        // We later prepend 'stroke' to create a camelCased glyph category: 'strokeStraight' or 'strokeWiggly'.
-        // See: common_metrics.ts
-        let type = 'Straight';
         // Draw the stroke
         if (this.type === Stroke.Type.BRUSH_DOWN || this.type === Stroke.Type.BRUSH_UP) {
             ctx.fillRect(x + this.xShift, topY, 1, botY - topY);
         }
         else {
-            type = 'Wiggly';
-            if ((0,_typeguard__WEBPACK_IMPORTED_MODULE_3__.isStaveNote)(note)) {
-                for (let i = topY; i <= botY; i += lineSpace) {
-                    _glyph__WEBPACK_IMPORTED_MODULE_0__.Glyph.renderGlyph(ctx, x + this.xShift - 4, i, this.renderOptions.fontScale, 'vexWiggleArpeggioUp');
-                }
+            // Select the wiggle glyph depending on the arrow direction
+            const lineGlyph = arrow === '\ueb7c' /*arrowheadBlackDown*/ ? '\ueaaa' /*wiggleArpeggiatoDown*/ : '\ueaa9'; /*wiggleArpeggiatoUp*/
+            let txt = '';
+            const el = new _element__WEBPACK_IMPORTED_MODULE_0__.Element();
+            // add glyphs until the required length is achieved
+            while (el.getWidth() < botY - topY) {
+                txt += lineGlyph;
+                el.setText(txt);
+                el.measureText();
+            }
+            if (this.type === Stroke.Type.RASQUEDO_DOWN ||
+                this.type === Stroke.Type.ROLL_DOWN ||
+                this.type === Stroke.Type.ARPEGGIO_DIRECTIONLESS) {
+                ctx.openRotation(90, x + this.xShift, topY);
+                el.renderText(ctx, x + this.xShift, topY - el.getTextMetrics().actualBoundingBoxDescent + el.getHeight() / 2);
+                ctx.closeRotation();
+                textY = topY + el.getWidth() + 5;
             }
             else {
-                let i;
-                for (i = topY; i <= botY; i += 10) {
-                    _glyph__WEBPACK_IMPORTED_MODULE_0__.Glyph.renderGlyph(ctx, x + this.xShift - 4, i, this.renderOptions.fontScale, 'vexWiggleArpeggioUp');
-                }
-                if (this.type === Stroke.Type.RASQUEDO_DOWN) {
-                    textY = i + 0.25 * lineSpace;
-                }
+                ctx.openRotation(-90, x + this.xShift, botY);
+                el.renderText(ctx, x + this.xShift, botY - el.getTextMetrics().actualBoundingBoxDescent + el.getHeight() / 2);
+                ctx.closeRotation();
+                textY = botY - el.getWidth() - 5;
             }
         }
-        if (this.type === Stroke.Type.ARPEGGIO_DIRECTIONLESS) {
-            return; // skip drawing arrow heads or text
-        }
         // Draw the arrow head
-        _glyph__WEBPACK_IMPORTED_MODULE_0__.Glyph.renderGlyph(ctx, x + this.xShift + arrowShiftX, arrowY, this.renderOptions.fontScale, arrow, {
-            category: `stroke${type}.${arrow}`,
-        });
+        if (arrowY !== 0) {
+            const el = new _element__WEBPACK_IMPORTED_MODULE_0__.Element();
+            el.setText(arrow);
+            el.measureText();
+            el.renderText(ctx, 
+            // Center the arrow head substracting its width / 2
+            x + this.xShift - el.getWidth() / 2, arrowY);
+        }
         // Draw the rasquedo "R"
         if (this.type === Stroke.Type.RASQUEDO_DOWN || this.type === Stroke.Type.RASQUEDO_UP) {
-            const textFont = _tables__WEBPACK_IMPORTED_MODULE_2__.Tables.lookupMetricFontInfo(`Strokes.text`);
-            ctx.save();
-            ctx.setFont(textFont);
-            ctx.fillText('R', x + textShiftX, textY);
-            ctx.restore();
+            const el = new _element__WEBPACK_IMPORTED_MODULE_0__.Element('Stroke.text');
+            el.setText('R');
+            el.measureText();
+            el.renderText(ctx, x + this.xShift - el.getWidth() / 2, textY + (this.type === Stroke.Type.RASQUEDO_DOWN ? el.getHeight() : 0));
         }
     }
 }
@@ -29520,6 +31161,12 @@ class SVGContext extends _rendercontext__WEBPACK_IMPORTED_MODULE_1__.RenderConte
         this.groupAttributes.pop();
         this.parent = this.groups[this.groups.length - 1];
     }
+    openRotation(angleDegrees, x, y) {
+        this.openGroup().setAttribute('transform', `translate(${x},${y}) rotate(${angleDegrees}) translate(-${x},-${y})`);
+    }
+    closeRotation() {
+        this.closeGroup();
+    }
     add(elem) {
         this.parent.appendChild(elem);
     }
@@ -29643,7 +31290,7 @@ class SVGContext extends _rendercontext__WEBPACK_IMPORTED_MODULE_1__.RenderConte
                 continue;
             }
             if (attributes[attrName] &&
-                (this.groupAttributes.length == 0 ||
+                (this.groupAttributes.length === 0 ||
                     attributes[attrName] != this.groupAttributes[this.groupAttributes.length - 1][attrName]))
                 element.setAttributeNS(null, attrName, attributes[attrName]);
         }
@@ -30179,8 +31826,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   Tables: () => (/* binding */ Tables)
 /* harmony export */ });
 /* harmony import */ var _fraction__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./fraction */ "./src/fraction.ts");
-/* harmony import */ var _util__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./util */ "./src/util.ts");
+/* harmony import */ var _glyphs__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./glyphs */ "./src/glyphs.ts");
+/* harmony import */ var _util__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./util */ "./src/util.ts");
 // Copyright (c) 2023-present VexFlow contributors: https://github.com/vexflow/vexflow/graphs/contributors
+
 
 
 const RESOLUTION = 16384;
@@ -30192,8 +31841,14 @@ const CommonMetrics = {
     fontStyle: 'normal',
     Accidental: {
         cautionary: {
-            fontSize: 28,
+            fontSize: 20,
         },
+        grace: {
+            fontSize: 25,
+        },
+        noteheadAccidentalPadding: 1,
+        leftPadding: 2,
+        accidentalSpacing: 3,
     },
     Annotation: {
         fontSize: 10,
@@ -30222,9 +31877,19 @@ const CommonMetrics = {
         },
     },
     Repetition: {
-        fontFamily: 'Times New Roman, serif',
-        fontSize: 13,
-        fontWeight: 'bold',
+        text: {
+            fontSize: 12,
+            fontWeight: 'bold',
+            offsetX: 12,
+            offsetY: 25,
+            spacing: 5,
+        },
+        coda: {
+            offsetY: 25,
+        },
+        segno: {
+            offsetY: 10,
+        },
     },
     Stave: {
         fontFamily: 'Arial, sans-serif',
@@ -30235,8 +31900,9 @@ const CommonMetrics = {
         unalignedNotePadding: 10,
     },
     StaveConnector: {
-        fontFamily: 'Times New Roman, serif',
-        fontSize: 16,
+        text: {
+            fontSize: 16,
+        },
     },
     StaveLine: {
         fontFamily: 'Arial, sans-serif',
@@ -30257,7 +31923,6 @@ const CommonMetrics = {
         },
     },
     StaveText: {
-        fontFamily: 'Times New Roman, serif',
         fontSize: 16,
     },
     StaveTie: {
@@ -30268,10 +31933,13 @@ const CommonMetrics = {
         fontFamily: 'Arial, sans-serif',
         fontSize: 10,
         fontWeight: 'bold',
+        verticalPadding: 8,
+        stemPadding: 2,
+        leftPadding: 5,
+        rightPadding: 6,
     },
-    Strokes: {
+    Stroke: {
         text: {
-            fontFamily: 'Times New Roman, serif',
             fontSize: 10,
             fontStyle: 'italic',
             fontWeight: 'bold',
@@ -30306,7 +31974,6 @@ const CommonMetrics = {
         spacing: 7,
     },
     Volta: {
-        fontFamily: 'Arial, sans-serif',
         fontSize: 9,
         fontWeight: 'bold',
     },
@@ -30444,275 +32111,6 @@ const validNoteTypes = {
     tu: { name: 'triangle up' },
     td: { name: 'triangle down' },
 };
-// #FIXME: HACK to facilitate the VexFlow 5 migration.
-// HACK-BEGIN
-// .... will be deleted once all the classes use  accidentalCodes...
-const accidentalsOld = {
-    '#': { code: 'accidentalSharp', parenRightPaddingAdjustment: -1 },
-    '##': { code: 'accidentalDoubleSharp', parenRightPaddingAdjustment: -1 },
-    b: { code: 'accidentalFlat', parenRightPaddingAdjustment: -2 },
-    bb: { code: 'accidentalDoubleFlat', parenRightPaddingAdjustment: -2 },
-    n: { code: 'accidentalNatural', parenRightPaddingAdjustment: -1 },
-    '{': { code: 'accidentalParensLeft', parenRightPaddingAdjustment: -1 },
-    '}': { code: 'accidentalParensRight', parenRightPaddingAdjustment: -1 },
-    db: { code: 'accidentalThreeQuarterTonesFlatZimmermann', parenRightPaddingAdjustment: -1 },
-    d: { code: 'accidentalQuarterToneFlatStein', parenRightPaddingAdjustment: 0 },
-    '++': { code: 'accidentalThreeQuarterTonesSharpStein', parenRightPaddingAdjustment: -1 },
-    '+': { code: 'accidentalQuarterToneSharpStein', parenRightPaddingAdjustment: -1 },
-    '+-': { code: 'accidentalKucukMucennebSharp', parenRightPaddingAdjustment: -1 },
-    bs: { code: 'accidentalBakiyeFlat', parenRightPaddingAdjustment: -1 },
-    bss: { code: 'accidentalBuyukMucennebFlat', parenRightPaddingAdjustment: -1 },
-    o: { code: 'accidentalSori', parenRightPaddingAdjustment: -1 },
-    k: { code: 'accidentalKoron', parenRightPaddingAdjustment: -1 },
-    bbs: { code: 'vexAccidentalMicrotonal1', parenRightPaddingAdjustment: -1 },
-    '++-': { code: 'accidentalBuyukMucennebSharp', parenRightPaddingAdjustment: -1 },
-    ashs: { code: 'vexAccidentalMicrotonal3', parenRightPaddingAdjustment: -1 },
-    afhf: { code: 'vexAccidentalMicrotonal4', parenRightPaddingAdjustment: -1 },
-    accSagittal5v7KleismaUp: { code: 'accSagittal5v7KleismaUp', parenRightPaddingAdjustment: -1 },
-    accSagittal5v7KleismaDown: { code: 'accSagittal5v7KleismaDown', parenRightPaddingAdjustment: -1 },
-    accSagittal5CommaUp: { code: 'accSagittal5CommaUp', parenRightPaddingAdjustment: -1 },
-    accSagittal5CommaDown: { code: 'accSagittal5CommaDown', parenRightPaddingAdjustment: -1 },
-    accSagittal7CommaUp: { code: 'accSagittal7CommaUp', parenRightPaddingAdjustment: -1 },
-    accSagittal7CommaDown: { code: 'accSagittal7CommaDown', parenRightPaddingAdjustment: -1 },
-    accSagittal25SmallDiesisUp: { code: 'accSagittal25SmallDiesisUp', parenRightPaddingAdjustment: -1 },
-    accSagittal25SmallDiesisDown: { code: 'accSagittal25SmallDiesisDown', parenRightPaddingAdjustment: -1 },
-    accSagittal35MediumDiesisUp: { code: 'accSagittal35MediumDiesisUp', parenRightPaddingAdjustment: -1 },
-    accSagittal35MediumDiesisDown: { code: 'accSagittal35MediumDiesisDown', parenRightPaddingAdjustment: -1 },
-    accSagittal11MediumDiesisUp: { code: 'accSagittal11MediumDiesisUp', parenRightPaddingAdjustment: -1 },
-    accSagittal11MediumDiesisDown: { code: 'accSagittal11MediumDiesisDown', parenRightPaddingAdjustment: -1 },
-    accSagittal11LargeDiesisUp: { code: 'accSagittal11LargeDiesisUp', parenRightPaddingAdjustment: -1 },
-    accSagittal11LargeDiesisDown: { code: 'accSagittal11LargeDiesisDown', parenRightPaddingAdjustment: -1 },
-    accSagittal35LargeDiesisUp: { code: 'accSagittal35LargeDiesisUp', parenRightPaddingAdjustment: -1 },
-    accSagittal35LargeDiesisDown: { code: 'accSagittal35LargeDiesisDown', parenRightPaddingAdjustment: -1 },
-    accSagittalSharp25SDown: { code: 'accSagittalSharp25SDown', parenRightPaddingAdjustment: -1 },
-    accSagittalFlat25SUp: { code: 'accSagittalFlat25SUp', parenRightPaddingAdjustment: -1 },
-    accSagittalSharp7CDown: { code: 'accSagittalSharp7CDown', parenRightPaddingAdjustment: -1 },
-    accSagittalFlat7CUp: { code: 'accSagittalFlat7CUp', parenRightPaddingAdjustment: -1 },
-    accSagittalSharp5CDown: { code: 'accSagittalSharp5CDown', parenRightPaddingAdjustment: -1 },
-    accSagittalFlat5CUp: { code: 'accSagittalFlat5CUp', parenRightPaddingAdjustment: -1 },
-    accSagittalSharp5v7kDown: { code: 'accSagittalSharp5v7kDown', parenRightPaddingAdjustment: -1 },
-    accSagittalFlat5v7kUp: { code: 'accSagittalFlat5v7kUp', parenRightPaddingAdjustment: -1 },
-    accSagittalSharp: { code: 'accSagittalSharp', parenRightPaddingAdjustment: -1 },
-    accSagittalFlat: { code: 'accSagittalFlat', parenRightPaddingAdjustment: -1 },
-    accSagittalSharp5v7kUp: { code: 'accSagittalSharp5v7kUp', parenRightPaddingAdjustment: -1 },
-    accSagittalFlat5v7kDown: { code: 'accSagittalFlat5v7kDown', parenRightPaddingAdjustment: -1 },
-    accSagittalSharp5CUp: { code: 'accSagittalSharp5CUp', parenRightPaddingAdjustment: -1 },
-    accSagittalFlat5CDown: { code: 'accSagittalFlat5CDown', parenRightPaddingAdjustment: -1 },
-    accSagittalSharp7CUp: { code: 'accSagittalSharp7CUp', parenRightPaddingAdjustment: -1 },
-    accSagittalFlat7CDown: { code: 'accSagittalFlat7CDown', parenRightPaddingAdjustment: -1 },
-    accSagittalSharp25SUp: { code: 'accSagittalSharp25SUp', parenRightPaddingAdjustment: -1 },
-    accSagittalFlat25SDown: { code: 'accSagittalFlat25SDown', parenRightPaddingAdjustment: -1 },
-    accSagittalSharp35MUp: { code: 'accSagittalSharp35MUp', parenRightPaddingAdjustment: -1 },
-    accSagittalFlat35MDown: { code: 'accSagittalFlat35MDown', parenRightPaddingAdjustment: -1 },
-    accSagittalSharp11MUp: { code: 'accSagittalSharp11MUp', parenRightPaddingAdjustment: -1 },
-    accSagittalFlat11MDown: { code: 'accSagittalFlat11MDown', parenRightPaddingAdjustment: -1 },
-    accSagittalSharp11LUp: { code: 'accSagittalSharp11LUp', parenRightPaddingAdjustment: -1 },
-    accSagittalFlat11LDown: { code: 'accSagittalFlat11LDown', parenRightPaddingAdjustment: -1 },
-    accSagittalSharp35LUp: { code: 'accSagittalSharp35LUp', parenRightPaddingAdjustment: -1 },
-    accSagittalFlat35LDown: { code: 'accSagittalFlat35LDown', parenRightPaddingAdjustment: -1 },
-    accSagittalDoubleSharp25SDown: { code: 'accSagittalDoubleSharp25SDown', parenRightPaddingAdjustment: -1 },
-    accSagittalDoubleFlat25SUp: { code: 'accSagittalDoubleFlat25SUp', parenRightPaddingAdjustment: -1 },
-    accSagittalDoubleSharp7CDown: { code: 'accSagittalDoubleSharp7CDown', parenRightPaddingAdjustment: -1 },
-    accSagittalDoubleFlat7CUp: { code: 'accSagittalDoubleFlat7CUp', parenRightPaddingAdjustment: -1 },
-    accSagittalDoubleSharp5CDown: { code: 'accSagittalDoubleSharp5CDown', parenRightPaddingAdjustment: -1 },
-    accSagittalDoubleFlat5CUp: { code: 'accSagittalDoubleFlat5CUp', parenRightPaddingAdjustment: -1 },
-    accSagittalDoubleSharp5v7kDown: { code: 'accSagittalDoubleSharp5v7kDown', parenRightPaddingAdjustment: -1 },
-    accSagittalDoubleFlat5v7kUp: { code: 'accSagittalDoubleFlat5v7kUp', parenRightPaddingAdjustment: -1 },
-    accSagittalDoubleSharp: { code: 'accSagittalDoubleSharp', parenRightPaddingAdjustment: -1 },
-    accSagittalDoubleFlat: { code: 'accSagittalDoubleFlat', parenRightPaddingAdjustment: -1 },
-    accSagittal7v11KleismaUp: { code: 'accSagittal7v11KleismaUp', parenRightPaddingAdjustment: -1 },
-    accSagittal7v11KleismaDown: { code: 'accSagittal7v11KleismaDown', parenRightPaddingAdjustment: -1 },
-    accSagittal17CommaUp: { code: 'accSagittal17CommaUp', parenRightPaddingAdjustment: -1 },
-    accSagittal17CommaDown: { code: 'accSagittal17CommaDown', parenRightPaddingAdjustment: -1 },
-    accSagittal55CommaUp: { code: 'accSagittal55CommaUp', parenRightPaddingAdjustment: -1 },
-    accSagittal55CommaDown: { code: 'accSagittal55CommaDown', parenRightPaddingAdjustment: -1 },
-    accSagittal7v11CommaUp: { code: 'accSagittal7v11CommaUp', parenRightPaddingAdjustment: -1 },
-    accSagittal7v11CommaDown: { code: 'accSagittal7v11CommaDown', parenRightPaddingAdjustment: -1 },
-    accSagittal5v11SmallDiesisUp: { code: 'accSagittal5v11SmallDiesisUp', parenRightPaddingAdjustment: -1 },
-    accSagittal5v11SmallDiesisDown: { code: 'accSagittal5v11SmallDiesisDown', parenRightPaddingAdjustment: -1 },
-    accSagittalSharp5v11SDown: { code: 'accSagittalSharp5v11SDown', parenRightPaddingAdjustment: -1 },
-    accSagittalFlat5v11SUp: { code: 'accSagittalFlat5v11SUp', parenRightPaddingAdjustment: -1 },
-    accSagittalSharp7v11CDown: { code: 'accSagittalSharp7v11CDown', parenRightPaddingAdjustment: -1 },
-    accSagittalFlat7v11CUp: { code: 'accSagittalFlat7v11CUp', parenRightPaddingAdjustment: -1 },
-    accSagittalSharp55CDown: { code: 'accSagittalSharp55CDown', parenRightPaddingAdjustment: -1 },
-    accSagittalFlat55CUp: { code: 'accSagittalFlat55CUp', parenRightPaddingAdjustment: -1 },
-    accSagittalSharp17CDown: { code: 'accSagittalSharp17CDown', parenRightPaddingAdjustment: -1 },
-    accSagittalFlat17CUp: { code: 'accSagittalFlat17CUp', parenRightPaddingAdjustment: -1 },
-    accSagittalSharp7v11kDown: { code: 'accSagittalSharp7v11kDown', parenRightPaddingAdjustment: -1 },
-    accSagittalFlat7v11kUp: { code: 'accSagittalFlat7v11kUp', parenRightPaddingAdjustment: -1 },
-    accSagittalSharp7v11kUp: { code: 'accSagittalSharp7v11kUp', parenRightPaddingAdjustment: -1 },
-    accSagittalFlat7v11kDown: { code: 'accSagittalFlat7v11kDown', parenRightPaddingAdjustment: -1 },
-    accSagittalSharp17CUp: { code: 'accSagittalSharp17CUp', parenRightPaddingAdjustment: -1 },
-    accSagittalFlat17CDown: { code: 'accSagittalFlat17CDown', parenRightPaddingAdjustment: -1 },
-    accSagittalSharp55CUp: { code: 'accSagittalSharp55CUp', parenRightPaddingAdjustment: -1 },
-    accSagittalFlat55CDown: { code: 'accSagittalFlat55CDown', parenRightPaddingAdjustment: -1 },
-    accSagittalSharp7v11CUp: { code: 'accSagittalSharp7v11CUp', parenRightPaddingAdjustment: -1 },
-    accSagittalFlat7v11CDown: { code: 'accSagittalFlat7v11CDown', parenRightPaddingAdjustment: -1 },
-    accSagittalSharp5v11SUp: { code: 'accSagittalSharp5v11SUp', parenRightPaddingAdjustment: -1 },
-    accSagittalFlat5v11SDown: { code: 'accSagittalFlat5v11SDown', parenRightPaddingAdjustment: -1 },
-    accSagittalDoubleSharp5v11SDown: { code: 'accSagittalDoubleSharp5v11SDown', parenRightPaddingAdjustment: -1 },
-    accSagittalDoubleFlat5v11SUp: { code: 'accSagittalDoubleFlat5v11SUp', parenRightPaddingAdjustment: -1 },
-    accSagittalDoubleSharp7v11CDown: { code: 'accSagittalDoubleSharp7v11CDown', parenRightPaddingAdjustment: -1 },
-    accSagittalDoubleFlat7v11CUp: { code: 'accSagittalDoubleFlat7v11CUp', parenRightPaddingAdjustment: -1 },
-    accSagittalDoubleSharp55CDown: { code: 'accSagittalDoubleSharp55CDown', parenRightPaddingAdjustment: -1 },
-    accSagittalDoubleFlat55CUp: { code: 'accSagittalDoubleFlat55CUp', parenRightPaddingAdjustment: -1 },
-    accSagittalDoubleSharp17CDown: { code: 'accSagittalDoubleSharp17CDown', parenRightPaddingAdjustment: -1 },
-    accSagittalDoubleFlat17CUp: { code: 'accSagittalDoubleFlat17CUp', parenRightPaddingAdjustment: -1 },
-    accSagittalDoubleSharp7v11kDown: { code: 'accSagittalDoubleSharp7v11kDown', parenRightPaddingAdjustment: -1 },
-    accSagittalDoubleFlat7v11kUp: { code: 'accSagittalDoubleFlat7v11kUp', parenRightPaddingAdjustment: -1 },
-    accSagittal23CommaUp: { code: 'accSagittal23CommaUp', parenRightPaddingAdjustment: -1 },
-    accSagittal23CommaDown: { code: 'accSagittal23CommaDown', parenRightPaddingAdjustment: -1 },
-    accSagittal5v19CommaUp: { code: 'accSagittal5v19CommaUp', parenRightPaddingAdjustment: -1 },
-    accSagittal5v19CommaDown: { code: 'accSagittal5v19CommaDown', parenRightPaddingAdjustment: -1 },
-    accSagittal5v23SmallDiesisUp: { code: 'accSagittal5v23SmallDiesisUp', parenRightPaddingAdjustment: -1 },
-    accSagittal5v23SmallDiesisDown: { code: 'accSagittal5v23SmallDiesisDown', parenRightPaddingAdjustment: -1 },
-    accSagittalSharp5v23SDown: { code: 'accSagittalSharp5v23SDown', parenRightPaddingAdjustment: -1 },
-    accSagittalFlat5v23SUp: { code: 'accSagittalFlat5v23SUp', parenRightPaddingAdjustment: -1 },
-    accSagittalSharp5v19CDown: { code: 'accSagittalSharp5v19CDown', parenRightPaddingAdjustment: -1 },
-    accSagittalFlat5v19CUp: { code: 'accSagittalFlat5v19CUp', parenRightPaddingAdjustment: -1 },
-    accSagittalSharp23CDown: { code: 'accSagittalSharp23CDown', parenRightPaddingAdjustment: -1 },
-    accSagittalFlat23CUp: { code: 'accSagittalFlat23CUp', parenRightPaddingAdjustment: -1 },
-    accSagittalSharp23CUp: { code: 'accSagittalSharp23CUp', parenRightPaddingAdjustment: -1 },
-    accSagittalFlat23CDown: { code: 'accSagittalFlat23CDown', parenRightPaddingAdjustment: -1 },
-    accSagittalSharp5v19CUp: { code: 'accSagittalSharp5v19CUp', parenRightPaddingAdjustment: -1 },
-    accSagittalFlat5v19CDown: { code: 'accSagittalFlat5v19CDown', parenRightPaddingAdjustment: -1 },
-    accSagittalSharp5v23SUp: { code: 'accSagittalSharp5v23SUp', parenRightPaddingAdjustment: -1 },
-    accSagittalFlat5v23SDown: { code: 'accSagittalFlat5v23SDown', parenRightPaddingAdjustment: -1 },
-    accSagittalDoubleSharp5v23SDown: { code: 'accSagittalDoubleSharp5v23SDown', parenRightPaddingAdjustment: -1 },
-    accSagittalDoubleFlat5v23SUp: { code: 'accSagittalDoubleFlat5v23SUp', parenRightPaddingAdjustment: -1 },
-    accSagittalDoubleSharp5v19CDown: { code: 'accSagittalDoubleSharp5v19CDown', parenRightPaddingAdjustment: -1 },
-    accSagittalDoubleFlat5v19CUp: { code: 'accSagittalDoubleFlat5v19CUp', parenRightPaddingAdjustment: -1 },
-    accSagittalDoubleSharp23CDown: { code: 'accSagittalDoubleSharp23CDown', parenRightPaddingAdjustment: -1 },
-    accSagittalDoubleFlat23CUp: { code: 'accSagittalDoubleFlat23CUp', parenRightPaddingAdjustment: -1 },
-    accSagittal19SchismaUp: { code: 'accSagittal19SchismaUp', parenRightPaddingAdjustment: -1 },
-    accSagittal19SchismaDown: { code: 'accSagittal19SchismaDown', parenRightPaddingAdjustment: -1 },
-    accSagittal17KleismaUp: { code: 'accSagittal17KleismaUp', parenRightPaddingAdjustment: -1 },
-    accSagittal17KleismaDown: { code: 'accSagittal17KleismaDown', parenRightPaddingAdjustment: -1 },
-    accSagittal143CommaUp: { code: 'accSagittal143CommaUp', parenRightPaddingAdjustment: -1 },
-    accSagittal143CommaDown: { code: 'accSagittal143CommaDown', parenRightPaddingAdjustment: -1 },
-    accSagittal11v49CommaUp: { code: 'accSagittal11v49CommaUp', parenRightPaddingAdjustment: -1 },
-    accSagittal11v49CommaDown: { code: 'accSagittal11v49CommaDown', parenRightPaddingAdjustment: -1 },
-    accSagittal19CommaUp: { code: 'accSagittal19CommaUp', parenRightPaddingAdjustment: -1 },
-    accSagittal19CommaDown: { code: 'accSagittal19CommaDown', parenRightPaddingAdjustment: -1 },
-    accSagittal7v19CommaUp: { code: 'accSagittal7v19CommaUp', parenRightPaddingAdjustment: -1 },
-    accSagittal7v19CommaDown: { code: 'accSagittal7v19CommaDown', parenRightPaddingAdjustment: -1 },
-    accSagittal49SmallDiesisUp: { code: 'accSagittal49SmallDiesisUp', parenRightPaddingAdjustment: -1 },
-    accSagittal49SmallDiesisDown: { code: 'accSagittal49SmallDiesisDown', parenRightPaddingAdjustment: -1 },
-    accSagittal23SmallDiesisUp: { code: 'accSagittal23SmallDiesisUp', parenRightPaddingAdjustment: -1 },
-    accSagittal23SmallDiesisDown: { code: 'accSagittal23SmallDiesisDown', parenRightPaddingAdjustment: -1 },
-    accSagittal5v13MediumDiesisUp: { code: 'accSagittal5v13MediumDiesisUp', parenRightPaddingAdjustment: -1 },
-    accSagittal5v13MediumDiesisDown: { code: 'accSagittal5v13MediumDiesisDown', parenRightPaddingAdjustment: -1 },
-    accSagittal11v19MediumDiesisUp: { code: 'accSagittal11v19MediumDiesisUp', parenRightPaddingAdjustment: -1 },
-    accSagittal11v19MediumDiesisDown: { code: 'accSagittal11v19MediumDiesisDown', parenRightPaddingAdjustment: -1 },
-    accSagittal49MediumDiesisUp: { code: 'accSagittal49MediumDiesisUp', parenRightPaddingAdjustment: -1 },
-    accSagittal49MediumDiesisDown: { code: 'accSagittal49MediumDiesisDown', parenRightPaddingAdjustment: -1 },
-    accSagittal5v49MediumDiesisUp: { code: 'accSagittal5v49MediumDiesisUp', parenRightPaddingAdjustment: -1 },
-    accSagittal5v49MediumDiesisDown: { code: 'accSagittal5v49MediumDiesisDown', parenRightPaddingAdjustment: -1 },
-    accSagittal49LargeDiesisUp: { code: 'accSagittal49LargeDiesisUp', parenRightPaddingAdjustment: -1 },
-    accSagittal49LargeDiesisDown: { code: 'accSagittal49LargeDiesisDown', parenRightPaddingAdjustment: -1 },
-    accSagittal11v19LargeDiesisUp: { code: 'accSagittal11v19LargeDiesisUp', parenRightPaddingAdjustment: -1 },
-    accSagittal11v19LargeDiesisDown: { code: 'accSagittal11v19LargeDiesisDown', parenRightPaddingAdjustment: -1 },
-    accSagittal5v13LargeDiesisUp: { code: 'accSagittal5v13LargeDiesisUp', parenRightPaddingAdjustment: -1 },
-    accSagittal5v13LargeDiesisDown: { code: 'accSagittal5v13LargeDiesisDown', parenRightPaddingAdjustment: -1 },
-    accSagittalSharp23SDown: { code: 'accSagittalSharp23SDown', parenRightPaddingAdjustment: -1 },
-    accSagittalFlat23SUp: { code: 'accSagittalFlat23SUp', parenRightPaddingAdjustment: -1 },
-    accSagittalSharp49SDown: { code: 'accSagittalSharp49SDown', parenRightPaddingAdjustment: -1 },
-    accSagittalFlat49SUp: { code: 'accSagittalFlat49SUp', parenRightPaddingAdjustment: -1 },
-    accSagittalSharp7v19CDown: { code: 'accSagittalSharp7v19CDown', parenRightPaddingAdjustment: -1 },
-    accSagittalFlat7v19CUp: { code: 'accSagittalFlat7v19CUp', parenRightPaddingAdjustment: -1 },
-    accSagittalSharp19CDown: { code: 'accSagittalSharp19CDown', parenRightPaddingAdjustment: -1 },
-    accSagittalFlat19CUp: { code: 'accSagittalFlat19CUp', parenRightPaddingAdjustment: -1 },
-    accSagittalSharp11v49CDown: { code: 'accSagittalSharp11v49CDown', parenRightPaddingAdjustment: -1 },
-    accSagittalFlat11v49CUp: { code: 'accSagittalFlat11v49CUp', parenRightPaddingAdjustment: -1 },
-    accSagittalSharp143CDown: { code: 'accSagittalSharp143CDown', parenRightPaddingAdjustment: -1 },
-    accSagittalFlat143CUp: { code: 'accSagittalFlat143CUp', parenRightPaddingAdjustment: -1 },
-    accSagittalSharp17kDown: { code: 'accSagittalSharp17kDown', parenRightPaddingAdjustment: -1 },
-    accSagittalFlat17kUp: { code: 'accSagittalFlat17kUp', parenRightPaddingAdjustment: -1 },
-    accSagittalSharp19sDown: { code: 'accSagittalSharp19sDown', parenRightPaddingAdjustment: -1 },
-    accSagittalFlat19sUp: { code: 'accSagittalFlat19sUp', parenRightPaddingAdjustment: -1 },
-    accSagittalSharp19sUp: { code: 'accSagittalSharp19sUp', parenRightPaddingAdjustment: -1 },
-    accSagittalFlat19sDown: { code: 'accSagittalFlat19sDown', parenRightPaddingAdjustment: -1 },
-    accSagittalSharp17kUp: { code: 'accSagittalSharp17kUp', parenRightPaddingAdjustment: -1 },
-    accSagittalFlat17kDown: { code: 'accSagittalFlat17kDown', parenRightPaddingAdjustment: -1 },
-    accSagittalSharp143CUp: { code: 'accSagittalSharp143CUp', parenRightPaddingAdjustment: -1 },
-    accSagittalFlat143CDown: { code: 'accSagittalFlat143CDown', parenRightPaddingAdjustment: -1 },
-    accSagittalSharp11v49CUp: { code: 'accSagittalSharp11v49CUp', parenRightPaddingAdjustment: -1 },
-    accSagittalFlat11v49CDown: { code: 'accSagittalFlat11v49CDown', parenRightPaddingAdjustment: -1 },
-    accSagittalSharp19CUp: { code: 'accSagittalSharp19CUp', parenRightPaddingAdjustment: -1 },
-    accSagittalFlat19CDown: { code: 'accSagittalFlat19CDown', parenRightPaddingAdjustment: -1 },
-    accSagittalSharp7v19CUp: { code: 'accSagittalSharp7v19CUp', parenRightPaddingAdjustment: -1 },
-    accSagittalFlat7v19CDown: { code: 'accSagittalFlat7v19CDown', parenRightPaddingAdjustment: -1 },
-    accSagittalSharp49SUp: { code: 'accSagittalSharp49SUp', parenRightPaddingAdjustment: -1 },
-    accSagittalFlat49SDown: { code: 'accSagittalFlat49SDown', parenRightPaddingAdjustment: -1 },
-    accSagittalSharp23SUp: { code: 'accSagittalSharp23SUp', parenRightPaddingAdjustment: -1 },
-    accSagittalFlat23SDown: { code: 'accSagittalFlat23SDown', parenRightPaddingAdjustment: -1 },
-    accSagittalSharp5v13MUp: { code: 'accSagittalSharp5v13MUp', parenRightPaddingAdjustment: -1 },
-    accSagittalFlat5v13MDown: { code: 'accSagittalFlat5v13MDown', parenRightPaddingAdjustment: -1 },
-    accSagittalSharp11v19MUp: { code: 'accSagittalSharp11v19MUp', parenRightPaddingAdjustment: -1 },
-    accSagittalFlat11v19MDown: { code: 'accSagittalFlat11v19MDown', parenRightPaddingAdjustment: -1 },
-    accSagittalSharp49MUp: { code: 'accSagittalSharp49MUp', parenRightPaddingAdjustment: -1 },
-    accSagittalFlat49MDown: { code: 'accSagittalFlat49MDown', parenRightPaddingAdjustment: -1 },
-    accSagittalSharp5v49MUp: { code: 'accSagittalSharp5v49MUp', parenRightPaddingAdjustment: -1 },
-    accSagittalFlat5v49MDown: { code: 'accSagittalFlat5v49MDown', parenRightPaddingAdjustment: -1 },
-    accSagittalSharp49LUp: { code: 'accSagittalSharp49LUp', parenRightPaddingAdjustment: -1 },
-    accSagittalFlat49LDown: { code: 'accSagittalFlat49LDown', parenRightPaddingAdjustment: -1 },
-    accSagittalSharp11v19LUp: { code: 'accSagittalSharp11v19LUp', parenRightPaddingAdjustment: -1 },
-    accSagittalFlat11v19LDown: { code: 'accSagittalFlat11v19LDown', parenRightPaddingAdjustment: -1 },
-    accSagittalSharp5v13LUp: { code: 'accSagittalSharp5v13LUp', parenRightPaddingAdjustment: -1 },
-    accSagittalFlat5v13LDown: { code: 'accSagittalFlat5v13LDown', parenRightPaddingAdjustment: -1 },
-    accSagittalDoubleSharp23SDown: { code: 'accSagittalDoubleSharp23SDown', parenRightPaddingAdjustment: -1 },
-    accSagittalDoubleFlat23SUp: { code: 'accSagittalDoubleFlat23SUp', parenRightPaddingAdjustment: -1 },
-    accSagittalDoubleSharp49SDown: { code: 'accSagittalDoubleSharp49SDown', parenRightPaddingAdjustment: -1 },
-    accSagittalDoubleFlat49SUp: { code: 'accSagittalDoubleFlat49SUp', parenRightPaddingAdjustment: -1 },
-    accSagittalDoubleSharp7v19CDown: { code: 'accSagittalDoubleSharp7v19CDown', parenRightPaddingAdjustment: -1 },
-    accSagittalDoubleFlat7v19CUp: { code: 'accSagittalDoubleFlat7v19CUp', parenRightPaddingAdjustment: -1 },
-    accSagittalDoubleSharp19CDown: { code: 'accSagittalDoubleSharp19CDown', parenRightPaddingAdjustment: -1 },
-    accSagittalDoubleFlat19CUp: { code: 'accSagittalDoubleFlat19CUp', parenRightPaddingAdjustment: -1 },
-    accSagittalDoubleSharp11v49CDown: { code: 'accSagittalDoubleSharp11v49CDown', parenRightPaddingAdjustment: -1 },
-    accSagittalDoubleFlat11v49CUp: { code: 'accSagittalDoubleFlat11v49CUp', parenRightPaddingAdjustment: -1 },
-    accSagittalDoubleSharp143CDown: { code: 'accSagittalDoubleSharp143CDown', parenRightPaddingAdjustment: -1 },
-    accSagittalDoubleFlat143CUp: { code: 'accSagittalDoubleFlat143CUp', parenRightPaddingAdjustment: -1 },
-    accSagittalDoubleSharp17kDown: { code: 'accSagittalDoubleSharp17kDown', parenRightPaddingAdjustment: -1 },
-    accSagittalDoubleFlat17kUp: { code: 'accSagittalDoubleFlat17kUp', parenRightPaddingAdjustment: -1 },
-    accSagittalDoubleSharp19sDown: { code: 'accSagittalDoubleSharp19sDown', parenRightPaddingAdjustment: -1 },
-    accSagittalDoubleFlat19sUp: { code: 'accSagittalDoubleFlat19sUp', parenRightPaddingAdjustment: -1 },
-    accSagittalShaftUp: { code: 'accSagittalShaftUp', parenRightPaddingAdjustment: -1 },
-    accSagittalShaftDown: { code: 'accSagittalShaftDown', parenRightPaddingAdjustment: -1 },
-    accSagittalAcute: { code: 'accSagittalAcute', parenRightPaddingAdjustment: -1 },
-    accSagittalGrave: { code: 'accSagittalGrave', parenRightPaddingAdjustment: -1 },
-    accSagittal1MinaUp: { code: 'accSagittal1MinaUp', parenRightPaddingAdjustment: -1 },
-    accSagittal1MinaDown: { code: 'accSagittal1MinaDown', parenRightPaddingAdjustment: -1 },
-    accSagittal2MinasUp: { code: 'accSagittal2MinasUp', parenRightPaddingAdjustment: -1 },
-    accSagittal2MinasDown: { code: 'accSagittal2MinasDown', parenRightPaddingAdjustment: -1 },
-    accSagittal1TinaUp: { code: 'accSagittal1TinaUp', parenRightPaddingAdjustment: -1 },
-    accSagittal1TinaDown: { code: 'accSagittal1TinaDown', parenRightPaddingAdjustment: -1 },
-    accSagittal2TinasUp: { code: 'accSagittal2TinasUp', parenRightPaddingAdjustment: -1 },
-    accSagittal2TinasDown: { code: 'accSagittal2TinasDown', parenRightPaddingAdjustment: -1 },
-    accSagittal3TinasUp: { code: 'accSagittal3TinasUp', parenRightPaddingAdjustment: -1 },
-    accSagittal3TinasDown: { code: 'accSagittal3TinasDown', parenRightPaddingAdjustment: -1 },
-    accSagittal4TinasUp: { code: 'accSagittal4TinasUp', parenRightPaddingAdjustment: -1 },
-    accSagittal4TinasDown: { code: 'accSagittal4TinasDown', parenRightPaddingAdjustment: -1 },
-    accSagittal5TinasUp: { code: 'accSagittal5TinasUp', parenRightPaddingAdjustment: -1 },
-    accSagittal5TinasDown: { code: 'accSagittal5TinasDown', parenRightPaddingAdjustment: -1 },
-    accSagittal6TinasUp: { code: 'accSagittal6TinasUp', parenRightPaddingAdjustment: -1 },
-    accSagittal6TinasDown: { code: 'accSagittal6TinasDown', parenRightPaddingAdjustment: -1 },
-    accSagittal7TinasUp: { code: 'accSagittal7TinasUp', parenRightPaddingAdjustment: -1 },
-    accSagittal7TinasDown: { code: 'accSagittal7TinasDown', parenRightPaddingAdjustment: -1 },
-    accSagittal8TinasUp: { code: 'accSagittal8TinasUp', parenRightPaddingAdjustment: -1 },
-    accSagittal8TinasDown: { code: 'accSagittal8TinasDown', parenRightPaddingAdjustment: -1 },
-    accSagittal9TinasUp: { code: 'accSagittal9TinasUp', parenRightPaddingAdjustment: -1 },
-    accSagittal9TinasDown: { code: 'accSagittal9TinasDown', parenRightPaddingAdjustment: -1 },
-    accSagittalFractionalTinaUp: { code: 'accSagittalFractionalTinaUp', parenRightPaddingAdjustment: -1 },
-    accSagittalFractionalTinaDown: { code: 'accSagittalFractionalTinaDown', parenRightPaddingAdjustment: -1 },
-    accidentalNarrowReversedFlat: { code: 'accidentalNarrowReversedFlat', parenRightPaddingAdjustment: -1 },
-    accidentalNarrowReversedFlatAndFlat: {
-        code: 'accidentalNarrowReversedFlatAndFlat',
-        parenRightPaddingAdjustment: -1,
-    },
-    accidentalWilsonPlus: { code: 'accidentalWilsonPlus', parenRightPaddingAdjustment: -1 },
-    accidentalWilsonMinus: { code: 'accidentalWilsonMinus', parenRightPaddingAdjustment: -1 },
-};
-// HACK-END
 const accidentals = {
     '#': '\ue262' /*accidentalSharp*/,
     '##': '\ue263' /*accidentalDoubleSharp*/,
@@ -30817,32 +32215,30 @@ const articulations = {
     'a,': { code: '\ue805' /*pictChokeCymbal*/, betweenLines: false }, // Choked
 };
 const ornaments = {
-    mordent: { code: 'ornamentShortTrill' },
-    mordentInverted: { code: 'ornamentMordent' },
-    mordent_inverted: { code: 'ornamentMordent' },
-    turn: { code: 'ornamentTurn' },
-    turnInverted: { code: 'ornamentTurnSlash' },
-    turn_inverted: { code: 'ornamentTurnSlash' },
-    tr: { code: 'ornamentTrill' },
-    upprall: { code: 'ornamentPrecompSlideTrillDAnglebert' },
-    downprall: { code: 'ornamentPrecompDoubleCadenceUpperPrefix' },
-    prallup: { code: 'ornamentPrecompTrillSuffixDandrieu' },
-    pralldown: { code: 'ornamentPrecompTrillLowerSuffix' },
-    upmordent: { code: 'ornamentPrecompSlideTrillBach' },
-    downmordent: { code: 'ornamentPrecompDoubleCadenceUpperPrefixTurn' },
-    lineprall: { code: 'ornamentPrecompAppoggTrill' },
-    prallprall: { code: 'ornamentTremblement' },
-    scoop: { code: 'brassScoop' },
-    doit: { code: 'brassDoitMedium' },
-    fall: { code: 'brassFallLipShort' },
-    doitLong: { code: 'brassLiftMedium' },
-    fallLong: { code: 'brassFallRoughMedium' },
-    bend: { code: 'brassBend' },
-    plungerClosed: { code: 'brassMuteClosed' },
-    plungerOpen: { code: 'brassMuteOpen' },
-    flip: { code: 'brassFlip' },
-    jazzTurn: { code: 'brassJazzTurn' },
-    smear: { code: 'brassSmear' },
+    mordent: '\ue56c' /*ornamentShortTrill*/,
+    mordentInverted: '\ue56d' /*ornamentMordent*/,
+    turn: '\ue567' /*ornamentTurn*/,
+    turnInverted: '\ue569' /*ornamentTurnSlash*/,
+    tr: '\ue566' /*ornamentTrill*/,
+    upprall: '\ue5b5' /*ornamentPrecompSlideTrillDAnglebert*/,
+    downprall: '\ue5c3' /*ornamentPrecompDoubleCadenceUpperPrefix*/,
+    prallup: '\ue5bb' /*ornamentPrecompTrillSuffixDandrieu*/,
+    pralldown: '\ue5c8' /*ornamentPrecompTrillLowerSuffix*/,
+    upmordent: '\ue5b8' /*ornamentPrecompSlideTrillBach*/,
+    downmordent: '\ue5c4' /*ornamentPrecompDoubleCadenceUpperPrefixTurn*/,
+    lineprall: '\ue5b2' /*ornamentPrecompAppoggTrill*/,
+    prallprall: '\ue56e' /*ornamentTremblement*/,
+    scoop: '\ue5d0' /*brassScoop*/,
+    doit: '\ue5d5' /*brassDoitMedium*/,
+    fall: '\ue5d7' /*brassFallLipShort*/,
+    doitLong: '\ue5d2' /*brassLiftMedium*/,
+    fallLong: '\ue5de' /*brassFallRoughMedium*/,
+    bend: '\ue5e3' /*brassBend*/,
+    plungerClosed: '\ue5e5' /*brassMuteClosed*/,
+    plungerOpen: '\ue5e7' /*brassMuteOpen*/,
+    flip: '\ue5e1' /*brassFlip*/,
+    jazzTurn: '\ue5e4' /*brassJazzTurn*/,
+    smear: '\ue5e2' /*brassSmear*/,
 };
 class Tables {
     /**
@@ -30850,7 +32246,7 @@ class Tables {
      */
     static currentMusicFont() {
         if (Tables.MUSIC_FONT_STACK.length === 0) {
-            throw new _util__WEBPACK_IMPORTED_MODULE_1__.RuntimeError('NoFonts', 'The font stack is empty. See: await Flow.fetchMusicFont(...); Flow.setMusicFont(...).');
+            throw new _util__WEBPACK_IMPORTED_MODULE_2__.RuntimeError('NoFonts', 'The font stack is empty. See: await Flow.fetchMusicFont(...); Flow.setMusicFont(...).');
         }
         else {
             return Tables.MUSIC_FONT_STACK[0];
@@ -30858,7 +32254,7 @@ class Tables {
     }
     static clefProperties(clef) {
         if (!clef || !(clef in clefs))
-            throw new _util__WEBPACK_IMPORTED_MODULE_1__.RuntimeError('BadArgument', 'Invalid clef: ' + clef);
+            throw new _util__WEBPACK_IMPORTED_MODULE_2__.RuntimeError('BadArgument', 'Invalid clef: ' + clef);
         return clefs[clef];
     }
     /** Use the provided key to look up a FontInfo in CommonMetrics. **/
@@ -30918,13 +32314,13 @@ class Tables {
         const duration = Tables.sanitizeDuration(options.duration);
         const pieces = keyOctaveGlyph.split('/');
         if (pieces.length < 2) {
-            throw new _util__WEBPACK_IMPORTED_MODULE_1__.RuntimeError('BadArguments', `First argument must be note/octave or note/octave/glyph-code: ${keyOctaveGlyph}`);
+            throw new _util__WEBPACK_IMPORTED_MODULE_2__.RuntimeError('BadArguments', `First argument must be note/octave or note/octave/glyph-code: ${keyOctaveGlyph}`);
         }
         const key = pieces[0].toUpperCase();
         type = type.toUpperCase();
         const value = notesInfo[key];
         if (!value)
-            throw new _util__WEBPACK_IMPORTED_MODULE_1__.RuntimeError('BadArguments', 'Invalid key name: ' + key);
+            throw new _util__WEBPACK_IMPORTED_MODULE_2__.RuntimeError('BadArguments', 'Invalid key name: ' + key);
         let octave = parseInt(pieces[1], 10);
         // .octaveShift is the shift to compensate for clef 8va/8vb.
         octave += -1 * options.octaveShift;
@@ -30939,7 +32335,7 @@ class Tables {
         if (pieces.length > 2 && pieces[2]) {
             glyphName = pieces[2].toUpperCase();
         }
-        else if (type != 'N') {
+        else if (type !== 'N') {
             glyphName = type;
         }
         else
@@ -30957,7 +32353,7 @@ class Tables {
     }
     static integerToNote(integer) {
         if (typeof integer === 'undefined' || integer < 0 || integer > 11) {
-            throw new _util__WEBPACK_IMPORTED_MODULE_1__.RuntimeError('BadArguments', `integerToNote() requires an integer in the range [0, 11]: ${integer}`);
+            throw new _util__WEBPACK_IMPORTED_MODULE_2__.RuntimeError('BadArguments', `integerToNote() requires an integer in the range [0, 11]: ${integer}`);
         }
         const table = {
             0: 'C',
@@ -30975,7 +32371,7 @@ class Tables {
         };
         const noteValue = table[integer];
         if (!noteValue) {
-            throw new _util__WEBPACK_IMPORTED_MODULE_1__.RuntimeError('BadArguments', `Unknown note value for integer: ${integer}`);
+            throw new _util__WEBPACK_IMPORTED_MODULE_2__.RuntimeError('BadArguments', `Unknown note value for integer: ${integer}`);
         }
         return noteValue;
     }
@@ -30987,20 +32383,18 @@ class Tables {
     static articulationCodes(artic) {
         return articulations[artic];
     }
-    static accidentalCodesOld(accidental) {
-        return accidentalsOld[accidental];
-    }
     static accidentalCodes(accidental) {
         var _a;
         return (_a = accidentals[accidental]) !== null && _a !== void 0 ? _a : accidental;
     }
-    static ornamentCodes(accidental) {
-        return ornaments[accidental];
+    static ornamentCodes(ornament) {
+        var _a;
+        return (_a = ornaments[ornament]) !== null && _a !== void 0 ? _a : ornament;
     }
     static keySignature(spec) {
         const keySpec = keySignatures[spec];
         if (!keySpec) {
-            throw new _util__WEBPACK_IMPORTED_MODULE_1__.RuntimeError('BadKeySignature', `Bad key signature spec: '${spec}'`);
+            throw new _util__WEBPACK_IMPORTED_MODULE_2__.RuntimeError('BadKeySignature', `Bad key signature spec: '${spec}'`);
         }
         if (!keySpec.accidental) {
             return [];
@@ -31035,7 +32429,7 @@ class Tables {
             duration = durationNumber;
         }
         if (durations[duration] === undefined) {
-            throw new _util__WEBPACK_IMPORTED_MODULE_1__.RuntimeError('BadArguments', `The provided duration is not valid: ${duration}`);
+            throw new _util__WEBPACK_IMPORTED_MODULE_2__.RuntimeError('BadArguments', `The provided duration is not valid: ${duration}`);
         }
         return duration;
     }
@@ -31052,7 +32446,7 @@ class Tables {
         duration = Tables.sanitizeDuration(duration);
         const ticks = durations[duration];
         if (ticks === undefined) {
-            throw new _util__WEBPACK_IMPORTED_MODULE_1__.RuntimeError('InvalidDuration');
+            throw new _util__WEBPACK_IMPORTED_MODULE_2__.RuntimeError('InvalidDuration');
         }
         return ticks;
     }
@@ -31257,7 +32651,7 @@ class Tables {
                         return '\ue0a4' /*noteheadBlack*/;
                 }
         }
-        return '\u0000';
+        return _glyphs__WEBPACK_IMPORTED_MODULE_1__.Glyphs.null;
     }
 }
 Tables.UNISON = true;
@@ -31331,7 +32725,6 @@ Tables.STAVE_LINE_DISTANCE = 10;
 // This will be deprecated in the future. This is a temporary solution until
 // we have more robust text metrics.
 Tables.TEXT_HEIGHT_OFFSET_HACK = 1;
-Tables.accidentalMap = accidentalsOld;
 Tables.accidentalColumnsTable = accidentalColumns;
 Tables.unicode = {
     // ♯ accidental sharp
@@ -31547,7 +32940,7 @@ class TabNote extends _stemmablenote__WEBPACK_IMPORTED_MODULE_4__.StemmableNote 
     }
     // Get the default stem extension for the note
     getStemExtension() {
-        if (this.stemExtensionOverride != null) {
+        if (this.stemExtensionOverride !== undefined) {
             return this.stemExtensionOverride;
         }
         return this.flag.getHeight() > _stem__WEBPACK_IMPORTED_MODULE_3__.Stem.HEIGHT ? this.flag.getHeight() - _stem__WEBPACK_IMPORTED_MODULE_3__.Stem.HEIGHT : 0;
@@ -31658,7 +33051,7 @@ class TabNote extends _stemmablenote__WEBPACK_IMPORTED_MODULE_4__.StemmableNote 
     drawFlag() {
         const { beam, glyphProps, renderOptions: { drawStem }, } = this;
         const context = this.checkContext();
-        const shouldDrawFlag = beam == undefined && drawStem;
+        const shouldDrawFlag = beam === undefined && drawStem;
         // Now it's the flag's turn.
         if (glyphProps.codeFlagUp && shouldDrawFlag) {
             const flagX = this.getStemX();
@@ -31732,7 +33125,7 @@ class TabNote extends _stemmablenote__WEBPACK_IMPORTED_MODULE_4__.StemmableNote 
             throw new _util__WEBPACK_IMPORTED_MODULE_7__.RuntimeError('NoYValues', "Can't draw note without Y values.");
         }
         this.setRendered();
-        const renderStem = this.beam == undefined && this.renderOptions.drawStem;
+        const renderStem = this.beam === undefined && this.renderOptions.drawStem;
         this.applyStyle();
         ctx.openGroup('tabnote', this.getAttribute('id'), { pointerBBox: true });
         this.drawPositions();
@@ -32210,9 +33603,10 @@ class TextDynamics extends _note__WEBPACK_IMPORTED_MODULE_0__.Note {
      * `sequence` of letters that represents the letters to render.
      */
     constructor(noteStruct) {
+        var _a, _b;
         super(noteStruct);
-        this.sequence = (noteStruct.text || '').toLowerCase();
-        this.line = noteStruct.line || 0;
+        this.sequence = ((_a = noteStruct.text) !== null && _a !== void 0 ? _a : '').toLowerCase();
+        this.line = (_b = noteStruct.line) !== null && _b !== void 0 ? _b : 0;
         this.text = '';
         this.renderOptions = Object.assign({ glyphFontSize: _tables__WEBPACK_IMPORTED_MODULE_1__.Tables.lookupMetric('fontSize') }, this.renderOptions);
         this.textFont.size = (0,_util__WEBPACK_IMPORTED_MODULE_3__.defined)(this.renderOptions.glyphFontSize) * this.renderOptions.glyphFontScale;
@@ -32254,339 +33648,6 @@ class TextDynamics extends _note__WEBPACK_IMPORTED_MODULE_0__.Note {
 }
 /** To enable logging for this class. Set `Vex.Flow.TextDynamics.DEBUG` to `true`. */
 TextDynamics.DEBUG = false;
-
-
-/***/ }),
-
-/***/ "./src/textformatter.ts":
-/*!******************************!*\
-  !*** ./src/textformatter.ts ***!
-  \******************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   TextFormatter: () => (/* binding */ TextFormatter)
-/* harmony export */ });
-/* harmony import */ var _font__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./font */ "./src/font.ts");
-/* harmony import */ var _util__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./util */ "./src/util.ts");
-// Copyright (c) 2023-present VexFlow contributors: https://github.com/vexflow/vexflow/graphs/contributors
-// MIT License
-
-
-// eslint-disable-next-line
-function L(...args) {
-    if (TextFormatter.DEBUG)
-        (0,_util__WEBPACK_IMPORTED_MODULE_1__.log)('Vex.Flow.TextFormatter', args);
-}
-/**
- * Text widths are stored in a cache, so we don't have to recompute widths
- * for the same font + string combination.
- *
- * The cache is first keyed by the font information. The key is of the form:
- *   `${family}-${size}-${weight}-${style}`
- * The second level key is the specific text to be measured.
- *
- * The stored value is the measured width in `em` units.
- *   textWidth == textWidthCache[cacheKey][textToMeasure]
- */
-const textWidthCache = {};
-const textHeightCache = {};
-/**
- * Applications may register additional fonts via `TextFormatter.registerInfo(info)`.
- * The metrics for those fonts will be made available to the application.
- */
-const registry = {};
-class TextFormatter {
-    /**
-     * Return all registered font families.
-     */
-    static getFontFamilies() {
-        const registeredFonts = [];
-        for (const fontFamily in registry) {
-            const formatterInfo = registry[fontFamily];
-            registeredFonts.push(Object.assign({}, formatterInfo));
-        }
-        return registeredFonts;
-    }
-    /**
-     * Call `TextFormatter.registerInfo(info)` to register font information before using this method.
-     *
-     * This method creates a formatter for the font that most closely matches the requested font.
-     * We compare font family, bold, and italic attributes.
-     * This method will return a fallback formatter if there are no matches.
-     */
-    static create(requestedFont = {}) {
-        L('create: ', requestedFont);
-        if (!requestedFont.family) {
-            requestedFont.family = _font__WEBPACK_IMPORTED_MODULE_0__.Font.SANS_SERIF;
-        }
-        // TODO: One potential (small) optimization is to cache the TextFormatter object
-        // returned for each font info. We would probably want to clear the cache if
-        // the registry is ever updated.
-        const candidates = [];
-        // The incoming font family is a string of comma-separated font family names.
-        // (e.g., `PetalumaScript, Arial, sans-serif`).
-        const requestedFamilies = requestedFont.family.split(/\s*,\s*/);
-        for (const requestedFamily of requestedFamilies) {
-            for (const fontFamily in registry) {
-                // Support cases where the registry contains 'Roboto Slab Medium',
-                // but the requestedFont.family is 'Roboto Slab'.
-                if (fontFamily.startsWith(requestedFamily)) {
-                    candidates.push(registry[fontFamily]);
-                }
-            }
-            if (candidates.length > 0) {
-                break;
-            }
-        }
-        let formatter;
-        if (candidates.length === 0) {
-            // No match, so return a fallback text formatter.
-            formatter = new TextFormatter(Object.values(registry)[0]);
-        }
-        else if (candidates.length === 1) {
-            formatter = new TextFormatter(candidates[0]);
-        }
-        else {
-            const bold = _font__WEBPACK_IMPORTED_MODULE_0__.Font.isBold(requestedFont.weight);
-            const italic = _font__WEBPACK_IMPORTED_MODULE_0__.Font.isItalic(requestedFont.style);
-            const perfectMatch = candidates.find((f) => f.bold === bold && f.italic === italic);
-            if (perfectMatch) {
-                formatter = new TextFormatter(perfectMatch);
-            }
-            else {
-                const partialMatch = candidates.find((f) => f.italic === italic || f.bold === bold);
-                if (partialMatch) {
-                    formatter = new TextFormatter(partialMatch);
-                }
-                else {
-                    formatter = new TextFormatter(candidates[0]);
-                }
-            }
-        }
-        const fontSize = requestedFont.size;
-        if (typeof fontSize !== 'undefined') {
-            const fontSizeInPt = _font__WEBPACK_IMPORTED_MODULE_0__.Font.convertSizeToPointValue(fontSize);
-            formatter.setFontSize(fontSizeInPt);
-        }
-        return formatter;
-    }
-    /**
-     * @param fontFamily used as a key to the font registry.
-     * @returns the same info object that was passed in via `TextFormatter.registerInfo(info)`
-     */
-    static getInfo(fontFamily) {
-        return registry[fontFamily];
-    }
-    /**
-     * Apps may register their own fonts and metrics, and those metrics
-     * will be available to the app for formatting.
-     *
-     * Metrics can be generated from a font file using fontgen_text.js in the tools/fonts directory.
-     * @param info
-     * @param overwrite
-     */
-    static registerInfo(info, overwrite = false) {
-        L('registerInfo: ', info, overwrite);
-        const fontFamily = info.family;
-        const currFontInfo = registry[fontFamily];
-        if (currFontInfo === undefined || overwrite) {
-            registry[fontFamily] = info;
-        }
-    }
-    /**
-     * Use `TextFormatter.create(...)` to build an instance from information previously
-     * registered via `TextFormatter.registerInfo(info)`.
-     */
-    constructor(formatterInfo) {
-        /** Font family. */
-        this.family = '';
-        /** Specified in `pt` units. */
-        this.size = 14;
-        /** Font metrics are extracted at 1000 upem (units per em). */
-        this.resolution = 1000;
-        /**
-         * For text formatting, we do not require glyph outlines, but instead rely on glyph
-         * bounding box metrics such as:
-         * ```
-         * {
-         *    xMin: 48,
-         *    xMax: 235,
-         *    yMin: -17,
-         *    yMax: 734,
-         *    ha: 751,
-         *    leftSideBearing: 48,
-         *    advanceWidth: 286,
-         *  }
-         * ```
-         */
-        this.glyphs = {};
-        this.serifs = false;
-        this.monospaced = false;
-        this.italic = false;
-        this.bold = false;
-        this.superscriptOffset = 0;
-        this.subscriptOffset = 0;
-        this.maxSizeGlyph = '@';
-        // This is an internal key used to index the `textWidthCache`.
-        this.cacheKey = '';
-        this.updateParams(formatterInfo);
-    }
-    get localHeightCache() {
-        var _a;
-        if (textHeightCache[this.cacheKey] === undefined) {
-            textHeightCache[this.cacheKey] = {};
-        }
-        return (_a = textHeightCache[this.cacheKey]) !== null && _a !== void 0 ? _a : {};
-    }
-    updateParams(params) {
-        if (params.family)
-            this.family = params.family;
-        if (params.resolution)
-            this.resolution = params.resolution;
-        if (params.glyphs)
-            this.glyphs = params.glyphs;
-        if (params.serifs)
-            this.serifs = params.serifs;
-        if (params.monospaced)
-            this.monospaced = params.monospaced;
-        if (params.italic)
-            this.italic = params.italic;
-        if (params.bold)
-            this.bold = params.bold;
-        if (params.maxSizeGlyph)
-            this.maxSizeGlyph = params.maxSizeGlyph;
-        if (params.superscriptOffset)
-            this.superscriptOffset = params.superscriptOffset;
-        if (params.subscriptOffset)
-            this.subscriptOffset = params.subscriptOffset;
-        this.updateCacheKey();
-    }
-    /** Create a hash with the current font data, so we can cache computed widths. */
-    updateCacheKey() {
-        const family = this.family.replace(/\s+/g, '_');
-        const size = this.size;
-        const weight = this.bold ? _font__WEBPACK_IMPORTED_MODULE_0__.FontWeight.BOLD : _font__WEBPACK_IMPORTED_MODULE_0__.FontWeight.NORMAL;
-        const style = this.italic ? _font__WEBPACK_IMPORTED_MODULE_0__.FontStyle.ITALIC : _font__WEBPACK_IMPORTED_MODULE_0__.FontStyle.NORMAL;
-        // Use the same key format as SVGContext.
-        this.cacheKey = `${family}%${size}%${weight}%${style}`;
-    }
-    /**
-     * The glyphs table is indexed by the character (e.g., 'C', '@').
-     * See: robotoslab_glyphs.ts & petalumascript_glyphs.ts.
-     */
-    getGlyphMetrics(character) {
-        if (this.glyphs[character]) {
-            return this.glyphs[character];
-        }
-        else {
-            return this.glyphs[this.maxSizeGlyph];
-        }
-    }
-    get maxHeight() {
-        const metrics = this.getGlyphMetrics(this.maxSizeGlyph);
-        return (metrics.ha / this.resolution) * this.fontSizeInPixels;
-    }
-    /**
-     * Retrieve the character's advanceWidth as a fraction of an `em` unit.
-     * For the space character ' ' as defined in the:
-     *   petalumascript_glyphs.ts: 250 advanceWidth in the 1000 unitsPerEm font returns 0.25.
-     *   robotoslab_glyphs.ts:     509 advanceWidth in the 2048 unitsPerEm font returns 0.2485.
-     */
-    getWidthForCharacterInEm(c) {
-        var _a;
-        const metrics = this.getGlyphMetrics(c);
-        if (!metrics) {
-            // An arbitrary number, close to the `em` width of the '#' and '5' characters in PetalumaScript.
-            return 0.65;
-        }
-        else {
-            const advanceWidth = (_a = metrics.advanceWidth) !== null && _a !== void 0 ? _a : 0;
-            return advanceWidth / this.resolution;
-        }
-    }
-    /**
-     * Retrieve the character's y bounds (ymin, ymax) and height.
-     */
-    getYForCharacterInPx(c) {
-        const metrics = this.getGlyphMetrics(c);
-        const rv = { yMin: 0, yMax: this.maxHeight, height: this.maxHeight };
-        if (!metrics) {
-            return rv;
-        }
-        else {
-            if (typeof metrics.yMin === 'number') {
-                rv.yMin = (metrics.yMin / this.resolution) * this.fontSizeInPixels;
-            }
-            if (typeof metrics.yMax === 'number') {
-                rv.yMax = (metrics.yMax / this.resolution) * this.fontSizeInPixels;
-            }
-            rv.height = rv.yMax - rv.yMin;
-            return rv;
-        }
-    }
-    getYForStringInPx(str) {
-        const entry = this.localHeightCache;
-        const extent = { yMin: 0, yMax: this.maxHeight, height: this.maxHeight };
-        const cache = entry[str];
-        if (cache !== undefined) {
-            return cache;
-        }
-        for (let i = 0; i < str.length; ++i) {
-            const curY = this.getYForCharacterInPx(str[i]);
-            extent.yMin = Math.min(extent.yMin, curY.yMin);
-            extent.yMax = Math.max(extent.yMax, curY.yMax);
-            extent.height = extent.yMax - extent.yMin;
-        }
-        entry[str] = extent;
-        return extent;
-    }
-    /**
-     * Retrieve the total width of `text` in `em` units.
-     */
-    getWidthForTextInEm(text) {
-        const key = this.cacheKey;
-        // Get the cache for this specific font family, size, weight, style combination.
-        // The cache contains previously computed widths for different `text` strings.
-        let cachedWidths = textWidthCache[key];
-        if (cachedWidths === undefined) {
-            cachedWidths = {};
-            textWidthCache[key] = cachedWidths;
-        }
-        let width = cachedWidths[text];
-        if (width === undefined) {
-            width = 0;
-            for (let i = 0; i < text.length; ++i) {
-                width += this.getWidthForCharacterInEm(text[i]);
-            }
-            cachedWidths[text] = width;
-        }
-        return width;
-    }
-    /** The width of the text (in `em`) is scaled by the font size (in `px`). */
-    getWidthForTextInPx(text) {
-        return this.getWidthForTextInEm(text) * this.fontSizeInPixels;
-    }
-    /**
-     * @param size in pt.
-     */
-    setFontSize(size) {
-        this.size = size;
-        // The width cache key depends on the current font size.
-        this.updateCacheKey();
-        return this;
-    }
-    /** `this.size` is specified in points. Convert to pixels. */
-    get fontSizeInPixels() {
-        return this.size * _font__WEBPACK_IMPORTED_MODULE_0__.Font.scaleToPxFrom.pt;
-    }
-    getResolution() {
-        return this.resolution;
-    }
-}
-/** To enable logging for this class. Set `Vex.Flow.TextFormatter.DEBUG` to `true`. */
-TextFormatter.DEBUG = false;
 
 
 /***/ }),
@@ -32655,8 +33716,9 @@ class TextNote extends _note__WEBPACK_IMPORTED_MODULE_2__.Note {
         };
     }
     constructor(noteStruct) {
+        var _a, _b;
         super(noteStruct);
-        this.text = noteStruct.text || '';
+        this.text = (_a = noteStruct.text) !== null && _a !== void 0 ? _a : '';
         if (noteStruct.glyph) {
             this.text += TextNote.GLYPHS[noteStruct.glyph] || noteStruct.glyph;
         }
@@ -32681,7 +33743,7 @@ class TextNote extends _note__WEBPACK_IMPORTED_MODULE_2__.Note {
             this.subscript.setText(noteStruct.subscript);
             this.subscript.setFontSize(smallerFontSize);
         }
-        this.line = noteStruct.line || 0;
+        this.line = (_b = noteStruct.line) !== null && _b !== void 0 ? _b : 0;
         this.smooth = noteStruct.smooth || false;
         this.ignoreTicks = noteStruct.ignoreTicks || false;
         this.justification = TextJustification.LEFT;
@@ -33213,7 +34275,7 @@ class TickContext {
                 this.maxTicks = ticks.clone();
                 this.maxTickable = tickable;
             }
-            if (this.minTicks == null) {
+            if (this.minTicks === undefined) {
                 this.minTicks = ticks.clone();
                 this.minTickable = tickable;
             }
@@ -33224,11 +34286,12 @@ class TickContext {
         }
         tickable.setTickContext(this);
         this.tickables.push(tickable);
-        this.tickablesByVoice[voiceIndex || 0] = tickable;
+        this.tickablesByVoice[voiceIndex !== null && voiceIndex !== void 0 ? voiceIndex : 0] = tickable;
         this.preFormatted = false;
         return this;
     }
     preFormat() {
+        var _a;
         if (this.preFormatted)
             return this;
         for (let i = 0; i < this.tickables.length; ++i) {
@@ -33241,7 +34304,7 @@ class TickContext {
             // Maintain the widest note for all tickables in the context
             this.notePx = Math.max(this.notePx, metrics.notePx);
             // Maintain the widest note head
-            this.glyphPx = Math.max(this.glyphPx, metrics.glyphWidth || 0);
+            this.glyphPx = Math.max(this.glyphPx, (_a = metrics.glyphWidth) !== null && _a !== void 0 ? _a : 0);
             // Total modifier shift
             this.modLeftPx = Math.max(this.modLeftPx, metrics.modLeftPx);
             this.modRightPx = Math.max(this.modRightPx, metrics.modRightPx);
@@ -33278,9 +34341,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   TimeSignature: () => (/* binding */ TimeSignature)
 /* harmony export */ });
 /* harmony import */ var _element__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./element */ "./src/element.ts");
-/* harmony import */ var _stavemodifier__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./stavemodifier */ "./src/stavemodifier.ts");
-/* harmony import */ var _typeguard__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./typeguard */ "./src/typeguard.ts");
-/* harmony import */ var _util__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./util */ "./src/util.ts");
+/* harmony import */ var _glyphs__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./glyphs */ "./src/glyphs.ts");
+/* harmony import */ var _stavemodifier__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./stavemodifier */ "./src/stavemodifier.ts");
+/* harmony import */ var _typeguard__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./typeguard */ "./src/typeguard.ts");
+/* harmony import */ var _util__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./util */ "./src/util.ts");
 // Copyright (c) 2023-present VexFlow contributors: https://github.com/vexflow/vexflow/graphs/contributors
 //
 // ## Description
@@ -33291,15 +34355,16 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+
 const assertIsValidTimeSig = (timeSpec) => {
     const numbers = timeSpec.split('/');
     if (numbers.length !== 2 && numbers[0] !== '+' && numbers[0] !== '-') {
-        throw new _util__WEBPACK_IMPORTED_MODULE_3__.RuntimeError('BadTimeSignature', `Invalid time spec: ${timeSpec}. Must be in the form "<numerator>/<denominator>"`);
+        throw new _util__WEBPACK_IMPORTED_MODULE_4__.RuntimeError('BadTimeSignature', `Invalid time spec: ${timeSpec}. Must be in the form "<numerator>/<denominator>"`);
     }
     numbers.forEach((number) => {
         // Characters consisting in number 0..9, '+', '-', '(' or ')'
-        if (/^[0-9+\-()]+$/.test(number) == false) {
-            throw new _util__WEBPACK_IMPORTED_MODULE_3__.RuntimeError('BadTimeSignature', `Invalid time spec: ${timeSpec}. Must contain valid signatures.`);
+        if (/^[0-9+\-()]+$/.test(number) === false) {
+            throw new _util__WEBPACK_IMPORTED_MODULE_4__.RuntimeError('BadTimeSignature', `Invalid time spec: ${timeSpec}. Must contain valid signatures.`);
         }
     });
 };
@@ -33308,9 +34373,9 @@ const assertIsValidTimeSig = (timeSpec) => {
  * a provided "timeSpec" such as "4/4", "C|" (cut time), or even something more advanced
  * such as "3/4(6/8)" or "2/4+5/8".
  */
-class TimeSignature extends _stavemodifier__WEBPACK_IMPORTED_MODULE_1__.StaveModifier {
+class TimeSignature extends _stavemodifier__WEBPACK_IMPORTED_MODULE_2__.StaveModifier {
     static get CATEGORY() {
-        return _typeguard__WEBPACK_IMPORTED_MODULE_2__.Category.TimeSignature;
+        return _typeguard__WEBPACK_IMPORTED_MODULE_3__.Category.TimeSignature;
     }
     constructor(timeSpec = '4/4', customPadding = 15, validateArgs = true) {
         super();
@@ -33326,33 +34391,33 @@ class TimeSignature extends _stavemodifier__WEBPACK_IMPORTED_MODULE_1__.StaveMod
         const padding = customPadding;
         this.topLine = 1;
         this.bottomLine = 3;
-        this.setPosition(_stavemodifier__WEBPACK_IMPORTED_MODULE_1__.StaveModifierPosition.BEGIN);
+        this.setPosition(_stavemodifier__WEBPACK_IMPORTED_MODULE_2__.StaveModifierPosition.BEGIN);
         this.setTimeSig(timeSpec);
         this.setPadding(padding);
     }
     static getTimeSigCode(key, smallSig = false) {
-        let code = '\u00000';
+        let code = _glyphs__WEBPACK_IMPORTED_MODULE_1__.Glyphs.null;
         switch (key) {
             case 'C':
-                code = '\ue08a' /*timeSigCommon*/;
+                code = _glyphs__WEBPACK_IMPORTED_MODULE_1__.Glyphs.timeSigCommon;
                 break;
             case 'C|':
-                code = '\ue08b' /*timeSigCutCommon*/;
+                code = _glyphs__WEBPACK_IMPORTED_MODULE_1__.Glyphs.timeSigCutCommon;
                 break;
             case '+':
-                code = smallSig ? '\ue08d' /*timeSigPlusSmall*/ : '\ue08c' /*timeSigPlus*/;
+                code = smallSig ? _glyphs__WEBPACK_IMPORTED_MODULE_1__.Glyphs.timeSigPlusSmall : _glyphs__WEBPACK_IMPORTED_MODULE_1__.Glyphs.timeSigPlus;
                 break;
             case '-':
-                code = '\ue090' /*timeSigMinus*/;
+                code = _glyphs__WEBPACK_IMPORTED_MODULE_1__.Glyphs.timeSigMinus;
                 break;
             case '(':
-                code = smallSig ? '\ue092' /*timeSigParensLeftSmall*/ : '\ue094' /*timeSigParensLeft*/;
+                code = smallSig ? _glyphs__WEBPACK_IMPORTED_MODULE_1__.Glyphs.timeSigParensLeftSmall : _glyphs__WEBPACK_IMPORTED_MODULE_1__.Glyphs.timeSigParensLeft;
                 break;
             case ')':
-                code = smallSig ? '\ue093' /*timeSigParensRightSmall*/ : '\ue095' /*timeSigParensRight*/;
+                code = smallSig ? _glyphs__WEBPACK_IMPORTED_MODULE_1__.Glyphs.timeSigParensRightSmall : _glyphs__WEBPACK_IMPORTED_MODULE_1__.Glyphs.timeSigParensRight;
                 break;
             default:
-                code = String.fromCodePoint(0xe080 + Number(key[0])) /*timeSigN*/;
+                code = String.fromCodePoint(0xe080 + Number(key[0])) /* timeSigN = Glyphs.timeSig0 + N */;
                 break;
         }
         return code;
@@ -33776,16 +34841,16 @@ class Tuplet extends _element__WEBPACK_IMPORTED_MODULE_0__.Element {
         }
         this.options = options;
         this.notes = notes;
-        this.numNotes = this.options.numNotes != undefined ? this.options.numNotes : notes.length;
+        this.numNotes = this.options.numNotes !== undefined ? this.options.numNotes : notes.length;
         this.notesOccupied = this.options.notesOccupied || 2;
-        if (this.options.bracketed != undefined) {
+        if (this.options.bracketed !== undefined) {
             this.bracketed = this.options.bracketed;
         }
         else {
             this.bracketed = notes.some((note) => !note.hasBeam());
         }
         this.ratioed =
-            this.options.ratioed != undefined ? this.options.ratioed : Math.abs(this.notesOccupied - this.numNotes) > 1;
+            this.options.ratioed !== undefined ? this.options.ratioed : Math.abs(this.notesOccupied - this.numNotes) > 1;
         this.textElement = new _element__WEBPACK_IMPORTED_MODULE_0__.Element('Tuplet');
         this.setTupletLocation(this.options.location || Tuplet.LOCATION_TOP);
         _formatter__WEBPACK_IMPORTED_MODULE_1__.Formatter.AlignRestsToNotes(notes, true, true);
@@ -33886,11 +34951,12 @@ class Tuplet extends _element__WEBPACK_IMPORTED_MODULE_0__.Element {
     }
     // determine the y position of the tuplet:
     getYPosition() {
+        var _a;
         // offset the tuplet for any nested tuplets between
         // it and the notes:
         const nestedTupletYOffset = this.getNestedTupletCount() * Tuplet.NESTING_OFFSET * -this.location;
         // offset the tuplet for any manual yOffset:
-        const yOffset = this.options.yOffset || 0;
+        const yOffset = (_a = this.options.yOffset) !== null && _a !== void 0 ? _a : 0;
         // now iterate through the notes and find our highest
         // or lowest locations, to form a base yPosition
         const firstNote = this.notes[0];
@@ -34896,149 +35962,150 @@ var __webpack_exports__ = {};
   \********************************/
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   Accidental: () => (/* reexport safe */ _src_index__WEBPACK_IMPORTED_MODULE_3__.Accidental),
-/* harmony export */   Annotation: () => (/* reexport safe */ _src_index__WEBPACK_IMPORTED_MODULE_3__.Annotation),
-/* harmony export */   AnnotationHorizontalJustify: () => (/* reexport safe */ _src_index__WEBPACK_IMPORTED_MODULE_3__.AnnotationHorizontalJustify),
-/* harmony export */   AnnotationVerticalJustify: () => (/* reexport safe */ _src_index__WEBPACK_IMPORTED_MODULE_3__.AnnotationVerticalJustify),
-/* harmony export */   Articulation: () => (/* reexport safe */ _src_index__WEBPACK_IMPORTED_MODULE_3__.Articulation),
-/* harmony export */   BEAM_BOTH: () => (/* reexport safe */ _src_index__WEBPACK_IMPORTED_MODULE_3__.BEAM_BOTH),
-/* harmony export */   BEAM_LEFT: () => (/* reexport safe */ _src_index__WEBPACK_IMPORTED_MODULE_3__.BEAM_LEFT),
-/* harmony export */   BEAM_RIGHT: () => (/* reexport safe */ _src_index__WEBPACK_IMPORTED_MODULE_3__.BEAM_RIGHT),
-/* harmony export */   BarNote: () => (/* reexport safe */ _src_index__WEBPACK_IMPORTED_MODULE_3__.BarNote),
-/* harmony export */   Barline: () => (/* reexport safe */ _src_index__WEBPACK_IMPORTED_MODULE_3__.Barline),
-/* harmony export */   BarlineType: () => (/* reexport safe */ _src_index__WEBPACK_IMPORTED_MODULE_3__.BarlineType),
-/* harmony export */   Beam: () => (/* reexport safe */ _src_index__WEBPACK_IMPORTED_MODULE_3__.Beam),
-/* harmony export */   Bend: () => (/* reexport safe */ _src_index__WEBPACK_IMPORTED_MODULE_3__.Bend),
-/* harmony export */   BoundingBox: () => (/* reexport safe */ _src_index__WEBPACK_IMPORTED_MODULE_3__.BoundingBox),
-/* harmony export */   BoundingBoxComputation: () => (/* reexport safe */ _src_index__WEBPACK_IMPORTED_MODULE_3__.BoundingBoxComputation),
-/* harmony export */   Builder: () => (/* reexport safe */ _src_index__WEBPACK_IMPORTED_MODULE_3__.Builder),
-/* harmony export */   CanvasContext: () => (/* reexport safe */ _src_index__WEBPACK_IMPORTED_MODULE_3__.CanvasContext),
-/* harmony export */   Category: () => (/* reexport safe */ _src_index__WEBPACK_IMPORTED_MODULE_3__.Category),
-/* harmony export */   ChordSymbol: () => (/* reexport safe */ _src_index__WEBPACK_IMPORTED_MODULE_3__.ChordSymbol),
-/* harmony export */   ChordSymbolBlock: () => (/* reexport safe */ _src_index__WEBPACK_IMPORTED_MODULE_3__.ChordSymbolBlock),
-/* harmony export */   ChordSymbolHorizontalJustify: () => (/* reexport safe */ _src_index__WEBPACK_IMPORTED_MODULE_3__.ChordSymbolHorizontalJustify),
-/* harmony export */   ChordSymbolVerticalJustify: () => (/* reexport safe */ _src_index__WEBPACK_IMPORTED_MODULE_3__.ChordSymbolVerticalJustify),
-/* harmony export */   Clef: () => (/* reexport safe */ _src_index__WEBPACK_IMPORTED_MODULE_3__.Clef),
-/* harmony export */   ClefNote: () => (/* reexport safe */ _src_index__WEBPACK_IMPORTED_MODULE_3__.ClefNote),
-/* harmony export */   Crescendo: () => (/* reexport safe */ _src_index__WEBPACK_IMPORTED_MODULE_3__.Crescendo),
-/* harmony export */   Curve: () => (/* reexport safe */ _src_index__WEBPACK_IMPORTED_MODULE_3__.Curve),
-/* harmony export */   CurvePosition: () => (/* reexport safe */ _src_index__WEBPACK_IMPORTED_MODULE_3__.CurvePosition),
-/* harmony export */   Dot: () => (/* reexport safe */ _src_index__WEBPACK_IMPORTED_MODULE_3__.Dot),
-/* harmony export */   EasyScore: () => (/* reexport safe */ _src_index__WEBPACK_IMPORTED_MODULE_3__.EasyScore),
-/* harmony export */   EasyScoreGrammar: () => (/* reexport safe */ _src_index__WEBPACK_IMPORTED_MODULE_3__.EasyScoreGrammar),
-/* harmony export */   Element: () => (/* reexport safe */ _src_index__WEBPACK_IMPORTED_MODULE_3__.Element),
-/* harmony export */   Factory: () => (/* reexport safe */ _src_index__WEBPACK_IMPORTED_MODULE_3__.Factory),
-/* harmony export */   Flow: () => (/* reexport safe */ _src_index__WEBPACK_IMPORTED_MODULE_3__.Flow),
-/* harmony export */   Font: () => (/* reexport safe */ _src_index__WEBPACK_IMPORTED_MODULE_3__.Font),
-/* harmony export */   FontStyle: () => (/* reexport safe */ _src_index__WEBPACK_IMPORTED_MODULE_3__.FontStyle),
-/* harmony export */   FontWeight: () => (/* reexport safe */ _src_index__WEBPACK_IMPORTED_MODULE_3__.FontWeight),
-/* harmony export */   Formatter: () => (/* reexport safe */ _src_index__WEBPACK_IMPORTED_MODULE_3__.Formatter),
-/* harmony export */   Fraction: () => (/* reexport safe */ _src_index__WEBPACK_IMPORTED_MODULE_3__.Fraction),
-/* harmony export */   FretHandFinger: () => (/* reexport safe */ _src_index__WEBPACK_IMPORTED_MODULE_3__.FretHandFinger),
-/* harmony export */   GhostNote: () => (/* reexport safe */ _src_index__WEBPACK_IMPORTED_MODULE_3__.GhostNote),
-/* harmony export */   Glyph: () => (/* reexport safe */ _src_index__WEBPACK_IMPORTED_MODULE_3__.Glyph),
-/* harmony export */   GlyphNote: () => (/* reexport safe */ _src_index__WEBPACK_IMPORTED_MODULE_3__.GlyphNote),
-/* harmony export */   GraceNote: () => (/* reexport safe */ _src_index__WEBPACK_IMPORTED_MODULE_3__.GraceNote),
-/* harmony export */   GraceNoteGroup: () => (/* reexport safe */ _src_index__WEBPACK_IMPORTED_MODULE_3__.GraceNoteGroup),
-/* harmony export */   GraceTabNote: () => (/* reexport safe */ _src_index__WEBPACK_IMPORTED_MODULE_3__.GraceTabNote),
-/* harmony export */   KeyManager: () => (/* reexport safe */ _src_index__WEBPACK_IMPORTED_MODULE_3__.KeyManager),
-/* harmony export */   KeySigNote: () => (/* reexport safe */ _src_index__WEBPACK_IMPORTED_MODULE_3__.KeySigNote),
-/* harmony export */   KeySignature: () => (/* reexport safe */ _src_index__WEBPACK_IMPORTED_MODULE_3__.KeySignature),
-/* harmony export */   Modifier: () => (/* reexport safe */ _src_index__WEBPACK_IMPORTED_MODULE_3__.Modifier),
-/* harmony export */   ModifierContext: () => (/* reexport safe */ _src_index__WEBPACK_IMPORTED_MODULE_3__.ModifierContext),
-/* harmony export */   ModifierPosition: () => (/* reexport safe */ _src_index__WEBPACK_IMPORTED_MODULE_3__.ModifierPosition),
-/* harmony export */   MultiMeasureRest: () => (/* reexport safe */ _src_index__WEBPACK_IMPORTED_MODULE_3__.MultiMeasureRest),
-/* harmony export */   Music: () => (/* reexport safe */ _src_index__WEBPACK_IMPORTED_MODULE_3__.Music),
-/* harmony export */   Note: () => (/* reexport safe */ _src_index__WEBPACK_IMPORTED_MODULE_3__.Note),
-/* harmony export */   NoteHead: () => (/* reexport safe */ _src_index__WEBPACK_IMPORTED_MODULE_3__.NoteHead),
-/* harmony export */   NoteSubGroup: () => (/* reexport safe */ _src_index__WEBPACK_IMPORTED_MODULE_3__.NoteSubGroup),
-/* harmony export */   Ornament: () => (/* reexport safe */ _src_index__WEBPACK_IMPORTED_MODULE_3__.Ornament),
-/* harmony export */   OutlineCode: () => (/* reexport safe */ _src_index__WEBPACK_IMPORTED_MODULE_3__.OutlineCode),
-/* harmony export */   Parenthesis: () => (/* reexport safe */ _src_index__WEBPACK_IMPORTED_MODULE_3__.Parenthesis),
-/* harmony export */   Parser: () => (/* reexport safe */ _src_index__WEBPACK_IMPORTED_MODULE_3__.Parser),
-/* harmony export */   PedalMarking: () => (/* reexport safe */ _src_index__WEBPACK_IMPORTED_MODULE_3__.PedalMarking),
-/* harmony export */   Piece: () => (/* reexport safe */ _src_index__WEBPACK_IMPORTED_MODULE_3__.Piece),
-/* harmony export */   Registry: () => (/* reexport safe */ _src_index__WEBPACK_IMPORTED_MODULE_3__.Registry),
-/* harmony export */   RenderContext: () => (/* reexport safe */ _src_index__WEBPACK_IMPORTED_MODULE_3__.RenderContext),
-/* harmony export */   Renderer: () => (/* reexport safe */ _src_index__WEBPACK_IMPORTED_MODULE_3__.Renderer),
-/* harmony export */   RendererBackends: () => (/* reexport safe */ _src_index__WEBPACK_IMPORTED_MODULE_3__.RendererBackends),
-/* harmony export */   RendererLineEndType: () => (/* reexport safe */ _src_index__WEBPACK_IMPORTED_MODULE_3__.RendererLineEndType),
-/* harmony export */   RepeatNote: () => (/* reexport safe */ _src_index__WEBPACK_IMPORTED_MODULE_3__.RepeatNote),
-/* harmony export */   Repetition: () => (/* reexport safe */ _src_index__WEBPACK_IMPORTED_MODULE_3__.Repetition),
-/* harmony export */   RuntimeError: () => (/* reexport safe */ _src_index__WEBPACK_IMPORTED_MODULE_3__.RuntimeError),
-/* harmony export */   SVGContext: () => (/* reexport safe */ _src_index__WEBPACK_IMPORTED_MODULE_3__.SVGContext),
-/* harmony export */   Stave: () => (/* reexport safe */ _src_index__WEBPACK_IMPORTED_MODULE_3__.Stave),
-/* harmony export */   StaveConnector: () => (/* reexport safe */ _src_index__WEBPACK_IMPORTED_MODULE_3__.StaveConnector),
-/* harmony export */   StaveHairpin: () => (/* reexport safe */ _src_index__WEBPACK_IMPORTED_MODULE_3__.StaveHairpin),
-/* harmony export */   StaveLine: () => (/* reexport safe */ _src_index__WEBPACK_IMPORTED_MODULE_3__.StaveLine),
-/* harmony export */   StaveModifier: () => (/* reexport safe */ _src_index__WEBPACK_IMPORTED_MODULE_3__.StaveModifier),
-/* harmony export */   StaveModifierPosition: () => (/* reexport safe */ _src_index__WEBPACK_IMPORTED_MODULE_3__.StaveModifierPosition),
-/* harmony export */   StaveNote: () => (/* reexport safe */ _src_index__WEBPACK_IMPORTED_MODULE_3__.StaveNote),
-/* harmony export */   StaveSection: () => (/* reexport safe */ _src_index__WEBPACK_IMPORTED_MODULE_3__.StaveSection),
-/* harmony export */   StaveTempo: () => (/* reexport safe */ _src_index__WEBPACK_IMPORTED_MODULE_3__.StaveTempo),
-/* harmony export */   StaveText: () => (/* reexport safe */ _src_index__WEBPACK_IMPORTED_MODULE_3__.StaveText),
-/* harmony export */   StaveTie: () => (/* reexport safe */ _src_index__WEBPACK_IMPORTED_MODULE_3__.StaveTie),
-/* harmony export */   Stem: () => (/* reexport safe */ _src_index__WEBPACK_IMPORTED_MODULE_3__.Stem),
-/* harmony export */   StemmableNote: () => (/* reexport safe */ _src_index__WEBPACK_IMPORTED_MODULE_3__.StemmableNote),
-/* harmony export */   StringNumber: () => (/* reexport safe */ _src_index__WEBPACK_IMPORTED_MODULE_3__.StringNumber),
-/* harmony export */   Stroke: () => (/* reexport safe */ _src_index__WEBPACK_IMPORTED_MODULE_3__.Stroke),
-/* harmony export */   SymbolModifiers: () => (/* reexport safe */ _src_index__WEBPACK_IMPORTED_MODULE_3__.SymbolModifiers),
-/* harmony export */   System: () => (/* reexport safe */ _src_index__WEBPACK_IMPORTED_MODULE_3__.System),
-/* harmony export */   TabNote: () => (/* reexport safe */ _src_index__WEBPACK_IMPORTED_MODULE_3__.TabNote),
-/* harmony export */   TabSlide: () => (/* reexport safe */ _src_index__WEBPACK_IMPORTED_MODULE_3__.TabSlide),
-/* harmony export */   TabStave: () => (/* reexport safe */ _src_index__WEBPACK_IMPORTED_MODULE_3__.TabStave),
-/* harmony export */   TabTie: () => (/* reexport safe */ _src_index__WEBPACK_IMPORTED_MODULE_3__.TabTie),
-/* harmony export */   TextBracket: () => (/* reexport safe */ _src_index__WEBPACK_IMPORTED_MODULE_3__.TextBracket),
-/* harmony export */   TextBracketPosition: () => (/* reexport safe */ _src_index__WEBPACK_IMPORTED_MODULE_3__.TextBracketPosition),
-/* harmony export */   TextDynamics: () => (/* reexport safe */ _src_index__WEBPACK_IMPORTED_MODULE_3__.TextDynamics),
-/* harmony export */   TextFormatter: () => (/* reexport safe */ _src_index__WEBPACK_IMPORTED_MODULE_3__.TextFormatter),
-/* harmony export */   TextJustification: () => (/* reexport safe */ _src_index__WEBPACK_IMPORTED_MODULE_3__.TextJustification),
-/* harmony export */   TextNote: () => (/* reexport safe */ _src_index__WEBPACK_IMPORTED_MODULE_3__.TextNote),
-/* harmony export */   TickContext: () => (/* reexport safe */ _src_index__WEBPACK_IMPORTED_MODULE_3__.TickContext),
-/* harmony export */   Tickable: () => (/* reexport safe */ _src_index__WEBPACK_IMPORTED_MODULE_3__.Tickable),
-/* harmony export */   TimeSigNote: () => (/* reexport safe */ _src_index__WEBPACK_IMPORTED_MODULE_3__.TimeSigNote),
-/* harmony export */   TimeSignature: () => (/* reexport safe */ _src_index__WEBPACK_IMPORTED_MODULE_3__.TimeSignature),
-/* harmony export */   Tremolo: () => (/* reexport safe */ _src_index__WEBPACK_IMPORTED_MODULE_3__.Tremolo),
-/* harmony export */   Tuning: () => (/* reexport safe */ _src_index__WEBPACK_IMPORTED_MODULE_3__.Tuning),
-/* harmony export */   Tuplet: () => (/* reexport safe */ _src_index__WEBPACK_IMPORTED_MODULE_3__.Tuplet),
-/* harmony export */   TupletLocation: () => (/* reexport safe */ _src_index__WEBPACK_IMPORTED_MODULE_3__.TupletLocation),
-/* harmony export */   Vex: () => (/* reexport safe */ _src_index__WEBPACK_IMPORTED_MODULE_3__.Vex),
-/* harmony export */   Vibrato: () => (/* reexport safe */ _src_index__WEBPACK_IMPORTED_MODULE_3__.Vibrato),
-/* harmony export */   VibratoBracket: () => (/* reexport safe */ _src_index__WEBPACK_IMPORTED_MODULE_3__.VibratoBracket),
-/* harmony export */   Voice: () => (/* reexport safe */ _src_index__WEBPACK_IMPORTED_MODULE_3__.Voice),
-/* harmony export */   VoiceMode: () => (/* reexport safe */ _src_index__WEBPACK_IMPORTED_MODULE_3__.VoiceMode),
-/* harmony export */   Volta: () => (/* reexport safe */ _src_index__WEBPACK_IMPORTED_MODULE_3__.Volta),
-/* harmony export */   VoltaType: () => (/* reexport safe */ _src_index__WEBPACK_IMPORTED_MODULE_3__.VoltaType),
-/* harmony export */   "default": () => (/* reexport module object */ _src_index__WEBPACK_IMPORTED_MODULE_3__),
-/* harmony export */   defined: () => (/* reexport safe */ _src_index__WEBPACK_IMPORTED_MODULE_3__.defined),
-/* harmony export */   drawDot: () => (/* reexport safe */ _src_index__WEBPACK_IMPORTED_MODULE_3__.drawDot),
-/* harmony export */   globalObject: () => (/* reexport safe */ _src_index__WEBPACK_IMPORTED_MODULE_3__.globalObject),
-/* harmony export */   isAccidental: () => (/* reexport safe */ _src_index__WEBPACK_IMPORTED_MODULE_3__.isAccidental),
-/* harmony export */   isAnnotation: () => (/* reexport safe */ _src_index__WEBPACK_IMPORTED_MODULE_3__.isAnnotation),
-/* harmony export */   isBarline: () => (/* reexport safe */ _src_index__WEBPACK_IMPORTED_MODULE_3__.isBarline),
-/* harmony export */   isCategory: () => (/* reexport safe */ _src_index__WEBPACK_IMPORTED_MODULE_3__.isCategory),
-/* harmony export */   isDot: () => (/* reexport safe */ _src_index__WEBPACK_IMPORTED_MODULE_3__.isDot),
-/* harmony export */   isGraceNote: () => (/* reexport safe */ _src_index__WEBPACK_IMPORTED_MODULE_3__.isGraceNote),
-/* harmony export */   isGraceNoteGroup: () => (/* reexport safe */ _src_index__WEBPACK_IMPORTED_MODULE_3__.isGraceNoteGroup),
-/* harmony export */   isHTMLCanvas: () => (/* reexport safe */ _src_index__WEBPACK_IMPORTED_MODULE_3__.isHTMLCanvas),
-/* harmony export */   isHTMLDiv: () => (/* reexport safe */ _src_index__WEBPACK_IMPORTED_MODULE_3__.isHTMLDiv),
-/* harmony export */   isNote: () => (/* reexport safe */ _src_index__WEBPACK_IMPORTED_MODULE_3__.isNote),
-/* harmony export */   isRenderContext: () => (/* reexport safe */ _src_index__WEBPACK_IMPORTED_MODULE_3__.isRenderContext),
-/* harmony export */   isStaveNote: () => (/* reexport safe */ _src_index__WEBPACK_IMPORTED_MODULE_3__.isStaveNote),
-/* harmony export */   isStemmableNote: () => (/* reexport safe */ _src_index__WEBPACK_IMPORTED_MODULE_3__.isStemmableNote),
-/* harmony export */   isTabNote: () => (/* reexport safe */ _src_index__WEBPACK_IMPORTED_MODULE_3__.isTabNote),
-/* harmony export */   log: () => (/* reexport safe */ _src_index__WEBPACK_IMPORTED_MODULE_3__.log),
-/* harmony export */   midLine: () => (/* reexport safe */ _src_index__WEBPACK_IMPORTED_MODULE_3__.midLine),
-/* harmony export */   normalizeAngle: () => (/* reexport safe */ _src_index__WEBPACK_IMPORTED_MODULE_3__.normalizeAngle),
-/* harmony export */   prefix: () => (/* reexport safe */ _src_index__WEBPACK_IMPORTED_MODULE_3__.prefix),
-/* harmony export */   sumArray: () => (/* reexport safe */ _src_index__WEBPACK_IMPORTED_MODULE_3__.sumArray),
-/* harmony export */   upperFirst: () => (/* reexport safe */ _src_index__WEBPACK_IMPORTED_MODULE_3__.upperFirst),
-/* harmony export */   warn: () => (/* reexport safe */ _src_index__WEBPACK_IMPORTED_MODULE_3__.warn)
+/* harmony export */   Accidental: () => (/* reexport safe */ _src_index__WEBPACK_IMPORTED_MODULE_2__.Accidental),
+/* harmony export */   Annotation: () => (/* reexport safe */ _src_index__WEBPACK_IMPORTED_MODULE_2__.Annotation),
+/* harmony export */   AnnotationHorizontalJustify: () => (/* reexport safe */ _src_index__WEBPACK_IMPORTED_MODULE_2__.AnnotationHorizontalJustify),
+/* harmony export */   AnnotationVerticalJustify: () => (/* reexport safe */ _src_index__WEBPACK_IMPORTED_MODULE_2__.AnnotationVerticalJustify),
+/* harmony export */   Articulation: () => (/* reexport safe */ _src_index__WEBPACK_IMPORTED_MODULE_2__.Articulation),
+/* harmony export */   BEAM_BOTH: () => (/* reexport safe */ _src_index__WEBPACK_IMPORTED_MODULE_2__.BEAM_BOTH),
+/* harmony export */   BEAM_LEFT: () => (/* reexport safe */ _src_index__WEBPACK_IMPORTED_MODULE_2__.BEAM_LEFT),
+/* harmony export */   BEAM_RIGHT: () => (/* reexport safe */ _src_index__WEBPACK_IMPORTED_MODULE_2__.BEAM_RIGHT),
+/* harmony export */   BarNote: () => (/* reexport safe */ _src_index__WEBPACK_IMPORTED_MODULE_2__.BarNote),
+/* harmony export */   Barline: () => (/* reexport safe */ _src_index__WEBPACK_IMPORTED_MODULE_2__.Barline),
+/* harmony export */   BarlineType: () => (/* reexport safe */ _src_index__WEBPACK_IMPORTED_MODULE_2__.BarlineType),
+/* harmony export */   Beam: () => (/* reexport safe */ _src_index__WEBPACK_IMPORTED_MODULE_2__.Beam),
+/* harmony export */   Bend: () => (/* reexport safe */ _src_index__WEBPACK_IMPORTED_MODULE_2__.Bend),
+/* harmony export */   BoundingBox: () => (/* reexport safe */ _src_index__WEBPACK_IMPORTED_MODULE_2__.BoundingBox),
+/* harmony export */   BoundingBoxComputation: () => (/* reexport safe */ _src_index__WEBPACK_IMPORTED_MODULE_2__.BoundingBoxComputation),
+/* harmony export */   Builder: () => (/* reexport safe */ _src_index__WEBPACK_IMPORTED_MODULE_2__.Builder),
+/* harmony export */   CanvasContext: () => (/* reexport safe */ _src_index__WEBPACK_IMPORTED_MODULE_2__.CanvasContext),
+/* harmony export */   Category: () => (/* reexport safe */ _src_index__WEBPACK_IMPORTED_MODULE_2__.Category),
+/* harmony export */   ChordSymbol: () => (/* reexport safe */ _src_index__WEBPACK_IMPORTED_MODULE_2__.ChordSymbol),
+/* harmony export */   ChordSymbolBlock: () => (/* reexport safe */ _src_index__WEBPACK_IMPORTED_MODULE_2__.ChordSymbolBlock),
+/* harmony export */   ChordSymbolHorizontalJustify: () => (/* reexport safe */ _src_index__WEBPACK_IMPORTED_MODULE_2__.ChordSymbolHorizontalJustify),
+/* harmony export */   ChordSymbolVerticalJustify: () => (/* reexport safe */ _src_index__WEBPACK_IMPORTED_MODULE_2__.ChordSymbolVerticalJustify),
+/* harmony export */   Clef: () => (/* reexport safe */ _src_index__WEBPACK_IMPORTED_MODULE_2__.Clef),
+/* harmony export */   ClefNote: () => (/* reexport safe */ _src_index__WEBPACK_IMPORTED_MODULE_2__.ClefNote),
+/* harmony export */   Crescendo: () => (/* reexport safe */ _src_index__WEBPACK_IMPORTED_MODULE_2__.Crescendo),
+/* harmony export */   Curve: () => (/* reexport safe */ _src_index__WEBPACK_IMPORTED_MODULE_2__.Curve),
+/* harmony export */   CurvePosition: () => (/* reexport safe */ _src_index__WEBPACK_IMPORTED_MODULE_2__.CurvePosition),
+/* harmony export */   Dot: () => (/* reexport safe */ _src_index__WEBPACK_IMPORTED_MODULE_2__.Dot),
+/* harmony export */   EasyScore: () => (/* reexport safe */ _src_index__WEBPACK_IMPORTED_MODULE_2__.EasyScore),
+/* harmony export */   EasyScoreGrammar: () => (/* reexport safe */ _src_index__WEBPACK_IMPORTED_MODULE_2__.EasyScoreGrammar),
+/* harmony export */   Element: () => (/* reexport safe */ _src_index__WEBPACK_IMPORTED_MODULE_2__.Element),
+/* harmony export */   Factory: () => (/* reexport safe */ _src_index__WEBPACK_IMPORTED_MODULE_2__.Factory),
+/* harmony export */   Flow: () => (/* reexport safe */ _src_index__WEBPACK_IMPORTED_MODULE_2__.Flow),
+/* harmony export */   Font: () => (/* reexport safe */ _src_index__WEBPACK_IMPORTED_MODULE_2__.Font),
+/* harmony export */   FontStyle: () => (/* reexport safe */ _src_index__WEBPACK_IMPORTED_MODULE_2__.FontStyle),
+/* harmony export */   FontWeight: () => (/* reexport safe */ _src_index__WEBPACK_IMPORTED_MODULE_2__.FontWeight),
+/* harmony export */   Formatter: () => (/* reexport safe */ _src_index__WEBPACK_IMPORTED_MODULE_2__.Formatter),
+/* harmony export */   Fraction: () => (/* reexport safe */ _src_index__WEBPACK_IMPORTED_MODULE_2__.Fraction),
+/* harmony export */   FretHandFinger: () => (/* reexport safe */ _src_index__WEBPACK_IMPORTED_MODULE_2__.FretHandFinger),
+/* harmony export */   GhostNote: () => (/* reexport safe */ _src_index__WEBPACK_IMPORTED_MODULE_2__.GhostNote),
+/* harmony export */   Glyph: () => (/* reexport safe */ _src_index__WEBPACK_IMPORTED_MODULE_2__.Glyph),
+/* harmony export */   GlyphNote: () => (/* reexport safe */ _src_index__WEBPACK_IMPORTED_MODULE_2__.GlyphNote),
+/* harmony export */   GraceNote: () => (/* reexport safe */ _src_index__WEBPACK_IMPORTED_MODULE_2__.GraceNote),
+/* harmony export */   GraceNoteGroup: () => (/* reexport safe */ _src_index__WEBPACK_IMPORTED_MODULE_2__.GraceNoteGroup),
+/* harmony export */   GraceTabNote: () => (/* reexport safe */ _src_index__WEBPACK_IMPORTED_MODULE_2__.GraceTabNote),
+/* harmony export */   KeyManager: () => (/* reexport safe */ _src_index__WEBPACK_IMPORTED_MODULE_2__.KeyManager),
+/* harmony export */   KeySigNote: () => (/* reexport safe */ _src_index__WEBPACK_IMPORTED_MODULE_2__.KeySigNote),
+/* harmony export */   KeySignature: () => (/* reexport safe */ _src_index__WEBPACK_IMPORTED_MODULE_2__.KeySignature),
+/* harmony export */   Modifier: () => (/* reexport safe */ _src_index__WEBPACK_IMPORTED_MODULE_2__.Modifier),
+/* harmony export */   ModifierContext: () => (/* reexport safe */ _src_index__WEBPACK_IMPORTED_MODULE_2__.ModifierContext),
+/* harmony export */   ModifierPosition: () => (/* reexport safe */ _src_index__WEBPACK_IMPORTED_MODULE_2__.ModifierPosition),
+/* harmony export */   MultiMeasureRest: () => (/* reexport safe */ _src_index__WEBPACK_IMPORTED_MODULE_2__.MultiMeasureRest),
+/* harmony export */   Music: () => (/* reexport safe */ _src_index__WEBPACK_IMPORTED_MODULE_2__.Music),
+/* harmony export */   Note: () => (/* reexport safe */ _src_index__WEBPACK_IMPORTED_MODULE_2__.Note),
+/* harmony export */   NoteHead: () => (/* reexport safe */ _src_index__WEBPACK_IMPORTED_MODULE_2__.NoteHead),
+/* harmony export */   NoteSubGroup: () => (/* reexport safe */ _src_index__WEBPACK_IMPORTED_MODULE_2__.NoteSubGroup),
+/* harmony export */   Ornament: () => (/* reexport safe */ _src_index__WEBPACK_IMPORTED_MODULE_2__.Ornament),
+/* harmony export */   OutlineCode: () => (/* reexport safe */ _src_index__WEBPACK_IMPORTED_MODULE_2__.OutlineCode),
+/* harmony export */   Parenthesis: () => (/* reexport safe */ _src_index__WEBPACK_IMPORTED_MODULE_2__.Parenthesis),
+/* harmony export */   Parser: () => (/* reexport safe */ _src_index__WEBPACK_IMPORTED_MODULE_2__.Parser),
+/* harmony export */   PedalMarking: () => (/* reexport safe */ _src_index__WEBPACK_IMPORTED_MODULE_2__.PedalMarking),
+/* harmony export */   Piece: () => (/* reexport safe */ _src_index__WEBPACK_IMPORTED_MODULE_2__.Piece),
+/* harmony export */   Registry: () => (/* reexport safe */ _src_index__WEBPACK_IMPORTED_MODULE_2__.Registry),
+/* harmony export */   RenderContext: () => (/* reexport safe */ _src_index__WEBPACK_IMPORTED_MODULE_2__.RenderContext),
+/* harmony export */   Renderer: () => (/* reexport safe */ _src_index__WEBPACK_IMPORTED_MODULE_2__.Renderer),
+/* harmony export */   RendererBackends: () => (/* reexport safe */ _src_index__WEBPACK_IMPORTED_MODULE_2__.RendererBackends),
+/* harmony export */   RendererLineEndType: () => (/* reexport safe */ _src_index__WEBPACK_IMPORTED_MODULE_2__.RendererLineEndType),
+/* harmony export */   RepeatNote: () => (/* reexport safe */ _src_index__WEBPACK_IMPORTED_MODULE_2__.RepeatNote),
+/* harmony export */   Repetition: () => (/* reexport safe */ _src_index__WEBPACK_IMPORTED_MODULE_2__.Repetition),
+/* harmony export */   RuntimeError: () => (/* reexport safe */ _src_index__WEBPACK_IMPORTED_MODULE_2__.RuntimeError),
+/* harmony export */   SVGContext: () => (/* reexport safe */ _src_index__WEBPACK_IMPORTED_MODULE_2__.SVGContext),
+/* harmony export */   Stave: () => (/* reexport safe */ _src_index__WEBPACK_IMPORTED_MODULE_2__.Stave),
+/* harmony export */   StaveConnector: () => (/* reexport safe */ _src_index__WEBPACK_IMPORTED_MODULE_2__.StaveConnector),
+/* harmony export */   StaveHairpin: () => (/* reexport safe */ _src_index__WEBPACK_IMPORTED_MODULE_2__.StaveHairpin),
+/* harmony export */   StaveLine: () => (/* reexport safe */ _src_index__WEBPACK_IMPORTED_MODULE_2__.StaveLine),
+/* harmony export */   StaveModifier: () => (/* reexport safe */ _src_index__WEBPACK_IMPORTED_MODULE_2__.StaveModifier),
+/* harmony export */   StaveModifierPosition: () => (/* reexport safe */ _src_index__WEBPACK_IMPORTED_MODULE_2__.StaveModifierPosition),
+/* harmony export */   StaveNote: () => (/* reexport safe */ _src_index__WEBPACK_IMPORTED_MODULE_2__.StaveNote),
+/* harmony export */   StaveSection: () => (/* reexport safe */ _src_index__WEBPACK_IMPORTED_MODULE_2__.StaveSection),
+/* harmony export */   StaveTempo: () => (/* reexport safe */ _src_index__WEBPACK_IMPORTED_MODULE_2__.StaveTempo),
+/* harmony export */   StaveText: () => (/* reexport safe */ _src_index__WEBPACK_IMPORTED_MODULE_2__.StaveText),
+/* harmony export */   StaveTie: () => (/* reexport safe */ _src_index__WEBPACK_IMPORTED_MODULE_2__.StaveTie),
+/* harmony export */   Stem: () => (/* reexport safe */ _src_index__WEBPACK_IMPORTED_MODULE_2__.Stem),
+/* harmony export */   StemmableNote: () => (/* reexport safe */ _src_index__WEBPACK_IMPORTED_MODULE_2__.StemmableNote),
+/* harmony export */   StringNumber: () => (/* reexport safe */ _src_index__WEBPACK_IMPORTED_MODULE_2__.StringNumber),
+/* harmony export */   Stroke: () => (/* reexport safe */ _src_index__WEBPACK_IMPORTED_MODULE_2__.Stroke),
+/* harmony export */   SymbolModifiers: () => (/* reexport safe */ _src_index__WEBPACK_IMPORTED_MODULE_2__.SymbolModifiers),
+/* harmony export */   System: () => (/* reexport safe */ _src_index__WEBPACK_IMPORTED_MODULE_2__.System),
+/* harmony export */   TabNote: () => (/* reexport safe */ _src_index__WEBPACK_IMPORTED_MODULE_2__.TabNote),
+/* harmony export */   TabSlide: () => (/* reexport safe */ _src_index__WEBPACK_IMPORTED_MODULE_2__.TabSlide),
+/* harmony export */   TabStave: () => (/* reexport safe */ _src_index__WEBPACK_IMPORTED_MODULE_2__.TabStave),
+/* harmony export */   TabTie: () => (/* reexport safe */ _src_index__WEBPACK_IMPORTED_MODULE_2__.TabTie),
+/* harmony export */   TextBracket: () => (/* reexport safe */ _src_index__WEBPACK_IMPORTED_MODULE_2__.TextBracket),
+/* harmony export */   TextBracketPosition: () => (/* reexport safe */ _src_index__WEBPACK_IMPORTED_MODULE_2__.TextBracketPosition),
+/* harmony export */   TextDynamics: () => (/* reexport safe */ _src_index__WEBPACK_IMPORTED_MODULE_2__.TextDynamics),
+/* harmony export */   TextJustification: () => (/* reexport safe */ _src_index__WEBPACK_IMPORTED_MODULE_2__.TextJustification),
+/* harmony export */   TextNote: () => (/* reexport safe */ _src_index__WEBPACK_IMPORTED_MODULE_2__.TextNote),
+/* harmony export */   TickContext: () => (/* reexport safe */ _src_index__WEBPACK_IMPORTED_MODULE_2__.TickContext),
+/* harmony export */   Tickable: () => (/* reexport safe */ _src_index__WEBPACK_IMPORTED_MODULE_2__.Tickable),
+/* harmony export */   TimeSigNote: () => (/* reexport safe */ _src_index__WEBPACK_IMPORTED_MODULE_2__.TimeSigNote),
+/* harmony export */   TimeSignature: () => (/* reexport safe */ _src_index__WEBPACK_IMPORTED_MODULE_2__.TimeSignature),
+/* harmony export */   Tremolo: () => (/* reexport safe */ _src_index__WEBPACK_IMPORTED_MODULE_2__.Tremolo),
+/* harmony export */   Tuning: () => (/* reexport safe */ _src_index__WEBPACK_IMPORTED_MODULE_2__.Tuning),
+/* harmony export */   Tuplet: () => (/* reexport safe */ _src_index__WEBPACK_IMPORTED_MODULE_2__.Tuplet),
+/* harmony export */   TupletLocation: () => (/* reexport safe */ _src_index__WEBPACK_IMPORTED_MODULE_2__.TupletLocation),
+/* harmony export */   Vex: () => (/* reexport safe */ _src_index__WEBPACK_IMPORTED_MODULE_2__.Vex),
+/* harmony export */   Vibrato: () => (/* reexport safe */ _src_index__WEBPACK_IMPORTED_MODULE_2__.Vibrato),
+/* harmony export */   VibratoBracket: () => (/* reexport safe */ _src_index__WEBPACK_IMPORTED_MODULE_2__.VibratoBracket),
+/* harmony export */   Voice: () => (/* reexport safe */ _src_index__WEBPACK_IMPORTED_MODULE_2__.Voice),
+/* harmony export */   VoiceMode: () => (/* reexport safe */ _src_index__WEBPACK_IMPORTED_MODULE_2__.VoiceMode),
+/* harmony export */   Volta: () => (/* reexport safe */ _src_index__WEBPACK_IMPORTED_MODULE_2__.Volta),
+/* harmony export */   VoltaType: () => (/* reexport safe */ _src_index__WEBPACK_IMPORTED_MODULE_2__.VoltaType),
+/* harmony export */   "default": () => (/* reexport module object */ _src_index__WEBPACK_IMPORTED_MODULE_2__),
+/* harmony export */   defined: () => (/* reexport safe */ _src_index__WEBPACK_IMPORTED_MODULE_2__.defined),
+/* harmony export */   drawDot: () => (/* reexport safe */ _src_index__WEBPACK_IMPORTED_MODULE_2__.drawDot),
+/* harmony export */   getBottomY: () => (/* reexport safe */ _src_index__WEBPACK_IMPORTED_MODULE_2__.getBottomY),
+/* harmony export */   getInitialOffset: () => (/* reexport safe */ _src_index__WEBPACK_IMPORTED_MODULE_2__.getInitialOffset),
+/* harmony export */   getTopY: () => (/* reexport safe */ _src_index__WEBPACK_IMPORTED_MODULE_2__.getTopY),
+/* harmony export */   globalObject: () => (/* reexport safe */ _src_index__WEBPACK_IMPORTED_MODULE_2__.globalObject),
+/* harmony export */   isAccidental: () => (/* reexport safe */ _src_index__WEBPACK_IMPORTED_MODULE_2__.isAccidental),
+/* harmony export */   isAnnotation: () => (/* reexport safe */ _src_index__WEBPACK_IMPORTED_MODULE_2__.isAnnotation),
+/* harmony export */   isBarline: () => (/* reexport safe */ _src_index__WEBPACK_IMPORTED_MODULE_2__.isBarline),
+/* harmony export */   isCategory: () => (/* reexport safe */ _src_index__WEBPACK_IMPORTED_MODULE_2__.isCategory),
+/* harmony export */   isDot: () => (/* reexport safe */ _src_index__WEBPACK_IMPORTED_MODULE_2__.isDot),
+/* harmony export */   isGraceNote: () => (/* reexport safe */ _src_index__WEBPACK_IMPORTED_MODULE_2__.isGraceNote),
+/* harmony export */   isGraceNoteGroup: () => (/* reexport safe */ _src_index__WEBPACK_IMPORTED_MODULE_2__.isGraceNoteGroup),
+/* harmony export */   isHTMLCanvas: () => (/* reexport safe */ _src_index__WEBPACK_IMPORTED_MODULE_2__.isHTMLCanvas),
+/* harmony export */   isHTMLDiv: () => (/* reexport safe */ _src_index__WEBPACK_IMPORTED_MODULE_2__.isHTMLDiv),
+/* harmony export */   isNote: () => (/* reexport safe */ _src_index__WEBPACK_IMPORTED_MODULE_2__.isNote),
+/* harmony export */   isRenderContext: () => (/* reexport safe */ _src_index__WEBPACK_IMPORTED_MODULE_2__.isRenderContext),
+/* harmony export */   isStaveNote: () => (/* reexport safe */ _src_index__WEBPACK_IMPORTED_MODULE_2__.isStaveNote),
+/* harmony export */   isStemmableNote: () => (/* reexport safe */ _src_index__WEBPACK_IMPORTED_MODULE_2__.isStemmableNote),
+/* harmony export */   isTabNote: () => (/* reexport safe */ _src_index__WEBPACK_IMPORTED_MODULE_2__.isTabNote),
+/* harmony export */   log: () => (/* reexport safe */ _src_index__WEBPACK_IMPORTED_MODULE_2__.log),
+/* harmony export */   midLine: () => (/* reexport safe */ _src_index__WEBPACK_IMPORTED_MODULE_2__.midLine),
+/* harmony export */   normalizeAngle: () => (/* reexport safe */ _src_index__WEBPACK_IMPORTED_MODULE_2__.normalizeAngle),
+/* harmony export */   prefix: () => (/* reexport safe */ _src_index__WEBPACK_IMPORTED_MODULE_2__.prefix),
+/* harmony export */   sumArray: () => (/* reexport safe */ _src_index__WEBPACK_IMPORTED_MODULE_2__.sumArray),
+/* harmony export */   upperFirst: () => (/* reexport safe */ _src_index__WEBPACK_IMPORTED_MODULE_2__.upperFirst),
+/* harmony export */   warn: () => (/* reexport safe */ _src_index__WEBPACK_IMPORTED_MODULE_2__.warn)
 /* harmony export */ });
 /* harmony import */ var _src_flow__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../src/flow */ "./src/flow.ts");
 /* harmony import */ var _src_fonts_load_all__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../src/fonts/load_all */ "./src/fonts/load_all.ts");
-/* harmony import */ var _src_fonts_textfonts__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../src/fonts/textfonts */ "./src/fonts/textfonts.ts");
-/* harmony import */ var _src_index__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../src/index */ "./src/index.ts");
+/* harmony import */ var _src_index__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../src/index */ "./src/index.ts");
 // Copyright (c) 2023-present VexFlow contributors: https://github.com/vexflow/vexflow/graphs/contributors
 // MIT License
 //
@@ -35049,10 +36116,8 @@ __webpack_require__.r(__webpack_exports__);
 // In the future, we could do something different with this entry file, such as turn on flags for logging.
 
 
-
 (0,_src_fonts_load_all__WEBPACK_IMPORTED_MODULE_1__.loadAllMusicFonts)();
 _src_flow__WEBPACK_IMPORTED_MODULE_0__.Flow.setMusicFont('Bravura', 'Gonville', 'Custom');
-(0,_src_fonts_textfonts__WEBPACK_IMPORTED_MODULE_2__.loadTextFonts)();
 // Re-export all exports from index.ts.
 
 // Also collect all exports into a default export for CJS projects.

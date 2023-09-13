@@ -9,12 +9,16 @@
   <script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.slim.js"></script>
 <script type="text/javascript">
 document.addEventListener("DOMContentLoaded", function (event) {
+const new_font = new FontFace('Bravura', 'url(../fonts/Bravura_1.392.woff)')
+new_font.load().then(function(loaded_face) {
+document.fonts.add(loaded_face);
   $('.changeLibraryButton').off('click').on('click', () => {$('.changeLibrary').toggleClass('hide');});
   $('.changeScoreButton').off('click').on('click', () => {$('.changeScore').toggleClass('hide');});
 let timestamp = new Date().valueOf();
   main();
 const delta = (new Date().valueOf()) - timestamp;
 $('#renderTime').text(delta.toString());
+});
 });
 </script>
 </head>
@@ -30,27 +34,27 @@ $('#renderTime').text(delta.toString());
 <li><a href="BachWTC-1422.html"> 422 </a> </li>
 <li><a href="BachWTC-1vex_smoosic.html"> vex_smoosic </a> </li>
 </ul></button></div></div>
-<div class="renderMenu3"><div><span class="scoreMenu">Current Score: </span><span>Well-Tempered Clavier p 2/5  by Bach</span></div>
+<div class="renderMenu3"><div><span class="scoreMenu">Current Score: </span><span>Well-Tempered Clavier p 2/6  by Bach</span></div>
 <div><button class="changeScoreButton"><span> Change </span><ul class="changeScore hide">
-<li><a href="BachInv1-1vexv5.html"> Invention No. 1 p 2/2  by JS Bach </a> </li>
-<li><a href="BachWTC-0vexv5.html"> Well-Tempered Clavier p 1/5  by Bach </a> </li>
-<li><a href="BachWTC-2vexv5.html"> Well-Tempered Clavier p 3/5  by Bach </a> </li>
-<li><a href="Bilongo-7vexv5.html"> Bilongo (Mandinga) p 8/16  by Rodriguez/Palmieri/Newman </a> </li>
-<li><a href="GFWMessiah-I-2-0vexv5.html"> Comfort Ye, My People p 1/3 (Comfort Ye, my people (tenor)) by Handel </a> </li>
-<li><a href="GFWMessiah-I-2-1vexv5.html"> Comfort Ye, My People p 2/3 (Comfort Ye, my people (tenor)) by Handel </a> </li>
-<li><a href="Gnossienne3-0vexv5.html"> Gnossienne No 3 p 1/1  by Erik Satie </a> </li>
-<li><a href="Gnossienne3-1vexv5.html"> Gnossienne No 3 p 2/1  by Erik Satie </a> </li>
-<li><a href="Joplin-0vexv5.html"> The Entertainer p 1/2  by Scott Joplin </a> </li>
-<li><a href="Joplin-1vexv5.html"> The Entertainer p 2/2  by Scott Joplin </a> </li>
-<li><a href="Joplin-2vexv5.html"> The Entertainer p 3/2  by Scott Joplin </a> </li>
-<li><a href="Plena-2vexv5.html"> Plena para tres ninos p 3/13  by Newman </a> </li>
-<li><a href="Postillion Lied-0vexv5.html"> Postillionlied p 1/2  by Franz Grothe </a> </li>
-<li><a href="Postillion Lied-1vexv5.html"> Postillionlied p 2/2  by Franz Grothe </a> </li>
-<li><a href="Postillion Lied-2vexv5.html"> Postillionlied p 3/2  by Franz Grothe </a> </li>
-<li><a href="PreciousLord-0vexv5.html"> Precious Lord p 1/0  by Thomas Dorsey </a> </li>
-<li><a href="Solovey-0vexv5.html"> Solovey p 1/1 ((Op. 1)) by Folks </a> </li>
-<li><a href="Solovey-1vexv5.html"> Solovey p 2/1 ((Op. 1)) by Folks </a> </li>
-<li><a href="Yama-1vexv5.html"> Yama p 2/1 ((as played by Lee Morgan)) by Lee Morgan </a> </li>
+<li><a href="BachInv1-1vexv5.html"> Invention No. 1 p 2/3  by JS Bach </a> </li>
+<li><a href="BachWTC-0vexv5.html"> Well-Tempered Clavier p 1/6  by Bach </a> </li>
+<li><a href="BachWTC-2vexv5.html"> Well-Tempered Clavier p 3/6  by Bach </a> </li>
+<li><a href="Bilongo-7vexv5.html"> Bilongo (Mandinga) p 8/17  by Rodriguez/Palmieri/Newman </a> </li>
+<li><a href="GFWMessiah-I-2-0vexv5.html"> Comfort Ye, My People p 1/4 (Comfort Ye, my people (tenor)) by Handel </a> </li>
+<li><a href="GFWMessiah-I-2-1vexv5.html"> Comfort Ye, My People p 2/4 (Comfort Ye, my people (tenor)) by Handel </a> </li>
+<li><a href="Gnossienne3-0vexv5.html"> Gnossienne No 3 p 1/2  by Erik Satie </a> </li>
+<li><a href="Gnossienne3-1vexv5.html"> Gnossienne No 3 p 2/2  by Erik Satie </a> </li>
+<li><a href="Joplin-0vexv5.html"> The Entertainer p 1/3  by Scott Joplin </a> </li>
+<li><a href="Joplin-1vexv5.html"> The Entertainer p 2/3  by Scott Joplin </a> </li>
+<li><a href="Joplin-2vexv5.html"> The Entertainer p 3/3  by Scott Joplin </a> </li>
+<li><a href="Plena-2vexv5.html"> Plena para tres ninos p 3/14  by Newman </a> </li>
+<li><a href="Postillion Lied-0vexv5.html"> Postillionlied p 1/3  by Franz Grothe </a> </li>
+<li><a href="Postillion Lied-1vexv5.html"> Postillionlied p 2/3  by Franz Grothe </a> </li>
+<li><a href="Postillion Lied-2vexv5.html"> Postillionlied p 3/3  by Franz Grothe </a> </li>
+<li><a href="PreciousLord-0vexv5.html"> Precious Lord p 1/1  by Thomas Dorsey </a> </li>
+<li><a href="Solovey-0vexv5.html"> Solovey p 1/2 ((Op. 1)) by Folks </a> </li>
+<li><a href="Solovey-1vexv5.html"> Solovey p 2/2 ((Op. 1)) by Folks </a> </li>
+<li><a href="Yama-1vexv5.html"> Yama p 2/2 ((as played by Lee Morgan)) by Lee Morgan </a> </li>
 </ul></button></div></div>
 </div>
 <div id="smoo">

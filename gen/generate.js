@@ -69,12 +69,20 @@ async function main() {
         strs.push(`  <script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.slim.js"></script>`);
         strs.push(`<script type="text/javascript">`);
         strs.push(`document.addEventListener("DOMContentLoaded", function (event) {`);
+        if (libVersion === 'v5') {
+          strs.push(`const new_font = new FontFace('Bravura', 'url(../fonts/Bravura_1.392.woff)')`);
+          strs.push('new_font.load().then(function(loaded_face) {');
+          strs.push('document.fonts.add(loaded_face);');
+        }
         strs.push(`  $('.changeLibraryButton').off('click').on('click', () => {$('.changeLibrary').toggleClass('hide');});`);
         strs.push(`  $('.changeScoreButton').off('click').on('click', () => {$('.changeScore').toggleClass('hide');});`);
         strs.push(`let timestamp = new Date().valueOf();`);
         strs.push(`  main();`);
         strs.push(`const delta = (new Date().valueOf()) - timestamp;`);
         strs.push(`$('#renderTime').text(delta.toString());`);
+        if (libVersion === 'v5') {
+          strs.push(`});`);
+        }
         strs.push(`});`);
         strs.push(`</script>`);
         strs.push(`</head>`);
