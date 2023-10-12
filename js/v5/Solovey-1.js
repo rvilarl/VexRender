@@ -2578,6 +2578,7 @@ stavesmo245704.draw();
 smo245704v0.draw(context, stavesmo245704);
 // modifier from 0-28-0-0 to 0-29-0-2
 const smo253256 = new VF.TextBracket({ start: smo242396, stop: smo242422, text: 'accelerando', position: 1 });
+smo253256.setFont({ family: 'Roboto Slab', size: 12, style: 'italic' });
 smo253256.setLine(1).setContext(context).draw();
 // modifier from 2-26-0-0 to 2-27-0-0
 const smo253257 = new VF.StaveTie({ first_note: smo244324, last_note: smo244341, 
