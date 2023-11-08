@@ -2,7 +2,7 @@
 function main() {
 // create the div and svg element for the music
 const div = document.getElementById('smoo');
-const VF = Vex.Flow;
+const VF = VexFlow;
 const renderer = new VF.Renderer(div, VF.Renderer.Backends.SVG);
 const context = renderer.getContext();
 const svg = context.svg
@@ -11,2809 +11,2968 @@ svg.setAttributeNS('', 'height', '1839.5721925133685');
 svg.setAttributeNS('', 'viewBox', '0 0 1484 1920');
 //
 // create the musical objects
-VF.setMusicFont("Gonville","Bravura","Custom");
-const fmtsmo809998 = new VF.Formatter();
+VF.setFonts("Gonville","Bravura","Custom");
+const fmtsmo786578 = new VF.Formatter();
 //
 // voices and notes for stave 0 8
-const smo80999v0 = new VF.Voice(JSON.parse('{"numBeats":4,"beatValue":4}')).setMode(VF.Voice.Mode.SOFT);
-const smo80999v0ar = [];
-const smo80976 = new VF.StaveNote(JSON.parse('{"clef":"treble","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["g#/4/n"]}'))
-smo80976.setAttribute('id', 'smo80976');
-smo80999v0ar.push(smo80976);
-const smo80977 = new VF.StaveNote(JSON.parse('{"clef":"treble","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["g#/4/n"]}'))
-smo80977.setAttribute('id', 'smo80977');
-smo80999v0ar.push(smo80977);
-const smo80978 = new VF.StaveNote(JSON.parse('{"clef":"treble","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["g#/4/n"]}'))
-smo80978.setAttribute('id', 'smo80978');
-smo80999v0ar.push(smo80978);
-const smo80979 = new VF.StaveNote(JSON.parse('{"clef":"treble","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["g#/4/n"]}'))
-smo80979.setAttribute('id', 'smo80979');
-smo80999v0ar.push(smo80979);
-const smo80980 = new VF.StaveNote(JSON.parse('{"clef":"treble","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["bn/4/n"]}'))
-smo80980.setAttribute('id', 'smo80980');
-smo80999v0ar.push(smo80980);
-const smo80981 = new VF.StaveNote(JSON.parse('{"clef":"treble","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["bn/4/n"]}'))
-smo80981.setAttribute('id', 'smo80981');
-smo80999v0ar.push(smo80981);
-const smo80982 = new VF.StaveNote(JSON.parse('{"clef":"treble","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["bn/4/n"]}'))
-smo80982.setAttribute('id', 'smo80982');
-smo80999v0ar.push(smo80982);
-const smo80983 = new VF.StaveNote(JSON.parse('{"clef":"treble","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["bn/4/n"]}'))
-smo80983.setAttribute('id', 'smo80983');
-smo80999v0ar.push(smo80983);
-smo80999v0.addTickables(smo80999v0ar)
-fmtsmo809998.joinVoices([smo80999v0]);
-const fmtsmo818188 = new VF.Formatter();
+const smo78657v0 = new VF.Voice(JSON.parse('{"numBeats":4,"beatValue":4}')).setMode(VF.Voice.Mode.SOFT);
+const smo78657v0ar = [];
+const smo78634 = new VF.StaveNote(JSON.parse('{"clef":"treble","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["g#/4/n"]}'))
+smo78634.setAttribute('id', 'smo78634');
+smo78657v0ar.push(smo78634);
+const smo78635 = new VF.StaveNote(JSON.parse('{"clef":"treble","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["g#/4/n"]}'))
+smo78635.setAttribute('id', 'smo78635');
+smo78657v0ar.push(smo78635);
+const smo78636 = new VF.StaveNote(JSON.parse('{"clef":"treble","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["g#/4/n"]}'))
+smo78636.setAttribute('id', 'smo78636');
+smo78657v0ar.push(smo78636);
+const smo78637 = new VF.StaveNote(JSON.parse('{"clef":"treble","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["g#/4/n"]}'))
+smo78637.setAttribute('id', 'smo78637');
+smo78657v0ar.push(smo78637);
+const smo78638 = new VF.StaveNote(JSON.parse('{"clef":"treble","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["bn/4/n"]}'))
+smo78638.setAttribute('id', 'smo78638');
+smo78657v0ar.push(smo78638);
+const smo78639 = new VF.StaveNote(JSON.parse('{"clef":"treble","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["bn/4/n"]}'))
+smo78639.setAttribute('id', 'smo78639');
+smo78657v0ar.push(smo78639);
+const smo78640 = new VF.StaveNote(JSON.parse('{"clef":"treble","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["bn/4/n"]}'))
+smo78640.setAttribute('id', 'smo78640');
+smo78657v0ar.push(smo78640);
+const smo78641 = new VF.StaveNote(JSON.parse('{"clef":"treble","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["bn/4/n"]}'))
+smo78641.setAttribute('id', 'smo78641');
+smo78657v0ar.push(smo78641);
+smo78657v0.addTickables(smo78657v0ar)
+fmtsmo786578.joinVoices([smo78657v0]);
+const fmtsmo794768 = new VF.Formatter();
 //
 // voices and notes for stave 1 8
-const smo81818v0 = new VF.Voice(JSON.parse('{"numBeats":4,"beatValue":4}')).setMode(VF.Voice.Mode.SOFT);
-const smo81818v0ar = [];
-const smo81795 = new VF.StaveNote(JSON.parse('{"clef":"treble","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["en/4/n"]}'))
-smo81795.setAttribute('id', 'smo81795');
-smo81818v0ar.push(smo81795);
-const smo81796 = new VF.StaveNote(JSON.parse('{"clef":"treble","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["en/4/n"]}'))
-smo81796.setAttribute('id', 'smo81796');
-smo81818v0ar.push(smo81796);
-const smo81797 = new VF.StaveNote(JSON.parse('{"clef":"treble","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["en/4/n"]}'))
-smo81797.setAttribute('id', 'smo81797');
-smo81818v0ar.push(smo81797);
-const smo81798 = new VF.StaveNote(JSON.parse('{"clef":"treble","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["en/4/n"]}'))
-smo81798.setAttribute('id', 'smo81798');
-smo81818v0ar.push(smo81798);
-const smo81799 = new VF.StaveNote(JSON.parse('{"clef":"treble","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["en/4/n"]}'))
-smo81799.setAttribute('id', 'smo81799');
-smo81818v0ar.push(smo81799);
-const smo81800 = new VF.StaveNote(JSON.parse('{"clef":"treble","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["en/4/n"]}'))
-smo81800.setAttribute('id', 'smo81800');
-smo81818v0ar.push(smo81800);
-const smo81801 = new VF.StaveNote(JSON.parse('{"clef":"treble","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["en/4/n"]}'))
-smo81801.setAttribute('id', 'smo81801');
-smo81818v0ar.push(smo81801);
-const smo81802 = new VF.StaveNote(JSON.parse('{"clef":"treble","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["en/4/n"]}'))
-smo81802.setAttribute('id', 'smo81802');
-smo81818v0ar.push(smo81802);
-smo81818v0.addTickables(smo81818v0ar)
-fmtsmo818188.joinVoices([smo81818v0]);
-const fmtsmo826298 = new VF.Formatter();
+const smo79476v0 = new VF.Voice(JSON.parse('{"numBeats":4,"beatValue":4}')).setMode(VF.Voice.Mode.SOFT);
+const smo79476v0ar = [];
+const smo79453 = new VF.StaveNote(JSON.parse('{"clef":"treble","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["en/4/n"]}'))
+smo79453.setAttribute('id', 'smo79453');
+smo79476v0ar.push(smo79453);
+const smo79454 = new VF.StaveNote(JSON.parse('{"clef":"treble","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["en/4/n"]}'))
+smo79454.setAttribute('id', 'smo79454');
+smo79476v0ar.push(smo79454);
+const smo79455 = new VF.StaveNote(JSON.parse('{"clef":"treble","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["en/4/n"]}'))
+smo79455.setAttribute('id', 'smo79455');
+smo79476v0ar.push(smo79455);
+const smo79456 = new VF.StaveNote(JSON.parse('{"clef":"treble","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["en/4/n"]}'))
+smo79456.setAttribute('id', 'smo79456');
+smo79476v0ar.push(smo79456);
+const smo79457 = new VF.StaveNote(JSON.parse('{"clef":"treble","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["en/4/n"]}'))
+smo79457.setAttribute('id', 'smo79457');
+smo79476v0ar.push(smo79457);
+const smo79458 = new VF.StaveNote(JSON.parse('{"clef":"treble","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["en/4/n"]}'))
+smo79458.setAttribute('id', 'smo79458');
+smo79476v0ar.push(smo79458);
+const smo79459 = new VF.StaveNote(JSON.parse('{"clef":"treble","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["en/4/n"]}'))
+smo79459.setAttribute('id', 'smo79459');
+smo79476v0ar.push(smo79459);
+const smo79460 = new VF.StaveNote(JSON.parse('{"clef":"treble","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["en/4/n"]}'))
+smo79460.setAttribute('id', 'smo79460');
+smo79476v0ar.push(smo79460);
+smo79476v0.addTickables(smo79476v0ar)
+fmtsmo794768.joinVoices([smo79476v0]);
+const fmtsmo802878 = new VF.Formatter();
 //
 // voices and notes for stave 2 8
-const smo82629v0 = new VF.Voice(JSON.parse('{"numBeats":4,"beatValue":4}')).setMode(VF.Voice.Mode.SOFT);
-const smo82629v0ar = [];
-const smo82606 = new VF.StaveNote(JSON.parse('{"clef":"alto","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["bn/3/n"]}'))
-smo82606.setAttribute('id', 'smo82606');
-smo82629v0ar.push(smo82606);
-const smo82607 = new VF.StaveNote(JSON.parse('{"clef":"alto","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["bn/3/n"]}'))
-smo82607.setAttribute('id', 'smo82607');
-smo82629v0ar.push(smo82607);
-const smo82608 = new VF.StaveNote(JSON.parse('{"clef":"alto","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["bn/3/n"]}'))
-smo82608.setAttribute('id', 'smo82608');
-smo82629v0ar.push(smo82608);
-const smo82609 = new VF.StaveNote(JSON.parse('{"clef":"alto","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["bn/3/n"]}'))
-smo82609.setAttribute('id', 'smo82609');
-smo82629v0ar.push(smo82609);
-const smo82610 = new VF.StaveNote(JSON.parse('{"clef":"alto","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["bn/3/n"]}'))
-smo82610.setAttribute('id', 'smo82610');
-smo82629v0ar.push(smo82610);
-const smo82611 = new VF.StaveNote(JSON.parse('{"clef":"alto","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["bn/3/n"]}'))
-smo82611.setAttribute('id', 'smo82611');
-smo82629v0ar.push(smo82611);
-const smo82612 = new VF.StaveNote(JSON.parse('{"clef":"alto","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["bn/3/n"]}'))
-smo82612.setAttribute('id', 'smo82612');
-smo82629v0ar.push(smo82612);
-const smo82613 = new VF.StaveNote(JSON.parse('{"clef":"alto","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["bn/3/n"]}'))
-smo82613.setAttribute('id', 'smo82613');
-smo82629v0ar.push(smo82613);
-smo82629v0.addTickables(smo82629v0ar)
-fmtsmo826298.joinVoices([smo82629v0]);
-const fmtsmo834198 = new VF.Formatter();
+const smo80287v0 = new VF.Voice(JSON.parse('{"numBeats":4,"beatValue":4}')).setMode(VF.Voice.Mode.SOFT);
+const smo80287v0ar = [];
+const smo80264 = new VF.StaveNote(JSON.parse('{"clef":"alto","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["bn/3/n"]}'))
+smo80264.setAttribute('id', 'smo80264');
+smo80287v0ar.push(smo80264);
+const smo80265 = new VF.StaveNote(JSON.parse('{"clef":"alto","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["bn/3/n"]}'))
+smo80265.setAttribute('id', 'smo80265');
+smo80287v0ar.push(smo80265);
+const smo80266 = new VF.StaveNote(JSON.parse('{"clef":"alto","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["bn/3/n"]}'))
+smo80266.setAttribute('id', 'smo80266');
+smo80287v0ar.push(smo80266);
+const smo80267 = new VF.StaveNote(JSON.parse('{"clef":"alto","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["bn/3/n"]}'))
+smo80267.setAttribute('id', 'smo80267');
+smo80287v0ar.push(smo80267);
+const smo80268 = new VF.StaveNote(JSON.parse('{"clef":"alto","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["bn/3/n"]}'))
+smo80268.setAttribute('id', 'smo80268');
+smo80287v0ar.push(smo80268);
+const smo80269 = new VF.StaveNote(JSON.parse('{"clef":"alto","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["bn/3/n"]}'))
+smo80269.setAttribute('id', 'smo80269');
+smo80287v0ar.push(smo80269);
+const smo80270 = new VF.StaveNote(JSON.parse('{"clef":"alto","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["bn/3/n"]}'))
+smo80270.setAttribute('id', 'smo80270');
+smo80287v0ar.push(smo80270);
+const smo80271 = new VF.StaveNote(JSON.parse('{"clef":"alto","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["bn/3/n"]}'))
+smo80271.setAttribute('id', 'smo80271');
+smo80287v0ar.push(smo80271);
+smo80287v0.addTickables(smo80287v0ar)
+fmtsmo802878.joinVoices([smo80287v0]);
+const fmtsmo810778 = new VF.Formatter();
 //
 // voices and notes for stave 3 8
-const smo83419v0 = new VF.Voice(JSON.parse('{"numBeats":4,"beatValue":4}')).setMode(VF.Voice.Mode.SOFT);
-const smo83419v0ar = [];
-const smo83401 = new VF.StaveNote(JSON.parse('{"clef":"treble","duration":"2","dots":0,"type":"r","autoStem":true,"keys":["bn/4/r"]}'))
-smo83401.setAttribute('id', 'smo83401');
-smo83419v0ar.push(smo83401);
-const smo83402 = new VF.StaveNote(JSON.parse('{"clef":"treble","duration":"2","dots":0,"type":"n","autoStem":true,"keys":["en/5/n"]}'))
-smo83402.setAttribute('id', 'smo83402');
-const smo83403 = new VF.Annotation('com');
-smo83403.setAttribute('id', 'smo83403');
-smo83403.setFont('Merriweather', 12, 'normal');
-smo83403.setVerticalJustification(VF.Annotation.VerticalJustify.BOTTOM);
-smo83402.addModifier(smo83403);
-smo83403.addClass('lyric lyric-0 lyric-hyphen');
-smo83419v0ar.push(smo83402);
-smo83419v0.addTickables(smo83419v0ar)
-fmtsmo834198.joinVoices([smo83419v0]);
-const fmtsmo843088 = new VF.Formatter();
+const smo81077v0 = new VF.Voice(JSON.parse('{"numBeats":4,"beatValue":4}')).setMode(VF.Voice.Mode.SOFT);
+const smo81077v0ar = [];
+const smo81059 = new VF.StaveNote(JSON.parse('{"clef":"treble","duration":"2","dots":0,"type":"r","autoStem":true,"keys":["bn/4/r"]}'))
+smo81059.setAttribute('id', 'smo81059');
+smo81077v0ar.push(smo81059);
+const smo81060 = new VF.StaveNote(JSON.parse('{"clef":"treble","duration":"2","dots":0,"type":"n","autoStem":true,"keys":["en/5/n"]}'))
+smo81060.setAttribute('id', 'smo81060');
+const smo81061 = new VF.Annotation('com');
+smo81061.setAttribute('id', 'smo81061');
+smo81061.setFont('Merriweather', 12, 'normal');
+smo81061.setVerticalJustification(VF.Annotation.VerticalJustify.BOTTOM);
+smo81060.addModifier(smo81061);
+smo81061.addClass('lyric lyric-0 lyric-hyphen');
+smo81077v0ar.push(smo81060);
+smo81077v0.addTickables(smo81077v0ar)
+fmtsmo810778.joinVoices([smo81077v0]);
+const fmtsmo819668 = new VF.Formatter();
 //
 // voices and notes for stave 4 8
-const smo84308v0 = new VF.Voice(JSON.parse('{"numBeats":4,"beatValue":4}')).setMode(VF.Voice.Mode.SOFT);
-const smo84308v0ar = [];
-const smo84285 = new VF.StaveNote(JSON.parse('{"clef":"bass","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["en/3/n"]}'))
-smo84285.setAttribute('id', 'smo84285');
-smo84308v0ar.push(smo84285);
-const smo84286 = new VF.StaveNote(JSON.parse('{"clef":"bass","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["en/3/n"]}'))
-smo84286.setAttribute('id', 'smo84286');
-smo84308v0ar.push(smo84286);
-const smo84287 = new VF.StaveNote(JSON.parse('{"clef":"bass","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["en/3/n"]}'))
-smo84287.setAttribute('id', 'smo84287');
-smo84308v0ar.push(smo84287);
-const smo84288 = new VF.StaveNote(JSON.parse('{"clef":"bass","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["en/3/n"]}'))
-smo84288.setAttribute('id', 'smo84288');
-smo84308v0ar.push(smo84288);
-const smo84289 = new VF.StaveNote(JSON.parse('{"clef":"bass","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["g#/3/n"]}'))
-smo84289.setAttribute('id', 'smo84289');
-smo84308v0ar.push(smo84289);
-const smo84290 = new VF.StaveNote(JSON.parse('{"clef":"bass","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["g#/3/n"]}'))
-smo84290.setAttribute('id', 'smo84290');
-smo84308v0ar.push(smo84290);
-const smo84291 = new VF.StaveNote(JSON.parse('{"clef":"bass","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["g#/3/n"]}'))
-smo84291.setAttribute('id', 'smo84291');
-smo84308v0ar.push(smo84291);
-const smo84292 = new VF.StaveNote(JSON.parse('{"clef":"bass","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["g#/3/n"]}'))
-smo84292.setAttribute('id', 'smo84292');
-smo84308v0ar.push(smo84292);
-smo84308v0.addTickables(smo84308v0ar)
-fmtsmo843088.joinVoices([smo84308v0]);
-// create beam groups and tuplets for format grp smo84911 before formatting
-const dirsmo91436 = smo80976.getStemDirection();
-smo80976.setStemDirection(dirsmo91436);
-smo80977.setStemDirection(dirsmo91436);
-smo80978.setStemDirection(dirsmo91436);
-smo80979.setStemDirection(dirsmo91436);
-const smo91436 = new VF.Beam([smo80976,smo80977,smo80978,smo80979]);
-const dirsmo91437 = smo80980.getStemDirection();
-smo80980.setStemDirection(dirsmo91437);
-smo80981.setStemDirection(dirsmo91437);
-smo80982.setStemDirection(dirsmo91437);
-smo80983.setStemDirection(dirsmo91437);
-const smo91437 = new VF.Beam([smo80980,smo80981,smo80982,smo80983]);
-const dirsmo91440 = smo81795.getStemDirection();
-smo81795.setStemDirection(dirsmo91440);
-smo81796.setStemDirection(dirsmo91440);
-smo81797.setStemDirection(dirsmo91440);
-smo81798.setStemDirection(dirsmo91440);
-const smo91440 = new VF.Beam([smo81795,smo81796,smo81797,smo81798]);
-const dirsmo91441 = smo81799.getStemDirection();
-smo81799.setStemDirection(dirsmo91441);
-smo81800.setStemDirection(dirsmo91441);
-smo81801.setStemDirection(dirsmo91441);
-smo81802.setStemDirection(dirsmo91441);
-const smo91441 = new VF.Beam([smo81799,smo81800,smo81801,smo81802]);
-const dirsmo91444 = smo82606.getStemDirection();
-smo82606.setStemDirection(dirsmo91444);
-smo82607.setStemDirection(dirsmo91444);
-smo82608.setStemDirection(dirsmo91444);
-smo82609.setStemDirection(dirsmo91444);
-const smo91444 = new VF.Beam([smo82606,smo82607,smo82608,smo82609]);
-const dirsmo91445 = smo82610.getStemDirection();
-smo82610.setStemDirection(dirsmo91445);
-smo82611.setStemDirection(dirsmo91445);
-smo82612.setStemDirection(dirsmo91445);
-smo82613.setStemDirection(dirsmo91445);
-const smo91445 = new VF.Beam([smo82610,smo82611,smo82612,smo82613]);
-const dirsmo91450 = smo84285.getStemDirection();
-smo84285.setStemDirection(dirsmo91450);
-smo84286.setStemDirection(dirsmo91450);
-smo84287.setStemDirection(dirsmo91450);
-smo84288.setStemDirection(dirsmo91450);
-const smo91450 = new VF.Beam([smo84285,smo84286,smo84287,smo84288]);
-const dirsmo91451 = smo84289.getStemDirection();
-smo84289.setStemDirection(dirsmo91451);
-smo84290.setStemDirection(dirsmo91451);
-smo84291.setStemDirection(dirsmo91451);
-smo84292.setStemDirection(dirsmo91451);
-const smo91451 = new VF.Beam([smo84289,smo84290,smo84291,smo84292]);
+const smo81966v0 = new VF.Voice(JSON.parse('{"numBeats":4,"beatValue":4}')).setMode(VF.Voice.Mode.SOFT);
+const smo81966v0ar = [];
+const smo81943 = new VF.StaveNote(JSON.parse('{"clef":"bass","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["en/3/n"]}'))
+smo81943.setAttribute('id', 'smo81943');
+smo81966v0ar.push(smo81943);
+const smo81944 = new VF.StaveNote(JSON.parse('{"clef":"bass","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["en/3/n"]}'))
+smo81944.setAttribute('id', 'smo81944');
+smo81966v0ar.push(smo81944);
+const smo81945 = new VF.StaveNote(JSON.parse('{"clef":"bass","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["en/3/n"]}'))
+smo81945.setAttribute('id', 'smo81945');
+smo81966v0ar.push(smo81945);
+const smo81946 = new VF.StaveNote(JSON.parse('{"clef":"bass","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["en/3/n"]}'))
+smo81946.setAttribute('id', 'smo81946');
+smo81966v0ar.push(smo81946);
+const smo81947 = new VF.StaveNote(JSON.parse('{"clef":"bass","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["g#/3/n"]}'))
+smo81947.setAttribute('id', 'smo81947');
+smo81966v0ar.push(smo81947);
+const smo81948 = new VF.StaveNote(JSON.parse('{"clef":"bass","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["g#/3/n"]}'))
+smo81948.setAttribute('id', 'smo81948');
+smo81966v0ar.push(smo81948);
+const smo81949 = new VF.StaveNote(JSON.parse('{"clef":"bass","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["g#/3/n"]}'))
+smo81949.setAttribute('id', 'smo81949');
+smo81966v0ar.push(smo81949);
+const smo81950 = new VF.StaveNote(JSON.parse('{"clef":"bass","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["g#/3/n"]}'))
+smo81950.setAttribute('id', 'smo81950');
+smo81966v0ar.push(smo81950);
+smo81966v0.addTickables(smo81966v0ar)
+fmtsmo819668.joinVoices([smo81966v0]);
+// create beam groups and tuplets for format grp smo82569 before formatting
+const dirsmo89099 = smo78634.getStemDirection();
+smo78634.setStemDirection(dirsmo89099);
+smo78635.setStemDirection(dirsmo89099);
+smo78636.setStemDirection(dirsmo89099);
+smo78637.setStemDirection(dirsmo89099);
+const smo89099 = new VF.Beam([smo78634,smo78635,smo78636,smo78637]);
+const dirsmo89100 = smo78638.getStemDirection();
+smo78638.setStemDirection(dirsmo89100);
+smo78639.setStemDirection(dirsmo89100);
+smo78640.setStemDirection(dirsmo89100);
+smo78641.setStemDirection(dirsmo89100);
+const smo89100 = new VF.Beam([smo78638,smo78639,smo78640,smo78641]);
+const dirsmo89102 = smo79453.getStemDirection();
+smo79453.setStemDirection(dirsmo89102);
+smo79454.setStemDirection(dirsmo89102);
+smo79455.setStemDirection(dirsmo89102);
+smo79456.setStemDirection(dirsmo89102);
+const smo89102 = new VF.Beam([smo79453,smo79454,smo79455,smo79456]);
+const dirsmo89103 = smo79457.getStemDirection();
+smo79457.setStemDirection(dirsmo89103);
+smo79458.setStemDirection(dirsmo89103);
+smo79459.setStemDirection(dirsmo89103);
+smo79460.setStemDirection(dirsmo89103);
+const smo89103 = new VF.Beam([smo79457,smo79458,smo79459,smo79460]);
+const dirsmo89105 = smo80264.getStemDirection();
+smo80264.setStemDirection(dirsmo89105);
+smo80265.setStemDirection(dirsmo89105);
+smo80266.setStemDirection(dirsmo89105);
+smo80267.setStemDirection(dirsmo89105);
+const smo89105 = new VF.Beam([smo80264,smo80265,smo80266,smo80267]);
+const dirsmo89106 = smo80268.getStemDirection();
+smo80268.setStemDirection(dirsmo89106);
+smo80269.setStemDirection(dirsmo89106);
+smo80270.setStemDirection(dirsmo89106);
+smo80271.setStemDirection(dirsmo89106);
+const smo89106 = new VF.Beam([smo80268,smo80269,smo80270,smo80271]);
+const dirsmo89109 = smo81943.getStemDirection();
+smo81943.setStemDirection(dirsmo89109);
+smo81944.setStemDirection(dirsmo89109);
+smo81945.setStemDirection(dirsmo89109);
+smo81946.setStemDirection(dirsmo89109);
+const smo89109 = new VF.Beam([smo81943,smo81944,smo81945,smo81946]);
+const dirsmo89110 = smo81947.getStemDirection();
+smo81947.setStemDirection(dirsmo89110);
+smo81948.setStemDirection(dirsmo89110);
+smo81949.setStemDirection(dirsmo89110);
+smo81950.setStemDirection(dirsmo89110);
+const smo89110 = new VF.Beam([smo81947,smo81948,smo81949,smo81950]);
  
-// formatting measures in staff group smo84911
-fmtsmo809998.format([smo80999v0,smo81818v0,smo82629v0,smo83419v0,smo84308v0], 256);
-const stavesmo80999 = new VF.Stave(55, 234.00000000000023, 365);
-stavesmo80999.setAttribute('id', 'stavesmo80999');
-stavesmo80999.setBegBarType(1);
-stavesmo80999.addClef('treble');
-const keysmo80999 = new VF.KeySignature('E');
-keysmo80999.addToStave(stavesmo80999);
-stavesmo80999.setContext(context);
-stavesmo80999.draw();
-smo80999v0.draw(context, stavesmo80999);
-smo91436.setContext(context);
-smo91436.draw();
-smo91437.setContext(context);
-smo91437.draw();
-const stavesmo81818 = new VF.Stave(55, 332.0000000000002, 365);
-stavesmo81818.setAttribute('id', 'stavesmo81818');
-stavesmo81818.setBegBarType(1);
-stavesmo81818.addClef('treble');
-const keysmo81818 = new VF.KeySignature('E');
-keysmo81818.addToStave(stavesmo81818);
-stavesmo81818.setContext(context);
-stavesmo81818.draw();
-smo81818v0.draw(context, stavesmo81818);
-smo91440.setContext(context);
-smo91440.draw();
-smo91441.setContext(context);
-smo91441.draw();
-const stavesmo82629 = new VF.Stave(55, 435.0000000000002, 365);
-stavesmo82629.setAttribute('id', 'stavesmo82629');
-stavesmo82629.setBegBarType(1);
-stavesmo82629.addClef('alto');
-const keysmo82629 = new VF.KeySignature('E');
-keysmo82629.addToStave(stavesmo82629);
-stavesmo82629.setContext(context);
-stavesmo82629.draw();
-smo82629v0.draw(context, stavesmo82629);
-smo91444.setContext(context);
-smo91444.draw();
-smo91445.setContext(context);
-smo91445.draw();
-const stavesmo83419 = new VF.Stave(55, 518.0000000000002, 365);
-stavesmo83419.setAttribute('id', 'stavesmo83419');
-stavesmo83419.setBegBarType(1);
-stavesmo83419.addClef('treble');
-const keysmo83419 = new VF.KeySignature('E');
-keysmo83419.addToStave(stavesmo83419);
-stavesmo83419.setContext(context);
-stavesmo83419.draw();
-smo83419v0.draw(context, stavesmo83419);
-const stavesmo84308 = new VF.Stave(55, 620.0000000000002, 365);
-stavesmo84308.setAttribute('id', 'stavesmo84308');
-stavesmo84308.setBegBarType(1);
-stavesmo84308.addClef('bass');
-const keysmo84308 = new VF.KeySignature('E');
-keysmo84308.addToStave(stavesmo84308);
-stavesmo84308.setContext(context);
-stavesmo84308.draw();
-smo84308v0.draw(context, stavesmo84308);
-smo91450.setContext(context);
-smo91450.draw();
-smo91451.setContext(context);
-smo91451.draw();
-const leftsmo84911stavesmo809994 = new VF.StaveConnector(stavesmo80999, stavesmo84308).setType(4);
-leftsmo84911stavesmo809994.setContext(context).draw();
-const fmtsmo810239 = new VF.Formatter();
+// formatting measures in staff group smo82569
+fmtsmo786578.format([smo78657v0,smo79476v0,smo80287v0,smo81077v0,smo81966v0], 192);
+const stavesmo78657 = new VF.Stave(55, 234.00000000000023, 288);
+stavesmo78657.setAttribute('id', 'stavesmo78657');
+stavesmo78657.setBegBarType(1);
+stavesmo78657.addClef('treble');
+const keysmo78657 = new VF.KeySignature('E');
+keysmo78657.addToStave(stavesmo78657);
+stavesmo78657.setContext(context);
+stavesmo78657.draw();
+smo78657v0.draw(context, stavesmo78657);
+smo89099.setContext(context);
+smo89099.draw();
+smo89100.setContext(context);
+smo89100.draw();
+const stavesmo79476 = new VF.Stave(55, 332.0000000000002, 288);
+stavesmo79476.setAttribute('id', 'stavesmo79476');
+stavesmo79476.setBegBarType(1);
+stavesmo79476.addClef('treble');
+const keysmo79476 = new VF.KeySignature('E');
+keysmo79476.addToStave(stavesmo79476);
+stavesmo79476.setContext(context);
+stavesmo79476.draw();
+smo79476v0.draw(context, stavesmo79476);
+smo89102.setContext(context);
+smo89102.draw();
+smo89103.setContext(context);
+smo89103.draw();
+const stavesmo80287 = new VF.Stave(55, 435.0000000000002, 288);
+stavesmo80287.setAttribute('id', 'stavesmo80287');
+stavesmo80287.setBegBarType(1);
+stavesmo80287.addClef('alto');
+const keysmo80287 = new VF.KeySignature('E');
+keysmo80287.addToStave(stavesmo80287);
+stavesmo80287.setContext(context);
+stavesmo80287.draw();
+smo80287v0.draw(context, stavesmo80287);
+smo89105.setContext(context);
+smo89105.draw();
+smo89106.setContext(context);
+smo89106.draw();
+const stavesmo81077 = new VF.Stave(55, 518.0000000000002, 288);
+stavesmo81077.setAttribute('id', 'stavesmo81077');
+stavesmo81077.setBegBarType(1);
+stavesmo81077.addClef('treble');
+const keysmo81077 = new VF.KeySignature('E');
+keysmo81077.addToStave(stavesmo81077);
+stavesmo81077.setContext(context);
+stavesmo81077.draw();
+smo81077v0.draw(context, stavesmo81077);
+const stavesmo81966 = new VF.Stave(55, 620.0000000000002, 288);
+stavesmo81966.setAttribute('id', 'stavesmo81966');
+stavesmo81966.setBegBarType(1);
+stavesmo81966.addClef('bass');
+const keysmo81966 = new VF.KeySignature('E');
+keysmo81966.addToStave(stavesmo81966);
+stavesmo81966.setContext(context);
+stavesmo81966.draw();
+smo81966v0.draw(context, stavesmo81966);
+smo89109.setContext(context);
+smo89109.draw();
+smo89110.setContext(context);
+smo89110.draw();
+const leftsmo82569stavesmo786574 = new VF.StaveConnector(stavesmo78657, stavesmo81966).setType(4);
+leftsmo82569stavesmo786574.setContext(context).draw();
+const fmtsmo786819 = new VF.Formatter();
 //
 // voices and notes for stave 0 9
-const smo81023v0 = new VF.Voice(JSON.parse('{"numBeats":4,"beatValue":4}')).setMode(VF.Voice.Mode.SOFT);
-const smo81023v0ar = [];
-const smo81000 = new VF.StaveNote(JSON.parse('{"clef":"treble","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["bn/4/n"]}'))
-smo81000.setAttribute('id', 'smo81000');
-smo81023v0ar.push(smo81000);
-const smo81001 = new VF.StaveNote(JSON.parse('{"clef":"treble","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["bn/4/n"]}'))
-smo81001.setAttribute('id', 'smo81001');
-smo81023v0ar.push(smo81001);
-const smo81002 = new VF.StaveNote(JSON.parse('{"clef":"treble","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["bn/4/n"]}'))
-smo81002.setAttribute('id', 'smo81002');
-smo81023v0ar.push(smo81002);
-const smo81003 = new VF.StaveNote(JSON.parse('{"clef":"treble","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["bn/4/n"]}'))
-smo81003.setAttribute('id', 'smo81003');
-smo81023v0ar.push(smo81003);
-const smo81004 = new VF.StaveNote(JSON.parse('{"clef":"treble","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["a#/4/n"]}'))
-smo81004.setAttribute('id', 'smo81004');
-const smo810040acc = new VF.Accidental('#');
-smo81004.addModifier(smo810040acc, 0);
-smo81023v0ar.push(smo81004);
-const smo81005 = new VF.StaveNote(JSON.parse('{"clef":"treble","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["a#/4/n"]}'))
-smo81005.setAttribute('id', 'smo81005');
-smo81023v0ar.push(smo81005);
-const smo81006 = new VF.StaveNote(JSON.parse('{"clef":"treble","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["a#/4/n"]}'))
-smo81006.setAttribute('id', 'smo81006');
-smo81023v0ar.push(smo81006);
-const smo81007 = new VF.StaveNote(JSON.parse('{"clef":"treble","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["a#/4/n"]}'))
-smo81007.setAttribute('id', 'smo81007');
-smo81023v0ar.push(smo81007);
-smo81023v0.addTickables(smo81023v0ar)
-fmtsmo810239.joinVoices([smo81023v0]);
-const fmtsmo818429 = new VF.Formatter();
+const smo78681v0 = new VF.Voice(JSON.parse('{"numBeats":4,"beatValue":4}')).setMode(VF.Voice.Mode.SOFT);
+const smo78681v0ar = [];
+const smo78658 = new VF.StaveNote(JSON.parse('{"clef":"treble","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["bn/4/n"]}'))
+smo78658.setAttribute('id', 'smo78658');
+smo78681v0ar.push(smo78658);
+const smo78659 = new VF.StaveNote(JSON.parse('{"clef":"treble","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["bn/4/n"]}'))
+smo78659.setAttribute('id', 'smo78659');
+smo78681v0ar.push(smo78659);
+const smo78660 = new VF.StaveNote(JSON.parse('{"clef":"treble","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["bn/4/n"]}'))
+smo78660.setAttribute('id', 'smo78660');
+smo78681v0ar.push(smo78660);
+const smo78661 = new VF.StaveNote(JSON.parse('{"clef":"treble","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["bn/4/n"]}'))
+smo78661.setAttribute('id', 'smo78661');
+smo78681v0ar.push(smo78661);
+const smo78662 = new VF.StaveNote(JSON.parse('{"clef":"treble","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["a#/4/n"]}'))
+smo78662.setAttribute('id', 'smo78662');
+const smo786620acc = new VF.Accidental('#');
+smo78662.addModifier(smo786620acc, 0);
+smo78681v0ar.push(smo78662);
+const smo78663 = new VF.StaveNote(JSON.parse('{"clef":"treble","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["a#/4/n"]}'))
+smo78663.setAttribute('id', 'smo78663');
+smo78681v0ar.push(smo78663);
+const smo78664 = new VF.StaveNote(JSON.parse('{"clef":"treble","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["a#/4/n"]}'))
+smo78664.setAttribute('id', 'smo78664');
+smo78681v0ar.push(smo78664);
+const smo78665 = new VF.StaveNote(JSON.parse('{"clef":"treble","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["a#/4/n"]}'))
+smo78665.setAttribute('id', 'smo78665');
+smo78681v0ar.push(smo78665);
+smo78681v0.addTickables(smo78681v0ar)
+fmtsmo786819.joinVoices([smo78681v0]);
+const fmtsmo795009 = new VF.Formatter();
 //
 // voices and notes for stave 1 9
-const smo81842v0 = new VF.Voice(JSON.parse('{"numBeats":4,"beatValue":4}')).setMode(VF.Voice.Mode.SOFT);
-const smo81842v0ar = [];
-const smo81819 = new VF.StaveNote(JSON.parse('{"clef":"treble","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["en/5/n"]}'))
-smo81819.setAttribute('id', 'smo81819');
-smo81842v0ar.push(smo81819);
-const smo81820 = new VF.StaveNote(JSON.parse('{"clef":"treble","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["en/5/n"]}'))
-smo81820.setAttribute('id', 'smo81820');
-smo81842v0ar.push(smo81820);
-const smo81821 = new VF.StaveNote(JSON.parse('{"clef":"treble","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["en/5/n"]}'))
-smo81821.setAttribute('id', 'smo81821');
-smo81842v0ar.push(smo81821);
-const smo81822 = new VF.StaveNote(JSON.parse('{"clef":"treble","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["en/5/n"]}'))
-smo81822.setAttribute('id', 'smo81822');
-smo81842v0ar.push(smo81822);
-const smo81823 = new VF.StaveNote(JSON.parse('{"clef":"treble","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["en/5/n"]}'))
-smo81823.setAttribute('id', 'smo81823');
-smo81842v0ar.push(smo81823);
-const smo81824 = new VF.StaveNote(JSON.parse('{"clef":"treble","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["en/5/n"]}'))
-smo81824.setAttribute('id', 'smo81824');
-smo81842v0ar.push(smo81824);
-const smo81825 = new VF.StaveNote(JSON.parse('{"clef":"treble","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["en/5/n"]}'))
-smo81825.setAttribute('id', 'smo81825');
-smo81842v0ar.push(smo81825);
-const smo81826 = new VF.StaveNote(JSON.parse('{"clef":"treble","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["en/5/n"]}'))
-smo81826.setAttribute('id', 'smo81826');
-smo81842v0ar.push(smo81826);
-smo81842v0.addTickables(smo81842v0ar)
-fmtsmo818429.joinVoices([smo81842v0]);
-const fmtsmo826539 = new VF.Formatter();
+const smo79500v0 = new VF.Voice(JSON.parse('{"numBeats":4,"beatValue":4}')).setMode(VF.Voice.Mode.SOFT);
+const smo79500v0ar = [];
+const smo79477 = new VF.StaveNote(JSON.parse('{"clef":"treble","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["en/5/n"]}'))
+smo79477.setAttribute('id', 'smo79477');
+smo79500v0ar.push(smo79477);
+const smo79478 = new VF.StaveNote(JSON.parse('{"clef":"treble","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["en/5/n"]}'))
+smo79478.setAttribute('id', 'smo79478');
+smo79500v0ar.push(smo79478);
+const smo79479 = new VF.StaveNote(JSON.parse('{"clef":"treble","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["en/5/n"]}'))
+smo79479.setAttribute('id', 'smo79479');
+smo79500v0ar.push(smo79479);
+const smo79480 = new VF.StaveNote(JSON.parse('{"clef":"treble","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["en/5/n"]}'))
+smo79480.setAttribute('id', 'smo79480');
+smo79500v0ar.push(smo79480);
+const smo79481 = new VF.StaveNote(JSON.parse('{"clef":"treble","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["en/5/n"]}'))
+smo79481.setAttribute('id', 'smo79481');
+smo79500v0ar.push(smo79481);
+const smo79482 = new VF.StaveNote(JSON.parse('{"clef":"treble","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["en/5/n"]}'))
+smo79482.setAttribute('id', 'smo79482');
+smo79500v0ar.push(smo79482);
+const smo79483 = new VF.StaveNote(JSON.parse('{"clef":"treble","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["en/5/n"]}'))
+smo79483.setAttribute('id', 'smo79483');
+smo79500v0ar.push(smo79483);
+const smo79484 = new VF.StaveNote(JSON.parse('{"clef":"treble","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["en/5/n"]}'))
+smo79484.setAttribute('id', 'smo79484');
+smo79500v0ar.push(smo79484);
+smo79500v0.addTickables(smo79500v0ar)
+fmtsmo795009.joinVoices([smo79500v0]);
+const fmtsmo803119 = new VF.Formatter();
 //
 // voices and notes for stave 2 9
-const smo82653v0 = new VF.Voice(JSON.parse('{"numBeats":4,"beatValue":4}')).setMode(VF.Voice.Mode.SOFT);
-const smo82653v0ar = [];
-const smo82630 = new VF.StaveNote(JSON.parse('{"clef":"alto","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["c#/4/n"]}'))
-smo82630.setAttribute('id', 'smo82630');
-smo82653v0ar.push(smo82630);
-const smo82631 = new VF.StaveNote(JSON.parse('{"clef":"alto","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["c#/4/n"]}'))
-smo82631.setAttribute('id', 'smo82631');
-smo82653v0ar.push(smo82631);
-const smo82632 = new VF.StaveNote(JSON.parse('{"clef":"alto","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["c#/4/n"]}'))
-smo82632.setAttribute('id', 'smo82632');
-smo82653v0ar.push(smo82632);
-const smo82633 = new VF.StaveNote(JSON.parse('{"clef":"alto","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["c#/4/n"]}'))
-smo82633.setAttribute('id', 'smo82633');
-smo82653v0ar.push(smo82633);
-const smo82634 = new VF.StaveNote(JSON.parse('{"clef":"alto","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["c#/4/n"]}'))
-smo82634.setAttribute('id', 'smo82634');
-smo82653v0ar.push(smo82634);
-const smo82635 = new VF.StaveNote(JSON.parse('{"clef":"alto","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["c#/4/n"]}'))
-smo82635.setAttribute('id', 'smo82635');
-smo82653v0ar.push(smo82635);
-const smo82636 = new VF.StaveNote(JSON.parse('{"clef":"alto","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["c#/4/n"]}'))
-smo82636.setAttribute('id', 'smo82636');
-smo82653v0ar.push(smo82636);
-const smo82637 = new VF.StaveNote(JSON.parse('{"clef":"alto","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["c#/4/n"]}'))
-smo82637.setAttribute('id', 'smo82637');
-smo82653v0ar.push(smo82637);
-smo82653v0.addTickables(smo82653v0ar)
-fmtsmo826539.joinVoices([smo82653v0]);
-const fmtsmo834439 = new VF.Formatter();
+const smo80311v0 = new VF.Voice(JSON.parse('{"numBeats":4,"beatValue":4}')).setMode(VF.Voice.Mode.SOFT);
+const smo80311v0ar = [];
+const smo80288 = new VF.StaveNote(JSON.parse('{"clef":"alto","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["c#/4/n"]}'))
+smo80288.setAttribute('id', 'smo80288');
+smo80311v0ar.push(smo80288);
+const smo80289 = new VF.StaveNote(JSON.parse('{"clef":"alto","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["c#/4/n"]}'))
+smo80289.setAttribute('id', 'smo80289');
+smo80311v0ar.push(smo80289);
+const smo80290 = new VF.StaveNote(JSON.parse('{"clef":"alto","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["c#/4/n"]}'))
+smo80290.setAttribute('id', 'smo80290');
+smo80311v0ar.push(smo80290);
+const smo80291 = new VF.StaveNote(JSON.parse('{"clef":"alto","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["c#/4/n"]}'))
+smo80291.setAttribute('id', 'smo80291');
+smo80311v0ar.push(smo80291);
+const smo80292 = new VF.StaveNote(JSON.parse('{"clef":"alto","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["c#/4/n"]}'))
+smo80292.setAttribute('id', 'smo80292');
+smo80311v0ar.push(smo80292);
+const smo80293 = new VF.StaveNote(JSON.parse('{"clef":"alto","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["c#/4/n"]}'))
+smo80293.setAttribute('id', 'smo80293');
+smo80311v0ar.push(smo80293);
+const smo80294 = new VF.StaveNote(JSON.parse('{"clef":"alto","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["c#/4/n"]}'))
+smo80294.setAttribute('id', 'smo80294');
+smo80311v0ar.push(smo80294);
+const smo80295 = new VF.StaveNote(JSON.parse('{"clef":"alto","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["c#/4/n"]}'))
+smo80295.setAttribute('id', 'smo80295');
+smo80311v0ar.push(smo80295);
+smo80311v0.addTickables(smo80311v0ar)
+fmtsmo803119.joinVoices([smo80311v0]);
+const fmtsmo811019 = new VF.Formatter();
 //
 // voices and notes for stave 3 9
-const smo83443v0 = new VF.Voice(JSON.parse('{"numBeats":4,"beatValue":4}')).setMode(VF.Voice.Mode.SOFT);
-const smo83443v0ar = [];
-const smo83420 = new VF.StaveNote(JSON.parse('{"clef":"treble","duration":"4d","dots":1,"type":"n","autoStem":true,"keys":["en/5/n"]}'))
-smo83420.setAttribute('id', 'smo83420');
-smo83420.addModifier(new VF.Dot(), 0);
-const smo83421 = new VF.Annotation('-');
-smo83421.setAttribute('id', 'smo83421');
-smo83421.setFont('Merriweather', 12, 'normal');
-smo83421.setVerticalJustification(VF.Annotation.VerticalJustify.BOTTOM);
-smo83420.addModifier(smo83421);
-smo83421.addClass('lyric lyric-0 lyric-hyphen');
-smo83443v0ar.push(smo83420);
-const smo83422 = new VF.StaveNote(JSON.parse('{"clef":"treble","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["d#/5/n"]}'))
-smo83422.setAttribute('id', 'smo83422');
-const smo83423 = new VF.Annotation('fort');
-smo83423.setAttribute('id', 'smo83423');
-smo83423.setFont('Merriweather', 12, 'normal');
-smo83423.setVerticalJustification(VF.Annotation.VerticalJustify.BOTTOM);
-smo83422.addModifier(smo83423);
-smo83423.addClass('lyric lyric-0');
-smo83443v0ar.push(smo83422);
-const smo83424 = new VF.StaveNote(JSON.parse('{"clef":"treble","duration":"4d","dots":1,"type":"n","autoStem":true,"keys":["en/5/n"]}'))
-smo83424.setAttribute('id', 'smo83424');
-smo83424.addModifier(new VF.Dot(), 0);
-const smo83425 = new VF.Annotation('ye');
-smo83425.setAttribute('id', 'smo83425');
-smo83425.setFont('Merriweather', 12, 'normal');
-smo83425.setVerticalJustification(VF.Annotation.VerticalJustify.BOTTOM);
-smo83424.addModifier(smo83425);
-smo83425.addClass('lyric lyric-0');
-smo83443v0ar.push(smo83424);
-const smo83426 = new VF.StaveNote(JSON.parse('{"clef":"treble","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["f#/5/n"]}'))
-smo83426.setAttribute('id', 'smo83426');
-const smo83427 = new VF.Annotation('my');
-smo83427.setAttribute('id', 'smo83427');
-smo83427.setFont('Merriweather', 12, 'normal');
-smo83427.setVerticalJustification(VF.Annotation.VerticalJustify.BOTTOM);
-smo83426.addModifier(smo83427);
-smo83427.addClass('lyric lyric-0');
-smo83443v0ar.push(smo83426);
-smo83443v0.addTickables(smo83443v0ar)
-fmtsmo834439.joinVoices([smo83443v0]);
-const fmtsmo843329 = new VF.Formatter();
+const smo81101v0 = new VF.Voice(JSON.parse('{"numBeats":4,"beatValue":4}')).setMode(VF.Voice.Mode.SOFT);
+const smo81101v0ar = [];
+const smo81078 = new VF.StaveNote(JSON.parse('{"clef":"treble","duration":"4d","dots":1,"type":"n","autoStem":true,"keys":["en/5/n"]}'))
+smo81078.setAttribute('id', 'smo81078');
+smo81078.addModifier(new VF.Dot(), 0);
+const smo81079 = new VF.Annotation('-');
+smo81079.setAttribute('id', 'smo81079');
+smo81079.setFont('Merriweather', 12, 'normal');
+smo81079.setVerticalJustification(VF.Annotation.VerticalJustify.BOTTOM);
+smo81078.addModifier(smo81079);
+smo81079.addClass('lyric lyric-0 lyric-hyphen');
+smo81101v0ar.push(smo81078);
+const smo81080 = new VF.StaveNote(JSON.parse('{"clef":"treble","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["d#/5/n"]}'))
+smo81080.setAttribute('id', 'smo81080');
+const smo81081 = new VF.Annotation('fort');
+smo81081.setAttribute('id', 'smo81081');
+smo81081.setFont('Merriweather', 12, 'normal');
+smo81081.setVerticalJustification(VF.Annotation.VerticalJustify.BOTTOM);
+smo81080.addModifier(smo81081);
+smo81081.addClass('lyric lyric-0');
+smo81101v0ar.push(smo81080);
+const smo81082 = new VF.StaveNote(JSON.parse('{"clef":"treble","duration":"4d","dots":1,"type":"n","autoStem":true,"keys":["en/5/n"]}'))
+smo81082.setAttribute('id', 'smo81082');
+smo81082.addModifier(new VF.Dot(), 0);
+const smo81083 = new VF.Annotation('ye');
+smo81083.setAttribute('id', 'smo81083');
+smo81083.setFont('Merriweather', 12, 'normal');
+smo81083.setVerticalJustification(VF.Annotation.VerticalJustify.BOTTOM);
+smo81082.addModifier(smo81083);
+smo81083.addClass('lyric lyric-0');
+smo81101v0ar.push(smo81082);
+const smo81084 = new VF.StaveNote(JSON.parse('{"clef":"treble","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["f#/5/n"]}'))
+smo81084.setAttribute('id', 'smo81084');
+const smo81085 = new VF.Annotation('my');
+smo81085.setAttribute('id', 'smo81085');
+smo81085.setFont('Merriweather', 12, 'normal');
+smo81085.setVerticalJustification(VF.Annotation.VerticalJustify.BOTTOM);
+smo81084.addModifier(smo81085);
+smo81085.addClass('lyric lyric-0');
+smo81101v0ar.push(smo81084);
+smo81101v0.addTickables(smo81101v0ar)
+fmtsmo811019.joinVoices([smo81101v0]);
+const fmtsmo819909 = new VF.Formatter();
 //
 // voices and notes for stave 4 9
-const smo84332v0 = new VF.Voice(JSON.parse('{"numBeats":4,"beatValue":4}')).setMode(VF.Voice.Mode.SOFT);
-const smo84332v0ar = [];
-const smo84309 = new VF.StaveNote(JSON.parse('{"clef":"bass","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["c#/3/n"]}'))
-smo84309.setAttribute('id', 'smo84309');
-smo84332v0ar.push(smo84309);
-const smo84310 = new VF.StaveNote(JSON.parse('{"clef":"bass","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["c#/3/n"]}'))
-smo84310.setAttribute('id', 'smo84310');
-smo84332v0ar.push(smo84310);
-const smo84311 = new VF.StaveNote(JSON.parse('{"clef":"bass","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["c#/3/n"]}'))
-smo84311.setAttribute('id', 'smo84311');
-smo84332v0ar.push(smo84311);
-const smo84312 = new VF.StaveNote(JSON.parse('{"clef":"bass","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["c#/3/n"]}'))
-smo84312.setAttribute('id', 'smo84312');
-smo84332v0ar.push(smo84312);
-const smo84313 = new VF.StaveNote(JSON.parse('{"clef":"bass","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["c#/3/n"]}'))
-smo84313.setAttribute('id', 'smo84313');
-smo84332v0ar.push(smo84313);
-const smo84314 = new VF.StaveNote(JSON.parse('{"clef":"bass","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["c#/3/n"]}'))
-smo84314.setAttribute('id', 'smo84314');
-smo84332v0ar.push(smo84314);
-const smo84315 = new VF.StaveNote(JSON.parse('{"clef":"bass","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["c#/3/n"]}'))
-smo84315.setAttribute('id', 'smo84315');
-smo84332v0ar.push(smo84315);
-const smo84316 = new VF.StaveNote(JSON.parse('{"clef":"bass","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["c#/3/n"]}'))
-smo84316.setAttribute('id', 'smo84316');
-smo84332v0ar.push(smo84316);
-smo84332v0.addTickables(smo84332v0ar)
-fmtsmo843329.joinVoices([smo84332v0]);
-// create beam groups and tuplets for format grp smo84911 before formatting
-const dirsmo91454 = smo81000.getStemDirection();
-smo81000.setStemDirection(dirsmo91454);
-smo81001.setStemDirection(dirsmo91454);
-smo81002.setStemDirection(dirsmo91454);
-smo81003.setStemDirection(dirsmo91454);
-const smo91454 = new VF.Beam([smo81000,smo81001,smo81002,smo81003]);
-const dirsmo91455 = smo81004.getStemDirection();
-smo81004.setStemDirection(dirsmo91455);
-smo81005.setStemDirection(dirsmo91455);
-smo81006.setStemDirection(dirsmo91455);
-smo81007.setStemDirection(dirsmo91455);
-const smo91455 = new VF.Beam([smo81004,smo81005,smo81006,smo81007]);
-const dirsmo91458 = smo81819.getStemDirection();
-smo81819.setStemDirection(dirsmo91458);
-smo81820.setStemDirection(dirsmo91458);
-smo81821.setStemDirection(dirsmo91458);
-smo81822.setStemDirection(dirsmo91458);
-const smo91458 = new VF.Beam([smo81819,smo81820,smo81821,smo81822]);
-const dirsmo91459 = smo81823.getStemDirection();
-smo81823.setStemDirection(dirsmo91459);
-smo81824.setStemDirection(dirsmo91459);
-smo81825.setStemDirection(dirsmo91459);
-smo81826.setStemDirection(dirsmo91459);
-const smo91459 = new VF.Beam([smo81823,smo81824,smo81825,smo81826]);
-const dirsmo91462 = smo82630.getStemDirection();
-smo82630.setStemDirection(dirsmo91462);
-smo82631.setStemDirection(dirsmo91462);
-smo82632.setStemDirection(dirsmo91462);
-smo82633.setStemDirection(dirsmo91462);
-const smo91462 = new VF.Beam([smo82630,smo82631,smo82632,smo82633]);
-const dirsmo91463 = smo82634.getStemDirection();
-smo82634.setStemDirection(dirsmo91463);
-smo82635.setStemDirection(dirsmo91463);
-smo82636.setStemDirection(dirsmo91463);
-smo82637.setStemDirection(dirsmo91463);
-const smo91463 = new VF.Beam([smo82634,smo82635,smo82636,smo82637]);
-const dirsmo91468 = smo84309.getStemDirection();
-smo84309.setStemDirection(dirsmo91468);
-smo84310.setStemDirection(dirsmo91468);
-smo84311.setStemDirection(dirsmo91468);
-smo84312.setStemDirection(dirsmo91468);
-const smo91468 = new VF.Beam([smo84309,smo84310,smo84311,smo84312]);
-const dirsmo91469 = smo84313.getStemDirection();
-smo84313.setStemDirection(dirsmo91469);
-smo84314.setStemDirection(dirsmo91469);
-smo84315.setStemDirection(dirsmo91469);
-smo84316.setStemDirection(dirsmo91469);
-const smo91469 = new VF.Beam([smo84313,smo84314,smo84315,smo84316]);
+const smo81990v0 = new VF.Voice(JSON.parse('{"numBeats":4,"beatValue":4}')).setMode(VF.Voice.Mode.SOFT);
+const smo81990v0ar = [];
+const smo81967 = new VF.StaveNote(JSON.parse('{"clef":"bass","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["c#/3/n"]}'))
+smo81967.setAttribute('id', 'smo81967');
+smo81990v0ar.push(smo81967);
+const smo81968 = new VF.StaveNote(JSON.parse('{"clef":"bass","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["c#/3/n"]}'))
+smo81968.setAttribute('id', 'smo81968');
+smo81990v0ar.push(smo81968);
+const smo81969 = new VF.StaveNote(JSON.parse('{"clef":"bass","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["c#/3/n"]}'))
+smo81969.setAttribute('id', 'smo81969');
+smo81990v0ar.push(smo81969);
+const smo81970 = new VF.StaveNote(JSON.parse('{"clef":"bass","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["c#/3/n"]}'))
+smo81970.setAttribute('id', 'smo81970');
+smo81990v0ar.push(smo81970);
+const smo81971 = new VF.StaveNote(JSON.parse('{"clef":"bass","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["c#/3/n"]}'))
+smo81971.setAttribute('id', 'smo81971');
+smo81990v0ar.push(smo81971);
+const smo81972 = new VF.StaveNote(JSON.parse('{"clef":"bass","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["c#/3/n"]}'))
+smo81972.setAttribute('id', 'smo81972');
+smo81990v0ar.push(smo81972);
+const smo81973 = new VF.StaveNote(JSON.parse('{"clef":"bass","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["c#/3/n"]}'))
+smo81973.setAttribute('id', 'smo81973');
+smo81990v0ar.push(smo81973);
+const smo81974 = new VF.StaveNote(JSON.parse('{"clef":"bass","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["c#/3/n"]}'))
+smo81974.setAttribute('id', 'smo81974');
+smo81990v0ar.push(smo81974);
+smo81990v0.addTickables(smo81990v0ar)
+fmtsmo819909.joinVoices([smo81990v0]);
+// create beam groups and tuplets for format grp smo82569 before formatting
+const dirsmo89117 = smo78658.getStemDirection();
+smo78658.setStemDirection(dirsmo89117);
+smo78659.setStemDirection(dirsmo89117);
+smo78660.setStemDirection(dirsmo89117);
+smo78661.setStemDirection(dirsmo89117);
+const smo89117 = new VF.Beam([smo78658,smo78659,smo78660,smo78661]);
+const dirsmo89118 = smo78662.getStemDirection();
+smo78662.setStemDirection(dirsmo89118);
+smo78663.setStemDirection(dirsmo89118);
+smo78664.setStemDirection(dirsmo89118);
+smo78665.setStemDirection(dirsmo89118);
+const smo89118 = new VF.Beam([smo78662,smo78663,smo78664,smo78665]);
+const dirsmo89120 = smo79477.getStemDirection();
+smo79477.setStemDirection(dirsmo89120);
+smo79478.setStemDirection(dirsmo89120);
+smo79479.setStemDirection(dirsmo89120);
+smo79480.setStemDirection(dirsmo89120);
+const smo89120 = new VF.Beam([smo79477,smo79478,smo79479,smo79480]);
+const dirsmo89121 = smo79481.getStemDirection();
+smo79481.setStemDirection(dirsmo89121);
+smo79482.setStemDirection(dirsmo89121);
+smo79483.setStemDirection(dirsmo89121);
+smo79484.setStemDirection(dirsmo89121);
+const smo89121 = new VF.Beam([smo79481,smo79482,smo79483,smo79484]);
+const dirsmo89123 = smo80288.getStemDirection();
+smo80288.setStemDirection(dirsmo89123);
+smo80289.setStemDirection(dirsmo89123);
+smo80290.setStemDirection(dirsmo89123);
+smo80291.setStemDirection(dirsmo89123);
+const smo89123 = new VF.Beam([smo80288,smo80289,smo80290,smo80291]);
+const dirsmo89124 = smo80292.getStemDirection();
+smo80292.setStemDirection(dirsmo89124);
+smo80293.setStemDirection(dirsmo89124);
+smo80294.setStemDirection(dirsmo89124);
+smo80295.setStemDirection(dirsmo89124);
+const smo89124 = new VF.Beam([smo80292,smo80293,smo80294,smo80295]);
+const dirsmo89127 = smo81967.getStemDirection();
+smo81967.setStemDirection(dirsmo89127);
+smo81968.setStemDirection(dirsmo89127);
+smo81969.setStemDirection(dirsmo89127);
+smo81970.setStemDirection(dirsmo89127);
+const smo89127 = new VF.Beam([smo81967,smo81968,smo81969,smo81970]);
+const dirsmo89128 = smo81971.getStemDirection();
+smo81971.setStemDirection(dirsmo89128);
+smo81972.setStemDirection(dirsmo89128);
+smo81973.setStemDirection(dirsmo89128);
+smo81974.setStemDirection(dirsmo89128);
+const smo89128 = new VF.Beam([smo81971,smo81972,smo81973,smo81974]);
  
-// formatting measures in staff group smo84911
-fmtsmo810239.format([smo81023v0,smo81842v0,smo82653v0,smo83443v0,smo84332v0], 339);
-const stavesmo81023 = new VF.Stave(420, 234.00000000000023, 353);
-stavesmo81023.setAttribute('id', 'stavesmo81023');
-stavesmo81023.setBegBarType(VF.Barline.type.NONE);
-stavesmo81023.setContext(context);
-stavesmo81023.draw();
-smo81023v0.draw(context, stavesmo81023);
-smo91454.setContext(context);
-smo91454.draw();
-smo91455.setContext(context);
-smo91455.draw();
-const stavesmo81842 = new VF.Stave(420, 332.0000000000002, 353);
-stavesmo81842.setAttribute('id', 'stavesmo81842');
-stavesmo81842.setBegBarType(VF.Barline.type.NONE);
-stavesmo81842.setContext(context);
-stavesmo81842.draw();
-smo81842v0.draw(context, stavesmo81842);
-smo91458.setContext(context);
-smo91458.draw();
-smo91459.setContext(context);
-smo91459.draw();
-const stavesmo82653 = new VF.Stave(420, 435.0000000000002, 353);
-stavesmo82653.setAttribute('id', 'stavesmo82653');
-stavesmo82653.setBegBarType(VF.Barline.type.NONE);
-stavesmo82653.setContext(context);
-stavesmo82653.draw();
-smo82653v0.draw(context, stavesmo82653);
-smo91462.setContext(context);
-smo91462.draw();
-smo91463.setContext(context);
-smo91463.draw();
-const stavesmo83443 = new VF.Stave(420, 518.0000000000002, 353);
-stavesmo83443.setAttribute('id', 'stavesmo83443');
-stavesmo83443.setBegBarType(VF.Barline.type.NONE);
-stavesmo83443.setContext(context);
-stavesmo83443.draw();
-smo83443v0.draw(context, stavesmo83443);
-const stavesmo84332 = new VF.Stave(420, 620.0000000000002, 353);
-stavesmo84332.setAttribute('id', 'stavesmo84332');
-stavesmo84332.setBegBarType(VF.Barline.type.NONE);
-stavesmo84332.setContext(context);
-stavesmo84332.draw();
-smo84332v0.draw(context, stavesmo84332);
-smo91468.setContext(context);
-smo91468.draw();
-smo91469.setContext(context);
-smo91469.draw();
-const fmtsmo8104610 = new VF.Formatter();
+// formatting measures in staff group smo82569
+fmtsmo786819.format([smo78681v0,smo79500v0,smo80311v0,smo81101v0,smo81990v0], 278);
+const stavesmo78681 = new VF.Stave(343, 234.00000000000023, 292);
+stavesmo78681.setAttribute('id', 'stavesmo78681');
+stavesmo78681.setBegBarType(VF.Barline.type.NONE);
+stavesmo78681.setContext(context);
+stavesmo78681.draw();
+smo78681v0.draw(context, stavesmo78681);
+smo89117.setContext(context);
+smo89117.draw();
+smo89118.setContext(context);
+smo89118.draw();
+const stavesmo79500 = new VF.Stave(343, 332.0000000000002, 292);
+stavesmo79500.setAttribute('id', 'stavesmo79500');
+stavesmo79500.setBegBarType(VF.Barline.type.NONE);
+stavesmo79500.setContext(context);
+stavesmo79500.draw();
+smo79500v0.draw(context, stavesmo79500);
+smo89120.setContext(context);
+smo89120.draw();
+smo89121.setContext(context);
+smo89121.draw();
+const stavesmo80311 = new VF.Stave(343, 435.0000000000002, 292);
+stavesmo80311.setAttribute('id', 'stavesmo80311');
+stavesmo80311.setBegBarType(VF.Barline.type.NONE);
+stavesmo80311.setContext(context);
+stavesmo80311.draw();
+smo80311v0.draw(context, stavesmo80311);
+smo89123.setContext(context);
+smo89123.draw();
+smo89124.setContext(context);
+smo89124.draw();
+const stavesmo81101 = new VF.Stave(343, 518.0000000000002, 292);
+stavesmo81101.setAttribute('id', 'stavesmo81101');
+stavesmo81101.setBegBarType(VF.Barline.type.NONE);
+stavesmo81101.setContext(context);
+stavesmo81101.draw();
+smo81101v0.draw(context, stavesmo81101);
+const stavesmo81990 = new VF.Stave(343, 620.0000000000002, 292);
+stavesmo81990.setAttribute('id', 'stavesmo81990');
+stavesmo81990.setBegBarType(VF.Barline.type.NONE);
+stavesmo81990.setContext(context);
+stavesmo81990.draw();
+smo81990v0.draw(context, stavesmo81990);
+smo89127.setContext(context);
+smo89127.draw();
+smo89128.setContext(context);
+smo89128.draw();
+const fmtsmo7870410 = new VF.Formatter();
 //
 // voices and notes for stave 0 10
-const smo81046v0 = new VF.Voice(JSON.parse('{"numBeats":4,"beatValue":4}')).setMode(VF.Voice.Mode.SOFT);
-const smo81046v0ar = [];
-const smo81024 = new VF.StaveNote(JSON.parse('{"clef":"treble","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["bn/4/n"]}'))
-smo81024.setAttribute('id', 'smo81024');
-smo81046v0ar.push(smo81024);
-const smo81025 = new VF.StaveNote(JSON.parse('{"clef":"treble","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["bn/4/n"]}'))
-smo81025.setAttribute('id', 'smo81025');
-smo81046v0ar.push(smo81025);
-const smo81026 = new VF.StaveNote(JSON.parse('{"clef":"treble","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["bn/4/n"]}'))
-smo81026.setAttribute('id', 'smo81026');
-smo81046v0ar.push(smo81026);
-const smo81027 = new VF.StaveNote(JSON.parse('{"clef":"treble","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["bn/4/n"]}'))
-smo81027.setAttribute('id', 'smo81027');
-smo81046v0ar.push(smo81027);
-const smo81028 = new VF.StaveNote(JSON.parse('{"clef":"treble","duration":"8d","dots":1,"type":"n","autoStem":true,"keys":["f#/5/n"]}'))
-smo81028.setAttribute('id', 'smo81028');
-smo81028.addModifier(new VF.Dot(), 0);
-smo81046v0ar.push(smo81028);
-const smo81029 = new VF.StaveNote(JSON.parse('{"clef":"treble","duration":"16","dots":0,"type":"n","autoStem":true,"keys":["en/5/n"]}'))
-smo81029.setAttribute('id', 'smo81029');
-smo81046v0ar.push(smo81029);
-const smo81030 = new VF.StaveNote(JSON.parse('{"clef":"treble","duration":"4","dots":0,"type":"n","autoStem":true,"keys":["d#/5/n"]}'))
-smo81030.setAttribute('id', 'smo81030');
-smo81046v0ar.push(smo81030);
-smo81046v0.addTickables(smo81046v0ar)
-fmtsmo8104610.joinVoices([smo81046v0]);
-const fmtsmo8186510 = new VF.Formatter();
+const smo78704v0 = new VF.Voice(JSON.parse('{"numBeats":4,"beatValue":4}')).setMode(VF.Voice.Mode.SOFT);
+const smo78704v0ar = [];
+const smo78682 = new VF.StaveNote(JSON.parse('{"clef":"treble","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["bn/4/n"]}'))
+smo78682.setAttribute('id', 'smo78682');
+smo78704v0ar.push(smo78682);
+const smo78683 = new VF.StaveNote(JSON.parse('{"clef":"treble","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["bn/4/n"]}'))
+smo78683.setAttribute('id', 'smo78683');
+smo78704v0ar.push(smo78683);
+const smo78684 = new VF.StaveNote(JSON.parse('{"clef":"treble","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["bn/4/n"]}'))
+smo78684.setAttribute('id', 'smo78684');
+smo78704v0ar.push(smo78684);
+const smo78685 = new VF.StaveNote(JSON.parse('{"clef":"treble","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["bn/4/n"]}'))
+smo78685.setAttribute('id', 'smo78685');
+smo78704v0ar.push(smo78685);
+const smo78686 = new VF.StaveNote(JSON.parse('{"clef":"treble","duration":"8d","dots":1,"type":"n","autoStem":true,"keys":["f#/5/n"]}'))
+smo78686.setAttribute('id', 'smo78686');
+smo78686.addModifier(new VF.Dot(), 0);
+smo78704v0ar.push(smo78686);
+const smo78687 = new VF.StaveNote(JSON.parse('{"clef":"treble","duration":"16","dots":0,"type":"n","autoStem":true,"keys":["en/5/n"]}'))
+smo78687.setAttribute('id', 'smo78687');
+smo78704v0ar.push(smo78687);
+const smo78688 = new VF.StaveNote(JSON.parse('{"clef":"treble","duration":"4","dots":0,"type":"n","autoStem":true,"keys":["d#/5/n"]}'))
+smo78688.setAttribute('id', 'smo78688');
+smo78704v0ar.push(smo78688);
+smo78704v0.addTickables(smo78704v0ar)
+fmtsmo7870410.joinVoices([smo78704v0]);
+const fmtsmo7952310 = new VF.Formatter();
 //
 // voices and notes for stave 1 10
-const smo81865v0 = new VF.Voice(JSON.parse('{"numBeats":4,"beatValue":4}')).setMode(VF.Voice.Mode.SOFT);
-const smo81865v0ar = [];
-const smo81843 = new VF.StaveNote(JSON.parse('{"clef":"treble","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["f#/4/n"]}'))
-smo81843.setAttribute('id', 'smo81843');
-smo81865v0ar.push(smo81843);
-const smo81844 = new VF.StaveNote(JSON.parse('{"clef":"treble","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["f#/4/n"]}'))
-smo81844.setAttribute('id', 'smo81844');
-smo81865v0ar.push(smo81844);
-const smo81845 = new VF.StaveNote(JSON.parse('{"clef":"treble","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["f#/4/n"]}'))
-smo81845.setAttribute('id', 'smo81845');
-smo81865v0ar.push(smo81845);
-const smo81846 = new VF.StaveNote(JSON.parse('{"clef":"treble","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["f#/4/n"]}'))
-smo81846.setAttribute('id', 'smo81846');
-smo81865v0ar.push(smo81846);
-const smo81847 = new VF.StaveNote(JSON.parse('{"clef":"treble","duration":"8d","dots":1,"type":"n","autoStem":true,"keys":["d#/5/n"]}'))
-smo81847.setAttribute('id', 'smo81847');
-smo81847.addModifier(new VF.Dot(), 0);
-smo81865v0ar.push(smo81847);
-const smo81848 = new VF.StaveNote(JSON.parse('{"clef":"treble","duration":"16","dots":0,"type":"n","autoStem":true,"keys":["c#/5/n"]}'))
-smo81848.setAttribute('id', 'smo81848');
-smo81865v0ar.push(smo81848);
-const smo81849 = new VF.StaveNote(JSON.parse('{"clef":"treble","duration":"4","dots":0,"type":"n","autoStem":true,"keys":["bn/4/n"]}'))
-smo81849.setAttribute('id', 'smo81849');
-smo81865v0ar.push(smo81849);
-smo81865v0.addTickables(smo81865v0ar)
-fmtsmo8186510.joinVoices([smo81865v0]);
-const fmtsmo8267610 = new VF.Formatter();
+const smo79523v0 = new VF.Voice(JSON.parse('{"numBeats":4,"beatValue":4}')).setMode(VF.Voice.Mode.SOFT);
+const smo79523v0ar = [];
+const smo79501 = new VF.StaveNote(JSON.parse('{"clef":"treble","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["f#/4/n"]}'))
+smo79501.setAttribute('id', 'smo79501');
+smo79523v0ar.push(smo79501);
+const smo79502 = new VF.StaveNote(JSON.parse('{"clef":"treble","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["f#/4/n"]}'))
+smo79502.setAttribute('id', 'smo79502');
+smo79523v0ar.push(smo79502);
+const smo79503 = new VF.StaveNote(JSON.parse('{"clef":"treble","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["f#/4/n"]}'))
+smo79503.setAttribute('id', 'smo79503');
+smo79523v0ar.push(smo79503);
+const smo79504 = new VF.StaveNote(JSON.parse('{"clef":"treble","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["f#/4/n"]}'))
+smo79504.setAttribute('id', 'smo79504');
+smo79523v0ar.push(smo79504);
+const smo79505 = new VF.StaveNote(JSON.parse('{"clef":"treble","duration":"8d","dots":1,"type":"n","autoStem":true,"keys":["d#/5/n"]}'))
+smo79505.setAttribute('id', 'smo79505');
+smo79505.addModifier(new VF.Dot(), 0);
+smo79523v0ar.push(smo79505);
+const smo79506 = new VF.StaveNote(JSON.parse('{"clef":"treble","duration":"16","dots":0,"type":"n","autoStem":true,"keys":["c#/5/n"]}'))
+smo79506.setAttribute('id', 'smo79506');
+smo79523v0ar.push(smo79506);
+const smo79507 = new VF.StaveNote(JSON.parse('{"clef":"treble","duration":"4","dots":0,"type":"n","autoStem":true,"keys":["bn/4/n"]}'))
+smo79507.setAttribute('id', 'smo79507');
+smo79523v0ar.push(smo79507);
+smo79523v0.addTickables(smo79523v0ar)
+fmtsmo7952310.joinVoices([smo79523v0]);
+const fmtsmo8033410 = new VF.Formatter();
 //
 // voices and notes for stave 2 10
-const smo82676v0 = new VF.Voice(JSON.parse('{"numBeats":4,"beatValue":4}')).setMode(VF.Voice.Mode.SOFT);
-const smo82676v0ar = [];
-const smo82654 = new VF.StaveNote(JSON.parse('{"clef":"alto","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["d#/4/n"]}'))
-smo82654.setAttribute('id', 'smo82654');
-smo82676v0ar.push(smo82654);
-const smo82655 = new VF.StaveNote(JSON.parse('{"clef":"alto","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["d#/4/n"]}'))
-smo82655.setAttribute('id', 'smo82655');
-smo82676v0ar.push(smo82655);
-const smo82656 = new VF.StaveNote(JSON.parse('{"clef":"alto","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["d#/4/n"]}'))
-smo82656.setAttribute('id', 'smo82656');
-smo82676v0ar.push(smo82656);
-const smo82657 = new VF.StaveNote(JSON.parse('{"clef":"alto","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["d#/4/n"]}'))
-smo82657.setAttribute('id', 'smo82657');
-smo82676v0ar.push(smo82657);
-const smo82658 = new VF.StaveNote(JSON.parse('{"clef":"alto","duration":"8d","dots":1,"type":"n","autoStem":true,"keys":["bn/4/n"]}'))
-smo82658.setAttribute('id', 'smo82658');
-smo82658.addModifier(new VF.Dot(), 0);
-smo82676v0ar.push(smo82658);
-const smo82659 = new VF.StaveNote(JSON.parse('{"clef":"alto","duration":"16","dots":0,"type":"n","autoStem":true,"keys":["bn/3/n"]}'))
-smo82659.setAttribute('id', 'smo82659');
-smo82676v0ar.push(smo82659);
-const smo82660 = new VF.StaveNote(JSON.parse('{"clef":"alto","duration":"4","dots":0,"type":"n","autoStem":true,"keys":["bn/3/n"]}'))
-smo82660.setAttribute('id', 'smo82660');
-smo82676v0ar.push(smo82660);
-smo82676v0.addTickables(smo82676v0ar)
-fmtsmo8267610.joinVoices([smo82676v0]);
-const fmtsmo8346710 = new VF.Formatter();
+const smo80334v0 = new VF.Voice(JSON.parse('{"numBeats":4,"beatValue":4}')).setMode(VF.Voice.Mode.SOFT);
+const smo80334v0ar = [];
+const smo80312 = new VF.StaveNote(JSON.parse('{"clef":"alto","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["d#/4/n"]}'))
+smo80312.setAttribute('id', 'smo80312');
+smo80334v0ar.push(smo80312);
+const smo80313 = new VF.StaveNote(JSON.parse('{"clef":"alto","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["d#/4/n"]}'))
+smo80313.setAttribute('id', 'smo80313');
+smo80334v0ar.push(smo80313);
+const smo80314 = new VF.StaveNote(JSON.parse('{"clef":"alto","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["d#/4/n"]}'))
+smo80314.setAttribute('id', 'smo80314');
+smo80334v0ar.push(smo80314);
+const smo80315 = new VF.StaveNote(JSON.parse('{"clef":"alto","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["d#/4/n"]}'))
+smo80315.setAttribute('id', 'smo80315');
+smo80334v0ar.push(smo80315);
+const smo80316 = new VF.StaveNote(JSON.parse('{"clef":"alto","duration":"8d","dots":1,"type":"n","autoStem":true,"keys":["bn/4/n"]}'))
+smo80316.setAttribute('id', 'smo80316');
+smo80316.addModifier(new VF.Dot(), 0);
+smo80334v0ar.push(smo80316);
+const smo80317 = new VF.StaveNote(JSON.parse('{"clef":"alto","duration":"16","dots":0,"type":"n","autoStem":true,"keys":["bn/3/n"]}'))
+smo80317.setAttribute('id', 'smo80317');
+smo80334v0ar.push(smo80317);
+const smo80318 = new VF.StaveNote(JSON.parse('{"clef":"alto","duration":"4","dots":0,"type":"n","autoStem":true,"keys":["bn/3/n"]}'))
+smo80318.setAttribute('id', 'smo80318');
+smo80334v0ar.push(smo80318);
+smo80334v0.addTickables(smo80334v0ar)
+fmtsmo8033410.joinVoices([smo80334v0]);
+const fmtsmo8112510 = new VF.Formatter();
 //
 // voices and notes for stave 3 10
-const smo83467v0 = new VF.Voice(JSON.parse('{"numBeats":4,"beatValue":4}')).setMode(VF.Voice.Mode.SOFT);
-const smo83467v0ar = [];
-const smo83444 = new VF.StaveNote(JSON.parse('{"clef":"treble","duration":"16","dots":0,"type":"n","autoStem":true,"keys":["d#/5/n"]}'))
-smo83444.setAttribute('id', 'smo83444');
-const smo83445 = new VF.Annotation('peo');
-smo83445.setAttribute('id', 'smo83445');
-smo83445.setFont('Merriweather', 12, 'normal');
-smo83445.setVerticalJustification(VF.Annotation.VerticalJustify.BOTTOM);
-smo83444.addModifier(smo83445);
-smo83445.addClass('lyric lyric-0');
-smo83467v0ar.push(smo83444);
-const smo83446 = new VF.StaveNote(JSON.parse('{"clef":"treble","duration":"16","dots":0,"type":"n","autoStem":true,"keys":["c#/5/n"]}'))
-smo83446.setAttribute('id', 'smo83446');
-const smo83447 = new VF.Annotation('-');
-smo83447.setAttribute('id', 'smo83447');
-smo83447.setFont('Merriweather', 12, 'normal');
-smo83447.setVerticalJustification(VF.Annotation.VerticalJustify.BOTTOM);
-smo83446.addModifier(smo83447);
-smo83447.addClass('lyric lyric-0 lyric-hyphen');
-smo83467v0ar.push(smo83446);
-const smo83448 = new VF.StaveNote(JSON.parse('{"clef":"treble","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["bn/4/n"]}'))
-smo83448.setAttribute('id', 'smo83448');
-const smo83449 = new VF.Annotation('ple');
-smo83449.setAttribute('id', 'smo83449');
-smo83449.setFont('Merriweather', 12, 'normal');
-smo83449.setVerticalJustification(VF.Annotation.VerticalJustify.BOTTOM);
-smo83448.addModifier(smo83449);
-smo83449.addClass('lyric lyric-0');
-smo83467v0ar.push(smo83448);
-const smo83450 = new VF.StaveNote(JSON.parse('{"clef":"treble","duration":"4","dots":0,"type":"r","autoStem":true,"keys":["bn/4/r"]}'))
-smo83450.setAttribute('id', 'smo83450');
-smo83467v0ar.push(smo83450);
-const smo83451 = new VF.StaveNote(JSON.parse('{"clef":"treble","duration":"2","dots":0,"type":"r","autoStem":true,"keys":["bn/4/r"]}'))
-smo83451.setAttribute('id', 'smo83451');
-smo83467v0ar.push(smo83451);
-smo83467v0.addTickables(smo83467v0ar)
-fmtsmo8346710.joinVoices([smo83467v0]);
-const fmtsmo8435110 = new VF.Formatter();
+const smo81125v0 = new VF.Voice(JSON.parse('{"numBeats":4,"beatValue":4}')).setMode(VF.Voice.Mode.SOFT);
+const smo81125v0ar = [];
+const smo81102 = new VF.StaveNote(JSON.parse('{"clef":"treble","duration":"16","dots":0,"type":"n","autoStem":true,"keys":["d#/5/n"]}'))
+smo81102.setAttribute('id', 'smo81102');
+const smo81103 = new VF.Annotation('peo');
+smo81103.setAttribute('id', 'smo81103');
+smo81103.setFont('Merriweather', 12, 'normal');
+smo81103.setVerticalJustification(VF.Annotation.VerticalJustify.BOTTOM);
+smo81102.addModifier(smo81103);
+smo81103.addClass('lyric lyric-0');
+smo81125v0ar.push(smo81102);
+const smo81104 = new VF.StaveNote(JSON.parse('{"clef":"treble","duration":"16","dots":0,"type":"n","autoStem":true,"keys":["c#/5/n"]}'))
+smo81104.setAttribute('id', 'smo81104');
+const smo81105 = new VF.Annotation('-');
+smo81105.setAttribute('id', 'smo81105');
+smo81105.setFont('Merriweather', 12, 'normal');
+smo81105.setVerticalJustification(VF.Annotation.VerticalJustify.BOTTOM);
+smo81104.addModifier(smo81105);
+smo81105.addClass('lyric lyric-0 lyric-hyphen');
+smo81125v0ar.push(smo81104);
+const smo81106 = new VF.StaveNote(JSON.parse('{"clef":"treble","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["bn/4/n"]}'))
+smo81106.setAttribute('id', 'smo81106');
+const smo81107 = new VF.Annotation('ple');
+smo81107.setAttribute('id', 'smo81107');
+smo81107.setFont('Merriweather', 12, 'normal');
+smo81107.setVerticalJustification(VF.Annotation.VerticalJustify.BOTTOM);
+smo81106.addModifier(smo81107);
+smo81107.addClass('lyric lyric-0');
+smo81125v0ar.push(smo81106);
+const smo81108 = new VF.StaveNote(JSON.parse('{"clef":"treble","duration":"4","dots":0,"type":"r","autoStem":true,"keys":["bn/4/r"]}'))
+smo81108.setAttribute('id', 'smo81108');
+smo81125v0ar.push(smo81108);
+const smo81109 = new VF.StaveNote(JSON.parse('{"clef":"treble","duration":"2","dots":0,"type":"r","autoStem":true,"keys":["bn/4/r"]}'))
+smo81109.setAttribute('id', 'smo81109');
+smo81125v0ar.push(smo81109);
+smo81125v0.addTickables(smo81125v0ar)
+fmtsmo8112510.joinVoices([smo81125v0]);
+const fmtsmo8200910 = new VF.Formatter();
 //
 // voices and notes for stave 4 10
-const smo84351v0 = new VF.Voice(JSON.parse('{"numBeats":4,"beatValue":4}')).setMode(VF.Voice.Mode.SOFT);
-const smo84351v0ar = [];
-const smo84333 = new VF.StaveNote(JSON.parse('{"clef":"bass","duration":"4","dots":0,"type":"n","autoStem":true,"keys":["bn/2/n"]}'))
-smo84333.setAttribute('id', 'smo84333');
-smo84351v0ar.push(smo84333);
-const smo84334 = new VF.StaveNote(JSON.parse('{"clef":"bass","duration":"4","dots":0,"type":"r","autoStem":true,"keys":["dn/3/r"]}'))
-smo84334.setAttribute('id', 'smo84334');
-smo84351v0ar.push(smo84334);
-const smo84335 = new VF.StaveNote(JSON.parse('{"clef":"bass","duration":"2","dots":0,"type":"r","autoStem":true,"keys":["dn/3/r"]}'))
-smo84335.setAttribute('id', 'smo84335');
-smo84351v0ar.push(smo84335);
-smo84351v0.addTickables(smo84351v0ar)
-fmtsmo8435110.joinVoices([smo84351v0]);
-// create beam groups and tuplets for format grp smo84911 before formatting
-const dirsmo91472 = smo81024.getStemDirection();
-smo81024.setStemDirection(dirsmo91472);
-smo81025.setStemDirection(dirsmo91472);
-smo81026.setStemDirection(dirsmo91472);
-smo81027.setStemDirection(dirsmo91472);
-const smo91472 = new VF.Beam([smo81024,smo81025,smo81026,smo81027]);
-const dirsmo91473 = smo81028.getStemDirection();
-smo81028.setStemDirection(dirsmo91473);
-smo81029.setStemDirection(dirsmo91473);
-const smo91473 = new VF.Beam([smo81028,smo81029]);
-const dirsmo91476 = smo81843.getStemDirection();
-smo81843.setStemDirection(dirsmo91476);
-smo81844.setStemDirection(dirsmo91476);
-smo81845.setStemDirection(dirsmo91476);
-smo81846.setStemDirection(dirsmo91476);
-const smo91476 = new VF.Beam([smo81843,smo81844,smo81845,smo81846]);
-const dirsmo91477 = smo81847.getStemDirection();
-smo81847.setStemDirection(dirsmo91477);
-smo81848.setStemDirection(dirsmo91477);
-const smo91477 = new VF.Beam([smo81847,smo81848]);
-const dirsmo91480 = smo82654.getStemDirection();
-smo82654.setStemDirection(dirsmo91480);
-smo82655.setStemDirection(dirsmo91480);
-smo82656.setStemDirection(dirsmo91480);
-smo82657.setStemDirection(dirsmo91480);
-const smo91480 = new VF.Beam([smo82654,smo82655,smo82656,smo82657]);
-const dirsmo91481 = smo82658.getStemDirection();
-smo82658.setStemDirection(dirsmo91481);
-smo82659.setStemDirection(dirsmo91481);
-const smo91481 = new VF.Beam([smo82658,smo82659]);
-const dirsmo91484 = smo83444.getStemDirection();
-smo83444.setStemDirection(dirsmo91484);
-smo83446.setStemDirection(dirsmo91484);
-smo83448.setStemDirection(dirsmo91484);
-const smo91484 = new VF.Beam([smo83444,smo83446,smo83448]);
+const smo82009v0 = new VF.Voice(JSON.parse('{"numBeats":4,"beatValue":4}')).setMode(VF.Voice.Mode.SOFT);
+const smo82009v0ar = [];
+const smo81991 = new VF.StaveNote(JSON.parse('{"clef":"bass","duration":"4","dots":0,"type":"n","autoStem":true,"keys":["bn/2/n"]}'))
+smo81991.setAttribute('id', 'smo81991');
+smo82009v0ar.push(smo81991);
+const smo81992 = new VF.StaveNote(JSON.parse('{"clef":"bass","duration":"4","dots":0,"type":"r","autoStem":true,"keys":["dn/3/r"]}'))
+smo81992.setAttribute('id', 'smo81992');
+smo82009v0ar.push(smo81992);
+const smo81993 = new VF.StaveNote(JSON.parse('{"clef":"bass","duration":"2","dots":0,"type":"r","autoStem":true,"keys":["dn/3/r"]}'))
+smo81993.setAttribute('id', 'smo81993');
+smo82009v0ar.push(smo81993);
+smo82009v0.addTickables(smo82009v0ar)
+fmtsmo8200910.joinVoices([smo82009v0]);
+// create beam groups and tuplets for format grp smo82569 before formatting
+const dirsmo89135 = smo78682.getStemDirection();
+smo78682.setStemDirection(dirsmo89135);
+smo78683.setStemDirection(dirsmo89135);
+smo78684.setStemDirection(dirsmo89135);
+smo78685.setStemDirection(dirsmo89135);
+const smo89135 = new VF.Beam([smo78682,smo78683,smo78684,smo78685]);
+const dirsmo89136 = smo78686.getStemDirection();
+smo78686.setStemDirection(dirsmo89136);
+smo78687.setStemDirection(dirsmo89136);
+const smo89136 = new VF.Beam([smo78686,smo78687]);
+const dirsmo89138 = smo79501.getStemDirection();
+smo79501.setStemDirection(dirsmo89138);
+smo79502.setStemDirection(dirsmo89138);
+smo79503.setStemDirection(dirsmo89138);
+smo79504.setStemDirection(dirsmo89138);
+const smo89138 = new VF.Beam([smo79501,smo79502,smo79503,smo79504]);
+const dirsmo89139 = smo79505.getStemDirection();
+smo79505.setStemDirection(dirsmo89139);
+smo79506.setStemDirection(dirsmo89139);
+const smo89139 = new VF.Beam([smo79505,smo79506]);
+const dirsmo89141 = smo80312.getStemDirection();
+smo80312.setStemDirection(dirsmo89141);
+smo80313.setStemDirection(dirsmo89141);
+smo80314.setStemDirection(dirsmo89141);
+smo80315.setStemDirection(dirsmo89141);
+const smo89141 = new VF.Beam([smo80312,smo80313,smo80314,smo80315]);
+const dirsmo89142 = smo80316.getStemDirection();
+smo80316.setStemDirection(dirsmo89142);
+smo80317.setStemDirection(dirsmo89142);
+const smo89142 = new VF.Beam([smo80316,smo80317]);
+const dirsmo89144 = smo81102.getStemDirection();
+smo81102.setStemDirection(dirsmo89144);
+smo81104.setStemDirection(dirsmo89144);
+smo81106.setStemDirection(dirsmo89144);
+const smo89144 = new VF.Beam([smo81102,smo81104,smo81106]);
  
-// formatting measures in staff group smo84911
-fmtsmo8104610.format([smo81046v0,smo81865v0,smo82676v0,smo83467v0,smo84351v0], 304);
-const stavesmo81046 = new VF.Stave(773, 234.00000000000023, 318);
-stavesmo81046.setAttribute('id', 'stavesmo81046');
-stavesmo81046.setBegBarType(VF.Barline.type.NONE);
-stavesmo81046.setContext(context);
-stavesmo81046.draw();
-smo81046v0.draw(context, stavesmo81046);
-smo91472.setContext(context);
-smo91472.draw();
-smo91473.setContext(context);
-smo91473.draw();
-const stavesmo81865 = new VF.Stave(773, 332.0000000000002, 318);
-stavesmo81865.setAttribute('id', 'stavesmo81865');
-stavesmo81865.setBegBarType(VF.Barline.type.NONE);
-stavesmo81865.setContext(context);
-stavesmo81865.draw();
-smo81865v0.draw(context, stavesmo81865);
-smo91476.setContext(context);
-smo91476.draw();
-smo91477.setContext(context);
-smo91477.draw();
-const stavesmo82676 = new VF.Stave(773, 435.0000000000002, 318);
-stavesmo82676.setAttribute('id', 'stavesmo82676');
-stavesmo82676.setBegBarType(VF.Barline.type.NONE);
-stavesmo82676.setContext(context);
-stavesmo82676.draw();
-smo82676v0.draw(context, stavesmo82676);
-smo91480.setContext(context);
-smo91480.draw();
-smo91481.setContext(context);
-smo91481.draw();
-const stavesmo83467 = new VF.Stave(773, 518.0000000000002, 318);
-stavesmo83467.setAttribute('id', 'stavesmo83467');
-stavesmo83467.setBegBarType(VF.Barline.type.NONE);
-stavesmo83467.setContext(context);
-stavesmo83467.draw();
-smo83467v0.draw(context, stavesmo83467);
-smo91484.setContext(context);
-smo91484.draw();
-const stavesmo84351 = new VF.Stave(773, 620.0000000000002, 318);
-stavesmo84351.setAttribute('id', 'stavesmo84351');
-stavesmo84351.setBegBarType(VF.Barline.type.NONE);
-stavesmo84351.setContext(context);
-stavesmo84351.draw();
-smo84351v0.draw(context, stavesmo84351);
-const fmtsmo8106611 = new VF.Formatter();
+// formatting measures in staff group smo82569
+fmtsmo7870410.format([smo78704v0,smo79523v0,smo80334v0,smo81125v0,smo82009v0], 243);
+const stavesmo78704 = new VF.Stave(635, 234.00000000000023, 257);
+stavesmo78704.setAttribute('id', 'stavesmo78704');
+stavesmo78704.setBegBarType(VF.Barline.type.NONE);
+stavesmo78704.setContext(context);
+stavesmo78704.draw();
+smo78704v0.draw(context, stavesmo78704);
+smo89135.setContext(context);
+smo89135.draw();
+smo89136.setContext(context);
+smo89136.draw();
+const stavesmo79523 = new VF.Stave(635, 332.0000000000002, 257);
+stavesmo79523.setAttribute('id', 'stavesmo79523');
+stavesmo79523.setBegBarType(VF.Barline.type.NONE);
+stavesmo79523.setContext(context);
+stavesmo79523.draw();
+smo79523v0.draw(context, stavesmo79523);
+smo89138.setContext(context);
+smo89138.draw();
+smo89139.setContext(context);
+smo89139.draw();
+const stavesmo80334 = new VF.Stave(635, 435.0000000000002, 257);
+stavesmo80334.setAttribute('id', 'stavesmo80334');
+stavesmo80334.setBegBarType(VF.Barline.type.NONE);
+stavesmo80334.setContext(context);
+stavesmo80334.draw();
+smo80334v0.draw(context, stavesmo80334);
+smo89141.setContext(context);
+smo89141.draw();
+smo89142.setContext(context);
+smo89142.draw();
+const stavesmo81125 = new VF.Stave(635, 518.0000000000002, 257);
+stavesmo81125.setAttribute('id', 'stavesmo81125');
+stavesmo81125.setBegBarType(VF.Barline.type.NONE);
+stavesmo81125.setContext(context);
+stavesmo81125.draw();
+smo81125v0.draw(context, stavesmo81125);
+smo89144.setContext(context);
+smo89144.draw();
+const stavesmo82009 = new VF.Stave(635, 620.0000000000002, 257);
+stavesmo82009.setAttribute('id', 'stavesmo82009');
+stavesmo82009.setBegBarType(VF.Barline.type.NONE);
+stavesmo82009.setContext(context);
+stavesmo82009.draw();
+smo82009v0.draw(context, stavesmo82009);
+const fmtsmo7872411 = new VF.Formatter();
 //
 // voices and notes for stave 0 11
-const smo81066v0 = new VF.Voice(JSON.parse('{"numBeats":4,"beatValue":4}')).setMode(VF.Voice.Mode.SOFT);
-const smo81066v0ar = [];
-const smo81047 = new VF.StaveNote(JSON.parse('{"clef":"treble","duration":"2","dots":0,"type":"r","autoStem":true,"keys":["bn/4/r"]}'))
-smo81047.setAttribute('id', 'smo81047');
-smo81066v0ar.push(smo81047);
-const smo81048 = new VF.StaveNote(JSON.parse('{"clef":"treble","duration":"8d","dots":1,"type":"n","autoStem":true,"keys":["f#/4/n"]}'))
-smo81048.setAttribute('id', 'smo81048');
-smo81048.addModifier(new VF.Dot(), 0);
-smo81066v0ar.push(smo81048);
-const smo81049 = new VF.StaveNote(JSON.parse('{"clef":"treble","duration":"16","dots":0,"type":"n","autoStem":true,"keys":["en/4/n"]}'))
-smo81049.setAttribute('id', 'smo81049');
-smo81066v0ar.push(smo81049);
-const smo81050 = new VF.StaveNote(JSON.parse('{"clef":"treble","duration":"4","dots":0,"type":"n","autoStem":true,"keys":["d#/4/n"]}'))
-smo81050.setAttribute('id', 'smo81050');
-smo81066v0ar.push(smo81050);
-smo81066v0.addTickables(smo81066v0ar)
-fmtsmo8106611.joinVoices([smo81066v0]);
-const fmtsmo8188511 = new VF.Formatter();
+const smo78724v0 = new VF.Voice(JSON.parse('{"numBeats":4,"beatValue":4}')).setMode(VF.Voice.Mode.SOFT);
+const smo78724v0ar = [];
+const smo78705 = new VF.StaveNote(JSON.parse('{"clef":"treble","duration":"2","dots":0,"type":"r","autoStem":true,"keys":["bn/4/r"]}'))
+smo78705.setAttribute('id', 'smo78705');
+smo78724v0ar.push(smo78705);
+const smo78706 = new VF.StaveNote(JSON.parse('{"clef":"treble","duration":"8d","dots":1,"type":"n","autoStem":true,"keys":["f#/4/n"]}'))
+smo78706.setAttribute('id', 'smo78706');
+smo78706.addModifier(new VF.Dot(), 0);
+smo78724v0ar.push(smo78706);
+const smo78707 = new VF.StaveNote(JSON.parse('{"clef":"treble","duration":"16","dots":0,"type":"n","autoStem":true,"keys":["en/4/n"]}'))
+smo78707.setAttribute('id', 'smo78707');
+smo78724v0ar.push(smo78707);
+const smo78708 = new VF.StaveNote(JSON.parse('{"clef":"treble","duration":"4","dots":0,"type":"n","autoStem":true,"keys":["d#/4/n"]}'))
+smo78708.setAttribute('id', 'smo78708');
+smo78724v0ar.push(smo78708);
+smo78724v0.addTickables(smo78724v0ar)
+fmtsmo7872411.joinVoices([smo78724v0]);
+const fmtsmo7954311 = new VF.Formatter();
 //
 // voices and notes for stave 1 11
-const smo81885v0 = new VF.Voice(JSON.parse('{"numBeats":4,"beatValue":4}')).setMode(VF.Voice.Mode.SOFT);
-const smo81885v0ar = [];
-const smo81866 = new VF.StaveNote(JSON.parse('{"clef":"treble","duration":"2","dots":0,"type":"r","autoStem":true,"keys":["bn/4/r"]}'))
-smo81866.setAttribute('id', 'smo81866');
-smo81885v0ar.push(smo81866);
-const smo81867 = new VF.StaveNote(JSON.parse('{"clef":"treble","duration":"8d","dots":1,"type":"n","autoStem":true,"keys":["d#/5/n"]}'))
-smo81867.setAttribute('id', 'smo81867');
-smo81867.addModifier(new VF.Dot(), 0);
-smo81885v0ar.push(smo81867);
-const smo81868 = new VF.StaveNote(JSON.parse('{"clef":"treble","duration":"16","dots":0,"type":"n","autoStem":true,"keys":["c#/5/n"]}'))
-smo81868.setAttribute('id', 'smo81868');
-smo81885v0ar.push(smo81868);
-const smo81869 = new VF.StaveNote(JSON.parse('{"clef":"treble","duration":"4","dots":0,"type":"n","autoStem":true,"keys":["bn/4/n"]}'))
-smo81869.setAttribute('id', 'smo81869');
-smo81885v0ar.push(smo81869);
-smo81885v0.addTickables(smo81885v0ar)
-fmtsmo8188511.joinVoices([smo81885v0]);
-const fmtsmo8269611 = new VF.Formatter();
+const smo79543v0 = new VF.Voice(JSON.parse('{"numBeats":4,"beatValue":4}')).setMode(VF.Voice.Mode.SOFT);
+const smo79543v0ar = [];
+const smo79524 = new VF.StaveNote(JSON.parse('{"clef":"treble","duration":"2","dots":0,"type":"r","autoStem":true,"keys":["bn/4/r"]}'))
+smo79524.setAttribute('id', 'smo79524');
+smo79543v0ar.push(smo79524);
+const smo79525 = new VF.StaveNote(JSON.parse('{"clef":"treble","duration":"8d","dots":1,"type":"n","autoStem":true,"keys":["d#/5/n"]}'))
+smo79525.setAttribute('id', 'smo79525');
+smo79525.addModifier(new VF.Dot(), 0);
+smo79543v0ar.push(smo79525);
+const smo79526 = new VF.StaveNote(JSON.parse('{"clef":"treble","duration":"16","dots":0,"type":"n","autoStem":true,"keys":["c#/5/n"]}'))
+smo79526.setAttribute('id', 'smo79526');
+smo79543v0ar.push(smo79526);
+const smo79527 = new VF.StaveNote(JSON.parse('{"clef":"treble","duration":"4","dots":0,"type":"n","autoStem":true,"keys":["bn/4/n"]}'))
+smo79527.setAttribute('id', 'smo79527');
+smo79543v0ar.push(smo79527);
+smo79543v0.addTickables(smo79543v0ar)
+fmtsmo7954311.joinVoices([smo79543v0]);
+const fmtsmo8035411 = new VF.Formatter();
 //
 // voices and notes for stave 2 11
-const smo82696v0 = new VF.Voice(JSON.parse('{"numBeats":4,"beatValue":4}')).setMode(VF.Voice.Mode.SOFT);
-const smo82696v0ar = [];
-const smo82677 = new VF.StaveNote(JSON.parse('{"clef":"alto","duration":"2","dots":0,"type":"r","autoStem":true,"keys":["cn/4/r"]}'))
-smo82677.setAttribute('id', 'smo82677');
-smo82696v0ar.push(smo82677);
-const smo82678 = new VF.StaveNote(JSON.parse('{"clef":"alto","duration":"8d","dots":1,"type":"n","autoStem":true,"keys":["bn/3/n"]}'))
-smo82678.setAttribute('id', 'smo82678');
-smo82678.addModifier(new VF.Dot(), 0);
-smo82696v0ar.push(smo82678);
-const smo82679 = new VF.StaveNote(JSON.parse('{"clef":"alto","duration":"16","dots":0,"type":"n","autoStem":true,"keys":["f#/3/n"]}'))
-smo82679.setAttribute('id', 'smo82679');
-smo82696v0ar.push(smo82679);
-const smo82680 = new VF.StaveNote(JSON.parse('{"clef":"alto","duration":"4","dots":0,"type":"n","autoStem":true,"keys":["bn/3/n"]}'))
-smo82680.setAttribute('id', 'smo82680');
-smo82696v0ar.push(smo82680);
-smo82696v0.addTickables(smo82696v0ar)
-fmtsmo8269611.joinVoices([smo82696v0]);
-const fmtsmo8349011 = new VF.Formatter();
+const smo80354v0 = new VF.Voice(JSON.parse('{"numBeats":4,"beatValue":4}')).setMode(VF.Voice.Mode.SOFT);
+const smo80354v0ar = [];
+const smo80335 = new VF.StaveNote(JSON.parse('{"clef":"alto","duration":"2","dots":0,"type":"r","autoStem":true,"keys":["cn/4/r"]}'))
+smo80335.setAttribute('id', 'smo80335');
+smo80354v0ar.push(smo80335);
+const smo80336 = new VF.StaveNote(JSON.parse('{"clef":"alto","duration":"8d","dots":1,"type":"n","autoStem":true,"keys":["bn/3/n"]}'))
+smo80336.setAttribute('id', 'smo80336');
+smo80336.addModifier(new VF.Dot(), 0);
+smo80354v0ar.push(smo80336);
+const smo80337 = new VF.StaveNote(JSON.parse('{"clef":"alto","duration":"16","dots":0,"type":"n","autoStem":true,"keys":["f#/3/n"]}'))
+smo80337.setAttribute('id', 'smo80337');
+smo80354v0ar.push(smo80337);
+const smo80338 = new VF.StaveNote(JSON.parse('{"clef":"alto","duration":"4","dots":0,"type":"n","autoStem":true,"keys":["bn/3/n"]}'))
+smo80338.setAttribute('id', 'smo80338');
+smo80354v0ar.push(smo80338);
+smo80354v0.addTickables(smo80354v0ar)
+fmtsmo8035411.joinVoices([smo80354v0]);
+const fmtsmo8114811 = new VF.Formatter();
 //
 // voices and notes for stave 3 11
-const smo83490v0 = new VF.Voice(JSON.parse('{"numBeats":4,"beatValue":4}')).setMode(VF.Voice.Mode.SOFT);
-const smo83490v0ar = [];
-const smo83468 = new VF.StaveNote(JSON.parse('{"clef":"treble","duration":"4","dots":0,"type":"n","autoStem":true,"keys":["g#/4/n"]}'))
-smo83468.setAttribute('id', 'smo83468');
-const smo83469 = new VF.Annotation('saith');
-smo83469.setAttribute('id', 'smo83469');
-smo83469.setFont('Merriweather', 12, 'normal');
-smo83469.setVerticalJustification(VF.Annotation.VerticalJustify.BOTTOM);
-smo83468.addModifier(smo83469);
-smo83469.addClass('lyric lyric-0');
-smo83490v0ar.push(smo83468);
-const smo83470 = new VF.StaveNote(JSON.parse('{"clef":"treble","duration":"4","dots":0,"type":"n","autoStem":true,"keys":["a#/4/n"]}'))
-smo83470.setAttribute('id', 'smo83470');
-const smo834700acc = new VF.Accidental('#');
-smo83470.addModifier(smo834700acc, 0);
-const smo83471 = new VF.Annotation('your');
-smo83471.setAttribute('id', 'smo83471');
-smo83471.setFont('Merriweather', 12, 'normal');
-smo83471.setVerticalJustification(VF.Annotation.VerticalJustify.BOTTOM);
-smo83470.addModifier(smo83471);
-smo83471.addClass('lyric lyric-0');
-smo83490v0ar.push(smo83470);
-const smo83472 = new VF.StaveNote(JSON.parse('{"clef":"treble","duration":"4","dots":0,"type":"n","autoStem":true,"keys":["bn/4/n"]}'))
-smo83472.setAttribute('id', 'smo83472');
-const smo83473 = new VF.Annotation('God');
-smo83473.setAttribute('id', 'smo83473');
-smo83473.setFont('Merriweather', 12, 'normal');
-smo83473.setVerticalJustification(VF.Annotation.VerticalJustify.BOTTOM);
-smo83472.addModifier(smo83473);
-smo83473.addClass('lyric lyric-0');
-smo83490v0ar.push(smo83472);
-const smo83474 = new VF.StaveNote(JSON.parse('{"clef":"treble","duration":"4","dots":0,"type":"r","autoStem":true,"keys":["bn/4/r"]}'))
-smo83474.setAttribute('id', 'smo83474');
-smo83490v0ar.push(smo83474);
-smo83490v0.addTickables(smo83490v0ar)
-fmtsmo8349011.joinVoices([smo83490v0]);
-const fmtsmo8437111 = new VF.Formatter();
+const smo81148v0 = new VF.Voice(JSON.parse('{"numBeats":4,"beatValue":4}')).setMode(VF.Voice.Mode.SOFT);
+const smo81148v0ar = [];
+const smo81126 = new VF.StaveNote(JSON.parse('{"clef":"treble","duration":"4","dots":0,"type":"n","autoStem":true,"keys":["g#/4/n"]}'))
+smo81126.setAttribute('id', 'smo81126');
+const smo81127 = new VF.Annotation('saith');
+smo81127.setAttribute('id', 'smo81127');
+smo81127.setFont('Merriweather', 12, 'normal');
+smo81127.setVerticalJustification(VF.Annotation.VerticalJustify.BOTTOM);
+smo81126.addModifier(smo81127);
+smo81127.addClass('lyric lyric-0');
+smo81148v0ar.push(smo81126);
+const smo81128 = new VF.StaveNote(JSON.parse('{"clef":"treble","duration":"4","dots":0,"type":"n","autoStem":true,"keys":["a#/4/n"]}'))
+smo81128.setAttribute('id', 'smo81128');
+const smo811280acc = new VF.Accidental('#');
+smo81128.addModifier(smo811280acc, 0);
+const smo81129 = new VF.Annotation('your');
+smo81129.setAttribute('id', 'smo81129');
+smo81129.setFont('Merriweather', 12, 'normal');
+smo81129.setVerticalJustification(VF.Annotation.VerticalJustify.BOTTOM);
+smo81128.addModifier(smo81129);
+smo81129.addClass('lyric lyric-0');
+smo81148v0ar.push(smo81128);
+const smo81130 = new VF.StaveNote(JSON.parse('{"clef":"treble","duration":"4","dots":0,"type":"n","autoStem":true,"keys":["bn/4/n"]}'))
+smo81130.setAttribute('id', 'smo81130');
+const smo81131 = new VF.Annotation('God');
+smo81131.setAttribute('id', 'smo81131');
+smo81131.setFont('Merriweather', 12, 'normal');
+smo81131.setVerticalJustification(VF.Annotation.VerticalJustify.BOTTOM);
+smo81130.addModifier(smo81131);
+smo81131.addClass('lyric lyric-0');
+smo81148v0ar.push(smo81130);
+const smo81132 = new VF.StaveNote(JSON.parse('{"clef":"treble","duration":"4","dots":0,"type":"r","autoStem":true,"keys":["bn/4/r"]}'))
+smo81132.setAttribute('id', 'smo81132');
+smo81148v0ar.push(smo81132);
+smo81148v0.addTickables(smo81148v0ar)
+fmtsmo8114811.joinVoices([smo81148v0]);
+const fmtsmo8202911 = new VF.Formatter();
 //
 // voices and notes for stave 4 11
-const smo84371v0 = new VF.Voice(JSON.parse('{"numBeats":4,"beatValue":4}')).setMode(VF.Voice.Mode.SOFT);
-const smo84371v0ar = [];
-const smo84352 = new VF.StaveNote(JSON.parse('{"clef":"bass","duration":"4","dots":0,"type":"n","autoStem":true,"keys":["en/3/n"]}'))
-smo84352.setAttribute('id', 'smo84352');
-smo84371v0ar.push(smo84352);
-const smo84353 = new VF.StaveNote(JSON.parse('{"clef":"bass","duration":"4","dots":0,"type":"n","autoStem":true,"keys":["c#/3/n"]}'))
-smo84353.setAttribute('id', 'smo84353');
-smo84371v0ar.push(smo84353);
-const smo84354 = new VF.StaveNote(JSON.parse('{"clef":"bass","duration":"4","dots":0,"type":"n","autoStem":true,"keys":["bn/2/n"]}'))
-smo84354.setAttribute('id', 'smo84354');
-smo84371v0ar.push(smo84354);
-const smo84355 = new VF.StaveNote(JSON.parse('{"clef":"bass","duration":"4","dots":0,"type":"r","autoStem":true,"keys":["dn/3/r"]}'))
-smo84355.setAttribute('id', 'smo84355');
-smo84371v0ar.push(smo84355);
-smo84371v0.addTickables(smo84371v0ar)
-fmtsmo8437111.joinVoices([smo84371v0]);
-// create beam groups and tuplets for format grp smo84911 before formatting
-const dirsmo91489 = smo81048.getStemDirection();
-smo81048.setStemDirection(dirsmo91489);
-smo81049.setStemDirection(dirsmo91489);
-const smo91489 = new VF.Beam([smo81048,smo81049]);
-const dirsmo91492 = smo81867.getStemDirection();
-smo81867.setStemDirection(dirsmo91492);
-smo81868.setStemDirection(dirsmo91492);
-const smo91492 = new VF.Beam([smo81867,smo81868]);
-const dirsmo91495 = smo82678.getStemDirection();
-smo82678.setStemDirection(dirsmo91495);
-smo82679.setStemDirection(dirsmo91495);
-const smo91495 = new VF.Beam([smo82678,smo82679]);
+const smo82029v0 = new VF.Voice(JSON.parse('{"numBeats":4,"beatValue":4}')).setMode(VF.Voice.Mode.SOFT);
+const smo82029v0ar = [];
+const smo82010 = new VF.StaveNote(JSON.parse('{"clef":"bass","duration":"4","dots":0,"type":"n","autoStem":true,"keys":["en/3/n"]}'))
+smo82010.setAttribute('id', 'smo82010');
+smo82029v0ar.push(smo82010);
+const smo82011 = new VF.StaveNote(JSON.parse('{"clef":"bass","duration":"4","dots":0,"type":"n","autoStem":true,"keys":["c#/3/n"]}'))
+smo82011.setAttribute('id', 'smo82011');
+smo82029v0ar.push(smo82011);
+const smo82012 = new VF.StaveNote(JSON.parse('{"clef":"bass","duration":"4","dots":0,"type":"n","autoStem":true,"keys":["bn/2/n"]}'))
+smo82012.setAttribute('id', 'smo82012');
+smo82029v0ar.push(smo82012);
+const smo82013 = new VF.StaveNote(JSON.parse('{"clef":"bass","duration":"4","dots":0,"type":"r","autoStem":true,"keys":["dn/3/r"]}'))
+smo82013.setAttribute('id', 'smo82013');
+smo82029v0ar.push(smo82013);
+smo82029v0.addTickables(smo82029v0ar)
+fmtsmo8202911.joinVoices([smo82029v0]);
+// create beam groups and tuplets for format grp smo82569 before formatting
+const dirsmo89152 = smo78706.getStemDirection();
+smo78706.setStemDirection(dirsmo89152);
+smo78707.setStemDirection(dirsmo89152);
+const smo89152 = new VF.Beam([smo78706,smo78707]);
+const dirsmo89154 = smo79525.getStemDirection();
+smo79525.setStemDirection(dirsmo89154);
+smo79526.setStemDirection(dirsmo89154);
+const smo89154 = new VF.Beam([smo79525,smo79526]);
+const dirsmo89156 = smo80336.getStemDirection();
+smo80336.setStemDirection(dirsmo89156);
+smo80337.setStemDirection(dirsmo89156);
+const smo89156 = new VF.Beam([smo80336,smo80337]);
  
-// formatting measures in staff group smo84911
-fmtsmo8106611.format([smo81066v0,smo81885v0,smo82696v0,smo83490v0,smo84371v0], 269);
-const stavesmo81066 = new VF.Stave(1091, 234.00000000000023, 283);
-stavesmo81066.setAttribute('id', 'stavesmo81066');
-stavesmo81066.setBegBarType(VF.Barline.type.NONE);
-stavesmo81066.setContext(context);
-stavesmo81066.draw();
-smo81066v0.draw(context, stavesmo81066);
-smo91489.setContext(context);
-smo91489.draw();
-const stavesmo81885 = new VF.Stave(1091, 332.0000000000002, 283);
-stavesmo81885.setAttribute('id', 'stavesmo81885');
-stavesmo81885.setBegBarType(VF.Barline.type.NONE);
-stavesmo81885.setContext(context);
-stavesmo81885.draw();
-smo81885v0.draw(context, stavesmo81885);
-smo91492.setContext(context);
-smo91492.draw();
-const stavesmo82696 = new VF.Stave(1091, 435.0000000000002, 283);
-stavesmo82696.setAttribute('id', 'stavesmo82696');
-stavesmo82696.setBegBarType(VF.Barline.type.NONE);
-stavesmo82696.setContext(context);
-stavesmo82696.draw();
-smo82696v0.draw(context, stavesmo82696);
-smo91495.setContext(context);
-smo91495.draw();
-const stavesmo83490 = new VF.Stave(1091, 518.0000000000002, 283);
-stavesmo83490.setAttribute('id', 'stavesmo83490');
-stavesmo83490.setBegBarType(VF.Barline.type.NONE);
-stavesmo83490.setContext(context);
-stavesmo83490.draw();
-smo83490v0.draw(context, stavesmo83490);
-const stavesmo84371 = new VF.Stave(1091, 620.0000000000002, 283);
-stavesmo84371.setAttribute('id', 'stavesmo84371');
-stavesmo84371.setBegBarType(VF.Barline.type.NONE);
-stavesmo84371.setContext(context);
-stavesmo84371.draw();
-smo84371v0.draw(context, stavesmo84371);
-const rightsmo84911stavesmo810664 = new VF.StaveConnector(stavesmo81066, stavesmo84371).setType(0);
-rightsmo84911stavesmo810664.setContext(context).draw();
-const fmtsmo8108612 = new VF.Formatter();
+// formatting measures in staff group smo82569
+fmtsmo7872411.format([smo78724v0,smo79543v0,smo80354v0,smo81148v0,smo82029v0], 226);
+const stavesmo78724 = new VF.Stave(892, 234.00000000000023, 240);
+stavesmo78724.setAttribute('id', 'stavesmo78724');
+stavesmo78724.setBegBarType(VF.Barline.type.NONE);
+stavesmo78724.setContext(context);
+stavesmo78724.draw();
+smo78724v0.draw(context, stavesmo78724);
+smo89152.setContext(context);
+smo89152.draw();
+const stavesmo79543 = new VF.Stave(892, 332.0000000000002, 240);
+stavesmo79543.setAttribute('id', 'stavesmo79543');
+stavesmo79543.setBegBarType(VF.Barline.type.NONE);
+stavesmo79543.setContext(context);
+stavesmo79543.draw();
+smo79543v0.draw(context, stavesmo79543);
+smo89154.setContext(context);
+smo89154.draw();
+const stavesmo80354 = new VF.Stave(892, 435.0000000000002, 240);
+stavesmo80354.setAttribute('id', 'stavesmo80354');
+stavesmo80354.setBegBarType(VF.Barline.type.NONE);
+stavesmo80354.setContext(context);
+stavesmo80354.draw();
+smo80354v0.draw(context, stavesmo80354);
+smo89156.setContext(context);
+smo89156.draw();
+const stavesmo81148 = new VF.Stave(892, 518.0000000000002, 240);
+stavesmo81148.setAttribute('id', 'stavesmo81148');
+stavesmo81148.setBegBarType(VF.Barline.type.NONE);
+stavesmo81148.setContext(context);
+stavesmo81148.draw();
+smo81148v0.draw(context, stavesmo81148);
+const stavesmo82029 = new VF.Stave(892, 620.0000000000002, 240);
+stavesmo82029.setAttribute('id', 'stavesmo82029');
+stavesmo82029.setBegBarType(VF.Barline.type.NONE);
+stavesmo82029.setContext(context);
+stavesmo82029.draw();
+smo82029v0.draw(context, stavesmo82029);
+const fmtsmo7874412 = new VF.Formatter();
 //
 // voices and notes for stave 0 12
-const smo81086v0 = new VF.Voice(JSON.parse('{"numBeats":4,"beatValue":4}')).setMode(VF.Voice.Mode.SOFT);
-const smo81086v0ar = [];
-const smo81067 = new VF.StaveNote(JSON.parse('{"clef":"treble","duration":"2","dots":0,"type":"r","autoStem":true,"keys":["bn/4/r"]}'))
-smo81067.setAttribute('id', 'smo81067');
-smo81086v0ar.push(smo81067);
-const smo81068 = new VF.StaveNote(JSON.parse('{"clef":"treble","duration":"8d","dots":1,"type":"n","autoStem":true,"keys":["bn/4/n"]}'))
-smo81068.setAttribute('id', 'smo81068');
-smo81068.addModifier(new VF.Dot(), 0);
-smo81086v0ar.push(smo81068);
-const smo81069 = new VF.StaveNote(JSON.parse('{"clef":"treble","duration":"16","dots":0,"type":"n","autoStem":true,"keys":["an/4/n"]}'))
-smo81069.setAttribute('id', 'smo81069');
-smo81086v0ar.push(smo81069);
-const smo81070 = new VF.StaveNote(JSON.parse('{"clef":"treble","duration":"4","dots":0,"type":"n","autoStem":true,"keys":["g#/4/n"]}'))
-smo81070.setAttribute('id', 'smo81070');
-smo81086v0ar.push(smo81070);
-smo81086v0.addTickables(smo81086v0ar)
-fmtsmo8108612.joinVoices([smo81086v0]);
-const fmtsmo8190512 = new VF.Formatter();
+const smo78744v0 = new VF.Voice(JSON.parse('{"numBeats":4,"beatValue":4}')).setMode(VF.Voice.Mode.SOFT);
+const smo78744v0ar = [];
+const smo78725 = new VF.StaveNote(JSON.parse('{"clef":"treble","duration":"2","dots":0,"type":"r","autoStem":true,"keys":["bn/4/r"]}'))
+smo78725.setAttribute('id', 'smo78725');
+smo78744v0ar.push(smo78725);
+const smo78726 = new VF.StaveNote(JSON.parse('{"clef":"treble","duration":"8d","dots":1,"type":"n","autoStem":true,"keys":["bn/4/n"]}'))
+smo78726.setAttribute('id', 'smo78726');
+smo78726.addModifier(new VF.Dot(), 0);
+smo78744v0ar.push(smo78726);
+const smo78727 = new VF.StaveNote(JSON.parse('{"clef":"treble","duration":"16","dots":0,"type":"n","autoStem":true,"keys":["an/4/n"]}'))
+smo78727.setAttribute('id', 'smo78727');
+smo78744v0ar.push(smo78727);
+const smo78728 = new VF.StaveNote(JSON.parse('{"clef":"treble","duration":"4","dots":0,"type":"n","autoStem":true,"keys":["g#/4/n"]}'))
+smo78728.setAttribute('id', 'smo78728');
+smo78744v0ar.push(smo78728);
+smo78744v0.addTickables(smo78744v0ar)
+fmtsmo7874412.joinVoices([smo78744v0]);
+const fmtsmo7956312 = new VF.Formatter();
 //
 // voices and notes for stave 1 12
-const smo81905v0 = new VF.Voice(JSON.parse('{"numBeats":4,"beatValue":4}')).setMode(VF.Voice.Mode.SOFT);
-const smo81905v0ar = [];
-const smo81886 = new VF.StaveNote(JSON.parse('{"clef":"treble","duration":"2","dots":0,"type":"r","autoStem":true,"keys":["bn/4/r"]}'))
-smo81886.setAttribute('id', 'smo81886');
-smo81905v0ar.push(smo81886);
-const smo81887 = new VF.StaveNote(JSON.parse('{"clef":"treble","duration":"8d","dots":1,"type":"n","autoStem":true,"keys":["g#/4/n"]}'))
-smo81887.setAttribute('id', 'smo81887');
-smo81887.addModifier(new VF.Dot(), 0);
-smo81905v0ar.push(smo81887);
-const smo81888 = new VF.StaveNote(JSON.parse('{"clef":"treble","duration":"16","dots":0,"type":"n","autoStem":true,"keys":["f#/4/n"]}'))
-smo81888.setAttribute('id', 'smo81888');
-smo81905v0ar.push(smo81888);
-const smo81889 = new VF.StaveNote(JSON.parse('{"clef":"treble","duration":"4","dots":0,"type":"n","autoStem":true,"keys":["en/4/n"]}'))
-smo81889.setAttribute('id', 'smo81889');
-smo81905v0ar.push(smo81889);
-smo81905v0.addTickables(smo81905v0ar)
-fmtsmo8190512.joinVoices([smo81905v0]);
-const fmtsmo8271612 = new VF.Formatter();
+const smo79563v0 = new VF.Voice(JSON.parse('{"numBeats":4,"beatValue":4}')).setMode(VF.Voice.Mode.SOFT);
+const smo79563v0ar = [];
+const smo79544 = new VF.StaveNote(JSON.parse('{"clef":"treble","duration":"2","dots":0,"type":"r","autoStem":true,"keys":["bn/4/r"]}'))
+smo79544.setAttribute('id', 'smo79544');
+smo79563v0ar.push(smo79544);
+const smo79545 = new VF.StaveNote(JSON.parse('{"clef":"treble","duration":"8d","dots":1,"type":"n","autoStem":true,"keys":["g#/4/n"]}'))
+smo79545.setAttribute('id', 'smo79545');
+smo79545.addModifier(new VF.Dot(), 0);
+smo79563v0ar.push(smo79545);
+const smo79546 = new VF.StaveNote(JSON.parse('{"clef":"treble","duration":"16","dots":0,"type":"n","autoStem":true,"keys":["f#/4/n"]}'))
+smo79546.setAttribute('id', 'smo79546');
+smo79563v0ar.push(smo79546);
+const smo79547 = new VF.StaveNote(JSON.parse('{"clef":"treble","duration":"4","dots":0,"type":"n","autoStem":true,"keys":["en/4/n"]}'))
+smo79547.setAttribute('id', 'smo79547');
+smo79563v0ar.push(smo79547);
+smo79563v0.addTickables(smo79563v0ar)
+fmtsmo7956312.joinVoices([smo79563v0]);
+const fmtsmo8037412 = new VF.Formatter();
 //
 // voices and notes for stave 2 12
-const smo82716v0 = new VF.Voice(JSON.parse('{"numBeats":4,"beatValue":4}')).setMode(VF.Voice.Mode.SOFT);
-const smo82716v0ar = [];
-const smo82697 = new VF.StaveNote(JSON.parse('{"clef":"alto","duration":"2","dots":0,"type":"r","autoStem":true,"keys":["cn/4/r"]}'))
-smo82697.setAttribute('id', 'smo82697');
-smo82716v0ar.push(smo82697);
-const smo82698 = new VF.StaveNote(JSON.parse('{"clef":"alto","duration":"8d","dots":1,"type":"n","autoStem":true,"keys":["en/4/n"]}'))
-smo82698.setAttribute('id', 'smo82698');
-smo82698.addModifier(new VF.Dot(), 0);
-smo82716v0ar.push(smo82698);
-const smo82699 = new VF.StaveNote(JSON.parse('{"clef":"alto","duration":"16","dots":0,"type":"n","autoStem":true,"keys":["f#/4/n"]}'))
-smo82699.setAttribute('id', 'smo82699');
-smo82716v0ar.push(smo82699);
-const smo82700 = new VF.StaveNote(JSON.parse('{"clef":"alto","duration":"4","dots":0,"type":"n","autoStem":true,"keys":["g#/4/n"]}'))
-smo82700.setAttribute('id', 'smo82700');
-smo82716v0ar.push(smo82700);
-smo82716v0.addTickables(smo82716v0ar)
-fmtsmo8271612.joinVoices([smo82716v0]);
-const fmtsmo8351312 = new VF.Formatter();
+const smo80374v0 = new VF.Voice(JSON.parse('{"numBeats":4,"beatValue":4}')).setMode(VF.Voice.Mode.SOFT);
+const smo80374v0ar = [];
+const smo80355 = new VF.StaveNote(JSON.parse('{"clef":"alto","duration":"2","dots":0,"type":"r","autoStem":true,"keys":["cn/4/r"]}'))
+smo80355.setAttribute('id', 'smo80355');
+smo80374v0ar.push(smo80355);
+const smo80356 = new VF.StaveNote(JSON.parse('{"clef":"alto","duration":"8d","dots":1,"type":"n","autoStem":true,"keys":["en/4/n"]}'))
+smo80356.setAttribute('id', 'smo80356');
+smo80356.addModifier(new VF.Dot(), 0);
+smo80374v0ar.push(smo80356);
+const smo80357 = new VF.StaveNote(JSON.parse('{"clef":"alto","duration":"16","dots":0,"type":"n","autoStem":true,"keys":["f#/4/n"]}'))
+smo80357.setAttribute('id', 'smo80357');
+smo80374v0ar.push(smo80357);
+const smo80358 = new VF.StaveNote(JSON.parse('{"clef":"alto","duration":"4","dots":0,"type":"n","autoStem":true,"keys":["g#/4/n"]}'))
+smo80358.setAttribute('id', 'smo80358');
+smo80374v0ar.push(smo80358);
+smo80374v0.addTickables(smo80374v0ar)
+fmtsmo8037412.joinVoices([smo80374v0]);
+const fmtsmo8117112 = new VF.Formatter();
 //
 // voices and notes for stave 3 12
-const smo83513v0 = new VF.Voice(JSON.parse('{"numBeats":4,"beatValue":4}')).setMode(VF.Voice.Mode.SOFT);
-const smo83513v0ar = [];
-const smo83491 = new VF.StaveNote(JSON.parse('{"clef":"treble","duration":"4","dots":0,"type":"n","autoStem":true,"keys":["c#/5/n"]}'))
-smo83491.setAttribute('id', 'smo83491');
-const smo83492 = new VF.Annotation('saith');
-smo83492.setAttribute('id', 'smo83492');
-smo83492.setFont('Merriweather', 12, 'normal');
-smo83492.setVerticalJustification(VF.Annotation.VerticalJustify.BOTTOM);
-smo83491.addModifier(smo83492);
-smo83492.addClass('lyric lyric-0');
-smo83513v0ar.push(smo83491);
-const smo83493 = new VF.StaveNote(JSON.parse('{"clef":"treble","duration":"4","dots":0,"type":"n","autoStem":true,"keys":["d#/5/n"]}'))
-smo83493.setAttribute('id', 'smo83493');
-const smo83494 = new VF.Annotation('your');
-smo83494.setAttribute('id', 'smo83494');
-smo83494.setFont('Merriweather', 12, 'normal');
-smo83494.setVerticalJustification(VF.Annotation.VerticalJustify.BOTTOM);
-smo83493.addModifier(smo83494);
-smo83494.addClass('lyric lyric-0');
-smo83513v0ar.push(smo83493);
-const smo83495 = new VF.StaveNote(JSON.parse('{"clef":"treble","duration":"4","dots":0,"type":"n","autoStem":true,"keys":["en/5/n"]}'))
-smo83495.setAttribute('id', 'smo83495');
-const smo83496 = new VF.Annotation('God.');
-smo83496.setAttribute('id', 'smo83496');
-smo83496.setFont('Merriweather', 12, 'normal');
-smo83496.setVerticalJustification(VF.Annotation.VerticalJustify.BOTTOM);
-smo83495.addModifier(smo83496);
-smo83496.addClass('lyric lyric-0');
-smo83513v0ar.push(smo83495);
-const smo83497 = new VF.StaveNote(JSON.parse('{"clef":"treble","duration":"4","dots":0,"type":"r","autoStem":true,"keys":["bn/4/r"]}'))
-smo83497.setAttribute('id', 'smo83497');
-smo83513v0ar.push(smo83497);
-smo83513v0.addTickables(smo83513v0ar)
-fmtsmo8351312.joinVoices([smo83513v0]);
-const fmtsmo8439112 = new VF.Formatter();
+const smo81171v0 = new VF.Voice(JSON.parse('{"numBeats":4,"beatValue":4}')).setMode(VF.Voice.Mode.SOFT);
+const smo81171v0ar = [];
+const smo81149 = new VF.StaveNote(JSON.parse('{"clef":"treble","duration":"4","dots":0,"type":"n","autoStem":true,"keys":["c#/5/n"]}'))
+smo81149.setAttribute('id', 'smo81149');
+const smo81150 = new VF.Annotation('saith');
+smo81150.setAttribute('id', 'smo81150');
+smo81150.setFont('Merriweather', 12, 'normal');
+smo81150.setVerticalJustification(VF.Annotation.VerticalJustify.BOTTOM);
+smo81149.addModifier(smo81150);
+smo81150.addClass('lyric lyric-0');
+smo81171v0ar.push(smo81149);
+const smo81151 = new VF.StaveNote(JSON.parse('{"clef":"treble","duration":"4","dots":0,"type":"n","autoStem":true,"keys":["d#/5/n"]}'))
+smo81151.setAttribute('id', 'smo81151');
+const smo81152 = new VF.Annotation('your');
+smo81152.setAttribute('id', 'smo81152');
+smo81152.setFont('Merriweather', 12, 'normal');
+smo81152.setVerticalJustification(VF.Annotation.VerticalJustify.BOTTOM);
+smo81151.addModifier(smo81152);
+smo81152.addClass('lyric lyric-0');
+smo81171v0ar.push(smo81151);
+const smo81153 = new VF.StaveNote(JSON.parse('{"clef":"treble","duration":"4","dots":0,"type":"n","autoStem":true,"keys":["en/5/n"]}'))
+smo81153.setAttribute('id', 'smo81153');
+const smo81154 = new VF.Annotation('God.');
+smo81154.setAttribute('id', 'smo81154');
+smo81154.setFont('Merriweather', 12, 'normal');
+smo81154.setVerticalJustification(VF.Annotation.VerticalJustify.BOTTOM);
+smo81153.addModifier(smo81154);
+smo81154.addClass('lyric lyric-0');
+smo81171v0ar.push(smo81153);
+const smo81155 = new VF.StaveNote(JSON.parse('{"clef":"treble","duration":"4","dots":0,"type":"r","autoStem":true,"keys":["bn/4/r"]}'))
+smo81155.setAttribute('id', 'smo81155');
+smo81171v0ar.push(smo81155);
+smo81171v0.addTickables(smo81171v0ar)
+fmtsmo8117112.joinVoices([smo81171v0]);
+const fmtsmo8204912 = new VF.Formatter();
 //
 // voices and notes for stave 4 12
-const smo84391v0 = new VF.Voice(JSON.parse('{"numBeats":4,"beatValue":4}')).setMode(VF.Voice.Mode.SOFT);
-const smo84391v0ar = [];
-const smo84372 = new VF.StaveNote(JSON.parse('{"clef":"bass","duration":"4","dots":0,"type":"n","autoStem":true,"keys":["an/3/n"]}'))
-smo84372.setAttribute('id', 'smo84372');
-smo84391v0ar.push(smo84372);
-const smo84373 = new VF.StaveNote(JSON.parse('{"clef":"bass","duration":"4","dots":0,"type":"n","autoStem":true,"keys":["f#/3/n"]}'))
-smo84373.setAttribute('id', 'smo84373');
-smo84391v0ar.push(smo84373);
-const smo84374 = new VF.StaveNote(JSON.parse('{"clef":"bass","duration":"4","dots":0,"type":"n","autoStem":true,"keys":["en/3/n"]}'))
-smo84374.setAttribute('id', 'smo84374');
-smo84391v0ar.push(smo84374);
-const smo84375 = new VF.StaveNote(JSON.parse('{"clef":"bass","duration":"4","dots":0,"type":"r","autoStem":true,"keys":["dn/3/r"]}'))
-smo84375.setAttribute('id', 'smo84375');
-smo84391v0ar.push(smo84375);
-smo84391v0.addTickables(smo84391v0ar)
-fmtsmo8439112.joinVoices([smo84391v0]);
-// create beam groups and tuplets for format grp smo84911 before formatting
-const dirsmo91516 = smo81068.getStemDirection();
-smo81068.setStemDirection(dirsmo91516);
-smo81069.setStemDirection(dirsmo91516);
-const smo91516 = new VF.Beam([smo81068,smo81069]);
-const dirsmo91519 = smo81887.getStemDirection();
-smo81887.setStemDirection(dirsmo91519);
-smo81888.setStemDirection(dirsmo91519);
-const smo91519 = new VF.Beam([smo81887,smo81888]);
-const dirsmo91522 = smo82698.getStemDirection();
-smo82698.setStemDirection(dirsmo91522);
-smo82699.setStemDirection(dirsmo91522);
-const smo91522 = new VF.Beam([smo82698,smo82699]);
+const smo82049v0 = new VF.Voice(JSON.parse('{"numBeats":4,"beatValue":4}')).setMode(VF.Voice.Mode.SOFT);
+const smo82049v0ar = [];
+const smo82030 = new VF.StaveNote(JSON.parse('{"clef":"bass","duration":"4","dots":0,"type":"n","autoStem":true,"keys":["an/3/n"]}'))
+smo82030.setAttribute('id', 'smo82030');
+smo82049v0ar.push(smo82030);
+const smo82031 = new VF.StaveNote(JSON.parse('{"clef":"bass","duration":"4","dots":0,"type":"n","autoStem":true,"keys":["f#/3/n"]}'))
+smo82031.setAttribute('id', 'smo82031');
+smo82049v0ar.push(smo82031);
+const smo82032 = new VF.StaveNote(JSON.parse('{"clef":"bass","duration":"4","dots":0,"type":"n","autoStem":true,"keys":["en/3/n"]}'))
+smo82032.setAttribute('id', 'smo82032');
+smo82049v0ar.push(smo82032);
+const smo82033 = new VF.StaveNote(JSON.parse('{"clef":"bass","duration":"4","dots":0,"type":"r","autoStem":true,"keys":["dn/3/r"]}'))
+smo82033.setAttribute('id', 'smo82033');
+smo82049v0ar.push(smo82033);
+smo82049v0.addTickables(smo82049v0ar)
+fmtsmo8204912.joinVoices([smo82049v0]);
+// create beam groups and tuplets for format grp smo82569 before formatting
+const dirsmo89165 = smo78726.getStemDirection();
+smo78726.setStemDirection(dirsmo89165);
+smo78727.setStemDirection(dirsmo89165);
+const smo89165 = new VF.Beam([smo78726,smo78727]);
+const dirsmo89167 = smo79545.getStemDirection();
+smo79545.setStemDirection(dirsmo89167);
+smo79546.setStemDirection(dirsmo89167);
+const smo89167 = new VF.Beam([smo79545,smo79546]);
+const dirsmo89169 = smo80356.getStemDirection();
+smo80356.setStemDirection(dirsmo89169);
+smo80357.setStemDirection(dirsmo89169);
+const smo89169 = new VF.Beam([smo80356,smo80357]);
  
-// formatting measures in staff group smo84911
-fmtsmo8108612.format([smo81086v0,smo81905v0,smo82716v0,smo83513v0,smo84391v0], 253);
-const stavesmo81086 = new VF.Stave(55, 764.0000000000002, 362);
-stavesmo81086.setAttribute('id', 'stavesmo81086');
-stavesmo81086.setBegBarType(1);
-stavesmo81086.addClef('treble');
-const keysmo81086 = new VF.KeySignature('E');
-keysmo81086.addToStave(stavesmo81086);
-stavesmo81086.setContext(context);
-stavesmo81086.draw();
-smo81086v0.draw(context, stavesmo81086);
-smo91516.setContext(context);
-smo91516.draw();
-const stavesmo81905 = new VF.Stave(55, 842.0000000000002, 362);
-stavesmo81905.setAttribute('id', 'stavesmo81905');
-stavesmo81905.setBegBarType(1);
-stavesmo81905.addClef('treble');
-const keysmo81905 = new VF.KeySignature('E');
-keysmo81905.addToStave(stavesmo81905);
-stavesmo81905.setContext(context);
-stavesmo81905.draw();
-smo81905v0.draw(context, stavesmo81905);
-smo91519.setContext(context);
-smo91519.draw();
-const stavesmo82716 = new VF.Stave(55, 921.0000000000002, 362);
-stavesmo82716.setAttribute('id', 'stavesmo82716');
-stavesmo82716.setBegBarType(1);
-stavesmo82716.addClef('alto');
-const keysmo82716 = new VF.KeySignature('E');
-keysmo82716.addToStave(stavesmo82716);
-stavesmo82716.setContext(context);
-stavesmo82716.draw();
-smo82716v0.draw(context, stavesmo82716);
-smo91522.setContext(context);
-smo91522.draw();
-const stavesmo83513 = new VF.Stave(55, 1014.0000000000002, 362);
-stavesmo83513.setAttribute('id', 'stavesmo83513');
-stavesmo83513.setBegBarType(1);
-stavesmo83513.addClef('treble');
-const keysmo83513 = new VF.KeySignature('E');
-keysmo83513.addToStave(stavesmo83513);
-stavesmo83513.setContext(context);
-stavesmo83513.draw();
-smo83513v0.draw(context, stavesmo83513);
-const stavesmo84391 = new VF.Stave(55, 1127.0000000000002, 362);
-stavesmo84391.setAttribute('id', 'stavesmo84391');
-stavesmo84391.setBegBarType(1);
-stavesmo84391.addClef('bass');
-const keysmo84391 = new VF.KeySignature('E');
-keysmo84391.addToStave(stavesmo84391);
-stavesmo84391.setContext(context);
-stavesmo84391.draw();
-smo84391v0.draw(context, stavesmo84391);
-const leftsmo84911stavesmo810864 = new VF.StaveConnector(stavesmo81086, stavesmo84391).setType(4);
-leftsmo84911stavesmo810864.setContext(context).draw();
-const fmtsmo8111013 = new VF.Formatter();
+// formatting measures in staff group smo82569
+fmtsmo7874412.format([smo78744v0,smo79563v0,smo80374v0,smo81171v0,smo82049v0], 231);
+const stavesmo78744 = new VF.Stave(1132, 234.00000000000023, 245);
+stavesmo78744.setAttribute('id', 'stavesmo78744');
+stavesmo78744.setBegBarType(VF.Barline.type.NONE);
+stavesmo78744.setContext(context);
+stavesmo78744.draw();
+smo78744v0.draw(context, stavesmo78744);
+smo89165.setContext(context);
+smo89165.draw();
+const stavesmo79563 = new VF.Stave(1132, 332.0000000000002, 245);
+stavesmo79563.setAttribute('id', 'stavesmo79563');
+stavesmo79563.setBegBarType(VF.Barline.type.NONE);
+stavesmo79563.setContext(context);
+stavesmo79563.draw();
+smo79563v0.draw(context, stavesmo79563);
+smo89167.setContext(context);
+smo89167.draw();
+const stavesmo80374 = new VF.Stave(1132, 435.0000000000002, 245);
+stavesmo80374.setAttribute('id', 'stavesmo80374');
+stavesmo80374.setBegBarType(VF.Barline.type.NONE);
+stavesmo80374.setContext(context);
+stavesmo80374.draw();
+smo80374v0.draw(context, stavesmo80374);
+smo89169.setContext(context);
+smo89169.draw();
+const stavesmo81171 = new VF.Stave(1132, 518.0000000000002, 245);
+stavesmo81171.setAttribute('id', 'stavesmo81171');
+stavesmo81171.setBegBarType(VF.Barline.type.NONE);
+stavesmo81171.setContext(context);
+stavesmo81171.draw();
+smo81171v0.draw(context, stavesmo81171);
+const stavesmo82049 = new VF.Stave(1132, 620.0000000000002, 245);
+stavesmo82049.setAttribute('id', 'stavesmo82049');
+stavesmo82049.setBegBarType(VF.Barline.type.NONE);
+stavesmo82049.setContext(context);
+stavesmo82049.draw();
+smo82049v0.draw(context, stavesmo82049);
+const rightsmo82569stavesmo787444 = new VF.StaveConnector(stavesmo78744, stavesmo82049).setType(0);
+rightsmo82569stavesmo787444.setContext(context).draw();
+const fmtsmo7876813 = new VF.Formatter();
 //
 // voices and notes for stave 0 13
-const smo81110v0 = new VF.Voice(JSON.parse('{"numBeats":4,"beatValue":4}')).setMode(VF.Voice.Mode.SOFT);
-const smo81110v0ar = [];
-const smo81087 = new VF.StaveNote(JSON.parse('{"clef":"treble","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["g#/5/n"]}'))
-smo81087.setAttribute('id', 'smo81087');
-smo81110v0ar.push(smo81087);
-const smo81088 = new VF.StaveNote(JSON.parse('{"clef":"treble","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["g#/5/n"]}'))
-smo81088.setAttribute('id', 'smo81088');
-smo81110v0ar.push(smo81088);
-const smo81089 = new VF.StaveNote(JSON.parse('{"clef":"treble","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["g#/5/n"]}'))
-smo81089.setAttribute('id', 'smo81089');
-smo81110v0ar.push(smo81089);
-const smo81090 = new VF.StaveNote(JSON.parse('{"clef":"treble","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["g#/5/n"]}'))
-smo81090.setAttribute('id', 'smo81090');
-smo81110v0ar.push(smo81090);
-const smo81091 = new VF.StaveNote(JSON.parse('{"clef":"treble","duration":"4","dots":0,"type":"n","autoStem":true,"keys":["bn/5/n"]}'))
-smo81091.setAttribute('id', 'smo81091');
-smo81110v0ar.push(smo81091);
-const smo81092 = new VF.StaveNote(JSON.parse('{"clef":"treble","duration":"8d","dots":1,"type":"n","autoStem":true,"keys":["bn/5/n"]}'))
-smo81092.setAttribute('id', 'smo81092');
-smo81092.addModifier(new VF.Dot(), 0);
-smo81110v0ar.push(smo81092);
-const smo81093 = new VF.StaveNote(JSON.parse('{"clef":"treble","duration":"32","dots":0,"type":"n","autoStem":true,"keys":["an/5/n"]}'))
-smo81093.setAttribute('id', 'smo81093');
-smo81110v0ar.push(smo81093);
-const smo81094 = new VF.StaveNote(JSON.parse('{"clef":"treble","duration":"32","dots":0,"type":"n","autoStem":true,"keys":["g#/5/n"]}'))
-smo81094.setAttribute('id', 'smo81094');
-smo81110v0ar.push(smo81094);
-smo81110v0.addTickables(smo81110v0ar)
-fmtsmo8111013.joinVoices([smo81110v0]);
-const fmtsmo8192913 = new VF.Formatter();
+const smo78768v0 = new VF.Voice(JSON.parse('{"numBeats":4,"beatValue":4}')).setMode(VF.Voice.Mode.SOFT);
+const smo78768v0ar = [];
+const smo78745 = new VF.StaveNote(JSON.parse('{"clef":"treble","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["g#/5/n"]}'))
+smo78745.setAttribute('id', 'smo78745');
+smo78768v0ar.push(smo78745);
+const smo78746 = new VF.StaveNote(JSON.parse('{"clef":"treble","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["g#/5/n"]}'))
+smo78746.setAttribute('id', 'smo78746');
+smo78768v0ar.push(smo78746);
+const smo78747 = new VF.StaveNote(JSON.parse('{"clef":"treble","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["g#/5/n"]}'))
+smo78747.setAttribute('id', 'smo78747');
+smo78768v0ar.push(smo78747);
+const smo78748 = new VF.StaveNote(JSON.parse('{"clef":"treble","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["g#/5/n"]}'))
+smo78748.setAttribute('id', 'smo78748');
+smo78768v0ar.push(smo78748);
+const smo78749 = new VF.StaveNote(JSON.parse('{"clef":"treble","duration":"4","dots":0,"type":"n","autoStem":true,"keys":["bn/5/n"]}'))
+smo78749.setAttribute('id', 'smo78749');
+smo78768v0ar.push(smo78749);
+const smo78750 = new VF.StaveNote(JSON.parse('{"clef":"treble","duration":"8d","dots":1,"type":"n","autoStem":true,"keys":["bn/5/n"]}'))
+smo78750.setAttribute('id', 'smo78750');
+smo78750.addModifier(new VF.Dot(), 0);
+smo78768v0ar.push(smo78750);
+const smo78751 = new VF.StaveNote(JSON.parse('{"clef":"treble","duration":"32","dots":0,"type":"n","autoStem":true,"keys":["an/5/n"]}'))
+smo78751.setAttribute('id', 'smo78751');
+smo78768v0ar.push(smo78751);
+const smo78752 = new VF.StaveNote(JSON.parse('{"clef":"treble","duration":"32","dots":0,"type":"n","autoStem":true,"keys":["g#/5/n"]}'))
+smo78752.setAttribute('id', 'smo78752');
+smo78768v0ar.push(smo78752);
+smo78768v0.addTickables(smo78768v0ar)
+fmtsmo7876813.joinVoices([smo78768v0]);
+const fmtsmo7958713 = new VF.Formatter();
 //
 // voices and notes for stave 1 13
-const smo81929v0 = new VF.Voice(JSON.parse('{"numBeats":4,"beatValue":4}')).setMode(VF.Voice.Mode.SOFT);
-const smo81929v0ar = [];
-const smo81906 = new VF.StaveNote(JSON.parse('{"clef":"treble","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["bn/4/n"]}'))
-smo81906.setAttribute('id', 'smo81906');
-smo81929v0ar.push(smo81906);
-const smo81907 = new VF.StaveNote(JSON.parse('{"clef":"treble","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["bn/4/n"]}'))
-smo81907.setAttribute('id', 'smo81907');
-smo81929v0ar.push(smo81907);
-const smo81908 = new VF.StaveNote(JSON.parse('{"clef":"treble","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["bn/4/n"]}'))
-smo81908.setAttribute('id', 'smo81908');
-smo81929v0ar.push(smo81908);
-const smo81909 = new VF.StaveNote(JSON.parse('{"clef":"treble","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["bn/4/n"]}'))
-smo81909.setAttribute('id', 'smo81909');
-smo81929v0ar.push(smo81909);
-const smo81910 = new VF.StaveNote(JSON.parse('{"clef":"treble","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["en/5/n"]}'))
-smo81910.setAttribute('id', 'smo81910');
-smo81929v0ar.push(smo81910);
-const smo81911 = new VF.StaveNote(JSON.parse('{"clef":"treble","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["en/5/n"]}'))
-smo81911.setAttribute('id', 'smo81911');
-smo81929v0ar.push(smo81911);
-const smo81912 = new VF.StaveNote(JSON.parse('{"clef":"treble","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["en/5/n"]}'))
-smo81912.setAttribute('id', 'smo81912');
-smo81929v0ar.push(smo81912);
-const smo81913 = new VF.StaveNote(JSON.parse('{"clef":"treble","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["en/5/n"]}'))
-smo81913.setAttribute('id', 'smo81913');
-smo81929v0ar.push(smo81913);
-smo81929v0.addTickables(smo81929v0ar)
-fmtsmo8192913.joinVoices([smo81929v0]);
-const fmtsmo8274013 = new VF.Formatter();
+const smo79587v0 = new VF.Voice(JSON.parse('{"numBeats":4,"beatValue":4}')).setMode(VF.Voice.Mode.SOFT);
+const smo79587v0ar = [];
+const smo79564 = new VF.StaveNote(JSON.parse('{"clef":"treble","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["bn/4/n"]}'))
+smo79564.setAttribute('id', 'smo79564');
+smo79587v0ar.push(smo79564);
+const smo79565 = new VF.StaveNote(JSON.parse('{"clef":"treble","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["bn/4/n"]}'))
+smo79565.setAttribute('id', 'smo79565');
+smo79587v0ar.push(smo79565);
+const smo79566 = new VF.StaveNote(JSON.parse('{"clef":"treble","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["bn/4/n"]}'))
+smo79566.setAttribute('id', 'smo79566');
+smo79587v0ar.push(smo79566);
+const smo79567 = new VF.StaveNote(JSON.parse('{"clef":"treble","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["bn/4/n"]}'))
+smo79567.setAttribute('id', 'smo79567');
+smo79587v0ar.push(smo79567);
+const smo79568 = new VF.StaveNote(JSON.parse('{"clef":"treble","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["en/5/n"]}'))
+smo79568.setAttribute('id', 'smo79568');
+smo79587v0ar.push(smo79568);
+const smo79569 = new VF.StaveNote(JSON.parse('{"clef":"treble","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["en/5/n"]}'))
+smo79569.setAttribute('id', 'smo79569');
+smo79587v0ar.push(smo79569);
+const smo79570 = new VF.StaveNote(JSON.parse('{"clef":"treble","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["en/5/n"]}'))
+smo79570.setAttribute('id', 'smo79570');
+smo79587v0ar.push(smo79570);
+const smo79571 = new VF.StaveNote(JSON.parse('{"clef":"treble","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["en/5/n"]}'))
+smo79571.setAttribute('id', 'smo79571');
+smo79587v0ar.push(smo79571);
+smo79587v0.addTickables(smo79587v0ar)
+fmtsmo7958713.joinVoices([smo79587v0]);
+const fmtsmo8039813 = new VF.Formatter();
 //
 // voices and notes for stave 2 13
-const smo82740v0 = new VF.Voice(JSON.parse('{"numBeats":4,"beatValue":4}')).setMode(VF.Voice.Mode.SOFT);
-const smo82740v0ar = [];
-const smo82717 = new VF.StaveNote(JSON.parse('{"clef":"alto","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["en/4/n"]}'))
-smo82717.setAttribute('id', 'smo82717');
-smo82740v0ar.push(smo82717);
-const smo82718 = new VF.StaveNote(JSON.parse('{"clef":"alto","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["en/4/n"]}'))
-smo82718.setAttribute('id', 'smo82718');
-smo82740v0ar.push(smo82718);
-const smo82719 = new VF.StaveNote(JSON.parse('{"clef":"alto","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["en/4/n"]}'))
-smo82719.setAttribute('id', 'smo82719');
-smo82740v0ar.push(smo82719);
-const smo82720 = new VF.StaveNote(JSON.parse('{"clef":"alto","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["en/4/n"]}'))
-smo82720.setAttribute('id', 'smo82720');
-smo82740v0ar.push(smo82720);
-const smo82721 = new VF.StaveNote(JSON.parse('{"clef":"alto","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["g#/3/n"]}'))
-smo82721.setAttribute('id', 'smo82721');
-smo82740v0ar.push(smo82721);
-const smo82722 = new VF.StaveNote(JSON.parse('{"clef":"alto","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["g#/3/n"]}'))
-smo82722.setAttribute('id', 'smo82722');
-smo82740v0ar.push(smo82722);
-const smo82723 = new VF.StaveNote(JSON.parse('{"clef":"alto","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["g#/3/n"]}'))
-smo82723.setAttribute('id', 'smo82723');
-smo82740v0ar.push(smo82723);
-const smo82724 = new VF.StaveNote(JSON.parse('{"clef":"alto","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["g#/3/n"]}'))
-smo82724.setAttribute('id', 'smo82724');
-smo82740v0ar.push(smo82724);
-smo82740v0.addTickables(smo82740v0ar)
-fmtsmo8274013.joinVoices([smo82740v0]);
-const fmtsmo8353013 = new VF.Formatter();
+const smo80398v0 = new VF.Voice(JSON.parse('{"numBeats":4,"beatValue":4}')).setMode(VF.Voice.Mode.SOFT);
+const smo80398v0ar = [];
+const smo80375 = new VF.StaveNote(JSON.parse('{"clef":"alto","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["en/4/n"]}'))
+smo80375.setAttribute('id', 'smo80375');
+smo80398v0ar.push(smo80375);
+const smo80376 = new VF.StaveNote(JSON.parse('{"clef":"alto","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["en/4/n"]}'))
+smo80376.setAttribute('id', 'smo80376');
+smo80398v0ar.push(smo80376);
+const smo80377 = new VF.StaveNote(JSON.parse('{"clef":"alto","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["en/4/n"]}'))
+smo80377.setAttribute('id', 'smo80377');
+smo80398v0ar.push(smo80377);
+const smo80378 = new VF.StaveNote(JSON.parse('{"clef":"alto","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["en/4/n"]}'))
+smo80378.setAttribute('id', 'smo80378');
+smo80398v0ar.push(smo80378);
+const smo80379 = new VF.StaveNote(JSON.parse('{"clef":"alto","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["g#/3/n"]}'))
+smo80379.setAttribute('id', 'smo80379');
+smo80398v0ar.push(smo80379);
+const smo80380 = new VF.StaveNote(JSON.parse('{"clef":"alto","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["g#/3/n"]}'))
+smo80380.setAttribute('id', 'smo80380');
+smo80398v0ar.push(smo80380);
+const smo80381 = new VF.StaveNote(JSON.parse('{"clef":"alto","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["g#/3/n"]}'))
+smo80381.setAttribute('id', 'smo80381');
+smo80398v0ar.push(smo80381);
+const smo80382 = new VF.StaveNote(JSON.parse('{"clef":"alto","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["g#/3/n"]}'))
+smo80382.setAttribute('id', 'smo80382');
+smo80398v0ar.push(smo80382);
+smo80398v0.addTickables(smo80398v0ar)
+fmtsmo8039813.joinVoices([smo80398v0]);
+const fmtsmo8118813 = new VF.Formatter();
 //
 // voices and notes for stave 3 13
-const smo83530v0 = new VF.Voice(JSON.parse('{"numBeats":4,"beatValue":4}')).setMode(VF.Voice.Mode.SOFT);
-const smo83530v0ar = [];
-const smo83514 = new VF.StaveNote(JSON.parse('{"clef":"treble","duration":"1","dots":0,"type":"r","autoStem":true,"keys":["bn/4/r"]}'))
-smo83514.setAttribute('id', 'smo83514');
-smo83530v0ar.push(smo83514);
-smo83530v0.addTickables(smo83530v0ar)
-fmtsmo8353013.joinVoices([smo83530v0]);
-const fmtsmo8441513 = new VF.Formatter();
+const smo81188v0 = new VF.Voice(JSON.parse('{"numBeats":4,"beatValue":4}')).setMode(VF.Voice.Mode.SOFT);
+const smo81188v0ar = [];
+const smo81172 = new VF.StaveNote(JSON.parse('{"clef":"treble","duration":"1","dots":0,"type":"r","autoStem":true,"keys":["bn/4/r"]}'))
+smo81172.setAttribute('id', 'smo81172');
+smo81188v0ar.push(smo81172);
+smo81188v0.addTickables(smo81188v0ar)
+fmtsmo8118813.joinVoices([smo81188v0]);
+const fmtsmo8207313 = new VF.Formatter();
 //
 // voices and notes for stave 4 13
-const smo84415v0 = new VF.Voice(JSON.parse('{"numBeats":4,"beatValue":4}')).setMode(VF.Voice.Mode.SOFT);
-const smo84415v0ar = [];
-const smo84392 = new VF.StaveNote(JSON.parse('{"clef":"bass","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["en/4/n"]}'))
-smo84392.setAttribute('id', 'smo84392');
-smo84415v0ar.push(smo84392);
-const smo84393 = new VF.StaveNote(JSON.parse('{"clef":"bass","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["en/4/n"]}'))
-smo84393.setAttribute('id', 'smo84393');
-smo84415v0ar.push(smo84393);
-const smo84394 = new VF.StaveNote(JSON.parse('{"clef":"bass","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["en/4/n"]}'))
-smo84394.setAttribute('id', 'smo84394');
-smo84415v0ar.push(smo84394);
-const smo84395 = new VF.StaveNote(JSON.parse('{"clef":"bass","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["en/4/n"]}'))
-smo84395.setAttribute('id', 'smo84395');
-smo84415v0ar.push(smo84395);
-const smo84396 = new VF.StaveNote(JSON.parse('{"clef":"bass","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["g#/3/n"]}'))
-smo84396.setAttribute('id', 'smo84396');
-smo84415v0ar.push(smo84396);
-const smo84397 = new VF.StaveNote(JSON.parse('{"clef":"bass","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["g#/3/n"]}'))
-smo84397.setAttribute('id', 'smo84397');
-smo84415v0ar.push(smo84397);
-const smo84398 = new VF.StaveNote(JSON.parse('{"clef":"bass","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["g#/3/n"]}'))
-smo84398.setAttribute('id', 'smo84398');
-smo84415v0ar.push(smo84398);
-const smo84399 = new VF.StaveNote(JSON.parse('{"clef":"bass","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["g#/3/n"]}'))
-smo84399.setAttribute('id', 'smo84399');
-smo84415v0ar.push(smo84399);
-smo84415v0.addTickables(smo84415v0ar)
-fmtsmo8441513.joinVoices([smo84415v0]);
-// create beam groups and tuplets for format grp smo84911 before formatting
-const dirsmo91529 = smo81087.getStemDirection();
-smo81087.setStemDirection(dirsmo91529);
-smo81088.setStemDirection(dirsmo91529);
-const smo91529 = new VF.Beam([smo81087,smo81088]);
-const dirsmo91530 = smo81089.getStemDirection();
-smo81089.setStemDirection(dirsmo91530);
-smo81090.setStemDirection(dirsmo91530);
-const smo91530 = new VF.Beam([smo81089,smo81090]);
-const dirsmo91531 = smo81092.getStemDirection();
-smo81092.setStemDirection(dirsmo91531);
-smo81093.setStemDirection(dirsmo91531);
-smo81094.setStemDirection(dirsmo91531);
-const smo91531 = new VF.Beam([smo81092,smo81093,smo81094]);
-const dirsmo91534 = smo81906.getStemDirection();
-smo81906.setStemDirection(dirsmo91534);
-smo81907.setStemDirection(dirsmo91534);
-smo81908.setStemDirection(dirsmo91534);
-smo81909.setStemDirection(dirsmo91534);
-const smo91534 = new VF.Beam([smo81906,smo81907,smo81908,smo81909]);
-const dirsmo91535 = smo81910.getStemDirection();
-smo81910.setStemDirection(dirsmo91535);
-smo81911.setStemDirection(dirsmo91535);
-smo81912.setStemDirection(dirsmo91535);
-smo81913.setStemDirection(dirsmo91535);
-const smo91535 = new VF.Beam([smo81910,smo81911,smo81912,smo81913]);
-const dirsmo91538 = smo82717.getStemDirection();
-smo82717.setStemDirection(dirsmo91538);
-smo82718.setStemDirection(dirsmo91538);
-smo82719.setStemDirection(dirsmo91538);
-smo82720.setStemDirection(dirsmo91538);
-const smo91538 = new VF.Beam([smo82717,smo82718,smo82719,smo82720]);
-const dirsmo91539 = smo82721.getStemDirection();
-smo82721.setStemDirection(dirsmo91539);
-smo82722.setStemDirection(dirsmo91539);
-smo82723.setStemDirection(dirsmo91539);
-smo82724.setStemDirection(dirsmo91539);
-const smo91539 = new VF.Beam([smo82721,smo82722,smo82723,smo82724]);
-const dirsmo91544 = smo84392.getStemDirection();
-smo84392.setStemDirection(dirsmo91544);
-smo84393.setStemDirection(dirsmo91544);
-smo84394.setStemDirection(dirsmo91544);
-smo84395.setStemDirection(dirsmo91544);
-const smo91544 = new VF.Beam([smo84392,smo84393,smo84394,smo84395]);
-const dirsmo91545 = smo84396.getStemDirection();
-smo84396.setStemDirection(dirsmo91545);
-smo84397.setStemDirection(dirsmo91545);
-smo84398.setStemDirection(dirsmo91545);
-smo84399.setStemDirection(dirsmo91545);
-const smo91545 = new VF.Beam([smo84396,smo84397,smo84398,smo84399]);
+const smo82073v0 = new VF.Voice(JSON.parse('{"numBeats":4,"beatValue":4}')).setMode(VF.Voice.Mode.SOFT);
+const smo82073v0ar = [];
+const smo82050 = new VF.StaveNote(JSON.parse('{"clef":"bass","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["en/4/n"]}'))
+smo82050.setAttribute('id', 'smo82050');
+smo82073v0ar.push(smo82050);
+const smo82051 = new VF.StaveNote(JSON.parse('{"clef":"bass","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["en/4/n"]}'))
+smo82051.setAttribute('id', 'smo82051');
+smo82073v0ar.push(smo82051);
+const smo82052 = new VF.StaveNote(JSON.parse('{"clef":"bass","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["en/4/n"]}'))
+smo82052.setAttribute('id', 'smo82052');
+smo82073v0ar.push(smo82052);
+const smo82053 = new VF.StaveNote(JSON.parse('{"clef":"bass","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["en/4/n"]}'))
+smo82053.setAttribute('id', 'smo82053');
+smo82073v0ar.push(smo82053);
+const smo82054 = new VF.StaveNote(JSON.parse('{"clef":"bass","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["g#/3/n"]}'))
+smo82054.setAttribute('id', 'smo82054');
+smo82073v0ar.push(smo82054);
+const smo82055 = new VF.StaveNote(JSON.parse('{"clef":"bass","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["g#/3/n"]}'))
+smo82055.setAttribute('id', 'smo82055');
+smo82073v0ar.push(smo82055);
+const smo82056 = new VF.StaveNote(JSON.parse('{"clef":"bass","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["g#/3/n"]}'))
+smo82056.setAttribute('id', 'smo82056');
+smo82073v0ar.push(smo82056);
+const smo82057 = new VF.StaveNote(JSON.parse('{"clef":"bass","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["g#/3/n"]}'))
+smo82057.setAttribute('id', 'smo82057');
+smo82073v0ar.push(smo82057);
+smo82073v0.addTickables(smo82073v0ar)
+fmtsmo8207313.joinVoices([smo82073v0]);
+// create beam groups and tuplets for format grp smo82569 before formatting
+const dirsmo89198 = smo78745.getStemDirection();
+smo78745.setStemDirection(dirsmo89198);
+smo78746.setStemDirection(dirsmo89198);
+const smo89198 = new VF.Beam([smo78745,smo78746]);
+const dirsmo89199 = smo78747.getStemDirection();
+smo78747.setStemDirection(dirsmo89199);
+smo78748.setStemDirection(dirsmo89199);
+const smo89199 = new VF.Beam([smo78747,smo78748]);
+const dirsmo89200 = smo78750.getStemDirection();
+smo78750.setStemDirection(dirsmo89200);
+smo78751.setStemDirection(dirsmo89200);
+smo78752.setStemDirection(dirsmo89200);
+const smo89200 = new VF.Beam([smo78750,smo78751,smo78752]);
+const dirsmo89202 = smo79564.getStemDirection();
+smo79564.setStemDirection(dirsmo89202);
+smo79565.setStemDirection(dirsmo89202);
+smo79566.setStemDirection(dirsmo89202);
+smo79567.setStemDirection(dirsmo89202);
+const smo89202 = new VF.Beam([smo79564,smo79565,smo79566,smo79567]);
+const dirsmo89203 = smo79568.getStemDirection();
+smo79568.setStemDirection(dirsmo89203);
+smo79569.setStemDirection(dirsmo89203);
+smo79570.setStemDirection(dirsmo89203);
+smo79571.setStemDirection(dirsmo89203);
+const smo89203 = new VF.Beam([smo79568,smo79569,smo79570,smo79571]);
+const dirsmo89205 = smo80375.getStemDirection();
+smo80375.setStemDirection(dirsmo89205);
+smo80376.setStemDirection(dirsmo89205);
+smo80377.setStemDirection(dirsmo89205);
+smo80378.setStemDirection(dirsmo89205);
+const smo89205 = new VF.Beam([smo80375,smo80376,smo80377,smo80378]);
+const dirsmo89206 = smo80379.getStemDirection();
+smo80379.setStemDirection(dirsmo89206);
+smo80380.setStemDirection(dirsmo89206);
+smo80381.setStemDirection(dirsmo89206);
+smo80382.setStemDirection(dirsmo89206);
+const smo89206 = new VF.Beam([smo80379,smo80380,smo80381,smo80382]);
+const dirsmo89209 = smo82050.getStemDirection();
+smo82050.setStemDirection(dirsmo89209);
+smo82051.setStemDirection(dirsmo89209);
+smo82052.setStemDirection(dirsmo89209);
+smo82053.setStemDirection(dirsmo89209);
+const smo89209 = new VF.Beam([smo82050,smo82051,smo82052,smo82053]);
+const dirsmo89210 = smo82054.getStemDirection();
+smo82054.setStemDirection(dirsmo89210);
+smo82055.setStemDirection(dirsmo89210);
+smo82056.setStemDirection(dirsmo89210);
+smo82057.setStemDirection(dirsmo89210);
+const smo89210 = new VF.Beam([smo82054,smo82055,smo82056,smo82057]);
  
-// formatting measures in staff group smo84911
-fmtsmo8111013.format([smo81110v0,smo81929v0,smo82740v0,smo83530v0,smo84415v0], 281);
-const stavesmo81110 = new VF.Stave(417, 764.0000000000002, 295);
-stavesmo81110.setAttribute('id', 'stavesmo81110');
-stavesmo81110.setBegBarType(VF.Barline.type.NONE);
-stavesmo81110.setContext(context);
-stavesmo81110.draw();
-smo81110v0.draw(context, stavesmo81110);
-smo91529.setContext(context);
-smo91529.draw();
-smo91530.setContext(context);
-smo91530.draw();
-smo91531.setContext(context);
-smo91531.draw();
-const stavesmo81929 = new VF.Stave(417, 842.0000000000002, 295);
-stavesmo81929.setAttribute('id', 'stavesmo81929');
-stavesmo81929.setBegBarType(VF.Barline.type.NONE);
-stavesmo81929.setContext(context);
-stavesmo81929.draw();
-smo81929v0.draw(context, stavesmo81929);
-smo91534.setContext(context);
-smo91534.draw();
-smo91535.setContext(context);
-smo91535.draw();
-const stavesmo82740 = new VF.Stave(417, 921.0000000000002, 295);
-stavesmo82740.setAttribute('id', 'stavesmo82740');
-stavesmo82740.setBegBarType(VF.Barline.type.NONE);
-stavesmo82740.setContext(context);
-stavesmo82740.draw();
-smo82740v0.draw(context, stavesmo82740);
-smo91538.setContext(context);
-smo91538.draw();
-smo91539.setContext(context);
-smo91539.draw();
-const stavesmo83530 = new VF.Stave(417, 1014.0000000000002, 295);
-stavesmo83530.setAttribute('id', 'stavesmo83530');
-stavesmo83530.setBegBarType(VF.Barline.type.NONE);
-stavesmo83530.setContext(context);
-stavesmo83530.draw();
-smo83530v0.draw(context, stavesmo83530);
-const stavesmo84415 = new VF.Stave(417, 1127.0000000000002, 295);
-stavesmo84415.setAttribute('id', 'stavesmo84415');
-stavesmo84415.setBegBarType(VF.Barline.type.NONE);
-stavesmo84415.setContext(context);
-stavesmo84415.draw();
-smo84415v0.draw(context, stavesmo84415);
-smo91544.setContext(context);
-smo91544.draw();
-smo91545.setContext(context);
-smo91545.draw();
-const fmtsmo8113414 = new VF.Formatter();
+// formatting measures in staff group smo82569
+fmtsmo7876813.format([smo78768v0,smo79587v0,smo80398v0,smo81188v0,smo82073v0], 240);
+const stavesmo78768 = new VF.Stave(55, 764.0000000000002, 335);
+stavesmo78768.setAttribute('id', 'stavesmo78768');
+stavesmo78768.setBegBarType(1);
+stavesmo78768.addClef('treble');
+const keysmo78768 = new VF.KeySignature('E');
+keysmo78768.addToStave(stavesmo78768);
+stavesmo78768.setContext(context);
+stavesmo78768.draw();
+smo78768v0.draw(context, stavesmo78768);
+smo89198.setContext(context);
+smo89198.draw();
+smo89199.setContext(context);
+smo89199.draw();
+smo89200.setContext(context);
+smo89200.draw();
+const stavesmo79587 = new VF.Stave(55, 848.0000000000002, 335);
+stavesmo79587.setAttribute('id', 'stavesmo79587');
+stavesmo79587.setBegBarType(1);
+stavesmo79587.addClef('treble');
+const keysmo79587 = new VF.KeySignature('E');
+keysmo79587.addToStave(stavesmo79587);
+stavesmo79587.setContext(context);
+stavesmo79587.draw();
+smo79587v0.draw(context, stavesmo79587);
+smo89202.setContext(context);
+smo89202.draw();
+smo89203.setContext(context);
+smo89203.draw();
+const stavesmo80398 = new VF.Stave(55, 930.0000000000002, 335);
+stavesmo80398.setAttribute('id', 'stavesmo80398');
+stavesmo80398.setBegBarType(1);
+stavesmo80398.addClef('alto');
+const keysmo80398 = new VF.KeySignature('E');
+keysmo80398.addToStave(stavesmo80398);
+stavesmo80398.setContext(context);
+stavesmo80398.draw();
+smo80398v0.draw(context, stavesmo80398);
+smo89205.setContext(context);
+smo89205.draw();
+smo89206.setContext(context);
+smo89206.draw();
+const stavesmo81188 = new VF.Stave(55, 1026.0000000000002, 335);
+stavesmo81188.setAttribute('id', 'stavesmo81188');
+stavesmo81188.setBegBarType(1);
+stavesmo81188.addClef('treble');
+const keysmo81188 = new VF.KeySignature('E');
+keysmo81188.addToStave(stavesmo81188);
+stavesmo81188.setContext(context);
+stavesmo81188.draw();
+smo81188v0.draw(context, stavesmo81188);
+const stavesmo82073 = new VF.Stave(55, 1139.0000000000002, 335);
+stavesmo82073.setAttribute('id', 'stavesmo82073');
+stavesmo82073.setBegBarType(1);
+stavesmo82073.addClef('bass');
+const keysmo82073 = new VF.KeySignature('E');
+keysmo82073.addToStave(stavesmo82073);
+stavesmo82073.setContext(context);
+stavesmo82073.draw();
+smo82073v0.draw(context, stavesmo82073);
+smo89209.setContext(context);
+smo89209.draw();
+smo89210.setContext(context);
+smo89210.draw();
+const leftsmo82569stavesmo787684 = new VF.StaveConnector(stavesmo78768, stavesmo82073).setType(4);
+leftsmo82569stavesmo787684.setContext(context).draw();
+const fmtsmo7879214 = new VF.Formatter();
 //
 // voices and notes for stave 0 14
-const smo81134v0 = new VF.Voice(JSON.parse('{"numBeats":4,"beatValue":4}')).setMode(VF.Voice.Mode.SOFT);
-const smo81134v0ar = [];
-const smo81111 = new VF.StaveNote(JSON.parse('{"clef":"treble","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["f#/5/n"]}'))
-smo81111.setAttribute('id', 'smo81111');
-smo81134v0ar.push(smo81111);
-const smo81112 = new VF.StaveNote(JSON.parse('{"clef":"treble","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["f#/5/n"]}'))
-smo81112.setAttribute('id', 'smo81112');
-smo81134v0ar.push(smo81112);
-const smo81113 = new VF.StaveNote(JSON.parse('{"clef":"treble","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["f#/5/n"]}'))
-smo81113.setAttribute('id', 'smo81113');
-smo81134v0ar.push(smo81113);
-const smo81114 = new VF.StaveNote(JSON.parse('{"clef":"treble","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["f#/5/n"]}'))
-smo81114.setAttribute('id', 'smo81114');
-smo81134v0ar.push(smo81114);
-const smo81115 = new VF.StaveNote(JSON.parse('{"clef":"treble","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["f#/5/n"]}'))
-smo81115.setAttribute('id', 'smo81115');
-smo81134v0ar.push(smo81115);
-const smo81116 = new VF.StaveNote(JSON.parse('{"clef":"treble","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["f#/5/n"]}'))
-smo81116.setAttribute('id', 'smo81116');
-smo81134v0ar.push(smo81116);
-const smo81117 = new VF.StaveNote(JSON.parse('{"clef":"treble","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["f#/5/n"]}'))
-smo81117.setAttribute('id', 'smo81117');
-smo81134v0ar.push(smo81117);
-const smo81118 = new VF.StaveNote(JSON.parse('{"clef":"treble","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["f#/5/n"]}'))
-smo81118.setAttribute('id', 'smo81118');
-smo81134v0ar.push(smo81118);
-smo81134v0.addTickables(smo81134v0ar)
-fmtsmo8113414.joinVoices([smo81134v0]);
-const fmtsmo8195314 = new VF.Formatter();
+const smo78792v0 = new VF.Voice(JSON.parse('{"numBeats":4,"beatValue":4}')).setMode(VF.Voice.Mode.SOFT);
+const smo78792v0ar = [];
+const smo78769 = new VF.StaveNote(JSON.parse('{"clef":"treble","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["f#/5/n"]}'))
+smo78769.setAttribute('id', 'smo78769');
+smo78792v0ar.push(smo78769);
+const smo78770 = new VF.StaveNote(JSON.parse('{"clef":"treble","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["f#/5/n"]}'))
+smo78770.setAttribute('id', 'smo78770');
+smo78792v0ar.push(smo78770);
+const smo78771 = new VF.StaveNote(JSON.parse('{"clef":"treble","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["f#/5/n"]}'))
+smo78771.setAttribute('id', 'smo78771');
+smo78792v0ar.push(smo78771);
+const smo78772 = new VF.StaveNote(JSON.parse('{"clef":"treble","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["f#/5/n"]}'))
+smo78772.setAttribute('id', 'smo78772');
+smo78792v0ar.push(smo78772);
+const smo78773 = new VF.StaveNote(JSON.parse('{"clef":"treble","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["f#/5/n"]}'))
+smo78773.setAttribute('id', 'smo78773');
+smo78792v0ar.push(smo78773);
+const smo78774 = new VF.StaveNote(JSON.parse('{"clef":"treble","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["f#/5/n"]}'))
+smo78774.setAttribute('id', 'smo78774');
+smo78792v0ar.push(smo78774);
+const smo78775 = new VF.StaveNote(JSON.parse('{"clef":"treble","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["f#/5/n"]}'))
+smo78775.setAttribute('id', 'smo78775');
+smo78792v0ar.push(smo78775);
+const smo78776 = new VF.StaveNote(JSON.parse('{"clef":"treble","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["f#/5/n"]}'))
+smo78776.setAttribute('id', 'smo78776');
+smo78792v0ar.push(smo78776);
+smo78792v0.addTickables(smo78792v0ar)
+fmtsmo7879214.joinVoices([smo78792v0]);
+const fmtsmo7961114 = new VF.Formatter();
 //
 // voices and notes for stave 1 14
-const smo81953v0 = new VF.Voice(JSON.parse('{"numBeats":4,"beatValue":4}')).setMode(VF.Voice.Mode.SOFT);
-const smo81953v0ar = [];
-const smo81930 = new VF.StaveNote(JSON.parse('{"clef":"treble","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["en/5/n"]}'))
-smo81930.setAttribute('id', 'smo81930');
-smo81953v0ar.push(smo81930);
-const smo81931 = new VF.StaveNote(JSON.parse('{"clef":"treble","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["en/5/n"]}'))
-smo81931.setAttribute('id', 'smo81931');
-smo81953v0ar.push(smo81931);
-const smo81932 = new VF.StaveNote(JSON.parse('{"clef":"treble","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["en/5/n"]}'))
-smo81932.setAttribute('id', 'smo81932');
-smo81953v0ar.push(smo81932);
-const smo81933 = new VF.StaveNote(JSON.parse('{"clef":"treble","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["en/5/n"]}'))
-smo81933.setAttribute('id', 'smo81933');
-smo81953v0ar.push(smo81933);
-const smo81934 = new VF.StaveNote(JSON.parse('{"clef":"treble","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["d#/5/n"]}'))
-smo81934.setAttribute('id', 'smo81934');
-smo81953v0ar.push(smo81934);
-const smo81935 = new VF.StaveNote(JSON.parse('{"clef":"treble","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["d#/5/n"]}'))
-smo81935.setAttribute('id', 'smo81935');
-smo81953v0ar.push(smo81935);
-const smo81936 = new VF.StaveNote(JSON.parse('{"clef":"treble","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["d#/5/n"]}'))
-smo81936.setAttribute('id', 'smo81936');
-smo81953v0ar.push(smo81936);
-const smo81937 = new VF.StaveNote(JSON.parse('{"clef":"treble","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["d#/5/n"]}'))
-smo81937.setAttribute('id', 'smo81937');
-smo81953v0ar.push(smo81937);
-smo81953v0.addTickables(smo81953v0ar)
-fmtsmo8195314.joinVoices([smo81953v0]);
-const fmtsmo8276414 = new VF.Formatter();
+const smo79611v0 = new VF.Voice(JSON.parse('{"numBeats":4,"beatValue":4}')).setMode(VF.Voice.Mode.SOFT);
+const smo79611v0ar = [];
+const smo79588 = new VF.StaveNote(JSON.parse('{"clef":"treble","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["en/5/n"]}'))
+smo79588.setAttribute('id', 'smo79588');
+smo79611v0ar.push(smo79588);
+const smo79589 = new VF.StaveNote(JSON.parse('{"clef":"treble","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["en/5/n"]}'))
+smo79589.setAttribute('id', 'smo79589');
+smo79611v0ar.push(smo79589);
+const smo79590 = new VF.StaveNote(JSON.parse('{"clef":"treble","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["en/5/n"]}'))
+smo79590.setAttribute('id', 'smo79590');
+smo79611v0ar.push(smo79590);
+const smo79591 = new VF.StaveNote(JSON.parse('{"clef":"treble","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["en/5/n"]}'))
+smo79591.setAttribute('id', 'smo79591');
+smo79611v0ar.push(smo79591);
+const smo79592 = new VF.StaveNote(JSON.parse('{"clef":"treble","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["d#/5/n"]}'))
+smo79592.setAttribute('id', 'smo79592');
+smo79611v0ar.push(smo79592);
+const smo79593 = new VF.StaveNote(JSON.parse('{"clef":"treble","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["d#/5/n"]}'))
+smo79593.setAttribute('id', 'smo79593');
+smo79611v0ar.push(smo79593);
+const smo79594 = new VF.StaveNote(JSON.parse('{"clef":"treble","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["d#/5/n"]}'))
+smo79594.setAttribute('id', 'smo79594');
+smo79611v0ar.push(smo79594);
+const smo79595 = new VF.StaveNote(JSON.parse('{"clef":"treble","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["d#/5/n"]}'))
+smo79595.setAttribute('id', 'smo79595');
+smo79611v0ar.push(smo79595);
+smo79611v0.addTickables(smo79611v0ar)
+fmtsmo7961114.joinVoices([smo79611v0]);
+const fmtsmo8042214 = new VF.Formatter();
 //
 // voices and notes for stave 2 14
-const smo82764v0 = new VF.Voice(JSON.parse('{"numBeats":4,"beatValue":4}')).setMode(VF.Voice.Mode.SOFT);
-const smo82764v0ar = [];
-const smo82741 = new VF.StaveNote(JSON.parse('{"clef":"alto","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["bn/3/n"]}'))
-smo82741.setAttribute('id', 'smo82741');
-smo82764v0ar.push(smo82741);
-const smo82742 = new VF.StaveNote(JSON.parse('{"clef":"alto","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["bn/3/n"]}'))
-smo82742.setAttribute('id', 'smo82742');
-smo82764v0ar.push(smo82742);
-const smo82743 = new VF.StaveNote(JSON.parse('{"clef":"alto","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["bn/3/n"]}'))
-smo82743.setAttribute('id', 'smo82743');
-smo82764v0ar.push(smo82743);
-const smo82744 = new VF.StaveNote(JSON.parse('{"clef":"alto","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["bn/3/n"]}'))
-smo82744.setAttribute('id', 'smo82744');
-smo82764v0ar.push(smo82744);
-const smo82745 = new VF.StaveNote(JSON.parse('{"clef":"alto","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["bn/3/n"]}'))
-smo82745.setAttribute('id', 'smo82745');
-smo82764v0ar.push(smo82745);
-const smo82746 = new VF.StaveNote(JSON.parse('{"clef":"alto","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["bn/3/n"]}'))
-smo82746.setAttribute('id', 'smo82746');
-smo82764v0ar.push(smo82746);
-const smo82747 = new VF.StaveNote(JSON.parse('{"clef":"alto","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["bn/3/n"]}'))
-smo82747.setAttribute('id', 'smo82747');
-smo82764v0ar.push(smo82747);
-const smo82748 = new VF.StaveNote(JSON.parse('{"clef":"alto","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["bn/3/n"]}'))
-smo82748.setAttribute('id', 'smo82748');
-smo82764v0ar.push(smo82748);
-smo82764v0.addTickables(smo82764v0ar)
-fmtsmo8276414.joinVoices([smo82764v0]);
-const fmtsmo8355114 = new VF.Formatter();
+const smo80422v0 = new VF.Voice(JSON.parse('{"numBeats":4,"beatValue":4}')).setMode(VF.Voice.Mode.SOFT);
+const smo80422v0ar = [];
+const smo80399 = new VF.StaveNote(JSON.parse('{"clef":"alto","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["bn/3/n"]}'))
+smo80399.setAttribute('id', 'smo80399');
+smo80422v0ar.push(smo80399);
+const smo80400 = new VF.StaveNote(JSON.parse('{"clef":"alto","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["bn/3/n"]}'))
+smo80400.setAttribute('id', 'smo80400');
+smo80422v0ar.push(smo80400);
+const smo80401 = new VF.StaveNote(JSON.parse('{"clef":"alto","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["bn/3/n"]}'))
+smo80401.setAttribute('id', 'smo80401');
+smo80422v0ar.push(smo80401);
+const smo80402 = new VF.StaveNote(JSON.parse('{"clef":"alto","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["bn/3/n"]}'))
+smo80402.setAttribute('id', 'smo80402');
+smo80422v0ar.push(smo80402);
+const smo80403 = new VF.StaveNote(JSON.parse('{"clef":"alto","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["bn/3/n"]}'))
+smo80403.setAttribute('id', 'smo80403');
+smo80422v0ar.push(smo80403);
+const smo80404 = new VF.StaveNote(JSON.parse('{"clef":"alto","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["bn/3/n"]}'))
+smo80404.setAttribute('id', 'smo80404');
+smo80422v0ar.push(smo80404);
+const smo80405 = new VF.StaveNote(JSON.parse('{"clef":"alto","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["bn/3/n"]}'))
+smo80405.setAttribute('id', 'smo80405');
+smo80422v0ar.push(smo80405);
+const smo80406 = new VF.StaveNote(JSON.parse('{"clef":"alto","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["bn/3/n"]}'))
+smo80406.setAttribute('id', 'smo80406');
+smo80422v0ar.push(smo80406);
+smo80422v0.addTickables(smo80422v0ar)
+fmtsmo8042214.joinVoices([smo80422v0]);
+const fmtsmo8120914 = new VF.Formatter();
 //
 // voices and notes for stave 3 14
-const smo83551v0 = new VF.Voice(JSON.parse('{"numBeats":4,"beatValue":4}')).setMode(VF.Voice.Mode.SOFT);
-const smo83551v0ar = [];
-const smo83531 = new VF.StaveNote(JSON.parse('{"clef":"treble","duration":"2","dots":0,"type":"r","autoStem":true,"keys":["bn/4/r"]}'))
-smo83531.setAttribute('id', 'smo83531');
-smo83551v0ar.push(smo83531);
-const smo83532 = new VF.StaveNote(JSON.parse('{"clef":"treble","duration":"4d","dots":1,"type":"n","autoStem":true,"keys":["bn/4/n"]}'))
-smo83532.setAttribute('id', 'smo83532');
-smo83532.addModifier(new VF.Dot(), 0);
-const smo83533 = new VF.Annotation('Speak');
-smo83533.setAttribute('id', 'smo83533');
-smo83533.setFont('Merriweather', 12, 'normal');
-smo83533.setVerticalJustification(VF.Annotation.VerticalJustify.BOTTOM);
-smo83532.addModifier(smo83533);
-smo83533.addClass('lyric lyric-0');
-smo83551v0ar.push(smo83532);
-const smo83534 = new VF.StaveNote(JSON.parse('{"clef":"treble","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["bn/4/n"]}'))
-smo83534.setAttribute('id', 'smo83534');
-const smo83535 = new VF.Annotation('ye');
-smo83535.setAttribute('id', 'smo83535');
-smo83535.setFont('Merriweather', 12, 'normal');
-smo83535.setVerticalJustification(VF.Annotation.VerticalJustify.BOTTOM);
-smo83534.addModifier(smo83535);
-smo83535.addClass('lyric lyric-0');
-smo83551v0ar.push(smo83534);
-smo83551v0.addTickables(smo83551v0ar)
-fmtsmo8355114.joinVoices([smo83551v0]);
-const fmtsmo8443914 = new VF.Formatter();
+const smo81209v0 = new VF.Voice(JSON.parse('{"numBeats":4,"beatValue":4}')).setMode(VF.Voice.Mode.SOFT);
+const smo81209v0ar = [];
+const smo81189 = new VF.StaveNote(JSON.parse('{"clef":"treble","duration":"2","dots":0,"type":"r","autoStem":true,"keys":["bn/4/r"]}'))
+smo81189.setAttribute('id', 'smo81189');
+smo81209v0ar.push(smo81189);
+const smo81190 = new VF.StaveNote(JSON.parse('{"clef":"treble","duration":"4d","dots":1,"type":"n","autoStem":true,"keys":["bn/4/n"]}'))
+smo81190.setAttribute('id', 'smo81190');
+smo81190.addModifier(new VF.Dot(), 0);
+const smo81191 = new VF.Annotation('Speak');
+smo81191.setAttribute('id', 'smo81191');
+smo81191.setFont('Merriweather', 12, 'normal');
+smo81191.setVerticalJustification(VF.Annotation.VerticalJustify.BOTTOM);
+smo81190.addModifier(smo81191);
+smo81191.addClass('lyric lyric-0');
+smo81209v0ar.push(smo81190);
+const smo81192 = new VF.StaveNote(JSON.parse('{"clef":"treble","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["bn/4/n"]}'))
+smo81192.setAttribute('id', 'smo81192');
+const smo81193 = new VF.Annotation('ye');
+smo81193.setAttribute('id', 'smo81193');
+smo81193.setFont('Merriweather', 12, 'normal');
+smo81193.setVerticalJustification(VF.Annotation.VerticalJustify.BOTTOM);
+smo81192.addModifier(smo81193);
+smo81193.addClass('lyric lyric-0');
+smo81209v0ar.push(smo81192);
+smo81209v0.addTickables(smo81209v0ar)
+fmtsmo8120914.joinVoices([smo81209v0]);
+const fmtsmo8209714 = new VF.Formatter();
 //
 // voices and notes for stave 4 14
-const smo84439v0 = new VF.Voice(JSON.parse('{"numBeats":4,"beatValue":4}')).setMode(VF.Voice.Mode.SOFT);
-const smo84439v0ar = [];
-const smo84416 = new VF.StaveNote(JSON.parse('{"clef":"bass","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["bn/3/n"]}'))
-smo84416.setAttribute('id', 'smo84416');
-smo84439v0ar.push(smo84416);
-const smo84417 = new VF.StaveNote(JSON.parse('{"clef":"bass","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["bn/3/n"]}'))
-smo84417.setAttribute('id', 'smo84417');
-smo84439v0ar.push(smo84417);
-const smo84418 = new VF.StaveNote(JSON.parse('{"clef":"bass","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["bn/3/n"]}'))
-smo84418.setAttribute('id', 'smo84418');
-smo84439v0ar.push(smo84418);
-const smo84419 = new VF.StaveNote(JSON.parse('{"clef":"bass","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["bn/3/n"]}'))
-smo84419.setAttribute('id', 'smo84419');
-smo84439v0ar.push(smo84419);
-const smo84420 = new VF.StaveNote(JSON.parse('{"clef":"bass","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["bn/2/n"]}'))
-smo84420.setAttribute('id', 'smo84420');
-smo84439v0ar.push(smo84420);
-const smo84421 = new VF.StaveNote(JSON.parse('{"clef":"bass","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["bn/2/n"]}'))
-smo84421.setAttribute('id', 'smo84421');
-smo84439v0ar.push(smo84421);
-const smo84422 = new VF.StaveNote(JSON.parse('{"clef":"bass","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["bn/2/n"]}'))
-smo84422.setAttribute('id', 'smo84422');
-smo84439v0ar.push(smo84422);
-const smo84423 = new VF.StaveNote(JSON.parse('{"clef":"bass","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["bn/2/n"]}'))
-smo84423.setAttribute('id', 'smo84423');
-smo84439v0ar.push(smo84423);
-smo84439v0.addTickables(smo84439v0ar)
-fmtsmo8443914.joinVoices([smo84439v0]);
-// create beam groups and tuplets for format grp smo84911 before formatting
-const dirsmo91548 = smo81111.getStemDirection();
-smo81111.setStemDirection(dirsmo91548);
-smo81112.setStemDirection(dirsmo91548);
-smo81113.setStemDirection(dirsmo91548);
-smo81114.setStemDirection(dirsmo91548);
-const smo91548 = new VF.Beam([smo81111,smo81112,smo81113,smo81114]);
-const dirsmo91549 = smo81115.getStemDirection();
-smo81115.setStemDirection(dirsmo91549);
-smo81116.setStemDirection(dirsmo91549);
-smo81117.setStemDirection(dirsmo91549);
-smo81118.setStemDirection(dirsmo91549);
-const smo91549 = new VF.Beam([smo81115,smo81116,smo81117,smo81118]);
-const dirsmo91552 = smo81930.getStemDirection();
-smo81930.setStemDirection(dirsmo91552);
-smo81931.setStemDirection(dirsmo91552);
-smo81932.setStemDirection(dirsmo91552);
-smo81933.setStemDirection(dirsmo91552);
-const smo91552 = new VF.Beam([smo81930,smo81931,smo81932,smo81933]);
-const dirsmo91553 = smo81934.getStemDirection();
-smo81934.setStemDirection(dirsmo91553);
-smo81935.setStemDirection(dirsmo91553);
-smo81936.setStemDirection(dirsmo91553);
-smo81937.setStemDirection(dirsmo91553);
-const smo91553 = new VF.Beam([smo81934,smo81935,smo81936,smo81937]);
-const dirsmo91556 = smo82741.getStemDirection();
-smo82741.setStemDirection(dirsmo91556);
-smo82742.setStemDirection(dirsmo91556);
-smo82743.setStemDirection(dirsmo91556);
-smo82744.setStemDirection(dirsmo91556);
-const smo91556 = new VF.Beam([smo82741,smo82742,smo82743,smo82744]);
-const dirsmo91557 = smo82745.getStemDirection();
-smo82745.setStemDirection(dirsmo91557);
-smo82746.setStemDirection(dirsmo91557);
-smo82747.setStemDirection(dirsmo91557);
-smo82748.setStemDirection(dirsmo91557);
-const smo91557 = new VF.Beam([smo82745,smo82746,smo82747,smo82748]);
-const dirsmo91562 = smo84416.getStemDirection();
-smo84416.setStemDirection(dirsmo91562);
-smo84417.setStemDirection(dirsmo91562);
-smo84418.setStemDirection(dirsmo91562);
-smo84419.setStemDirection(dirsmo91562);
-const smo91562 = new VF.Beam([smo84416,smo84417,smo84418,smo84419]);
-const dirsmo91563 = smo84420.getStemDirection();
-smo84420.setStemDirection(dirsmo91563);
-smo84421.setStemDirection(dirsmo91563);
-smo84422.setStemDirection(dirsmo91563);
-smo84423.setStemDirection(dirsmo91563);
-const smo91563 = new VF.Beam([smo84420,smo84421,smo84422,smo84423]);
+const smo82097v0 = new VF.Voice(JSON.parse('{"numBeats":4,"beatValue":4}')).setMode(VF.Voice.Mode.SOFT);
+const smo82097v0ar = [];
+const smo82074 = new VF.StaveNote(JSON.parse('{"clef":"bass","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["bn/3/n"]}'))
+smo82074.setAttribute('id', 'smo82074');
+smo82097v0ar.push(smo82074);
+const smo82075 = new VF.StaveNote(JSON.parse('{"clef":"bass","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["bn/3/n"]}'))
+smo82075.setAttribute('id', 'smo82075');
+smo82097v0ar.push(smo82075);
+const smo82076 = new VF.StaveNote(JSON.parse('{"clef":"bass","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["bn/3/n"]}'))
+smo82076.setAttribute('id', 'smo82076');
+smo82097v0ar.push(smo82076);
+const smo82077 = new VF.StaveNote(JSON.parse('{"clef":"bass","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["bn/3/n"]}'))
+smo82077.setAttribute('id', 'smo82077');
+smo82097v0ar.push(smo82077);
+const smo82078 = new VF.StaveNote(JSON.parse('{"clef":"bass","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["bn/2/n"]}'))
+smo82078.setAttribute('id', 'smo82078');
+smo82097v0ar.push(smo82078);
+const smo82079 = new VF.StaveNote(JSON.parse('{"clef":"bass","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["bn/2/n"]}'))
+smo82079.setAttribute('id', 'smo82079');
+smo82097v0ar.push(smo82079);
+const smo82080 = new VF.StaveNote(JSON.parse('{"clef":"bass","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["bn/2/n"]}'))
+smo82080.setAttribute('id', 'smo82080');
+smo82097v0ar.push(smo82080);
+const smo82081 = new VF.StaveNote(JSON.parse('{"clef":"bass","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["bn/2/n"]}'))
+smo82081.setAttribute('id', 'smo82081');
+smo82097v0ar.push(smo82081);
+smo82097v0.addTickables(smo82097v0ar)
+fmtsmo8209714.joinVoices([smo82097v0]);
+// create beam groups and tuplets for format grp smo82569 before formatting
+const dirsmo89217 = smo78769.getStemDirection();
+smo78769.setStemDirection(dirsmo89217);
+smo78770.setStemDirection(dirsmo89217);
+smo78771.setStemDirection(dirsmo89217);
+smo78772.setStemDirection(dirsmo89217);
+const smo89217 = new VF.Beam([smo78769,smo78770,smo78771,smo78772]);
+const dirsmo89218 = smo78773.getStemDirection();
+smo78773.setStemDirection(dirsmo89218);
+smo78774.setStemDirection(dirsmo89218);
+smo78775.setStemDirection(dirsmo89218);
+smo78776.setStemDirection(dirsmo89218);
+const smo89218 = new VF.Beam([smo78773,smo78774,smo78775,smo78776]);
+const dirsmo89220 = smo79588.getStemDirection();
+smo79588.setStemDirection(dirsmo89220);
+smo79589.setStemDirection(dirsmo89220);
+smo79590.setStemDirection(dirsmo89220);
+smo79591.setStemDirection(dirsmo89220);
+const smo89220 = new VF.Beam([smo79588,smo79589,smo79590,smo79591]);
+const dirsmo89221 = smo79592.getStemDirection();
+smo79592.setStemDirection(dirsmo89221);
+smo79593.setStemDirection(dirsmo89221);
+smo79594.setStemDirection(dirsmo89221);
+smo79595.setStemDirection(dirsmo89221);
+const smo89221 = new VF.Beam([smo79592,smo79593,smo79594,smo79595]);
+const dirsmo89223 = smo80399.getStemDirection();
+smo80399.setStemDirection(dirsmo89223);
+smo80400.setStemDirection(dirsmo89223);
+smo80401.setStemDirection(dirsmo89223);
+smo80402.setStemDirection(dirsmo89223);
+const smo89223 = new VF.Beam([smo80399,smo80400,smo80401,smo80402]);
+const dirsmo89224 = smo80403.getStemDirection();
+smo80403.setStemDirection(dirsmo89224);
+smo80404.setStemDirection(dirsmo89224);
+smo80405.setStemDirection(dirsmo89224);
+smo80406.setStemDirection(dirsmo89224);
+const smo89224 = new VF.Beam([smo80403,smo80404,smo80405,smo80406]);
+const dirsmo89227 = smo82074.getStemDirection();
+smo82074.setStemDirection(dirsmo89227);
+smo82075.setStemDirection(dirsmo89227);
+smo82076.setStemDirection(dirsmo89227);
+smo82077.setStemDirection(dirsmo89227);
+const smo89227 = new VF.Beam([smo82074,smo82075,smo82076,smo82077]);
+const dirsmo89228 = smo82078.getStemDirection();
+smo82078.setStemDirection(dirsmo89228);
+smo82079.setStemDirection(dirsmo89228);
+smo82080.setStemDirection(dirsmo89228);
+smo82081.setStemDirection(dirsmo89228);
+const smo89228 = new VF.Beam([smo82078,smo82079,smo82080,smo82081]);
  
-// formatting measures in staff group smo84911
-fmtsmo8113414.format([smo81134v0,smo81953v0,smo82764v0,smo83551v0,smo84439v0], 269);
-const stavesmo81134 = new VF.Stave(712, 764.0000000000002, 283);
-stavesmo81134.setAttribute('id', 'stavesmo81134');
-stavesmo81134.setBegBarType(VF.Barline.type.NONE);
-stavesmo81134.setContext(context);
-stavesmo81134.draw();
-smo81134v0.draw(context, stavesmo81134);
-smo91548.setContext(context);
-smo91548.draw();
-smo91549.setContext(context);
-smo91549.draw();
-const stavesmo81953 = new VF.Stave(712, 842.0000000000002, 283);
-stavesmo81953.setAttribute('id', 'stavesmo81953');
-stavesmo81953.setBegBarType(VF.Barline.type.NONE);
-stavesmo81953.setContext(context);
-stavesmo81953.draw();
-smo81953v0.draw(context, stavesmo81953);
-smo91552.setContext(context);
-smo91552.draw();
-smo91553.setContext(context);
-smo91553.draw();
-const stavesmo82764 = new VF.Stave(712, 921.0000000000002, 283);
-stavesmo82764.setAttribute('id', 'stavesmo82764');
-stavesmo82764.setBegBarType(VF.Barline.type.NONE);
-stavesmo82764.setContext(context);
-stavesmo82764.draw();
-smo82764v0.draw(context, stavesmo82764);
-smo91556.setContext(context);
-smo91556.draw();
-smo91557.setContext(context);
-smo91557.draw();
-const stavesmo83551 = new VF.Stave(712, 1014.0000000000002, 283);
-stavesmo83551.setAttribute('id', 'stavesmo83551');
-stavesmo83551.setBegBarType(VF.Barline.type.NONE);
-stavesmo83551.setContext(context);
-stavesmo83551.draw();
-smo83551v0.draw(context, stavesmo83551);
-const stavesmo84439 = new VF.Stave(712, 1127.0000000000002, 283);
-stavesmo84439.setAttribute('id', 'stavesmo84439');
-stavesmo84439.setBegBarType(VF.Barline.type.NONE);
-stavesmo84439.setContext(context);
-stavesmo84439.draw();
-smo84439v0.draw(context, stavesmo84439);
-smo91562.setContext(context);
-smo91562.draw();
-smo91563.setContext(context);
-smo91563.draw();
-const fmtsmo8115815 = new VF.Formatter();
+// formatting measures in staff group smo82569
+fmtsmo7879214.format([smo78792v0,smo79611v0,smo80422v0,smo81209v0,smo82097v0], 246);
+const stavesmo78792 = new VF.Stave(390, 764.0000000000002, 260);
+stavesmo78792.setAttribute('id', 'stavesmo78792');
+stavesmo78792.setBegBarType(VF.Barline.type.NONE);
+stavesmo78792.setContext(context);
+stavesmo78792.draw();
+smo78792v0.draw(context, stavesmo78792);
+smo89217.setContext(context);
+smo89217.draw();
+smo89218.setContext(context);
+smo89218.draw();
+const stavesmo79611 = new VF.Stave(390, 848.0000000000002, 260);
+stavesmo79611.setAttribute('id', 'stavesmo79611');
+stavesmo79611.setBegBarType(VF.Barline.type.NONE);
+stavesmo79611.setContext(context);
+stavesmo79611.draw();
+smo79611v0.draw(context, stavesmo79611);
+smo89220.setContext(context);
+smo89220.draw();
+smo89221.setContext(context);
+smo89221.draw();
+const stavesmo80422 = new VF.Stave(390, 930.0000000000002, 260);
+stavesmo80422.setAttribute('id', 'stavesmo80422');
+stavesmo80422.setBegBarType(VF.Barline.type.NONE);
+stavesmo80422.setContext(context);
+stavesmo80422.draw();
+smo80422v0.draw(context, stavesmo80422);
+smo89223.setContext(context);
+smo89223.draw();
+smo89224.setContext(context);
+smo89224.draw();
+const stavesmo81209 = new VF.Stave(390, 1026.0000000000002, 260);
+stavesmo81209.setAttribute('id', 'stavesmo81209');
+stavesmo81209.setBegBarType(VF.Barline.type.NONE);
+stavesmo81209.setContext(context);
+stavesmo81209.draw();
+smo81209v0.draw(context, stavesmo81209);
+const stavesmo82097 = new VF.Stave(390, 1139.0000000000002, 260);
+stavesmo82097.setAttribute('id', 'stavesmo82097');
+stavesmo82097.setBegBarType(VF.Barline.type.NONE);
+stavesmo82097.setContext(context);
+stavesmo82097.draw();
+smo82097v0.draw(context, stavesmo82097);
+smo89227.setContext(context);
+smo89227.draw();
+smo89228.setContext(context);
+smo89228.draw();
+const fmtsmo7881615 = new VF.Formatter();
 //
 // voices and notes for stave 0 15
-const smo81158v0 = new VF.Voice(JSON.parse('{"numBeats":4,"beatValue":4}')).setMode(VF.Voice.Mode.SOFT);
-const smo81158v0ar = [];
-const smo81135 = new VF.StaveNote(JSON.parse('{"clef":"treble","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["en/5/n"]}'))
-smo81135.setAttribute('id', 'smo81135');
-smo81158v0ar.push(smo81135);
-const smo81136 = new VF.StaveNote(JSON.parse('{"clef":"treble","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["en/5/n"]}'))
-smo81136.setAttribute('id', 'smo81136');
-smo81158v0ar.push(smo81136);
-const smo81137 = new VF.StaveNote(JSON.parse('{"clef":"treble","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["en/5/n"]}'))
-smo81137.setAttribute('id', 'smo81137');
-smo81158v0ar.push(smo81137);
-const smo81138 = new VF.StaveNote(JSON.parse('{"clef":"treble","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["en/5/n"]}'))
-smo81138.setAttribute('id', 'smo81138');
-smo81158v0ar.push(smo81138);
-const smo81139 = new VF.StaveNote(JSON.parse('{"clef":"treble","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["en/4/n"]}'))
-smo81139.setAttribute('id', 'smo81139');
-smo81158v0ar.push(smo81139);
-const smo81140 = new VF.StaveNote(JSON.parse('{"clef":"treble","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["en/4/n"]}'))
-smo81140.setAttribute('id', 'smo81140');
-smo81158v0ar.push(smo81140);
-const smo81141 = new VF.StaveNote(JSON.parse('{"clef":"treble","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["en/4/n"]}'))
-smo81141.setAttribute('id', 'smo81141');
-smo81158v0ar.push(smo81141);
-const smo81142 = new VF.StaveNote(JSON.parse('{"clef":"treble","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["en/4/n"]}'))
-smo81142.setAttribute('id', 'smo81142');
-smo81158v0ar.push(smo81142);
-smo81158v0.addTickables(smo81158v0ar)
-fmtsmo8115815.joinVoices([smo81158v0]);
-const fmtsmo8197715 = new VF.Formatter();
+const smo78816v0 = new VF.Voice(JSON.parse('{"numBeats":4,"beatValue":4}')).setMode(VF.Voice.Mode.SOFT);
+const smo78816v0ar = [];
+const smo78793 = new VF.StaveNote(JSON.parse('{"clef":"treble","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["en/5/n"]}'))
+smo78793.setAttribute('id', 'smo78793');
+smo78816v0ar.push(smo78793);
+const smo78794 = new VF.StaveNote(JSON.parse('{"clef":"treble","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["en/5/n"]}'))
+smo78794.setAttribute('id', 'smo78794');
+smo78816v0ar.push(smo78794);
+const smo78795 = new VF.StaveNote(JSON.parse('{"clef":"treble","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["en/5/n"]}'))
+smo78795.setAttribute('id', 'smo78795');
+smo78816v0ar.push(smo78795);
+const smo78796 = new VF.StaveNote(JSON.parse('{"clef":"treble","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["en/5/n"]}'))
+smo78796.setAttribute('id', 'smo78796');
+smo78816v0ar.push(smo78796);
+const smo78797 = new VF.StaveNote(JSON.parse('{"clef":"treble","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["en/4/n"]}'))
+smo78797.setAttribute('id', 'smo78797');
+smo78816v0ar.push(smo78797);
+const smo78798 = new VF.StaveNote(JSON.parse('{"clef":"treble","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["en/4/n"]}'))
+smo78798.setAttribute('id', 'smo78798');
+smo78816v0ar.push(smo78798);
+const smo78799 = new VF.StaveNote(JSON.parse('{"clef":"treble","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["en/4/n"]}'))
+smo78799.setAttribute('id', 'smo78799');
+smo78816v0ar.push(smo78799);
+const smo78800 = new VF.StaveNote(JSON.parse('{"clef":"treble","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["en/4/n"]}'))
+smo78800.setAttribute('id', 'smo78800');
+smo78816v0ar.push(smo78800);
+smo78816v0.addTickables(smo78816v0ar)
+fmtsmo7881615.joinVoices([smo78816v0]);
+const fmtsmo7963515 = new VF.Formatter();
 //
 // voices and notes for stave 1 15
-const smo81977v0 = new VF.Voice(JSON.parse('{"numBeats":4,"beatValue":4}')).setMode(VF.Voice.Mode.SOFT);
-const smo81977v0ar = [];
-const smo81954 = new VF.StaveNote(JSON.parse('{"clef":"treble","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["bn/4/n"]}'))
-smo81954.setAttribute('id', 'smo81954');
-smo81977v0ar.push(smo81954);
-const smo81955 = new VF.StaveNote(JSON.parse('{"clef":"treble","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["bn/4/n"]}'))
-smo81955.setAttribute('id', 'smo81955');
-smo81977v0ar.push(smo81955);
-const smo81956 = new VF.StaveNote(JSON.parse('{"clef":"treble","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["bn/4/n"]}'))
-smo81956.setAttribute('id', 'smo81956');
-smo81977v0ar.push(smo81956);
-const smo81957 = new VF.StaveNote(JSON.parse('{"clef":"treble","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["bn/4/n"]}'))
-smo81957.setAttribute('id', 'smo81957');
-smo81977v0ar.push(smo81957);
-const smo81958 = new VF.StaveNote(JSON.parse('{"clef":"treble","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["bn/4/n"]}'))
-smo81958.setAttribute('id', 'smo81958');
-smo81977v0ar.push(smo81958);
-const smo81959 = new VF.StaveNote(JSON.parse('{"clef":"treble","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["bn/4/n"]}'))
-smo81959.setAttribute('id', 'smo81959');
-smo81977v0ar.push(smo81959);
-const smo81960 = new VF.StaveNote(JSON.parse('{"clef":"treble","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["bn/4/n"]}'))
-smo81960.setAttribute('id', 'smo81960');
-smo81977v0ar.push(smo81960);
-const smo81961 = new VF.StaveNote(JSON.parse('{"clef":"treble","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["bn/4/n"]}'))
-smo81961.setAttribute('id', 'smo81961');
-smo81977v0ar.push(smo81961);
-smo81977v0.addTickables(smo81977v0ar)
-fmtsmo8197715.joinVoices([smo81977v0]);
-const fmtsmo8278815 = new VF.Formatter();
+const smo79635v0 = new VF.Voice(JSON.parse('{"numBeats":4,"beatValue":4}')).setMode(VF.Voice.Mode.SOFT);
+const smo79635v0ar = [];
+const smo79612 = new VF.StaveNote(JSON.parse('{"clef":"treble","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["bn/4/n"]}'))
+smo79612.setAttribute('id', 'smo79612');
+smo79635v0ar.push(smo79612);
+const smo79613 = new VF.StaveNote(JSON.parse('{"clef":"treble","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["bn/4/n"]}'))
+smo79613.setAttribute('id', 'smo79613');
+smo79635v0ar.push(smo79613);
+const smo79614 = new VF.StaveNote(JSON.parse('{"clef":"treble","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["bn/4/n"]}'))
+smo79614.setAttribute('id', 'smo79614');
+smo79635v0ar.push(smo79614);
+const smo79615 = new VF.StaveNote(JSON.parse('{"clef":"treble","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["bn/4/n"]}'))
+smo79615.setAttribute('id', 'smo79615');
+smo79635v0ar.push(smo79615);
+const smo79616 = new VF.StaveNote(JSON.parse('{"clef":"treble","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["bn/4/n"]}'))
+smo79616.setAttribute('id', 'smo79616');
+smo79635v0ar.push(smo79616);
+const smo79617 = new VF.StaveNote(JSON.parse('{"clef":"treble","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["bn/4/n"]}'))
+smo79617.setAttribute('id', 'smo79617');
+smo79635v0ar.push(smo79617);
+const smo79618 = new VF.StaveNote(JSON.parse('{"clef":"treble","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["bn/4/n"]}'))
+smo79618.setAttribute('id', 'smo79618');
+smo79635v0ar.push(smo79618);
+const smo79619 = new VF.StaveNote(JSON.parse('{"clef":"treble","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["bn/4/n"]}'))
+smo79619.setAttribute('id', 'smo79619');
+smo79635v0ar.push(smo79619);
+smo79635v0.addTickables(smo79635v0ar)
+fmtsmo7963515.joinVoices([smo79635v0]);
+const fmtsmo8044615 = new VF.Formatter();
 //
 // voices and notes for stave 2 15
-const smo82788v0 = new VF.Voice(JSON.parse('{"numBeats":4,"beatValue":4}')).setMode(VF.Voice.Mode.SOFT);
-const smo82788v0ar = [];
-const smo82765 = new VF.StaveNote(JSON.parse('{"clef":"alto","duration":"8","dots":0,"type":"n","stemDirection":-1,"autoStem":false,"keys":["bn/3/n"]}'))
-smo82765.setAttribute('id', 'smo82765');
-smo82788v0ar.push(smo82765);
-const smo82766 = new VF.StaveNote(JSON.parse('{"clef":"alto","duration":"8","dots":0,"type":"n","stemDirection":-1,"autoStem":false,"keys":["en/4/n"]}'))
-smo82766.setAttribute('id', 'smo82766');
-smo82788v0ar.push(smo82766);
-const smo82767 = new VF.StaveNote(JSON.parse('{"clef":"alto","duration":"8","dots":0,"type":"n","stemDirection":-1,"autoStem":false,"keys":["en/4/n"]}'))
-smo82767.setAttribute('id', 'smo82767');
-smo82788v0ar.push(smo82767);
-const smo82768 = new VF.StaveNote(JSON.parse('{"clef":"alto","duration":"8","dots":0,"type":"n","stemDirection":-1,"autoStem":false,"keys":["en/4/n"]}'))
-smo82768.setAttribute('id', 'smo82768');
-smo82788v0ar.push(smo82768);
-const smo82769 = new VF.StaveNote(JSON.parse('{"clef":"alto","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["dn/4/n"]}'))
-smo82769.setAttribute('id', 'smo82769');
-const smo827690acc = new VF.Accidental('n');
-smo82769.addModifier(smo827690acc, 0);
-smo82788v0ar.push(smo82769);
-const smo82770 = new VF.StaveNote(JSON.parse('{"clef":"alto","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["dn/4/n"]}'))
-smo82770.setAttribute('id', 'smo82770');
-smo82788v0ar.push(smo82770);
-const smo82771 = new VF.StaveNote(JSON.parse('{"clef":"alto","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["dn/4/n"]}'))
-smo82771.setAttribute('id', 'smo82771');
-smo82788v0ar.push(smo82771);
-const smo82772 = new VF.StaveNote(JSON.parse('{"clef":"alto","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["dn/4/n"]}'))
-smo82772.setAttribute('id', 'smo82772');
-smo82788v0ar.push(smo82772);
-smo82788v0.addTickables(smo82788v0ar)
-fmtsmo8278815.joinVoices([smo82788v0]);
-const fmtsmo8357915 = new VF.Formatter();
+const smo80446v0 = new VF.Voice(JSON.parse('{"numBeats":4,"beatValue":4}')).setMode(VF.Voice.Mode.SOFT);
+const smo80446v0ar = [];
+const smo80423 = new VF.StaveNote(JSON.parse('{"clef":"alto","duration":"8","dots":0,"type":"n","stemDirection":-1,"autoStem":false,"keys":["bn/3/n"]}'))
+smo80423.setAttribute('id', 'smo80423');
+smo80446v0ar.push(smo80423);
+const smo80424 = new VF.StaveNote(JSON.parse('{"clef":"alto","duration":"8","dots":0,"type":"n","stemDirection":-1,"autoStem":false,"keys":["en/4/n"]}'))
+smo80424.setAttribute('id', 'smo80424');
+smo80446v0ar.push(smo80424);
+const smo80425 = new VF.StaveNote(JSON.parse('{"clef":"alto","duration":"8","dots":0,"type":"n","stemDirection":-1,"autoStem":false,"keys":["en/4/n"]}'))
+smo80425.setAttribute('id', 'smo80425');
+smo80446v0ar.push(smo80425);
+const smo80426 = new VF.StaveNote(JSON.parse('{"clef":"alto","duration":"8","dots":0,"type":"n","stemDirection":-1,"autoStem":false,"keys":["en/4/n"]}'))
+smo80426.setAttribute('id', 'smo80426');
+smo80446v0ar.push(smo80426);
+const smo80427 = new VF.StaveNote(JSON.parse('{"clef":"alto","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["dn/4/n"]}'))
+smo80427.setAttribute('id', 'smo80427');
+const smo804270acc = new VF.Accidental('n');
+smo80427.addModifier(smo804270acc, 0);
+smo80446v0ar.push(smo80427);
+const smo80428 = new VF.StaveNote(JSON.parse('{"clef":"alto","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["dn/4/n"]}'))
+smo80428.setAttribute('id', 'smo80428');
+smo80446v0ar.push(smo80428);
+const smo80429 = new VF.StaveNote(JSON.parse('{"clef":"alto","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["dn/4/n"]}'))
+smo80429.setAttribute('id', 'smo80429');
+smo80446v0ar.push(smo80429);
+const smo80430 = new VF.StaveNote(JSON.parse('{"clef":"alto","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["dn/4/n"]}'))
+smo80430.setAttribute('id', 'smo80430');
+smo80446v0ar.push(smo80430);
+smo80446v0.addTickables(smo80446v0ar)
+fmtsmo8044615.joinVoices([smo80446v0]);
+const fmtsmo8123715 = new VF.Formatter();
 //
 // voices and notes for stave 3 15
-const smo83579v0 = new VF.Voice(JSON.parse('{"numBeats":4,"beatValue":4}')).setMode(VF.Voice.Mode.SOFT);
-const smo83579v0ar = [];
-const smo83552 = new VF.StaveNote(JSON.parse('{"clef":"treble","duration":"8d","dots":1,"type":"n","autoStem":true,"keys":["en/5/n"]}'))
-smo83552.setAttribute('id', 'smo83552');
-smo83552.addModifier(new VF.Dot(), 0);
-const smo83553 = new VF.Annotation('com');
-smo83553.setAttribute('id', 'smo83553');
-smo83553.setFont('Merriweather', 12, 'normal');
-smo83553.setVerticalJustification(VF.Annotation.VerticalJustify.BOTTOM);
-smo83552.addModifier(smo83553);
-smo83553.addClass('lyric lyric-0 lyric-hyphen');
-smo83579v0ar.push(smo83552);
-const smo83554 = new VF.StaveNote(JSON.parse('{"clef":"treble","duration":"16","dots":0,"type":"n","autoStem":true,"keys":["bn/4/n"]}'))
-smo83554.setAttribute('id', 'smo83554');
-const smo83555 = new VF.Annotation('for');
-smo83555.setAttribute('id', 'smo83555');
-smo83555.setFont('Merriweather', 12, 'normal');
-smo83555.setVerticalJustification(VF.Annotation.VerticalJustify.BOTTOM);
-smo83554.addModifier(smo83555);
-smo83555.addClass('lyric lyric-0 lyric-hyphen');
-smo83579v0ar.push(smo83554);
-const smo83556 = new VF.StaveNote(JSON.parse('{"clef":"treble","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["bn/4/n"]}'))
-smo83556.setAttribute('id', 'smo83556');
-const smo83557 = new VF.Annotation('ta');
-smo83557.setAttribute('id', 'smo83557');
-smo83557.setFont('Merriweather', 12, 'normal');
-smo83557.setVerticalJustification(VF.Annotation.VerticalJustify.BOTTOM);
-smo83556.addModifier(smo83557);
-smo83557.addClass('lyric lyric-0 lyric-hyphen');
-smo83579v0ar.push(smo83556);
-const smo83558 = new VF.StaveNote(JSON.parse('{"clef":"treble","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["c#/5/n"]}'))
-smo83558.setAttribute('id', 'smo83558');
-const smo83559 = new VF.Annotation('bly');
-smo83559.setAttribute('id', 'smo83559');
-smo83559.setFont('Merriweather', 12, 'normal');
-smo83559.setVerticalJustification(VF.Annotation.VerticalJustify.BOTTOM);
-smo83558.addModifier(smo83559);
-smo83559.addClass('lyric lyric-0');
-smo83579v0ar.push(smo83558);
-const smo83560 = new VF.StaveNote(JSON.parse('{"clef":"treble","duration":"4d","dots":1,"type":"n","autoStem":true,"keys":["dn/5/n"]}'))
-smo83560.setAttribute('id', 'smo83560');
-const smo835600acc = new VF.Accidental('n');
-smo83560.addModifier(smo835600acc, 0);
-smo83560.addModifier(new VF.Dot(), 0);
-const smo83561 = new VF.Annotation('to');
-smo83561.setAttribute('id', 'smo83561');
-smo83561.setFont('Merriweather', 12, 'normal');
-smo83561.setVerticalJustification(VF.Annotation.VerticalJustify.BOTTOM);
-smo83560.addModifier(smo83561);
-smo83561.addClass('lyric lyric-0');
-smo83579v0ar.push(smo83560);
-const smo83562 = new VF.StaveNote(JSON.parse('{"clef":"treble","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["en/5/n"]}'))
-smo83562.setAttribute('id', 'smo83562');
-const smo83563 = new VF.Annotation('Je');
-smo83563.setAttribute('id', 'smo83563');
-smo83563.setFont('Merriweather', 12, 'normal');
-smo83563.setVerticalJustification(VF.Annotation.VerticalJustify.BOTTOM);
-smo83562.addModifier(smo83563);
-smo83563.addClass('lyric lyric-0 lyric-hyphen');
-smo83579v0ar.push(smo83562);
-smo83579v0.addTickables(smo83579v0ar)
-fmtsmo8357915.joinVoices([smo83579v0]);
-const fmtsmo8446315 = new VF.Formatter();
+const smo81237v0 = new VF.Voice(JSON.parse('{"numBeats":4,"beatValue":4}')).setMode(VF.Voice.Mode.SOFT);
+const smo81237v0ar = [];
+const smo81210 = new VF.StaveNote(JSON.parse('{"clef":"treble","duration":"8d","dots":1,"type":"n","autoStem":true,"keys":["en/5/n"]}'))
+smo81210.setAttribute('id', 'smo81210');
+smo81210.addModifier(new VF.Dot(), 0);
+const smo81211 = new VF.Annotation('com');
+smo81211.setAttribute('id', 'smo81211');
+smo81211.setFont('Merriweather', 12, 'normal');
+smo81211.setVerticalJustification(VF.Annotation.VerticalJustify.BOTTOM);
+smo81210.addModifier(smo81211);
+smo81211.addClass('lyric lyric-0 lyric-hyphen');
+smo81237v0ar.push(smo81210);
+const smo81212 = new VF.StaveNote(JSON.parse('{"clef":"treble","duration":"16","dots":0,"type":"n","autoStem":true,"keys":["bn/4/n"]}'))
+smo81212.setAttribute('id', 'smo81212');
+const smo81213 = new VF.Annotation('for');
+smo81213.setAttribute('id', 'smo81213');
+smo81213.setFont('Merriweather', 12, 'normal');
+smo81213.setVerticalJustification(VF.Annotation.VerticalJustify.BOTTOM);
+smo81212.addModifier(smo81213);
+smo81213.addClass('lyric lyric-0 lyric-hyphen');
+smo81237v0ar.push(smo81212);
+const smo81214 = new VF.StaveNote(JSON.parse('{"clef":"treble","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["bn/4/n"]}'))
+smo81214.setAttribute('id', 'smo81214');
+const smo81215 = new VF.Annotation('ta');
+smo81215.setAttribute('id', 'smo81215');
+smo81215.setFont('Merriweather', 12, 'normal');
+smo81215.setVerticalJustification(VF.Annotation.VerticalJustify.BOTTOM);
+smo81214.addModifier(smo81215);
+smo81215.addClass('lyric lyric-0 lyric-hyphen');
+smo81237v0ar.push(smo81214);
+const smo81216 = new VF.StaveNote(JSON.parse('{"clef":"treble","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["c#/5/n"]}'))
+smo81216.setAttribute('id', 'smo81216');
+const smo81217 = new VF.Annotation('bly');
+smo81217.setAttribute('id', 'smo81217');
+smo81217.setFont('Merriweather', 12, 'normal');
+smo81217.setVerticalJustification(VF.Annotation.VerticalJustify.BOTTOM);
+smo81216.addModifier(smo81217);
+smo81217.addClass('lyric lyric-0');
+smo81237v0ar.push(smo81216);
+const smo81218 = new VF.StaveNote(JSON.parse('{"clef":"treble","duration":"4d","dots":1,"type":"n","autoStem":true,"keys":["dn/5/n"]}'))
+smo81218.setAttribute('id', 'smo81218');
+const smo812180acc = new VF.Accidental('n');
+smo81218.addModifier(smo812180acc, 0);
+smo81218.addModifier(new VF.Dot(), 0);
+const smo81219 = new VF.Annotation('to');
+smo81219.setAttribute('id', 'smo81219');
+smo81219.setFont('Merriweather', 12, 'normal');
+smo81219.setVerticalJustification(VF.Annotation.VerticalJustify.BOTTOM);
+smo81218.addModifier(smo81219);
+smo81219.addClass('lyric lyric-0');
+smo81237v0ar.push(smo81218);
+const smo81220 = new VF.StaveNote(JSON.parse('{"clef":"treble","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["en/5/n"]}'))
+smo81220.setAttribute('id', 'smo81220');
+const smo81221 = new VF.Annotation('Je');
+smo81221.setAttribute('id', 'smo81221');
+smo81221.setFont('Merriweather', 12, 'normal');
+smo81221.setVerticalJustification(VF.Annotation.VerticalJustify.BOTTOM);
+smo81220.addModifier(smo81221);
+smo81221.addClass('lyric lyric-0 lyric-hyphen');
+smo81237v0ar.push(smo81220);
+smo81237v0.addTickables(smo81237v0ar)
+fmtsmo8123715.joinVoices([smo81237v0]);
+const fmtsmo8212115 = new VF.Formatter();
 //
 // voices and notes for stave 4 15
-const smo84463v0 = new VF.Voice(JSON.parse('{"numBeats":4,"beatValue":4}')).setMode(VF.Voice.Mode.SOFT);
-const smo84463v0ar = [];
-const smo84440 = new VF.StaveNote(JSON.parse('{"clef":"bass","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["g#/2/n"]}'))
-smo84440.setAttribute('id', 'smo84440');
-smo84463v0ar.push(smo84440);
-const smo84441 = new VF.StaveNote(JSON.parse('{"clef":"bass","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["g#/2/n"]}'))
-smo84441.setAttribute('id', 'smo84441');
-smo84463v0ar.push(smo84441);
-const smo84442 = new VF.StaveNote(JSON.parse('{"clef":"bass","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["g#/2/n"]}'))
-smo84442.setAttribute('id', 'smo84442');
-smo84463v0ar.push(smo84442);
-const smo84443 = new VF.StaveNote(JSON.parse('{"clef":"bass","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["g#/2/n"]}'))
-smo84443.setAttribute('id', 'smo84443');
-smo84463v0ar.push(smo84443);
-const smo84444 = new VF.StaveNote(JSON.parse('{"clef":"bass","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["g#/2/n"]}'))
-smo84444.setAttribute('id', 'smo84444');
-smo84463v0ar.push(smo84444);
-const smo84445 = new VF.StaveNote(JSON.parse('{"clef":"bass","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["g#/2/n"]}'))
-smo84445.setAttribute('id', 'smo84445');
-smo84463v0ar.push(smo84445);
-const smo84446 = new VF.StaveNote(JSON.parse('{"clef":"bass","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["g#/2/n"]}'))
-smo84446.setAttribute('id', 'smo84446');
-smo84463v0ar.push(smo84446);
-const smo84447 = new VF.StaveNote(JSON.parse('{"clef":"bass","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["g#/2/n"]}'))
-smo84447.setAttribute('id', 'smo84447');
-smo84463v0ar.push(smo84447);
-smo84463v0.addTickables(smo84463v0ar)
-fmtsmo8446315.joinVoices([smo84463v0]);
-// create beam groups and tuplets for format grp smo84911 before formatting
-const dirsmo91566 = smo81135.getStemDirection();
-smo81135.setStemDirection(dirsmo91566);
-smo81136.setStemDirection(dirsmo91566);
-smo81137.setStemDirection(dirsmo91566);
-smo81138.setStemDirection(dirsmo91566);
-const smo91566 = new VF.Beam([smo81135,smo81136,smo81137,smo81138]);
-const dirsmo91567 = smo81139.getStemDirection();
-smo81139.setStemDirection(dirsmo91567);
-smo81140.setStemDirection(dirsmo91567);
-smo81141.setStemDirection(dirsmo91567);
-smo81142.setStemDirection(dirsmo91567);
-const smo91567 = new VF.Beam([smo81139,smo81140,smo81141,smo81142]);
-const dirsmo91570 = smo81954.getStemDirection();
-smo81954.setStemDirection(dirsmo91570);
-smo81955.setStemDirection(dirsmo91570);
-smo81956.setStemDirection(dirsmo91570);
-smo81957.setStemDirection(dirsmo91570);
-const smo91570 = new VF.Beam([smo81954,smo81955,smo81956,smo81957]);
-const dirsmo91571 = smo81958.getStemDirection();
-smo81958.setStemDirection(dirsmo91571);
-smo81959.setStemDirection(dirsmo91571);
-smo81960.setStemDirection(dirsmo91571);
-smo81961.setStemDirection(dirsmo91571);
-const smo91571 = new VF.Beam([smo81958,smo81959,smo81960,smo81961]);
-const dirsmo91574 = smo82765.getStemDirection();
-smo82765.setStemDirection(dirsmo91574);
-smo82766.setStemDirection(dirsmo91574);
-smo82767.setStemDirection(dirsmo91574);
-smo82768.setStemDirection(dirsmo91574);
-const smo91574 = new VF.Beam([smo82765,smo82766,smo82767,smo82768]);
-const dirsmo91575 = smo82769.getStemDirection();
-smo82769.setStemDirection(dirsmo91575);
-smo82770.setStemDirection(dirsmo91575);
-smo82771.setStemDirection(dirsmo91575);
-smo82772.setStemDirection(dirsmo91575);
-const smo91575 = new VF.Beam([smo82769,smo82770,smo82771,smo82772]);
-const dirsmo91578 = smo83552.getStemDirection();
-smo83552.setStemDirection(dirsmo91578);
-smo83554.setStemDirection(dirsmo91578);
-const smo91578 = new VF.Beam([smo83552,smo83554]);
-const dirsmo91579 = smo83556.getStemDirection();
-smo83556.setStemDirection(dirsmo91579);
-smo83558.setStemDirection(dirsmo91579);
-const smo91579 = new VF.Beam([smo83556,smo83558]);
-const dirsmo91582 = smo84440.getStemDirection();
-smo84440.setStemDirection(dirsmo91582);
-smo84441.setStemDirection(dirsmo91582);
-smo84442.setStemDirection(dirsmo91582);
-smo84443.setStemDirection(dirsmo91582);
-const smo91582 = new VF.Beam([smo84440,smo84441,smo84442,smo84443]);
-const dirsmo91583 = smo84444.getStemDirection();
-smo84444.setStemDirection(dirsmo91583);
-smo84445.setStemDirection(dirsmo91583);
-smo84446.setStemDirection(dirsmo91583);
-smo84447.setStemDirection(dirsmo91583);
-const smo91583 = new VF.Beam([smo84444,smo84445,smo84446,smo84447]);
+const smo82121v0 = new VF.Voice(JSON.parse('{"numBeats":4,"beatValue":4}')).setMode(VF.Voice.Mode.SOFT);
+const smo82121v0ar = [];
+const smo82098 = new VF.StaveNote(JSON.parse('{"clef":"bass","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["g#/2/n"]}'))
+smo82098.setAttribute('id', 'smo82098');
+smo82121v0ar.push(smo82098);
+const smo82099 = new VF.StaveNote(JSON.parse('{"clef":"bass","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["g#/2/n"]}'))
+smo82099.setAttribute('id', 'smo82099');
+smo82121v0ar.push(smo82099);
+const smo82100 = new VF.StaveNote(JSON.parse('{"clef":"bass","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["g#/2/n"]}'))
+smo82100.setAttribute('id', 'smo82100');
+smo82121v0ar.push(smo82100);
+const smo82101 = new VF.StaveNote(JSON.parse('{"clef":"bass","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["g#/2/n"]}'))
+smo82101.setAttribute('id', 'smo82101');
+smo82121v0ar.push(smo82101);
+const smo82102 = new VF.StaveNote(JSON.parse('{"clef":"bass","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["g#/2/n"]}'))
+smo82102.setAttribute('id', 'smo82102');
+smo82121v0ar.push(smo82102);
+const smo82103 = new VF.StaveNote(JSON.parse('{"clef":"bass","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["g#/2/n"]}'))
+smo82103.setAttribute('id', 'smo82103');
+smo82121v0ar.push(smo82103);
+const smo82104 = new VF.StaveNote(JSON.parse('{"clef":"bass","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["g#/2/n"]}'))
+smo82104.setAttribute('id', 'smo82104');
+smo82121v0ar.push(smo82104);
+const smo82105 = new VF.StaveNote(JSON.parse('{"clef":"bass","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["g#/2/n"]}'))
+smo82105.setAttribute('id', 'smo82105');
+smo82121v0ar.push(smo82105);
+smo82121v0.addTickables(smo82121v0ar)
+fmtsmo8212115.joinVoices([smo82121v0]);
+// create beam groups and tuplets for format grp smo82569 before formatting
+const dirsmo89235 = smo78793.getStemDirection();
+smo78793.setStemDirection(dirsmo89235);
+smo78794.setStemDirection(dirsmo89235);
+smo78795.setStemDirection(dirsmo89235);
+smo78796.setStemDirection(dirsmo89235);
+const smo89235 = new VF.Beam([smo78793,smo78794,smo78795,smo78796]);
+const dirsmo89236 = smo78797.getStemDirection();
+smo78797.setStemDirection(dirsmo89236);
+smo78798.setStemDirection(dirsmo89236);
+smo78799.setStemDirection(dirsmo89236);
+smo78800.setStemDirection(dirsmo89236);
+const smo89236 = new VF.Beam([smo78797,smo78798,smo78799,smo78800]);
+const dirsmo89238 = smo79612.getStemDirection();
+smo79612.setStemDirection(dirsmo89238);
+smo79613.setStemDirection(dirsmo89238);
+smo79614.setStemDirection(dirsmo89238);
+smo79615.setStemDirection(dirsmo89238);
+const smo89238 = new VF.Beam([smo79612,smo79613,smo79614,smo79615]);
+const dirsmo89239 = smo79616.getStemDirection();
+smo79616.setStemDirection(dirsmo89239);
+smo79617.setStemDirection(dirsmo89239);
+smo79618.setStemDirection(dirsmo89239);
+smo79619.setStemDirection(dirsmo89239);
+const smo89239 = new VF.Beam([smo79616,smo79617,smo79618,smo79619]);
+const dirsmo89241 = smo80423.getStemDirection();
+smo80423.setStemDirection(dirsmo89241);
+smo80424.setStemDirection(dirsmo89241);
+smo80425.setStemDirection(dirsmo89241);
+smo80426.setStemDirection(dirsmo89241);
+const smo89241 = new VF.Beam([smo80423,smo80424,smo80425,smo80426]);
+const dirsmo89242 = smo80427.getStemDirection();
+smo80427.setStemDirection(dirsmo89242);
+smo80428.setStemDirection(dirsmo89242);
+smo80429.setStemDirection(dirsmo89242);
+smo80430.setStemDirection(dirsmo89242);
+const smo89242 = new VF.Beam([smo80427,smo80428,smo80429,smo80430]);
+const dirsmo89244 = smo81210.getStemDirection();
+smo81210.setStemDirection(dirsmo89244);
+smo81212.setStemDirection(dirsmo89244);
+const smo89244 = new VF.Beam([smo81210,smo81212]);
+const dirsmo89245 = smo81214.getStemDirection();
+smo81214.setStemDirection(dirsmo89245);
+smo81216.setStemDirection(dirsmo89245);
+const smo89245 = new VF.Beam([smo81214,smo81216]);
+const dirsmo89247 = smo82098.getStemDirection();
+smo82098.setStemDirection(dirsmo89247);
+smo82099.setStemDirection(dirsmo89247);
+smo82100.setStemDirection(dirsmo89247);
+smo82101.setStemDirection(dirsmo89247);
+const smo89247 = new VF.Beam([smo82098,smo82099,smo82100,smo82101]);
+const dirsmo89248 = smo82102.getStemDirection();
+smo82102.setStemDirection(dirsmo89248);
+smo82103.setStemDirection(dirsmo89248);
+smo82104.setStemDirection(dirsmo89248);
+smo82105.setStemDirection(dirsmo89248);
+const smo89248 = new VF.Beam([smo82102,smo82103,smo82104,smo82105]);
  
-// formatting measures in staff group smo84911
-fmtsmo8115815.format([smo81158v0,smo81977v0,smo82788v0,smo83579v0,smo84463v0], 364);
-const stavesmo81158 = new VF.Stave(995, 764.0000000000002, 378);
-stavesmo81158.setAttribute('id', 'stavesmo81158');
-stavesmo81158.setBegBarType(VF.Barline.type.NONE);
-stavesmo81158.setContext(context);
-stavesmo81158.draw();
-smo81158v0.draw(context, stavesmo81158);
-smo91566.setContext(context);
-smo91566.draw();
-smo91567.setContext(context);
-smo91567.draw();
-const stavesmo81977 = new VF.Stave(995, 842.0000000000002, 378);
-stavesmo81977.setAttribute('id', 'stavesmo81977');
-stavesmo81977.setBegBarType(VF.Barline.type.NONE);
-stavesmo81977.setContext(context);
-stavesmo81977.draw();
-smo81977v0.draw(context, stavesmo81977);
-smo91570.setContext(context);
-smo91570.draw();
-smo91571.setContext(context);
-smo91571.draw();
-const stavesmo82788 = new VF.Stave(995, 921.0000000000002, 378);
-stavesmo82788.setAttribute('id', 'stavesmo82788');
-stavesmo82788.setBegBarType(VF.Barline.type.NONE);
-stavesmo82788.setContext(context);
-stavesmo82788.draw();
-smo82788v0.draw(context, stavesmo82788);
-smo91574.setContext(context);
-smo91574.draw();
-smo91575.setContext(context);
-smo91575.draw();
-const stavesmo83579 = new VF.Stave(995, 1014.0000000000002, 378);
-stavesmo83579.setAttribute('id', 'stavesmo83579');
-stavesmo83579.setBegBarType(VF.Barline.type.NONE);
-stavesmo83579.setContext(context);
-stavesmo83579.draw();
-smo83579v0.draw(context, stavesmo83579);
-smo91578.setContext(context);
-smo91578.draw();
-smo91579.setContext(context);
-smo91579.draw();
-const stavesmo84463 = new VF.Stave(995, 1127.0000000000002, 378);
-stavesmo84463.setAttribute('id', 'stavesmo84463');
-stavesmo84463.setBegBarType(VF.Barline.type.NONE);
-stavesmo84463.setContext(context);
-stavesmo84463.draw();
-smo84463v0.draw(context, stavesmo84463);
-smo91582.setContext(context);
-smo91582.draw();
-smo91583.setContext(context);
-smo91583.draw();
-const rightsmo84911stavesmo811584 = new VF.StaveConnector(stavesmo81158, stavesmo84463).setType(0);
-rightsmo84911stavesmo811584.setContext(context).draw();
-const fmtsmo8118216 = new VF.Formatter();
+// formatting measures in staff group smo82569
+fmtsmo7881615.format([smo78816v0,smo79635v0,smo80446v0,smo81237v0,smo82121v0], 345);
+const stavesmo78816 = new VF.Stave(650, 764.0000000000002, 359);
+stavesmo78816.setAttribute('id', 'stavesmo78816');
+stavesmo78816.setBegBarType(VF.Barline.type.NONE);
+stavesmo78816.setContext(context);
+stavesmo78816.draw();
+smo78816v0.draw(context, stavesmo78816);
+smo89235.setContext(context);
+smo89235.draw();
+smo89236.setContext(context);
+smo89236.draw();
+const stavesmo79635 = new VF.Stave(650, 848.0000000000002, 359);
+stavesmo79635.setAttribute('id', 'stavesmo79635');
+stavesmo79635.setBegBarType(VF.Barline.type.NONE);
+stavesmo79635.setContext(context);
+stavesmo79635.draw();
+smo79635v0.draw(context, stavesmo79635);
+smo89238.setContext(context);
+smo89238.draw();
+smo89239.setContext(context);
+smo89239.draw();
+const stavesmo80446 = new VF.Stave(650, 930.0000000000002, 359);
+stavesmo80446.setAttribute('id', 'stavesmo80446');
+stavesmo80446.setBegBarType(VF.Barline.type.NONE);
+stavesmo80446.setContext(context);
+stavesmo80446.draw();
+smo80446v0.draw(context, stavesmo80446);
+smo89241.setContext(context);
+smo89241.draw();
+smo89242.setContext(context);
+smo89242.draw();
+const stavesmo81237 = new VF.Stave(650, 1026.0000000000002, 359);
+stavesmo81237.setAttribute('id', 'stavesmo81237');
+stavesmo81237.setBegBarType(VF.Barline.type.NONE);
+stavesmo81237.setContext(context);
+stavesmo81237.draw();
+smo81237v0.draw(context, stavesmo81237);
+smo89244.setContext(context);
+smo89244.draw();
+smo89245.setContext(context);
+smo89245.draw();
+const stavesmo82121 = new VF.Stave(650, 1139.0000000000002, 359);
+stavesmo82121.setAttribute('id', 'stavesmo82121');
+stavesmo82121.setBegBarType(VF.Barline.type.NONE);
+stavesmo82121.setContext(context);
+stavesmo82121.draw();
+smo82121v0.draw(context, stavesmo82121);
+smo89247.setContext(context);
+smo89247.draw();
+smo89248.setContext(context);
+smo89248.draw();
+const fmtsmo7884016 = new VF.Formatter();
 //
 // voices and notes for stave 0 16
-const smo81182v0 = new VF.Voice(JSON.parse('{"numBeats":4,"beatValue":4}')).setMode(VF.Voice.Mode.SOFT);
-const smo81182v0ar = [];
-const smo81159 = new VF.StaveNote(JSON.parse('{"clef":"treble","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["en/4/n"]}'))
-smo81159.setAttribute('id', 'smo81159');
-smo81182v0ar.push(smo81159);
-const smo81160 = new VF.StaveNote(JSON.parse('{"clef":"treble","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["en/4/n"]}'))
-smo81160.setAttribute('id', 'smo81160');
-smo81182v0ar.push(smo81160);
-const smo81161 = new VF.StaveNote(JSON.parse('{"clef":"treble","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["en/4/n"]}'))
-smo81161.setAttribute('id', 'smo81161');
-smo81182v0ar.push(smo81161);
-const smo81162 = new VF.StaveNote(JSON.parse('{"clef":"treble","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["en/4/n"]}'))
-smo81162.setAttribute('id', 'smo81162');
-smo81182v0ar.push(smo81162);
-const smo81163 = new VF.StaveNote(JSON.parse('{"clef":"treble","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["en/4/n"]}'))
-smo81163.setAttribute('id', 'smo81163');
-smo81182v0ar.push(smo81163);
-const smo81164 = new VF.StaveNote(JSON.parse('{"clef":"treble","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["en/4/n"]}'))
-smo81164.setAttribute('id', 'smo81164');
-smo81182v0ar.push(smo81164);
-const smo81165 = new VF.StaveNote(JSON.parse('{"clef":"treble","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["en/4/n"]}'))
-smo81165.setAttribute('id', 'smo81165');
-smo81182v0ar.push(smo81165);
-const smo81166 = new VF.StaveNote(JSON.parse('{"clef":"treble","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["en/4/n"]}'))
-smo81166.setAttribute('id', 'smo81166');
-smo81182v0ar.push(smo81166);
-smo81182v0.addTickables(smo81182v0ar)
-fmtsmo8118216.joinVoices([smo81182v0]);
-const fmtsmo8200116 = new VF.Formatter();
+const smo78840v0 = new VF.Voice(JSON.parse('{"numBeats":4,"beatValue":4}')).setMode(VF.Voice.Mode.SOFT);
+const smo78840v0ar = [];
+const smo78817 = new VF.StaveNote(JSON.parse('{"clef":"treble","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["en/4/n"]}'))
+smo78817.setAttribute('id', 'smo78817');
+smo78840v0ar.push(smo78817);
+const smo78818 = new VF.StaveNote(JSON.parse('{"clef":"treble","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["en/4/n"]}'))
+smo78818.setAttribute('id', 'smo78818');
+smo78840v0ar.push(smo78818);
+const smo78819 = new VF.StaveNote(JSON.parse('{"clef":"treble","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["en/4/n"]}'))
+smo78819.setAttribute('id', 'smo78819');
+smo78840v0ar.push(smo78819);
+const smo78820 = new VF.StaveNote(JSON.parse('{"clef":"treble","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["en/4/n"]}'))
+smo78820.setAttribute('id', 'smo78820');
+smo78840v0ar.push(smo78820);
+const smo78821 = new VF.StaveNote(JSON.parse('{"clef":"treble","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["en/4/n"]}'))
+smo78821.setAttribute('id', 'smo78821');
+smo78840v0ar.push(smo78821);
+const smo78822 = new VF.StaveNote(JSON.parse('{"clef":"treble","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["en/4/n"]}'))
+smo78822.setAttribute('id', 'smo78822');
+smo78840v0ar.push(smo78822);
+const smo78823 = new VF.StaveNote(JSON.parse('{"clef":"treble","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["en/4/n"]}'))
+smo78823.setAttribute('id', 'smo78823');
+smo78840v0ar.push(smo78823);
+const smo78824 = new VF.StaveNote(JSON.parse('{"clef":"treble","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["en/4/n"]}'))
+smo78824.setAttribute('id', 'smo78824');
+smo78840v0ar.push(smo78824);
+smo78840v0.addTickables(smo78840v0ar)
+fmtsmo7884016.joinVoices([smo78840v0]);
+const fmtsmo7965916 = new VF.Formatter();
 //
 // voices and notes for stave 1 16
-const smo82001v0 = new VF.Voice(JSON.parse('{"numBeats":4,"beatValue":4}')).setMode(VF.Voice.Mode.SOFT);
-const smo82001v0ar = [];
-const smo81978 = new VF.StaveNote(JSON.parse('{"clef":"treble","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["c#/5/n"]}'))
-smo81978.setAttribute('id', 'smo81978');
-smo82001v0ar.push(smo81978);
-const smo81979 = new VF.StaveNote(JSON.parse('{"clef":"treble","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["c#/5/n"]}'))
-smo81979.setAttribute('id', 'smo81979');
-smo82001v0ar.push(smo81979);
-const smo81980 = new VF.StaveNote(JSON.parse('{"clef":"treble","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["c#/5/n"]}'))
-smo81980.setAttribute('id', 'smo81980');
-smo82001v0ar.push(smo81980);
-const smo81981 = new VF.StaveNote(JSON.parse('{"clef":"treble","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["c#/5/n"]}'))
-smo81981.setAttribute('id', 'smo81981');
-smo82001v0ar.push(smo81981);
-const smo81982 = new VF.StaveNote(JSON.parse('{"clef":"treble","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["c#/5/n"]}'))
-smo81982.setAttribute('id', 'smo81982');
-smo82001v0ar.push(smo81982);
-const smo81983 = new VF.StaveNote(JSON.parse('{"clef":"treble","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["c#/5/n"]}'))
-smo81983.setAttribute('id', 'smo81983');
-smo82001v0ar.push(smo81983);
-const smo81984 = new VF.StaveNote(JSON.parse('{"clef":"treble","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["c#/5/n"]}'))
-smo81984.setAttribute('id', 'smo81984');
-smo82001v0ar.push(smo81984);
-const smo81985 = new VF.StaveNote(JSON.parse('{"clef":"treble","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["c#/5/n"]}'))
-smo81985.setAttribute('id', 'smo81985');
-smo82001v0ar.push(smo81985);
-smo82001v0.addTickables(smo82001v0ar)
-fmtsmo8200116.joinVoices([smo82001v0]);
-const fmtsmo8281216 = new VF.Formatter();
+const smo79659v0 = new VF.Voice(JSON.parse('{"numBeats":4,"beatValue":4}')).setMode(VF.Voice.Mode.SOFT);
+const smo79659v0ar = [];
+const smo79636 = new VF.StaveNote(JSON.parse('{"clef":"treble","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["c#/5/n"]}'))
+smo79636.setAttribute('id', 'smo79636');
+smo79659v0ar.push(smo79636);
+const smo79637 = new VF.StaveNote(JSON.parse('{"clef":"treble","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["c#/5/n"]}'))
+smo79637.setAttribute('id', 'smo79637');
+smo79659v0ar.push(smo79637);
+const smo79638 = new VF.StaveNote(JSON.parse('{"clef":"treble","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["c#/5/n"]}'))
+smo79638.setAttribute('id', 'smo79638');
+smo79659v0ar.push(smo79638);
+const smo79639 = new VF.StaveNote(JSON.parse('{"clef":"treble","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["c#/5/n"]}'))
+smo79639.setAttribute('id', 'smo79639');
+smo79659v0ar.push(smo79639);
+const smo79640 = new VF.StaveNote(JSON.parse('{"clef":"treble","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["c#/5/n"]}'))
+smo79640.setAttribute('id', 'smo79640');
+smo79659v0ar.push(smo79640);
+const smo79641 = new VF.StaveNote(JSON.parse('{"clef":"treble","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["c#/5/n"]}'))
+smo79641.setAttribute('id', 'smo79641');
+smo79659v0ar.push(smo79641);
+const smo79642 = new VF.StaveNote(JSON.parse('{"clef":"treble","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["c#/5/n"]}'))
+smo79642.setAttribute('id', 'smo79642');
+smo79659v0ar.push(smo79642);
+const smo79643 = new VF.StaveNote(JSON.parse('{"clef":"treble","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["c#/5/n"]}'))
+smo79643.setAttribute('id', 'smo79643');
+smo79659v0ar.push(smo79643);
+smo79659v0.addTickables(smo79659v0ar)
+fmtsmo7965916.joinVoices([smo79659v0]);
+const fmtsmo8047016 = new VF.Formatter();
 //
 // voices and notes for stave 2 16
-const smo82812v0 = new VF.Voice(JSON.parse('{"numBeats":4,"beatValue":4}')).setMode(VF.Voice.Mode.SOFT);
-const smo82812v0ar = [];
-const smo82789 = new VF.StaveNote(JSON.parse('{"clef":"alto","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["an/3/n"]}'))
-smo82789.setAttribute('id', 'smo82789');
-smo82812v0ar.push(smo82789);
-const smo82790 = new VF.StaveNote(JSON.parse('{"clef":"alto","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["an/3/n"]}'))
-smo82790.setAttribute('id', 'smo82790');
-smo82812v0ar.push(smo82790);
-const smo82791 = new VF.StaveNote(JSON.parse('{"clef":"alto","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["an/3/n"]}'))
-smo82791.setAttribute('id', 'smo82791');
-smo82812v0ar.push(smo82791);
-const smo82792 = new VF.StaveNote(JSON.parse('{"clef":"alto","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["an/3/n"]}'))
-smo82792.setAttribute('id', 'smo82792');
-smo82812v0ar.push(smo82792);
-const smo82793 = new VF.StaveNote(JSON.parse('{"clef":"alto","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["an/3/n"]}'))
-smo82793.setAttribute('id', 'smo82793');
-smo82812v0ar.push(smo82793);
-const smo82794 = new VF.StaveNote(JSON.parse('{"clef":"alto","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["an/3/n"]}'))
-smo82794.setAttribute('id', 'smo82794');
-smo82812v0ar.push(smo82794);
-const smo82795 = new VF.StaveNote(JSON.parse('{"clef":"alto","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["an/3/n"]}'))
-smo82795.setAttribute('id', 'smo82795');
-smo82812v0ar.push(smo82795);
-const smo82796 = new VF.StaveNote(JSON.parse('{"clef":"alto","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["an/3/n"]}'))
-smo82796.setAttribute('id', 'smo82796');
-smo82812v0ar.push(smo82796);
-smo82812v0.addTickables(smo82812v0ar)
-fmtsmo8281216.joinVoices([smo82812v0]);
-const fmtsmo8360616 = new VF.Formatter();
+const smo80470v0 = new VF.Voice(JSON.parse('{"numBeats":4,"beatValue":4}')).setMode(VF.Voice.Mode.SOFT);
+const smo80470v0ar = [];
+const smo80447 = new VF.StaveNote(JSON.parse('{"clef":"alto","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["an/3/n"]}'))
+smo80447.setAttribute('id', 'smo80447');
+smo80470v0ar.push(smo80447);
+const smo80448 = new VF.StaveNote(JSON.parse('{"clef":"alto","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["an/3/n"]}'))
+smo80448.setAttribute('id', 'smo80448');
+smo80470v0ar.push(smo80448);
+const smo80449 = new VF.StaveNote(JSON.parse('{"clef":"alto","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["an/3/n"]}'))
+smo80449.setAttribute('id', 'smo80449');
+smo80470v0ar.push(smo80449);
+const smo80450 = new VF.StaveNote(JSON.parse('{"clef":"alto","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["an/3/n"]}'))
+smo80450.setAttribute('id', 'smo80450');
+smo80470v0ar.push(smo80450);
+const smo80451 = new VF.StaveNote(JSON.parse('{"clef":"alto","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["an/3/n"]}'))
+smo80451.setAttribute('id', 'smo80451');
+smo80470v0ar.push(smo80451);
+const smo80452 = new VF.StaveNote(JSON.parse('{"clef":"alto","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["an/3/n"]}'))
+smo80452.setAttribute('id', 'smo80452');
+smo80470v0ar.push(smo80452);
+const smo80453 = new VF.StaveNote(JSON.parse('{"clef":"alto","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["an/3/n"]}'))
+smo80453.setAttribute('id', 'smo80453');
+smo80470v0ar.push(smo80453);
+const smo80454 = new VF.StaveNote(JSON.parse('{"clef":"alto","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["an/3/n"]}'))
+smo80454.setAttribute('id', 'smo80454');
+smo80470v0ar.push(smo80454);
+smo80470v0.addTickables(smo80470v0ar)
+fmtsmo8047016.joinVoices([smo80470v0]);
+const fmtsmo8126416 = new VF.Formatter();
 //
 // voices and notes for stave 3 16
-const smo83606v0 = new VF.Voice(JSON.parse('{"numBeats":4,"beatValue":4}')).setMode(VF.Voice.Mode.SOFT);
-const smo83606v0ar = [];
-const smo83580 = new VF.StaveNote(JSON.parse('{"clef":"treble","duration":"8d","dots":1,"type":"n","autoStem":true,"keys":["c#/5/n"]}'))
-smo83580.setAttribute('id', 'smo83580');
-smo83580.addModifier(new VF.Dot(), 0);
-const smo83581 = new VF.Annotation('fu');
-smo83581.setAttribute('id', 'smo83581');
-smo83581.setFont('Merriweather', 12, 'normal');
-smo83581.setVerticalJustification(VF.Annotation.VerticalJustify.BOTTOM);
-smo83580.addModifier(smo83581);
-smo83581.addClass('lyric lyric-0 lyric-hyphen');
-smo83606v0ar.push(smo83580);
-const smo83582 = new VF.StaveNote(JSON.parse('{"clef":"treble","duration":"16","dots":0,"type":"n","autoStem":true,"keys":["bn/4/n"]}'))
-smo83582.setAttribute('id', 'smo83582');
-const smo83583 = new VF.Annotation('sa');
-smo83583.setAttribute('id', 'smo83583');
-smo83583.setFont('Merriweather', 12, 'normal');
-smo83583.setVerticalJustification(VF.Annotation.VerticalJustify.BOTTOM);
-smo83582.addModifier(smo83583);
-smo83583.addClass('lyric lyric-0 lyric-hyphen');
-smo83606v0ar.push(smo83582);
-const smo83584 = new VF.StaveNote(JSON.parse('{"clef":"treble","duration":"4","dots":0,"type":"n","autoStem":true,"keys":["an/4/n"]}'))
-smo83584.setAttribute('id', 'smo83584');
-const smo83585 = new VF.Annotation('lem');
-smo83585.setAttribute('id', 'smo83585');
-smo83585.setFont('Merriweather', 12, 'normal');
-smo83585.setVerticalJustification(VF.Annotation.VerticalJustify.BOTTOM);
-smo83584.addModifier(smo83585);
-smo83585.addClass('lyric lyric-0');
-smo83606v0ar.push(smo83584);
-const smo83586 = new VF.StaveNote(JSON.parse('{"clef":"treble","duration":"4","dots":0,"type":"r","autoStem":true,"keys":["bn/4/r"]}'))
-smo83586.setAttribute('id', 'smo83586');
-smo83606v0ar.push(smo83586);
-const smo83587 = new VF.StaveNote(JSON.parse('{"clef":"treble","duration":"8d","dots":1,"type":"n","autoStem":true,"keys":["c#/5/n"]}'))
-smo83587.setAttribute('id', 'smo83587');
-smo83587.addModifier(new VF.Dot(), 0);
-const smo83588 = new VF.Annotation('speak');
-smo83588.setAttribute('id', 'smo83588');
-smo83588.setFont('Merriweather', 12, 'normal');
-smo83588.setVerticalJustification(VF.Annotation.VerticalJustify.BOTTOM);
-smo83587.addModifier(smo83588);
-smo83588.addClass('lyric lyric-0');
-smo83606v0ar.push(smo83587);
-const smo83589 = new VF.StaveNote(JSON.parse('{"clef":"treble","duration":"16","dots":0,"type":"n","autoStem":true,"keys":["c#/5/n"]}'))
-smo83589.setAttribute('id', 'smo83589');
-const smo83590 = new VF.Annotation('e');
-smo83590.setAttribute('id', 'smo83590');
-smo83590.setFont('Merriweather', 12, 'normal');
-smo83590.setVerticalJustification(VF.Annotation.VerticalJustify.BOTTOM);
-smo83589.addModifier(smo83590);
-smo83590.addClass('lyric lyric-0');
-smo83606v0ar.push(smo83589);
-smo83606v0.addTickables(smo83606v0ar)
-fmtsmo8360616.joinVoices([smo83606v0]);
-const fmtsmo8448716 = new VF.Formatter();
+const smo81264v0 = new VF.Voice(JSON.parse('{"numBeats":4,"beatValue":4}')).setMode(VF.Voice.Mode.SOFT);
+const smo81264v0ar = [];
+const smo81238 = new VF.StaveNote(JSON.parse('{"clef":"treble","duration":"8d","dots":1,"type":"n","autoStem":true,"keys":["c#/5/n"]}'))
+smo81238.setAttribute('id', 'smo81238');
+smo81238.addModifier(new VF.Dot(), 0);
+const smo81239 = new VF.Annotation('fu');
+smo81239.setAttribute('id', 'smo81239');
+smo81239.setFont('Merriweather', 12, 'normal');
+smo81239.setVerticalJustification(VF.Annotation.VerticalJustify.BOTTOM);
+smo81238.addModifier(smo81239);
+smo81239.addClass('lyric lyric-0 lyric-hyphen');
+smo81264v0ar.push(smo81238);
+const smo81240 = new VF.StaveNote(JSON.parse('{"clef":"treble","duration":"16","dots":0,"type":"n","autoStem":true,"keys":["bn/4/n"]}'))
+smo81240.setAttribute('id', 'smo81240');
+const smo81241 = new VF.Annotation('sa');
+smo81241.setAttribute('id', 'smo81241');
+smo81241.setFont('Merriweather', 12, 'normal');
+smo81241.setVerticalJustification(VF.Annotation.VerticalJustify.BOTTOM);
+smo81240.addModifier(smo81241);
+smo81241.addClass('lyric lyric-0 lyric-hyphen');
+smo81264v0ar.push(smo81240);
+const smo81242 = new VF.StaveNote(JSON.parse('{"clef":"treble","duration":"4","dots":0,"type":"n","autoStem":true,"keys":["an/4/n"]}'))
+smo81242.setAttribute('id', 'smo81242');
+const smo81243 = new VF.Annotation('lem');
+smo81243.setAttribute('id', 'smo81243');
+smo81243.setFont('Merriweather', 12, 'normal');
+smo81243.setVerticalJustification(VF.Annotation.VerticalJustify.BOTTOM);
+smo81242.addModifier(smo81243);
+smo81243.addClass('lyric lyric-0');
+smo81264v0ar.push(smo81242);
+const smo81244 = new VF.StaveNote(JSON.parse('{"clef":"treble","duration":"4","dots":0,"type":"r","autoStem":true,"keys":["bn/4/r"]}'))
+smo81244.setAttribute('id', 'smo81244');
+smo81264v0ar.push(smo81244);
+const smo81245 = new VF.StaveNote(JSON.parse('{"clef":"treble","duration":"8d","dots":1,"type":"n","autoStem":true,"keys":["c#/5/n"]}'))
+smo81245.setAttribute('id', 'smo81245');
+smo81245.addModifier(new VF.Dot(), 0);
+const smo81246 = new VF.Annotation('speak');
+smo81246.setAttribute('id', 'smo81246');
+smo81246.setFont('Merriweather', 12, 'normal');
+smo81246.setVerticalJustification(VF.Annotation.VerticalJustify.BOTTOM);
+smo81245.addModifier(smo81246);
+smo81246.addClass('lyric lyric-0');
+smo81264v0ar.push(smo81245);
+const smo81247 = new VF.StaveNote(JSON.parse('{"clef":"treble","duration":"16","dots":0,"type":"n","autoStem":true,"keys":["c#/5/n"]}'))
+smo81247.setAttribute('id', 'smo81247');
+const smo81248 = new VF.Annotation('e');
+smo81248.setAttribute('id', 'smo81248');
+smo81248.setFont('Merriweather', 12, 'normal');
+smo81248.setVerticalJustification(VF.Annotation.VerticalJustify.BOTTOM);
+smo81247.addModifier(smo81248);
+smo81248.addClass('lyric lyric-0');
+smo81264v0ar.push(smo81247);
+smo81264v0.addTickables(smo81264v0ar)
+fmtsmo8126416.joinVoices([smo81264v0]);
+const fmtsmo8214516 = new VF.Formatter();
 //
 // voices and notes for stave 4 16
-const smo84487v0 = new VF.Voice(JSON.parse('{"numBeats":4,"beatValue":4}')).setMode(VF.Voice.Mode.SOFT);
-const smo84487v0ar = [];
-const smo84464 = new VF.StaveNote(JSON.parse('{"clef":"bass","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["an/2/n"]}'))
-smo84464.setAttribute('id', 'smo84464');
-smo84487v0ar.push(smo84464);
-const smo84465 = new VF.StaveNote(JSON.parse('{"clef":"bass","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["an/2/n"]}'))
-smo84465.setAttribute('id', 'smo84465');
-smo84487v0ar.push(smo84465);
-const smo84466 = new VF.StaveNote(JSON.parse('{"clef":"bass","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["an/2/n"]}'))
-smo84466.setAttribute('id', 'smo84466');
-smo84487v0ar.push(smo84466);
-const smo84467 = new VF.StaveNote(JSON.parse('{"clef":"bass","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["an/2/n"]}'))
-smo84467.setAttribute('id', 'smo84467');
-smo84487v0ar.push(smo84467);
-const smo84468 = new VF.StaveNote(JSON.parse('{"clef":"bass","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["an/2/n"]}'))
-smo84468.setAttribute('id', 'smo84468');
-smo84487v0ar.push(smo84468);
-const smo84469 = new VF.StaveNote(JSON.parse('{"clef":"bass","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["an/2/n"]}'))
-smo84469.setAttribute('id', 'smo84469');
-smo84487v0ar.push(smo84469);
-const smo84470 = new VF.StaveNote(JSON.parse('{"clef":"bass","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["an/2/n"]}'))
-smo84470.setAttribute('id', 'smo84470');
-smo84487v0ar.push(smo84470);
-const smo84471 = new VF.StaveNote(JSON.parse('{"clef":"bass","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["an/2/n"]}'))
-smo84471.setAttribute('id', 'smo84471');
-smo84487v0ar.push(smo84471);
-smo84487v0.addTickables(smo84487v0ar)
-fmtsmo8448716.joinVoices([smo84487v0]);
-// create beam groups and tuplets for format grp smo84911 before formatting
-const dirsmo91606 = smo81159.getStemDirection();
-smo81159.setStemDirection(dirsmo91606);
-smo81160.setStemDirection(dirsmo91606);
-smo81161.setStemDirection(dirsmo91606);
-smo81162.setStemDirection(dirsmo91606);
-const smo91606 = new VF.Beam([smo81159,smo81160,smo81161,smo81162]);
-const dirsmo91607 = smo81163.getStemDirection();
-smo81163.setStemDirection(dirsmo91607);
-smo81164.setStemDirection(dirsmo91607);
-smo81165.setStemDirection(dirsmo91607);
-smo81166.setStemDirection(dirsmo91607);
-const smo91607 = new VF.Beam([smo81163,smo81164,smo81165,smo81166]);
-const dirsmo91610 = smo81978.getStemDirection();
-smo81978.setStemDirection(dirsmo91610);
-smo81979.setStemDirection(dirsmo91610);
-smo81980.setStemDirection(dirsmo91610);
-smo81981.setStemDirection(dirsmo91610);
-const smo91610 = new VF.Beam([smo81978,smo81979,smo81980,smo81981]);
-const dirsmo91611 = smo81982.getStemDirection();
-smo81982.setStemDirection(dirsmo91611);
-smo81983.setStemDirection(dirsmo91611);
-smo81984.setStemDirection(dirsmo91611);
-smo81985.setStemDirection(dirsmo91611);
-const smo91611 = new VF.Beam([smo81982,smo81983,smo81984,smo81985]);
-const dirsmo91614 = smo82789.getStemDirection();
-smo82789.setStemDirection(dirsmo91614);
-smo82790.setStemDirection(dirsmo91614);
-smo82791.setStemDirection(dirsmo91614);
-smo82792.setStemDirection(dirsmo91614);
-const smo91614 = new VF.Beam([smo82789,smo82790,smo82791,smo82792]);
-const dirsmo91615 = smo82793.getStemDirection();
-smo82793.setStemDirection(dirsmo91615);
-smo82794.setStemDirection(dirsmo91615);
-smo82795.setStemDirection(dirsmo91615);
-smo82796.setStemDirection(dirsmo91615);
-const smo91615 = new VF.Beam([smo82793,smo82794,smo82795,smo82796]);
-const dirsmo91618 = smo83580.getStemDirection();
-smo83580.setStemDirection(dirsmo91618);
-smo83582.setStemDirection(dirsmo91618);
-const smo91618 = new VF.Beam([smo83580,smo83582]);
-const dirsmo91619 = smo83587.getStemDirection();
-smo83587.setStemDirection(dirsmo91619);
-smo83589.setStemDirection(dirsmo91619);
-const smo91619 = new VF.Beam([smo83587,smo83589]);
-const dirsmo91622 = smo84464.getStemDirection();
-smo84464.setStemDirection(dirsmo91622);
-smo84465.setStemDirection(dirsmo91622);
-smo84466.setStemDirection(dirsmo91622);
-smo84467.setStemDirection(dirsmo91622);
-const smo91622 = new VF.Beam([smo84464,smo84465,smo84466,smo84467]);
-const dirsmo91623 = smo84468.getStemDirection();
-smo84468.setStemDirection(dirsmo91623);
-smo84469.setStemDirection(dirsmo91623);
-smo84470.setStemDirection(dirsmo91623);
-smo84471.setStemDirection(dirsmo91623);
-const smo91623 = new VF.Beam([smo84468,smo84469,smo84470,smo84471]);
+const smo82145v0 = new VF.Voice(JSON.parse('{"numBeats":4,"beatValue":4}')).setMode(VF.Voice.Mode.SOFT);
+const smo82145v0ar = [];
+const smo82122 = new VF.StaveNote(JSON.parse('{"clef":"bass","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["an/2/n"]}'))
+smo82122.setAttribute('id', 'smo82122');
+smo82145v0ar.push(smo82122);
+const smo82123 = new VF.StaveNote(JSON.parse('{"clef":"bass","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["an/2/n"]}'))
+smo82123.setAttribute('id', 'smo82123');
+smo82145v0ar.push(smo82123);
+const smo82124 = new VF.StaveNote(JSON.parse('{"clef":"bass","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["an/2/n"]}'))
+smo82124.setAttribute('id', 'smo82124');
+smo82145v0ar.push(smo82124);
+const smo82125 = new VF.StaveNote(JSON.parse('{"clef":"bass","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["an/2/n"]}'))
+smo82125.setAttribute('id', 'smo82125');
+smo82145v0ar.push(smo82125);
+const smo82126 = new VF.StaveNote(JSON.parse('{"clef":"bass","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["an/2/n"]}'))
+smo82126.setAttribute('id', 'smo82126');
+smo82145v0ar.push(smo82126);
+const smo82127 = new VF.StaveNote(JSON.parse('{"clef":"bass","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["an/2/n"]}'))
+smo82127.setAttribute('id', 'smo82127');
+smo82145v0ar.push(smo82127);
+const smo82128 = new VF.StaveNote(JSON.parse('{"clef":"bass","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["an/2/n"]}'))
+smo82128.setAttribute('id', 'smo82128');
+smo82145v0ar.push(smo82128);
+const smo82129 = new VF.StaveNote(JSON.parse('{"clef":"bass","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["an/2/n"]}'))
+smo82129.setAttribute('id', 'smo82129');
+smo82145v0ar.push(smo82129);
+smo82145v0.addTickables(smo82145v0ar)
+fmtsmo8214516.joinVoices([smo82145v0]);
+// create beam groups and tuplets for format grp smo82569 before formatting
+const dirsmo89255 = smo78817.getStemDirection();
+smo78817.setStemDirection(dirsmo89255);
+smo78818.setStemDirection(dirsmo89255);
+smo78819.setStemDirection(dirsmo89255);
+smo78820.setStemDirection(dirsmo89255);
+const smo89255 = new VF.Beam([smo78817,smo78818,smo78819,smo78820]);
+const dirsmo89256 = smo78821.getStemDirection();
+smo78821.setStemDirection(dirsmo89256);
+smo78822.setStemDirection(dirsmo89256);
+smo78823.setStemDirection(dirsmo89256);
+smo78824.setStemDirection(dirsmo89256);
+const smo89256 = new VF.Beam([smo78821,smo78822,smo78823,smo78824]);
+const dirsmo89258 = smo79636.getStemDirection();
+smo79636.setStemDirection(dirsmo89258);
+smo79637.setStemDirection(dirsmo89258);
+smo79638.setStemDirection(dirsmo89258);
+smo79639.setStemDirection(dirsmo89258);
+const smo89258 = new VF.Beam([smo79636,smo79637,smo79638,smo79639]);
+const dirsmo89259 = smo79640.getStemDirection();
+smo79640.setStemDirection(dirsmo89259);
+smo79641.setStemDirection(dirsmo89259);
+smo79642.setStemDirection(dirsmo89259);
+smo79643.setStemDirection(dirsmo89259);
+const smo89259 = new VF.Beam([smo79640,smo79641,smo79642,smo79643]);
+const dirsmo89261 = smo80447.getStemDirection();
+smo80447.setStemDirection(dirsmo89261);
+smo80448.setStemDirection(dirsmo89261);
+smo80449.setStemDirection(dirsmo89261);
+smo80450.setStemDirection(dirsmo89261);
+const smo89261 = new VF.Beam([smo80447,smo80448,smo80449,smo80450]);
+const dirsmo89262 = smo80451.getStemDirection();
+smo80451.setStemDirection(dirsmo89262);
+smo80452.setStemDirection(dirsmo89262);
+smo80453.setStemDirection(dirsmo89262);
+smo80454.setStemDirection(dirsmo89262);
+const smo89262 = new VF.Beam([smo80451,smo80452,smo80453,smo80454]);
+const dirsmo89264 = smo81238.getStemDirection();
+smo81238.setStemDirection(dirsmo89264);
+smo81240.setStemDirection(dirsmo89264);
+const smo89264 = new VF.Beam([smo81238,smo81240]);
+const dirsmo89265 = smo81245.getStemDirection();
+smo81245.setStemDirection(dirsmo89265);
+smo81247.setStemDirection(dirsmo89265);
+const smo89265 = new VF.Beam([smo81245,smo81247]);
+const dirsmo89267 = smo82122.getStemDirection();
+smo82122.setStemDirection(dirsmo89267);
+smo82123.setStemDirection(dirsmo89267);
+smo82124.setStemDirection(dirsmo89267);
+smo82125.setStemDirection(dirsmo89267);
+const smo89267 = new VF.Beam([smo82122,smo82123,smo82124,smo82125]);
+const dirsmo89268 = smo82126.getStemDirection();
+smo82126.setStemDirection(dirsmo89268);
+smo82127.setStemDirection(dirsmo89268);
+smo82128.setStemDirection(dirsmo89268);
+smo82129.setStemDirection(dirsmo89268);
+const smo89268 = new VF.Beam([smo82126,smo82127,smo82128,smo82129]);
  
-// formatting measures in staff group smo84911
-fmtsmo8118216.format([smo81182v0,smo82001v0,smo82812v0,smo83606v0,smo84487v0], 408);
-const stavesmo81182 = new VF.Stave(55, 1266.0000000000002, 517);
-stavesmo81182.setAttribute('id', 'stavesmo81182');
-stavesmo81182.setBegBarType(1);
-stavesmo81182.addClef('treble');
-const keysmo81182 = new VF.KeySignature('E');
-keysmo81182.addToStave(stavesmo81182);
-stavesmo81182.setContext(context);
-stavesmo81182.draw();
-smo81182v0.draw(context, stavesmo81182);
-smo91606.setContext(context);
-smo91606.draw();
-smo91607.setContext(context);
-smo91607.draw();
-const stavesmo82001 = new VF.Stave(55, 1354.0000000000002, 517);
-stavesmo82001.setAttribute('id', 'stavesmo82001');
-stavesmo82001.setBegBarType(1);
-stavesmo82001.addClef('treble');
-const keysmo82001 = new VF.KeySignature('E');
-keysmo82001.addToStave(stavesmo82001);
-stavesmo82001.setContext(context);
-stavesmo82001.draw();
-smo82001v0.draw(context, stavesmo82001);
-smo91610.setContext(context);
-smo91610.draw();
-smo91611.setContext(context);
-smo91611.draw();
-const stavesmo82812 = new VF.Stave(55, 1458.0000000000002, 517);
-stavesmo82812.setAttribute('id', 'stavesmo82812');
-stavesmo82812.setBegBarType(1);
-stavesmo82812.addClef('alto');
-const keysmo82812 = new VF.KeySignature('E');
-keysmo82812.addToStave(stavesmo82812);
-stavesmo82812.setContext(context);
-stavesmo82812.draw();
-smo82812v0.draw(context, stavesmo82812);
-smo91614.setContext(context);
-smo91614.draw();
-smo91615.setContext(context);
-smo91615.draw();
-const stavesmo83606 = new VF.Stave(55, 1536.0000000000002, 517);
-stavesmo83606.setAttribute('id', 'stavesmo83606');
-stavesmo83606.setBegBarType(1);
-stavesmo83606.addClef('treble');
-const keysmo83606 = new VF.KeySignature('E');
-keysmo83606.addToStave(stavesmo83606);
-stavesmo83606.setContext(context);
-stavesmo83606.draw();
-smo83606v0.draw(context, stavesmo83606);
-smo91618.setContext(context);
-smo91618.draw();
-smo91619.setContext(context);
-smo91619.draw();
-const stavesmo84487 = new VF.Stave(55, 1683.0000000000002, 517);
-stavesmo84487.setAttribute('id', 'stavesmo84487');
-stavesmo84487.setBegBarType(1);
-stavesmo84487.addClef('bass');
-const keysmo84487 = new VF.KeySignature('E');
-keysmo84487.addToStave(stavesmo84487);
-stavesmo84487.setContext(context);
-stavesmo84487.draw();
-smo84487v0.draw(context, stavesmo84487);
-smo91622.setContext(context);
-smo91622.draw();
-smo91623.setContext(context);
-smo91623.draw();
-const leftsmo84911stavesmo811824 = new VF.StaveConnector(stavesmo81182, stavesmo84487).setType(4);
-leftsmo84911stavesmo811824.setContext(context).draw();
-const fmtsmo8120617 = new VF.Formatter();
+// formatting measures in staff group smo82569
+fmtsmo7884016.format([smo78840v0,smo79659v0,smo80470v0,smo81264v0,smo82145v0], 353);
+const stavesmo78840 = new VF.Stave(1009, 764.0000000000002, 367);
+stavesmo78840.setAttribute('id', 'stavesmo78840');
+stavesmo78840.setBegBarType(VF.Barline.type.NONE);
+stavesmo78840.setContext(context);
+stavesmo78840.draw();
+smo78840v0.draw(context, stavesmo78840);
+smo89255.setContext(context);
+smo89255.draw();
+smo89256.setContext(context);
+smo89256.draw();
+const stavesmo79659 = new VF.Stave(1009, 848.0000000000002, 367);
+stavesmo79659.setAttribute('id', 'stavesmo79659');
+stavesmo79659.setBegBarType(VF.Barline.type.NONE);
+stavesmo79659.setContext(context);
+stavesmo79659.draw();
+smo79659v0.draw(context, stavesmo79659);
+smo89258.setContext(context);
+smo89258.draw();
+smo89259.setContext(context);
+smo89259.draw();
+const stavesmo80470 = new VF.Stave(1009, 930.0000000000002, 367);
+stavesmo80470.setAttribute('id', 'stavesmo80470');
+stavesmo80470.setBegBarType(VF.Barline.type.NONE);
+stavesmo80470.setContext(context);
+stavesmo80470.draw();
+smo80470v0.draw(context, stavesmo80470);
+smo89261.setContext(context);
+smo89261.draw();
+smo89262.setContext(context);
+smo89262.draw();
+const stavesmo81264 = new VF.Stave(1009, 1026.0000000000002, 367);
+stavesmo81264.setAttribute('id', 'stavesmo81264');
+stavesmo81264.setBegBarType(VF.Barline.type.NONE);
+stavesmo81264.setContext(context);
+stavesmo81264.draw();
+smo81264v0.draw(context, stavesmo81264);
+smo89264.setContext(context);
+smo89264.draw();
+smo89265.setContext(context);
+smo89265.draw();
+const stavesmo82145 = new VF.Stave(1009, 1139.0000000000002, 367);
+stavesmo82145.setAttribute('id', 'stavesmo82145');
+stavesmo82145.setBegBarType(VF.Barline.type.NONE);
+stavesmo82145.setContext(context);
+stavesmo82145.draw();
+smo82145v0.draw(context, stavesmo82145);
+smo89267.setContext(context);
+smo89267.draw();
+smo89268.setContext(context);
+smo89268.draw();
+const rightsmo82569stavesmo788404 = new VF.StaveConnector(stavesmo78840, stavesmo82145).setType(0);
+rightsmo82569stavesmo788404.setContext(context).draw();
+const fmtsmo7886417 = new VF.Formatter();
 //
 // voices and notes for stave 0 17
-const smo81206v0 = new VF.Voice(JSON.parse('{"numBeats":4,"beatValue":4}')).setMode(VF.Voice.Mode.SOFT);
-const smo81206v0ar = [];
-const smo81183 = new VF.StaveNote(JSON.parse('{"clef":"treble","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["f#/5/n"]}'))
-smo81183.setAttribute('id', 'smo81183');
-smo81206v0ar.push(smo81183);
-const smo81184 = new VF.StaveNote(JSON.parse('{"clef":"treble","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["f#/5/n"]}'))
-smo81184.setAttribute('id', 'smo81184');
-smo81206v0ar.push(smo81184);
-const smo81185 = new VF.StaveNote(JSON.parse('{"clef":"treble","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["f#/5/n"]}'))
-smo81185.setAttribute('id', 'smo81185');
-smo81206v0ar.push(smo81185);
-const smo81186 = new VF.StaveNote(JSON.parse('{"clef":"treble","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["f#/5/n"]}'))
-smo81186.setAttribute('id', 'smo81186');
-smo81206v0ar.push(smo81186);
-const smo81187 = new VF.StaveNote(JSON.parse('{"clef":"treble","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["en/5/n"]}'))
-smo81187.setAttribute('id', 'smo81187');
-smo81206v0ar.push(smo81187);
-const smo81188 = new VF.StaveNote(JSON.parse('{"clef":"treble","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["en/5/n"]}'))
-smo81188.setAttribute('id', 'smo81188');
-smo81206v0ar.push(smo81188);
-const smo81189 = new VF.StaveNote(JSON.parse('{"clef":"treble","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["en/5/n"]}'))
-smo81189.setAttribute('id', 'smo81189');
-smo81206v0ar.push(smo81189);
-const smo81190 = new VF.StaveNote(JSON.parse('{"clef":"treble","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["c#/5/n"]}'))
-smo81190.setAttribute('id', 'smo81190');
-smo81206v0ar.push(smo81190);
-smo81206v0.addTickables(smo81206v0ar)
-fmtsmo8120617.joinVoices([smo81206v0]);
-const fmtsmo8202517 = new VF.Formatter();
+const smo78864v0 = new VF.Voice(JSON.parse('{"numBeats":4,"beatValue":4}')).setMode(VF.Voice.Mode.SOFT);
+const smo78864v0ar = [];
+const smo78841 = new VF.StaveNote(JSON.parse('{"clef":"treble","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["f#/5/n"]}'))
+smo78841.setAttribute('id', 'smo78841');
+smo78864v0ar.push(smo78841);
+const smo78842 = new VF.StaveNote(JSON.parse('{"clef":"treble","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["f#/5/n"]}'))
+smo78842.setAttribute('id', 'smo78842');
+smo78864v0ar.push(smo78842);
+const smo78843 = new VF.StaveNote(JSON.parse('{"clef":"treble","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["f#/5/n"]}'))
+smo78843.setAttribute('id', 'smo78843');
+smo78864v0ar.push(smo78843);
+const smo78844 = new VF.StaveNote(JSON.parse('{"clef":"treble","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["f#/5/n"]}'))
+smo78844.setAttribute('id', 'smo78844');
+smo78864v0ar.push(smo78844);
+const smo78845 = new VF.StaveNote(JSON.parse('{"clef":"treble","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["en/5/n"]}'))
+smo78845.setAttribute('id', 'smo78845');
+smo78864v0ar.push(smo78845);
+const smo78846 = new VF.StaveNote(JSON.parse('{"clef":"treble","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["en/5/n"]}'))
+smo78846.setAttribute('id', 'smo78846');
+smo78864v0ar.push(smo78846);
+const smo78847 = new VF.StaveNote(JSON.parse('{"clef":"treble","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["en/5/n"]}'))
+smo78847.setAttribute('id', 'smo78847');
+smo78864v0ar.push(smo78847);
+const smo78848 = new VF.StaveNote(JSON.parse('{"clef":"treble","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["c#/5/n"]}'))
+smo78848.setAttribute('id', 'smo78848');
+smo78864v0ar.push(smo78848);
+smo78864v0.addTickables(smo78864v0ar)
+fmtsmo7886417.joinVoices([smo78864v0]);
+const fmtsmo7968317 = new VF.Formatter();
 //
 // voices and notes for stave 1 17
-const smo82025v0 = new VF.Voice(JSON.parse('{"numBeats":4,"beatValue":4}')).setMode(VF.Voice.Mode.SOFT);
-const smo82025v0ar = [];
-const smo82002 = new VF.StaveNote(JSON.parse('{"clef":"treble","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["c#/5/n"]}'))
-smo82002.setAttribute('id', 'smo82002');
-smo82025v0ar.push(smo82002);
-const smo82003 = new VF.StaveNote(JSON.parse('{"clef":"treble","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["c#/5/n"]}'))
-smo82003.setAttribute('id', 'smo82003');
-smo82025v0ar.push(smo82003);
-const smo82004 = new VF.StaveNote(JSON.parse('{"clef":"treble","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["c#/5/n"]}'))
-smo82004.setAttribute('id', 'smo82004');
-smo82025v0ar.push(smo82004);
-const smo82005 = new VF.StaveNote(JSON.parse('{"clef":"treble","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["c#/5/n"]}'))
-smo82005.setAttribute('id', 'smo82005');
-smo82025v0ar.push(smo82005);
-const smo82006 = new VF.StaveNote(JSON.parse('{"clef":"treble","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["c#/5/n"]}'))
-smo82006.setAttribute('id', 'smo82006');
-smo82025v0ar.push(smo82006);
-const smo82007 = new VF.StaveNote(JSON.parse('{"clef":"treble","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["c#/5/n"]}'))
-smo82007.setAttribute('id', 'smo82007');
-smo82025v0ar.push(smo82007);
-const smo82008 = new VF.StaveNote(JSON.parse('{"clef":"treble","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["c#/5/n"]}'))
-smo82008.setAttribute('id', 'smo82008');
-smo82025v0ar.push(smo82008);
-const smo82009 = new VF.StaveNote(JSON.parse('{"clef":"treble","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["f#/4/n"]}'))
-smo82009.setAttribute('id', 'smo82009');
-smo82025v0ar.push(smo82009);
-smo82025v0.addTickables(smo82025v0ar)
-fmtsmo8202517.joinVoices([smo82025v0]);
-const fmtsmo8283617 = new VF.Formatter();
+const smo79683v0 = new VF.Voice(JSON.parse('{"numBeats":4,"beatValue":4}')).setMode(VF.Voice.Mode.SOFT);
+const smo79683v0ar = [];
+const smo79660 = new VF.StaveNote(JSON.parse('{"clef":"treble","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["c#/5/n"]}'))
+smo79660.setAttribute('id', 'smo79660');
+smo79683v0ar.push(smo79660);
+const smo79661 = new VF.StaveNote(JSON.parse('{"clef":"treble","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["c#/5/n"]}'))
+smo79661.setAttribute('id', 'smo79661');
+smo79683v0ar.push(smo79661);
+const smo79662 = new VF.StaveNote(JSON.parse('{"clef":"treble","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["c#/5/n"]}'))
+smo79662.setAttribute('id', 'smo79662');
+smo79683v0ar.push(smo79662);
+const smo79663 = new VF.StaveNote(JSON.parse('{"clef":"treble","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["c#/5/n"]}'))
+smo79663.setAttribute('id', 'smo79663');
+smo79683v0ar.push(smo79663);
+const smo79664 = new VF.StaveNote(JSON.parse('{"clef":"treble","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["c#/5/n"]}'))
+smo79664.setAttribute('id', 'smo79664');
+smo79683v0ar.push(smo79664);
+const smo79665 = new VF.StaveNote(JSON.parse('{"clef":"treble","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["c#/5/n"]}'))
+smo79665.setAttribute('id', 'smo79665');
+smo79683v0ar.push(smo79665);
+const smo79666 = new VF.StaveNote(JSON.parse('{"clef":"treble","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["c#/5/n"]}'))
+smo79666.setAttribute('id', 'smo79666');
+smo79683v0ar.push(smo79666);
+const smo79667 = new VF.StaveNote(JSON.parse('{"clef":"treble","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["f#/4/n"]}'))
+smo79667.setAttribute('id', 'smo79667');
+smo79683v0ar.push(smo79667);
+smo79683v0.addTickables(smo79683v0ar)
+fmtsmo7968317.joinVoices([smo79683v0]);
+const fmtsmo8049417 = new VF.Formatter();
 //
 // voices and notes for stave 2 17
-const smo82836v0 = new VF.Voice(JSON.parse('{"numBeats":4,"beatValue":4}')).setMode(VF.Voice.Mode.SOFT);
-const smo82836v0ar = [];
-const smo82813 = new VF.StaveNote(JSON.parse('{"clef":"alto","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["c#/4/n"]}'))
-smo82813.setAttribute('id', 'smo82813');
-smo82836v0ar.push(smo82813);
-const smo82814 = new VF.StaveNote(JSON.parse('{"clef":"alto","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["c#/4/n"]}'))
-smo82814.setAttribute('id', 'smo82814');
-smo82836v0ar.push(smo82814);
-const smo82815 = new VF.StaveNote(JSON.parse('{"clef":"alto","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["c#/4/n"]}'))
-smo82815.setAttribute('id', 'smo82815');
-smo82836v0ar.push(smo82815);
-const smo82816 = new VF.StaveNote(JSON.parse('{"clef":"alto","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["c#/4/n"]}'))
-smo82816.setAttribute('id', 'smo82816');
-smo82836v0ar.push(smo82816);
-const smo82817 = new VF.StaveNote(JSON.parse('{"clef":"alto","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["f#/4/n"]}'))
-smo82817.setAttribute('id', 'smo82817');
-smo82836v0ar.push(smo82817);
-const smo82818 = new VF.StaveNote(JSON.parse('{"clef":"alto","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["f#/4/n"]}'))
-smo82818.setAttribute('id', 'smo82818');
-smo82836v0ar.push(smo82818);
-const smo82819 = new VF.StaveNote(JSON.parse('{"clef":"alto","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["f#/4/n"]}'))
-smo82819.setAttribute('id', 'smo82819');
-smo82836v0ar.push(smo82819);
-const smo82820 = new VF.StaveNote(JSON.parse('{"clef":"alto","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["f#/4/n"]}'))
-smo82820.setAttribute('id', 'smo82820');
-smo82836v0ar.push(smo82820);
-smo82836v0.addTickables(smo82836v0ar)
-fmtsmo8283617.joinVoices([smo82836v0]);
-const fmtsmo8363417 = new VF.Formatter();
+const smo80494v0 = new VF.Voice(JSON.parse('{"numBeats":4,"beatValue":4}')).setMode(VF.Voice.Mode.SOFT);
+const smo80494v0ar = [];
+const smo80471 = new VF.StaveNote(JSON.parse('{"clef":"alto","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["c#/4/n"]}'))
+smo80471.setAttribute('id', 'smo80471');
+smo80494v0ar.push(smo80471);
+const smo80472 = new VF.StaveNote(JSON.parse('{"clef":"alto","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["c#/4/n"]}'))
+smo80472.setAttribute('id', 'smo80472');
+smo80494v0ar.push(smo80472);
+const smo80473 = new VF.StaveNote(JSON.parse('{"clef":"alto","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["c#/4/n"]}'))
+smo80473.setAttribute('id', 'smo80473');
+smo80494v0ar.push(smo80473);
+const smo80474 = new VF.StaveNote(JSON.parse('{"clef":"alto","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["c#/4/n"]}'))
+smo80474.setAttribute('id', 'smo80474');
+smo80494v0ar.push(smo80474);
+const smo80475 = new VF.StaveNote(JSON.parse('{"clef":"alto","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["f#/4/n"]}'))
+smo80475.setAttribute('id', 'smo80475');
+smo80494v0ar.push(smo80475);
+const smo80476 = new VF.StaveNote(JSON.parse('{"clef":"alto","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["f#/4/n"]}'))
+smo80476.setAttribute('id', 'smo80476');
+smo80494v0ar.push(smo80476);
+const smo80477 = new VF.StaveNote(JSON.parse('{"clef":"alto","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["f#/4/n"]}'))
+smo80477.setAttribute('id', 'smo80477');
+smo80494v0ar.push(smo80477);
+const smo80478 = new VF.StaveNote(JSON.parse('{"clef":"alto","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["f#/4/n"]}'))
+smo80478.setAttribute('id', 'smo80478');
+smo80494v0ar.push(smo80478);
+smo80494v0.addTickables(smo80494v0ar)
+fmtsmo8049417.joinVoices([smo80494v0]);
+const fmtsmo8129217 = new VF.Formatter();
 //
 // voices and notes for stave 3 17
-const smo83634v0 = new VF.Voice(JSON.parse('{"numBeats":4,"beatValue":4}')).setMode(VF.Voice.Mode.SOFT);
-const smo83634v0ar = [];
-const smo83607 = new VF.StaveNote(JSON.parse('{"clef":"treble","duration":"8d","dots":1,"type":"n","autoStem":true,"keys":["f#/5/n"]}'))
-smo83607.setAttribute('id', 'smo83607');
-smo83607.addModifier(new VF.Dot(), 0);
-const smo83608 = new VF.Annotation('com');
-smo83608.setAttribute('id', 'smo83608');
-smo83608.setFont('Merriweather', 12, 'normal');
-smo83608.setVerticalJustification(VF.Annotation.VerticalJustify.BOTTOM);
-smo83607.addModifier(smo83608);
-smo83608.addClass('lyric lyric-0 lyric-hyphen');
-smo83634v0ar.push(smo83607);
-const smo83609 = new VF.StaveNote(JSON.parse('{"clef":"treble","duration":"16","dots":0,"type":"n","autoStem":true,"keys":["f#/5/n"]}'))
-smo83609.setAttribute('id', 'smo83609');
-const smo83610 = new VF.Annotation('or');
-smo83610.setAttribute('id', 'smo83610');
-smo83610.setFont('Merriweather', 12, 'normal');
-smo83610.setVerticalJustification(VF.Annotation.VerticalJustify.BOTTOM);
-smo83609.addModifier(smo83610);
-smo83610.addClass('lyric lyric-0 lyric-hyphen');
-smo83634v0ar.push(smo83609);
-const smo83611 = new VF.StaveNote(JSON.parse('{"clef":"treble","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["f#/5/n"]}'))
-smo83611.setAttribute('id', 'smo83611');
-const smo83612 = new VF.Annotation('a');
-smo83612.setAttribute('id', 'smo83612');
-smo83612.setFont('Merriweather', 12, 'normal');
-smo83612.setVerticalJustification(VF.Annotation.VerticalJustify.BOTTOM);
-smo83611.addModifier(smo83612);
-smo83612.addClass('lyric lyric-0 lyric-hyphen');
-smo83634v0ar.push(smo83611);
-const smo83613 = new VF.StaveNote(JSON.parse('{"clef":"treble","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["f#/5/n"]}'))
-smo83613.setAttribute('id', 'smo83613');
-const smo83614 = new VF.Annotation('bly');
-smo83614.setAttribute('id', 'smo83614');
-smo83614.setFont('Merriweather', 12, 'normal');
-smo83614.setVerticalJustification(VF.Annotation.VerticalJustify.BOTTOM);
-smo83613.addModifier(smo83614);
-smo83614.addClass('lyric lyric-0');
-smo83634v0ar.push(smo83613);
-const smo83615 = new VF.StaveNote(JSON.parse('{"clef":"treble","duration":"4d","dots":1,"type":"n","autoStem":true,"keys":["c#/5/n"]}'))
-smo83615.setAttribute('id', 'smo83615');
-smo83615.addModifier(new VF.Dot(), 0);
-const smo83616 = new VF.Annotation('to');
-smo83616.setAttribute('id', 'smo83616');
-smo83616.setFont('Merriweather', 12, 'normal');
-smo83616.setVerticalJustification(VF.Annotation.VerticalJustify.BOTTOM);
-smo83615.addModifier(smo83616);
-smo83616.addClass('lyric lyric-0');
-smo83634v0ar.push(smo83615);
-const smo83617 = new VF.StaveNote(JSON.parse('{"clef":"treble","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["en/5/n"]}'))
-smo83617.setAttribute('id', 'smo83617');
-const smo83618 = new VF.Annotation('Je');
-smo83618.setAttribute('id', 'smo83618');
-smo83618.setFont('Merriweather', 12, 'normal');
-smo83618.setVerticalJustification(VF.Annotation.VerticalJustify.BOTTOM);
-smo83617.addModifier(smo83618);
-smo83618.addClass('lyric lyric-0 lyric-hyphen');
-smo83634v0ar.push(smo83617);
-smo83634v0.addTickables(smo83634v0ar)
-fmtsmo8363417.joinVoices([smo83634v0]);
-const fmtsmo8451117 = new VF.Formatter();
+const smo81292v0 = new VF.Voice(JSON.parse('{"numBeats":4,"beatValue":4}')).setMode(VF.Voice.Mode.SOFT);
+const smo81292v0ar = [];
+const smo81265 = new VF.StaveNote(JSON.parse('{"clef":"treble","duration":"8d","dots":1,"type":"n","autoStem":true,"keys":["f#/5/n"]}'))
+smo81265.setAttribute('id', 'smo81265');
+smo81265.addModifier(new VF.Dot(), 0);
+const smo81266 = new VF.Annotation('com');
+smo81266.setAttribute('id', 'smo81266');
+smo81266.setFont('Merriweather', 12, 'normal');
+smo81266.setVerticalJustification(VF.Annotation.VerticalJustify.BOTTOM);
+smo81265.addModifier(smo81266);
+smo81266.addClass('lyric lyric-0 lyric-hyphen');
+smo81292v0ar.push(smo81265);
+const smo81267 = new VF.StaveNote(JSON.parse('{"clef":"treble","duration":"16","dots":0,"type":"n","autoStem":true,"keys":["f#/5/n"]}'))
+smo81267.setAttribute('id', 'smo81267');
+const smo81268 = new VF.Annotation('or');
+smo81268.setAttribute('id', 'smo81268');
+smo81268.setFont('Merriweather', 12, 'normal');
+smo81268.setVerticalJustification(VF.Annotation.VerticalJustify.BOTTOM);
+smo81267.addModifier(smo81268);
+smo81268.addClass('lyric lyric-0 lyric-hyphen');
+smo81292v0ar.push(smo81267);
+const smo81269 = new VF.StaveNote(JSON.parse('{"clef":"treble","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["f#/5/n"]}'))
+smo81269.setAttribute('id', 'smo81269');
+const smo81270 = new VF.Annotation('a');
+smo81270.setAttribute('id', 'smo81270');
+smo81270.setFont('Merriweather', 12, 'normal');
+smo81270.setVerticalJustification(VF.Annotation.VerticalJustify.BOTTOM);
+smo81269.addModifier(smo81270);
+smo81270.addClass('lyric lyric-0 lyric-hyphen');
+smo81292v0ar.push(smo81269);
+const smo81271 = new VF.StaveNote(JSON.parse('{"clef":"treble","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["f#/5/n"]}'))
+smo81271.setAttribute('id', 'smo81271');
+const smo81272 = new VF.Annotation('bly');
+smo81272.setAttribute('id', 'smo81272');
+smo81272.setFont('Merriweather', 12, 'normal');
+smo81272.setVerticalJustification(VF.Annotation.VerticalJustify.BOTTOM);
+smo81271.addModifier(smo81272);
+smo81272.addClass('lyric lyric-0');
+smo81292v0ar.push(smo81271);
+const smo81273 = new VF.StaveNote(JSON.parse('{"clef":"treble","duration":"4d","dots":1,"type":"n","autoStem":true,"keys":["c#/5/n"]}'))
+smo81273.setAttribute('id', 'smo81273');
+smo81273.addModifier(new VF.Dot(), 0);
+const smo81274 = new VF.Annotation('to');
+smo81274.setAttribute('id', 'smo81274');
+smo81274.setFont('Merriweather', 12, 'normal');
+smo81274.setVerticalJustification(VF.Annotation.VerticalJustify.BOTTOM);
+smo81273.addModifier(smo81274);
+smo81274.addClass('lyric lyric-0');
+smo81292v0ar.push(smo81273);
+const smo81275 = new VF.StaveNote(JSON.parse('{"clef":"treble","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["en/5/n"]}'))
+smo81275.setAttribute('id', 'smo81275');
+const smo81276 = new VF.Annotation('Je');
+smo81276.setAttribute('id', 'smo81276');
+smo81276.setFont('Merriweather', 12, 'normal');
+smo81276.setVerticalJustification(VF.Annotation.VerticalJustify.BOTTOM);
+smo81275.addModifier(smo81276);
+smo81276.addClass('lyric lyric-0 lyric-hyphen');
+smo81292v0ar.push(smo81275);
+smo81292v0.addTickables(smo81292v0ar)
+fmtsmo8129217.joinVoices([smo81292v0]);
+const fmtsmo8216917 = new VF.Formatter();
 //
 // voices and notes for stave 4 17
-const smo84511v0 = new VF.Voice(JSON.parse('{"numBeats":4,"beatValue":4}')).setMode(VF.Voice.Mode.SOFT);
-const smo84511v0ar = [];
-const smo84488 = new VF.StaveNote(JSON.parse('{"clef":"bass","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["a#/2/n"]}'))
-smo84488.setAttribute('id', 'smo84488');
-const smo844880acc = new VF.Accidental('#');
-smo84488.addModifier(smo844880acc, 0);
-smo84511v0ar.push(smo84488);
-const smo84489 = new VF.StaveNote(JSON.parse('{"clef":"bass","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["a#/2/n"]}'))
-smo84489.setAttribute('id', 'smo84489');
-smo84511v0ar.push(smo84489);
-const smo84490 = new VF.StaveNote(JSON.parse('{"clef":"bass","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["a#/2/n"]}'))
-smo84490.setAttribute('id', 'smo84490');
-smo84511v0ar.push(smo84490);
-const smo84491 = new VF.StaveNote(JSON.parse('{"clef":"bass","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["a#/2/n"]}'))
-smo84491.setAttribute('id', 'smo84491');
-smo84511v0ar.push(smo84491);
-const smo84492 = new VF.StaveNote(JSON.parse('{"clef":"bass","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["a#/2/n"]}'))
-smo84492.setAttribute('id', 'smo84492');
-smo84511v0ar.push(smo84492);
-const smo84493 = new VF.StaveNote(JSON.parse('{"clef":"bass","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["a#/2/n"]}'))
-smo84493.setAttribute('id', 'smo84493');
-smo84511v0ar.push(smo84493);
-const smo84494 = new VF.StaveNote(JSON.parse('{"clef":"bass","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["a#/2/n"]}'))
-smo84494.setAttribute('id', 'smo84494');
-smo84511v0ar.push(smo84494);
-const smo84495 = new VF.StaveNote(JSON.parse('{"clef":"bass","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["a#/2/n"]}'))
-smo84495.setAttribute('id', 'smo84495');
-smo84511v0ar.push(smo84495);
-smo84511v0.addTickables(smo84511v0ar)
-fmtsmo8451117.joinVoices([smo84511v0]);
-// create beam groups and tuplets for format grp smo84911 before formatting
-const dirsmo91626 = smo81183.getStemDirection();
-smo81183.setStemDirection(dirsmo91626);
-smo81184.setStemDirection(dirsmo91626);
-smo81185.setStemDirection(dirsmo91626);
-smo81186.setStemDirection(dirsmo91626);
-const smo91626 = new VF.Beam([smo81183,smo81184,smo81185,smo81186]);
-const dirsmo91627 = smo81187.getStemDirection();
-smo81187.setStemDirection(dirsmo91627);
-smo81188.setStemDirection(dirsmo91627);
-smo81189.setStemDirection(dirsmo91627);
-smo81190.setStemDirection(dirsmo91627);
-const smo91627 = new VF.Beam([smo81187,smo81188,smo81189,smo81190]);
-const dirsmo91630 = smo82002.getStemDirection();
-smo82002.setStemDirection(dirsmo91630);
-smo82003.setStemDirection(dirsmo91630);
-smo82004.setStemDirection(dirsmo91630);
-smo82005.setStemDirection(dirsmo91630);
-const smo91630 = new VF.Beam([smo82002,smo82003,smo82004,smo82005]);
-const dirsmo91631 = smo82006.getStemDirection();
-smo82006.setStemDirection(dirsmo91631);
-smo82007.setStemDirection(dirsmo91631);
-smo82008.setStemDirection(dirsmo91631);
-smo82009.setStemDirection(dirsmo91631);
-const smo91631 = new VF.Beam([smo82006,smo82007,smo82008,smo82009]);
-const dirsmo91634 = smo82813.getStemDirection();
-smo82813.setStemDirection(dirsmo91634);
-smo82814.setStemDirection(dirsmo91634);
-smo82815.setStemDirection(dirsmo91634);
-smo82816.setStemDirection(dirsmo91634);
-const smo91634 = new VF.Beam([smo82813,smo82814,smo82815,smo82816]);
-const dirsmo91635 = smo82817.getStemDirection();
-smo82817.setStemDirection(dirsmo91635);
-smo82818.setStemDirection(dirsmo91635);
-smo82819.setStemDirection(dirsmo91635);
-smo82820.setStemDirection(dirsmo91635);
-const smo91635 = new VF.Beam([smo82817,smo82818,smo82819,smo82820]);
-const dirsmo91638 = smo83607.getStemDirection();
-smo83607.setStemDirection(dirsmo91638);
-smo83609.setStemDirection(dirsmo91638);
-const smo91638 = new VF.Beam([smo83607,smo83609]);
-const dirsmo91639 = smo83611.getStemDirection();
-smo83611.setStemDirection(dirsmo91639);
-smo83613.setStemDirection(dirsmo91639);
-const smo91639 = new VF.Beam([smo83611,smo83613]);
-const dirsmo91642 = smo84488.getStemDirection();
-smo84488.setStemDirection(dirsmo91642);
-smo84489.setStemDirection(dirsmo91642);
-smo84490.setStemDirection(dirsmo91642);
-smo84491.setStemDirection(dirsmo91642);
-const smo91642 = new VF.Beam([smo84488,smo84489,smo84490,smo84491]);
-const dirsmo91643 = smo84492.getStemDirection();
-smo84492.setStemDirection(dirsmo91643);
-smo84493.setStemDirection(dirsmo91643);
-smo84494.setStemDirection(dirsmo91643);
-smo84495.setStemDirection(dirsmo91643);
-const smo91643 = new VF.Beam([smo84492,smo84493,smo84494,smo84495]);
+const smo82169v0 = new VF.Voice(JSON.parse('{"numBeats":4,"beatValue":4}')).setMode(VF.Voice.Mode.SOFT);
+const smo82169v0ar = [];
+const smo82146 = new VF.StaveNote(JSON.parse('{"clef":"bass","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["a#/2/n"]}'))
+smo82146.setAttribute('id', 'smo82146');
+const smo821460acc = new VF.Accidental('#');
+smo82146.addModifier(smo821460acc, 0);
+smo82169v0ar.push(smo82146);
+const smo82147 = new VF.StaveNote(JSON.parse('{"clef":"bass","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["a#/2/n"]}'))
+smo82147.setAttribute('id', 'smo82147');
+smo82169v0ar.push(smo82147);
+const smo82148 = new VF.StaveNote(JSON.parse('{"clef":"bass","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["a#/2/n"]}'))
+smo82148.setAttribute('id', 'smo82148');
+smo82169v0ar.push(smo82148);
+const smo82149 = new VF.StaveNote(JSON.parse('{"clef":"bass","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["a#/2/n"]}'))
+smo82149.setAttribute('id', 'smo82149');
+smo82169v0ar.push(smo82149);
+const smo82150 = new VF.StaveNote(JSON.parse('{"clef":"bass","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["a#/2/n"]}'))
+smo82150.setAttribute('id', 'smo82150');
+smo82169v0ar.push(smo82150);
+const smo82151 = new VF.StaveNote(JSON.parse('{"clef":"bass","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["a#/2/n"]}'))
+smo82151.setAttribute('id', 'smo82151');
+smo82169v0ar.push(smo82151);
+const smo82152 = new VF.StaveNote(JSON.parse('{"clef":"bass","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["a#/2/n"]}'))
+smo82152.setAttribute('id', 'smo82152');
+smo82169v0ar.push(smo82152);
+const smo82153 = new VF.StaveNote(JSON.parse('{"clef":"bass","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["a#/2/n"]}'))
+smo82153.setAttribute('id', 'smo82153');
+smo82169v0ar.push(smo82153);
+smo82169v0.addTickables(smo82169v0ar)
+fmtsmo8216917.joinVoices([smo82169v0]);
+// create beam groups and tuplets for format grp smo82569 before formatting
+const dirsmo89295 = smo78841.getStemDirection();
+smo78841.setStemDirection(dirsmo89295);
+smo78842.setStemDirection(dirsmo89295);
+smo78843.setStemDirection(dirsmo89295);
+smo78844.setStemDirection(dirsmo89295);
+const smo89295 = new VF.Beam([smo78841,smo78842,smo78843,smo78844]);
+const dirsmo89296 = smo78845.getStemDirection();
+smo78845.setStemDirection(dirsmo89296);
+smo78846.setStemDirection(dirsmo89296);
+smo78847.setStemDirection(dirsmo89296);
+smo78848.setStemDirection(dirsmo89296);
+const smo89296 = new VF.Beam([smo78845,smo78846,smo78847,smo78848]);
+const dirsmo89298 = smo79660.getStemDirection();
+smo79660.setStemDirection(dirsmo89298);
+smo79661.setStemDirection(dirsmo89298);
+smo79662.setStemDirection(dirsmo89298);
+smo79663.setStemDirection(dirsmo89298);
+const smo89298 = new VF.Beam([smo79660,smo79661,smo79662,smo79663]);
+const dirsmo89299 = smo79664.getStemDirection();
+smo79664.setStemDirection(dirsmo89299);
+smo79665.setStemDirection(dirsmo89299);
+smo79666.setStemDirection(dirsmo89299);
+smo79667.setStemDirection(dirsmo89299);
+const smo89299 = new VF.Beam([smo79664,smo79665,smo79666,smo79667]);
+const dirsmo89301 = smo80471.getStemDirection();
+smo80471.setStemDirection(dirsmo89301);
+smo80472.setStemDirection(dirsmo89301);
+smo80473.setStemDirection(dirsmo89301);
+smo80474.setStemDirection(dirsmo89301);
+const smo89301 = new VF.Beam([smo80471,smo80472,smo80473,smo80474]);
+const dirsmo89302 = smo80475.getStemDirection();
+smo80475.setStemDirection(dirsmo89302);
+smo80476.setStemDirection(dirsmo89302);
+smo80477.setStemDirection(dirsmo89302);
+smo80478.setStemDirection(dirsmo89302);
+const smo89302 = new VF.Beam([smo80475,smo80476,smo80477,smo80478]);
+const dirsmo89304 = smo81265.getStemDirection();
+smo81265.setStemDirection(dirsmo89304);
+smo81267.setStemDirection(dirsmo89304);
+const smo89304 = new VF.Beam([smo81265,smo81267]);
+const dirsmo89305 = smo81269.getStemDirection();
+smo81269.setStemDirection(dirsmo89305);
+smo81271.setStemDirection(dirsmo89305);
+const smo89305 = new VF.Beam([smo81269,smo81271]);
+const dirsmo89307 = smo82146.getStemDirection();
+smo82146.setStemDirection(dirsmo89307);
+smo82147.setStemDirection(dirsmo89307);
+smo82148.setStemDirection(dirsmo89307);
+smo82149.setStemDirection(dirsmo89307);
+const smo89307 = new VF.Beam([smo82146,smo82147,smo82148,smo82149]);
+const dirsmo89308 = smo82150.getStemDirection();
+smo82150.setStemDirection(dirsmo89308);
+smo82151.setStemDirection(dirsmo89308);
+smo82152.setStemDirection(dirsmo89308);
+smo82153.setStemDirection(dirsmo89308);
+const smo89308 = new VF.Beam([smo82150,smo82151,smo82152,smo82153]);
  
-// formatting measures in staff group smo84911
-fmtsmo8120617.format([smo81206v0,smo82025v0,smo82836v0,smo83634v0,smo84511v0], 403);
-const stavesmo81206 = new VF.Stave(572, 1266.0000000000002, 417);
-stavesmo81206.setAttribute('id', 'stavesmo81206');
-stavesmo81206.setBegBarType(VF.Barline.type.NONE);
-stavesmo81206.setContext(context);
-stavesmo81206.draw();
-smo81206v0.draw(context, stavesmo81206);
-smo91626.setContext(context);
-smo91626.draw();
-smo91627.setContext(context);
-smo91627.draw();
-const stavesmo82025 = new VF.Stave(572, 1354.0000000000002, 417);
-stavesmo82025.setAttribute('id', 'stavesmo82025');
-stavesmo82025.setBegBarType(VF.Barline.type.NONE);
-stavesmo82025.setContext(context);
-stavesmo82025.draw();
-smo82025v0.draw(context, stavesmo82025);
-smo91630.setContext(context);
-smo91630.draw();
-smo91631.setContext(context);
-smo91631.draw();
-const stavesmo82836 = new VF.Stave(572, 1458.0000000000002, 417);
-stavesmo82836.setAttribute('id', 'stavesmo82836');
-stavesmo82836.setBegBarType(VF.Barline.type.NONE);
-stavesmo82836.setContext(context);
-stavesmo82836.draw();
-smo82836v0.draw(context, stavesmo82836);
-smo91634.setContext(context);
-smo91634.draw();
-smo91635.setContext(context);
-smo91635.draw();
-const stavesmo83634 = new VF.Stave(572, 1536.0000000000002, 417);
-stavesmo83634.setAttribute('id', 'stavesmo83634');
-stavesmo83634.setBegBarType(VF.Barline.type.NONE);
-stavesmo83634.setContext(context);
-stavesmo83634.draw();
-smo83634v0.draw(context, stavesmo83634);
-smo91638.setContext(context);
-smo91638.draw();
-smo91639.setContext(context);
-smo91639.draw();
-const stavesmo84511 = new VF.Stave(572, 1683.0000000000002, 417);
-stavesmo84511.setAttribute('id', 'stavesmo84511');
-stavesmo84511.setBegBarType(VF.Barline.type.NONE);
-stavesmo84511.setContext(context);
-stavesmo84511.draw();
-smo84511v0.draw(context, stavesmo84511);
-smo91642.setContext(context);
-smo91642.draw();
-smo91643.setContext(context);
-smo91643.draw();
-const fmtsmo8122918 = new VF.Formatter();
+// formatting measures in staff group smo82569
+fmtsmo7886417.format([smo78864v0,smo79683v0,smo80494v0,smo81292v0,smo82169v0], 410);
+const stavesmo78864 = new VF.Stave(55, 1278.0000000000002, 505);
+stavesmo78864.setAttribute('id', 'stavesmo78864');
+stavesmo78864.setBegBarType(1);
+stavesmo78864.addClef('treble');
+const keysmo78864 = new VF.KeySignature('E');
+keysmo78864.addToStave(stavesmo78864);
+stavesmo78864.setContext(context);
+stavesmo78864.draw();
+smo78864v0.draw(context, stavesmo78864);
+smo89295.setContext(context);
+smo89295.draw();
+smo89296.setContext(context);
+smo89296.draw();
+const stavesmo79683 = new VF.Stave(55, 1366.0000000000002, 505);
+stavesmo79683.setAttribute('id', 'stavesmo79683');
+stavesmo79683.setBegBarType(1);
+stavesmo79683.addClef('treble');
+const keysmo79683 = new VF.KeySignature('E');
+keysmo79683.addToStave(stavesmo79683);
+stavesmo79683.setContext(context);
+stavesmo79683.draw();
+smo79683v0.draw(context, stavesmo79683);
+smo89298.setContext(context);
+smo89298.draw();
+smo89299.setContext(context);
+smo89299.draw();
+const stavesmo80494 = new VF.Stave(55, 1470.0000000000002, 505);
+stavesmo80494.setAttribute('id', 'stavesmo80494');
+stavesmo80494.setBegBarType(1);
+stavesmo80494.addClef('alto');
+const keysmo80494 = new VF.KeySignature('E');
+keysmo80494.addToStave(stavesmo80494);
+stavesmo80494.setContext(context);
+stavesmo80494.draw();
+smo80494v0.draw(context, stavesmo80494);
+smo89301.setContext(context);
+smo89301.draw();
+smo89302.setContext(context);
+smo89302.draw();
+const stavesmo81292 = new VF.Stave(55, 1552.0000000000002, 505);
+stavesmo81292.setAttribute('id', 'stavesmo81292');
+stavesmo81292.setBegBarType(1);
+stavesmo81292.addClef('treble');
+const keysmo81292 = new VF.KeySignature('E');
+keysmo81292.addToStave(stavesmo81292);
+stavesmo81292.setContext(context);
+stavesmo81292.draw();
+smo81292v0.draw(context, stavesmo81292);
+smo89304.setContext(context);
+smo89304.draw();
+smo89305.setContext(context);
+smo89305.draw();
+const stavesmo82169 = new VF.Stave(55, 1695.0000000000002, 505);
+stavesmo82169.setAttribute('id', 'stavesmo82169');
+stavesmo82169.setBegBarType(1);
+stavesmo82169.addClef('bass');
+const keysmo82169 = new VF.KeySignature('E');
+keysmo82169.addToStave(stavesmo82169);
+stavesmo82169.setContext(context);
+stavesmo82169.draw();
+smo82169v0.draw(context, stavesmo82169);
+smo89307.setContext(context);
+smo89307.draw();
+smo89308.setContext(context);
+smo89308.draw();
+const leftsmo82569stavesmo788644 = new VF.StaveConnector(stavesmo78864, stavesmo82169).setType(4);
+leftsmo82569stavesmo788644.setContext(context).draw();
+const fmtsmo7888718 = new VF.Formatter();
 //
 // voices and notes for stave 0 18
-const smo81229v0 = new VF.Voice(JSON.parse('{"numBeats":4,"beatValue":4}')).setMode(VF.Voice.Mode.SOFT);
-const smo81229v0ar = [];
-const smo81207 = new VF.StaveNote(JSON.parse('{"clef":"treble","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["d#/5/n"]}'))
-smo81207.setAttribute('id', 'smo81207');
-smo81229v0ar.push(smo81207);
-const smo81208 = new VF.StaveNote(JSON.parse('{"clef":"treble","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["d#/5/n"]}'))
-smo81208.setAttribute('id', 'smo81208');
-smo81229v0ar.push(smo81208);
-const smo81209 = new VF.StaveNote(JSON.parse('{"clef":"treble","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["d#/5/n"]}'))
-smo81209.setAttribute('id', 'smo81209');
-smo81229v0ar.push(smo81209);
-const smo81210 = new VF.StaveNote(JSON.parse('{"clef":"treble","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["d#/5/n"]}'))
-smo81210.setAttribute('id', 'smo81210');
-smo81229v0ar.push(smo81210);
-const smo81211 = new VF.StaveNote(JSON.parse('{"clef":"treble","duration":"8d","dots":1,"type":"n","autoStem":true,"keys":["f#/5/n"]}'))
-smo81211.setAttribute('id', 'smo81211');
-smo81211.addModifier(new VF.Dot(), 0);
-smo81229v0ar.push(smo81211);
-const smo81212 = new VF.StaveNote(JSON.parse('{"clef":"treble","duration":"16","dots":0,"type":"n","autoStem":true,"keys":["en/5/n"]}'))
-smo81212.setAttribute('id', 'smo81212');
-smo81229v0ar.push(smo81212);
-const smo81213 = new VF.StaveNote(JSON.parse('{"clef":"treble","duration":"4","dots":0,"type":"n","autoStem":true,"keys":["d#/5/n"]}'))
-smo81213.setAttribute('id', 'smo81213');
-smo81229v0ar.push(smo81213);
-smo81229v0.addTickables(smo81229v0ar)
-fmtsmo8122918.joinVoices([smo81229v0]);
-const fmtsmo8204818 = new VF.Formatter();
+const smo78887v0 = new VF.Voice(JSON.parse('{"numBeats":4,"beatValue":4}')).setMode(VF.Voice.Mode.SOFT);
+const smo78887v0ar = [];
+const smo78865 = new VF.StaveNote(JSON.parse('{"clef":"treble","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["d#/5/n"]}'))
+smo78865.setAttribute('id', 'smo78865');
+smo78887v0ar.push(smo78865);
+const smo78866 = new VF.StaveNote(JSON.parse('{"clef":"treble","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["d#/5/n"]}'))
+smo78866.setAttribute('id', 'smo78866');
+smo78887v0ar.push(smo78866);
+const smo78867 = new VF.StaveNote(JSON.parse('{"clef":"treble","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["d#/5/n"]}'))
+smo78867.setAttribute('id', 'smo78867');
+smo78887v0ar.push(smo78867);
+const smo78868 = new VF.StaveNote(JSON.parse('{"clef":"treble","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["d#/5/n"]}'))
+smo78868.setAttribute('id', 'smo78868');
+smo78887v0ar.push(smo78868);
+const smo78869 = new VF.StaveNote(JSON.parse('{"clef":"treble","duration":"8d","dots":1,"type":"n","autoStem":true,"keys":["f#/5/n"]}'))
+smo78869.setAttribute('id', 'smo78869');
+smo78869.addModifier(new VF.Dot(), 0);
+smo78887v0ar.push(smo78869);
+const smo78870 = new VF.StaveNote(JSON.parse('{"clef":"treble","duration":"16","dots":0,"type":"n","autoStem":true,"keys":["en/5/n"]}'))
+smo78870.setAttribute('id', 'smo78870');
+smo78887v0ar.push(smo78870);
+const smo78871 = new VF.StaveNote(JSON.parse('{"clef":"treble","duration":"4","dots":0,"type":"n","autoStem":true,"keys":["d#/5/n"]}'))
+smo78871.setAttribute('id', 'smo78871');
+smo78887v0ar.push(smo78871);
+smo78887v0.addTickables(smo78887v0ar)
+fmtsmo7888718.joinVoices([smo78887v0]);
+const fmtsmo7970618 = new VF.Formatter();
 //
 // voices and notes for stave 1 18
-const smo82048v0 = new VF.Voice(JSON.parse('{"numBeats":4,"beatValue":4}')).setMode(VF.Voice.Mode.SOFT);
-const smo82048v0ar = [];
-const smo82026 = new VF.StaveNote(JSON.parse('{"clef":"treble","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["f#/4/n"]}'))
-smo82026.setAttribute('id', 'smo82026');
-smo82048v0ar.push(smo82026);
-const smo82027 = new VF.StaveNote(JSON.parse('{"clef":"treble","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["f#/4/n"]}'))
-smo82027.setAttribute('id', 'smo82027');
-smo82048v0ar.push(smo82027);
-const smo82028 = new VF.StaveNote(JSON.parse('{"clef":"treble","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["f#/4/n"]}'))
-smo82028.setAttribute('id', 'smo82028');
-smo82048v0ar.push(smo82028);
-const smo82029 = new VF.StaveNote(JSON.parse('{"clef":"treble","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["f#/4/n"]}'))
-smo82029.setAttribute('id', 'smo82029');
-smo82048v0ar.push(smo82029);
-const smo82030 = new VF.StaveNote(JSON.parse('{"clef":"treble","duration":"8d","dots":1,"type":"n","autoStem":true,"keys":["d#/5/n"]}'))
-smo82030.setAttribute('id', 'smo82030');
-smo82030.addModifier(new VF.Dot(), 0);
-smo82048v0ar.push(smo82030);
-const smo82031 = new VF.StaveNote(JSON.parse('{"clef":"treble","duration":"16","dots":0,"type":"n","autoStem":true,"keys":["c#/5/n"]}'))
-smo82031.setAttribute('id', 'smo82031');
-smo82048v0ar.push(smo82031);
-const smo82032 = new VF.StaveNote(JSON.parse('{"clef":"treble","duration":"4","dots":0,"type":"n","autoStem":true,"keys":["bn/4/n"]}'))
-smo82032.setAttribute('id', 'smo82032');
-smo82048v0ar.push(smo82032);
-smo82048v0.addTickables(smo82048v0ar)
-fmtsmo8204818.joinVoices([smo82048v0]);
-const fmtsmo8285918 = new VF.Formatter();
+const smo79706v0 = new VF.Voice(JSON.parse('{"numBeats":4,"beatValue":4}')).setMode(VF.Voice.Mode.SOFT);
+const smo79706v0ar = [];
+const smo79684 = new VF.StaveNote(JSON.parse('{"clef":"treble","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["f#/4/n"]}'))
+smo79684.setAttribute('id', 'smo79684');
+smo79706v0ar.push(smo79684);
+const smo79685 = new VF.StaveNote(JSON.parse('{"clef":"treble","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["f#/4/n"]}'))
+smo79685.setAttribute('id', 'smo79685');
+smo79706v0ar.push(smo79685);
+const smo79686 = new VF.StaveNote(JSON.parse('{"clef":"treble","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["f#/4/n"]}'))
+smo79686.setAttribute('id', 'smo79686');
+smo79706v0ar.push(smo79686);
+const smo79687 = new VF.StaveNote(JSON.parse('{"clef":"treble","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["f#/4/n"]}'))
+smo79687.setAttribute('id', 'smo79687');
+smo79706v0ar.push(smo79687);
+const smo79688 = new VF.StaveNote(JSON.parse('{"clef":"treble","duration":"8d","dots":1,"type":"n","autoStem":true,"keys":["d#/5/n"]}'))
+smo79688.setAttribute('id', 'smo79688');
+smo79688.addModifier(new VF.Dot(), 0);
+smo79706v0ar.push(smo79688);
+const smo79689 = new VF.StaveNote(JSON.parse('{"clef":"treble","duration":"16","dots":0,"type":"n","autoStem":true,"keys":["c#/5/n"]}'))
+smo79689.setAttribute('id', 'smo79689');
+smo79706v0ar.push(smo79689);
+const smo79690 = new VF.StaveNote(JSON.parse('{"clef":"treble","duration":"4","dots":0,"type":"n","autoStem":true,"keys":["bn/4/n"]}'))
+smo79690.setAttribute('id', 'smo79690');
+smo79706v0ar.push(smo79690);
+smo79706v0.addTickables(smo79706v0ar)
+fmtsmo7970618.joinVoices([smo79706v0]);
+const fmtsmo8051718 = new VF.Formatter();
 //
 // voices and notes for stave 2 18
-const smo82859v0 = new VF.Voice(JSON.parse('{"numBeats":4,"beatValue":4}')).setMode(VF.Voice.Mode.SOFT);
-const smo82859v0ar = [];
-const smo82837 = new VF.StaveNote(JSON.parse('{"clef":"alto","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["bn/4/n"]}'))
-smo82837.setAttribute('id', 'smo82837');
-smo82859v0ar.push(smo82837);
-const smo82838 = new VF.StaveNote(JSON.parse('{"clef":"alto","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["bn/4/n"]}'))
-smo82838.setAttribute('id', 'smo82838');
-smo82859v0ar.push(smo82838);
-const smo82839 = new VF.StaveNote(JSON.parse('{"clef":"alto","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["bn/4/n"]}'))
-smo82839.setAttribute('id', 'smo82839');
-smo82859v0ar.push(smo82839);
-const smo82840 = new VF.StaveNote(JSON.parse('{"clef":"alto","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["bn/4/n"]}'))
-smo82840.setAttribute('id', 'smo82840');
-smo82859v0ar.push(smo82840);
-const smo82841 = new VF.StaveNote(JSON.parse('{"clef":"alto","duration":"8d","dots":1,"type":"n","autoStem":true,"keys":["bn/4/n"]}'))
-smo82841.setAttribute('id', 'smo82841');
-smo82841.addModifier(new VF.Dot(), 0);
-smo82859v0ar.push(smo82841);
-const smo82842 = new VF.StaveNote(JSON.parse('{"clef":"alto","duration":"16","dots":0,"type":"n","autoStem":true,"keys":["f#/4/n"]}'))
-smo82842.setAttribute('id', 'smo82842');
-smo82859v0ar.push(smo82842);
-const smo82843 = new VF.StaveNote(JSON.parse('{"clef":"alto","duration":"4","dots":0,"type":"n","autoStem":true,"keys":["f#/4/n"]}'))
-smo82843.setAttribute('id', 'smo82843');
-smo82859v0ar.push(smo82843);
-smo82859v0.addTickables(smo82859v0ar)
-fmtsmo8285918.joinVoices([smo82859v0]);
-const fmtsmo8366018 = new VF.Formatter();
+const smo80517v0 = new VF.Voice(JSON.parse('{"numBeats":4,"beatValue":4}')).setMode(VF.Voice.Mode.SOFT);
+const smo80517v0ar = [];
+const smo80495 = new VF.StaveNote(JSON.parse('{"clef":"alto","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["bn/4/n"]}'))
+smo80495.setAttribute('id', 'smo80495');
+smo80517v0ar.push(smo80495);
+const smo80496 = new VF.StaveNote(JSON.parse('{"clef":"alto","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["bn/4/n"]}'))
+smo80496.setAttribute('id', 'smo80496');
+smo80517v0ar.push(smo80496);
+const smo80497 = new VF.StaveNote(JSON.parse('{"clef":"alto","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["bn/4/n"]}'))
+smo80497.setAttribute('id', 'smo80497');
+smo80517v0ar.push(smo80497);
+const smo80498 = new VF.StaveNote(JSON.parse('{"clef":"alto","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["bn/4/n"]}'))
+smo80498.setAttribute('id', 'smo80498');
+smo80517v0ar.push(smo80498);
+const smo80499 = new VF.StaveNote(JSON.parse('{"clef":"alto","duration":"8d","dots":1,"type":"n","autoStem":true,"keys":["bn/4/n"]}'))
+smo80499.setAttribute('id', 'smo80499');
+smo80499.addModifier(new VF.Dot(), 0);
+smo80517v0ar.push(smo80499);
+const smo80500 = new VF.StaveNote(JSON.parse('{"clef":"alto","duration":"16","dots":0,"type":"n","autoStem":true,"keys":["f#/4/n"]}'))
+smo80500.setAttribute('id', 'smo80500');
+smo80517v0ar.push(smo80500);
+const smo80501 = new VF.StaveNote(JSON.parse('{"clef":"alto","duration":"4","dots":0,"type":"n","autoStem":true,"keys":["f#/4/n"]}'))
+smo80501.setAttribute('id', 'smo80501');
+smo80517v0ar.push(smo80501);
+smo80517v0.addTickables(smo80517v0ar)
+fmtsmo8051718.joinVoices([smo80517v0]);
+const fmtsmo8131818 = new VF.Formatter();
 //
 // voices and notes for stave 3 18
-const smo83660v0 = new VF.Voice(JSON.parse('{"numBeats":4,"beatValue":4}')).setMode(VF.Voice.Mode.SOFT);
-const smo83660v0ar = [];
-const smo83635 = new VF.StaveNote(JSON.parse('{"clef":"treble","duration":"8d","dots":1,"type":"n","autoStem":true,"keys":["d#/5/n"]}'))
-smo83635.setAttribute('id', 'smo83635');
-smo83635.addModifier(new VF.Dot(), 0);
-const smo83636 = new VF.Annotation('ru');
-smo83636.setAttribute('id', 'smo83636');
-smo83636.setFont('Merriweather', 12, 'normal');
-smo83636.setVerticalJustification(VF.Annotation.VerticalJustify.BOTTOM);
-smo83635.addModifier(smo83636);
-smo83636.addClass('lyric lyric-0 lyric-hyphen');
-smo83660v0ar.push(smo83635);
-const smo83637 = new VF.StaveNote(JSON.parse('{"clef":"treble","duration":"16","dots":0,"type":"n","autoStem":true,"keys":["bn/4/n"]}'))
-smo83637.setAttribute('id', 'smo83637');
-const smo83638 = new VF.Annotation('sa');
-smo83638.setAttribute('id', 'smo83638');
-smo83638.setFont('Merriweather', 12, 'normal');
-smo83638.setVerticalJustification(VF.Annotation.VerticalJustify.BOTTOM);
-smo83637.addModifier(smo83638);
-smo83638.addClass('lyric lyric-0 lyric-hyphen');
-smo83660v0ar.push(smo83637);
-const smo83639 = new VF.StaveNote(JSON.parse('{"clef":"treble","duration":"4","dots":0,"type":"n","autoStem":true,"keys":["bn/4/n"]}'))
-smo83639.setAttribute('id', 'smo83639');
-const smo83640 = new VF.Annotation('lem,');
-smo83640.setAttribute('id', 'smo83640');
-smo83640.setFont('Merriweather', 12, 'normal');
-smo83640.setVerticalJustification(VF.Annotation.VerticalJustify.BOTTOM);
-smo83639.addModifier(smo83640);
-smo83640.addClass('lyric lyric-0');
-smo83660v0ar.push(smo83639);
-const smo83641 = new VF.StaveNote(JSON.parse('{"clef":"treble","duration":"4","dots":0,"type":"r","autoStem":true,"keys":["bn/4/r"]}'))
-smo83641.setAttribute('id', 'smo83641');
-smo83660v0ar.push(smo83641);
-const smo83642 = new VF.StaveNote(JSON.parse('{"clef":"treble","duration":"8","dots":0,"type":"r","autoStem":true,"keys":["bn/4/r"]}'))
-smo83642.setAttribute('id', 'smo83642');
-smo83660v0ar.push(smo83642);
-const smo83643 = new VF.StaveNote(JSON.parse('{"clef":"treble","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["f#/4/n"]}'))
-smo83643.setAttribute('id', 'smo83643');
-const smo83644 = new VF.Annotation('and');
-smo83644.setAttribute('id', 'smo83644');
-smo83644.setFont('Merriweather', 12, 'normal');
-smo83644.setVerticalJustification(VF.Annotation.VerticalJustify.BOTTOM);
-smo83643.addModifier(smo83644);
-smo83644.addClass('lyric lyric-0');
-smo83660v0ar.push(smo83643);
-smo83660v0.addTickables(smo83660v0ar)
-fmtsmo8366018.joinVoices([smo83660v0]);
-const fmtsmo8453418 = new VF.Formatter();
+const smo81318v0 = new VF.Voice(JSON.parse('{"numBeats":4,"beatValue":4}')).setMode(VF.Voice.Mode.SOFT);
+const smo81318v0ar = [];
+const smo81293 = new VF.StaveNote(JSON.parse('{"clef":"treble","duration":"8d","dots":1,"type":"n","autoStem":true,"keys":["d#/5/n"]}'))
+smo81293.setAttribute('id', 'smo81293');
+smo81293.addModifier(new VF.Dot(), 0);
+const smo81294 = new VF.Annotation('ru');
+smo81294.setAttribute('id', 'smo81294');
+smo81294.setFont('Merriweather', 12, 'normal');
+smo81294.setVerticalJustification(VF.Annotation.VerticalJustify.BOTTOM);
+smo81293.addModifier(smo81294);
+smo81294.addClass('lyric lyric-0 lyric-hyphen');
+smo81318v0ar.push(smo81293);
+const smo81295 = new VF.StaveNote(JSON.parse('{"clef":"treble","duration":"16","dots":0,"type":"n","autoStem":true,"keys":["bn/4/n"]}'))
+smo81295.setAttribute('id', 'smo81295');
+const smo81296 = new VF.Annotation('sa');
+smo81296.setAttribute('id', 'smo81296');
+smo81296.setFont('Merriweather', 12, 'normal');
+smo81296.setVerticalJustification(VF.Annotation.VerticalJustify.BOTTOM);
+smo81295.addModifier(smo81296);
+smo81296.addClass('lyric lyric-0 lyric-hyphen');
+smo81318v0ar.push(smo81295);
+const smo81297 = new VF.StaveNote(JSON.parse('{"clef":"treble","duration":"4","dots":0,"type":"n","autoStem":true,"keys":["bn/4/n"]}'))
+smo81297.setAttribute('id', 'smo81297');
+const smo81298 = new VF.Annotation('lem,');
+smo81298.setAttribute('id', 'smo81298');
+smo81298.setFont('Merriweather', 12, 'normal');
+smo81298.setVerticalJustification(VF.Annotation.VerticalJustify.BOTTOM);
+smo81297.addModifier(smo81298);
+smo81298.addClass('lyric lyric-0');
+smo81318v0ar.push(smo81297);
+const smo81299 = new VF.StaveNote(JSON.parse('{"clef":"treble","duration":"4","dots":0,"type":"r","autoStem":true,"keys":["bn/4/r"]}'))
+smo81299.setAttribute('id', 'smo81299');
+smo81318v0ar.push(smo81299);
+const smo81300 = new VF.StaveNote(JSON.parse('{"clef":"treble","duration":"8","dots":0,"type":"r","autoStem":true,"keys":["bn/4/r"]}'))
+smo81300.setAttribute('id', 'smo81300');
+smo81318v0ar.push(smo81300);
+const smo81301 = new VF.StaveNote(JSON.parse('{"clef":"treble","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["f#/4/n"]}'))
+smo81301.setAttribute('id', 'smo81301');
+const smo81302 = new VF.Annotation('and');
+smo81302.setAttribute('id', 'smo81302');
+smo81302.setFont('Merriweather', 12, 'normal');
+smo81302.setVerticalJustification(VF.Annotation.VerticalJustify.BOTTOM);
+smo81301.addModifier(smo81302);
+smo81302.addClass('lyric lyric-0');
+smo81318v0ar.push(smo81301);
+smo81318v0.addTickables(smo81318v0ar)
+fmtsmo8131818.joinVoices([smo81318v0]);
+const fmtsmo8219218 = new VF.Formatter();
 //
 // voices and notes for stave 4 18
-const smo84534v0 = new VF.Voice(JSON.parse('{"numBeats":4,"beatValue":4}')).setMode(VF.Voice.Mode.SOFT);
-const smo84534v0ar = [];
-const smo84512 = new VF.StaveNote(JSON.parse('{"clef":"bass","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["bn/2/n"]}'))
-smo84512.setAttribute('id', 'smo84512');
-smo84534v0ar.push(smo84512);
-const smo84513 = new VF.StaveNote(JSON.parse('{"clef":"bass","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["bn/2/n"]}'))
-smo84513.setAttribute('id', 'smo84513');
-smo84534v0ar.push(smo84513);
-const smo84514 = new VF.StaveNote(JSON.parse('{"clef":"bass","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["bn/2/n"]}'))
-smo84514.setAttribute('id', 'smo84514');
-smo84534v0ar.push(smo84514);
-const smo84515 = new VF.StaveNote(JSON.parse('{"clef":"bass","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["bn/2/n"]}'))
-smo84515.setAttribute('id', 'smo84515');
-smo84534v0ar.push(smo84515);
-const smo84516 = new VF.StaveNote(JSON.parse('{"clef":"bass","duration":"8d","dots":1,"type":"n","autoStem":true,"keys":["bn/3/n"]}'))
-smo84516.setAttribute('id', 'smo84516');
-smo84516.addModifier(new VF.Dot(), 0);
-smo84534v0ar.push(smo84516);
-const smo84517 = new VF.StaveNote(JSON.parse('{"clef":"bass","duration":"16","dots":0,"type":"n","autoStem":true,"keys":["bn/2/n"]}'))
-smo84517.setAttribute('id', 'smo84517');
-smo84534v0ar.push(smo84517);
-const smo84518 = new VF.StaveNote(JSON.parse('{"clef":"bass","duration":"4","dots":0,"type":"n","autoStem":true,"keys":["bn/2/n"]}'))
-smo84518.setAttribute('id', 'smo84518');
-smo84534v0ar.push(smo84518);
-smo84534v0.addTickables(smo84534v0ar)
-fmtsmo8453418.joinVoices([smo84534v0]);
-// create beam groups and tuplets for format grp smo84911 before formatting
-const dirsmo91646 = smo81207.getStemDirection();
-smo81207.setStemDirection(dirsmo91646);
-smo81208.setStemDirection(dirsmo91646);
-smo81209.setStemDirection(dirsmo91646);
-smo81210.setStemDirection(dirsmo91646);
-const smo91646 = new VF.Beam([smo81207,smo81208,smo81209,smo81210]);
-const dirsmo91647 = smo81211.getStemDirection();
-smo81211.setStemDirection(dirsmo91647);
-smo81212.setStemDirection(dirsmo91647);
-const smo91647 = new VF.Beam([smo81211,smo81212]);
-const dirsmo91650 = smo82026.getStemDirection();
-smo82026.setStemDirection(dirsmo91650);
-smo82027.setStemDirection(dirsmo91650);
-smo82028.setStemDirection(dirsmo91650);
-smo82029.setStemDirection(dirsmo91650);
-const smo91650 = new VF.Beam([smo82026,smo82027,smo82028,smo82029]);
-const dirsmo91651 = smo82030.getStemDirection();
-smo82030.setStemDirection(dirsmo91651);
-smo82031.setStemDirection(dirsmo91651);
-const smo91651 = new VF.Beam([smo82030,smo82031]);
-const dirsmo91654 = smo82837.getStemDirection();
-smo82837.setStemDirection(dirsmo91654);
-smo82838.setStemDirection(dirsmo91654);
-smo82839.setStemDirection(dirsmo91654);
-smo82840.setStemDirection(dirsmo91654);
-const smo91654 = new VF.Beam([smo82837,smo82838,smo82839,smo82840]);
-const dirsmo91655 = smo82841.getStemDirection();
-smo82841.setStemDirection(dirsmo91655);
-smo82842.setStemDirection(dirsmo91655);
-const smo91655 = new VF.Beam([smo82841,smo82842]);
-const dirsmo91658 = smo83635.getStemDirection();
-smo83635.setStemDirection(dirsmo91658);
-smo83637.setStemDirection(dirsmo91658);
-const smo91658 = new VF.Beam([smo83635,smo83637]);
-const dirsmo91661 = smo84512.getStemDirection();
-smo84512.setStemDirection(dirsmo91661);
-smo84513.setStemDirection(dirsmo91661);
-smo84514.setStemDirection(dirsmo91661);
-smo84515.setStemDirection(dirsmo91661);
-const smo91661 = new VF.Beam([smo84512,smo84513,smo84514,smo84515]);
-const dirsmo91662 = smo84516.getStemDirection();
-smo84516.setStemDirection(dirsmo91662);
-smo84517.setStemDirection(dirsmo91662);
-const smo91662 = new VF.Beam([smo84516,smo84517]);
+const smo82192v0 = new VF.Voice(JSON.parse('{"numBeats":4,"beatValue":4}')).setMode(VF.Voice.Mode.SOFT);
+const smo82192v0ar = [];
+const smo82170 = new VF.StaveNote(JSON.parse('{"clef":"bass","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["bn/2/n"]}'))
+smo82170.setAttribute('id', 'smo82170');
+smo82192v0ar.push(smo82170);
+const smo82171 = new VF.StaveNote(JSON.parse('{"clef":"bass","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["bn/2/n"]}'))
+smo82171.setAttribute('id', 'smo82171');
+smo82192v0ar.push(smo82171);
+const smo82172 = new VF.StaveNote(JSON.parse('{"clef":"bass","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["bn/2/n"]}'))
+smo82172.setAttribute('id', 'smo82172');
+smo82192v0ar.push(smo82172);
+const smo82173 = new VF.StaveNote(JSON.parse('{"clef":"bass","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["bn/2/n"]}'))
+smo82173.setAttribute('id', 'smo82173');
+smo82192v0ar.push(smo82173);
+const smo82174 = new VF.StaveNote(JSON.parse('{"clef":"bass","duration":"8d","dots":1,"type":"n","autoStem":true,"keys":["bn/3/n"]}'))
+smo82174.setAttribute('id', 'smo82174');
+smo82174.addModifier(new VF.Dot(), 0);
+smo82192v0ar.push(smo82174);
+const smo82175 = new VF.StaveNote(JSON.parse('{"clef":"bass","duration":"16","dots":0,"type":"n","autoStem":true,"keys":["bn/2/n"]}'))
+smo82175.setAttribute('id', 'smo82175');
+smo82192v0ar.push(smo82175);
+const smo82176 = new VF.StaveNote(JSON.parse('{"clef":"bass","duration":"4","dots":0,"type":"n","autoStem":true,"keys":["bn/2/n"]}'))
+smo82176.setAttribute('id', 'smo82176');
+smo82192v0ar.push(smo82176);
+smo82192v0.addTickables(smo82192v0ar)
+fmtsmo8219218.joinVoices([smo82192v0]);
+// create beam groups and tuplets for format grp smo82569 before formatting
+const dirsmo89315 = smo78865.getStemDirection();
+smo78865.setStemDirection(dirsmo89315);
+smo78866.setStemDirection(dirsmo89315);
+smo78867.setStemDirection(dirsmo89315);
+smo78868.setStemDirection(dirsmo89315);
+const smo89315 = new VF.Beam([smo78865,smo78866,smo78867,smo78868]);
+const dirsmo89316 = smo78869.getStemDirection();
+smo78869.setStemDirection(dirsmo89316);
+smo78870.setStemDirection(dirsmo89316);
+const smo89316 = new VF.Beam([smo78869,smo78870]);
+const dirsmo89318 = smo79684.getStemDirection();
+smo79684.setStemDirection(dirsmo89318);
+smo79685.setStemDirection(dirsmo89318);
+smo79686.setStemDirection(dirsmo89318);
+smo79687.setStemDirection(dirsmo89318);
+const smo89318 = new VF.Beam([smo79684,smo79685,smo79686,smo79687]);
+const dirsmo89319 = smo79688.getStemDirection();
+smo79688.setStemDirection(dirsmo89319);
+smo79689.setStemDirection(dirsmo89319);
+const smo89319 = new VF.Beam([smo79688,smo79689]);
+const dirsmo89321 = smo80495.getStemDirection();
+smo80495.setStemDirection(dirsmo89321);
+smo80496.setStemDirection(dirsmo89321);
+smo80497.setStemDirection(dirsmo89321);
+smo80498.setStemDirection(dirsmo89321);
+const smo89321 = new VF.Beam([smo80495,smo80496,smo80497,smo80498]);
+const dirsmo89322 = smo80499.getStemDirection();
+smo80499.setStemDirection(dirsmo89322);
+smo80500.setStemDirection(dirsmo89322);
+const smo89322 = new VF.Beam([smo80499,smo80500]);
+const dirsmo89324 = smo81293.getStemDirection();
+smo81293.setStemDirection(dirsmo89324);
+smo81295.setStemDirection(dirsmo89324);
+const smo89324 = new VF.Beam([smo81293,smo81295]);
+const dirsmo89326 = smo82170.getStemDirection();
+smo82170.setStemDirection(dirsmo89326);
+smo82171.setStemDirection(dirsmo89326);
+smo82172.setStemDirection(dirsmo89326);
+smo82173.setStemDirection(dirsmo89326);
+const smo89326 = new VF.Beam([smo82170,smo82171,smo82172,smo82173]);
+const dirsmo89327 = smo82174.getStemDirection();
+smo82174.setStemDirection(dirsmo89327);
+smo82175.setStemDirection(dirsmo89327);
+const smo89327 = new VF.Beam([smo82174,smo82175]);
  
-// formatting measures in staff group smo84911
-fmtsmo8122918.format([smo81229v0,smo82048v0,smo82859v0,smo83660v0,smo84534v0], 372);
-const stavesmo81229 = new VF.Stave(989, 1266.0000000000002, 386);
-stavesmo81229.setAttribute('id', 'stavesmo81229');
-stavesmo81229.setBegBarType(VF.Barline.type.NONE);
-stavesmo81229.setContext(context);
-stavesmo81229.draw();
-smo81229v0.draw(context, stavesmo81229);
-smo91646.setContext(context);
-smo91646.draw();
-smo91647.setContext(context);
-smo91647.draw();
-const stavesmo82048 = new VF.Stave(989, 1354.0000000000002, 386);
-stavesmo82048.setAttribute('id', 'stavesmo82048');
-stavesmo82048.setBegBarType(VF.Barline.type.NONE);
-stavesmo82048.setContext(context);
-stavesmo82048.draw();
-smo82048v0.draw(context, stavesmo82048);
-smo91650.setContext(context);
-smo91650.draw();
-smo91651.setContext(context);
-smo91651.draw();
-const stavesmo82859 = new VF.Stave(989, 1458.0000000000002, 386);
-stavesmo82859.setAttribute('id', 'stavesmo82859');
-stavesmo82859.setBegBarType(VF.Barline.type.NONE);
-stavesmo82859.setContext(context);
-stavesmo82859.draw();
-smo82859v0.draw(context, stavesmo82859);
-smo91654.setContext(context);
-smo91654.draw();
-smo91655.setContext(context);
-smo91655.draw();
-const stavesmo83660 = new VF.Stave(989, 1536.0000000000002, 386);
-stavesmo83660.setAttribute('id', 'stavesmo83660');
-stavesmo83660.setBegBarType(VF.Barline.type.NONE);
-stavesmo83660.setContext(context);
-stavesmo83660.draw();
-smo83660v0.draw(context, stavesmo83660);
-smo91658.setContext(context);
-smo91658.draw();
-const stavesmo84534 = new VF.Stave(989, 1683.0000000000002, 386);
-stavesmo84534.setAttribute('id', 'stavesmo84534');
-stavesmo84534.setBegBarType(VF.Barline.type.NONE);
-stavesmo84534.setContext(context);
-stavesmo84534.draw();
-smo84534v0.draw(context, stavesmo84534);
-smo91661.setContext(context);
-smo91661.draw();
-smo91662.setContext(context);
-smo91662.draw();
-const rightsmo84911stavesmo812294 = new VF.StaveConnector(stavesmo81229, stavesmo84534).setType(0);
-rightsmo84911stavesmo812294.setContext(context).draw();
+// formatting measures in staff group smo82569
+fmtsmo7888718.format([smo78887v0,smo79706v0,smo80517v0,smo81318v0,smo82192v0], 377);
+const stavesmo78887 = new VF.Stave(560, 1278.0000000000002, 391);
+stavesmo78887.setAttribute('id', 'stavesmo78887');
+stavesmo78887.setBegBarType(VF.Barline.type.NONE);
+stavesmo78887.setContext(context);
+stavesmo78887.draw();
+smo78887v0.draw(context, stavesmo78887);
+smo89315.setContext(context);
+smo89315.draw();
+smo89316.setContext(context);
+smo89316.draw();
+const stavesmo79706 = new VF.Stave(560, 1366.0000000000002, 391);
+stavesmo79706.setAttribute('id', 'stavesmo79706');
+stavesmo79706.setBegBarType(VF.Barline.type.NONE);
+stavesmo79706.setContext(context);
+stavesmo79706.draw();
+smo79706v0.draw(context, stavesmo79706);
+smo89318.setContext(context);
+smo89318.draw();
+smo89319.setContext(context);
+smo89319.draw();
+const stavesmo80517 = new VF.Stave(560, 1470.0000000000002, 391);
+stavesmo80517.setAttribute('id', 'stavesmo80517');
+stavesmo80517.setBegBarType(VF.Barline.type.NONE);
+stavesmo80517.setContext(context);
+stavesmo80517.draw();
+smo80517v0.draw(context, stavesmo80517);
+smo89321.setContext(context);
+smo89321.draw();
+smo89322.setContext(context);
+smo89322.draw();
+const stavesmo81318 = new VF.Stave(560, 1552.0000000000002, 391);
+stavesmo81318.setAttribute('id', 'stavesmo81318');
+stavesmo81318.setBegBarType(VF.Barline.type.NONE);
+stavesmo81318.setContext(context);
+stavesmo81318.draw();
+smo81318v0.draw(context, stavesmo81318);
+smo89324.setContext(context);
+smo89324.draw();
+const stavesmo82192 = new VF.Stave(560, 1695.0000000000002, 391);
+stavesmo82192.setAttribute('id', 'stavesmo82192');
+stavesmo82192.setBegBarType(VF.Barline.type.NONE);
+stavesmo82192.setContext(context);
+stavesmo82192.draw();
+smo82192v0.draw(context, stavesmo82192);
+smo89326.setContext(context);
+smo89326.draw();
+smo89327.setContext(context);
+smo89327.draw();
+const fmtsmo7890419 = new VF.Formatter();
+//
+// voices and notes for stave 0 19
+const smo78904v0 = new VF.Voice(JSON.parse('{"numBeats":4,"beatValue":4}')).setMode(VF.Voice.Mode.SOFT);
+const smo78904v0ar = [];
+const smo78888 = new VF.StaveNote(JSON.parse('{"clef":"treble","duration":"1","dots":0,"type":"r","autoStem":true,"keys":["bn/4/r"]}'))
+smo78888.setAttribute('id', 'smo78888');
+smo78904v0ar.push(smo78888);
+smo78904v0.addTickables(smo78904v0ar)
+fmtsmo7890419.joinVoices([smo78904v0]);
+const fmtsmo7972319 = new VF.Formatter();
+//
+// voices and notes for stave 1 19
+const smo79723v0 = new VF.Voice(JSON.parse('{"numBeats":4,"beatValue":4}')).setMode(VF.Voice.Mode.SOFT);
+const smo79723v0ar = [];
+const smo79707 = new VF.StaveNote(JSON.parse('{"clef":"treble","duration":"1","dots":0,"type":"r","autoStem":true,"keys":["bn/4/r"]}'))
+smo79707.setAttribute('id', 'smo79707');
+smo79723v0ar.push(smo79707);
+smo79723v0.addTickables(smo79723v0ar)
+fmtsmo7972319.joinVoices([smo79723v0]);
+const fmtsmo8053419 = new VF.Formatter();
+//
+// voices and notes for stave 2 19
+const smo80534v0 = new VF.Voice(JSON.parse('{"numBeats":4,"beatValue":4}')).setMode(VF.Voice.Mode.SOFT);
+const smo80534v0ar = [];
+const smo80518 = new VF.StaveNote(JSON.parse('{"clef":"alto","duration":"1","dots":0,"type":"r","autoStem":true,"keys":["cn/4/r"]}'))
+smo80518.setAttribute('id', 'smo80518');
+smo80534v0ar.push(smo80518);
+smo80534v0.addTickables(smo80534v0ar)
+fmtsmo8053419.joinVoices([smo80534v0]);
+const fmtsmo8134819 = new VF.Formatter();
+//
+// voices and notes for stave 3 19
+const smo81348v0 = new VF.Voice(JSON.parse('{"numBeats":4,"beatValue":4}')).setMode(VF.Voice.Mode.SOFT);
+const smo81348v0ar = [];
+const smo81319 = new VF.StaveNote(JSON.parse('{"clef":"treble","duration":"4","dots":0,"type":"n","autoStem":true,"keys":["f#/5/n"]}'))
+smo81319.setAttribute('id', 'smo81319');
+const smo81320 = new VF.Annotation('cry');
+smo81320.setAttribute('id', 'smo81320');
+smo81320.setFont('Merriweather', 12, 'normal');
+smo81320.setVerticalJustification(VF.Annotation.VerticalJustify.BOTTOM);
+smo81319.addModifier(smo81320);
+smo81320.addClass('lyric lyric-0');
+smo81348v0ar.push(smo81319);
+const smo81321 = new VF.StaveNote(JSON.parse('{"clef":"treble","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["d#/5/n"]}'))
+smo81321.setAttribute('id', 'smo81321');
+const smo81322 = new VF.Annotation('un');
+smo81322.setAttribute('id', 'smo81322');
+smo81322.setFont('Merriweather', 12, 'normal');
+smo81322.setVerticalJustification(VF.Annotation.VerticalJustify.BOTTOM);
+smo81321.addModifier(smo81322);
+smo81322.addClass('lyric lyric-0 lyric-hyphen');
+smo81348v0ar.push(smo81321);
+const smo81323 = new VF.StaveNote(JSON.parse('{"clef":"treble","duration":"16","dots":0,"type":"n","autoStem":true,"keys":["bn/4/n"]}'))
+smo81323.setAttribute('id', 'smo81323');
+const smo81324 = new VF.Annotation('to');
+smo81324.setAttribute('id', 'smo81324');
+smo81324.setFont('Merriweather', 12, 'normal');
+smo81324.setVerticalJustification(VF.Annotation.VerticalJustify.BOTTOM);
+smo81323.addModifier(smo81324);
+smo81324.addClass('lyric lyric-0');
+smo81348v0ar.push(smo81323);
+const smo81325 = new VF.StaveNote(JSON.parse('{"clef":"treble","duration":"16","dots":0,"type":"n","autoStem":true,"keys":["bn/4/n"]}'))
+smo81325.setAttribute('id', 'smo81325');
+const smo81326 = new VF.Annotation('-');
+smo81326.setAttribute('id', 'smo81326');
+smo81326.setFont('Merriweather', 12, 'normal');
+smo81326.setVerticalJustification(VF.Annotation.VerticalJustify.BOTTOM);
+smo81325.addModifier(smo81326);
+smo81326.addClass('lyric lyric-0 lyric-hyphen');
+smo81348v0ar.push(smo81325);
+const smo81327 = new VF.StaveNote(JSON.parse('{"clef":"treble","duration":"4","dots":0,"type":"n","autoStem":true,"keys":["bn/4/n"]}'))
+smo81327.setAttribute('id', 'smo81327');
+const smo81328 = new VF.Annotation('her');
+smo81328.setAttribute('id', 'smo81328');
+smo81328.setFont('Merriweather', 12, 'normal');
+smo81328.setVerticalJustification(VF.Annotation.VerticalJustify.BOTTOM);
+smo81327.addModifier(smo81328);
+smo81328.addClass('lyric lyric-0');
+smo81348v0ar.push(smo81327);
+const smo81329 = new VF.StaveNote(JSON.parse('{"clef":"treble","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["bn/4/n"]}'))
+smo81329.setAttribute('id', 'smo81329');
+const smo81330 = new VF.Annotation('that');
+smo81330.setAttribute('id', 'smo81330');
+smo81330.setFont('Merriweather', 12, 'normal');
+smo81330.setVerticalJustification(VF.Annotation.VerticalJustify.BOTTOM);
+smo81329.addModifier(smo81330);
+smo81330.addClass('lyric lyric-0');
+smo81348v0ar.push(smo81329);
+const smo81331 = new VF.StaveNote(JSON.parse('{"clef":"treble","duration":"8","dots":0,"type":"n","autoStem":true,"keys":["bn/4/n"]}'))
+smo81331.setAttribute('id', 'smo81331');
+const smo81332 = new VF.Annotation('her');
+smo81332.setAttribute('id', 'smo81332');
+smo81332.setFont('Merriweather', 12, 'normal');
+smo81332.setVerticalJustification(VF.Annotation.VerticalJustify.BOTTOM);
+smo81331.addModifier(smo81332);
+smo81332.addClass('lyric lyric-0');
+smo81348v0ar.push(smo81331);
+smo81348v0.addTickables(smo81348v0ar)
+fmtsmo8134819.joinVoices([smo81348v0]);
+const fmtsmo8220919 = new VF.Formatter();
+//
+// voices and notes for stave 4 19
+const smo82209v0 = new VF.Voice(JSON.parse('{"numBeats":4,"beatValue":4}')).setMode(VF.Voice.Mode.SOFT);
+const smo82209v0ar = [];
+const smo82193 = new VF.StaveNote(JSON.parse('{"clef":"bass","duration":"1","dots":0,"type":"r","autoStem":true,"keys":["dn/3/r"]}'))
+smo82193.setAttribute('id', 'smo82193');
+smo82209v0ar.push(smo82193);
+smo82209v0.addTickables(smo82209v0ar)
+fmtsmo8220919.joinVoices([smo82209v0]);
+// create beam groups and tuplets for format grp smo82569 before formatting
+const dirsmo89337 = smo81321.getStemDirection();
+smo81321.setStemDirection(dirsmo89337);
+smo81323.setStemDirection(dirsmo89337);
+smo81325.setStemDirection(dirsmo89337);
+const smo89337 = new VF.Beam([smo81321,smo81323,smo81325]);
+const dirsmo89338 = smo81329.getStemDirection();
+smo81329.setStemDirection(dirsmo89338);
+smo81331.setStemDirection(dirsmo89338);
+const smo89338 = new VF.Beam([smo81329,smo81331]);
+ 
+// formatting measures in staff group smo82569
+fmtsmo7890419.format([smo78904v0,smo79723v0,smo80534v0,smo81348v0,smo82209v0], 409);
+const stavesmo78904 = new VF.Stave(951, 1278.0000000000002, 423);
+stavesmo78904.setAttribute('id', 'stavesmo78904');
+stavesmo78904.setBegBarType(VF.Barline.type.NONE);
+stavesmo78904.setContext(context);
+stavesmo78904.draw();
+smo78904v0.draw(context, stavesmo78904);
+const stavesmo79723 = new VF.Stave(951, 1366.0000000000002, 423);
+stavesmo79723.setAttribute('id', 'stavesmo79723');
+stavesmo79723.setBegBarType(VF.Barline.type.NONE);
+stavesmo79723.setContext(context);
+stavesmo79723.draw();
+smo79723v0.draw(context, stavesmo79723);
+const stavesmo80534 = new VF.Stave(951, 1470.0000000000002, 423);
+stavesmo80534.setAttribute('id', 'stavesmo80534');
+stavesmo80534.setBegBarType(VF.Barline.type.NONE);
+stavesmo80534.setContext(context);
+stavesmo80534.draw();
+smo80534v0.draw(context, stavesmo80534);
+const stavesmo81348 = new VF.Stave(951, 1552.0000000000002, 423);
+stavesmo81348.setAttribute('id', 'stavesmo81348');
+stavesmo81348.setBegBarType(VF.Barline.type.NONE);
+stavesmo81348.setContext(context);
+stavesmo81348.draw();
+smo81348v0.draw(context, stavesmo81348);
+smo89337.setContext(context);
+smo89337.draw();
+smo89338.setContext(context);
+smo89338.draw();
+const stavesmo82209 = new VF.Stave(951, 1695.0000000000002, 423);
+stavesmo82209.setAttribute('id', 'stavesmo82209');
+stavesmo82209.setBegBarType(VF.Barline.type.NONE);
+stavesmo82209.setContext(context);
+stavesmo82209.draw();
+smo82209v0.draw(context, stavesmo82209);
+const rightsmo82569stavesmo789044 = new VF.StaveConnector(stavesmo78904, stavesmo82209).setType(0);
+rightsmo82569stavesmo789044.setContext(context).draw();
 // modifier from 0-13-0-4 to 0-13-0-5
-const smo92586 = new VF.Curve(smo81091, smo81092, JSON.parse('{"thickness":2,"xShift":0,"yShift":10,"cps":[{"x":0,"y":15},{"x":0,"y":15}],"invert":false,"position":1,"positionEnd":1}'));
-smo92586.setContext(context).draw();
+const smo90264 = new VF.Curve(smo78749, smo78750, JSON.parse('{"thickness":2,"xShift":0,"yShift":10,"cps":[{"x":0,"y":15},{"x":0,"y":15}],"invert":false,"position":1,"positionEnd":1}'));
+smo90264.setContext(context).draw();
 // 
 // Align lyrics on different measures, once they are rendered.
-context.svg.getElementById('vf-smo83403').setAttributeNS('', 'transform', 'translate(0 15)');
-context.svg.getElementById('vf-smo83421').setAttributeNS('', 'transform', 'translate(0 15)');
-context.svg.getElementById('vf-smo83423').setAttributeNS('', 'transform', 'translate(0 10)');
-context.svg.getElementById('vf-smo83425').setAttributeNS('', 'transform', 'translate(0 15)');
-context.svg.getElementById('vf-smo83427').setAttributeNS('', 'transform', 'translate(0 15)');
-context.svg.getElementById('vf-smo83445').setAttributeNS('', 'transform', 'translate(0 10)');
-context.svg.getElementById('vf-smo83447').setAttributeNS('', 'transform', 'translate(0 5)');
-context.svg.getElementById('vf-smo83469').setAttributeNS('', 'transform', 'translate(0 5)');
-context.svg.getElementById('vf-smo83471').setAttributeNS('', 'transform', 'translate(0 5)');
-context.svg.getElementById('vf-smo83492').setAttributeNS('', 'transform', 'translate(0 5)');
-context.svg.getElementById('vf-smo83494').setAttributeNS('', 'transform', 'translate(0 10)');
-context.svg.getElementById('vf-smo83496').setAttributeNS('', 'transform', 'translate(0 15)');
-context.svg.getElementById('vf-smo83553').setAttributeNS('', 'transform', 'translate(0 15)');
-context.svg.getElementById('vf-smo83559').setAttributeNS('', 'transform', 'translate(0 5)');
-context.svg.getElementById('vf-smo83561').setAttributeNS('', 'transform', 'translate(0 10)');
-context.svg.getElementById('vf-smo83563').setAttributeNS('', 'transform', 'translate(0 15)');
-context.svg.getElementById('vf-smo83581').setAttributeNS('', 'transform', 'translate(0 5)');
-context.svg.getElementById('vf-smo83585').setAttributeNS('', 'transform', 'translate(0 5)');
-context.svg.getElementById('vf-smo83588').setAttributeNS('', 'transform', 'translate(0 5)');
-context.svg.getElementById('vf-smo83590').setAttributeNS('', 'transform', 'translate(0 5)');
-context.svg.getElementById('vf-smo83608').setAttributeNS('', 'transform', 'translate(0 15)');
-context.svg.getElementById('vf-smo83610').setAttributeNS('', 'transform', 'translate(0 15)');
-context.svg.getElementById('vf-smo83612').setAttributeNS('', 'transform', 'translate(0 15)');
-context.svg.getElementById('vf-smo83614').setAttributeNS('', 'transform', 'translate(0 15)');
-context.svg.getElementById('vf-smo83616').setAttributeNS('', 'transform', 'translate(0 5)');
-context.svg.getElementById('vf-smo83618').setAttributeNS('', 'transform', 'translate(0 15)');
-context.svg.getElementById('vf-smo83636').setAttributeNS('', 'transform', 'translate(0 10)');
-context.svg.getElementById('vf-smo83644').setAttributeNS('', 'transform', 'translate(0 5)');
+context.svg.getElementById('vf-smo81061').setAttributeNS('', 'transform', 'translate(0 15)');
+context.svg.getElementById('vf-smo81079').setAttributeNS('', 'transform', 'translate(0 15)');
+context.svg.getElementById('vf-smo81081').setAttributeNS('', 'transform', 'translate(0 10)');
+context.svg.getElementById('vf-smo81083').setAttributeNS('', 'transform', 'translate(0 15)');
+context.svg.getElementById('vf-smo81085').setAttributeNS('', 'transform', 'translate(0 15)');
+context.svg.getElementById('vf-smo81103').setAttributeNS('', 'transform', 'translate(0 10)');
+context.svg.getElementById('vf-smo81105').setAttributeNS('', 'transform', 'translate(0 5)');
+context.svg.getElementById('vf-smo81127').setAttributeNS('', 'transform', 'translate(0 5)');
+context.svg.getElementById('vf-smo81129').setAttributeNS('', 'transform', 'translate(0 5)');
+context.svg.getElementById('vf-smo81150').setAttributeNS('', 'transform', 'translate(0 5)');
+context.svg.getElementById('vf-smo81152').setAttributeNS('', 'transform', 'translate(0 10)');
+context.svg.getElementById('vf-smo81154').setAttributeNS('', 'transform', 'translate(0 15)');
+context.svg.getElementById('vf-smo81211').setAttributeNS('', 'transform', 'translate(0 15)');
+context.svg.getElementById('vf-smo81217').setAttributeNS('', 'transform', 'translate(0 5)');
+context.svg.getElementById('vf-smo81219').setAttributeNS('', 'transform', 'translate(0 10)');
+context.svg.getElementById('vf-smo81221').setAttributeNS('', 'transform', 'translate(0 15)');
+context.svg.getElementById('vf-smo81239').setAttributeNS('', 'transform', 'translate(0 5)');
+context.svg.getElementById('vf-smo81243').setAttributeNS('', 'transform', 'translate(0 5)');
+context.svg.getElementById('vf-smo81246').setAttributeNS('', 'transform', 'translate(0 5)');
+context.svg.getElementById('vf-smo81248').setAttributeNS('', 'transform', 'translate(0 5)');
+context.svg.getElementById('vf-smo81266').setAttributeNS('', 'transform', 'translate(0 15)');
+context.svg.getElementById('vf-smo81268').setAttributeNS('', 'transform', 'translate(0 15)');
+context.svg.getElementById('vf-smo81270').setAttributeNS('', 'transform', 'translate(0 15)');
+context.svg.getElementById('vf-smo81272').setAttributeNS('', 'transform', 'translate(0 15)');
+context.svg.getElementById('vf-smo81274').setAttributeNS('', 'transform', 'translate(0 5)');
+context.svg.getElementById('vf-smo81276').setAttributeNS('', 'transform', 'translate(0 15)');
+context.svg.getElementById('vf-smo81294').setAttributeNS('', 'transform', 'translate(0 10)');
+context.svg.getElementById('vf-smo81302').setAttributeNS('', 'transform', 'translate(0 5)');
+context.svg.getElementById('vf-smo81320').setAttributeNS('', 'transform', 'translate(0 15)');
+context.svg.getElementById('vf-smo81322').setAttributeNS('', 'transform', 'translate(0 10)');
 }
