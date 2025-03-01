@@ -1,11 +1,18 @@
 
 
 @font-face {
-    font-family: 'Petaluma Script';
-    src: url('../fonts/petalumascript-webfont.woff2') format('woff2'),
-         url('../fonts/petalumascript-webfont.woff') format('woff');
-    font-weight: normal;
-    font-style: normal;
+  font-family: 'Academico';
+  src: url('../fonts/academico.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Petaluma Script';
+  src: url('../fonts/petalumascript-webfont.woff2') format('woff2'),
+       url('../fonts/petalumascript-webfont.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
 }
 
 @font-face {
