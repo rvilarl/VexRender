@@ -11,7 +11,7 @@ svg.setAttributeNS('', 'height', '1344');
 svg.setAttributeNS('', 'viewBox', '0 0 3264 2688');
 //
 // create the musical objects
-VF.setFonts("Leland","Bravura","Gonville","Custom");
+VF.setFonts("Leland","Bravura","Academico");
 const fmtsmo25748863 = new VF.Formatter();
 //
 // voices and notes for stave 0 63
